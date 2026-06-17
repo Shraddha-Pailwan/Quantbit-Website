@@ -755,7 +755,3 @@ if (sections.length > 0) {
     sections.forEach(section => observer.observe(section));
 }
 // for digital platforms
-
-
-
-

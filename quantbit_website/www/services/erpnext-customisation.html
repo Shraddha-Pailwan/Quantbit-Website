@@ -1,0 +1,106 @@
+<!-- ═══════════════════════════════════════════════════════════════════════════
+     FILE: erpnext-customisation.html
+     ═══════════════════════════════════════════════════════════════════════ -->
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8"><meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>ERPNext Customisation Services | Extend ERPNext for Your Business | Quantbit</title>
+<meta name="description" content="Quantbit Technologies customises ERPNext to match your exact business workflows. Custom fields, forms, reports, workflows, print formats, and integrations — by a certified ERPNext partner with 50+ in-house developers.">
+<meta name="keywords" content="ERPNext customisation, ERPNext custom development, ERPNext custom fields, ERPNext workflow, ERPNext reports, ERPNext print format, custom ERPNext, ERPNext configuration, Frappe customisation">
+<link rel="canonical" href="https://quantbit.io/services/erpnext-customisation">
+<meta property="og:title" content="ERPNext Customisation Services | Quantbit Technologies">
+<meta property="og:description" content="Custom ERPNext fields, forms, workflows, reports, and integrations. Certified partner. 50+ developers. No off-the-shelf compromises.">
+<meta property="og:url" content="https://quantbit.io/services/erpnext-customisation">
+<meta name="twitter:card" content="summary_large_image">
+<script type="application/ld+json">
+{"@context":"https://schema.org","@graph":[{"@type":"Organization","@id":"https://quantbit.io/#org","name":"Quantbit Technologies Pvt. Ltd.","url":"https://quantbit.io"},{"@type":"Service","@id":"https://quantbit.io/services/erpnext-customisation#service","name":"ERPNext Customisation Services","serviceType":"ERP Customisation","description":"Expert ERPNext customisation including custom fields, forms, workflows, script reports, print formats, integrations, and Frappe app development. Delivered by a certified Frappe partner.","provider":{"@id":"https://quantbit.io/#org"},"areaServed":{"@type":"Country","name":"Worldwide"}},{"@type":"FAQPage","mainEntity":[{"@type":"Question","name":"What can be customised in ERPNext without breaking upgrades?","acceptedAnswer":{"@type":"Answer","text":"ERPNext is designed for customisation. Custom Fields, Custom Forms, Client Scripts, Server Scripts, Workflow rules, Print Formats, and Custom Reports can all be added through the Customisation interface or as a separate Frappe app — without touching the core ERPNext code. This means your customisations survive ERPNext version upgrades. Quantbit always follows upgrade-safe customisation practices so your investment is protected long-term."}},{"@type":"Question","name":"Can you build custom reports and dashboards in ERPNext?","acceptedAnswer":{"@type":"Answer","text":"Yes. ERPNext supports three types of custom reports: Query Reports (SQL-based, flexible), Script Reports (Python-based, highly customisable), and Report Builder reports (no-code, drag-and-drop). Quantbit builds all three types and also creates custom Frappe dashboards with charts, KPI cards, and real-time metrics. We regularly build reports that replace entire BI tools for clients."}},{"@type":"Question","name":"How are custom workflows built in ERPNext?","acceptedAnswer":{"@type":"Answer","text":"ERPNext has a built-in Workflow module where you define states, transitions, and permission rules. For complex multi-level approvals, Quantbit uses a combination of ERPNext Workflows, Server Scripts triggered on document events, and Email Alerts for notifications. We have built procurement approval workflows, HR leave workflows, and production order authorisation chains — all within ERPNext without external tools."}},{"@type":"Question","name":"Can ERPNext forms be customised to match our industry processes?","acceptedAnswer":{"@type":"Answer","text":"Yes. Through Custom Fields, Form Scripts, and Layout customisation, ERPNext forms can be redesigned to show only the fields relevant to your industry and role. A foundry manager's production order form looks entirely different from a default ERPNext form — showing heat numbers, pattern codes, and quality parameters that don't exist in standard ERPNext. Quantbit's industry-specific customisations are proven across 15+ verticals."}},{"@type":"Question","name":"What is the difference between ERPNext customisation and building a custom Frappe app?","acceptedAnswer":{"@type":"Answer","text":"ERPNext customisation uses the built-in customisation tools — Custom Fields, Client/Server Scripts, Workflow, Print Format — to extend existing DocTypes. A custom Frappe app creates entirely new DocTypes, pages, and business logic in a separate Python package. For most business requirements, customisation is faster and sufficient. For complex industry-specific requirements — like Quantbit's FoundryX or CFMSX — a full Frappe app provides better architecture, independent versioning, and marketplace distribution."}},{"@type":"Question","name":"Will ERPNext customisations survive version upgrades?","acceptedAnswer":{"@type":"Answer","text":"Yes — if done correctly. Customisations made through the ERPNext Customisation interface (not by editing core files) are stored in the database and survive upgrades. Quantbit strictly follows upgrade-safe customisation practices: no core file edits, all logic in Server/Client Scripts or separate Frappe apps, and thorough post-upgrade testing protocols."}}]}]}
+</script>
+<link rel="stylesheet" href="/assets/quantbit_website/css/_shared.css">
+</head>
+<body>
+<nav class="site-nav"><div class="nav-inner"><a href="/" class="nav-logo">Quant<span>bit</span></a><ul class="nav-links"><li><a href="/products">Products</a></li><li><a href="/services" class="active">Services</a></li><li><a href="/blog">Blog</a></li><li><a href="/about">About</a></li><li><a href="/contact" class="nav-cta">Book a Demo</a></li></ul></div></nav>
+<div class="service-nav-strip"><div class="service-nav-inner"><a href="/services/erpnext-implementation" class="sn-link">ERPNext Implementation</a><a href="/services/frappe-development" class="sn-link">Frappe Development</a><a href="/services/erpnext-customisation" class="sn-link active">ERPNext Customisation</a><a href="/services/erpnext-migration" class="sn-link">Migration</a><a href="/services/saas-development" class="sn-link">SaaS Development</a></div></div>
+
+<section class="hero">
+  <div class="container">
+    <div class="hero-grid">
+      <div>
+        <div class="hero-eyebrow">Certified ERPNext Customisation Partner</div>
+        <h1>ERPNext That Works <span class="accent">Exactly Your Way</span></h1>
+        <p class="hero-desc">Standard ERPNext is powerful. Customised ERPNext is transformative. Our certified team extends ERPNext to match your exact workflows — without compromising future upgrades.</p>
+        <div class="hero-actions">
+          <a href="/contact" class="btn-primary">Discuss your requirements ↗</a>
+          <a href="/products" class="btn-ghost">See our vertical products</a>
+        </div>
+      </div>
+      <div class="code-card">
+        <div class="code-card-bar"><div class="cc-dot r"></div><div class="cc-dot y"></div><div class="cc-dot g"></div><span class="cc-file">custom_script.py</span></div>
+        <pre><span class="cc-comment"># Server Script — on_submit</span>
+<span class="cc-comment"># DocType: Production Order</span>
+
+<span class="cc-key">def</span> <span class="cc-str">on_submit</span>(doc, method):
+  <span class="cc-comment"># Industry-specific logic</span>
+  <span class="cc-key">if</span> doc.custom_heat_weight == <span class="cc-num">0</span>:
+    frappe.throw(
+      <span class="cc-str">"Heat weight required"</span>
+    )
+  create_quality_entry(doc)
+  notify_dispatch_team(doc)</pre>
+      </div>
+    </div>
+  </div>
+</section>
+
+<div class="trust-strip"><div class="trust-inner"><div class="trust-item"><span class="trust-icon">✦</span> Upgrade-Safe Customisation Always</div><div class="trust-divider"></div><div class="trust-item"><span class="trust-icon">📋</span> Custom Fields, Forms &amp; Workflows</div><div class="trust-divider"></div><div class="trust-item"><span class="trust-icon">📊</span> Custom Reports &amp; Dashboards</div><div class="trust-divider"></div><div class="trust-item"><span class="trust-icon">🖨️</span> Print Formats &amp; Document Templates</div><div class="trust-divider"></div><div class="trust-item"><span class="trust-icon">🔗</span> Third-Party Integrations</div></div></div>
+
+<section class="section">
+  <div class="container">
+    <span class="label">What we customise</span>
+    <h2>Every Layer of ERPNext, Customised Precisely</h2>
+    <p style="max-width:600px;margin-top:12px">Quantbit's customisation work spans every layer of ERPNext — from the fields a user sees on screen to the logic that runs when they submit a document.</p>
+    <div class="offer-grid">
+      <div class="offer-card"><div class="offer-icon">📝</div><h3>Custom Fields &amp; Forms</h3><p>Add industry-specific fields, hide irrelevant ones, reorder layouts, add conditional visibility, and create linked child tables — all upgrade-safe.</p></div>
+      <div class="offer-card"><div class="offer-icon">🔄</div><h3>Workflow &amp; Approvals</h3><p>Multi-level approvals, role-based state machines, email notifications, and escalation logic built within ERPNext's workflow engine.</p></div>
+      <div class="offer-card"><div class="offer-icon">📊</div><h3>Custom Reports</h3><p>Script reports, query reports, and dashboards that give your management team exactly the numbers they need — replacing external BI tools.</p></div>
+      <div class="offer-card"><div class="offer-icon">🖨️</div><h3>Print Formats &amp; Documents</h3><p>Invoice layouts, delivery challans, purchase orders, and any document template — pixel-perfect to your brand and statutory requirements.</p></div>
+      <div class="offer-card"><div class="offer-icon">⚡</div><h3>Client &amp; Server Scripts</h3><p>Business logic triggered on document events — auto-calculations, validations, field fetch, cross-document updates — in Python and JavaScript.</p></div>
+      <div class="offer-card"><div class="offer-icon">🔗</div><h3>Integrations &amp; APIs</h3><p>Connect ERPNext to your e-commerce store, payment system, logistics partner, banking feed, or any external platform via REST or webhook.</p></div>
+    </div>
+  </div>
+</section>
+
+<section class="section-sm" style="background:var(--white)">
+  <div class="container"><div class="stats-row">
+    <div class="stat-item"><div class="stat-num">15<span>+</span></div><div class="stat-label">Industries customised for</div></div>
+    <div class="stat-item"><div class="stat-num">50<span>+</span></div><div class="stat-label">Certified developers in-house</div></div>
+    <div class="stat-item"><div class="stat-num">10<span>+</span></div><div class="stat-label">Vertical products built from customisation</div></div>
+    <div class="stat-item"><div class="stat-num">0</div><div class="stat-label">Core files edited — always upgrade-safe</div></div>
+  </div></div>
+</section>
+
+<section class="faq-section">
+  <div class="container">
+    <span class="label">Common questions</span>
+    <h2>ERPNext Customisation — Answered</h2>
+    <div class="faq-terminal">
+      <div class="faq-item open"><button class="faq-question" onclick="toggleFaq(this)"><span class="faq-prompt">❯</span><span class="faq-q-text">What can be customised in ERPNext without breaking upgrades?</span><span class="faq-chevron">›</span></button><div class="faq-answer">ERPNext is designed for customisation. Custom Fields, Forms, Client Scripts, Server Scripts, Workflow rules, Print Formats, and Custom Reports can all be added through the Customisation interface or as a separate Frappe app — without touching core code. Quantbit always follows upgrade-safe practices so your customisations survive version updates.</div></div>
+      <div class="faq-item"><button class="faq-question" onclick="toggleFaq(this)"><span class="faq-prompt">❯</span><span class="faq-q-text">Can you build custom reports and dashboards in ERPNext?</span><span class="faq-chevron">›</span></button><div class="faq-answer">Yes. ERPNext supports Query Reports (SQL-based), Script Reports (Python-based), and Report Builder reports. Quantbit builds all three and also creates custom dashboards with real-time charts and KPI cards. We regularly build report suites that replace entire BI tools for clients, saving significant licensing cost.</div></div>
+      <div class="faq-item"><button class="faq-question" onclick="toggleFaq(this)"><span class="faq-prompt">❯</span><span class="faq-q-text">How are custom multi-level approval workflows built?</span><span class="faq-chevron">›</span></button><div class="faq-answer">ERPNext has a built-in Workflow module for states, transitions, and permission rules. For complex approvals, Quantbit combines ERPNext Workflows with Server Scripts triggered on document events and Email Alerts for notifications. We have built procurement, HR, and production authorisation chains entirely within ERPNext.</div></div>
+      <div class="faq-item"><button class="faq-question" onclick="toggleFaq(this)"><span class="faq-prompt">❯</span><span class="faq-q-text">Will my customisations survive ERPNext version upgrades?</span><span class="faq-chevron">›</span></button><div class="faq-answer">Yes — if done correctly. Customisations through the ERPNext Customisation interface are stored in the database and survive upgrades. Quantbit strictly follows upgrade-safe practices: no core file edits, all logic in Scripts or separate Frappe apps, and thorough post-upgrade testing every time.</div></div>
+      <div class="faq-item"><button class="faq-question" onclick="toggleFaq(this)"><span class="faq-prompt">❯</span><span class="faq-q-text">What is the difference between customisation and a custom Frappe app?</span><span class="faq-chevron">›</span></button><div class="faq-answer">Customisation uses built-in tools to extend existing DocTypes. A custom Frappe app creates entirely new DocTypes and business logic in a separate package. For most requirements, customisation is faster and sufficient. For complex industry-specific requirements — like our FoundryX or CFMSX products — a full Frappe app provides better architecture and independent versioning.</div></div>
+    </div>
+  </div>
+</section>
+
+<section class="cta-band">
+  <div class="container">
+    <h2>ERPNext almost fits — but not quite?</h2>
+    <p>Tell us where the gaps are. We will show you exactly how to close them — upgrade-safely, efficiently, and permanently.</p>
+    <a href="/contact" class="btn-dark">Book a customisation review ↗</a>
+  </div>
+</section>
+<footer class="site-footer"><div class="container"><p>© 2025 Quantbit Technologies Pvt. Ltd. · <a href="/privacy">Privacy</a> · <a href="/contact">Contact</a></p></div></footer>
+<script>function toggleFaq(btn){const item=btn.closest('.faq-item');const isOpen=item.classList.contains('open');document.querySelectorAll('.faq-item').forEach(i=>i.classList.remove('open'));if(!isOpen)item.classList.add('open');}</script>
+</body>
+</html>

@@ -24867,3 +24867,162 @@ i[class*="fa-"].fab::before {
         right: 20px;
     }
 }
+/*  */
+/* responsive fix */
+/* ============================================
+   RESPONSIVE HEADER FIX - FORCE MOBILE LAYOUT
+   ============================================ */
+
+@media (max-width: 991px) {
+
+  /* Hide desktop main menu completely */
+  .header-main .main-menu {
+    display: none !important;
+  }
+
+  /* Show only logo + hamburger */
+  .header-main {
+    display: flex !important;
+    align-items: center !important;
+    justify-content: space-between !important;
+  }
+
+  .header-main .logo {
+    display: block !important;
+  }
+
+  /* Make sure hamburger is visible */
+  .header-main .header-right .header__hamburger {
+    display: flex !important;
+    align-items: center;
+  }
+
+  .header-main .header-right .header__hamburger .sidebar__toggle {
+    display: block !important;
+    cursor: pointer;
+  }
+
+  /* Hide other desktop-only items */
+  .header-main .header-right .contact-info,
+  .header-main .header-right .header-button,
+  .header-main .header-right .search-icon {
+    display: none !important;
+  }
+}
+@media (max-width: 991px) {
+  .header-1 .mega-menu-wrapper .header-main .header-right .header__hamburger .sidebar__toggle .header-bar span,
+  .header-1 .mega-menu-wrapper .header-main .header-right .header__hamburger .sidebar__toggle .header-bar span:first-child,
+  .header-1 .mega-menu-wrapper .header-main .header-right .header__hamburger .sidebar__toggle .header-bar span:nth-child(2),
+  .header-1 .mega-menu-wrapper .header-main .header-right .header__hamburger .sidebar__toggle .header-bar span:last-child {
+    background: var(--theme) !important;
+  }
+}
+/* ============================================
+   MOBILE OFFCANVAS COMPLETE FIX
+   ============================================ */
+
+/* Ensure hamburger is always clickable */
+@media (max-width: 991px) {
+
+  .sidebar__toggle {
+    cursor: pointer !important;
+    pointer-events: all !important;
+    z-index: 9999 !important;
+    position: relative !important;
+  }
+
+  /* Fix hamburger bar colors */
+  .sidebar__toggle .header-bar span {
+    background: var(--theme) !important;
+  }
+
+  /* Make sure offcanvas panel is ready */
+  .offcanvas__info {
+    display: block !important;
+    pointer-events: all !important;
+  }
+
+  /* Make sure overlay is behind offcanvas */
+  .offcanvas__overlay {
+    display: block !important;
+    pointer-events: none;
+  }
+
+  .offcanvas__overlay.overlay-open {
+    pointer-events: all !important;
+  }
+
+  /* Prevent header from blocking clicks */
+  .header-main .header-right {
+    position: relative;
+    z-index: 9999;
+  }
+
+  /* Fix mean menu mobile container */
+  .mobile-menu {
+    display: none !important;
+  }
+}
+/* ===== OFFCANVAS MENU FIX ===== */
+
+/* Ensure mobile menu nav shows */
+.offcanvas__info .mean-nav {
+    display: block !important;
+}
+
+.offcanvas__info .mean-container .mean-nav > ul {
+    display: block !important;
+    visibility: visible !important;
+}
+
+/* Fix body font conflict from case study CSS */
+.offcanvas__info,
+.offcanvas__wrapper,
+.offcanvas__content {
+    font-family: "Inter", sans-serif !important;
+}
+
+/* Ensure nav items show */
+.offcanvas__info .mean-container .mean-nav ul li a {
+    display: block !important;
+    visibility: visible !important;
+    opacity: 1 !important;
+}
+/* ===== OFFCANVAS NAV MENU FIX ===== */
+
+/* Force mean-nav to show inside offcanvas */
+.offcanvas__info .mean-container {
+    display: block !important;
+}
+
+.offcanvas__info .mean-container .mean-nav {
+    display: block !important;
+    visibility: visible !important;
+    opacity: 1 !important;
+    background: transparent !important;
+}
+
+.offcanvas__info .mean-container .mean-nav > ul {
+    display: block !important;
+    visibility: visible !important;
+    opacity: 1 !important;
+    padding: 0 !important;
+    margin: 0 0 20px 0 !important;
+}
+
+.offcanvas__info .mean-container .mean-nav ul li {
+    display: block !important;
+    visibility: visible !important;
+    opacity: 1 !important;
+    border-top: 1px solid #eeeeee !important;
+}
+
+.offcanvas__info .mean-container .mean-nav ul li a {
+    display: block !important;
+    visibility: visible !important;
+    opacity: 1 !important;
+    padding: 12px 0 !important;
+    font-size: 16px !important;
+    font-weight: 600 !important;
+    color: #222222 !important;
+}

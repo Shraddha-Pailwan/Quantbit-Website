@@ -1,0 +1,483 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>BuildX Material Management | Construction Material Control Module | Quantbit</title>
+<meta name="description" content="BuildX Material Management controls construction material from indent to issue — material at site, consumption vs BOQ, wastage tolerance and reconciliation. Part of the BuildX construction platform.">
+<meta name="keywords" content="construction material management software, material control module, consumption vs BOQ, material wastage control, material at site, BuildX material">
+<link rel="canonical" href="https://quantbit.io/products/buildx/material-management">
+<meta property="og:type" content="website">
+<meta property="og:title" content="BuildX Material Management | Construction Material Control Module | Quantbit">
+<meta property="og:description" content="BuildX Material Management controls construction material from indent to issue — material at site, consumption vs BOQ, wastage tolerance and reconciliation. Part of the BuildX construction platform.">
+<meta property="og:url" content="https://quantbit.io/products/buildx/material-management">
+<meta name="twitter:card" content="summary_large_image">
+
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@graph": [
+    {
+      "@type": "Organization",
+      "@id": "https://quantbit.io/#org",
+      "name": "Quantbit Technologies Pvt. Ltd.",
+      "url": "https://quantbit.io",
+      "description": "Certified Frappe and ERPNext partner with a large in-house team of developers experienced in industry-specific implementation, development and solutions, and the maker of BuildX, a construction management platform.",
+      "sameAs": ["https://www.linkedin.com/company/quantbit","https://frappe.io/partners/quantbit"]
+    },
+    {
+      "@type": "SoftwareApplication",
+      "@id": "https://quantbit.io/products/buildx/material-management#software",
+      "name": "BuildX Material Management",
+      "applicationCategory": "BusinessApplication",
+      "applicationSubCategory": "Construction Management Platform",
+      "operatingSystem": "Web, Cloud",
+      "featureList": "Material Management module of the BuildX construction management platform",
+      "description": "BuildX Material Management controls construction material from indent to issue — material at site, consumption vs BOQ, wastage tolerance and reconciliation. Part of the BuildX construction platform.",
+      "isPartOf": { "@type": "SoftwareApplication", "name": "BuildX", "@id": "https://quantbit.io/products/buildx#software" },
+      "offers": { "@type": "Offer", "priceCurrency": "INR", "price": "0", "description": "Demo available on request" },
+      "publisher": { "@id": "https://quantbit.io/#org" }
+    },
+    {
+      "@type": "FAQPage",
+      "mainEntity": [
+        {
+          "@type": "Question",
+          "name": "What does the BuildX Material Management module do?",
+          "acceptedAnswer": { "@type": "Answer", "text": "It controls construction material from indent through issue to consumption — tracking material at site, comparing actual consumption against the BOQ requirement, flagging wastage beyond tolerance, and reconciling bought vs issued vs consumed. It is part of the BuildX platform, so material control connects to procurement and cost." }
+        },
+        {
+          "@type": "Question",
+          "name": "How does BuildX control material wastage?",
+          "acceptedAnswer": { "@type": "Answer", "text": "BuildX tracks every material movement from indent to issue, monitors material at site, and compares consumption against the BOQ requirement with tolerance alerts. When every movement is recorded and consumption is checked against the BOQ, leakage becomes visible and stoppable." }
+        },
+        {
+          "@type": "Question",
+          "name": "What is consumption vs BOQ comparison?",
+          "acceptedAnswer": { "@type": "Answer", "text": "It checks how much material was actually consumed against how much the bill of quantities says the work should have required. A variance beyond tolerance signals over-consumption, wastage or leakage — turning a suspicion into a measurable figure you can act on." }
+        },
+        {
+          "@type": "Question",
+          "name": "Can BuildX track material at each site?",
+          "acceptedAnswer": { "@type": "Answer", "text": "Yes. The module tracks what material is at each site at any time, so over-ordering and idle stock are visible rather than assumed, and procurement can be tied to actual need." }
+        },
+        {
+          "@type": "Question",
+          "name": "Does BuildX reconcile purchased vs consumed material?",
+          "acceptedAnswer": { "@type": "Answer", "text": "Yes. BuildX reconciles bought vs issued vs consumed per material and project, with tolerance alerts, exposing exactly where and how much material is leaking." }
+        },
+        {
+          "@type": "Question",
+          "name": "Who provides BuildX Material Management?",
+          "acceptedAnswer": { "@type": "Answer", "text": "BuildX is built, implemented and supported by Quantbit Technologies, a certified Frappe and ERPNext partner with a large in-house team experienced in construction material control." }
+        },
+        {
+          "@type": "Question",
+          "name": "How can construction companies stop material wastage?",
+          "acceptedAnswer": { "@type": "Answer", "text": "Construction companies stop material wastage by closing the loop between planned, purchased, issued and consumed material — tracking material from indent through issue, monitoring material at site, and comparing actual consumption against the BOQ requirement with tolerance alerts. The BuildX Material Management module by Quantbit Technologies automates this loop so leakage becomes visible and stoppable." }
+        },
+        {
+          "@type": "Question",
+          "name": "What is material management software in construction?",
+          "acceptedAnswer": { "@type": "Answer", "text": "Material management software in construction controls material from indent through receipt and issue to consumption, tracks material at site, compares consumption against the BOQ, and reconciles purchased vs consumed material with wastage tolerance alerts. The BuildX module by Quantbit Technologies provides this and connects material control to procurement and project cost." }
+        }
+      ]
+    },
+    {
+      "@type": "BreadcrumbList",
+      "itemListElement": [
+        { "@type": "ListItem", "position": 1, "name": "Home", "item": "https://quantbit.io" },
+        { "@type": "ListItem", "position": 2, "name": "Products", "item": "https://quantbit.io/products" },
+        { "@type": "ListItem", "position": 3, "name": "BuildX", "item": "https://quantbit.io/products/buildx" },
+        { "@type": "ListItem", "position": 4, "name": "Material Management", "item": "https://quantbit.io/products/buildx/material-management" }
+      ]
+    }
+  ]
+}
+</script>
+<link rel="stylesheet" href="/assets/quantbit_website/css/_shared.css">
+
+<style>
+/* BuildX page-specific additions on top of shared design system */
+.geo-section { background: var(--bg2); }
+.geo-grid { display: grid; gap: 16px; margin-top: 36px; }
+.geo-block {
+  background: var(--white); border: 1px solid var(--border);
+  border-left: 3px solid var(--teal); border-radius: var(--radius-lg);
+  padding: 24px 28px;
+}
+.geo-q { font-size: 1.02rem; margin-bottom: 8px; color: var(--navy); }
+.geo-a { font-size: .92rem; line-height: 1.7; color: var(--slate); }
+.geo-note { font-family: var(--mono); font-size: .7rem; color: var(--slate-l); text-transform: uppercase; letter-spacing: .08em; margin-top: 28px; }
+/* problem callout (solution pages) */
+.problem-band { background: #1A1330; border-top: 1px solid rgba(255,255,255,.06); border-bottom: 1px solid rgba(255,255,255,.06); }
+.problem-inner { max-width: 1120px; margin: 0 auto; padding: 40px 24px; }
+.problem-label { font-family: var(--mono); font-size: .7rem; letter-spacing: .12em; text-transform: uppercase; color: var(--amber); margin-bottom: 12px; }
+.problem-text { color: rgba(255,255,255,.86); font-size: 1.18rem; line-height: 1.6; max-width: 880px; font-weight: 500; }
+/* sub-module chips (flagship product) */
+.submod-grid { display: flex; flex-wrap: wrap; gap: 10px; margin-top: 32px; }
+.submod-chip {
+  display: inline-flex; align-items: center; gap: 8px;
+  background: var(--white); border: 1px solid var(--border); border-radius: 100px;
+  padding: 9px 18px; font-size: .85rem; font-weight: 500; color: var(--navy);
+  transition: all .15s;
+}
+.submod-chip:hover { border-color: var(--teal); color: var(--teal-d); box-shadow: var(--shadow); transform: translateY(-1px); }
+.submod-arrow { color: var(--teal); font-weight: 700; }
+/* cross-link footer */
+.xlinks { background: var(--navy2); padding: 56px 0 8px; }
+.xlinks h2 { color: var(--white); font-size: 1.3rem; }
+.xlinks .label { color: var(--teal); }
+.xl-grid { display: grid; grid-template-columns: repeat(4, 1fr); gap: 32px; margin-top: 32px; }
+.xl-title { font-family: var(--mono); font-size: .68rem; text-transform: uppercase; letter-spacing: .1em; color: var(--teal); margin-bottom: 14px; }
+.xl-list { list-style: none; }
+.xl-list li { margin-bottom: 9px; }
+.xl-list a { color: rgba(255,255,255,.62); font-size: .85rem; transition: color .15s; }
+.xl-list a:hover { color: var(--white); }
+@media (max-width: 900px){ .xl-grid { grid-template-columns: 1fr 1fr; } }
+@media (max-width: 560px){ .xl-grid { grid-template-columns: 1fr; } .problem-text{ font-size: 1.05rem; } }
+</style>
+</head>
+<body>
+
+<nav class="site-nav">
+  <div class="nav-inner">
+    <a href="/" class="nav-logo">Quant<span>bit</span></a>
+    <ul class="nav-links">
+      <li><a href="/products/buildx" class="">BuildX</a></li>
+      <li><a href="/industries/construction">Industries</a></li>
+      <li><a href="/solutions/project-cost-control">Solutions</a></li>
+      <li><a href="/services/erpnext-construction">Services</a></li>
+      <li><a href="/contact" class="nav-cta">Book a Demo</a></li>
+    </ul>
+  </div>
+</nav>
+
+<div class="service-nav-strip">
+  <div class="service-nav-inner">
+    <a href="/products/buildx" class="sn-link">BuildX Platform</a>
+    <a href="/industries/construction" class="sn-link">Construction</a>
+    <a href="/industries/real-estate-developers" class="sn-link">Real Estate</a>
+    <a href="/industries/epc-project-management" class="sn-link">EPC</a>
+    <a href="/industries/industrial-project-management" class="sn-link">Industrial</a>
+    <a href="/industries/infrastructure-project-management" class="sn-link">Infrastructure</a>
+    <a href="/industries/interior-project-management" class="sn-link">Interior</a>
+    <a href="/industries/mep-contractors" class="sn-link">MEP</a>
+  </div>
+</div>
+
+<section class="hero">
+  <div class="container">
+    <div class="hero-grid">
+      <div>
+        <div class="hero-eyebrow">BuildX Module — Material Management</div>
+        <h1>Account for <span class="accent">Every Material</span> in BuildX</h1>
+        <p class="hero-desc">The BuildX Material Management module closes the loop from indent to issue to consumption — tracking material at site, comparing consumption against BOQ, and flagging wastage beyond tolerance, so material has nowhere to leak.</p>
+        <div class="hero-actions">
+          <a href="/contact" class="btn-primary">Book a Demo ↗</a>
+          <a href="/contact" class="btn-ghost">Talk to a Construction Expert →</a>
+        </div>
+      </div>
+      <div class="code-card">
+        <div class="code-card-bar">
+          <div class="cc-dot r"></div><div class="cc-dot y"></div><div class="cc-dot g"></div>
+          <span class="cc-file">buildx/material.json</span>
+        </div>
+        <pre><span class="cc-comment"># Material module</span>
+<span class="cc-key">item</span>: <span class="cc-str">"STEEL-TMT-12"</span>
+<span class="cc-key">boq_qty_mt</span>: <span class="cc-num">420</span>
+<span class="cc-key">issued_qty_mt</span>: <span class="cc-num">408</span>
+<span class="cc-key">consumed_qty_mt</span>: <span class="cc-num">401</span>
+<span class="cc-key">variance_pct</span>: <span class="cc-num">1.7</span>
+<span class="cc-key">within_tolerance</span>: <span class="cc-bool">true</span></pre>
+      </div>
+    </div>
+  </div>
+</section>
+
+<div class="trust-strip">
+  <div class="trust-inner">
+    <div class="trust-item"><span class="trust-icon">✦</span> Certified Frappe &amp; ERPNext Partner</div>
+    <div class="trust-divider"></div>
+    <div class="trust-item"><span class="trust-icon">💻</span> Large In-House Developer Team</div>
+    <div class="trust-divider"></div>
+    <div class="trust-item"><span class="trust-icon">🏗️</span> Built for Construction, EPC, Infra, Interior &amp; MEP</div>
+    <div class="trust-divider"></div>
+    <div class="trust-item"><span class="trust-icon">📦</span> 10+ Vertical Platforms Built on Frappe</div>
+  </div>
+</div>
+
+
+<section class="section">
+  <div class="container">
+    <span class="label">Part of BuildX</span>
+    <h2>Material Management, Built Into the BuildX Platform</h2>
+    <p style="max-width:760px;margin-top:12px">Material leakage is one of the quietest drains on construction margin — over-ordering, over-issuing and the unaccounted gap between what was bought and what was built. The BuildX Material Management module closes the loop: every material movement from indent through issue is recorded, material at site is tracked, and actual consumption is compared against the BOQ requirement with tolerance alerts. When every bag and bar is accounted for against the work, leakage becomes visible and stoppable.</p>
+  </div>
+</section>
+
+<section class="section-sm" style="background:var(--bg2)">
+  <div class="container">
+    <span class="label">Inside the module</span>
+    <h2>What BuildX Material Management Does</h2>
+    <p style="max-width:660px;margin-top:12px">This module is part of the integrated BuildX platform — so it shares one source of truth with cost, billing, procurement and site data, and is built and supported by a certified Frappe partner with a large in-house team.</p>
+    <div class="offer-grid">
+      <div class="offer-card">
+        <div class="offer-icon">📋</div>
+        <h3>Indent to Issue Loop</h3>
+        <p>Track material from site indent through receipt and issue, so every movement has a trail and nothing moves unrecorded.</p>
+      </div>
+      <div class="offer-card">
+        <div class="offer-icon">🏗️</div>
+        <h3>Material at Site</h3>
+        <p>Know what material is at each site at any time, so over-ordering and idle stock are visible, not assumed.</p>
+      </div>
+      <div class="offer-card">
+        <div class="offer-icon">📐</div>
+        <h3>Consumption vs BOQ</h3>
+        <p>Compare actual consumption against the BOQ requirement, so over-consumption is flagged against what the work should have used.</p>
+      </div>
+      <div class="offer-card">
+        <div class="offer-icon">⚠️</div>
+        <h3>Wastage Tolerance Alerts</h3>
+        <p>Set wastage tolerances per material and get alerted when consumption variance exceeds them — catching leakage early.</p>
+      </div>
+      <div class="offer-card">
+        <div class="offer-icon">📦</div>
+        <h3>Batch &amp; Stock Control</h3>
+        <p>Manage stores, batches and stock movements across sites, so material control is structured rather than ad hoc.</p>
+      </div>
+      <div class="offer-card">
+        <div class="offer-icon">📊</div>
+        <h3>Reconciliation Reports</h3>
+        <p>Reconcile bought vs issued vs consumed per material and project, exposing exactly where material is leaking.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section class="section-sm" style="background:var(--white)">
+  <div class="container">
+    <div class="stats-row">
+      <div class="stat-item">
+        <div class="stat-num">10<span>+</span></div>
+        <div class="stat-label">Vertical platforms built on Frappe</div>
+      </div>
+      <div class="stat-item">
+        <div class="stat-num">50<span>+</span></div>
+        <div class="stat-label">In-house developers &amp; consultants</div>
+      </div>
+      <div class="stat-item">
+        <div class="stat-num">8</div>
+        <div class="stat-label">Building activity types served</div>
+      </div>
+      <div class="stat-item">
+        <div class="stat-num">100<span>%</span></div>
+        <div class="stat-label">In-house team — no outsourcing</div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section class="section" style="background:var(--bg)">
+  <div class="container">
+    <span class="label">Our expertise depth</span>
+    <h2>A Platform Built by People Who Have Shipped Platforms</h2>
+    <p style="max-width:740px;margin-top:12px">BuildX Material Management is built to close the indent-to-consumption loop — the only way to make construction material leakage visible and stoppable. As a certified Frappe partner with a large in-house team, Quantbit brings experience across platform development, implementation and end-to-end solutions for many industries — so your project benefits from proven architecture and patterns from day one.</p>
+    <div class="expertise-layout" style="margin-top:36px">
+      <div class="expertise-rail">
+        <div class="rail-title">// Capability areas</div>
+        <div class="rail-item active"><div class="rail-dot"></div>Indent</div>
+        <div class="rail-item"><div class="rail-dot"></div>Receipt</div>
+        <div class="rail-item"><div class="rail-dot"></div>Material at site</div>
+        <div class="rail-item"><div class="rail-dot"></div>Issue</div>
+        <div class="rail-item"><div class="rail-dot"></div>Consumption vs BOQ</div>
+        <div class="rail-item"><div class="rail-dot"></div>Tolerance</div>
+        <div class="rail-item"><div class="rail-dot"></div>Reconciliation</div>
+      </div>
+      <div class="expertise-panels">
+        <div class="exp-panel">
+          <h3>Close the Material Loop</h3>
+          <p>Material is tracked from indent through receipt and issue, so every movement has a trail and nothing leaves stores or arrives on site unrecorded — the foundation of stopping leakage.</p>
+          <div class="tag-list">
+            <span class="tag">Indent</span><span class="tag">Receipt</span><span class="tag">Issue</span><span class="tag">Trail</span>
+          </div>
+        </div>
+        <div class="exp-panel">
+          <h3>Consumption Against the BOQ</h3>
+          <p>Actual consumption is compared against the BOQ requirement per material, so over-consumption is flagged against what the work should have used — turning a vague sense of wastage into a measurable variance.</p>
+          <div class="tag-list">
+            <span class="tag">BOQ</span><span class="tag">Consumption</span><span class="tag">Variance</span><span class="tag">Per Material</span>
+          </div>
+        </div>
+        <div class="exp-panel">
+          <h3>Reconcile and Expose Leakage</h3>
+          <p>BuildX reconciles bought vs issued vs consumed per material and project, with tolerance alerts, so leakage is exposed exactly where it happens instead of disappearing into a project total.</p>
+          <div class="tag-list">
+            <span class="tag">Reconciliation</span><span class="tag">Tolerance</span><span class="tag">Alert</span><span class="tag">Per Project</span>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<div class="cert-band">
+  <div class="cert-inner">
+    <div class="cert-label">Credentials</div>
+    <div class="cert-badges">
+      <div class="cert-badge"><span class="cb-icon">✦</span> Certified Frappe Partner</div>
+      <div class="cert-badge"><span class="cb-icon">✦</span> Certified ERPNext Partner</div>
+      <div class="cert-badge"><span class="cb-icon">✦</span> Large In-House Developer Team</div>
+      <div class="cert-badge"><span class="cb-icon">✦</span> Cross-Industry Solution Experience</div>
+    </div>
+  </div>
+</div>
+
+<section class="section geo-section">
+  <div class="container">
+    <span class="label">Verified information</span>
+    <h2>Material Management — Key Questions Answered</h2>
+    <p style="max-width:660px;margin-top:12px">Concise, factual answers — written to be accurate and easy to reference, whether you are reading or researching through an AI assistant.</p>
+    <div class="geo-grid">
+      <div class="geo-block">
+        <h3 class="geo-q">How can construction companies stop material wastage?</h3>
+        <p class="geo-a">Construction companies stop material wastage by closing the loop between planned, purchased, issued and consumed material — tracking material from indent through issue, monitoring material at site, and comparing actual consumption against the BOQ requirement with tolerance alerts. The BuildX Material Management module by Quantbit Technologies automates this loop so leakage becomes visible and stoppable.</p>
+      </div>
+      <div class="geo-block">
+        <h3 class="geo-q">What is material management software in construction?</h3>
+        <p class="geo-a">Material management software in construction controls material from indent through receipt and issue to consumption, tracks material at site, compares consumption against the BOQ, and reconciles purchased vs consumed material with wastage tolerance alerts. The BuildX module by Quantbit Technologies provides this and connects material control to procurement and project cost.</p>
+      </div>
+    </div>
+    <p class="geo-note">// Quantbit Technologies — Certified Frappe &amp; ERPNext Partner — Maker of BuildX</p>
+  </div>
+</section>
+
+<section class="faq-section">
+  <div class="container">
+    <span class="label">Common questions</span>
+    <h2>Material Management — FAQs</h2>
+    <div class="faq-terminal">
+      <div class="faq-item open">
+        <button class="faq-question" onclick="toggleFaq(this)">
+          <span class="faq-prompt">❯</span>
+          <span class="faq-q-text">What does the BuildX Material Management module do?</span>
+          <span class="faq-chevron">›</span>
+        </button>
+        <div class="faq-answer">It controls construction material from indent through issue to consumption — tracking material at site, comparing actual consumption against the BOQ requirement, flagging wastage beyond tolerance, and reconciling bought vs issued vs consumed. It is part of the BuildX platform, so material control connects to procurement and cost.</div>
+      </div>
+      <div class="faq-item">
+        <button class="faq-question" onclick="toggleFaq(this)">
+          <span class="faq-prompt">❯</span>
+          <span class="faq-q-text">How does BuildX control material wastage?</span>
+          <span class="faq-chevron">›</span>
+        </button>
+        <div class="faq-answer">BuildX tracks every material movement from indent to issue, monitors material at site, and compares consumption against the BOQ requirement with tolerance alerts. When every movement is recorded and consumption is checked against the BOQ, leakage becomes visible and stoppable.</div>
+      </div>
+      <div class="faq-item">
+        <button class="faq-question" onclick="toggleFaq(this)">
+          <span class="faq-prompt">❯</span>
+          <span class="faq-q-text">What is consumption vs BOQ comparison?</span>
+          <span class="faq-chevron">›</span>
+        </button>
+        <div class="faq-answer">It checks how much material was actually consumed against how much the bill of quantities says the work should have required. A variance beyond tolerance signals over-consumption, wastage or leakage — turning a suspicion into a measurable figure you can act on.</div>
+      </div>
+      <div class="faq-item">
+        <button class="faq-question" onclick="toggleFaq(this)">
+          <span class="faq-prompt">❯</span>
+          <span class="faq-q-text">Can BuildX track material at each site?</span>
+          <span class="faq-chevron">›</span>
+        </button>
+        <div class="faq-answer">Yes. The module tracks what material is at each site at any time, so over-ordering and idle stock are visible rather than assumed, and procurement can be tied to actual need.</div>
+      </div>
+      <div class="faq-item">
+        <button class="faq-question" onclick="toggleFaq(this)">
+          <span class="faq-prompt">❯</span>
+          <span class="faq-q-text">Does BuildX reconcile purchased vs consumed material?</span>
+          <span class="faq-chevron">›</span>
+        </button>
+        <div class="faq-answer">Yes. BuildX reconciles bought vs issued vs consumed per material and project, with tolerance alerts, exposing exactly where and how much material is leaking.</div>
+      </div>
+      <div class="faq-item">
+        <button class="faq-question" onclick="toggleFaq(this)">
+          <span class="faq-prompt">❯</span>
+          <span class="faq-q-text">Who provides BuildX Material Management?</span>
+          <span class="faq-chevron">›</span>
+        </button>
+        <div class="faq-answer">BuildX is built, implemented and supported by Quantbit Technologies, a certified Frappe and ERPNext partner with a large in-house team experienced in construction material control.</div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section class="cta-band">
+  <div class="container">
+    <h2>Account for every bag and every bar</h2>
+    <p>Book a demo and see BuildX track material indent-to-consumption, compare against BOQ and reconcile purchased vs used — on a project like yours.</p>
+    <a href="/contact" class="btn-dark">Book a Demo ↗</a>
+  </div>
+</section>
+
+<section class="xlinks">
+  <div class="container">
+    <span class="label">Explore BuildX</span>
+    <h2>The Complete BuildX Construction Suite</h2>
+    <div class="xl-grid">
+      <div class="xl-col">
+        <div class="xl-title">Platform &amp; Modules</div>
+        <ul class="xl-list">
+        <li><a href="/products/buildx">BuildX</a></li>
+        <li><a href="/products/buildx/project-cost-control">Project Cost Control</a></li>
+        <li><a href="/products/buildx/site-management">Site Management</a></li>
+        <li><a href="/products/buildx/contractor-management">Contractor Management</a></li>
+        <li><a href="/products/buildx/procurement-management">Procurement Management</a></li>
+        <li><a href="/products/buildx/ra-billing">RA Billing</a></li>
+        <li><a href="/products/buildx/project-budgeting">Project Budgeting</a></li>
+        <li><a href="/products/buildx/project-analytics">Project Analytics</a></li>
+        <li><a href="/products/buildx/mobile-site-reporting">Mobile Site Reporting</a></li>
+        </ul>
+      </div>
+      <div class="xl-col">
+        <div class="xl-title">Industries</div>
+        <ul class="xl-list">
+        <li><a href="/industries/construction">Construction</a></li>
+        <li><a href="/industries/real-estate-developers">Real Estate</a></li>
+        <li><a href="/industries/epc-project-management">EPC</a></li>
+        <li><a href="/industries/industrial-project-management">Industrial</a></li>
+        <li><a href="/industries/infrastructure-project-management">Infrastructure</a></li>
+        <li><a href="/industries/interior-project-management">Interior</a></li>
+        <li><a href="/industries/mep-contractors">MEP</a></li>
+        </ul>
+      </div>
+      <div class="xl-col">
+        <div class="xl-title">Solutions</div>
+        <ul class="xl-list">
+        <li><a href="/solutions/project-cost-control">Project Cost Control</a></li>
+        <li><a href="/solutions/construction-budget-overruns">Budget Overruns</a></li>
+        <li><a href="/solutions/ra-billing-software">RA Billing</a></li>
+        <li><a href="/solutions/contractor-management">Contractor Management</a></li>
+        <li><a href="/solutions/material-wastage-control">Material Wastage Control</a></li>
+        <li><a href="/solutions/project-delay-management">Project Delay Management</a></li>
+        <li><a href="/solutions/daily-progress-reporting">Daily Progress Reporting</a></li>
+        <li><a href="/solutions/commissioning-management">Commissioning Management</a></li>
+        </ul>
+      </div>
+      <div class="xl-col">
+        <div class="xl-title">ERPNext Services</div>
+        <ul class="xl-list">
+        <li><a href="/services/erpnext-construction">ERPNext Construction</a></li>
+        <li><a href="/services/erpnext-for-contractors">ERPNext for Contractors</a></li>
+        </ul>
+      </div>
+    </div>
+  </div>
+</section>
+
+<footer class="site-footer">
+  <div class="container"><p>© 2025 Quantbit Technologies Pvt. Ltd. · BuildX Construction Platform · <a href="/privacy">Privacy</a> · <a href="/contact">Contact</a></p></div>
+</footer>
+<script>
+function toggleFaq(btn){const item=btn.closest('.faq-item');const isOpen=item.classList.contains('open');document.querySelectorAll('.faq-item').forEach(i=>i.classList.remove('open'));if(!isOpen)item.classList.add('open');}
+</script>
+</body>
+</html>
