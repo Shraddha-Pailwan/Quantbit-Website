@@ -1,0 +1,256 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>What is Hospital Pharmacy ERP? — Definition, Modules & How It Works</title>
+<meta name="description" content="Hospital pharmacy ERP is software that manages a hospital's complete pharmacy supply chain — from supplier purchase orders through to patient dispensing, covering procurement, inventory, compliance, and billing in one system.">
+<meta name="keywords" content="what is hospital pharmacy ERP, hospital pharmacy management software, hospital pharmacy system India, ERPNext hospital pharmacy, pharmacy ERP definition">
+<link rel="canonical" href="https://quantbit.io/what-is-hospital-pharmacy-erp">
+<script type="application/ld+json">
+{"@context":"https://schema.org","@type":"Article","headline":"What is Hospital Pharmacy ERP?","description":"Hospital pharmacy ERP is software that integrates procurement, inventory, dispensing, compliance, and billing for hospital pharmacy operations on a single platform.","author":{"@type":"Organization","name":"Quantbit Technologies Pvt. Ltd.","url":"https://quantbit.io"},"publisher":{"@type":"Organization","name":"Quantbit Technologies Pvt. Ltd.","url":"https://quantbit.io"}}
+</script>
+<script type="application/ld+json">
+{"@context":"https://schema.org","@type":"BreadcrumbList","itemListElement":[{"@type":"ListItem","position":1,"name":"Home","item":"https://quantbit.io"},{"@type":"ListItem","position":2,"name":"What is hospital pharmacy ERP?","item":"https://quantbit.io/what-is-hospital-pharmacy-erp"}]}
+</script>
+<script type="application/ld+json">
+{"@context":"https://schema.org","@type":"FAQPage","mainEntity":[
+{"@type":"Question","name":"What is hospital pharmacy ERP software?","acceptedAnswer":{"@type":"Answer","text":"Hospital pharmacy ERP software is an integrated system that manages a hospital's complete pharmacy supply chain — from purchase orders placed with medicine suppliers through to medicines dispensed at the patient's bedside. It covers procurement (PR, PO, GRN), inventory management (batch tracking, expiry control, multi-location stock), pharmacy dispensing (FEFO, CPOE integration, narcotics compliance), and patient billing (auto-billing at dispensing, day-end reconciliation) in a single connected platform. Unlike standalone pharmacy billing software or inventory tools, a pharmacy ERP connects all these functions so data flows without manual re-entry between departments.","speakable":{"@type":"SpeakableSpecification","cssSelector":".speakable-1"}}},
+{"@type":"Question","name":"What are the core modules of a hospital pharmacy ERP?","acceptedAnswer":{"@type":"Answer","text":"The core modules of a hospital pharmacy ERP are: (1) Procurement — digital purchase requests, multi-level approvals, PO generation, GRN processing, and vendor rate contract management; (2) Inventory management — batch and expiry tracking, multi-location stock across central pharmacy, wards, OT, and ICU, barcode traceability, and physical audit tools; (3) Pharmacy dispensing — FEFO-enforced dispensing, CPOE integration, real-time stock visibility for clinical staff, and patient returns; (4) Narcotics and compliance — Schedule H/H1/NDPS register maintenance, double-signature dispensing, and drug inspector reports; (5) Billing and revenue — automatic patient billing at dispensing, day-end reconciliation, discount matrix, and GST-compliant invoices; and (6) Lab inventory — reagent lot tracking, post-opening expiry management, and cost-per-test calculation.","speakable":{"@type":"SpeakableSpecification","cssSelector":".speakable-2"}}},
+{"@type":"Question","name":"How is hospital pharmacy ERP different from a pharmacy billing system?","acceptedAnswer":{"@type":"Answer","text":"A pharmacy billing system handles the billing counter — it generates patient invoices for medicines dispensed. A hospital pharmacy ERP covers the entire operation: procurement from suppliers, inventory tracking across all hospital locations, FEFO-enforced dispensing, narcotics and Schedule H compliance, and billing — all connected. The key difference is integration: in a pharmacy ERP, a medicine dispensed at the ward counter automatically updates the inventory, posts to the narcotics register if applicable, and generates the patient bill — without manual re-entry at any of those three stages."}},
+{"@type":"Question","name":"Which hospitals need a pharmacy ERP?","acceptedAnswer":{"@type":"Answer","text":"Any hospital with a pharmacy that manages multiple medicine suppliers, multiple storage locations (central pharmacy, wards, OT, ICU), Schedule H or NDPS narcotics, and patient billing will benefit from a pharmacy ERP. In practice, multi-specialty hospitals above 50 beds, hospital groups with multiple facilities, pharmacy chains with 3 or more branches, and government hospitals with rate contract compliance requirements are the primary users. Smaller nursing homes and single-branch pharmacies can use a focused subset of modules."}},
+{"@type":"Question","name":"What is FEFO in hospital pharmacy ERP?","acceptedAnswer":{"@type":"Answer","text":"FEFO stands for First-Expire, First-Out — the dispensing discipline that ensures the medicine batch closest to its expiry date is always dispensed before newer stock. In a hospital pharmacy ERP, FEFO is enforced at the dispensing counter: the system automatically selects the earliest-expiry batch for every item and alerts the pharmacist if a different batch is being picked. Without system-enforced FEFO, pharmacists dispense from the most accessible batch rather than the earliest-expiry one, leading to stock expiry and write-offs."}}
+]}
+</script>
+<style>
+/* SHARED BASE — all HISx module pages */
+*, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+:root {
+  --ink: #0f1117; --ink-2: #3d3f4a; --ink-3: #72747f; --ink-4: #a0a2ab;
+  --surface: #ffffff; --surface-2: #f5f6f8; --surface-3: #eef0f4;
+  --accent: #1a5fd4; --accent-light: #e8effc; --accent-mid: #c2d4f7;
+  --teal: #0b7a5e; --teal-light: #e0f4ef;
+  --amber: #b35e0a; --amber-light: #fef3e2;
+  --red: #b91c1c; --red-light: #fee2e2;
+  --border: #e2e4ea; --border-strong: #c8cad2;
+  --radius-sm: 6px; --radius-md: 10px; --radius-lg: 16px;
+  --font-display: 'Georgia','Times New Roman',serif;
+  --font-body: -apple-system,BlinkMacSystemFont,'Segoe UI',sans-serif;
+  --font-mono: 'SF Mono','Fira Code',monospace;
+  --max: 1120px; --gap: 96px;
+}
+html { scroll-behavior: smooth; }
+body { font-family: var(--font-body); color: var(--ink); background: var(--surface); line-height: 1.6; font-size: 16px; -webkit-font-smoothing: antialiased; }
+.nav { position: sticky; top: 0; z-index: 100; background: rgba(255,255,255,0.95); backdrop-filter: blur(8px); border-bottom: 1px solid var(--border); }
+.nav-inner { max-width: var(--max); margin: 0 auto; padding: 0 24px; height: 60px; display: flex; align-items: center; gap: 32px; }
+.nav-logo { font-size: 15px; font-weight: 600; color: var(--ink); text-decoration: none; }
+.nav-logo span { color: var(--accent); }
+.nav-bc { display: flex; align-items: center; gap: 8px; font-size: 13px; color: var(--ink-3); flex: 1; }
+.nav-bc a { color: var(--ink-3); text-decoration: none; }
+.nav-bc a:hover { color: var(--accent); }
+.nav-bc .sep { color: var(--border-strong); }
+.nav-bc .cur { color: var(--ink-2); font-weight: 500; }
+.nav-cta { background: var(--accent); color: #fff; padding: 8px 18px; border-radius: var(--radius-sm); font-size: 13px; font-weight: 500; text-decoration: none; white-space: nowrap; transition: opacity .15s; }
+.nav-cta:hover { opacity: .9; }
+.C { max-width: var(--max); margin: 0 auto; padding: 0 24px; }
+section { padding: var(--gap) 0; }
+section+section { padding-top: 0; }
+hr.div { border: none; border-top: 1px solid var(--border); }
+.ey { display: inline-block; font-size: 11px; font-weight: 600; letter-spacing: .1em; text-transform: uppercase; color: var(--accent); margin-bottom: 14px; }
+.sh { font-family: var(--font-display); font-size: clamp(26px,3.5vw,38px); font-weight: 400; line-height: 1.2; letter-spacing: -.02em; color: var(--ink); margin-bottom: 16px; }
+.ss { font-size: 17px; color: var(--ink-2); line-height: 1.65; max-width: 560px; }
+.hero { padding: 80px 0 72px; border-bottom: 1px solid var(--border); }
+.hero-in { max-width: var(--max); margin: 0 auto; padding: 0 24px; display: grid; grid-template-columns: 1fr 1fr; gap: 64px; align-items: center; }
+.htag { display: inline-flex; align-items: center; gap: 7px; font-size: 12px; font-weight: 500; color: var(--accent); background: var(--accent-light); border: 1px solid var(--accent-mid); padding: 5px 12px; border-radius: 100px; margin-bottom: 22px; }
+.hero h1 { font-family: var(--font-display); font-size: clamp(30px,4vw,48px); font-weight: 400; line-height: 1.15; letter-spacing: -.025em; color: var(--ink); margin-bottom: 20px; }
+.hero h1 em { font-style: italic; color: var(--accent); }
+.hero-sub { font-size: 17px; color: var(--ink-2); line-height: 1.65; margin-bottom: 32px; max-width: 480px; }
+.ctas { display: flex; gap: 12px; flex-wrap: wrap; }
+.bp { background: var(--accent); color: #fff; padding: 12px 24px; border-radius: var(--radius-sm); font-size: 14px; font-weight: 500; text-decoration: none; transition: opacity .15s; display: inline-block; }
+.bp:hover { opacity: .88; }
+.bg { background: transparent; color: var(--ink-2); padding: 12px 24px; border-radius: var(--radius-sm); font-size: 14px; font-weight: 500; text-decoration: none; border: 1px solid var(--border-strong); transition: border-color .15s,color .15s; display: inline-block; }
+.bg:hover { border-color: var(--accent); color: var(--accent); }
+.hv { background: var(--surface-2); border: 1px solid var(--border); border-radius: var(--radius-lg); padding: 28px; }
+.hv-lbl { font-size: 11px; font-weight: 600; letter-spacing: .08em; text-transform: uppercase; color: var(--ink-4); margin-bottom: 18px; }
+.proof { background: var(--surface-2); border-bottom: 1px solid var(--border); padding: 28px 0; }
+.proof-in { max-width: var(--max); margin: 0 auto; padding: 0 24px; display: flex; align-items: center; gap: 48px; flex-wrap: wrap; }
+.proof-lbl { font-size: 12px; color: var(--ink-4); font-weight: 500; text-transform: uppercase; letter-spacing: .06em; }
+.proof-stats { display: flex; gap: 40px; flex-wrap: wrap; }
+.psn { font-size: 20px; font-weight: 700; color: var(--ink); font-family: var(--font-display); line-height: 1; }
+.psl { font-size: 12px; color: var(--ink-3); margin-top: 3px; }
+.pdiv { width: 1px; height: 32px; background: var(--border-strong); flex-shrink: 0; }
+.proof-plat { margin-left: auto; display: flex; align-items: center; gap: 8px; font-size: 12px; color: var(--ink-3); }
+.proof-plat strong { color: var(--ink-2); }
+.pain-grid { display: grid; grid-template-columns: repeat(3,1fr); gap: 20px; margin-top: 48px; }
+.pc { border: 1px solid var(--border); border-radius: var(--radius-md); padding: 24px; }
+.pi { width: 40px; height: 40px; border-radius: 10px; background: var(--red-light); color: var(--red); display: flex; align-items: center; justify-content: center; margin-bottom: 16px; }
+.pi svg { width: 18px; height: 18px; }
+.pt { font-size: 15px; font-weight: 600; color: var(--ink); margin-bottom: 8px; line-height: 1.3; }
+.pd { font-size: 14px; color: var(--ink-3); line-height: 1.6; }
+.dd { padding: var(--gap) 0; }
+.dd-in { display: grid; grid-template-columns: 1fr 1fr; gap: 72px; align-items: center; }
+.dd-in.fl { direction: rtl; }
+.dd-in.fl>* { direction: ltr; }
+.dh { font-family: var(--font-display); font-size: clamp(22px,2.8vw,32px); font-weight: 400; line-height: 1.25; letter-spacing: -.02em; color: var(--ink); margin-bottom: 20px; }
+.dd { font-size: 15px; color: var(--ink-2); line-height: 1.7; margin-bottom: 24px; }
+.buls { list-style: none; display: flex; flex-direction: column; gap: 12px; }
+.buls li { display: flex; align-items: flex-start; gap: 10px; font-size: 14px; color: var(--ink-2); line-height: 1.55; }
+.bchk { width: 18px; height: 18px; border-radius: 50%; background: var(--teal-light); color: var(--teal); display: flex; align-items: center; justify-content: center; flex-shrink: 0; margin-top: 1px; }
+.bchk svg { width: 10px; height: 10px; }
+.dl { display: inline-flex; align-items: center; gap: 6px; font-size: 13px; font-weight: 500; color: var(--accent); text-decoration: none; margin-top: 24px; }
+.dl:hover { text-decoration: underline; }
+.dv { background: var(--surface-2); border: 1px solid var(--border); border-radius: var(--radius-lg); padding: 24px; }
+.dvl { font-size: 11px; font-weight: 600; letter-spacing: .08em; text-transform: uppercase; color: var(--ink-4); margin-bottom: 16px; }
+.fg { display: grid; grid-template-columns: repeat(3,1fr); gap: 1px; background: var(--border); border: 1px solid var(--border); border-radius: var(--radius-lg); overflow: hidden; margin-top: 48px; }
+.fc { background: var(--surface); padding: 28px 24px; transition: background .15s; }
+.fc:hover { background: var(--surface-2); }
+.fi { width: 40px; height: 40px; border-radius: 10px; display: flex; align-items: center; justify-content: center; margin-bottom: 16px; }
+.fi svg { width: 18px; height: 18px; }
+.fi.bl { background: var(--accent-light); color: var(--accent); }
+.fi.tl { background: var(--teal-light); color: var(--teal); }
+.fi.am { background: var(--amber-light); color: var(--amber); }
+.ft { font-size: 15px; font-weight: 600; color: var(--ink); margin-bottom: 8px; line-height: 1.3; }
+.fd { font-size: 13px; color: var(--ink-3); line-height: 1.6; }
+.rs { background: var(--surface-2); }
+.rg { display: grid; grid-template-columns: repeat(3,1fr); gap: 20px; margin-top: 48px; }
+.rc { background: var(--surface); border: 1px solid var(--border); border-radius: var(--radius-md); padding: 28px 24px; }
+.ri { width: 44px; height: 44px; border-radius: 10px; background: var(--accent-light); color: var(--accent); display: flex; align-items: center; justify-content: center; margin-bottom: 18px; }
+.ri svg { width: 20px; height: 20px; }
+.rt { font-size: 15px; font-weight: 600; color: var(--ink); margin-bottom: 6px; }
+.rd { font-size: 13px; color: var(--ink-3); line-height: 1.6; }
+.dark-co { background: #0f2d47; color: #fff; padding: var(--gap) 0; }
+.dark-in { max-width: var(--max); margin: 0 auto; padding: 0 24px; display: grid; grid-template-columns: 1fr 1fr; gap: 64px; align-items: center; }
+.dark-ey { font-size: 11px; font-weight: 600; letter-spacing: .1em; text-transform: uppercase; color: #7db3e8; margin-bottom: 14px; }
+.dark-h { font-family: var(--font-display); font-size: clamp(22px,2.8vw,32px); font-weight: 400; line-height: 1.25; letter-spacing: -.02em; color: #fff; margin-bottom: 18px; }
+.dark-d { font-size: 15px; color: #b0c8e4; line-height: 1.65; }
+.dark-buls { display: flex; flex-direction: column; gap: 14px; margin-top: 24px; }
+.dbul { display: flex; align-items: flex-start; gap: 12px; font-size: 14px; color: #b0c8e4; line-height: 1.5; }
+.ddot { width: 6px; height: 6px; border-radius: 50%; background: #7db3e8; flex-shrink: 0; margin-top: 7px; }
+.dbul strong { color: #e8f2fd; }
+.dbadges { display: flex; flex-wrap: wrap; gap: 10px; margin-top: 28px; }
+.dbadge { display: inline-flex; align-items: center; gap: 6px; font-size: 12px; font-weight: 500; color: #e8f2fd; background: rgba(255,255,255,.08); border: 1px solid rgba(255,255,255,.15); padding: 6px 14px; border-radius: 100px; }
+.faq-list { margin-top: 48px; }
+.faq-item { border-top: 1px solid var(--border); }
+.faq-item:last-child { border-bottom: 1px solid var(--border); }
+.fq { width: 100%; background: none; border: none; padding: 22px 0; display: flex; align-items: center; justify-content: space-between; gap: 24px; cursor: pointer; text-align: left; font-size: 16px; font-weight: 500; color: var(--ink); line-height: 1.4; }
+.fq:hover { color: var(--accent); }
+.fchev { width: 20px; height: 20px; flex-shrink: 0; color: var(--ink-4); transition: transform .2s; }
+.faq-item.open .fchev { transform: rotate(180deg); }
+.fa { display: none; padding: 0 0 22px; font-size: 15px; color: var(--ink-2); line-height: 1.7; max-width: 760px; }
+.faq-item.open .fa { display: block; }
+.cta-s { background: var(--surface-2); border-top: 1px solid var(--border); padding: var(--gap) 0; }
+.cta-in { max-width: 680px; margin: 0 auto; padding: 0 24px; text-align: center; }
+.cta-h { font-family: var(--font-display); font-size: clamp(24px,3vw,36px); font-weight: 400; line-height: 1.2; letter-spacing: -.02em; color: var(--ink); margin-bottom: 16px; }
+.cta-d { font-size: 16px; color: var(--ink-3); line-height: 1.6; margin-bottom: 32px; }
+.cta-bs { display: flex; gap: 12px; justify-content: center; flex-wrap: wrap; }
+.cta-bs .bp,.cta-bs .bg { padding: 14px 28px; font-size: 15px; }
+.rel-s { padding: 48px 0; border-top: 1px solid var(--border); }
+.rel-in { max-width: var(--max); margin: 0 auto; padding: 0 24px; }
+.rel-lbl { font-size: 12px; font-weight: 600; letter-spacing: .08em; text-transform: uppercase; color: var(--ink-4); margin-bottom: 16px; }
+.rel-ls { display: flex; flex-wrap: wrap; gap: 10px; }
+.rl { font-size: 13px; font-weight: 500; color: var(--ink-2); text-decoration: none; padding: 8px 16px; border: 1px solid var(--border); border-radius: var(--radius-sm); transition: border-color .15s,color .15s; }
+.rl:hover { border-color: var(--accent); color: var(--accent); }
+footer { background: var(--ink); color: #a0a2ab; padding: 28px 0; }
+.foot-in { max-width: var(--max); margin: 0 auto; padding: 0 24px; display: flex; align-items: center; justify-content: space-between; flex-wrap: wrap; gap: 12px; }
+.flogo { font-size: 14px; font-weight: 600; color: #fff; }
+.flogo span { color: #6b9de8; }
+.flinks { display: flex; gap: 24px; }
+.flinks a { font-size: 13px; color: #a0a2ab; text-decoration: none; }
+.flinks a:hover { color: #fff; }
+.fcopy { font-size: 12px; color: #5f6170; }
+@media(max-width:768px){
+  :root{--gap:64px}
+  .hero-in{grid-template-columns:1fr;gap:40px}
+  .hv{display:none}
+  .pain-grid{grid-template-columns:1fr}
+  .fg{grid-template-columns:1fr 1fr}
+  .dd-in{grid-template-columns:1fr;gap:40px}
+  .dd-in.fl{direction:ltr}
+  .rg{grid-template-columns:1fr}
+  .dark-in{grid-template-columns:1fr;gap:40px}
+  .proof-plat{margin-left:0}
+  .nav-bc{display:none}
+}
+@media(max-width:540px){.fg{grid-template-columns:1fr}}
+@media(prefers-reduced-motion:reduce){*{transition:none!important}}
+.geo-answer{background:var(--surface-2);border-left:3px solid var(--accent);border-radius:0 var(--radius-md) var(--radius-md) 0;padding:20px 24px;margin-bottom:48px}
+.geo-answer p{font-size:16px;color:var(--ink-2);line-height:1.75}
+.module-list{display:flex;flex-direction:column;gap:12px;margin-top:32px}
+.ml{display:flex;align-items:flex-start;gap:14px;padding:16px 18px;background:var(--surface);border:1px solid var(--border);border-radius:var(--radius-md)}
+.ml-num{width:28px;height:28px;border-radius:50%;background:var(--accent-light);color:var(--accent);font-size:12px;font-weight:700;display:flex;align-items:center;justify-content:center;flex-shrink:0;margin-top:1px}
+.ml-body{flex:1}
+.ml-title{font-size:14px;font-weight:600;color:var(--ink)}
+.ml-desc{font-size:13px;color:var(--ink-3);margin-top:3px;line-height:1.5}
+</style>
+</head>
+<body>
+<nav class="nav"><div class="nav-inner"><a href="https://quantbit.io" class="nav-logo">Quantbit <span>Technologies</span></a><nav class="nav-bc"><a href="/">Home</a><span class="sep">›</span><span class="cur">What is hospital pharmacy ERP?</span></nav><a href="/hisx/demo" class="nav-cta">See HISx demo</a></div></nav>
+
+<section style="padding:56px 0 0">
+  <div class="C">
+    <span class="ey">Explained</span>
+    <h1 class="sh" style="font-size:clamp(28px,4vw,44px);max-width:720px">What is hospital pharmacy ERP?</h1>
+
+    <div class="geo-answer speakable-1" aria-label="Direct answer">
+      <p>Hospital pharmacy ERP software is an integrated system that manages a hospital's complete pharmacy supply chain — from purchase orders placed with medicine suppliers through to medicines dispensed at the patient's bedside. It covers procurement, inventory management, pharmacy dispensing, narcotics and Schedule H compliance, and patient billing in a single connected platform. Unlike standalone billing tools or inventory software, a pharmacy ERP connects all these functions so data flows without manual re-entry between departments.</p>
+    </div>
+
+    <h2 class="sh" id="modules-h">What does a hospital pharmacy ERP cover?</h2>
+    <p class="ss" style="margin-bottom:0">A complete hospital pharmacy ERP covers six functional areas, each connecting to the others through a shared data layer.</p>
+
+    <div class="module-list">
+      <div class="ml"><div class="ml-num">1</div><div class="ml-body"><div class="ml-title">Procurement — supplier to central store</div><div class="ml-desc">Digital purchase requests, multi-level approval matrix, purchase order generation with vendor rate contract enforcement, goods receipt (GRN) with batch and expiry capture, vendor performance tracking, and purchase returns.</div></div></div>
+      <div class="ml"><div class="ml-num">2</div><div class="ml-body"><div class="ml-title">Inventory management — multi-location stock control</div><div class="ml-desc">Batch and expiry tracking across all hospital locations — central pharmacy, wards, OT, ICU, emergency, and general store. Barcode traceability from GRN to patient. Physical audit workflows. As-on-Date retrospective reporting.</div></div></div>
+      <div class="ml"><div class="ml-num">3</div><div class="ml-body"><div class="ml-title">Pharmacy dispensing — FEFO to patient</div><div class="ml-desc">FEFO-enforced dispensing at every counter. CPOE integration for prescription-to-dispensing without re-entry. Real-time stock visibility for doctors, nurses, and pharmacists. Generic-to-brand substitution. Patient returns and refund workflow.</div></div></div>
+      <div class="ml"><div class="ml-num">4</div><div class="ml-body"><div class="ml-title">Narcotics and compliance — Schedule H, H1, NDPS</div><div class="ml-desc">Automated Schedule H/H1 prescription register. NDPS narcotics register maintained automatically. System-enforced double-signature dispensing for narcotics. Drug inspector compliance reports on demand.</div></div></div>
+      <div class="ml"><div class="ml-num">5</div><div class="ml-body"><div class="ml-title">Billing and revenue — auto-billing at dispensing</div><div class="ml-desc">Patient bill generated at the moment of dispensing — no manual re-entry. Shift-wise day-end reconciliation. Discount matrix (staff, corporate, BPL). GST-compliant billing. Partial consumption and returns handled.</div></div></div>
+      <div class="ml"><div class="ml-num">6</div><div class="ml-body"><div class="ml-title">Lab inventory — reagents and cost per test</div><div class="ml-desc">Reagent lot tracking with post-opening expiry management. QC and calibration consumption tracked separately from patient test runs. Cost-per-investigation reporting per analyser. NABL audit-ready logs.</div></div></div>
+    </div>
+  </div>
+</section>
+
+<hr class="div">
+
+<section aria-labelledby="diff-h">
+  <div class="C">
+    <h2 class="sh" id="diff-h">How hospital pharmacy ERP differs from standalone pharmacy software</h2>
+    <p class="ss">The distinction matters when evaluating software for a growing hospital or pharmacy chain.</p>
+    <div class="pain-grid">
+      <div class="pc"><div class="pi" style="background:var(--surface-3);color:var(--ink-3)"><svg viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="1.5"><rect x="3" y="2" width="10" height="13" rx="1.5"/><path d="M6 6h4M6 9h2"/></svg></div><h3 class="pt">Standalone pharmacy billing</h3><p class="pd">Handles the billing counter — generates invoices for medicines dispensed. Does not connect to procurement, inventory, or compliance. Inventory must be managed separately. No narcotics register. No CPOE integration.</p></div>
+      <div class="pc"><div class="pi" style="background:var(--surface-3);color:var(--ink-3)"><svg viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="1.5"><rect x="2" y="2" width="5" height="5" rx="1"/><rect x="9" y="2" width="5" height="5" rx="1"/><rect x="2" y="9" width="5" height="5" rx="1"/><rect x="9" y="9" width="5" height="5" rx="1"/></svg></div><h3 class="pt">Standalone inventory system</h3><p class="pd">Tracks stock — item master, batch, expiry, and reorder levels. May not connect to billing, CPOE, or procurement. Narcotics compliance requires a separate register. No ward-level stock tracking. No FEFO enforcement at dispensing.</p></div>
+      <div class="pc"><div class="pi" style="background:var(--teal-light);color:var(--teal)"><svg viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M13 4L6 11l-3-3"/></svg></div><h3 class="pt">Hospital pharmacy ERP</h3><p class="pd">Connects procurement, inventory, dispensing, compliance, and billing in one system. A medicine dispensed to a patient updates inventory, posts to the narcotics register if applicable, and generates the patient bill — automatically, without re-entry at any stage.</p></div>
+    </div>
+  </div>
+</section>
+
+<hr class="div">
+
+<section aria-labelledby="who-h">
+  <div class="C">
+    <h2 class="sh speakable-2" id="who-h">What are the core modules of a hospital pharmacy ERP?</h2>
+    <p class="ss">A hospital pharmacy ERP typically consists of six interconnected modules, each handling a distinct function in the pharmacy supply chain. The value comes from their connection — data entered once flows through all six without re-entry.</p>
+    <div style="margin-top:32px;padding:20px 24px;background:var(--surface-2);border-radius:var(--radius-lg)">
+      <p style="font-size:15px;color:var(--ink-2);line-height:1.75">The six core modules are: <strong>Procurement</strong> (purchase requests, approvals, PO, GRN, vendor management); <strong>Inventory management</strong> (batch tracking, expiry control, multi-location stock, barcode scanning); <strong>Pharmacy dispensing</strong> (FEFO, CPOE integration, real-time stock, returns); <strong>Narcotics and compliance</strong> (Schedule H/H1/NDPS registers, double-signature dispensing, drug inspector reports); <strong>Billing and revenue</strong> (auto-billing at dispensing, day-end reconciliation, GST compliance); and <strong>Lab inventory</strong> (reagent lot tracking, post-opening expiry, cost-per-test reporting).</p>
+    </div>
+  </div>
+</section>
+
+<section aria-labelledby="faq-h">
+  <div class="C">
+    <span class="ey">Common questions</span>
+    <h2 class="sh" id="faq-h">Frequently asked questions</h2>
+    <div class="faq-list" role="list">
+      <div class="faq-item" role="listitem"><button class="fq" aria-expanded="false" onclick="tFaq(this)">What is hospital pharmacy ERP software?<svg class="fchev" viewBox="0 0 20 20" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M5 7.5l5 5 5-5"/></svg></button><div class="fa">Hospital pharmacy ERP software is an integrated system that manages a hospital's complete pharmacy supply chain — from purchase orders placed with medicine suppliers through to medicines dispensed at the patient's bedside. It covers procurement, inventory, dispensing, narcotics compliance, and billing in a single connected platform.</div></div>
+      <div class="faq-item" role="listitem"><button class="fq" aria-expanded="false" onclick="tFaq(this)">How is hospital pharmacy ERP different from a pharmacy billing system?<svg class="fchev" viewBox="0 0 20 20" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M5 7.5l5 5 5-5"/></svg></button><div class="fa">A pharmacy billing system handles the billing counter — it generates patient invoices for medicines dispensed. A hospital pharmacy ERP covers the entire operation: procurement, inventory tracking across all hospital locations, FEFO-enforced dispensing, narcotics and Schedule H compliance, and billing — all connected. In a pharmacy ERP, a medicine dispensed automatically updates inventory, posts to the narcotics register if applicable, and generates the patient bill — without manual re-entry at any stage.</div></div>
+      <div class="faq-item" role="listitem"><button class="fq" aria-expanded="false" onclick="tFaq(this)">Which hospitals need a pharmacy ERP?<svg class="fchev" viewBox="0 0 20 20" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M5 7.5l5 5 5-5"/></svg></button><div class="fa">Any hospital with multiple medicine suppliers, multiple storage locations, Schedule H or NDPS narcotics, and patient billing will benefit from a pharmacy ERP. In practice, multi-specialty hospitals above 50 beds, hospital groups, pharmacy chains with 3 or more branches, and government hospitals with rate contract compliance requirements are the primary users.</div></div>
+      <div class="faq-item" role="listitem"><button class="fq" aria-expanded="false" onclick="tFaq(this)">What is FEFO in hospital pharmacy ERP?<svg class="fchev" viewBox="0 0 20 20" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M5 7.5l5 5 5-5"/></svg></button><div class="fa">FEFO stands for First-Expire, First-Out — the dispensing discipline that ensures the medicine batch closest to its expiry date is always dispensed before newer stock. In a hospital pharmacy ERP, FEFO is enforced at the dispensing counter: the system automatically selects the earliest-expiry batch and alerts the pharmacist if a different batch is being picked.</div></div>
+    </div>
+  </div>
+</section>
+
+<hr class="div">
+<section style="padding:48px 0;background:var(--surface-2);border-top:1px solid var(--border)"><div class="C" style="max-width:640px;text-align:center"><h2 class="sh" style="font-size:24px">HISx — hospital pharmacy ERP by Quantbit</h2><p style="font-size:15px;color:var(--ink-3);margin:12px 0 28px;line-height:1.65">HISx is Quantbit's hospital pharmacy and inventory ERP — 8 modules covering procurement, FEFO dispensing, narcotics compliance, lab inventory, and billing, built on ERPNext.</p><div class="ctas" style="justify-content:center"><a href="/hisx" class="bp">Explore HISx</a><a href="/hisx/demo" class="bg">Book a demo</a></div></div></section>
+<nav class="rel-s"><div class="rel-in"><div style="display:grid;grid-template-columns:1fr 1fr;gap:28px"><div><div class="rel-lbl">Related guides</div><div class="rel-ls"><a href="/fefo-in-hospital-pharmacy" class="rl">What is FEFO in pharmacy?</a><a href="/schedule-h-h1-ndps-compliance" class="rl">Schedule H &amp; NDPS guide</a><a href="/cpoe-integration-explained" class="rl">What is CPOE integration?</a><a href="/drug-expiry-management-hospitals" class="rl">Drug expiry management</a></div></div><div><div class="rel-lbl">HISx solutions</div><div class="rel-ls"><a href="/solutions/hospital-drug-expiry-management" class="rl">Drug expiry solution</a><a href="/solutions/narcotics-schedule-h" class="rl">Schedule H compliance</a><a href="/hisx" class="rl">All HISx modules</a></div></div></div></div></nav>
+<footer><div class="foot-in"><div class="flogo">Quantbit <span>Technologies</span></div><div class="flinks"><a href="/hisx">HISx</a><a href="/hisx/demo">Request demo</a><a href="/contact">Contact</a><a href="/privacy">Privacy</a></div><div class="fcopy">© 2025 Quantbit Technologies Pvt. Ltd. · Certified Frappe &amp; ERPNext Partner</div></div></footer>
+<script>function tFaq(b){var i=b.closest('.faq-item'),o=i.classList.contains('open');document.querySelectorAll('.faq-item').forEach(function(x){x.classList.remove('open');x.querySelector('.fq').setAttribute('aria-expanded','false')});if(!o){i.classList.add('open');b.setAttribute('aria-expanded','true')}}</script>
+</body></html>

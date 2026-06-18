@@ -1,0 +1,264 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Cost Per Test Calculation for Diagnostic Labs — Reagent & QC Tracking | HISx</title>
+<meta name="description" content="How HISx calculates true cost per test for diagnostic labs — separating patient test reagent cost from QC and calibration overhead, with lot-level reagent tracking and analyser utilisation reporting.">
+<meta name="keywords" content="cost per test diagnostic lab, lab reagent cost tracking software India, NABL lab inventory software, diagnostic lab ERP India, reagent cost per investigation lab, cost per test calculator lab">
+<link rel="canonical" href="https://quantbit.io/solutions/cost-per-test-lab">
+<script type="application/ld+json">{"@context":"https://schema.org","@type":"BreadcrumbList","itemListElement":[{"@type":"ListItem","position":1,"name":"Home","item":"https://quantbit.io"},{"@type":"ListItem","position":2,"name":"Solutions","item":"https://quantbit.io/solutions"},{"@type":"ListItem","position":3,"name":"Cost Per Test for Labs","item":"https://quantbit.io/solutions/cost-per-test-lab"}]}</script>
+<script type="application/ld+json">{"@context":"https://schema.org","@type":"FAQPage","mainEntity":[
+{"@type":"Question","name":"How is cost per test calculated for a diagnostic lab investigation?","acceptedAnswer":{"@type":"Answer","text":"Cost per test for a diagnostic lab investigation is calculated by tracking all reagent consumed for a specific test — including patient test runs, quality control (QC) runs, and calibration events — and dividing total reagent cost by the number of patient tests completed. The formula is: Cost per patient test = (Total reagent cost for patient tests + Allocated QC overhead + Allocated calibration overhead) ÷ Number of patient tests. Without separating QC and calibration overhead from patient test reagent consumption, the cost-per-test figure is overstated and cannot be used for accurate test pricing or reagent contract negotiations.","speakable":{"@type":"SpeakableSpecification","cssSelector":".fa-cpt-1"}}},
+{"@type":"Question","name":"Why must QC runs be tracked separately from patient test reagent consumption?","acceptedAnswer":{"@type":"Answer","text":"QC runs consume reagent to verify analyser accuracy — they generate no patient revenue. If QC reagent consumption is not tracked separately, it is bundled into the overall reagent consumption figure and applied to patient tests, making the cost per patient test appear higher than it actually is. This distorts test pricing decisions and makes it impossible to identify whether high costs are driven by patient test volume, QC frequency, or calibration requirements. HISx tracks QC runs as a separate consumption category linked to the analyser and test panel.","speakable":{"@type":"SpeakableSpecification","cssSelector":".fa-cpt-2"}}},
+{"@type":"Question","name":"How does HISx track reagent consumption at the lot level for diagnostic labs?","acceptedAnswer":{"@type":"Answer","text":"HISx tracks each reagent lot from receipt through consumption and disposal. When a lot is opened, the opening date is recorded and the post-opening stability window begins. Consumption events — patient tests, QC runs, and calibration — are linked to the active lot. When the lot is finished or disposed, closing consumption is recorded. This lot-level tracking provides the complete reagent usage history required for NABL accreditation documentation."}},
+{"@type":"Question","name":"Can HISx compare cost per test across different analysers or reagent lots?","acceptedAnswer":{"@type":"Answer","text":"Yes. HISx cost-per-test reporting can be filtered by analyser, reagent lot, test panel, and time period. This allows lab managers to compare cost per CBC run on Analyser A vs Analyser B, or compare reagent consumption efficiency between lot L-041 and lot L-042 for the same test. Utilisation efficiency — tests per lot vs theoretical capacity — is also reported per analyser."}}
+]}
+</script>
+<style>
+/* SHARED BASE — all HISx module pages */
+*, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+:root {
+  --ink: #0f1117; --ink-2: #3d3f4a; --ink-3: #72747f; --ink-4: #a0a2ab;
+  --surface: #ffffff; --surface-2: #f5f6f8; --surface-3: #eef0f4;
+  --accent: #1a5fd4; --accent-light: #e8effc; --accent-mid: #c2d4f7;
+  --teal: #0b7a5e; --teal-light: #e0f4ef;
+  --amber: #b35e0a; --amber-light: #fef3e2;
+  --red: #b91c1c; --red-light: #fee2e2;
+  --border: #e2e4ea; --border-strong: #c8cad2;
+  --radius-sm: 6px; --radius-md: 10px; --radius-lg: 16px;
+  --font-display: 'Georgia','Times New Roman',serif;
+  --font-body: -apple-system,BlinkMacSystemFont,'Segoe UI',sans-serif;
+  --font-mono: 'SF Mono','Fira Code',monospace;
+  --max: 1120px; --gap: 96px;
+}
+html { scroll-behavior: smooth; }
+body { font-family: var(--font-body); color: var(--ink); background: var(--surface); line-height: 1.6; font-size: 16px; -webkit-font-smoothing: antialiased; }
+.nav { position: sticky; top: 0; z-index: 100; background: rgba(255,255,255,0.95); backdrop-filter: blur(8px); border-bottom: 1px solid var(--border); }
+.nav-inner { max-width: var(--max); margin: 0 auto; padding: 0 24px; height: 60px; display: flex; align-items: center; gap: 32px; }
+.nav-logo { font-size: 15px; font-weight: 600; color: var(--ink); text-decoration: none; }
+.nav-logo span { color: var(--accent); }
+.nav-bc { display: flex; align-items: center; gap: 8px; font-size: 13px; color: var(--ink-3); flex: 1; }
+.nav-bc a { color: var(--ink-3); text-decoration: none; }
+.nav-bc a:hover { color: var(--accent); }
+.nav-bc .sep { color: var(--border-strong); }
+.nav-bc .cur { color: var(--ink-2); font-weight: 500; }
+.nav-cta { background: var(--accent); color: #fff; padding: 8px 18px; border-radius: var(--radius-sm); font-size: 13px; font-weight: 500; text-decoration: none; white-space: nowrap; transition: opacity .15s; }
+.nav-cta:hover { opacity: .9; }
+.C { max-width: var(--max); margin: 0 auto; padding: 0 24px; }
+section { padding: var(--gap) 0; }
+section+section { padding-top: 0; }
+hr.div { border: none; border-top: 1px solid var(--border); }
+.ey { display: inline-block; font-size: 11px; font-weight: 600; letter-spacing: .1em; text-transform: uppercase; color: var(--accent); margin-bottom: 14px; }
+.sh { font-family: var(--font-display); font-size: clamp(26px,3.5vw,38px); font-weight: 400; line-height: 1.2; letter-spacing: -.02em; color: var(--ink); margin-bottom: 16px; }
+.ss { font-size: 17px; color: var(--ink-2); line-height: 1.65; max-width: 560px; }
+.hero { padding: 80px 0 72px; border-bottom: 1px solid var(--border); }
+.hero-in { max-width: var(--max); margin: 0 auto; padding: 0 24px; display: grid; grid-template-columns: 1fr 1fr; gap: 64px; align-items: center; }
+.htag { display: inline-flex; align-items: center; gap: 7px; font-size: 12px; font-weight: 500; color: var(--accent); background: var(--accent-light); border: 1px solid var(--accent-mid); padding: 5px 12px; border-radius: 100px; margin-bottom: 22px; }
+.hero h1 { font-family: var(--font-display); font-size: clamp(30px,4vw,48px); font-weight: 400; line-height: 1.15; letter-spacing: -.025em; color: var(--ink); margin-bottom: 20px; }
+.hero h1 em { font-style: italic; color: var(--accent); }
+.hero-sub { font-size: 17px; color: var(--ink-2); line-height: 1.65; margin-bottom: 32px; max-width: 480px; }
+.ctas { display: flex; gap: 12px; flex-wrap: wrap; }
+.bp { background: var(--accent); color: #fff; padding: 12px 24px; border-radius: var(--radius-sm); font-size: 14px; font-weight: 500; text-decoration: none; transition: opacity .15s; display: inline-block; }
+.bp:hover { opacity: .88; }
+.bg { background: transparent; color: var(--ink-2); padding: 12px 24px; border-radius: var(--radius-sm); font-size: 14px; font-weight: 500; text-decoration: none; border: 1px solid var(--border-strong); transition: border-color .15s,color .15s; display: inline-block; }
+.bg:hover { border-color: var(--accent); color: var(--accent); }
+.hv { background: var(--surface-2); border: 1px solid var(--border); border-radius: var(--radius-lg); padding: 28px; }
+.hv-lbl { font-size: 11px; font-weight: 600; letter-spacing: .08em; text-transform: uppercase; color: var(--ink-4); margin-bottom: 18px; }
+.proof { background: var(--surface-2); border-bottom: 1px solid var(--border); padding: 28px 0; }
+.proof-in { max-width: var(--max); margin: 0 auto; padding: 0 24px; display: flex; align-items: center; gap: 48px; flex-wrap: wrap; }
+.proof-lbl { font-size: 12px; color: var(--ink-4); font-weight: 500; text-transform: uppercase; letter-spacing: .06em; }
+.proof-stats { display: flex; gap: 40px; flex-wrap: wrap; }
+.psn { font-size: 20px; font-weight: 700; color: var(--ink); font-family: var(--font-display); line-height: 1; }
+.psl { font-size: 12px; color: var(--ink-3); margin-top: 3px; }
+.pdiv { width: 1px; height: 32px; background: var(--border-strong); flex-shrink: 0; }
+.proof-plat { margin-left: auto; display: flex; align-items: center; gap: 8px; font-size: 12px; color: var(--ink-3); }
+.proof-plat strong { color: var(--ink-2); }
+.pain-grid { display: grid; grid-template-columns: repeat(3,1fr); gap: 20px; margin-top: 48px; }
+.pc { border: 1px solid var(--border); border-radius: var(--radius-md); padding: 24px; }
+.pi { width: 40px; height: 40px; border-radius: 10px; background: var(--red-light); color: var(--red); display: flex; align-items: center; justify-content: center; margin-bottom: 16px; }
+.pi svg { width: 18px; height: 18px; }
+.pt { font-size: 15px; font-weight: 600; color: var(--ink); margin-bottom: 8px; line-height: 1.3; }
+.pd { font-size: 14px; color: var(--ink-3); line-height: 1.6; }
+.dd { padding: var(--gap) 0; }
+.dd-in { display: grid; grid-template-columns: 1fr 1fr; gap: 72px; align-items: center; }
+.dd-in.fl { direction: rtl; }
+.dd-in.fl>* { direction: ltr; }
+.dh { font-family: var(--font-display); font-size: clamp(22px,2.8vw,32px); font-weight: 400; line-height: 1.25; letter-spacing: -.02em; color: var(--ink); margin-bottom: 20px; }
+.dd { font-size: 15px; color: var(--ink-2); line-height: 1.7; margin-bottom: 24px; }
+.buls { list-style: none; display: flex; flex-direction: column; gap: 12px; }
+.buls li { display: flex; align-items: flex-start; gap: 10px; font-size: 14px; color: var(--ink-2); line-height: 1.55; }
+.bchk { width: 18px; height: 18px; border-radius: 50%; background: var(--teal-light); color: var(--teal); display: flex; align-items: center; justify-content: center; flex-shrink: 0; margin-top: 1px; }
+.bchk svg { width: 10px; height: 10px; }
+.dl { display: inline-flex; align-items: center; gap: 6px; font-size: 13px; font-weight: 500; color: var(--accent); text-decoration: none; margin-top: 24px; }
+.dl:hover { text-decoration: underline; }
+.dv { background: var(--surface-2); border: 1px solid var(--border); border-radius: var(--radius-lg); padding: 24px; }
+.dvl { font-size: 11px; font-weight: 600; letter-spacing: .08em; text-transform: uppercase; color: var(--ink-4); margin-bottom: 16px; }
+.fg { display: grid; grid-template-columns: repeat(3,1fr); gap: 1px; background: var(--border); border: 1px solid var(--border); border-radius: var(--radius-lg); overflow: hidden; margin-top: 48px; }
+.fc { background: var(--surface); padding: 28px 24px; transition: background .15s; }
+.fc:hover { background: var(--surface-2); }
+.fi { width: 40px; height: 40px; border-radius: 10px; display: flex; align-items: center; justify-content: center; margin-bottom: 16px; }
+.fi svg { width: 18px; height: 18px; }
+.fi.bl { background: var(--accent-light); color: var(--accent); }
+.fi.tl { background: var(--teal-light); color: var(--teal); }
+.fi.am { background: var(--amber-light); color: var(--amber); }
+.ft { font-size: 15px; font-weight: 600; color: var(--ink); margin-bottom: 8px; line-height: 1.3; }
+.fd { font-size: 13px; color: var(--ink-3); line-height: 1.6; }
+.rs { background: var(--surface-2); }
+.rg { display: grid; grid-template-columns: repeat(3,1fr); gap: 20px; margin-top: 48px; }
+.rc { background: var(--surface); border: 1px solid var(--border); border-radius: var(--radius-md); padding: 28px 24px; }
+.ri { width: 44px; height: 44px; border-radius: 10px; background: var(--accent-light); color: var(--accent); display: flex; align-items: center; justify-content: center; margin-bottom: 18px; }
+.ri svg { width: 20px; height: 20px; }
+.rt { font-size: 15px; font-weight: 600; color: var(--ink); margin-bottom: 6px; }
+.rd { font-size: 13px; color: var(--ink-3); line-height: 1.6; }
+.dark-co { background: #0f2d47; color: #fff; padding: var(--gap) 0; }
+.dark-in { max-width: var(--max); margin: 0 auto; padding: 0 24px; display: grid; grid-template-columns: 1fr 1fr; gap: 64px; align-items: center; }
+.dark-ey { font-size: 11px; font-weight: 600; letter-spacing: .1em; text-transform: uppercase; color: #7db3e8; margin-bottom: 14px; }
+.dark-h { font-family: var(--font-display); font-size: clamp(22px,2.8vw,32px); font-weight: 400; line-height: 1.25; letter-spacing: -.02em; color: #fff; margin-bottom: 18px; }
+.dark-d { font-size: 15px; color: #b0c8e4; line-height: 1.65; }
+.dark-buls { display: flex; flex-direction: column; gap: 14px; margin-top: 24px; }
+.dbul { display: flex; align-items: flex-start; gap: 12px; font-size: 14px; color: #b0c8e4; line-height: 1.5; }
+.ddot { width: 6px; height: 6px; border-radius: 50%; background: #7db3e8; flex-shrink: 0; margin-top: 7px; }
+.dbul strong { color: #e8f2fd; }
+.dbadges { display: flex; flex-wrap: wrap; gap: 10px; margin-top: 28px; }
+.dbadge { display: inline-flex; align-items: center; gap: 6px; font-size: 12px; font-weight: 500; color: #e8f2fd; background: rgba(255,255,255,.08); border: 1px solid rgba(255,255,255,.15); padding: 6px 14px; border-radius: 100px; }
+.faq-list { margin-top: 48px; }
+.faq-item { border-top: 1px solid var(--border); }
+.faq-item:last-child { border-bottom: 1px solid var(--border); }
+.fq { width: 100%; background: none; border: none; padding: 22px 0; display: flex; align-items: center; justify-content: space-between; gap: 24px; cursor: pointer; text-align: left; font-size: 16px; font-weight: 500; color: var(--ink); line-height: 1.4; }
+.fq:hover { color: var(--accent); }
+.fchev { width: 20px; height: 20px; flex-shrink: 0; color: var(--ink-4); transition: transform .2s; }
+.faq-item.open .fchev { transform: rotate(180deg); }
+.fa { display: none; padding: 0 0 22px; font-size: 15px; color: var(--ink-2); line-height: 1.7; max-width: 760px; }
+.faq-item.open .fa { display: block; }
+.cta-s { background: var(--surface-2); border-top: 1px solid var(--border); padding: var(--gap) 0; }
+.cta-in { max-width: 680px; margin: 0 auto; padding: 0 24px; text-align: center; }
+.cta-h { font-family: var(--font-display); font-size: clamp(24px,3vw,36px); font-weight: 400; line-height: 1.2; letter-spacing: -.02em; color: var(--ink); margin-bottom: 16px; }
+.cta-d { font-size: 16px; color: var(--ink-3); line-height: 1.6; margin-bottom: 32px; }
+.cta-bs { display: flex; gap: 12px; justify-content: center; flex-wrap: wrap; }
+.cta-bs .bp,.cta-bs .bg { padding: 14px 28px; font-size: 15px; }
+.rel-s { padding: 48px 0; border-top: 1px solid var(--border); }
+.rel-in { max-width: var(--max); margin: 0 auto; padding: 0 24px; }
+.rel-lbl { font-size: 12px; font-weight: 600; letter-spacing: .08em; text-transform: uppercase; color: var(--ink-4); margin-bottom: 16px; }
+.rel-ls { display: flex; flex-wrap: wrap; gap: 10px; }
+.rl { font-size: 13px; font-weight: 500; color: var(--ink-2); text-decoration: none; padding: 8px 16px; border: 1px solid var(--border); border-radius: var(--radius-sm); transition: border-color .15s,color .15s; }
+.rl:hover { border-color: var(--accent); color: var(--accent); }
+footer { background: var(--ink); color: #a0a2ab; padding: 28px 0; }
+.foot-in { max-width: var(--max); margin: 0 auto; padding: 0 24px; display: flex; align-items: center; justify-content: space-between; flex-wrap: wrap; gap: 12px; }
+.flogo { font-size: 14px; font-weight: 600; color: #fff; }
+.flogo span { color: #6b9de8; }
+.flinks { display: flex; gap: 24px; }
+.flinks a { font-size: 13px; color: #a0a2ab; text-decoration: none; }
+.flinks a:hover { color: #fff; }
+.fcopy { font-size: 12px; color: #5f6170; }
+@media(max-width:768px){
+  :root{--gap:64px}
+  .hero-in{grid-template-columns:1fr;gap:40px}
+  .hv{display:none}
+  .pain-grid{grid-template-columns:1fr}
+  .fg{grid-template-columns:1fr 1fr}
+  .dd-in{grid-template-columns:1fr;gap:40px}
+  .dd-in.fl{direction:ltr}
+  .rg{grid-template-columns:1fr}
+  .dark-in{grid-template-columns:1fr;gap:40px}
+  .proof-plat{margin-left:0}
+  .nav-bc{display:none}
+}
+@media(max-width:540px){.fg{grid-template-columns:1fr}}
+@media(prefers-reduced-motion:reduce){*{transition:none!important}}
+.cpt-cards{display:grid;grid-template-columns:1fr 1fr;gap:10px;margin-top:32px}
+.cpt-c{background:var(--surface-2);border-radius:var(--radius-md);padding:14px 16px}
+.cpt-label{font-size:10px;font-weight:600;color:var(--ink-4);text-transform:uppercase;letter-spacing:.06em;margin-bottom:4px}
+.cpt-val{font-size:20px;font-weight:700;color:var(--ink);font-family:var(--font-display);line-height:1}
+.cpt-sub{font-size:11px;color:var(--ink-3);margin-top:4px}
+.cpt-bar{height:4px;background:var(--surface-3);border-radius:2px;margin-top:8px;overflow:hidden}
+.cpt-fill{height:100%;border-radius:2px}
+</style>
+</head>
+<body>
+<nav class="nav"><div class="nav-inner"><a href="https://quantbit.io" class="nav-logo">Quantbit <span>HISx</span></a><nav class="nav-bc"><a href="/">Home</a><span class="sep">›</span><a href="/solutions">Solutions</a><span class="sep">›</span><span class="cur">Cost per test for labs</span></nav><a href="/hisx/demo" class="nav-cta">Book a demo</a></div></nav>
+
+<section class="hero">
+  <div class="hero-in">
+    <div>
+      <div class="htag"><svg width="13" height="13" viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M6 2v5l-2 7h8l-2-7V2M5 2h6"/></svg>Solution · Cost per test for diagnostic labs</div>
+      <h1>True cost per investigation — <em>patient tests separate from QC overhead</em></h1>
+      <p class="hero-sub">Most labs don't know the true reagent cost of a CBC or Troponin test — because QC runs and calibration events are mixed with patient test consumption. HISx separates them, giving you accurate cost-per-test for pricing decisions and reagent contract negotiations.</p>
+      <div class="ctas"><a href="/hisx/demo" class="bp">See a demo</a><a href="/hisx/lab-inventory" class="bg">Lab inventory module →</a></div>
+    </div>
+    <div class="hv">
+      <div class="hv-lbl">Cost per test — this month (clinical chemistry)</div>
+      <div class="cpt-cards">
+        <div class="cpt-c"><div class="cpt-label">CBC</div><div class="cpt-val">₹ 18.40</div><div class="cpt-sub">Reagent ₹14.20 · QC ₹2.80 · Cal ₹1.40</div><div class="cpt-bar"><div class="cpt-fill" style="width:94%;background:var(--teal)"></div></div><div style="font-size:10px;color:var(--ink-4);margin-top:4px">Utilisation 94% · 1,240 tests</div></div>
+        <div class="cpt-c"><div class="cpt-label">Troponin I</div><div class="cpt-val">₹ 142</div><div class="cpt-sub">Reagent ₹118 · QC ₹16 · Cal ₹8</div><div class="cpt-bar"><div class="cpt-fill" style="width:78%;background:var(--amber)"></div></div><div style="font-size:10px;color:var(--ink-4);margin-top:4px">Utilisation 78% · 186 tests</div></div>
+        <div class="cpt-c"><div class="cpt-label">HbA1c</div><div class="cpt-val">₹ 54.20</div><div class="cpt-sub">Reagent ₹44 · QC ₹7.20 · Cal ₹3</div><div class="cpt-bar"><div class="cpt-fill" style="width:88%;background:var(--accent)"></div></div><div style="font-size:10px;color:var(--ink-4);margin-top:4px">Utilisation 88% · 412 tests</div></div>
+        <div class="cpt-c"><div class="cpt-label">Thyroid Panel</div><div class="cpt-val">₹ 89.60</div><div class="cpt-sub">Reagent ₹72 · QC ₹12.60 · Cal ₹5</div><div class="cpt-bar"><div class="cpt-fill" style="width:71%;background:var(--amber)"></div></div><div style="font-size:10px;color:var(--ink-4);margin-top:4px">Utilisation 71% · 308 tests</div></div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<div class="proof"><div class="proof-in"><span class="proof-lbl">What lab cost tracking solves</span><div class="proof-stats"><div><div class="psn">Patient vs QC</div><div class="psl">Separated consumption</div></div><div class="pdiv"></div><div><div class="psn">Lot-level</div><div class="psl">NABL audit documentation</div></div><div class="pdiv"></div><div><div class="psn">Per analyser</div><div class="psl">Utilisation efficiency</div></div></div><div class="proof-plat"><svg width="14" height="14" viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="1.5"><rect x="2" y="2" width="12" height="12" rx="2"/></svg>HISx on <strong>&nbsp;ERPNext / Frappe</strong></div></div></div>
+
+<section aria-labelledby="pain-h"><div class="C"><span class="ey">The problem</span><h2 class="sh" id="pain-h">Why diagnostic labs don't know their true cost per test</h2><p class="ss">The cost per test figure most lab managers quote is an estimate — because the data needed to calculate it accurately is not captured in most lab management systems.</p><div class="pain-grid">
+<div class="pc"><div class="pi"><svg viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M2 8h12M8 2v12"/></svg></div><h3 class="pt">QC overhead hidden in patient test cost</h3><p class="pd">Without separate QC consumption tracking, QC reagent use is averaged across all test runs — making every patient test appear more expensive than it actually is. A lab running 20% QC overhead looks like it has a 20% higher reagent cost per patient test than a lab that tracks QC separately.</p></div>
+<div class="pc"><div class="pi"><svg viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="1.5"><circle cx="8" cy="8" r="6"/><path d="M8 5v3l2 2"/></svg></div><h3 class="pt">Post-opening expiry not tracked — reagent wasted</h3><p class="pd">A Troponin kit with a 12-month printed expiry is unusable after 7 days of opening. Without post-opening expiry tracking, technicians use reagents beyond their stability window — affecting result accuracy and increasing effective cost per test through invalid runs.</p></div>
+<div class="pc"><div class="pi"><svg viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="1.5"><rect x="3" y="2" width="10" height="13" rx="1.5"/><path d="M6 6h4M6 9h2"/></svg></div><h3 class="pt">Analyser utilisation unknown — underperforming equipment not identified</h3><p class="pd">Without per-analyser cost tracking, labs cannot compare the cost per CBC on Analyser A vs B, or identify that one analyser is running at 60% utilisation while another is at 95% — data that drives scheduling and equipment decisions.</p></div>
+</div></div></section>
+
+<hr class="div">
+
+<section class="dd" aria-labelledby="sep-h">
+  <div class="C">
+    <div class="dd-in">
+      <div>
+        <span class="ey">QC separation</span>
+        <h2 class="dh" id="sep-h">Patient test reagent cost separate from QC and calibration overhead</h2>
+        <p class="dd">HISx tracks reagent consumption at the run level — every test run is classified as a patient test, QC run, or calibration event. Cost-per-test reporting uses only patient test runs as the denominator, with QC and calibration costs reported separately.</p>
+        <ul class="buls">
+          <li><span class="bchk"><svg viewBox="0 0 10 10" fill="none" stroke="currentColor" stroke-width="2"><path d="M2 5l2.5 2.5L8 3"/></svg></span>Patient test runs tracked separately from QC runs and calibration events</li>
+          <li><span class="bchk"><svg viewBox="0 0 10 10" fill="none" stroke="currentColor" stroke-width="2"><path d="M2 5l2.5 2.5L8 3"/></svg></span>QC overhead calculated as a percentage of patient test cost for accurate test pricing</li>
+          <li><span class="bchk"><svg viewBox="0 0 10 10" fill="none" stroke="currentColor" stroke-width="2"><path d="M2 5l2.5 2.5L8 3"/></svg></span>Post-opening expiry tracked per reagent lot — stability window alerts before use beyond stability</li>
+          <li><span class="bchk"><svg viewBox="0 0 10 10" fill="none" stroke="currentColor" stroke-width="2"><path d="M2 5l2.5 2.5L8 3"/></svg></span>Lot-to-lot reagent consumption comparison — identify performance variation between lots</li>
+          <li><span class="bchk"><svg viewBox="0 0 10 10" fill="none" stroke="currentColor" stroke-width="2"><path d="M2 5l2.5 2.5L8 3"/></svg></span>Per-analyser cost and utilisation reporting — identify under-utilised instruments</li>
+        </ul>
+        <a href="/hisx/lab-inventory" class="dl">HISx lab inventory module <svg viewBox="0 0 14 14" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M2 7h10M7 2l5 5-5 5"/></svg></a>
+      </div>
+      <div class="dv">
+        <div class="dvl">CBC reagent consumption breakdown — Feb 2025</div>
+        <div style="display:flex;flex-direction:column;gap:8px">
+          <div style="background:var(--surface-2);border-radius:var(--radius-md);padding:12px 14px">
+            <div style="font-size:11px;font-weight:600;color:var(--ink-4);text-transform:uppercase;letter-spacing:.06em;margin-bottom:8px">Patient test consumption</div>
+            <div style="display:flex;justify-content:space-between"><span style="font-size:12px;color:var(--ink-2)">1,240 patient tests × 1.0 unit</span><span style="font-size:12px;font-weight:600;color:var(--ink)">1,240 units</span></div>
+          </div>
+          <div style="background:var(--amber-light);border-radius:var(--radius-md);padding:12px 14px">
+            <div style="font-size:11px;font-weight:600;color:var(--amber);text-transform:uppercase;letter-spacing:.06em;margin-bottom:8px">QC runs (separate)</div>
+            <div style="display:flex;justify-content:space-between"><span style="font-size:12px;color:var(--ink-2)">248 QC runs × 1.0 unit</span><span style="font-size:12px;font-weight:600;color:var(--amber)">248 units</span></div>
+          </div>
+          <div style="background:var(--surface-2);border-radius:var(--radius-md);padding:12px 14px">
+            <div style="font-size:11px;font-weight:600;color:var(--ink-4);text-transform:uppercase;letter-spacing:.06em;margin-bottom:8px">Calibration (separate)</div>
+            <div style="display:flex;justify-content:space-between"><span style="font-size:12px;color:var(--ink-2)">124 calibrations × 1.0 unit</span><span style="font-size:12px;font-weight:600;color:var(--ink)">124 units</span></div>
+          </div>
+          <div style="background:var(--accent-light);border:1px solid var(--accent-mid);border-radius:var(--radius-md);padding:12px 14px">
+            <div style="display:flex;justify-content:space-between"><span style="font-size:13px;font-weight:600;color:var(--accent)">True cost per patient test</span><span style="font-size:14px;font-weight:700;color:var(--accent)">₹ 18.40</span></div>
+            <div style="font-size:11px;color:var(--ink-4);margin-top:3px">Without QC separation estimate would be ₹ 23.00+ — 25% overstated</div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section aria-labelledby="faq-h"><div class="C"><span class="ey">Common questions</span><h2 class="sh" id="faq-h">Frequently asked questions</h2><div class="faq-list" role="list">
+<div class="faq-item" role="listitem"><button class="fq" aria-expanded="false" onclick="tFaq(this)">How is cost per test calculated for a diagnostic lab investigation?<svg class="fchev" viewBox="0 0 20 20" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M5 7.5l5 5 5-5"/></svg></button><div class="fa fa-cpt-1">Cost per test is calculated by tracking all reagent consumed for a specific test — including patient test runs, QC runs, and calibration events — and dividing total reagent cost by the number of patient tests completed. Without separating QC and calibration overhead from patient test reagent consumption, the cost-per-test figure is overstated and cannot be used for accurate test pricing or reagent contract negotiations.</div></div>
+<div class="faq-item" role="listitem"><button class="fq" aria-expanded="false" onclick="tFaq(this)">Why must QC runs be tracked separately from patient test reagent consumption?<svg class="fchev" viewBox="0 0 20 20" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M5 7.5l5 5 5-5"/></svg></button><div class="fa fa-cpt-2">QC runs consume reagent to verify analyser accuracy — they generate no patient revenue. If QC reagent consumption is not tracked separately, it is bundled into the overall reagent consumption figure and applied to patient tests, making the cost per patient test appear higher than it actually is. HISx tracks QC runs as a separate consumption category linked to the analyser and test panel.</div></div>
+<div class="faq-item" role="listitem"><button class="fq" aria-expanded="false" onclick="tFaq(this)">How does HISx track reagent consumption at the lot level for diagnostic labs?<svg class="fchev" viewBox="0 0 20 20" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M5 7.5l5 5 5-5"/></svg></button><div class="fa">HISx tracks each reagent lot from receipt through consumption and disposal. When a lot is opened, the opening date is recorded and the post-opening stability window begins. Consumption events — patient tests, QC runs, and calibration — are linked to the active lot. This lot-level tracking provides the complete reagent usage history required for NABL accreditation documentation.</div></div>
+<div class="faq-item" role="listitem"><button class="fq" aria-expanded="false" onclick="tFaq(this)">Can HISx compare cost per test across different analysers or reagent lots?<svg class="fchev" viewBox="0 0 20 20" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M5 7.5l5 5 5-5"/></svg></button><div class="fa">Yes. HISx cost-per-test reporting can be filtered by analyser, reagent lot, test panel, and time period. This allows lab managers to compare cost per CBC run on different analysers, or compare reagent consumption efficiency between lots for the same test. Utilisation efficiency — tests per lot vs theoretical capacity — is also reported per analyser.</div></div>
+</div></div></section>
+
+<hr class="div">
+<section class="cta-s"><div class="cta-in"><h2 class="cta-h">See cost per test reporting in HISx</h2><p class="cta-d">Book a 30-minute demo — walk through reagent lot tracking, QC separation, and cost-per-test reporting for your analyser panel.</p><div class="cta-bs"><a href="/hisx/demo" class="bp">Book a demo</a><a href="/hisx/lab-inventory" class="bg">Lab inventory module</a></div></div></section>
+<nav class="rel-s"><div class="rel-in"><div style="display:grid;grid-template-columns:1fr 1fr;gap:28px"><div><div class="rel-lbl">Related solutions</div><div class="rel-ls"><a href="/solutions/hospital-drug-expiry-management" class="rl">Drug expiry management</a><a href="/solutions/barcode-traceability" class="rl">Barcode traceability</a></div></div><div><div class="rel-lbl">HISx modules</div><div class="rel-ls"><a href="/hisx/lab-inventory" class="rl">Lab inventory module</a><a href="/diagnostic-lab-inventory" class="rl">Diagnostic labs guide</a></div></div></div></div></nav>
+<footer><div class="foot-in"><div class="flogo">Quantbit <span>Technologies</span></div><div class="flinks"><a href="/hisx">HISx</a><a href="/hisx/demo">Request demo</a><a href="/contact">Contact</a><a href="/privacy">Privacy</a></div><div class="fcopy">© 2025 Quantbit Technologies Pvt. Ltd. · Certified Frappe &amp; ERPNext Partner</div></div></footer>
+<script>function tFaq(b){var i=b.closest('.faq-item'),o=i.classList.contains('open');document.querySelectorAll('.faq-item').forEach(function(x){x.classList.remove('open');x.querySelector('.fq').setAttribute('aria-expanded','false')});if(!o){i.classList.add('open');b.setAttribute('aria-expanded','true')}}</script>
+</body></html>

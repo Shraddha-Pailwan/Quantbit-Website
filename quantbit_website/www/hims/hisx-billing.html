@@ -1,0 +1,385 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Hospital Billing & Revenue Management Software | CPOE Integration | HISx by Quantbit</title>
+<meta name="description" content="HISx billing module — CPOE-integrated patient billing, day-end reconciliation, discount management, partial consumption billing, shift handover, and user-wise revenue reports for hospitals. Built on ERPNext.">
+<meta name="keywords" content="hospital billing software, patient billing ERP hospital, CPOE billing integration, hospital revenue management software, day-end reconciliation hospital, ERPNext hospital billing India">
+<link rel="canonical" href="https://quantbit.io/hisx/billing">
+<meta property="og:title" content="Hospital Billing & Revenue Management Software — HISx | Quantbit">
+<meta property="og:type" content="website">
+<script type="application/ld+json">
+{"@context":"https://schema.org","@type":"SoftwareApplication","name":"HISx — Billing & Revenue Management Module","applicationCategory":"BusinessApplication","operatingSystem":"Web","description":"Hospital billing and revenue management with CPOE integration, automatic patient billing, day-end reconciliation, shift handover, discount matrices, partial consumption billing, and user-wise revenue reporting. Built on ERPNext by Quantbit Technologies.","offers":{"@type":"Offer","priceCurrency":"INR"},"provider":{"@type":"Organization","name":"Quantbit Technologies Pvt. Ltd.","url":"https://quantbit.io"}}
+</script>
+<script type="application/ld+json">
+{"@context":"https://schema.org","@type":"BreadcrumbList","itemListElement":[{"@type":"ListItem","position":1,"name":"Home","item":"https://quantbit.io"},{"@type":"ListItem","position":2,"name":"HISx","item":"https://quantbit.io/hisx"},{"@type":"ListItem","position":3,"name":"Billing & Revenue","item":"https://quantbit.io/hisx/billing"}]}
+</script>
+<script type="application/ld+json">
+{"@context":"https://schema.org","@type":"FAQPage","mainEntity":[
+{"@type":"Question","name":"How does HISx integrate pharmacy dispensing with patient billing?","acceptedAnswer":{"@type":"Answer","text":"HISx connects directly to CPOE (Computerised Physician Order Entry) to create automatic patient billing at the moment of dispensing. When a medication is dispensed, a billing entry is generated against the patient's account immediately — covering medicines, procedures, laboratory services, and imaging as applicable. No manual billing entry is required. This eliminates billing lag, prevents missed charges, and ensures the patient's account reflects actual consumption at all times.","speakable":{"@type":"SpeakableSpecification","cssSelector":".fa-bill-1"}}},
+{"@type":"Question","name":"How does day-end reconciliation work in HISx?","acceptedAnswer":{"@type":"Answer","text":"HISx provides configurable automated day-end closing that reconciles all billing transactions, collections, and outstanding balances for the day. The system generates a day-end summary covering total revenue, collection by payment mode, outstanding bills, and discounts applied. Shift handover workflows ensure the outgoing shift's cash and collection totals are tallied and signed off before the incoming shift begins — creating a clean audit trail between shifts.","speakable":{"@type":"SpeakableSpecification","cssSelector":".fa-bill-2"}}},
+{"@type":"Question","name":"How does HISx handle discounts for staff, corporate, and BPL patients?","acceptedAnswer":{"@type":"Answer","text":"HISx provides a rules-based discount management system with configurable discount matrices for different patient categories — staff, senior citizens, corporate patients, BPL patients, and any other custom category. Discount percentages are set at the item, category, or bill level. High-value discounts and override approvals are routed through a hierarchical approval workflow — ensuring discounts are applied consistently and cannot be granted without appropriate authorisation."}},
+{"@type":"Question","name":"Can HISx handle partial consumption billing for shared consumables?","acceptedAnswer":{"@type":"Answer","text":"Yes. HISx includes billing logic for partial consumption scenarios — half-used ampoules, shared consumables, and partial ward usage. Billing can be split proportionally or rounded according to configured rules, ensuring patients are charged only for what they actually consumed rather than full units that were partially used."}},
+{"@type":"Question","name":"What revenue and collection reports does HISx provide?","acceptedAnswer":{"@type":"Answer","text":"HISx generates user-wise daily revenue reports, collection and day-end reconciliation reports, shift-wise collection summaries, and discount and override audit reports. All reports are available in real time and can be exported. The structured data is also available for BI and analytics platforms through API integration, enabling custom dashboards and cross-period trend analysis."}}
+]}
+</script>
+<style>
+/* SHARED BASE — all HISx module pages */
+*, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+:root {
+  --ink: #0f1117; --ink-2: #3d3f4a; --ink-3: #72747f; --ink-4: #a0a2ab;
+  --surface: #ffffff; --surface-2: #f5f6f8; --surface-3: #eef0f4;
+  --accent: #1a5fd4; --accent-light: #e8effc; --accent-mid: #c2d4f7;
+  --teal: #0b7a5e; --teal-light: #e0f4ef;
+  --amber: #b35e0a; --amber-light: #fef3e2;
+  --red: #b91c1c; --red-light: #fee2e2;
+  --border: #e2e4ea; --border-strong: #c8cad2;
+  --radius-sm: 6px; --radius-md: 10px; --radius-lg: 16px;
+  --font-display: 'Georgia','Times New Roman',serif;
+  --font-body: -apple-system,BlinkMacSystemFont,'Segoe UI',sans-serif;
+  --font-mono: 'SF Mono','Fira Code',monospace;
+  --max: 1120px; --gap: 96px;
+}
+html { scroll-behavior: smooth; }
+body { font-family: var(--font-body); color: var(--ink); background: var(--surface); line-height: 1.6; font-size: 16px; -webkit-font-smoothing: antialiased; }
+.nav { position: sticky; top: 0; z-index: 100; background: rgba(255,255,255,0.95); backdrop-filter: blur(8px); border-bottom: 1px solid var(--border); }
+.nav-inner { max-width: var(--max); margin: 0 auto; padding: 0 24px; height: 60px; display: flex; align-items: center; gap: 32px; }
+.nav-logo { font-size: 15px; font-weight: 600; color: var(--ink); text-decoration: none; }
+.nav-logo span { color: var(--accent); }
+.nav-bc { display: flex; align-items: center; gap: 8px; font-size: 13px; color: var(--ink-3); flex: 1; }
+.nav-bc a { color: var(--ink-3); text-decoration: none; }
+.nav-bc a:hover { color: var(--accent); }
+.nav-bc .sep { color: var(--border-strong); }
+.nav-bc .cur { color: var(--ink-2); font-weight: 500; }
+.nav-cta { background: var(--accent); color: #fff; padding: 8px 18px; border-radius: var(--radius-sm); font-size: 13px; font-weight: 500; text-decoration: none; white-space: nowrap; transition: opacity .15s; }
+.nav-cta:hover { opacity: .9; }
+.C { max-width: var(--max); margin: 0 auto; padding: 0 24px; }
+section { padding: var(--gap) 0; }
+section+section { padding-top: 0; }
+hr.div { border: none; border-top: 1px solid var(--border); }
+.ey { display: inline-block; font-size: 11px; font-weight: 600; letter-spacing: .1em; text-transform: uppercase; color: var(--accent); margin-bottom: 14px; }
+.sh { font-family: var(--font-display); font-size: clamp(26px,3.5vw,38px); font-weight: 400; line-height: 1.2; letter-spacing: -.02em; color: var(--ink); margin-bottom: 16px; }
+.ss { font-size: 17px; color: var(--ink-2); line-height: 1.65; max-width: 560px; }
+.hero { padding: 80px 0 72px; border-bottom: 1px solid var(--border); }
+.hero-in { max-width: var(--max); margin: 0 auto; padding: 0 24px; display: grid; grid-template-columns: 1fr 1fr; gap: 64px; align-items: center; }
+.htag { display: inline-flex; align-items: center; gap: 7px; font-size: 12px; font-weight: 500; color: var(--accent); background: var(--accent-light); border: 1px solid var(--accent-mid); padding: 5px 12px; border-radius: 100px; margin-bottom: 22px; }
+.hero h1 { font-family: var(--font-display); font-size: clamp(30px,4vw,48px); font-weight: 400; line-height: 1.15; letter-spacing: -.025em; color: var(--ink); margin-bottom: 20px; }
+.hero h1 em { font-style: italic; color: var(--accent); }
+.hero-sub { font-size: 17px; color: var(--ink-2); line-height: 1.65; margin-bottom: 32px; max-width: 480px; }
+.ctas { display: flex; gap: 12px; flex-wrap: wrap; }
+.bp { background: var(--accent); color: #fff; padding: 12px 24px; border-radius: var(--radius-sm); font-size: 14px; font-weight: 500; text-decoration: none; transition: opacity .15s; display: inline-block; }
+.bp:hover { opacity: .88; }
+.bg { background: transparent; color: var(--ink-2); padding: 12px 24px; border-radius: var(--radius-sm); font-size: 14px; font-weight: 500; text-decoration: none; border: 1px solid var(--border-strong); transition: border-color .15s,color .15s; display: inline-block; }
+.bg:hover { border-color: var(--accent); color: var(--accent); }
+.hv { background: var(--surface-2); border: 1px solid var(--border); border-radius: var(--radius-lg); padding: 28px; }
+.hv-lbl { font-size: 11px; font-weight: 600; letter-spacing: .08em; text-transform: uppercase; color: var(--ink-4); margin-bottom: 18px; }
+.proof { background: var(--surface-2); border-bottom: 1px solid var(--border); padding: 28px 0; }
+.proof-in { max-width: var(--max); margin: 0 auto; padding: 0 24px; display: flex; align-items: center; gap: 48px; flex-wrap: wrap; }
+.proof-lbl { font-size: 12px; color: var(--ink-4); font-weight: 500; text-transform: uppercase; letter-spacing: .06em; }
+.proof-stats { display: flex; gap: 40px; flex-wrap: wrap; }
+.psn { font-size: 20px; font-weight: 700; color: var(--ink); font-family: var(--font-display); line-height: 1; }
+.psl { font-size: 12px; color: var(--ink-3); margin-top: 3px; }
+.pdiv { width: 1px; height: 32px; background: var(--border-strong); flex-shrink: 0; }
+.proof-plat { margin-left: auto; display: flex; align-items: center; gap: 8px; font-size: 12px; color: var(--ink-3); }
+.proof-plat strong { color: var(--ink-2); }
+.pain-grid { display: grid; grid-template-columns: repeat(3,1fr); gap: 20px; margin-top: 48px; }
+.pc { border: 1px solid var(--border); border-radius: var(--radius-md); padding: 24px; }
+.pi { width: 40px; height: 40px; border-radius: 10px; background: var(--red-light); color: var(--red); display: flex; align-items: center; justify-content: center; margin-bottom: 16px; }
+.pi svg { width: 18px; height: 18px; }
+.pt { font-size: 15px; font-weight: 600; color: var(--ink); margin-bottom: 8px; line-height: 1.3; }
+.pd { font-size: 14px; color: var(--ink-3); line-height: 1.6; }
+.dd { padding: var(--gap) 0; }
+.dd-in { display: grid; grid-template-columns: 1fr 1fr; gap: 72px; align-items: center; }
+.dd-in.fl { direction: rtl; }
+.dd-in.fl>* { direction: ltr; }
+.dh { font-family: var(--font-display); font-size: clamp(22px,2.8vw,32px); font-weight: 400; line-height: 1.25; letter-spacing: -.02em; color: var(--ink); margin-bottom: 20px; }
+.dd { font-size: 15px; color: var(--ink-2); line-height: 1.7; margin-bottom: 24px; }
+.buls { list-style: none; display: flex; flex-direction: column; gap: 12px; }
+.buls li { display: flex; align-items: flex-start; gap: 10px; font-size: 14px; color: var(--ink-2); line-height: 1.55; }
+.bchk { width: 18px; height: 18px; border-radius: 50%; background: var(--teal-light); color: var(--teal); display: flex; align-items: center; justify-content: center; flex-shrink: 0; margin-top: 1px; }
+.bchk svg { width: 10px; height: 10px; }
+.dl { display: inline-flex; align-items: center; gap: 6px; font-size: 13px; font-weight: 500; color: var(--accent); text-decoration: none; margin-top: 24px; }
+.dl:hover { text-decoration: underline; }
+.dv { background: var(--surface-2); border: 1px solid var(--border); border-radius: var(--radius-lg); padding: 24px; }
+.dvl { font-size: 11px; font-weight: 600; letter-spacing: .08em; text-transform: uppercase; color: var(--ink-4); margin-bottom: 16px; }
+.fg { display: grid; grid-template-columns: repeat(3,1fr); gap: 1px; background: var(--border); border: 1px solid var(--border); border-radius: var(--radius-lg); overflow: hidden; margin-top: 48px; }
+.fc { background: var(--surface); padding: 28px 24px; transition: background .15s; }
+.fc:hover { background: var(--surface-2); }
+.fi { width: 40px; height: 40px; border-radius: 10px; display: flex; align-items: center; justify-content: center; margin-bottom: 16px; }
+.fi svg { width: 18px; height: 18px; }
+.fi.bl { background: var(--accent-light); color: var(--accent); }
+.fi.tl { background: var(--teal-light); color: var(--teal); }
+.fi.am { background: var(--amber-light); color: var(--amber); }
+.ft { font-size: 15px; font-weight: 600; color: var(--ink); margin-bottom: 8px; line-height: 1.3; }
+.fd { font-size: 13px; color: var(--ink-3); line-height: 1.6; }
+.rs { background: var(--surface-2); }
+.rg { display: grid; grid-template-columns: repeat(3,1fr); gap: 20px; margin-top: 48px; }
+.rc { background: var(--surface); border: 1px solid var(--border); border-radius: var(--radius-md); padding: 28px 24px; }
+.ri { width: 44px; height: 44px; border-radius: 10px; background: var(--accent-light); color: var(--accent); display: flex; align-items: center; justify-content: center; margin-bottom: 18px; }
+.ri svg { width: 20px; height: 20px; }
+.rt { font-size: 15px; font-weight: 600; color: var(--ink); margin-bottom: 6px; }
+.rd { font-size: 13px; color: var(--ink-3); line-height: 1.6; }
+.dark-co { background: #0f2d47; color: #fff; padding: var(--gap) 0; }
+.dark-in { max-width: var(--max); margin: 0 auto; padding: 0 24px; display: grid; grid-template-columns: 1fr 1fr; gap: 64px; align-items: center; }
+.dark-ey { font-size: 11px; font-weight: 600; letter-spacing: .1em; text-transform: uppercase; color: #7db3e8; margin-bottom: 14px; }
+.dark-h { font-family: var(--font-display); font-size: clamp(22px,2.8vw,32px); font-weight: 400; line-height: 1.25; letter-spacing: -.02em; color: #fff; margin-bottom: 18px; }
+.dark-d { font-size: 15px; color: #b0c8e4; line-height: 1.65; }
+.dark-buls { display: flex; flex-direction: column; gap: 14px; margin-top: 24px; }
+.dbul { display: flex; align-items: flex-start; gap: 12px; font-size: 14px; color: #b0c8e4; line-height: 1.5; }
+.ddot { width: 6px; height: 6px; border-radius: 50%; background: #7db3e8; flex-shrink: 0; margin-top: 7px; }
+.dbul strong { color: #e8f2fd; }
+.dbadges { display: flex; flex-wrap: wrap; gap: 10px; margin-top: 28px; }
+.dbadge { display: inline-flex; align-items: center; gap: 6px; font-size: 12px; font-weight: 500; color: #e8f2fd; background: rgba(255,255,255,.08); border: 1px solid rgba(255,255,255,.15); padding: 6px 14px; border-radius: 100px; }
+.faq-list { margin-top: 48px; }
+.faq-item { border-top: 1px solid var(--border); }
+.faq-item:last-child { border-bottom: 1px solid var(--border); }
+.fq { width: 100%; background: none; border: none; padding: 22px 0; display: flex; align-items: center; justify-content: space-between; gap: 24px; cursor: pointer; text-align: left; font-size: 16px; font-weight: 500; color: var(--ink); line-height: 1.4; }
+.fq:hover { color: var(--accent); }
+.fchev { width: 20px; height: 20px; flex-shrink: 0; color: var(--ink-4); transition: transform .2s; }
+.faq-item.open .fchev { transform: rotate(180deg); }
+.fa { display: none; padding: 0 0 22px; font-size: 15px; color: var(--ink-2); line-height: 1.7; max-width: 760px; }
+.faq-item.open .fa { display: block; }
+.cta-s { background: var(--surface-2); border-top: 1px solid var(--border); padding: var(--gap) 0; }
+.cta-in { max-width: 680px; margin: 0 auto; padding: 0 24px; text-align: center; }
+.cta-h { font-family: var(--font-display); font-size: clamp(24px,3vw,36px); font-weight: 400; line-height: 1.2; letter-spacing: -.02em; color: var(--ink); margin-bottom: 16px; }
+.cta-d { font-size: 16px; color: var(--ink-3); line-height: 1.6; margin-bottom: 32px; }
+.cta-bs { display: flex; gap: 12px; justify-content: center; flex-wrap: wrap; }
+.cta-bs .bp,.cta-bs .bg { padding: 14px 28px; font-size: 15px; }
+.rel-s { padding: 48px 0; border-top: 1px solid var(--border); }
+.rel-in { max-width: var(--max); margin: 0 auto; padding: 0 24px; }
+.rel-lbl { font-size: 12px; font-weight: 600; letter-spacing: .08em; text-transform: uppercase; color: var(--ink-4); margin-bottom: 16px; }
+.rel-ls { display: flex; flex-wrap: wrap; gap: 10px; }
+.rl { font-size: 13px; font-weight: 500; color: var(--ink-2); text-decoration: none; padding: 8px 16px; border: 1px solid var(--border); border-radius: var(--radius-sm); transition: border-color .15s,color .15s; }
+.rl:hover { border-color: var(--accent); color: var(--accent); }
+footer { background: var(--ink); color: #a0a2ab; padding: 28px 0; }
+.foot-in { max-width: var(--max); margin: 0 auto; padding: 0 24px; display: flex; align-items: center; justify-content: space-between; flex-wrap: wrap; gap: 12px; }
+.flogo { font-size: 14px; font-weight: 600; color: #fff; }
+.flogo span { color: #6b9de8; }
+.flinks { display: flex; gap: 24px; }
+.flinks a { font-size: 13px; color: #a0a2ab; text-decoration: none; }
+.flinks a:hover { color: #fff; }
+.fcopy { font-size: 12px; color: #5f6170; }
+@media(max-width:768px){
+  :root{--gap:64px}
+  .hero-in{grid-template-columns:1fr;gap:40px}
+  .hv{display:none}
+  .pain-grid{grid-template-columns:1fr}
+  .fg{grid-template-columns:1fr 1fr}
+  .dd-in{grid-template-columns:1fr;gap:40px}
+  .dd-in.fl{direction:ltr}
+  .rg{grid-template-columns:1fr}
+  .dark-in{grid-template-columns:1fr;gap:40px}
+  .proof-plat{margin-left:0}
+  .nav-bc{display:none}
+}
+@media(max-width:540px){.fg{grid-template-columns:1fr}}
+@media(prefers-reduced-motion:reduce){*{transition:none!important}}
+/* Billing-specific */
+.bill-flow{display:flex;flex-direction:column;gap:8px}
+.bill-step{display:flex;align-items:center;gap:12px;background:var(--surface);border:1px solid var(--border);border-radius:var(--radius-sm);padding:10px 14px}
+.bill-dot{width:8px;height:8px;border-radius:50%;flex-shrink:0}
+.bill-text{font-size:13px;color:var(--ink-2);flex:1}
+.bill-tag{font-size:10px;font-weight:600;padding:2px 7px;border-radius:100px;white-space:nowrap}
+.bt-auto{background:var(--teal-light);color:var(--teal)}
+.bt-inst{background:var(--accent-light);color:var(--accent)}
+.bt-flag{background:var(--amber-light);color:var(--amber)}
+.dayend-card{background:var(--surface);border:1px solid var(--border);border-radius:var(--radius-md);overflow:hidden}
+.dayend-header{background:var(--surface-3);padding:10px 14px;display:flex;justify-content:space-between;align-items:center}
+.dayend-title{font-size:12px;font-weight:600;color:var(--ink)}
+.dayend-date{font-size:11px;color:var(--ink-4)}
+.dayend-row{display:flex;justify-content:space-between;align-items:center;padding:9px 14px;border-bottom:1px solid var(--border);font-size:12px}
+.dayend-row:last-child{border-bottom:none;font-weight:700}
+.dayend-label{color:var(--ink-2)}
+.dayend-val{color:var(--ink);font-weight:500}
+.dayend-pos{color:var(--teal);font-weight:600}
+.disc-matrix{width:100%;border-collapse:collapse}
+.disc-matrix th{font-size:10px;font-weight:600;color:var(--ink-4);text-transform:uppercase;letter-spacing:.05em;padding:7px 10px;text-align:left;border-bottom:1px solid var(--border)}
+.disc-matrix td{font-size:12px;padding:9px 10px;border-bottom:1px solid var(--border);color:var(--ink-2)}
+.disc-matrix tr:last-child td{border-bottom:none}
+.disc-pill{display:inline-block;font-size:11px;font-weight:600;padding:2px 8px;border-radius:100px}
+.dp-auto{background:var(--teal-light);color:var(--teal)}
+.dp-approval{background:var(--amber-light);color:var(--amber)}
+</style>
+</head>
+<body>
+<nav class="nav" aria-label="Site navigation">
+  <div class="nav-inner">
+    <a href="https://quantbit.io" class="nav-logo">Quantbit <span>HISx</span></a>
+    <nav class="nav-bc" aria-label="Breadcrumb"><a href="/">Home</a><span class="sep" aria-hidden="true">›</span><a href="/hisx">HISx</a><span class="sep" aria-hidden="true">›</span><span class="cur">Billing &amp; Revenue</span></nav>
+    <a href="/hisx/demo" class="nav-cta">Book a demo</a>
+  </div>
+</nav>
+
+<section class="hero">
+  <div class="hero-in">
+    <div>
+      <div class="htag"><svg width="13" height="13" viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="1.5" aria-hidden="true"><rect x="2" y="3" width="12" height="10" rx="1.5"/><path d="M5 7h6M5 10h4"/></svg>HISx — Billing &amp; Revenue Module</div>
+      <h1>Hospital billing that <em>never misses a charge</em></h1>
+      <p class="hero-sub">CPOE-integrated automatic patient billing, day-end reconciliation, shift handover, discount management, and partial consumption billing — revenue captured at the point of care, every time.</p>
+      <div class="ctas"><a href="/hisx/demo" class="bp">Request a demo</a><a href="#features" class="bg">See all capabilities</a></div>
+    </div>
+    <div class="hv" aria-label="Billing workflow from dispensing to patient account">
+      <div class="hv-lbl">CPOE → dispensing → auto-bill workflow</div>
+      <div class="bill-flow">
+        <div class="bill-step"><div class="bill-dot" style="background:var(--accent)" aria-hidden="true"></div><span class="bill-text">Doctor prescribes via CPOE</span><span class="bill-tag bt-inst">Instant</span></div>
+        <div class="bill-step"><div class="bill-dot" style="background:var(--accent)" aria-hidden="true"></div><span class="bill-text">Medicine dispensed by pharmacist</span><span class="bill-tag bt-inst">Real-time</span></div>
+        <div class="bill-step"><div class="bill-dot" style="background:var(--teal)" aria-hidden="true"></div><span class="bill-text">Patient billing entry generated</span><span class="bill-tag bt-auto">Auto-bill</span></div>
+        <div class="bill-step"><div class="bill-dot" style="background:var(--teal)" aria-hidden="true"></div><span class="bill-text">Procedures &amp; lab services added</span><span class="bill-tag bt-auto">Auto</span></div>
+        <div class="bill-step"><div class="bill-dot" style="background:var(--amber)" aria-hidden="true"></div><span class="bill-text">Discount rules applied (if eligible)</span><span class="bill-tag bt-flag">Rules-based</span></div>
+        <div class="bill-step"><div class="bill-dot" style="background:var(--teal)" aria-hidden="true"></div><span class="bill-text">Day-end reconciliation auto-runs</span><span class="bill-tag bt-auto">Scheduled</span></div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<div class="proof">
+  <div class="proof-in">
+    <span class="proof-lbl">Covers</span>
+    <div class="proof-stats">
+      <div><div class="psn">CPOE → auto-bill</div><div class="psl">Zero manual billing entry</div></div>
+      <div class="pdiv" aria-hidden="true"></div>
+      <div><div class="psn">Day-end &amp; shift</div><div class="psl">Reconciliation &amp; handover</div></div>
+      <div class="pdiv" aria-hidden="true"></div>
+      <div><div class="psn">Discount matrix</div><div class="psl">Staff, corporate, BPL, seniors</div></div>
+    </div>
+    <div class="proof-plat"><svg width="14" height="14" viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="1.5" aria-hidden="true"><rect x="2" y="2" width="12" height="12" rx="2"/></svg>Built on <strong>&nbsp;ERPNext / Frappe</strong></div>
+  </div>
+</div>
+
+<section aria-labelledby="pain-h">
+  <div class="C">
+    <span class="ey">Why it matters</span>
+    <h2 class="sh" id="pain-h">Three billing problems that leak hospital revenue every day</h2>
+    <p class="ss">Manual billing entry creates two categories of loss: charges that never get billed, and discounts that get applied without authorisation. Both erode revenue silently.</p>
+    <div class="pain-grid">
+      <div class="pc"><div class="pi" aria-hidden="true"><svg viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M2 4h12M2 8h8M2 12h5"/></svg></div><h3 class="pt">Missed charges — dispensing not linked to billing</h3><p class="pd">When dispensing and billing are separate manual steps, medicines dispensed on busy night shifts are never billed. The charge simply disappears between the pharmacy counter and the billing desk.</p></div>
+      <div class="pc"><div class="pi" aria-hidden="true"><svg viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="1.5"><circle cx="8" cy="8" r="6"/><path d="M5 8l2 2 4-4"/></svg></div><h3 class="pt">Day-end discrepancies — manual cash tallying fails</h3><p class="pd">Without automated day-end reconciliation, shift changeovers involve manual cash counts that routinely have unexplained differences. Identifying where the gap is takes hours, sometimes days.</p></div>
+      <div class="pc"><div class="pi" aria-hidden="true"><svg viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M8 2v4l2 2M4 12l8-8"/></svg></div><h3 class="pt">Unauthorised discounts — no approval trail</h3><p class="pd">Discount decisions made informally at the counter — without a rules-based system — are invisible to management until a revenue audit reveals that 15% of bills had manual overrides with no documentation.</p></div>
+    </div>
+  </div>
+</section>
+
+<hr class="div">
+
+<section class="dd" aria-labelledby="cpoe-h">
+  <div class="C">
+    <div class="dd-in">
+      <div>
+        <span class="ey">CPOE integration &amp; auto-billing</span>
+        <h2 class="dh" id="cpoe-h">Every dispensing, every procedure, every lab — billed automatically at the point of care</h2>
+        <p class="dd">HISx creates an unbroken connection between clinical orders and patient billing. When a doctor prescribes, when a medicine is dispensed, when a lab test is ordered — the charge posts to the patient account automatically.</p>
+        <ul class="buls" aria-label="CPOE billing features">
+          <li><span class="bchk" aria-hidden="true"><svg viewBox="0 0 10 10" fill="none" stroke="currentColor" stroke-width="2"><path d="M2 5l2.5 2.5L8 3"/></svg></span>Direct CPOE integration — medicines, procedures, laboratory, and imaging services all trigger automatic patient billing</li>
+          <li><span class="bchk" aria-hidden="true"><svg viewBox="0 0 10 10" fill="none" stroke="currentColor" stroke-width="2"><path d="M2 5l2.5 2.5L8 3"/></svg></span>Billing generated at dispensing — not at end of shift or on patient discharge; charges are always current</li>
+          <li><span class="bchk" aria-hidden="true"><svg viewBox="0 0 10 10" fill="none" stroke="currentColor" stroke-width="2"><path d="M2 5l2.5 2.5L8 3"/></svg></span>Partial consumption billing — half-used ampoules and shared consumables billed proportionally, not as full units</li>
+          <li><span class="bchk" aria-hidden="true"><svg viewBox="0 0 10 10" fill="none" stroke="currentColor" stroke-width="2"><path d="M2 5l2.5 2.5L8 3"/></svg></span>Patient returns trigger automatic billing reversal — credit note posted to patient account without manual re-entry</li>
+        </ul>
+        <a href="/solutions/hospital-billing-integration" class="dl">CPOE billing integration guide <svg viewBox="0 0 14 14" fill="none" stroke="currentColor" stroke-width="1.5" aria-hidden="true"><path d="M2 7h10M7 2l5 5-5 5"/></svg></a>
+      </div>
+      <div class="dv" aria-label="Sample day-end reconciliation report">
+        <div class="dvl">Day-end reconciliation — 15 Feb 2025</div>
+        <div class="dayend-card">
+          <div class="dayend-header"><span class="dayend-title">Day-end summary</span><span class="dayend-date">Shift: Morning · Closed 14:00</span></div>
+          <div class="dayend-row"><span class="dayend-label">Total bills raised</span><span class="dayend-val">₹ 4,82,350</span></div>
+          <div class="dayend-row"><span class="dayend-label">Cash collected</span><span class="dayend-val">₹ 1,84,200</span></div>
+          <div class="dayend-row"><span class="dayend-label">Card / UPI</span><span class="dayend-val">₹ 2,14,800</span></div>
+          <div class="dayend-row"><span class="dayend-label">Credit (insurance)</span><span class="dayend-val">₹ 68,750</span></div>
+          <div class="dayend-row"><span class="dayend-label">Discounts applied</span><span class="dayend-val">₹ 12,400</span></div>
+          <div class="dayend-row"><span class="dayend-label">Outstanding</span><span class="dayend-val">₹ 2,200</span></div>
+          <div class="dayend-row"><span class="dayend-label">Net collected</span><span class="dayend-pos">₹ 4,67,750</span></div>
+        </div>
+        <div style="margin-top:10px;font-size:11px;color:var(--ink-4);line-height:1.5">Auto-generated at shift close. Cash tally confirmed by outgoing &amp; incoming staff. Discrepancies flagged before sign-off.</div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<hr class="div">
+
+<section class="dd" aria-labelledby="disc-h">
+  <div class="C">
+    <div class="dd-in fl">
+      <div>
+        <span class="ey">Discount &amp; override management</span>
+        <h2 class="dh" id="disc-h">Discounts applied by rule, overrides approved by hierarchy — every exception documented</h2>
+        <p class="dd">HISx replaces informal discount decisions with a structured, auditable system. Configured discount matrices apply automatically for eligible patients; anything above threshold requires approval from the right authority.</p>
+        <ul class="buls" aria-label="Discount management features">
+          <li><span class="bchk" aria-hidden="true"><svg viewBox="0 0 10 10" fill="none" stroke="currentColor" stroke-width="2"><path d="M2 5l2.5 2.5L8 3"/></svg></span>Configurable discount matrices for staff, senior citizens, corporate patients, BPL patients, and any custom patient category</li>
+          <li><span class="bchk" aria-hidden="true"><svg viewBox="0 0 10 10" fill="none" stroke="currentColor" stroke-width="2"><path d="M2 5l2.5 2.5L8 3"/></svg></span>Automatic discount application at billing — eligible patients get correct discount without counter staff intervention</li>
+          <li><span class="bchk" aria-hidden="true"><svg viewBox="0 0 10 10" fill="none" stroke="currentColor" stroke-width="2"><path d="M2 5l2.5 2.5L8 3"/></svg></span>Hierarchical approval for overrides and high-value discounts — billing officer → billing manager → CFO based on threshold</li>
+          <li><span class="bchk" aria-hidden="true"><svg viewBox="0 0 10 10" fill="none" stroke="currentColor" stroke-width="2"><path d="M2 5l2.5 2.5L8 3"/></svg></span>Discount audit report — every discount applied, by whom, for which patient, with or without approval, for any period</li>
+        </ul>
+      </div>
+      <div class="dv" aria-label="Discount matrix table">
+        <div class="dvl">Discount matrix — patient category rules</div>
+        <table class="disc-matrix">
+          <thead><tr><th>Patient category</th><th>Discount %</th><th>Applies to</th><th>Approval</th></tr></thead>
+          <tbody>
+            <tr><td>Hospital staff</td><td>25%</td><td>All services</td><td><span class="disc-pill dp-auto">Auto</span></td></tr>
+            <tr><td>Senior citizen (65+)</td><td>10%</td><td>Consultation, medicines</td><td><span class="disc-pill dp-auto">Auto</span></td></tr>
+            <tr><td>Corporate — Tier A</td><td>15%</td><td>Per corporate agreement</td><td><span class="disc-pill dp-auto">Auto</span></td></tr>
+            <tr><td>BPL / Below poverty line</td><td>50%</td><td>All services</td><td><span class="disc-pill dp-approval">Manager</span></td></tr>
+            <tr><td>Override / ad hoc</td><td>Any</td><td>Any</td><td><span class="disc-pill dp-approval">CFO approval</span></td></tr>
+          </tbody>
+        </table>
+        <div style="margin-top:10px;font-size:11px;color:var(--ink-4);line-height:1.5">All matrices fully configurable. Override requests go through digital approval — no verbal authorisation accepted.</div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<hr class="div">
+
+<section id="features" aria-labelledby="feat-h">
+  <div class="C">
+    <span class="ey">All capabilities</span>
+    <h2 class="sh" id="feat-h">Complete billing and revenue management</h2>
+    <p class="ss">From the first prescription to the last shift closure — every billing touchpoint covered.</p>
+    <div class="fg" role="list">
+      <div class="fc" role="listitem"><div class="fi bl" aria-hidden="true"><svg viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="1.5"><rect x="2" y="3" width="12" height="10" rx="1.5"/><path d="M5 7h6M5 10h4"/></svg></div><h3 class="ft">User-wise revenue reports</h3><p class="fd">Daily revenue reports broken down by user, counter, and department. Identify which billing station generated what revenue and collections — with collection mode breakdown (cash, card, UPI, insurance).</p></div>
+      <div class="fc" role="listitem"><div class="fi tl" aria-hidden="true"><svg viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="1.5"><circle cx="8" cy="8" r="6"/><path d="M8 5v3l2 2"/></svg></div><h3 class="ft">Shift management &amp; handover</h3><p class="fd">Configurable shift definitions with structured handover workflows. Outgoing shift tallies cash and collections, incoming shift confirms opening balance — no verbal handovers that create untraceable gaps.</p></div>
+      <div class="fc" role="listitem"><div class="fi am" aria-hidden="true"><svg viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M2 4h12l-1.5 7H3.5L2 4z"/><circle cx="6" cy="13" r="1"/><circle cx="11" cy="13" r="1"/></svg></div><h3 class="ft">Partial consumption billing</h3><p class="fd">Half-used ampoules, shared consumables, and partial ward consumption billed proportionally. Patients charged only for actual consumption — reduces disputes and supports clinical accuracy.</p></div>
+      <div class="fc" role="listitem"><div class="fi bl" aria-hidden="true"><svg viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M13 4L6 11l-3-3"/></svg></div><h3 class="ft">Automated day-end closing</h3><p class="fd">Configurable automated day-end process reconciles all billing, collections, discounts, and outstanding amounts. Generates day-end summary report without manual compilation.</p></div>
+      <div class="fc" role="listitem"><div class="fi tl" aria-hidden="true"><svg viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M8 2v12M2 8h12"/></svg></div><h3 class="ft">Ward consumption billing</h3><p class="fd">Bulk ward consumption and patient-specific usage both tracked and billed correctly. Ward billing reconciled against pharmacy dispense records — no unbilled ward consumption.</p></div>
+      <div class="fc" role="listitem"><div class="fi am" aria-hidden="true"><svg viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="1.5"><rect x="2" y="2" width="12" height="12" rx="2"/><path d="M6 8l2 2 4-4"/></svg></div><h3 class="ft">SNOMED CT &amp; clinical data standards</h3><p class="fd">Clinical master data integrated with SNOMED CT and India's NRCeS national release — ensuring diagnoses, procedures, and medicines are coded consistently for billing, insurance claims, and reporting.</p></div>
+    </div>
+  </div>
+</section>
+
+<hr class="div">
+
+<section class="rs" aria-labelledby="roles-h">
+  <div class="C">
+    <span class="ey">Who uses this module</span>
+    <h2 class="sh" id="roles-h">Every billing stakeholder covered</h2>
+    <p class="ss">Billing involves the counter, the manager, and the CFO — each needing different views with different controls.</p>
+    <div class="rg">
+      <div class="rc"><div class="ri" aria-hidden="true"><svg viewBox="0 0 20 20" fill="none" stroke="currentColor" stroke-width="1.5"><rect x="3" y="4" width="14" height="12" rx="2"/><path d="M7 8h6M7 12h4"/></svg></div><h3 class="rt">Billing counter staff</h3><p class="rd">Generates patient bills in real time from CPOE orders, applies eligible discounts automatically, processes partial consumptions, and tallies collections at shift close.</p></div>
+      <div class="rc"><div class="ri" aria-hidden="true"><svg viewBox="0 0 20 20" fill="none" stroke="currentColor" stroke-width="1.5"><circle cx="10" cy="6" r="3"/><path d="M4 18c0-3.3 2.7-6 6-6s6 2.7 6 6"/></svg></div><h3 class="rt">Billing manager</h3><p class="rd">Approves override discounts within their threshold, reviews day-end reconciliation reports, investigates collection discrepancies, and manages shift handover sign-off.</p></div>
+      <div class="rc"><div class="ri" aria-hidden="true"><svg viewBox="0 0 20 20" fill="none" stroke="currentColor" stroke-width="1.5"><rect x="2" y="4" width="16" height="12" rx="2"/><path d="M2 8h16M6 12h4M14 12h2"/></svg></div><h3 class="rt">CFO &amp; finance</h3><p class="rd">Revenue reports by department and service line, discount audit, outstanding bills ageing, collection trend analysis, and insurance receivables — all without manual data extraction.</p></div>
+    </div>
+  </div>
+</section>
+
+<section aria-labelledby="faq-h">
+  <div class="C">
+    <span class="ey">Common questions</span>
+    <h2 class="sh" id="faq-h">Frequently asked questions</h2>
+    <div class="faq-list" role="list">
+      <div class="faq-item" role="listitem"><button class="fq" aria-expanded="false" onclick="tFaq(this)">How does HISx integrate pharmacy dispensing with patient billing?<svg class="fchev" viewBox="0 0 20 20" fill="none" stroke="currentColor" stroke-width="1.5" aria-hidden="true"><path d="M5 7.5l5 5 5-5"/></svg></button><div class="fa fa-bill-1">HISx connects directly to CPOE to create automatic patient billing at the moment of dispensing. When a medication is dispensed, a billing entry is generated against the patient's account immediately — covering medicines, procedures, laboratory services, and imaging as applicable. No manual billing entry is required. This eliminates billing lag, prevents missed charges, and ensures the patient's account reflects actual consumption at all times.</div></div>
+      <div class="faq-item" role="listitem"><button class="fq" aria-expanded="false" onclick="tFaq(this)">How does day-end reconciliation work in HISx?<svg class="fchev" viewBox="0 0 20 20" fill="none" stroke="currentColor" stroke-width="1.5" aria-hidden="true"><path d="M5 7.5l5 5 5-5"/></svg></button><div class="fa fa-bill-2">HISx provides configurable automated day-end closing that reconciles all billing transactions, collections, and outstanding balances for the day. The system generates a day-end summary covering total revenue, collection by payment mode, outstanding bills, and discounts applied. Shift handover workflows ensure the outgoing shift's cash and collection totals are tallied and signed off before the incoming shift begins.</div></div>
+      <div class="faq-item" role="listitem"><button class="fq" aria-expanded="false" onclick="tFaq(this)">How does HISx handle discounts for staff, corporate, and BPL patients?<svg class="fchev" viewBox="0 0 20 20" fill="none" stroke="currentColor" stroke-width="1.5" aria-hidden="true"><path d="M5 7.5l5 5 5-5"/></svg></button><div class="fa">HISx provides a rules-based discount management system with configurable discount matrices for different patient categories — staff, senior citizens, corporate patients, BPL patients, and any other custom category. Discount percentages are set at item, category, or bill level. High-value discounts and override approvals are routed through a hierarchical approval workflow — ensuring discounts are applied consistently and cannot be granted without appropriate authorisation.</div></div>
+      <div class="faq-item" role="listitem"><button class="fq" aria-expanded="false" onclick="tFaq(this)">Can HISx handle partial consumption billing for shared consumables?<svg class="fchev" viewBox="0 0 20 20" fill="none" stroke="currentColor" stroke-width="1.5" aria-hidden="true"><path d="M5 7.5l5 5 5-5"/></svg></button><div class="fa">Yes. HISx includes billing logic for partial consumption scenarios — half-used ampoules, shared consumables, and partial ward usage. Billing can be split proportionally or rounded according to configured rules, ensuring patients are charged only for what they actually consumed rather than full units that were partially used.</div></div>
+      <div class="faq-item" role="listitem"><button class="fq" aria-expanded="false" onclick="tFaq(this)">What revenue and collection reports does HISx provide?<svg class="fchev" viewBox="0 0 20 20" fill="none" stroke="currentColor" stroke-width="1.5" aria-hidden="true"><path d="M5 7.5l5 5 5-5"/></svg></button><div class="fa">HISx generates user-wise daily revenue reports, collection and day-end reconciliation reports, shift-wise collection summaries, and discount and override audit reports. All reports are available in real time and can be exported. Structured data is also available for BI and analytics platforms through API integration, enabling custom dashboards and cross-period trend analysis.</div></div>
+    </div>
+  </div>
+</section>
+
+<hr class="div">
+<section class="cta-s" aria-labelledby="cta-h"><div class="cta-in"><h2 class="cta-h" id="cta-h">See HISx billing running in your hospital</h2><p class="cta-d">Book a 30-minute demo — walk through CPOE auto-billing, day-end reconciliation, and discount approval workflows with your billing structure in mind.</p><div class="cta-bs"><a href="/hisx/demo" class="bp">Book a demo</a><a href="/hisx/roi-calculator" class="bg">Calculate ROI</a></div></div></section>
+<nav class="rel-s" aria-label="Related pages"><div class="rel-in"><div style="display:grid;grid-template-columns:1fr 1fr;gap:32px"><div><div class="rel-lbl">Other HISx modules</div><div class="rel-ls"><a href="/hisx/pharmacy" class="rl">Pharmacy &amp; dispensing</a><a href="/hisx/inventory" class="rl">Inventory management</a><a href="/hisx/procurement" class="rl">Procurement &amp; vendor</a><a href="/hisx/narcotics-compliance" class="rl">Narcotics &amp; compliance</a><a href="/hisx" class="rl">All modules →</a></div></div><div><div class="rel-lbl">Related guides</div><div class="rel-ls"><a href="/solutions/hospital-billing-integration" class="rl">Hospital billing integration</a><a href="/cpoe-integration-explained" class="rl">CPOE integration explained</a><a href="/erpnext-for-hospitals" class="rl">ERPNext for hospitals</a></div></div></div></div></nav>
+<footer><div class="foot-in"><div class="flogo">Quantbit <span>Technologies</span></div><div class="flinks"><a href="/hisx">HISx</a><a href="/hisx/demo">Request demo</a><a href="/contact">Contact</a><a href="/privacy">Privacy</a></div><div class="fcopy">© 2025 Quantbit Technologies Pvt. Ltd. · Certified Frappe &amp; ERPNext Partner</div></div></footer>
+<script>function tFaq(b){var i=b.closest('.faq-item'),o=i.classList.contains('open');document.querySelectorAll('.faq-item').forEach(function(x){x.classList.remove('open');x.querySelector('.fq').setAttribute('aria-expanded','false')});if(!o){i.classList.add('open');b.setAttribute('aria-expanded','true')}}</script>
+</body>
+</html>
