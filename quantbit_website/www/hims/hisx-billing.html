@@ -201,15 +201,35 @@ footer { background: var(--ink); color: #a0a2ab; padding: 28px 0; }
 .dp-auto{background:var(--teal-light);color:var(--teal)}
 .dp-approval{background:var(--amber-light);color:var(--amber)}
 </style>
+<!-- TEMPLATE CSS (IMPORTANT) -->
+    <link rel="stylesheet" href="/../assets/quantbit_website/css/bootstrap.min.css">
+    <link rel="stylesheet" href="/../assets/quantbit_website/css/font-awesome.css">
+    <link rel="stylesheet" href="/../assets/quantbit_website/css/animate.css">
+    <link rel="stylesheet" href="/../assets/quantbit_website/css/magnific-popup.css">
+    <link rel="stylesheet" href="/../assets/quantbit_website/css/meanmenu.css">
+    <link rel="stylesheet" href="/../assets/quantbit_website/css/slick.css">
+    <link rel="stylesheet" href="/../assets/quantbit_website/css/nice-select.css">
+    <link rel="stylesheet" href="/../assets/quantbit_website/css/main.css">
+    <link rel="stylesheet" href="style.css">
+    <!-- <link rel="stylesheet" href="/assets/quantbit_website/css/_shared.css"> -->
+
+
+    <!-- OPTIONAL CUSTOM -->
+    <link rel="stylesheet" href="/../assets/quantbit_website/css/hrms.css">
+      <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
+<!-- Google Tag Manager -->
+<script>(function(w,d,s,l,i){w[l]=w[l]||[];w[l].push({'gtm.start':
+new Date().getTime(),event:'gtm.js'});var f=d.getElementsByTagName(s)[0],
+j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
+'https://www.googletagmanager.com/gtm.js?id='+i+dl;f.parentNode.insertBefore(j,f);
+})(window,document,'script','dataLayer','GTM-P98Z6G8D');</script>
+<!-- End Google Tag Manager -->
+
+
 </head>
 <body>
-<nav class="nav" aria-label="Site navigation">
-  <div class="nav-inner">
-    <a href="https://quantbit.io" class="nav-logo">Quantbit <span>HISx</span></a>
-    <nav class="nav-bc" aria-label="Breadcrumb"><a href="/">Home</a><span class="sep" aria-hidden="true">›</span><a href="/hisx">HISx</a><span class="sep" aria-hidden="true">›</span><span class="cur">Billing &amp; Revenue</span></nav>
-    <a href="/hisx/demo" class="nav-cta">Book a demo</a>
-  </div>
-</nav>
+<div id="header"></div>
+
 
 <section class="hero">
   <div class="hero-in">
@@ -379,7 +399,55 @@ footer { background: var(--ink); color: #a0a2ab; padding: 28px 0; }
 <hr class="div">
 <section class="cta-s" aria-labelledby="cta-h"><div class="cta-in"><h2 class="cta-h" id="cta-h">See HISx billing running in your hospital</h2><p class="cta-d">Book a 30-minute demo — walk through CPOE auto-billing, day-end reconciliation, and discount approval workflows with your billing structure in mind.</p><div class="cta-bs"><a href="/hisx/demo" class="bp">Book a demo</a><a href="/hisx/roi-calculator" class="bg">Calculate ROI</a></div></div></section>
 <nav class="rel-s" aria-label="Related pages"><div class="rel-in"><div style="display:grid;grid-template-columns:1fr 1fr;gap:32px"><div><div class="rel-lbl">Other HISx modules</div><div class="rel-ls"><a href="/hisx/pharmacy" class="rl">Pharmacy &amp; dispensing</a><a href="/hisx/inventory" class="rl">Inventory management</a><a href="/hisx/procurement" class="rl">Procurement &amp; vendor</a><a href="/hisx/narcotics-compliance" class="rl">Narcotics &amp; compliance</a><a href="/hisx" class="rl">All modules →</a></div></div><div><div class="rel-lbl">Related guides</div><div class="rel-ls"><a href="/solutions/hospital-billing-integration" class="rl">Hospital billing integration</a><a href="/cpoe-integration-explained" class="rl">CPOE integration explained</a><a href="/erpnext-for-hospitals" class="rl">ERPNext for hospitals</a></div></div></div></div></nav>
-<footer><div class="foot-in"><div class="flogo">Quantbit <span>Technologies</span></div><div class="flinks"><a href="/hisx">HISx</a><a href="/hisx/demo">Request demo</a><a href="/contact">Contact</a><a href="/privacy">Privacy</a></div><div class="fcopy">© 2025 Quantbit Technologies Pvt. Ltd. · Certified Frappe &amp; ERPNext Partner</div></div></footer>
+<div id="footer"></div>
+
 <script>function tFaq(b){var i=b.closest('.faq-item'),o=i.classList.contains('open');document.querySelectorAll('.faq-item').forEach(function(x){x.classList.remove('open');x.querySelector('.fq').setAttribute('aria-expanded','false')});if(!o){i.classList.add('open');b.setAttribute('aria-expanded','true')}}</script>
+<script>
+fetch("../header.html")
+    .then(res => res.text())
+    .then(data => {
+        document.getElementById("header").innerHTML = data;
+    });
+
+fetch("../footer.html")
+    .then(res => res.text())
+    .then(data => {
+        document.getElementById("footer").innerHTML = data;
+    });
+</script>
+<!-- ================= TEMPLATE JS ================= -->
+    <!--<< All JS Plugins >>-->
+    <script data-cfasync="false" src="../../cdn-cgi/scripts/5c5dd728/cloudflare-static/email-decode.min.js"></script>
+    <script src="/../assets/quantbit_website/js/jquery-3.7.1.min.js"></script>
+    <!--<< Viewport Js >>-->
+    <script src="/../assets/quantbit_website/js/viewport.jquery.js"></script>
+    <!--<< Bootstrap Js >>-->
+    <script src="/../assets/quantbit_website/js/bootstrap.bundle.min.js"></script>
+    <!--<< Nice Select Js >>-->
+    <script src="/../assets/quantbit_website/js/jquery.nice-select.min.js"></script>
+    <!--<< Waypoints Js >>-->
+    <script src="/../assets/quantbit_website/js/jquery.waypoints.js"></script>
+    <!--<< Counterup Js >>-->
+    <script src="/../assets/quantbit_website/js/jquery.counterup.min.js"></script>
+    <!--<< Slick Js >>-->
+    <script src="/../assets/quantbit_website/js/slick.min.js"></script>
+    <!--<< Slick Animation Js >>-->
+    <script src="/../assets/quantbit_website/js/slick-animation.min.js"></script>
+    <!--<< MeanMenu Js >>-->
+    <script src="/../assets/quantbit_website/js/jquery.meanmenu.min.js"></script>
+    <!--<< Magnific Popup Js >>-->
+    <script src="/../assets/quantbit_website/js/jquery.magnific-popup.min.js"></script>
+    <!--<< Wow Animation Js >>-->
+    <script src="/../assets/quantbit_website/js/wow.min.js"></script>
+    <!--<< Circle Progress Js >>-->
+    <script src="/../assets/quantbit_website/js/circle-progress.js"></script>
+    <!--<< Main.js >>-->
+    <script src="/../assets/quantbit_website/js/main.js"></script>
+    <script defer
+        src="../../../static.cloudflareinsights.com/beacon.min.js/v8c78df7c7c0f484497ecbca7046644da1771523124516"
+        integrity="sha512-8DS7rgIrAmghBFwoOTujcf6D9rXvH8xm8JQ1Ja01h9QX8EzXldiszufYa4IFfKdLUKTTrnSFXLDkUEOTrZQ8Qg=="
+        data-cf-beacon='{"version":"2024.11.0","token":"90f7972af14a48b4add7da2b74f5d675","r":1,"server_timing":{"name":{"cfCacheStatus":true,"cfEdge":true,"cfExtPri":true,"cfL4":true,"cfOrigin":true,"cfSpeedBrain":true},"location_startswith":null}}'
+        crossorigin="anonymous"></script>
+
 </body>
 </html>

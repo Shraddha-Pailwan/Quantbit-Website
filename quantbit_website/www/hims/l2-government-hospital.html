@@ -1,19 +1,22 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
-<meta charset="UTF-8">
-<meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Government Hospital ERP & Pharmacy Management Software India | HISx by Quantbit</title>
-<meta name="description" content="HISx for government and public hospitals — procurement audit trail, free medicine scheme tracking, NDPS compliance, ward indent controls, and asset management. Built for the accountability requirements of public healthcare institutions on ERPNext.">
-<meta name="keywords" content="government hospital ERP India, public hospital pharmacy software, free medicine scheme software, government hospital management system, hospital procurement audit software, Janaushadhi ERP">
-<link rel="canonical" href="https://quantbit.io/government-hospital-erp">
-<script type="application/ld+json">
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Government Hospital ERP & Pharmacy Management Software India | HISx by Quantbit</title>
+  <meta name="description"
+    content="HISx for government and public hospitals — procurement audit trail, free medicine scheme tracking, NDPS compliance, ward indent controls, and asset management. Built for the accountability requirements of public healthcare institutions on ERPNext.">
+  <meta name="keywords"
+    content="government hospital ERP India, public hospital pharmacy software, free medicine scheme software, government hospital management system, hospital procurement audit software, Janaushadhi ERP">
+  <link rel="canonical" href="https://quantbit.io/government-hospital-erp">
+  <script type="application/ld+json">
 {"@context":"https://schema.org","@type":"SoftwareApplication","name":"HISx — Government & Public Hospital Management","applicationCategory":"BusinessApplication","audience":{"@type":"Audience","audienceType":"Medical superintendents, procurement officers, CMOs, state health department officials"},"description":"Hospital pharmacy and inventory management for government and public hospitals — full procurement audit trail, free medicine scheme tracking, NDPS compliance, ward indent controls, and asset management. Built on ERPNext.","provider":{"@type":"Organization","name":"Quantbit Technologies Pvt. Ltd.","url":"https://quantbit.io"}}
 </script>
-<script type="application/ld+json">
+  <script type="application/ld+json">
 {"@context":"https://schema.org","@type":"BreadcrumbList","itemListElement":[{"@type":"ListItem","position":1,"name":"Home","item":"https://quantbit.io"},{"@type":"ListItem","position":2,"name":"HISx","item":"https://quantbit.io/hisx"},{"@type":"ListItem","position":3,"name":"Government Hospital ERP","item":"https://quantbit.io/government-hospital-erp"}]}
 </script>
-<script type="application/ld+json">
+  <script type="application/ld+json">
 {"@context":"https://schema.org","@type":"FAQPage","mainEntity":[
 {"@type":"Question","name":"How does HISx support government hospital procurement audit requirements?","acceptedAnswer":{"@type":"Answer","text":"HISx provides a complete and tamper-proof procurement audit trail covering every purchase request, approval decision, purchase order, goods receipt, and payment — with user attribution, timestamps, and digital signatures at each stage. Every deviation from approved rates, quantities, or vendor lists is flagged and recorded. This documentation is available on demand for audit committees, state health department reviews, CAG audits, and departmental inquiries.","speakable":{"@type":"SpeakableSpecification","cssSelector":".fa-gov-1"}}},
 {"@type":"Question","name":"Can HISx track free medicine scheme distribution separately from paid pharmacy stock?","acceptedAnswer":{"@type":"Answer","text":"Yes. HISx manages free medicine scheme stock and paid pharmacy stock within the same system as separate inventory categories. Free medicines received under government schemes — Jan Aushadhi, Janani Suraksha, or state-level free drug distribution schemes — are tracked with separate GRNs, distribution records, and consumption reports. Patient dispensing under each category is recorded and reported separately, enabling accurate scheme utilisation reports for state health department submissions.","speakable":{"@type":"SpeakableSpecification","cssSelector":".fa-gov-2"}}},
@@ -22,294 +25,1485 @@
 {"@type":"Question","name":"Can HISx generate drug utilisation reports for state health department submissions?","acceptedAnswer":{"@type":"Answer","text":"Yes. HISx generates drug utilisation reports covering consumption by item, department, patient category, and time period — formatted for state health department reporting requirements. Free medicine scheme utilisation, NDPS consumption, and high-value drug usage reports are available on demand. Procurement performance reports covering vendor adherence to rate contracts and delivery schedules are also available for department reviews."}}
 ]}
 </script>
-<style>
-/* SHARED BASE — all HISx module pages */
-*, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
-:root {
-  --ink: #0f1117; --ink-2: #3d3f4a; --ink-3: #72747f; --ink-4: #a0a2ab;
-  --surface: #ffffff; --surface-2: #f5f6f8; --surface-3: #eef0f4;
-  --accent: #1a5fd4; --accent-light: #e8effc; --accent-mid: #c2d4f7;
-  --teal: #0b7a5e; --teal-light: #e0f4ef;
-  --amber: #b35e0a; --amber-light: #fef3e2;
-  --red: #b91c1c; --red-light: #fee2e2;
-  --border: #e2e4ea; --border-strong: #c8cad2;
-  --radius-sm: 6px; --radius-md: 10px; --radius-lg: 16px;
-  --font-display: 'Georgia','Times New Roman',serif;
-  --font-body: -apple-system,BlinkMacSystemFont,'Segoe UI',sans-serif;
-  --font-mono: 'SF Mono','Fira Code',monospace;
-  --max: 1120px; --gap: 96px;
-}
-html { scroll-behavior: smooth; }
-body { font-family: var(--font-body); color: var(--ink); background: var(--surface); line-height: 1.6; font-size: 16px; -webkit-font-smoothing: antialiased; }
-.nav { position: sticky; top: 0; z-index: 100; background: rgba(255,255,255,0.95); backdrop-filter: blur(8px); border-bottom: 1px solid var(--border); }
-.nav-inner { max-width: var(--max); margin: 0 auto; padding: 0 24px; height: 60px; display: flex; align-items: center; gap: 32px; }
-.nav-logo { font-size: 15px; font-weight: 600; color: var(--ink); text-decoration: none; }
-.nav-logo span { color: var(--accent); }
-.nav-bc { display: flex; align-items: center; gap: 8px; font-size: 13px; color: var(--ink-3); flex: 1; }
-.nav-bc a { color: var(--ink-3); text-decoration: none; }
-.nav-bc a:hover { color: var(--accent); }
-.nav-bc .sep { color: var(--border-strong); }
-.nav-bc .cur { color: var(--ink-2); font-weight: 500; }
-.nav-cta { background: var(--accent); color: #fff; padding: 8px 18px; border-radius: var(--radius-sm); font-size: 13px; font-weight: 500; text-decoration: none; white-space: nowrap; transition: opacity .15s; }
-.nav-cta:hover { opacity: .9; }
-.C { max-width: var(--max); margin: 0 auto; padding: 0 24px; }
-section { padding: var(--gap) 0; }
-section+section { padding-top: 0; }
-hr.div { border: none; border-top: 1px solid var(--border); }
-.ey { display: inline-block; font-size: 11px; font-weight: 600; letter-spacing: .1em; text-transform: uppercase; color: var(--accent); margin-bottom: 14px; }
-.sh { font-family: var(--font-display); font-size: clamp(26px,3.5vw,38px); font-weight: 400; line-height: 1.2; letter-spacing: -.02em; color: var(--ink); margin-bottom: 16px; }
-.ss { font-size: 17px; color: var(--ink-2); line-height: 1.65; max-width: 560px; }
-.hero { padding: 80px 0 72px; border-bottom: 1px solid var(--border); }
-.hero-in { max-width: var(--max); margin: 0 auto; padding: 0 24px; display: grid; grid-template-columns: 1fr 1fr; gap: 64px; align-items: center; }
-.htag { display: inline-flex; align-items: center; gap: 7px; font-size: 12px; font-weight: 500; color: var(--accent); background: var(--accent-light); border: 1px solid var(--accent-mid); padding: 5px 12px; border-radius: 100px; margin-bottom: 22px; }
-.hero h1 { font-family: var(--font-display); font-size: clamp(30px,4vw,48px); font-weight: 400; line-height: 1.15; letter-spacing: -.025em; color: var(--ink); margin-bottom: 20px; }
-.hero h1 em { font-style: italic; color: var(--accent); }
-.hero-sub { font-size: 17px; color: var(--ink-2); line-height: 1.65; margin-bottom: 32px; max-width: 480px; }
-.ctas { display: flex; gap: 12px; flex-wrap: wrap; }
-.bp { background: var(--accent); color: #fff; padding: 12px 24px; border-radius: var(--radius-sm); font-size: 14px; font-weight: 500; text-decoration: none; transition: opacity .15s; display: inline-block; }
-.bp:hover { opacity: .88; }
-.bg { background: transparent; color: var(--ink-2); padding: 12px 24px; border-radius: var(--radius-sm); font-size: 14px; font-weight: 500; text-decoration: none; border: 1px solid var(--border-strong); transition: border-color .15s,color .15s; display: inline-block; }
-.bg:hover { border-color: var(--accent); color: var(--accent); }
-.hv { background: var(--surface-2); border: 1px solid var(--border); border-radius: var(--radius-lg); padding: 28px; }
-.hv-lbl { font-size: 11px; font-weight: 600; letter-spacing: .08em; text-transform: uppercase; color: var(--ink-4); margin-bottom: 18px; }
-.proof { background: var(--surface-2); border-bottom: 1px solid var(--border); padding: 28px 0; }
-.proof-in { max-width: var(--max); margin: 0 auto; padding: 0 24px; display: flex; align-items: center; gap: 48px; flex-wrap: wrap; }
-.proof-lbl { font-size: 12px; color: var(--ink-4); font-weight: 500; text-transform: uppercase; letter-spacing: .06em; }
-.proof-stats { display: flex; gap: 40px; flex-wrap: wrap; }
-.psn { font-size: 20px; font-weight: 700; color: var(--ink); font-family: var(--font-display); line-height: 1; }
-.psl { font-size: 12px; color: var(--ink-3); margin-top: 3px; }
-.pdiv { width: 1px; height: 32px; background: var(--border-strong); flex-shrink: 0; }
-.proof-plat { margin-left: auto; display: flex; align-items: center; gap: 8px; font-size: 12px; color: var(--ink-3); }
-.proof-plat strong { color: var(--ink-2); }
-.pain-grid { display: grid; grid-template-columns: repeat(3,1fr); gap: 20px; margin-top: 48px; }
-.pc { border: 1px solid var(--border); border-radius: var(--radius-md); padding: 24px; }
-.pi { width: 40px; height: 40px; border-radius: 10px; background: var(--red-light); color: var(--red); display: flex; align-items: center; justify-content: center; margin-bottom: 16px; }
-.pi svg { width: 18px; height: 18px; }
-.pt { font-size: 15px; font-weight: 600; color: var(--ink); margin-bottom: 8px; line-height: 1.3; }
-.pd { font-size: 14px; color: var(--ink-3); line-height: 1.6; }
-.dd { padding: var(--gap) 0; }
-.dd-in { display: grid; grid-template-columns: 1fr 1fr; gap: 72px; align-items: center; }
-.dd-in.fl { direction: rtl; }
-.dd-in.fl>* { direction: ltr; }
-.dh { font-family: var(--font-display); font-size: clamp(22px,2.8vw,32px); font-weight: 400; line-height: 1.25; letter-spacing: -.02em; color: var(--ink); margin-bottom: 20px; }
-.dd { font-size: 15px; color: var(--ink-2); line-height: 1.7; margin-bottom: 24px; }
-.buls { list-style: none; display: flex; flex-direction: column; gap: 12px; }
-.buls li { display: flex; align-items: flex-start; gap: 10px; font-size: 14px; color: var(--ink-2); line-height: 1.55; }
-.bchk { width: 18px; height: 18px; border-radius: 50%; background: var(--teal-light); color: var(--teal); display: flex; align-items: center; justify-content: center; flex-shrink: 0; margin-top: 1px; }
-.bchk svg { width: 10px; height: 10px; }
-.dl { display: inline-flex; align-items: center; gap: 6px; font-size: 13px; font-weight: 500; color: var(--accent); text-decoration: none; margin-top: 24px; }
-.dl:hover { text-decoration: underline; }
-.dv { background: var(--surface-2); border: 1px solid var(--border); border-radius: var(--radius-lg); padding: 24px; }
-.dvl { font-size: 11px; font-weight: 600; letter-spacing: .08em; text-transform: uppercase; color: var(--ink-4); margin-bottom: 16px; }
-.fg { display: grid; grid-template-columns: repeat(3,1fr); gap: 1px; background: var(--border); border: 1px solid var(--border); border-radius: var(--radius-lg); overflow: hidden; margin-top: 48px; }
-.fc { background: var(--surface); padding: 28px 24px; transition: background .15s; }
-.fc:hover { background: var(--surface-2); }
-.fi { width: 40px; height: 40px; border-radius: 10px; display: flex; align-items: center; justify-content: center; margin-bottom: 16px; }
-.fi svg { width: 18px; height: 18px; }
-.fi.bl { background: var(--accent-light); color: var(--accent); }
-.fi.tl { background: var(--teal-light); color: var(--teal); }
-.fi.am { background: var(--amber-light); color: var(--amber); }
-.ft { font-size: 15px; font-weight: 600; color: var(--ink); margin-bottom: 8px; line-height: 1.3; }
-.fd { font-size: 13px; color: var(--ink-3); line-height: 1.6; }
-.rs { background: var(--surface-2); }
-.rg { display: grid; grid-template-columns: repeat(3,1fr); gap: 20px; margin-top: 48px; }
-.rc { background: var(--surface); border: 1px solid var(--border); border-radius: var(--radius-md); padding: 28px 24px; }
-.ri { width: 44px; height: 44px; border-radius: 10px; background: var(--accent-light); color: var(--accent); display: flex; align-items: center; justify-content: center; margin-bottom: 18px; }
-.ri svg { width: 20px; height: 20px; }
-.rt { font-size: 15px; font-weight: 600; color: var(--ink); margin-bottom: 6px; }
-.rd { font-size: 13px; color: var(--ink-3); line-height: 1.6; }
-.dark-co { background: #0f2d47; color: #fff; padding: var(--gap) 0; }
-.dark-in { max-width: var(--max); margin: 0 auto; padding: 0 24px; display: grid; grid-template-columns: 1fr 1fr; gap: 64px; align-items: center; }
-.dark-ey { font-size: 11px; font-weight: 600; letter-spacing: .1em; text-transform: uppercase; color: #7db3e8; margin-bottom: 14px; }
-.dark-h { font-family: var(--font-display); font-size: clamp(22px,2.8vw,32px); font-weight: 400; line-height: 1.25; letter-spacing: -.02em; color: #fff; margin-bottom: 18px; }
-.dark-d { font-size: 15px; color: #b0c8e4; line-height: 1.65; }
-.dark-buls { display: flex; flex-direction: column; gap: 14px; margin-top: 24px; }
-.dbul { display: flex; align-items: flex-start; gap: 12px; font-size: 14px; color: #b0c8e4; line-height: 1.5; }
-.ddot { width: 6px; height: 6px; border-radius: 50%; background: #7db3e8; flex-shrink: 0; margin-top: 7px; }
-.dbul strong { color: #e8f2fd; }
-.dbadges { display: flex; flex-wrap: wrap; gap: 10px; margin-top: 28px; }
-.dbadge { display: inline-flex; align-items: center; gap: 6px; font-size: 12px; font-weight: 500; color: #e8f2fd; background: rgba(255,255,255,.08); border: 1px solid rgba(255,255,255,.15); padding: 6px 14px; border-radius: 100px; }
-.faq-list { margin-top: 48px; }
-.faq-item { border-top: 1px solid var(--border); }
-.faq-item:last-child { border-bottom: 1px solid var(--border); }
-.fq { width: 100%; background: none; border: none; padding: 22px 0; display: flex; align-items: center; justify-content: space-between; gap: 24px; cursor: pointer; text-align: left; font-size: 16px; font-weight: 500; color: var(--ink); line-height: 1.4; }
-.fq:hover { color: var(--accent); }
-.fchev { width: 20px; height: 20px; flex-shrink: 0; color: var(--ink-4); transition: transform .2s; }
-.faq-item.open .fchev { transform: rotate(180deg); }
-.fa { display: none; padding: 0 0 22px; font-size: 15px; color: var(--ink-2); line-height: 1.7; max-width: 760px; }
-.faq-item.open .fa { display: block; }
-.cta-s { background: var(--surface-2); border-top: 1px solid var(--border); padding: var(--gap) 0; }
-.cta-in { max-width: 680px; margin: 0 auto; padding: 0 24px; text-align: center; }
-.cta-h { font-family: var(--font-display); font-size: clamp(24px,3vw,36px); font-weight: 400; line-height: 1.2; letter-spacing: -.02em; color: var(--ink); margin-bottom: 16px; }
-.cta-d { font-size: 16px; color: var(--ink-3); line-height: 1.6; margin-bottom: 32px; }
-.cta-bs { display: flex; gap: 12px; justify-content: center; flex-wrap: wrap; }
-.cta-bs .bp,.cta-bs .bg { padding: 14px 28px; font-size: 15px; }
-.rel-s { padding: 48px 0; border-top: 1px solid var(--border); }
-.rel-in { max-width: var(--max); margin: 0 auto; padding: 0 24px; }
-.rel-lbl { font-size: 12px; font-weight: 600; letter-spacing: .08em; text-transform: uppercase; color: var(--ink-4); margin-bottom: 16px; }
-.rel-ls { display: flex; flex-wrap: wrap; gap: 10px; }
-.rl { font-size: 13px; font-weight: 500; color: var(--ink-2); text-decoration: none; padding: 8px 16px; border: 1px solid var(--border); border-radius: var(--radius-sm); transition: border-color .15s,color .15s; }
-.rl:hover { border-color: var(--accent); color: var(--accent); }
-footer { background: var(--ink); color: #a0a2ab; padding: 28px 0; }
-.foot-in { max-width: var(--max); margin: 0 auto; padding: 0 24px; display: flex; align-items: center; justify-content: space-between; flex-wrap: wrap; gap: 12px; }
-.flogo { font-size: 14px; font-weight: 600; color: #fff; }
-.flogo span { color: #6b9de8; }
-.flinks { display: flex; gap: 24px; }
-.flinks a { font-size: 13px; color: #a0a2ab; text-decoration: none; }
-.flinks a:hover { color: #fff; }
-.fcopy { font-size: 12px; color: #5f6170; }
-@media(max-width:768px){
-  :root{--gap:64px}
-  .hero-in{grid-template-columns:1fr;gap:40px}
-  .hv{display:none}
-  .pain-grid{grid-template-columns:1fr}
-  .fg{grid-template-columns:1fr 1fr}
-  .dd-in{grid-template-columns:1fr;gap:40px}
-  .dd-in.fl{direction:ltr}
-  .rg{grid-template-columns:1fr}
-  .dark-in{grid-template-columns:1fr;gap:40px}
-  .proof-plat{margin-left:0}
-  .nav-bc{display:none}
-}
-@media(max-width:540px){.fg{grid-template-columns:1fr}}
-@media(prefers-reduced-motion:reduce){*{transition:none!important}}
-.audit-steps{display:flex;flex-direction:column;gap:6px}
-.as{display:flex;align-items:flex-start;gap:12px;padding:10px 14px;background:var(--surface);border:1px solid var(--border);border-radius:var(--radius-sm)}
-.as-num{width:24px;height:24px;border-radius:50%;background:var(--accent-light);color:var(--accent);font-size:11px;font-weight:700;display:flex;align-items:center;justify-content:center;flex-shrink:0}
-.as-text{font-size:12px;color:var(--ink-2);flex:1}
-.as-badge{font-size:10px;font-weight:600;padding:2px 7px;border-radius:100px;white-space:nowrap;background:var(--teal-light);color:var(--teal)}
-.scheme-grid{display:grid;grid-template-columns:1fr 1fr;gap:10px;margin-top:0}
-.sc{background:var(--surface);border:1px solid var(--border);border-radius:var(--radius-md);padding:14px}
-.sc-label{font-size:10px;font-weight:600;color:var(--ink-4);text-transform:uppercase;letter-spacing:.06em;margin-bottom:4px}
-.sc-n{font-size:18px;font-weight:700;color:var(--ink);font-family:var(--font-display)}
-.sc-s{font-size:11px;color:var(--ink-3);margin-top:3px}
-.sc-bar{height:4px;background:var(--surface-3);border-radius:2px;margin-top:8px;overflow:hidden}
-.sc-fill{height:100%;border-radius:2px;background:var(--teal)}
-</style>
+  <style>
+    /* SHARED BASE — all HISx module pages */
+    *,
+    *::before,
+    *::after {
+      box-sizing: border-box;
+      margin: 0;
+      padding: 0;
+    }
+
+    :root {
+      --ink: #0f1117;
+      --ink-2: #3d3f4a;
+      --ink-3: #72747f;
+      --ink-4: #a0a2ab;
+      --surface: #ffffff;
+      --surface-2: #f5f6f8;
+      --surface-3: #eef0f4;
+      --accent: #1a5fd4;
+      --accent-light: #e8effc;
+      --accent-mid: #c2d4f7;
+      --teal: #0b7a5e;
+      --teal-light: #e0f4ef;
+      --amber: #b35e0a;
+      --amber-light: #fef3e2;
+      --red: #b91c1c;
+      --red-light: #fee2e2;
+      --border: #e2e4ea;
+      --border-strong: #c8cad2;
+      --radius-sm: 6px;
+      --radius-md: 10px;
+      --radius-lg: 16px;
+      --font-display: 'Georgia', 'Times New Roman', serif;
+      --font-body: -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif;
+      --font-mono: 'SF Mono', 'Fira Code', monospace;
+      --max: 1120px;
+      --gap: 96px;
+    }
+
+    html {
+      scroll-behavior: smooth;
+    }
+
+    body {
+      font-family: var(--font-body);
+      color: var(--ink);
+      background: var(--surface);
+      line-height: 1.6;
+      font-size: 16px;
+      -webkit-font-smoothing: antialiased;
+    }
+
+    .nav {
+      position: sticky;
+      top: 0;
+      z-index: 100;
+      background: rgba(255, 255, 255, 0.95);
+      backdrop-filter: blur(8px);
+      border-bottom: 1px solid var(--border);
+    }
+
+    .nav-inner {
+      max-width: var(--max);
+      margin: 0 auto;
+      padding: 0 24px;
+      height: 60px;
+      display: flex;
+      align-items: center;
+      gap: 32px;
+    }
+
+    .nav-logo {
+      font-size: 15px;
+      font-weight: 600;
+      color: var(--ink);
+      text-decoration: none;
+    }
+
+    .nav-logo span {
+      color: var(--accent);
+    }
+
+    .nav-bc {
+      display: flex;
+      align-items: center;
+      gap: 8px;
+      font-size: 13px;
+      color: var(--ink-3);
+      flex: 1;
+    }
+
+    .nav-bc a {
+      color: var(--ink-3);
+      text-decoration: none;
+    }
+
+    .nav-bc a:hover {
+      color: var(--accent);
+    }
+
+    .nav-bc .sep {
+      color: var(--border-strong);
+    }
+
+    .nav-bc .cur {
+      color: var(--ink-2);
+      font-weight: 500;
+    }
+
+    .nav-cta {
+      background: var(--accent);
+      color: #fff;
+      padding: 8px 18px;
+      border-radius: var(--radius-sm);
+      font-size: 13px;
+      font-weight: 500;
+      text-decoration: none;
+      white-space: nowrap;
+      transition: opacity .15s;
+    }
+
+    .nav-cta:hover {
+      opacity: .9;
+    }
+
+    .C {
+      max-width: var(--max);
+      margin: 0 auto;
+      padding: 0 24px;
+    }
+
+    section {
+      padding: var(--gap) 0;
+    }
+
+    section+section {
+      padding-top: 0;
+    }
+
+    hr.div {
+      border: none;
+      border-top: 1px solid var(--border);
+    }
+
+    .ey {
+      display: inline-block;
+      font-size: 11px;
+      font-weight: 600;
+      letter-spacing: .1em;
+      text-transform: uppercase;
+      color: var(--accent);
+      margin-bottom: 14px;
+    }
+
+    .sh {
+      font-family: var(--font-display);
+      font-size: clamp(26px, 3.5vw, 38px);
+      font-weight: 400;
+      line-height: 1.2;
+      letter-spacing: -.02em;
+      color: var(--ink);
+      margin-bottom: 16px;
+    }
+
+    .ss {
+      font-size: 17px;
+      color: var(--ink-2);
+      line-height: 1.65;
+      max-width: 560px;
+    }
+
+    .hero {
+      padding: 80px 0 72px;
+      border-bottom: 1px solid var(--border);
+    }
+
+    .hero-in {
+      max-width: var(--max);
+      margin: 0 auto;
+      padding: 0 24px;
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 64px;
+      align-items: center;
+    }
+
+    .htag {
+      display: inline-flex;
+      align-items: center;
+      gap: 7px;
+      font-size: 12px;
+      font-weight: 500;
+      color: var(--accent);
+      background: var(--accent-light);
+      border: 1px solid var(--accent-mid);
+      padding: 5px 12px;
+      border-radius: 100px;
+      margin-bottom: 22px;
+    }
+
+    .hero h1 {
+      font-family: var(--font-display);
+      font-size: clamp(30px, 4vw, 48px);
+      font-weight: 400;
+      line-height: 1.15;
+      letter-spacing: -.025em;
+      color: var(--ink);
+      margin-bottom: 20px;
+    }
+
+    .hero h1 em {
+      font-style: italic;
+      color: var(--accent);
+    }
+
+    .hero-sub {
+      font-size: 17px;
+      color: var(--ink-2);
+      line-height: 1.65;
+      margin-bottom: 32px;
+      max-width: 480px;
+    }
+
+    .ctas {
+      display: flex;
+      gap: 12px;
+      flex-wrap: wrap;
+    }
+
+    .bp {
+      background: var(--accent);
+      color: #fff;
+      padding: 12px 24px;
+      border-radius: var(--radius-sm);
+      font-size: 14px;
+      font-weight: 500;
+      text-decoration: none;
+      transition: opacity .15s;
+      display: inline-block;
+    }
+
+    .bp:hover {
+      opacity: .88;
+    }
+
+    .bg {
+      background: transparent;
+      color: var(--ink-2);
+      padding: 12px 24px;
+      border-radius: var(--radius-sm);
+      font-size: 14px;
+      font-weight: 500;
+      text-decoration: none;
+      border: 1px solid var(--border-strong);
+      transition: border-color .15s, color .15s;
+      display: inline-block;
+    }
+
+    .bg:hover {
+      border-color: var(--accent);
+      color: var(--accent);
+    }
+
+    .hv {
+      background: var(--surface-2);
+      border: 1px solid var(--border);
+      border-radius: var(--radius-lg);
+      padding: 28px;
+    }
+
+    .hv-lbl {
+      font-size: 11px;
+      font-weight: 600;
+      letter-spacing: .08em;
+      text-transform: uppercase;
+      color: var(--ink-4);
+      margin-bottom: 18px;
+    }
+
+    .proof {
+      background: var(--surface-2);
+      border-bottom: 1px solid var(--border);
+      padding: 28px 0;
+    }
+
+    .proof-in {
+      max-width: var(--max);
+      margin: 0 auto;
+      padding: 0 24px;
+      display: flex;
+      align-items: center;
+      gap: 48px;
+      flex-wrap: wrap;
+    }
+
+    .proof-lbl {
+      font-size: 12px;
+      color: var(--ink-4);
+      font-weight: 500;
+      text-transform: uppercase;
+      letter-spacing: .06em;
+    }
+
+    .proof-stats {
+      display: flex;
+      gap: 40px;
+      flex-wrap: wrap;
+    }
+
+    .psn {
+      font-size: 20px;
+      font-weight: 700;
+      color: var(--ink);
+      font-family: var(--font-display);
+      line-height: 1;
+    }
+
+    .psl {
+      font-size: 12px;
+      color: var(--ink-3);
+      margin-top: 3px;
+    }
+
+    .pdiv {
+      width: 1px;
+      height: 32px;
+      background: var(--border-strong);
+      flex-shrink: 0;
+    }
+
+    .proof-plat {
+      margin-left: auto;
+      display: flex;
+      align-items: center;
+      gap: 8px;
+      font-size: 12px;
+      color: var(--ink-3);
+    }
+
+    .proof-plat strong {
+      color: var(--ink-2);
+    }
+
+    .pain-grid {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 20px;
+      margin-top: 48px;
+    }
+
+    .pc {
+      border: 1px solid var(--border);
+      border-radius: var(--radius-md);
+      padding: 24px;
+    }
+
+    .pi {
+      width: 40px;
+      height: 40px;
+      border-radius: 10px;
+      background: var(--red-light);
+      color: var(--red);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      margin-bottom: 16px;
+    }
+
+    .pi svg {
+      width: 18px;
+      height: 18px;
+    }
+
+    .pt {
+      font-size: 15px;
+      font-weight: 600;
+      color: var(--ink);
+      margin-bottom: 8px;
+      line-height: 1.3;
+    }
+
+    .pd {
+      font-size: 14px;
+      color: var(--ink-3);
+      line-height: 1.6;
+    }
+
+    .dd {
+      padding: var(--gap) 0;
+    }
+
+    .dd-in {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 72px;
+      align-items: center;
+    }
+
+    .dd-in.fl {
+      direction: rtl;
+    }
+
+    .dd-in.fl>* {
+      direction: ltr;
+    }
+
+    .dh {
+      font-family: var(--font-display);
+      font-size: clamp(22px, 2.8vw, 32px);
+      font-weight: 400;
+      line-height: 1.25;
+      letter-spacing: -.02em;
+      color: var(--ink);
+      margin-bottom: 20px;
+    }
+
+    .dd {
+      font-size: 15px;
+      color: var(--ink-2);
+      line-height: 1.7;
+      margin-bottom: 24px;
+    }
+
+    .buls {
+      list-style: none;
+      display: flex;
+      flex-direction: column;
+      gap: 12px;
+    }
+
+    .buls li {
+      display: flex;
+      align-items: flex-start;
+      gap: 10px;
+      font-size: 14px;
+      color: var(--ink-2);
+      line-height: 1.55;
+    }
+
+    .bchk {
+      width: 18px;
+      height: 18px;
+      border-radius: 50%;
+      background: var(--teal-light);
+      color: var(--teal);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      flex-shrink: 0;
+      margin-top: 1px;
+    }
+
+    .bchk svg {
+      width: 10px;
+      height: 10px;
+    }
+
+    .dl {
+      display: inline-flex;
+      align-items: center;
+      gap: 6px;
+      font-size: 13px;
+      font-weight: 500;
+      color: var(--accent);
+      text-decoration: none;
+      margin-top: 24px;
+    }
+
+    .dl:hover {
+      text-decoration: underline;
+    }
+
+    .dv {
+      background: var(--surface-2);
+      border: 1px solid var(--border);
+      border-radius: var(--radius-lg);
+      padding: 24px;
+    }
+
+    .dvl {
+      font-size: 11px;
+      font-weight: 600;
+      letter-spacing: .08em;
+      text-transform: uppercase;
+      color: var(--ink-4);
+      margin-bottom: 16px;
+    }
+
+    .fg {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 1px;
+      background: var(--border);
+      border: 1px solid var(--border);
+      border-radius: var(--radius-lg);
+      overflow: hidden;
+      margin-top: 48px;
+    }
+
+    .fc {
+      background: var(--surface);
+      padding: 28px 24px;
+      transition: background .15s;
+    }
+
+    .fc:hover {
+      background: var(--surface-2);
+    }
+
+    .fi {
+      width: 40px;
+      height: 40px;
+      border-radius: 10px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      margin-bottom: 16px;
+    }
+
+    .fi svg {
+      width: 18px;
+      height: 18px;
+    }
+
+    .fi.bl {
+      background: var(--accent-light);
+      color: var(--accent);
+    }
+
+    .fi.tl {
+      background: var(--teal-light);
+      color: var(--teal);
+    }
+
+    .fi.am {
+      background: var(--amber-light);
+      color: var(--amber);
+    }
+
+    .ft {
+      font-size: 15px;
+      font-weight: 600;
+      color: var(--ink);
+      margin-bottom: 8px;
+      line-height: 1.3;
+    }
+
+    .fd {
+      font-size: 13px;
+      color: var(--ink-3);
+      line-height: 1.6;
+    }
+
+    .rs {
+      background: var(--surface-2);
+    }
+
+    .rg {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 20px;
+      margin-top: 48px;
+    }
+
+    .rc {
+      background: var(--surface);
+      border: 1px solid var(--border);
+      border-radius: var(--radius-md);
+      padding: 28px 24px;
+    }
+
+    .ri {
+      width: 44px;
+      height: 44px;
+      border-radius: 10px;
+      background: var(--accent-light);
+      color: var(--accent);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      margin-bottom: 18px;
+    }
+
+    .ri svg {
+      width: 20px;
+      height: 20px;
+    }
+
+    .rt {
+      font-size: 15px;
+      font-weight: 600;
+      color: var(--ink);
+      margin-bottom: 6px;
+    }
+
+    .rd {
+      font-size: 13px;
+      color: var(--ink-3);
+      line-height: 1.6;
+    }
+
+    .dark-co {
+      background: #0f2d47;
+      color: #fff;
+      padding: var(--gap) 0;
+    }
+
+    .dark-in {
+      max-width: var(--max);
+      margin: 0 auto;
+      padding: 0 24px;
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 64px;
+      align-items: center;
+    }
+
+    .dark-ey {
+      font-size: 11px;
+      font-weight: 600;
+      letter-spacing: .1em;
+      text-transform: uppercase;
+      color: #7db3e8;
+      margin-bottom: 14px;
+    }
+
+    .dark-h {
+      font-family: var(--font-display);
+      font-size: clamp(22px, 2.8vw, 32px);
+      font-weight: 400;
+      line-height: 1.25;
+      letter-spacing: -.02em;
+      color: #fff;
+      margin-bottom: 18px;
+    }
+
+    .dark-d {
+      font-size: 15px;
+      color: #b0c8e4;
+      line-height: 1.65;
+    }
+
+    .dark-buls {
+      display: flex;
+      flex-direction: column;
+      gap: 14px;
+      margin-top: 24px;
+    }
+
+    .dbul {
+      display: flex;
+      align-items: flex-start;
+      gap: 12px;
+      font-size: 14px;
+      color: #b0c8e4;
+      line-height: 1.5;
+    }
+
+    .ddot {
+      width: 6px;
+      height: 6px;
+      border-radius: 50%;
+      background: #7db3e8;
+      flex-shrink: 0;
+      margin-top: 7px;
+    }
+
+    .dbul strong {
+      color: #e8f2fd;
+    }
+
+    .dbadges {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 10px;
+      margin-top: 28px;
+    }
+
+    .dbadge {
+      display: inline-flex;
+      align-items: center;
+      gap: 6px;
+      font-size: 12px;
+      font-weight: 500;
+      color: #e8f2fd;
+      background: rgba(255, 255, 255, .08);
+      border: 1px solid rgba(255, 255, 255, .15);
+      padding: 6px 14px;
+      border-radius: 100px;
+    }
+
+    .faq-list {
+      margin-top: 48px;
+    }
+
+    .faq-item {
+      border-top: 1px solid var(--border);
+    }
+
+    .faq-item:last-child {
+      border-bottom: 1px solid var(--border);
+    }
+
+    .fq {
+      width: 100%;
+      background: none;
+      border: none;
+      padding: 22px 0;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 24px;
+      cursor: pointer;
+      text-align: left;
+      font-size: 16px;
+      font-weight: 500;
+      color: var(--ink);
+      line-height: 1.4;
+    }
+
+    .fq:hover {
+      color: var(--accent);
+    }
+
+    .fchev {
+      width: 20px;
+      height: 20px;
+      flex-shrink: 0;
+      color: var(--ink-4);
+      transition: transform .2s;
+    }
+
+    .faq-item.open .fchev {
+      transform: rotate(180deg);
+    }
+
+    .fa {
+      display: none;
+      padding: 0 0 22px;
+      font-size: 15px;
+      color: var(--ink-2);
+      line-height: 1.7;
+      max-width: 760px;
+    }
+
+    .faq-item.open .fa {
+      display: block;
+    }
+
+    .cta-s {
+      background: var(--surface-2);
+      border-top: 1px solid var(--border);
+      padding: var(--gap) 0;
+    }
+
+    .cta-in {
+      max-width: 680px;
+      margin: 0 auto;
+      padding: 0 24px;
+      text-align: center;
+    }
+
+    .cta-h {
+      font-family: var(--font-display);
+      font-size: clamp(24px, 3vw, 36px);
+      font-weight: 400;
+      line-height: 1.2;
+      letter-spacing: -.02em;
+      color: var(--ink);
+      margin-bottom: 16px;
+    }
+
+    .cta-d {
+      font-size: 16px;
+      color: var(--ink-3);
+      line-height: 1.6;
+      margin-bottom: 32px;
+    }
+
+    .cta-bs {
+      display: flex;
+      gap: 12px;
+      justify-content: center;
+      flex-wrap: wrap;
+    }
+
+    .cta-bs .bp,
+    .cta-bs .bg {
+      padding: 14px 28px;
+      font-size: 15px;
+    }
+
+    .rel-s {
+      padding: 48px 0;
+      border-top: 1px solid var(--border);
+    }
+
+    .rel-in {
+      max-width: var(--max);
+      margin: 0 auto;
+      padding: 0 24px;
+    }
+
+    .rel-lbl {
+      font-size: 12px;
+      font-weight: 600;
+      letter-spacing: .08em;
+      text-transform: uppercase;
+      color: var(--ink-4);
+      margin-bottom: 16px;
+    }
+
+    .rel-ls {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 10px;
+    }
+
+    .rl {
+      font-size: 13px;
+      font-weight: 500;
+      color: var(--ink-2);
+      text-decoration: none;
+      padding: 8px 16px;
+      border: 1px solid var(--border);
+      border-radius: var(--radius-sm);
+      transition: border-color .15s, color .15s;
+    }
+
+    .rl:hover {
+      border-color: var(--accent);
+      color: var(--accent);
+    }
+
+    footer {
+      background: var(--ink);
+      color: #a0a2ab;
+      padding: 28px 0;
+    }
+
+    .foot-in {
+      max-width: var(--max);
+      margin: 0 auto;
+      padding: 0 24px;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      flex-wrap: wrap;
+      gap: 12px;
+    }
+
+    .flogo {
+      font-size: 14px;
+      font-weight: 600;
+      color: #fff;
+    }
+
+    .flogo span {
+      color: #6b9de8;
+    }
+
+    .flinks {
+      display: flex;
+      gap: 24px;
+    }
+
+    .flinks a {
+      font-size: 13px;
+      color: #a0a2ab;
+      text-decoration: none;
+    }
+
+    .flinks a:hover {
+      color: #fff;
+    }
+
+    .fcopy {
+      font-size: 12px;
+      color: #5f6170;
+    }
+
+    @media(max-width:768px) {
+      :root {
+        --gap: 64px
+      }
+
+      .hero-in {
+        grid-template-columns: 1fr;
+        gap: 40px
+      }
+
+      .hv {
+        display: none
+      }
+
+      .pain-grid {
+        grid-template-columns: 1fr
+      }
+
+      .fg {
+        grid-template-columns: 1fr 1fr
+      }
+
+      .dd-in {
+        grid-template-columns: 1fr;
+        gap: 40px
+      }
+
+      .dd-in.fl {
+        direction: ltr
+      }
+
+      .rg {
+        grid-template-columns: 1fr
+      }
+
+      .dark-in {
+        grid-template-columns: 1fr;
+        gap: 40px
+      }
+
+      .proof-plat {
+        margin-left: 0
+      }
+
+      .nav-bc {
+        display: none
+      }
+    }
+
+    @media(max-width:540px) {
+      .fg {
+        grid-template-columns: 1fr
+      }
+    }
+
+    @media(prefers-reduced-motion:reduce) {
+      * {
+        transition: none !important
+      }
+    }
+
+    .audit-steps {
+      display: flex;
+      flex-direction: column;
+      gap: 6px
+    }
+
+    .as {
+      display: flex;
+      align-items: flex-start;
+      gap: 12px;
+      padding: 10px 14px;
+      background: var(--surface);
+      border: 1px solid var(--border);
+      border-radius: var(--radius-sm)
+    }
+
+    .as-num {
+      width: 24px;
+      height: 24px;
+      border-radius: 50%;
+      background: var(--accent-light);
+      color: var(--accent);
+      font-size: 11px;
+      font-weight: 700;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      flex-shrink: 0
+    }
+
+    .as-text {
+      font-size: 12px;
+      color: var(--ink-2);
+      flex: 1
+    }
+
+    .as-badge {
+      font-size: 10px;
+      font-weight: 600;
+      padding: 2px 7px;
+      border-radius: 100px;
+      white-space: nowrap;
+      background: var(--teal-light);
+      color: var(--teal)
+    }
+
+    .scheme-grid {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 10px;
+      margin-top: 0
+    }
+
+    .sc {
+      background: var(--surface);
+      border: 1px solid var(--border);
+      border-radius: var(--radius-md);
+      padding: 14px
+    }
+
+    .sc-label {
+      font-size: 10px;
+      font-weight: 600;
+      color: var(--ink-4);
+      text-transform: uppercase;
+      letter-spacing: .06em;
+      margin-bottom: 4px
+    }
+
+    .sc-n {
+      font-size: 18px;
+      font-weight: 700;
+      color: var(--ink);
+      font-family: var(--font-display)
+    }
+
+    .sc-s {
+      font-size: 11px;
+      color: var(--ink-3);
+      margin-top: 3px
+    }
+
+    .sc-bar {
+      height: 4px;
+      background: var(--surface-3);
+      border-radius: 2px;
+      margin-top: 8px;
+      overflow: hidden
+    }
+
+    .sc-fill {
+      height: 100%;
+      border-radius: 2px;
+      background: var(--teal)
+    }
+  </style>
+<!-- TEMPLATE CSS (IMPORTANT) -->
+    <link rel="stylesheet" href="/../assets/quantbit_website/css/bootstrap.min.css">
+    <link rel="stylesheet" href="/../assets/quantbit_website/css/font-awesome.css">
+    <link rel="stylesheet" href="/../assets/quantbit_website/css/animate.css">
+    <link rel="stylesheet" href="/../assets/quantbit_website/css/magnific-popup.css">
+    <link rel="stylesheet" href="/../assets/quantbit_website/css/meanmenu.css">
+    <link rel="stylesheet" href="/../assets/quantbit_website/css/slick.css">
+    <link rel="stylesheet" href="/../assets/quantbit_website/css/nice-select.css">
+    <link rel="stylesheet" href="/../assets/quantbit_website/css/main.css">
+    <link rel="stylesheet" href="style.css">
+    <!-- <link rel="stylesheet" href="/assets/quantbit_website/css/_shared.css"> -->
+
+
+    <!-- OPTIONAL CUSTOM -->
+    <link rel="stylesheet" href="/../assets/quantbit_website/css/hrms.css">
+      <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
+<!-- Google Tag Manager -->
+<script>(function(w,d,s,l,i){w[l]=w[l]||[];w[l].push({'gtm.start':
+new Date().getTime(),event:'gtm.js'});var f=d.getElementsByTagName(s)[0],
+j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
+'https://www.googletagmanager.com/gtm.js?id='+i+dl;f.parentNode.insertBefore(j,f);
+})(window,document,'script','dataLayer','GTM-P98Z6G8D');</script>
+<!-- End Google Tag Manager -->
+
 </head>
+
 <body>
-<nav class="nav" aria-label="Site navigation">
-  <div class="nav-inner">
-    <a href="https://quantbit.io" class="nav-logo">Quantbit <span>HISx</span></a>
-    <nav class="nav-bc" aria-label="Breadcrumb"><a href="/">Home</a><span class="sep">›</span><a href="/hisx">HISx</a><span class="sep">›</span><span class="cur">Government &amp; public hospitals</span></nav>
-    <a href="/hisx/demo" class="nav-cta">Book a demo</a>
-  </div>
-</nav>
+  <div id="header"></div>
 
-<section class="hero">
-  <div class="hero-in">
-    <div>
-      <div class="htag"><svg width="13" height="13" viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="1.5" aria-hidden="true"><rect x="3" y="2" width="10" height="13" rx="1.5"/><path d="M6 6h4M6 9h4M6 12h2"/></svg>Built for government &amp; public hospitals</div>
-      <h1>Government hospital pharmacy — <em>audit-ready from day one</em></h1>
-      <p class="hero-sub">Complete procurement audit trail, free medicine scheme tracking alongside paid pharmacy, NDPS narcotics compliance, ward indent accountability, and medical equipment management — built for the accountability requirements of public healthcare institutions.</p>
-      <div class="ctas"><a href="/hisx/demo" class="bp">Request a demo</a><a href="#features" class="bg">See capabilities ↓</a></div>
-    </div>
-    <div class="hv" aria-label="Free medicine scheme utilisation dashboard">
-      <div class="hv-lbl">Free medicine scheme utilisation — current quarter</div>
-      <div class="scheme-grid">
-        <div class="sc"><div class="sc-label">Jan Aushadhi items</div><div class="sc-n">842</div><div class="sc-s">Unique items dispensed free</div><div class="sc-bar"><div class="sc-fill" style="width:84%"></div></div></div>
-        <div class="sc"><div class="sc-label">Free units dispensed</div><div class="sc-n">24,180</div><div class="sc-s">This quarter · all patients</div><div class="sc-bar"><div class="sc-fill" style="width:76%"></div></div></div>
-        <div class="sc"><div class="sc-label">Scheme stock value</div><div class="sc-n">₹ 18.4 L</div><div class="sc-s">Current free stock holding</div><div class="sc-bar"><div class="sc-fill" style="width:62%"></div></div></div>
-        <div class="sc"><div class="sc-label">Scheme utilisation</div><div class="sc-n">91%</div><div class="sc-s">vs state health dept target</div><div class="sc-bar"><div class="sc-fill" style="width:91%"></div></div></div>
-      </div>
-    </div>
-  </div>
-</section>
-
-<div class="proof">
-  <div class="proof-in">
-    <span class="proof-lbl">Government-specific</span>
-    <div class="proof-stats">
-      <div><div class="psn">Full audit trail</div><div class="psl">Every PO decision documented</div></div>
-      <div class="pdiv" aria-hidden="true"></div>
-      <div><div class="psn">Free + paid</div><div class="psl">Separate scheme tracking</div></div>
-      <div class="pdiv" aria-hidden="true"></div>
-      <div><div class="psn">CAG-ready</div><div class="psl">On-demand audit reports</div></div>
-    </div>
-    <div class="proof-plat"><svg width="14" height="14" viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="1.5" aria-hidden="true"><rect x="2" y="2" width="12" height="12" rx="2"/></svg>Built on <strong>&nbsp;ERPNext / Frappe</strong></div>
-  </div>
-</div>
-
-<section aria-labelledby="pain-h">
-  <div class="C">
-    <span class="ey">Built for your challenges</span>
-    <h2 class="sh" id="pain-h">Three accountability problems unique to government hospitals</h2>
-    <p class="ss">Government hospital procurement operates under strict oversight — every purchase decision must be documented, every free medicine unit must be accounted for, and every ward consumption must be reconciled. Manual systems cannot keep up.</p>
-    <div class="pain-grid">
-      <div class="pc"><div class="pi" aria-hidden="true"><svg viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="1.5"><rect x="3" y="2" width="10" height="13" rx="1.5"/><path d="M6 6h4M6 9h4M6 12h2"/></svg></div><h3 class="pt">Procurement audit failures — no digital trail for approval decisions</h3><p class="pd">When procurement approvals happen verbally or by paper signature, a CAG audit or state health department review cannot trace who approved what, when, and against which sanctioned rates. Audit findings from missing documentation are avoidable.</p></div>
-      <div class="pc"><div class="pi" aria-hidden="true"><svg viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M2 8h12M8 2v12"/></svg></div><h3 class="pt">Free medicine scheme stock mixed with paid stock — utilisation reports inaccurate</h3><p class="pd">When free medicine scheme stock is stored alongside paid pharmacy stock without system separation, utilisation reports submitted to the state health department are estimates. Reconciliation is impossible without item-level tracking.</p></div>
-      <div class="pc"><div class="pi" aria-hidden="true"><svg viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M3 4h10M3 8h7M3 12h4"/></svg></div><h3 class="pt">Ward consumption unaccounted — excess issued, nobody responsible</h3><p class="pd">Without digital ward indents with approved quantities and patient-level reconciliation, excess medicines issued to wards are never recovered or written off formally. Unexplained stock losses accumulate until a physical count reveals the scale of the problem.</p></div>
-    </div>
-  </div>
-</section>
-
-<hr class="div">
-
-<section class="dd" id="features" aria-labelledby="audit-h">
-  <div class="C">
-    <div class="dd-in">
+  <section class="hero">
+    <div class="hero-in">
       <div>
-        <span class="ey">Procurement audit trail</span>
-        <h2 class="dh" id="audit-h">Every procurement decision documented — approval, rate, vendor, and quantity — permanently</h2>
-        <p class="dd">HISx creates a complete and tamper-proof audit trail for every purchase from the initial requisition through vendor selection, approval, order, and receipt. No oral approvals, no undocumented rate deviations.</p>
-        <ul class="buls" aria-label="Procurement audit features">
-          <li><span class="bchk" aria-hidden="true"><svg viewBox="0 0 10 10" fill="none" stroke="currentColor" stroke-width="2"><path d="M2 5l2.5 2.5L8 3"/></svg></span>Digital approval at every stage — PR, PO, GRN — with user, timestamp, and digital signature permanently logged</li>
-          <li><span class="bchk" aria-hidden="true"><svg viewBox="0 0 10 10" fill="none" stroke="currentColor" stroke-width="2"><path d="M2 5l2.5 2.5L8 3"/></svg></span>Rate contract enforcement — procurement above contracted rates blocked without documented approval and reason</li>
-          <li><span class="bchk" aria-hidden="true"><svg viewBox="0 0 10 10" fill="none" stroke="currentColor" stroke-width="2"><path d="M2 5l2.5 2.5L8 3"/></svg></span>CAG and audit committee reports generated on demand — no manual compilation from paper files</li>
-          <li><span class="bchk" aria-hidden="true"><svg viewBox="0 0 10 10" fill="none" stroke="currentColor" stroke-width="2"><path d="M2 5l2.5 2.5L8 3"/></svg></span>Vendor performance tracking — delivery adherence, quality rejections, and rate compliance across all purchase orders</li>
-        </ul>
-        <a href="/solutions/hospital-procurement-automation" class="dl">Procurement automation guide <svg viewBox="0 0 14 14" fill="none" stroke="currentColor" stroke-width="1.5" aria-hidden="true"><path d="M2 7h10M7 2l5 5-5 5"/></svg></a>
+        <div class="htag"><svg width="13" height="13" viewBox="0 0 16 16" fill="none" stroke="currentColor"
+            stroke-width="1.5" aria-hidden="true">
+            <rect x="3" y="2" width="10" height="13" rx="1.5" />
+            <path d="M6 6h4M6 9h4M6 12h2" />
+          </svg>Built for government &amp; public hospitals</div>
+        <h1>Government hospital pharmacy — <em>audit-ready from day one</em></h1>
+        <p class="hero-sub">Complete procurement audit trail, free medicine scheme tracking alongside paid pharmacy,
+          NDPS narcotics compliance, ward indent accountability, and medical equipment management — built for the
+          accountability requirements of public healthcare institutions.</p>
+        <div class="ctas"><a href="/hisx/demo" class="bp">Request a demo</a><a href="#features" class="bg">See
+            capabilities ↓</a></div>
       </div>
-      <div class="dv" aria-label="Procurement audit workflow">
-        <div class="dvl">Procurement audit trail — Purchase Order #PO-2025-0441</div>
-        <div class="audit-steps">
-          <div class="as"><div class="as-num" aria-hidden="true">1</div><span class="as-text">PR raised — Store keeper, Pharmacy dept</span><span class="as-badge">Logged</span></div>
-          <div class="as"><div class="as-num" aria-hidden="true">2</div><span class="as-text">HOD approved — Dr. S. Kulkarni, 14 Jan 09:42</span><span class="as-badge">Signed</span></div>
-          <div class="as"><div class="as-num" aria-hidden="true">3</div><span class="as-text">PO raised — M/s Apex Pharma, contracted rate applied</span><span class="as-badge">Logged</span></div>
-          <div class="as"><div class="as-num" aria-hidden="true">4</div><span class="as-text">GRN processed — partial delivery, 80% received</span><span class="as-badge">Logged</span></div>
-          <div class="as"><div class="as-num" aria-hidden="true">5</div><span class="as-text">Balance GRN pending — outstanding tracked on PO</span><span class="as-badge">Open</span></div>
+      <div class="hv" aria-label="Free medicine scheme utilisation dashboard">
+        <div class="hv-lbl">Free medicine scheme utilisation — current quarter</div>
+        <div class="scheme-grid">
+          <div class="sc">
+            <div class="sc-label">Jan Aushadhi items</div>
+            <div class="sc-n">842</div>
+            <div class="sc-s">Unique items dispensed free</div>
+            <div class="sc-bar">
+              <div class="sc-fill" style="width:84%"></div>
+            </div>
+          </div>
+          <div class="sc">
+            <div class="sc-label">Free units dispensed</div>
+            <div class="sc-n">24,180</div>
+            <div class="sc-s">This quarter · all patients</div>
+            <div class="sc-bar">
+              <div class="sc-fill" style="width:76%"></div>
+            </div>
+          </div>
+          <div class="sc">
+            <div class="sc-label">Scheme stock value</div>
+            <div class="sc-n">₹ 18.4 L</div>
+            <div class="sc-s">Current free stock holding</div>
+            <div class="sc-bar">
+              <div class="sc-fill" style="width:62%"></div>
+            </div>
+          </div>
+          <div class="sc">
+            <div class="sc-label">Scheme utilisation</div>
+            <div class="sc-n">91%</div>
+            <div class="sc-s">vs state health dept target</div>
+            <div class="sc-bar">
+              <div class="sc-fill" style="width:91%"></div>
+            </div>
+          </div>
         </div>
-        <div style="margin-top:10px;font-size:11px;color:var(--ink-4)">Full trail available for CAG audit, RTI requests, and departmental inquiries. Cannot be altered post-approval.</div>
       </div>
     </div>
-  </div>
-</section>
+  </section>
 
-<hr class="div">
-
-<section aria-labelledby="feat-h">
-  <div class="C">
-    <span class="ey">All capabilities</span>
-    <h2 class="sh" id="feat-h">Built for public healthcare accountability</h2>
-    <div class="fg" role="list">
-      <div class="fc" role="listitem"><div class="fi bl" aria-hidden="true"><svg viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M2 4h12l-1.5 7H3.5L2 4z"/><circle cx="6" cy="13" r="1"/><circle cx="11" cy="13" r="1"/></svg></div><h3 class="ft">Tendering &amp; rate contract management</h3><p class="fd">Rate contracts from state tendering processes loaded into HISx — applied automatically at PO generation. Procurement above contracted rates blocked and flagged. Full rate deviation audit log for Vigilance Committees.</p></div>
-      <div class="fc" role="listitem"><div class="fi tl" aria-hidden="true"><svg viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M8 2l1.8 3.6 4 .6-2.9 2.8.7 4L8 11.1l-3.6 1.9.7-4L2 6.2l4-.6L8 2z"/></svg></div><h3 class="ft">NDPS &amp; narcotics compliance</h3><p class="fd">System-enforced double-signature for NDPS drugs. Automated narcotics register. Schedule H and NDPS compliance reports for drug inspector visits. All dispensing traceable to patient and prescribing officer.</p></div>
-      <div class="fc" role="listitem"><div class="fi am" aria-hidden="true"><svg viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="1.5"><rect x="2" y="2" width="12" height="12" rx="2"/><path d="M6 8l2 2 4-4"/></svg></div><h3 class="ft">Ward indent accountability</h3><p class="fd">Digital ward indents within sanctioned limits. Dispensing linked to patient admission numbers. Weekly reconciliation of bulk ward consumption vs patient-wise consumption. Excess consumption investigation workflow.</p></div>
-      <div class="fc" role="listitem"><div class="fi bl" aria-hidden="true"><svg viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="1.5"><rect x="2" y="6" width="12" height="8" rx="1.5"/><path d="M5 6V4a3 3 0 0 1 6 0v2"/></svg></div><h3 class="ft">Medical equipment &amp; AMC</h3><p class="fd">Asset register with full equipment lifecycle — procurement to disposal. AMC/CMC contracts tracked with renewal alerts. Breakdown and preventive maintenance records for NABH and state health department requirements.</p></div>
-      <div class="fc" role="listitem"><div class="fi tl" aria-hidden="true"><svg viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="1.5"><rect x="2" y="3" width="12" height="10" rx="1.5"/><path d="M5 7h6M5 10h4"/></svg></div><h3 class="ft">Drug utilisation reporting</h3><p class="fd">Drug utilisation reports for state health department submissions — by item, department, patient category, and time period. Free medicine scheme utilisation, NDPS consumption, and high-value drug reports on demand.</p></div>
-      <div class="fc" role="listitem"><div class="fi am" aria-hidden="true"><svg viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M13 4L6 11l-3-3"/></svg></div><h3 class="ft">Inventory &amp; expiry management</h3><p class="fd">Batch and expiry tracking for all medicines with FEFO enforcement. Physical stock audit workflows. As-on-Date reporting for inspection visits. Expiry write-off with approval workflow and documented justification.</p></div>
+  <div class="proof">
+    <div class="proof-in">
+      <span class="proof-lbl">Government-specific</span>
+      <div class="proof-stats">
+        <div>
+          <div class="psn">Full audit trail</div>
+          <div class="psl">Every PO decision documented</div>
+        </div>
+        <div class="pdiv" aria-hidden="true"></div>
+        <div>
+          <div class="psn">Free + paid</div>
+          <div class="psl">Separate scheme tracking</div>
+        </div>
+        <div class="pdiv" aria-hidden="true"></div>
+        <div>
+          <div class="psn">CAG-ready</div>
+          <div class="psl">On-demand audit reports</div>
+        </div>
+      </div>
+      <div class="proof-plat"><svg width="14" height="14" viewBox="0 0 16 16" fill="none" stroke="currentColor"
+          stroke-width="1.5" aria-hidden="true">
+          <rect x="2" y="2" width="12" height="12" rx="2" />
+        </svg>Built on <strong>&nbsp;ERPNext / Frappe</strong></div>
     </div>
   </div>
-</section>
 
-<section aria-labelledby="faq-h">
-  <div class="C">
-    <span class="ey">Common questions</span>
-    <h2 class="sh" id="faq-h">Frequently asked questions</h2>
-    <div class="faq-list" role="list">
-      <div class="faq-item" role="listitem"><button class="fq" aria-expanded="false" onclick="tFaq(this)">How does HISx support government hospital procurement audit requirements?<svg class="fchev" viewBox="0 0 20 20" fill="none" stroke="currentColor" stroke-width="1.5" aria-hidden="true"><path d="M5 7.5l5 5 5-5"/></svg></button><div class="fa fa-gov-1">HISx provides a complete and tamper-proof procurement audit trail covering every purchase request, approval decision, purchase order, goods receipt, and payment — with user attribution, timestamps, and digital signatures at each stage. Every deviation from approved rates, quantities, or vendor lists is flagged and recorded. This documentation is available on demand for audit committees, state health department reviews, CAG audits, and departmental inquiries.</div></div>
-      <div class="faq-item" role="listitem"><button class="fq" aria-expanded="false" onclick="tFaq(this)">Can HISx track free medicine scheme distribution separately from paid pharmacy stock?<svg class="fchev" viewBox="0 0 20 20" fill="none" stroke="currentColor" stroke-width="1.5" aria-hidden="true"><path d="M5 7.5l5 5 5-5"/></svg></button><div class="fa fa-gov-2">Yes. HISx manages free medicine scheme stock and paid pharmacy stock within the same system as separate inventory categories. Free medicines received under government schemes are tracked with separate GRNs, distribution records, and consumption reports. Patient dispensing under each category is recorded and reported separately, enabling accurate scheme utilisation reports for state health department submissions.</div></div>
-      <div class="faq-item" role="listitem"><button class="fq" aria-expanded="false" onclick="tFaq(this)">Does HISx support tendering and rate contract management for government hospitals?<svg class="fchev" viewBox="0 0 20 20" fill="none" stroke="currentColor" stroke-width="1.5" aria-hidden="true"><path d="M5 7.5l5 5 5-5"/></svg></button><div class="fa">Yes. HISx supports the government hospital procurement cycle including rate contracts finalised through tender processes. Approved rate contracts are loaded into the system and applied automatically at purchase order generation — preventing procurement above contracted rates. Deviations from contracted rates require documented approval and are logged for audit purposes.</div></div>
-      <div class="faq-item" role="listitem"><button class="fq" aria-expanded="false" onclick="tFaq(this)">How does HISx handle ward indent controls for government hospitals with strict consumption accountability?<svg class="fchev" viewBox="0 0 20 20" fill="none" stroke="currentColor" stroke-width="1.5" aria-hidden="true"><path d="M5 7.5l5 5 5-5"/></svg></button><div class="fa">HISx ward indent controls enforce accountability at every stage — wards raise digital indents within authorised limits, pharmacy reviews and validates against approved indent quantities, and dispensing is linked to patient admission records. Bulk ward consumption is reconciled against patient-wise consumption weekly. Any excess consumption or unexplained variance triggers a documented investigation workflow before write-off approval.</div></div>
-      <div class="faq-item" role="listitem"><button class="fq" aria-expanded="false" onclick="tFaq(this)">Can HISx generate drug utilisation reports for state health department submissions?<svg class="fchev" viewBox="0 0 20 20" fill="none" stroke="currentColor" stroke-width="1.5" aria-hidden="true"><path d="M5 7.5l5 5 5-5"/></svg></button><div class="fa">Yes. HISx generates drug utilisation reports covering consumption by item, department, patient category, and time period — formatted for state health department reporting requirements. Free medicine scheme utilisation, NDPS consumption, and high-value drug usage reports are available on demand. Procurement performance reports covering vendor adherence to rate contracts and delivery schedules are also available for department reviews.</div></div>
+  <section aria-labelledby="pain-h">
+    <div class="C">
+      <span class="ey">Built for your challenges</span>
+      <h2 class="sh" id="pain-h">Three accountability problems unique to government hospitals</h2>
+      <p class="ss">Government hospital procurement operates under strict oversight — every purchase decision must be
+        documented, every free medicine unit must be accounted for, and every ward consumption must be reconciled.
+        Manual systems cannot keep up.</p>
+      <div class="pain-grid">
+        <div class="pc">
+          <div class="pi" aria-hidden="true"><svg viewBox="0 0 16 16" fill="none" stroke="currentColor"
+              stroke-width="1.5">
+              <rect x="3" y="2" width="10" height="13" rx="1.5" />
+              <path d="M6 6h4M6 9h4M6 12h2" />
+            </svg></div>
+          <h3 class="pt">Procurement audit failures — no digital trail for approval decisions</h3>
+          <p class="pd">When procurement approvals happen verbally or by paper signature, a CAG audit or state health
+            department review cannot trace who approved what, when, and against which sanctioned rates. Audit findings
+            from missing documentation are avoidable.</p>
+        </div>
+        <div class="pc">
+          <div class="pi" aria-hidden="true"><svg viewBox="0 0 16 16" fill="none" stroke="currentColor"
+              stroke-width="1.5">
+              <path d="M2 8h12M8 2v12" />
+            </svg></div>
+          <h3 class="pt">Free medicine scheme stock mixed with paid stock — utilisation reports inaccurate</h3>
+          <p class="pd">When free medicine scheme stock is stored alongside paid pharmacy stock without system
+            separation, utilisation reports submitted to the state health department are estimates. Reconciliation is
+            impossible without item-level tracking.</p>
+        </div>
+        <div class="pc">
+          <div class="pi" aria-hidden="true"><svg viewBox="0 0 16 16" fill="none" stroke="currentColor"
+              stroke-width="1.5">
+              <path d="M3 4h10M3 8h7M3 12h4" />
+            </svg></div>
+          <h3 class="pt">Ward consumption unaccounted — excess issued, nobody responsible</h3>
+          <p class="pd">Without digital ward indents with approved quantities and patient-level reconciliation, excess
+            medicines issued to wards are never recovered or written off formally. Unexplained stock losses accumulate
+            until a physical count reveals the scale of the problem.</p>
+        </div>
+      </div>
     </div>
-  </div>
-</section>
+  </section>
 
-<hr class="div">
-<section class="cta-s" aria-labelledby="cta-h"><div class="cta-in"><h2 class="cta-h" id="cta-h">See HISx in a government hospital context</h2><p class="cta-d">Book a 30-minute demo focused on procurement audit trail, free medicine scheme tracking, and NDPS compliance for your facility type.</p><div class="cta-bs"><a href="/hisx/demo" class="bp">Book a demo</a><a href="/hisx/roi-calculator" class="bg">Calculate ROI</a></div></div></section>
-<nav class="rel-s" aria-label="Related pages"><div class="rel-in"><div style="display:grid;grid-template-columns:1fr 1fr;gap:28px"><div><div class="rel-lbl">HISx modules</div><div class="rel-ls"><a href="/hisx/procurement" class="rl">Procurement &amp; vendor</a><a href="/hisx/narcotics-compliance" class="rl">Narcotics &amp; compliance</a><a href="/hisx/inventory" class="rl">Inventory management</a><a href="/hisx/asset-management" class="rl">Asset management</a><a href="/hisx" class="rl">All modules →</a></div></div><div><div class="rel-lbl">Related guides</div><div class="rel-ls"><a href="/solutions/hospital-procurement-automation" class="rl">Procurement automation</a><a href="/solutions/narcotics-schedule-h" class="rl">Schedule H &amp; NDPS guide</a><a href="/hospital-inventory-software" class="rl">Multi-specialty hospitals</a></div></div></div></div></nav>
-<footer><div class="foot-in"><div class="flogo">Quantbit <span>Technologies</span></div><div class="flinks"><a href="/hisx">HISx</a><a href="/hisx/demo">Request demo</a><a href="/contact">Contact</a><a href="/privacy">Privacy</a></div><div class="fcopy">© 2025 Quantbit Technologies Pvt. Ltd. · Certified Frappe &amp; ERPNext Partner</div></div></footer>
-<script>function tFaq(b){var i=b.closest('.faq-item'),o=i.classList.contains('open');document.querySelectorAll('.faq-item').forEach(function(x){x.classList.remove('open');x.querySelector('.fq').setAttribute('aria-expanded','false')});if(!o){i.classList.add('open');b.setAttribute('aria-expanded','true')}}</script>
+  <hr class="div">
+
+  <section class="dd" id="features" aria-labelledby="audit-h">
+    <div class="C">
+      <div class="dd-in">
+        <div>
+          <span class="ey">Procurement audit trail</span>
+          <h2 class="dh" id="audit-h">Every procurement decision documented — approval, rate, vendor, and quantity —
+            permanently</h2>
+          <p class="dd">HISx creates a complete and tamper-proof audit trail for every purchase from the initial
+            requisition through vendor selection, approval, order, and receipt. No oral approvals, no undocumented rate
+            deviations.</p>
+          <ul class="buls" aria-label="Procurement audit features">
+            <li><span class="bchk" aria-hidden="true"><svg viewBox="0 0 10 10" fill="none" stroke="currentColor"
+                  stroke-width="2">
+                  <path d="M2 5l2.5 2.5L8 3" />
+                </svg></span>Digital approval at every stage — PR, PO, GRN — with user, timestamp, and digital signature
+              permanently logged</li>
+            <li><span class="bchk" aria-hidden="true"><svg viewBox="0 0 10 10" fill="none" stroke="currentColor"
+                  stroke-width="2">
+                  <path d="M2 5l2.5 2.5L8 3" />
+                </svg></span>Rate contract enforcement — procurement above contracted rates blocked without documented
+              approval and reason</li>
+            <li><span class="bchk" aria-hidden="true"><svg viewBox="0 0 10 10" fill="none" stroke="currentColor"
+                  stroke-width="2">
+                  <path d="M2 5l2.5 2.5L8 3" />
+                </svg></span>CAG and audit committee reports generated on demand — no manual compilation from paper
+              files</li>
+            <li><span class="bchk" aria-hidden="true"><svg viewBox="0 0 10 10" fill="none" stroke="currentColor"
+                  stroke-width="2">
+                  <path d="M2 5l2.5 2.5L8 3" />
+                </svg></span>Vendor performance tracking — delivery adherence, quality rejections, and rate compliance
+              across all purchase orders</li>
+          </ul>
+          <a href="/solutions/hospital-procurement-automation" class="dl">Procurement automation guide <svg
+              viewBox="0 0 14 14" fill="none" stroke="currentColor" stroke-width="1.5" aria-hidden="true">
+              <path d="M2 7h10M7 2l5 5-5 5" />
+            </svg></a>
+        </div>
+        <div class="dv" aria-label="Procurement audit workflow">
+          <div class="dvl">Procurement audit trail — Purchase Order #PO-2025-0441</div>
+          <div class="audit-steps">
+            <div class="as">
+              <div class="as-num" aria-hidden="true">1</div><span class="as-text">PR raised — Store keeper, Pharmacy
+                dept</span><span class="as-badge">Logged</span>
+            </div>
+            <div class="as">
+              <div class="as-num" aria-hidden="true">2</div><span class="as-text">HOD approved — Dr. S. Kulkarni, 14 Jan
+                09:42</span><span class="as-badge">Signed</span>
+            </div>
+            <div class="as">
+              <div class="as-num" aria-hidden="true">3</div><span class="as-text">PO raised — M/s Apex Pharma,
+                contracted rate applied</span><span class="as-badge">Logged</span>
+            </div>
+            <div class="as">
+              <div class="as-num" aria-hidden="true">4</div><span class="as-text">GRN processed — partial delivery, 80%
+                received</span><span class="as-badge">Logged</span>
+            </div>
+            <div class="as">
+              <div class="as-num" aria-hidden="true">5</div><span class="as-text">Balance GRN pending — outstanding
+                tracked on PO</span><span class="as-badge">Open</span>
+            </div>
+          </div>
+          <div style="margin-top:10px;font-size:11px;color:var(--ink-4)">Full trail available for CAG audit, RTI
+            requests, and departmental inquiries. Cannot be altered post-approval.</div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <hr class="div">
+
+  <section aria-labelledby="feat-h">
+    <div class="C">
+      <span class="ey">All capabilities</span>
+      <h2 class="sh" id="feat-h">Built for public healthcare accountability</h2>
+      <div class="fg" role="list">
+        <div class="fc" role="listitem">
+          <div class="fi bl" aria-hidden="true"><svg viewBox="0 0 16 16" fill="none" stroke="currentColor"
+              stroke-width="1.5">
+              <path d="M2 4h12l-1.5 7H3.5L2 4z" />
+              <circle cx="6" cy="13" r="1" />
+              <circle cx="11" cy="13" r="1" />
+            </svg></div>
+          <h3 class="ft">Tendering &amp; rate contract management</h3>
+          <p class="fd">Rate contracts from state tendering processes loaded into HISx — applied automatically at PO
+            generation. Procurement above contracted rates blocked and flagged. Full rate deviation audit log for
+            Vigilance Committees.</p>
+        </div>
+        <div class="fc" role="listitem">
+          <div class="fi tl" aria-hidden="true"><svg viewBox="0 0 16 16" fill="none" stroke="currentColor"
+              stroke-width="1.5">
+              <path d="M8 2l1.8 3.6 4 .6-2.9 2.8.7 4L8 11.1l-3.6 1.9.7-4L2 6.2l4-.6L8 2z" />
+            </svg></div>
+          <h3 class="ft">NDPS &amp; narcotics compliance</h3>
+          <p class="fd">System-enforced double-signature for NDPS drugs. Automated narcotics register. Schedule H and
+            NDPS compliance reports for drug inspector visits. All dispensing traceable to patient and prescribing
+            officer.</p>
+        </div>
+        <div class="fc" role="listitem">
+          <div class="fi am" aria-hidden="true"><svg viewBox="0 0 16 16" fill="none" stroke="currentColor"
+              stroke-width="1.5">
+              <rect x="2" y="2" width="12" height="12" rx="2" />
+              <path d="M6 8l2 2 4-4" />
+            </svg></div>
+          <h3 class="ft">Ward indent accountability</h3>
+          <p class="fd">Digital ward indents within sanctioned limits. Dispensing linked to patient admission numbers.
+            Weekly reconciliation of bulk ward consumption vs patient-wise consumption. Excess consumption investigation
+            workflow.</p>
+        </div>
+        <div class="fc" role="listitem">
+          <div class="fi bl" aria-hidden="true"><svg viewBox="0 0 16 16" fill="none" stroke="currentColor"
+              stroke-width="1.5">
+              <rect x="2" y="6" width="12" height="8" rx="1.5" />
+              <path d="M5 6V4a3 3 0 0 1 6 0v2" />
+            </svg></div>
+          <h3 class="ft">Medical equipment &amp; AMC</h3>
+          <p class="fd">Asset register with full equipment lifecycle — procurement to disposal. AMC/CMC contracts
+            tracked with renewal alerts. Breakdown and preventive maintenance records for NABH and state health
+            department requirements.</p>
+        </div>
+        <div class="fc" role="listitem">
+          <div class="fi tl" aria-hidden="true"><svg viewBox="0 0 16 16" fill="none" stroke="currentColor"
+              stroke-width="1.5">
+              <rect x="2" y="3" width="12" height="10" rx="1.5" />
+              <path d="M5 7h6M5 10h4" />
+            </svg></div>
+          <h3 class="ft">Drug utilisation reporting</h3>
+          <p class="fd">Drug utilisation reports for state health department submissions — by item, department, patient
+            category, and time period. Free medicine scheme utilisation, NDPS consumption, and high-value drug reports
+            on demand.</p>
+        </div>
+        <div class="fc" role="listitem">
+          <div class="fi am" aria-hidden="true"><svg viewBox="0 0 16 16" fill="none" stroke="currentColor"
+              stroke-width="1.5">
+              <path d="M13 4L6 11l-3-3" />
+            </svg></div>
+          <h3 class="ft">Inventory &amp; expiry management</h3>
+          <p class="fd">Batch and expiry tracking for all medicines with FEFO enforcement. Physical stock audit
+            workflows. As-on-Date reporting for inspection visits. Expiry write-off with approval workflow and
+            documented justification.</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section aria-labelledby="faq-h">
+    <div class="C">
+      <span class="ey">Common questions</span>
+      <h2 class="sh" id="faq-h">Frequently asked questions</h2>
+      <div class="faq-list" role="list">
+        <div class="faq-item" role="listitem"><button class="fq" aria-expanded="false" onclick="tFaq(this)">How does
+            HISx support government hospital procurement audit requirements?<svg class="fchev" viewBox="0 0 20 20"
+              fill="none" stroke="currentColor" stroke-width="1.5" aria-hidden="true">
+              <path d="M5 7.5l5 5 5-5" />
+            </svg></button>
+          <div class="fa fa-gov-1">HISx provides a complete and tamper-proof procurement audit trail covering every
+            purchase request, approval decision, purchase order, goods receipt, and payment — with user attribution,
+            timestamps, and digital signatures at each stage. Every deviation from approved rates, quantities, or vendor
+            lists is flagged and recorded. This documentation is available on demand for audit committees, state health
+            department reviews, CAG audits, and departmental inquiries.</div>
+        </div>
+        <div class="faq-item" role="listitem"><button class="fq" aria-expanded="false" onclick="tFaq(this)">Can HISx
+            track free medicine scheme distribution separately from paid pharmacy stock?<svg class="fchev"
+              viewBox="0 0 20 20" fill="none" stroke="currentColor" stroke-width="1.5" aria-hidden="true">
+              <path d="M5 7.5l5 5 5-5" />
+            </svg></button>
+          <div class="fa fa-gov-2">Yes. HISx manages free medicine scheme stock and paid pharmacy stock within the same
+            system as separate inventory categories. Free medicines received under government schemes are tracked with
+            separate GRNs, distribution records, and consumption reports. Patient dispensing under each category is
+            recorded and reported separately, enabling accurate scheme utilisation reports for state health department
+            submissions.</div>
+        </div>
+        <div class="faq-item" role="listitem"><button class="fq" aria-expanded="false" onclick="tFaq(this)">Does HISx
+            support tendering and rate contract management for government hospitals?<svg class="fchev"
+              viewBox="0 0 20 20" fill="none" stroke="currentColor" stroke-width="1.5" aria-hidden="true">
+              <path d="M5 7.5l5 5 5-5" />
+            </svg></button>
+          <div class="fa">Yes. HISx supports the government hospital procurement cycle including rate contracts
+            finalised through tender processes. Approved rate contracts are loaded into the system and applied
+            automatically at purchase order generation — preventing procurement above contracted rates. Deviations from
+            contracted rates require documented approval and are logged for audit purposes.</div>
+        </div>
+        <div class="faq-item" role="listitem"><button class="fq" aria-expanded="false" onclick="tFaq(this)">How does
+            HISx handle ward indent controls for government hospitals with strict consumption accountability?<svg
+              class="fchev" viewBox="0 0 20 20" fill="none" stroke="currentColor" stroke-width="1.5" aria-hidden="true">
+              <path d="M5 7.5l5 5 5-5" />
+            </svg></button>
+          <div class="fa">HISx ward indent controls enforce accountability at every stage — wards raise digital indents
+            within authorised limits, pharmacy reviews and validates against approved indent quantities, and dispensing
+            is linked to patient admission records. Bulk ward consumption is reconciled against patient-wise consumption
+            weekly. Any excess consumption or unexplained variance triggers a documented investigation workflow before
+            write-off approval.</div>
+        </div>
+        <div class="faq-item" role="listitem"><button class="fq" aria-expanded="false" onclick="tFaq(this)">Can HISx
+            generate drug utilisation reports for state health department submissions?<svg class="fchev"
+              viewBox="0 0 20 20" fill="none" stroke="currentColor" stroke-width="1.5" aria-hidden="true">
+              <path d="M5 7.5l5 5 5-5" />
+            </svg></button>
+          <div class="fa">Yes. HISx generates drug utilisation reports covering consumption by item, department, patient
+            category, and time period — formatted for state health department reporting requirements. Free medicine
+            scheme utilisation, NDPS consumption, and high-value drug usage reports are available on demand. Procurement
+            performance reports covering vendor adherence to rate contracts and delivery schedules are also available
+            for department reviews.</div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <hr class="div">
+  <section class="cta-s" aria-labelledby="cta-h">
+    <div class="cta-in">
+      <h2 class="cta-h" id="cta-h">See HISx in a government hospital context</h2>
+      <p class="cta-d">Book a 30-minute demo focused on procurement audit trail, free medicine scheme tracking, and NDPS
+        compliance for your facility type.</p>
+      <div class="cta-bs"><a href="/hisx/demo" class="bp">Book a demo</a><a href="/hisx/roi-calculator"
+          class="bg">Calculate ROI</a></div>
+    </div>
+  </section>
+  <nav class="rel-s" aria-label="Related pages">
+    <div class="rel-in">
+      <div style="display:grid;grid-template-columns:1fr 1fr;gap:28px">
+        <div>
+          <div class="rel-lbl">HISx modules</div>
+          <div class="rel-ls"><a href="/hisx/procurement" class="rl">Procurement &amp; vendor</a><a
+              href="/hisx/narcotics-compliance" class="rl">Narcotics &amp; compliance</a><a href="/hisx/inventory"
+              class="rl">Inventory management</a><a href="/hisx/asset-management" class="rl">Asset management</a><a
+              href="/hisx" class="rl">All modules →</a></div>
+        </div>
+        <div>
+          <div class="rel-lbl">Related guides</div>
+          <div class="rel-ls"><a href="/solutions/hospital-procurement-automation" class="rl">Procurement
+              automation</a><a href="/solutions/narcotics-schedule-h" class="rl">Schedule H &amp; NDPS guide</a><a
+              href="/hospital-inventory-software" class="rl">Multi-specialty hospitals</a></div>
+        </div>
+      </div>
+    </div>
+  </nav>
+  <div id="footer"></div>
+
+  <script>function tFaq(b) { var i = b.closest('.faq-item'), o = i.classList.contains('open'); document.querySelectorAll('.faq-item').forEach(function (x) { x.classList.remove('open'); x.querySelector('.fq').setAttribute('aria-expanded', 'false') }); if (!o) { i.classList.add('open'); b.setAttribute('aria-expanded', 'true') } }</script>
+  <script>
+fetch("../header.html")
+    .then(res => res.text())
+    .then(data => {
+        document.getElementById("header").innerHTML = data;
+    });
+
+fetch("../footer.html")
+    .then(res => res.text())
+    .then(data => {
+        document.getElementById("footer").innerHTML = data;
+    });
+</script>
+<!-- ================= TEMPLATE JS ================= -->
+    <!--<< All JS Plugins >>-->
+    <script data-cfasync="false" src="../../cdn-cgi/scripts/5c5dd728/cloudflare-static/email-decode.min.js"></script>
+    <script src="/../assets/quantbit_website/js/jquery-3.7.1.min.js"></script>
+    <!--<< Viewport Js >>-->
+    <script src="/../assets/quantbit_website/js/viewport.jquery.js"></script>
+    <!--<< Bootstrap Js >>-->
+    <script src="/../assets/quantbit_website/js/bootstrap.bundle.min.js"></script>
+    <!--<< Nice Select Js >>-->
+    <script src="/../assets/quantbit_website/js/jquery.nice-select.min.js"></script>
+    <!--<< Waypoints Js >>-->
+    <script src="/../assets/quantbit_website/js/jquery.waypoints.js"></script>
+    <!--<< Counterup Js >>-->
+    <script src="/../assets/quantbit_website/js/jquery.counterup.min.js"></script>
+    <!--<< Slick Js >>-->
+    <script src="/../assets/quantbit_website/js/slick.min.js"></script>
+    <!--<< Slick Animation Js >>-->
+    <script src="/../assets/quantbit_website/js/slick-animation.min.js"></script>
+    <!--<< MeanMenu Js >>-->
+    <script src="/../assets/quantbit_website/js/jquery.meanmenu.min.js"></script>
+    <!--<< Magnific Popup Js >>-->
+    <script src="/../assets/quantbit_website/js/jquery.magnific-popup.min.js"></script>
+    <!--<< Wow Animation Js >>-->
+    <script src="/../assets/quantbit_website/js/wow.min.js"></script>
+    <!--<< Circle Progress Js >>-->
+    <script src="/../assets/quantbit_website/js/circle-progress.js"></script>
+    <!--<< Main.js >>-->
+    <script src="/../assets/quantbit_website/js/main.js"></script>
+    <script defer
+        src="../../../static.cloudflareinsights.com/beacon.min.js/v8c78df7c7c0f484497ecbca7046644da1771523124516"
+        integrity="sha512-8DS7rgIrAmghBFwoOTujcf6D9rXvH8xm8JQ1Ja01h9QX8EzXldiszufYa4IFfKdLUKTTrnSFXLDkUEOTrZQ8Qg=="
+        data-cf-beacon='{"version":"2024.11.0","token":"90f7972af14a48b4add7da2b74f5d675","r":1,"server_timing":{"name":{"cfCacheStatus":true,"cfEdge":true,"cfExtPri":true,"cfL4":true,"cfOrigin":true,"cfSpeedBrain":true},"location_startswith":null}}'
+        crossorigin="anonymous"></script>
+
 </body>
+
 </html>
