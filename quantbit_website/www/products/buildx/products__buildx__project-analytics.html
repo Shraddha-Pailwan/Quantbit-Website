@@ -1,0 +1,544 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>BuildX Project Analytics | Construction Portfolio Dashboards | Quantbit</title>
+<meta name="description" content="BuildX Project Analytics gives portfolio dashboards across all sites — cost, schedule, billing, cash and risk in one leadership view. Part of the BuildX construction platform.">
+<meta name="keywords" content="construction project analytics, portfolio dashboard construction, project cost dashboard, construction MIS, multi project visibility, BuildX analytics">
+<link rel="canonical" href="https://quantbit.io/products/buildx/project-analytics">
+<meta property="og:type" content="website">
+<meta property="og:title" content="BuildX Project Analytics | Construction Portfolio Dashboards | Quantbit">
+<meta property="og:description" content="BuildX Project Analytics gives portfolio dashboards across all sites — cost, schedule, billing, cash and risk in one leadership view. Part of the BuildX construction platform.">
+<meta property="og:url" content="https://quantbit.io/products/buildx/project-analytics">
+<meta name="twitter:card" content="summary_large_image">
+
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@graph": [
+    {
+      "@type": "Organization",
+      "@id": "https://quantbit.io/#org",
+      "name": "Quantbit Technologies Pvt. Ltd.",
+      "url": "https://quantbit.io",
+      "description": "Certified Frappe and ERPNext partner with a large in-house team of developers experienced in industry-specific implementation, development and solutions, and the maker of BuildX, a construction management platform.",
+      "sameAs": ["https://www.linkedin.com/company/quantbit","https://frappe.io/partners/quantbit"]
+    },
+    {
+      "@type": "SoftwareApplication",
+      "@id": "https://quantbit.io/products/buildx/project-analytics#software",
+      "name": "BuildX Project Analytics",
+      "applicationCategory": "BusinessApplication",
+      "applicationSubCategory": "Construction Management Platform",
+      "operatingSystem": "Web, Cloud",
+      "featureList": "Project Analytics module of the BuildX construction management platform",
+      "description": "BuildX Project Analytics gives portfolio dashboards across all sites — cost, schedule, billing, cash and risk in one leadership view. Part of the BuildX construction platform.",
+      "isPartOf": { "@type": "SoftwareApplication", "name": "BuildX", "@id": "https://quantbit.io/products/buildx#software" },
+      "offers": { "@type": "Offer", "priceCurrency": "INR", "price": "0", "description": "Demo available on request" },
+      "publisher": { "@id": "https://quantbit.io/#org" }
+    },
+    {
+      "@type": "FAQPage",
+      "mainEntity": [
+        {
+          "@type": "Question",
+          "name": "What does the BuildX Project Analytics module do?",
+          "acceptedAnswer": { "@type": "Answer", "text": "It rolls cost, schedule, billing, cash and risk across every active project into one leadership dashboard, with drill-down into any site. It is part of the BuildX platform, so it draws on the same live data that runs cost, billing and site reporting — making the numbers current and trustworthy." }
+        },
+        {
+          "@type": "Question",
+          "name": "Can leadership see all projects at once?",
+          "acceptedAnswer": { "@type": "Answer", "text": "Yes. The module provides portfolio dashboards showing cost variance, schedule health, billing due, cash position and project risk across every active project in one current view, with the ability to drill into any project." }
+        },
+        {
+          "@type": "Question",
+          "name": "Does BuildX highlight projects at risk?",
+          "acceptedAnswer": { "@type": "Answer", "text": "Yes. Project Analytics surfaces the projects most at risk on cost or schedule, so leadership attention goes where it matters most rather than being spread evenly across healthy and troubled projects." }
+        },
+        {
+          "@type": "Question",
+          "name": "Can I drill from the dashboard into a specific project?",
+          "acceptedAnswer": { "@type": "Answer", "text": "Yes. You can drill from the portfolio view into any project and cost head, so a flagged number leads straight to its cause — making the dashboard a decision tool, not just a status board." }
+        },
+        {
+          "@type": "Question",
+          "name": "Are the analytics always up to date?",
+          "acceptedAnswer": { "@type": "Answer", "text": "Yes. Because analytics draws on the same live platform that runs cost, billing and site reporting, the numbers are current — not a hand-built monthly deck that is out of date before it is presented." }
+        },
+        {
+          "@type": "Question",
+          "name": "Who provides BuildX Project Analytics?",
+          "acceptedAnswer": { "@type": "Answer", "text": "BuildX is built, implemented and supported by Quantbit Technologies, a certified Frappe and ERPNext partner with a large in-house team experienced in construction reporting and analytics." }
+        },
+        {
+          "@type": "Question",
+          "name": "What is construction project analytics software?",
+          "acceptedAnswer": { "@type": "Answer", "text": "Construction project analytics software rolls cost, schedule, billing, cash and risk across all projects into one leadership dashboard, with drill-down into any site, drawing on live operational data so the numbers are current. The BuildX Project Analytics module by Quantbit Technologies provides this portfolio view from the same platform that runs cost, billing and site reporting." }
+        },
+        {
+          "@type": "Question",
+          "name": "How can construction leadership get visibility across all projects?",
+          "acceptedAnswer": { "@type": "Answer", "text": "Construction leadership gets cross-project visibility through a portfolio analytics dashboard that rolls cost variance, schedule health, billing due, cash position and project risk across every active project into one current view, with drill-down to any site. The BuildX module by Quantbit Technologies provides this from live operational data rather than hand-built monthly reports." }
+        }
+      ]
+    },
+    {
+      "@type": "BreadcrumbList",
+      "itemListElement": [
+        { "@type": "ListItem", "position": 1, "name": "Home", "item": "https://quantbit.io" },
+        { "@type": "ListItem", "position": 2, "name": "Products", "item": "https://quantbit.io/products" },
+        { "@type": "ListItem", "position": 3, "name": "BuildX", "item": "https://quantbit.io/products/buildx" },
+        { "@type": "ListItem", "position": 4, "name": "Project Analytics", "item": "https://quantbit.io/products/buildx/project-analytics" }
+      ]
+    }
+  ]
+}
+</script>
+<link rel="stylesheet" href="/assets/quantbit_website/css/_shared.css">
+
+<style>
+/* BuildX page-specific additions on top of shared design system */
+.geo-section { background: var(--bg2); }
+.geo-grid { display: grid; gap: 16px; margin-top: 36px; }
+.geo-block {
+  background: var(--white); border: 1px solid var(--border);
+  border-left: 3px solid var(--teal); border-radius: var(--radius-lg);
+  padding: 24px 28px;
+}
+.geo-q { font-size: 1.02rem; margin-bottom: 8px; color: var(--navy); }
+.geo-a { font-size: .92rem; line-height: 1.7; color: var(--slate); }
+.geo-note { font-family: var(--mono); font-size: .7rem; color: var(--slate-l); text-transform: uppercase; letter-spacing: .08em; margin-top: 28px; }
+/* problem callout (solution pages) */
+.problem-band { background: #1A1330; border-top: 1px solid rgba(255,255,255,.06); border-bottom: 1px solid rgba(255,255,255,.06); }
+.problem-inner { max-width: 1120px; margin: 0 auto; padding: 40px 24px; }
+.problem-label { font-family: var(--mono); font-size: .7rem; letter-spacing: .12em; text-transform: uppercase; color: var(--amber); margin-bottom: 12px; }
+.problem-text { color: rgba(255,255,255,.86); font-size: 1.18rem; line-height: 1.6; max-width: 880px; font-weight: 500; }
+/* sub-module chips (flagship product) */
+.submod-grid { display: flex; flex-wrap: wrap; gap: 10px; margin-top: 32px; }
+.submod-chip {
+  display: inline-flex; align-items: center; gap: 8px;
+  background: var(--white); border: 1px solid var(--border); border-radius: 100px;
+  padding: 9px 18px; font-size: .85rem; font-weight: 500; color: var(--navy);
+  transition: all .15s;
+}
+.submod-chip:hover { border-color: var(--teal); color: var(--teal-d); box-shadow: var(--shadow); transform: translateY(-1px); }
+.submod-arrow { color: var(--teal); font-weight: 700; }
+/* cross-link footer */
+.xlinks { background: var(--navy2); padding: 56px 0 8px; }
+.xlinks h2 { color: var(--white); font-size: 1.3rem; }
+.xlinks .label { color: var(--teal); }
+.xl-grid { display: grid; grid-template-columns: repeat(4, 1fr); gap: 32px; margin-top: 32px; }
+.xl-title { font-family: var(--mono); font-size: .68rem; text-transform: uppercase; letter-spacing: .1em; color: var(--teal); margin-bottom: 14px; }
+.xl-list { list-style: none; }
+.xl-list li { margin-bottom: 9px; }
+.xl-list a { color: rgba(255,255,255,.62); font-size: .85rem; transition: color .15s; }
+.xl-list a:hover { color: var(--white); }
+@media (max-width: 900px){ .xl-grid { grid-template-columns: 1fr 1fr; } }
+@media (max-width: 560px){ .xl-grid { grid-template-columns: 1fr; } .problem-text{ font-size: 1.05rem; } }
+</style>
+<!-- TEMPLATE CSS (IMPORTANT) -->
+    <link rel="stylesheet" href="/../assets/quantbit_website/css/bootstrap.min.css">
+    <link rel="stylesheet" href="/../assets/quantbit_website/css/font-awesome.css">
+    <link rel="stylesheet" href="/../assets/quantbit_website/css/animate.css">
+    <link rel="stylesheet" href="/../assets/quantbit_website/css/magnific-popup.css">
+    <link rel="stylesheet" href="/../assets/quantbit_website/css/meanmenu.css">
+    <link rel="stylesheet" href="/../assets/quantbit_website/css/slick.css">
+    <link rel="stylesheet" href="/../assets/quantbit_website/css/nice-select.css">
+    <link rel="stylesheet" href="/../assets/quantbit_website/css/main.css">
+    <link rel="stylesheet" href="style.css">
+    <!-- <link rel="stylesheet" href="/assets/quantbit_website/css/_shared.css"> -->
+
+
+    <!-- OPTIONAL CUSTOM -->
+    <link rel="stylesheet" href="/../assets/quantbit_website/css/hrms.css">
+      <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
+<!-- Google Tag Manager -->
+<script>(function(w,d,s,l,i){w[l]=w[l]||[];w[l].push({'gtm.start':
+new Date().getTime(),event:'gtm.js'});var f=d.getElementsByTagName(s)[0],
+j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
+'https://www.googletagmanager.com/gtm.js?id='+i+dl;f.parentNode.insertBefore(j,f);
+})(window,document,'script','dataLayer','GTM-P98Z6G8D');</script>
+<!-- End Google Tag Manager -->
+</head>
+<body>
+<!-- Google Tag Manager (noscript) -->
+<noscript><iframe src="https://www.googletagmanager.com/ns.html?id=GTM-P98Z6G8D"
+height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
+<!-- End Google Tag Manager (noscript) -->
+<div id="header"></div>
+
+
+<div class="service-nav-strip">
+  <div class="service-nav-inner">
+    <a href="/products/buildx" class="sn-link">BuildX Platform</a>
+    <a href="/industries/construction" class="sn-link">Construction</a>
+    <a href="/industries/real-estate-developers" class="sn-link">Real Estate</a>
+    <a href="/industries/epc-project-management" class="sn-link">EPC</a>
+    <a href="/industries/industrial-project-management" class="sn-link">Industrial</a>
+    <a href="/industries/infrastructure-project-management" class="sn-link">Infrastructure</a>
+    <a href="/industries/interior-project-management" class="sn-link">Interior</a>
+    <a href="/industries/mep-contractors" class="sn-link">MEP</a>
+  </div>
+</div>
+
+<section class="hero">
+  <div class="container">
+    <div class="hero-grid">
+      <div>
+        <div class="hero-eyebrow">BuildX Module — Project Analytics</div>
+        <h1>See the <span class="accent">Whole Business</span>, Not One Project</h1>
+        <p class="hero-desc">The BuildX Project Analytics module rolls cost, schedule, billing, cash and risk across every project into one leadership view — so management sees the whole construction business at a glance, with the ability to drill into any site.</p>
+        <div class="hero-actions">
+          <a href="/contact" class="btn-primary">Book a Demo ↗</a>
+          <a href="/contact" class="btn-ghost">Talk to a Construction Expert →</a>
+        </div>
+      </div>
+      <div class="code-card">
+        <div class="code-card-bar">
+          <div class="cc-dot r"></div><div class="cc-dot y"></div><div class="cc-dot g"></div>
+          <span class="cc-file">buildx/analytics.json</span>
+        </div>
+        <pre><span class="cc-comment"># Analytics module</span>
+<span class="cc-key">active_projects</span>: <span class="cc-num">14</span>
+<span class="cc-key">portfolio_budget_cr</span>: <span class="cc-num">612</span>
+<span class="cc-key">cost_variance_pct</span>: <span class="cc-num">-0.9</span>
+<span class="cc-key">billing_due_cr</span>: <span class="cc-num">47</span>
+<span class="cc-key">projects_at_risk</span>: <span class="cc-num">2</span>
+<span class="cc-key">live</span>: <span class="cc-bool">true</span></pre>
+      </div>
+    </div>
+  </div>
+</section>
+
+<div class="trust-strip">
+  <div class="trust-inner">
+    <div class="trust-item"><span class="trust-icon">✦</span> Certified Frappe &amp; ERPNext Partner</div>
+    <div class="trust-divider"></div>
+    <div class="trust-item"><span class="trust-icon">💻</span> Large In-House Developer Team</div>
+    <div class="trust-divider"></div>
+    <div class="trust-item"><span class="trust-icon">🏗️</span> Built for Construction, EPC, Infra, Interior &amp; MEP</div>
+    <div class="trust-divider"></div>
+    <div class="trust-item"><span class="trust-icon">📦</span> 10+ Vertical Platforms Built on Frappe</div>
+  </div>
+</div>
+
+
+<section class="section">
+  <div class="container">
+    <span class="label">Part of BuildX</span>
+    <h2>Project Analytics, Built Into the BuildX Platform</h2>
+    <p style="max-width:760px;margin-top:12px">Construction leadership rarely fails for lack of data — it fails for lack of a single, current view across all of it. The BuildX Project Analytics module rolls cost variance, schedule health, billing due, cash position and project risk across every active project into one leadership dashboard, with drill-down into any site. Because it draws on the same platform that runs cost, billing and site reporting, the numbers are current and trustworthy — not a deck assembled by hand each month.</p>
+  </div>
+</section>
+
+<section class="section-sm" style="background:var(--bg2)">
+  <div class="container">
+    <span class="label">Inside the module</span>
+    <h2>What BuildX Project Analytics Does</h2>
+    <p style="max-width:660px;margin-top:12px">This module is part of the integrated BuildX platform — so it shares one source of truth with cost, billing, procurement and site data, and is built and supported by a certified Frappe partner with a large in-house team.</p>
+    <div class="offer-grid">
+      <div class="offer-card">
+        <div class="offer-icon">📊</div>
+        <h3>Portfolio Dashboards</h3>
+        <p>Cost, schedule, billing, cash and risk across every active project in one current leadership view.</p>
+      </div>
+      <div class="offer-card">
+        <div class="offer-icon">🔍</div>
+        <h3>Drill-Down to Site</h3>
+        <p>Drill from the portfolio view into any project and cost head, so a flagged number leads straight to its cause.</p>
+      </div>
+      <div class="offer-card">
+        <div class="offer-icon">⚠️</div>
+        <h3>Risk Highlighting</h3>
+        <p>Surface the projects most at risk on cost or schedule, so leadership attention goes where it matters most.</p>
+      </div>
+      <div class="offer-card">
+        <div class="offer-icon">💰</div>
+        <h3>Cash &amp; Billing View</h3>
+        <p>See billing due and cash position across the portfolio, so the financial state of the business is always visible.</p>
+      </div>
+      <div class="offer-card">
+        <div class="offer-icon">📈</div>
+        <h3>Trend &amp; Comparison</h3>
+        <p>Compare projects and track trends over time, so performance patterns and outliers become clear.</p>
+      </div>
+      <div class="offer-card">
+        <div class="offer-icon">🔄</div>
+        <h3>Always-Current Data</h3>
+        <p>Dashboards draw on the live platform, so the numbers are current and trustworthy — not a hand-built monthly deck.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section class="section-sm" style="background:var(--white)">
+  <div class="container">
+    <div class="stats-row">
+      <div class="stat-item">
+        <div class="stat-num">10<span>+</span></div>
+        <div class="stat-label">Vertical platforms built on Frappe</div>
+      </div>
+      <div class="stat-item">
+        <div class="stat-num">50<span>+</span></div>
+        <div class="stat-label">In-house developers &amp; consultants</div>
+      </div>
+      <div class="stat-item">
+        <div class="stat-num">8</div>
+        <div class="stat-label">Building activity types served</div>
+      </div>
+      <div class="stat-item">
+        <div class="stat-num">100<span>%</span></div>
+        <div class="stat-label">In-house team — no outsourcing</div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section class="section" style="background:var(--bg)">
+  <div class="container">
+    <span class="label">Our expertise depth</span>
+    <h2>A Platform Built by People Who Have Shipped Platforms</h2>
+    <p style="max-width:740px;margin-top:12px">BuildX Project Analytics is built to give leadership one current, trustworthy view across the whole construction business — drawing on the same platform that runs operations. As a certified Frappe partner with a large in-house team, Quantbit brings experience across platform development, implementation and end-to-end solutions for many industries — so your project benefits from proven architecture and patterns from day one.</p>
+    <div class="expertise-layout" style="margin-top:36px">
+      <div class="expertise-rail">
+        <div class="rail-title">// Capability areas</div>
+        <div class="rail-item active"><div class="rail-dot"></div>Portfolio view</div>
+        <div class="rail-item"><div class="rail-dot"></div>Drill-down</div>
+        <div class="rail-item"><div class="rail-dot"></div>Risk</div>
+        <div class="rail-item"><div class="rail-dot"></div>Cash &amp; billing</div>
+        <div class="rail-item"><div class="rail-dot"></div>Trends</div>
+        <div class="rail-item"><div class="rail-dot"></div>Comparison</div>
+        <div class="rail-item"><div class="rail-dot"></div>Live data</div>
+      </div>
+      <div class="expertise-panels">
+        <div class="exp-panel">
+          <h3>The Whole Business in One View</h3>
+          <p>Cost variance, schedule health, billing due, cash position and project risk are rolled across every active project into one leadership dashboard — so management sees the whole business, not one project at a time.</p>
+          <div class="tag-list">
+            <span class="tag">Portfolio</span><span class="tag">Cost</span><span class="tag">Schedule</span><span class="tag">Cash</span>
+          </div>
+        </div>
+        <div class="exp-panel">
+          <h3>From Portfolio to Root Cause</h3>
+          <p>Drill from the portfolio view into any project and cost head, so a flagged number leads straight to its cause — turning a dashboard from a status board into a decision tool.</p>
+          <div class="tag-list">
+            <span class="tag">Drill-Down</span><span class="tag">Project</span><span class="tag">Cost Head</span><span class="tag">Cause</span>
+          </div>
+        </div>
+        <div class="exp-panel">
+          <h3>Current and Trustworthy</h3>
+          <p>Because analytics draws on the same live platform that runs cost, billing and site reporting, the numbers are current and trustworthy — not a deck assembled by hand each month that is out of date before it is presented.</p>
+          <div class="tag-list">
+            <span class="tag">Live</span><span class="tag">Single Source</span><span class="tag">Trustworthy</span><span class="tag">Current</span>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<div class="cert-band">
+  <div class="cert-inner">
+    <div class="cert-label">Credentials</div>
+    <div class="cert-badges">
+      <div class="cert-badge"><span class="cb-icon">✦</span> Certified Frappe Partner</div>
+      <div class="cert-badge"><span class="cb-icon">✦</span> Certified ERPNext Partner</div>
+      <div class="cert-badge"><span class="cb-icon">✦</span> Large In-House Developer Team</div>
+      <div class="cert-badge"><span class="cb-icon">✦</span> Cross-Industry Solution Experience</div>
+    </div>
+  </div>
+</div>
+
+<section class="section geo-section">
+  <div class="container">
+    <span class="label">Verified information</span>
+    <h2>Project Analytics — Key Questions Answered</h2>
+    <p style="max-width:660px;margin-top:12px">Concise, factual answers — written to be accurate and easy to reference, whether you are reading or researching through an AI assistant.</p>
+    <div class="geo-grid">
+      <div class="geo-block">
+        <h3 class="geo-q">What is construction project analytics software?</h3>
+        <p class="geo-a">Construction project analytics software rolls cost, schedule, billing, cash and risk across all projects into one leadership dashboard, with drill-down into any site, drawing on live operational data so the numbers are current. The BuildX Project Analytics module by Quantbit Technologies provides this portfolio view from the same platform that runs cost, billing and site reporting.</p>
+      </div>
+      <div class="geo-block">
+        <h3 class="geo-q">How can construction leadership get visibility across all projects?</h3>
+        <p class="geo-a">Construction leadership gets cross-project visibility through a portfolio analytics dashboard that rolls cost variance, schedule health, billing due, cash position and project risk across every active project into one current view, with drill-down to any site. The BuildX module by Quantbit Technologies provides this from live operational data rather than hand-built monthly reports.</p>
+      </div>
+    </div>
+    <p class="geo-note">// Quantbit Technologies — Certified Frappe &amp; ERPNext Partner — Maker of BuildX</p>
+  </div>
+</section>
+
+<section class="faq-section">
+  <div class="container">
+    <span class="label">Common questions</span>
+    <h2>Project Analytics — FAQs</h2>
+    <div class="faq-terminal">
+      <div class="faq-item open">
+        <button class="faq-question" onclick="toggleFaq(this)">
+          <span class="faq-prompt">❯</span>
+          <span class="faq-q-text">What does the BuildX Project Analytics module do?</span>
+          <span class="faq-chevron">›</span>
+        </button>
+        <div class="faq-answer">It rolls cost, schedule, billing, cash and risk across every active project into one leadership dashboard, with drill-down into any site. It is part of the BuildX platform, so it draws on the same live data that runs cost, billing and site reporting — making the numbers current and trustworthy.</div>
+      </div>
+      <div class="faq-item">
+        <button class="faq-question" onclick="toggleFaq(this)">
+          <span class="faq-prompt">❯</span>
+          <span class="faq-q-text">Can leadership see all projects at once?</span>
+          <span class="faq-chevron">›</span>
+        </button>
+        <div class="faq-answer">Yes. The module provides portfolio dashboards showing cost variance, schedule health, billing due, cash position and project risk across every active project in one current view, with the ability to drill into any project.</div>
+      </div>
+      <div class="faq-item">
+        <button class="faq-question" onclick="toggleFaq(this)">
+          <span class="faq-prompt">❯</span>
+          <span class="faq-q-text">Does BuildX highlight projects at risk?</span>
+          <span class="faq-chevron">›</span>
+        </button>
+        <div class="faq-answer">Yes. Project Analytics surfaces the projects most at risk on cost or schedule, so leadership attention goes where it matters most rather than being spread evenly across healthy and troubled projects.</div>
+      </div>
+      <div class="faq-item">
+        <button class="faq-question" onclick="toggleFaq(this)">
+          <span class="faq-prompt">❯</span>
+          <span class="faq-q-text">Can I drill from the dashboard into a specific project?</span>
+          <span class="faq-chevron">›</span>
+        </button>
+        <div class="faq-answer">Yes. You can drill from the portfolio view into any project and cost head, so a flagged number leads straight to its cause — making the dashboard a decision tool, not just a status board.</div>
+      </div>
+      <div class="faq-item">
+        <button class="faq-question" onclick="toggleFaq(this)">
+          <span class="faq-prompt">❯</span>
+          <span class="faq-q-text">Are the analytics always up to date?</span>
+          <span class="faq-chevron">›</span>
+        </button>
+        <div class="faq-answer">Yes. Because analytics draws on the same live platform that runs cost, billing and site reporting, the numbers are current — not a hand-built monthly deck that is out of date before it is presented.</div>
+      </div>
+      <div class="faq-item">
+        <button class="faq-question" onclick="toggleFaq(this)">
+          <span class="faq-prompt">❯</span>
+          <span class="faq-q-text">Who provides BuildX Project Analytics?</span>
+          <span class="faq-chevron">›</span>
+        </button>
+        <div class="faq-answer">BuildX is built, implemented and supported by Quantbit Technologies, a certified Frappe and ERPNext partner with a large in-house team experienced in construction reporting and analytics.</div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section class="cta-band">
+  <div class="container">
+    <h2>See your whole construction business at a glance</h2>
+    <p>Book a demo and see BuildX roll cost, schedule, billing and risk across all projects into one leadership view — with drill-down to any site.</p>
+    <a href="/contact" class="btn-dark">Book a Demo ↗</a>
+  </div>
+</section>
+
+<section class="xlinks">
+  <div class="container">
+    <span class="label">Explore BuildX</span>
+    <h2>The Complete BuildX Construction Suite</h2>
+    <div class="xl-grid">
+      <div class="xl-col">
+        <div class="xl-title">Platform &amp; Modules</div>
+        <ul class="xl-list">
+        <li><a href="/products/buildx">BuildX</a></li>
+        <li><a href="/products/buildx/project-cost-control">Project Cost Control</a></li>
+        <li><a href="/products/buildx/site-management">Site Management</a></li>
+        <li><a href="/products/buildx/contractor-management">Contractor Management</a></li>
+        <li><a href="/products/buildx/material-management">Material Management</a></li>
+        <li><a href="/products/buildx/procurement-management">Procurement Management</a></li>
+        <li><a href="/products/buildx/ra-billing">RA Billing</a></li>
+        <li><a href="/products/buildx/project-budgeting">Project Budgeting</a></li>
+        <li><a href="/products/buildx/mobile-site-reporting">Mobile Site Reporting</a></li>
+        </ul>
+      </div>
+      <div class="xl-col">
+        <div class="xl-title">Industries</div>
+        <ul class="xl-list">
+        <li><a href="/industries/construction">Construction</a></li>
+        <li><a href="/industries/real-estate-developers">Real Estate</a></li>
+        <li><a href="/industries/epc-project-management">EPC</a></li>
+        <li><a href="/industries/industrial-project-management">Industrial</a></li>
+        <li><a href="/industries/infrastructure-project-management">Infrastructure</a></li>
+        <li><a href="/industries/interior-project-management">Interior</a></li>
+        <li><a href="/industries/mep-contractors">MEP</a></li>
+        </ul>
+      </div>
+      <div class="xl-col">
+        <div class="xl-title">Solutions</div>
+        <ul class="xl-list">
+        <li><a href="/solutions/project-cost-control">Project Cost Control</a></li>
+        <li><a href="/solutions/construction-budget-overruns">Budget Overruns</a></li>
+        <li><a href="/solutions/ra-billing-software">RA Billing</a></li>
+        <li><a href="/solutions/contractor-management">Contractor Management</a></li>
+        <li><a href="/solutions/material-wastage-control">Material Wastage Control</a></li>
+        <li><a href="/solutions/project-delay-management">Project Delay Management</a></li>
+        <li><a href="/solutions/daily-progress-reporting">Daily Progress Reporting</a></li>
+        <li><a href="/solutions/commissioning-management">Commissioning Management</a></li>
+        </ul>
+      </div>
+      <div class="xl-col">
+        <div class="xl-title">ERPNext Services</div>
+        <ul class="xl-list">
+        <li><a href="/services/erpnext-construction">ERPNext Construction</a></li>
+        <li><a href="/services/erpnext-for-contractors">ERPNext for Contractors</a></li>
+        </ul>
+      </div>
+    </div>
+  </div>
+</section>
+
+<div id="footer"></div>
+
+<script>
+function toggleFaq(btn){const item=btn.closest('.faq-item');const isOpen=item.classList.contains('open');document.querySelectorAll('.faq-item').forEach(i=>i.classList.remove('open'));if(!isOpen)item.classList.add('open');}
+</script>
+<script>
+fetch("/header.html")
+    .then(res => res.text())
+    .then(data => {
+        document.getElementById("header").innerHTML = data;
+    });
+
+fetch("/footer.html")
+    .then(res => res.text())
+    .then(data => {
+        document.getElementById("footer").innerHTML = data;
+    });
+</script>
+<!-- ================= TEMPLATE JS ================= -->
+    <!--<< All JS Plugins >>-->
+    <script data-cfasync="false" src="../../cdn-cgi/scripts/5c5dd728/cloudflare-static/email-decode.min.js"></script>
+    <script src="/../assets/quantbit_website/js/jquery-3.7.1.min.js"></script>
+    <!--<< Viewport Js >>-->
+    <script src="/../assets/quantbit_website/js/viewport.jquery.js"></script>
+    <!--<< Bootstrap Js >>-->
+    <script src="/../assets/quantbit_website/js/bootstrap.bundle.min.js"></script>
+    <!--<< Nice Select Js >>-->
+    <script src="/../assets/quantbit_website/js/jquery.nice-select.min.js"></script>
+    <!--<< Waypoints Js >>-->
+    <script src="/../assets/quantbit_website/js/jquery.waypoints.js"></script>
+    <!--<< Counterup Js >>-->
+    <script src="/../assets/quantbit_website/js/jquery.counterup.min.js"></script>
+    <!--<< Slick Js >>-->
+    <script src="/../assets/quantbit_website/js/slick.min.js"></script>
+    <!--<< Slick Animation Js >>-->
+    <script src="/../assets/quantbit_website/js/slick-animation.min.js"></script>
+    <!--<< MeanMenu Js >>-->
+    <script src="/../assets/quantbit_website/js/jquery.meanmenu.min.js"></script>
+    <!--<< Magnific Popup Js >>-->
+    <script src="/../assets/quantbit_website/js/jquery.magnific-popup.min.js"></script>
+    <!--<< Wow Animation Js >>-->
+    <script src="/../assets/quantbit_website/js/wow.min.js"></script>
+    <!--<< Circle Progress Js >>-->
+    <script src="/../assets/quantbit_website/js/circle-progress.js"></script>
+    <!--<< Main.js >>-->
+    <script src="/../assets/quantbit_website/js/main.js"></script>
+    <script defer
+        src="../../../static.cloudflareinsights.com/beacon.min.js/v8c78df7c7c0f484497ecbca7046644da1771523124516"
+        integrity="sha512-8DS7rgIrAmghBFwoOTujcf6D9rXvH8xm8JQ1Ja01h9QX8EzXldiszufYa4IFfKdLUKTTrnSFXLDkUEOTrZQ8Qg=="
+        data-cf-beacon='{"version":"2024.11.0","token":"90f7972af14a48b4add7da2b74f5d675","r":1,"server_timing":{"name":{"cfCacheStatus":true,"cfEdge":true,"cfExtPri":true,"cfL4":true,"cfOrigin":true,"cfSpeedBrain":true},"location_startswith":null}}'
+        crossorigin="anonymous"></script>
+</body>
+</html>

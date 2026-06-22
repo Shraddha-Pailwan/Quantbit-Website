@@ -1,0 +1,604 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>BuildX — Construction Management Platform | Project Cost Control | Quantbit</title>
+<meta name="description" content="BuildX is a construction management platform by Quantbit — project cost control, site management, RA billing, procurement, material management, analytics and more for builders, EPC, real estate, MEP and infrastructure contractors.">
+<meta name="keywords" content="BuildX construction management platform, construction ERP India, project cost control software, RA billing software, construction project management, Quantbit BuildX">
+<link rel="canonical" href="https://quantbit.io/products/buildx">
+<meta property="og:title" content="BuildX — Construction Management Platform | Project Cost Control | Quantbit">
+<meta property="og:description" content="BuildX is a construction management platform for project cost control, site management, RA billing, procurement and analytics. Built for builders, EPC, infrastructure, interior and MEP contractors.">
+<meta property="og:url" content="https://quantbit.io/products/buildx">
+<meta property="og:type" content="website">
+<meta property="og:image" content="https://quantbit.io/logo.png">
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&family=Plus+Jakarta+Sans:wght@400;600;700;800&display=swap" rel="stylesheet">
+<style>
+  :root {
+    --blue-900: #0a1f44;
+    --blue-800: #0d2d6e;
+    --blue-700: #1140a0;
+    --blue-600: #1a56db;
+    --blue-500: #3b82f6;
+    --blue-400: #60a5fa;
+    --blue-100: #dbeafe;
+    --blue-50:  #eff6ff;
+    --orange:   #f97316;
+    --orange-light: #fff7ed;
+    --white: #ffffff;
+    --gray-50: #f8fafc;
+    --gray-100: #f1f5f9;
+    --gray-200: #e2e8f0;
+    --gray-400: #94a3b8;
+    --gray-600: #475569;
+    --gray-800: #1e293b;
+  }
+  *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+  html { scroll-behavior: smooth; }
+  body {
+    font-family: 'Inter', sans-serif;
+    color: var(--gray-800);
+    background: var(--white);
+    line-height: 1.6;
+  }
+
+  /* nav/footer handled by header.html & footer.html */
+
+  /* ── HERO ── */
+  .hero {
+    background: linear-gradient(135deg, var(--blue-900) 0%, #0d2460 50%, #0f3480 100%);
+    padding: 88px 32px 80px;
+    text-align: center;
+    position: relative; overflow: hidden;
+  }
+  .hero::before {
+    content: '';
+    position: absolute; inset: 0;
+    background: radial-gradient(ellipse 70% 60% at 50% 0%, rgba(249,115,22,.1) 0%, transparent 65%);
+    pointer-events: none;
+  }
+  .hero-eyebrow {
+    display: inline-flex; align-items: center; gap: 7px;
+    background: rgba(255,255,255,.1); color: #fba56a;
+    border: 1px solid rgba(249,115,22,.3);
+    padding: 5px 14px; border-radius: 99px;
+    font-size: .8rem; font-weight: 600; letter-spacing: .5px; text-transform: uppercase;
+    margin-bottom: 24px;
+  }
+  .hero h1 {
+    font-family: 'Plus Jakarta Sans', sans-serif;
+    font-size: clamp(2rem, 5vw, 3.25rem);
+    font-weight: 800; color: var(--white);
+    line-height: 1.15; letter-spacing: -.5px;
+    max-width: 860px; margin: 0 auto 20px;
+  }
+  .hero h1 span { color: var(--blue-400); }
+  .hero p {
+    font-size: 1.1rem; color: rgba(255,255,255,.72);
+    max-width: 640px; margin: 0 auto 36px;
+  }
+  .hero-btns { display: flex; gap: 12px; justify-content: center; flex-wrap: wrap; }
+  .btn-primary {
+    display: inline-flex; align-items: center; gap: 8px;
+    background: var(--blue-600); color: var(--white);
+    padding: 13px 28px; border-radius: 8px;
+    text-decoration: none; font-weight: 700; font-size: .95rem;
+    transition: background .2s, transform .15s;
+  }
+  .btn-primary:hover { background: var(--blue-700); transform: translateY(-1px); }
+  .btn-outline {
+    display: inline-flex; align-items: center; gap: 8px;
+    background: transparent; color: var(--white);
+    border: 1.5px solid rgba(255,255,255,.3);
+    padding: 12px 28px; border-radius: 8px;
+    text-decoration: none; font-weight: 600; font-size: .95rem;
+    transition: border-color .2s, background .2s;
+  }
+  .btn-outline:hover { border-color: var(--white); background: rgba(255,255,255,.06); }
+
+  /* ── CATEGORY NAV ── */
+  .cat-nav {
+    background: var(--white);
+    border-bottom: 1px solid var(--gray-200);
+    padding: 0 32px;
+    display: flex; align-items: center; gap: 4px;
+    overflow-x: auto; -webkit-overflow-scrolling: touch;
+  }
+  .cat-nav::-webkit-scrollbar { display: none; }
+  .cat-link {
+    display: flex; align-items: center; gap: 7px;
+    color: var(--gray-600); font-size: .875rem; font-weight: 500;
+    padding: 14px 16px; text-decoration: none;
+    border-bottom: 2.5px solid transparent;
+    white-space: nowrap; transition: color .2s, border-color .2s;
+  }
+  .cat-link:hover, .cat-link.active { color: var(--blue-600); border-bottom-color: var(--blue-600); }
+  .cat-link i { font-size: .8rem; }
+
+  /* ── SECTIONS ── */
+  .section { padding: 72px 32px; }
+  .section-alt { background: var(--gray-50); }
+  .section-dark { background: var(--blue-900); }
+  .container { max-width: 1180px; margin: 0 auto; }
+
+  .section-header { text-align: center; margin-bottom: 52px; }
+  .section-eyebrow {
+    display: inline-block;
+    background: var(--blue-50); color: var(--blue-700);
+    border: 1px solid var(--blue-100);
+    font-size: .75rem; font-weight: 700; text-transform: uppercase; letter-spacing: .6px;
+    padding: 4px 12px; border-radius: 99px; margin-bottom: 14px;
+  }
+  .section-dark .section-eyebrow {
+    background: rgba(59,130,246,.15); color: var(--blue-400);
+    border-color: rgba(59,130,246,.25);
+  }
+  .section-header h2 {
+    font-family: 'Plus Jakarta Sans', sans-serif;
+    font-size: clamp(1.6rem, 3.5vw, 2.25rem);
+    font-weight: 800; color: var(--blue-900);
+    letter-spacing: -.3px; margin-bottom: 14px;
+  }
+  .section-dark .section-header h2 { color: var(--white); }
+  .section-header p { color: var(--gray-600); font-size: 1rem; max-width: 560px; margin: 0 auto; }
+  .section-dark .section-header p { color: rgba(255,255,255,.65); }
+
+  /* ── CARDS ── */
+  .grid-3 { display: grid; grid-template-columns: repeat(auto-fill, minmax(300px, 1fr)); gap: 24px; }
+  .grid-4 { display: grid; grid-template-columns: repeat(auto-fill, minmax(240px, 1fr)); gap: 20px; }
+
+  .card {
+    background: var(--white);
+    border: 1px solid var(--gray-200);
+    border-radius: 12px; padding: 28px 24px;
+    text-decoration: none; color: inherit;
+    display: flex; flex-direction: column; gap: 12px;
+    transition: border-color .2s, box-shadow .2s, transform .15s;
+  }
+  .card:hover {
+    border-color: var(--blue-400);
+    box-shadow: 0 8px 32px rgba(26,86,219,.1);
+    transform: translateY(-2px);
+  }
+  .card-icon {
+    width: 44px; height: 44px;
+    background: var(--blue-50); border-radius: 10px;
+    display: flex; align-items: center; justify-content: center;
+    color: var(--blue-600); font-size: 1.1rem;
+    flex-shrink: 0;
+  }
+  .card h3 {
+    font-size: 1rem; font-weight: 700; color: var(--blue-900);
+    font-family: 'Plus Jakarta Sans', sans-serif;
+  }
+  .card p { font-size: .875rem; color: var(--gray-600); line-height: 1.55; flex: 1; }
+  .card-arrow {
+    display: flex; align-items: center; gap: 4px;
+    font-size: .8rem; font-weight: 600; color: var(--blue-600);
+    margin-top: 4px;
+  }
+
+  /* dark cards */
+  .card-dark {
+    background: rgba(255,255,255,.05);
+    border-color: rgba(255,255,255,.1);
+  }
+  .card-dark:hover {
+    background: rgba(255,255,255,.09);
+    border-color: rgba(96,165,250,.4);
+    box-shadow: 0 8px 32px rgba(59,130,246,.12);
+  }
+  .card-dark .card-icon { background: rgba(59,130,246,.15); color: var(--blue-400); }
+  .card-dark h3 { color: var(--white); }
+  .card-dark p { color: rgba(255,255,255,.6); }
+  .card-dark .card-arrow { color: var(--blue-400); }
+
+  /* ── CTA BANNER ── */
+  .cta-banner {
+    background: linear-gradient(135deg, var(--blue-800) 0%, var(--blue-700) 100%);
+    border-radius: 16px; padding: 52px 40px;
+    text-align: center;
+  }
+  .cta-banner h2 {
+    font-family: 'Plus Jakarta Sans', sans-serif;
+    font-size: clamp(1.5rem, 3vw, 2rem); font-weight: 800;
+    color: var(--white); margin-bottom: 12px;
+  }
+  .cta-banner p { color: rgba(255,255,255,.72); margin-bottom: 28px; font-size: 1rem; }
+
+  @media (max-width: 640px) {
+    .hero { padding: 60px 20px 56px; }
+    .section { padding: 52px 20px; }
+    .grid-3, .grid-4 { grid-template-columns: 1fr; }
+    .cat-nav { padding: 0 16px; }
+  }
+</style>
+<!-- TEMPLATE CSS (IMPORTANT) -->
+    <link rel="stylesheet" href="/../assets/quantbit_website/css/bootstrap.min.css">
+    <link rel="stylesheet" href="/../assets/quantbit_website/css/font-awesome.css">
+    <link rel="stylesheet" href="/../assets/quantbit_website/css/animate.css">
+    <link rel="stylesheet" href="/../assets/quantbit_website/css/magnific-popup.css">
+    <link rel="stylesheet" href="/../assets/quantbit_website/css/meanmenu.css">
+    <link rel="stylesheet" href="/../assets/quantbit_website/css/slick.css">
+    <link rel="stylesheet" href="/../assets/quantbit_website/css/nice-select.css">
+    <link rel="stylesheet" href="/../assets/quantbit_website/css/main.css">
+    <link rel="stylesheet" href="style.css">
+
+    <!-- OPTIONAL CUSTOM -->
+    <link rel="stylesheet" href="/../assets/quantbit_website/css/hrms.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
+<!-- Google Tag Manager -->
+<script>(function(w,d,s,l,i){w[l]=w[l]||[];w[l].push({'gtm.start':
+new Date().getTime(),event:'gtm.js'});var f=d.getElementsByTagName(s)[0],
+j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
+'https://www.googletagmanager.com/gtm.js?id='+i+dl;f.parentNode.insertBefore(j,f);
+})(window,document,'script','dataLayer','GTM-P98Z6G8D');</script>
+<!-- End Google Tag Manager -->
+</head>
+<body>
+<!-- Google Tag Manager (noscript) -->
+<noscript><iframe src="https://www.googletagmanager.com/ns.html?id=GTM-P98Z6G8D"
+height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
+<!-- End Google Tag Manager (noscript) -->
+<!-- ================= HEADER ================= -->
+<div id="header"></div>
+
+<!-- HERO -->
+<section class="hero">
+  <div class="hero-eyebrow">
+    <i class="fas fa-hard-hat"></i> Construction Management Platform by Quantbit
+  </div>
+  <h1>Built for <span>Builders</span> — Not Generic ERP</h1>
+  <p>BuildX is a construction management platform that unifies project cost control, budgeting, site reporting, RA billing, procurement, contractor management, and analytics — built for the full range of construction businesses in India.</p>
+  <div class="hero-btns">
+    <a href="https://quantbit.io/contact" class="btn-primary"><i class="fas fa-play-circle"></i> Book Free Demo</a>
+    <a href="/products/buildx" class="btn-outline"><i class="fas fa-info-circle"></i> Explore BuildX</a>
+  </div>
+</section>
+
+<!-- CATEGORY NAV -->
+<nav class="cat-nav">
+  <a href="#products" class="cat-link active"><i class="fas fa-cubes"></i> Products</a>
+  <a href="#solutions" class="cat-link"><i class="fas fa-lightbulb"></i> Solutions</a>
+  <a href="#industries" class="cat-link"><i class="fas fa-hard-hat"></i> Industries</a>
+  <a href="#services" class="cat-link"><i class="fas fa-tools"></i> Services</a>
+</nav>
+
+<!-- PRODUCTS -->
+<section id="products" class="section">
+  <div class="container">
+    <div class="section-header">
+      <span class="section-eyebrow">Platform Modules</span>
+      <h2>Every BuildX Module</h2>
+      <p>Integrated modules that connect budget, site, billing, and procurement — giving every project team and leadership one live view of the business.</p>
+    </div>
+    <div class="grid-3">
+
+      <a href="/products/buildx/products__buildx__project-cost-control" class="card">
+        <div class="card-icon"><i class="fas fa-chart-line"></i></div>
+        <h3>Project Cost Control</h3>
+        <p>Track budget, committed cost, and actual spend in real time for every project and cost head. Spot overruns before they happen — not after.</p>
+        <span class="card-arrow">View Module <i class="fas fa-arrow-right"></i></span>
+      </a>
+
+      <a href="/products/buildx/products__buildx__project-budgeting" class="card">
+        <div class="card-icon"><i class="fas fa-file-invoice-dollar"></i></div>
+        <h3>Project Budgeting</h3>
+        <p>Build detailed BOQ-based budgets, set cost head targets, and compare estimates versus actuals at every phase of the project lifecycle.</p>
+        <span class="card-arrow">View Module <i class="fas fa-arrow-right"></i></span>
+      </a>
+
+      <a href="/products/buildx/products__buildx__site-management" class="card">
+        <div class="card-icon"><i class="fas fa-hard-hat"></i></div>
+        <h3>Site Management</h3>
+        <p>Centralise daily progress, manpower, machinery, material receipts, and issue logs for every active site in one accessible platform.</p>
+        <span class="card-arrow">View Module <i class="fas fa-arrow-right"></i></span>
+      </a>
+
+      <a href="/products/buildx/products__buildx__mobile-site-reporting" class="card">
+        <div class="card-icon"><i class="fas fa-mobile-alt"></i></div>
+        <h3>Mobile Site Reporting</h3>
+        <p>Capture daily progress reports, photos, and material receipts directly from the site — works in low-connectivity conditions and syncs to HQ instantly.</p>
+        <span class="card-arrow">View Module <i class="fas fa-arrow-right"></i></span>
+      </a>
+
+      <a href="/products/buildx/products__buildx__ra-billing" class="card">
+        <div class="card-icon"><i class="fas fa-receipt"></i></div>
+        <h3>RA Billing</h3>
+        <p>Running Account billing end to end — measurement-based certification, retention, advance recovery, deductions, and contractor reconciliation for every cycle.</p>
+        <span class="card-arrow">View Module <i class="fas fa-arrow-right"></i></span>
+      </a>
+
+      <a href="/products/buildx/products__buildx__procurement-management" class="card">
+        <div class="card-icon"><i class="fas fa-shopping-cart"></i></div>
+        <h3>Procurement Management</h3>
+        <p>RFQs, vendor comparison, purchase orders, and GRN tracking — integrated with project cost so every committed cost is captured from day one.</p>
+        <span class="card-arrow">View Module <i class="fas fa-arrow-right"></i></span>
+      </a>
+
+      <a href="/products/buildx/products__buildx__material-management" class="card">
+        <div class="card-icon"><i class="fas fa-boxes"></i></div>
+        <h3>Material Management</h3>
+        <p>Issue tracking, site consumption, returns, and material reconciliation against BOQ. Identify wastage before it compounds into cost overruns.</p>
+        <span class="card-arrow">View Module <i class="fas fa-arrow-right"></i></span>
+      </a>
+
+      <a href="/products/buildx/products__buildx__contractor-management" class="card">
+        <div class="card-icon"><i class="fas fa-users-cog"></i></div>
+        <h3>Contractor Management</h3>
+        <p>Work orders, progress measurement, billing, retention, and performance tracking for all subcontractors and vendors from one place.</p>
+        <span class="card-arrow">View Module <i class="fas fa-arrow-right"></i></span>
+      </a>
+
+      <a href="/products/buildx/products__buildx__snag-management" class="card">
+        <div class="card-icon"><i class="fas fa-bug"></i></div>
+        <h3>Snag Management</h3>
+        <p>Raise, assign, and close snags with photo evidence and location tagging. Track pending items across all trades before handover.</p>
+        <span class="card-arrow">View Module <i class="fas fa-arrow-right"></i></span>
+      </a>
+
+      <a href="/products/buildx/products__buildx__punch-list-management" class="card">
+        <div class="card-icon"><i class="fas fa-clipboard-list"></i></div>
+        <h3>Punch List Management</h3>
+        <p>Generate and manage punch lists by area and trade. Track completion status for each item and produce handover-ready documentation.</p>
+        <span class="card-arrow">View Module <i class="fas fa-arrow-right"></i></span>
+      </a>
+
+      <a href="/products/buildx/products__buildx__commissioning-management" class="card">
+        <div class="card-icon"><i class="fas fa-cogs"></i></div>
+        <h3>Commissioning Management</h3>
+        <p>Systematic commissioning checklists, test records, and sign-off workflows to ensure every system is verified before handover to the client.</p>
+        <span class="card-arrow">View Module <i class="fas fa-arrow-right"></i></span>
+      </a>
+
+      <a href="/products/buildx/products__buildx__project-analytics" class="card">
+        <div class="card-icon"><i class="fas fa-chart-bar"></i></div>
+        <h3>Project Analytics</h3>
+        <p>Portfolio dashboards that roll up cost, billing, schedule, and cash position across every active project. Leadership visibility without manual reports.</p>
+        <span class="card-arrow">View Module <i class="fas fa-arrow-right"></i></span>
+      </a>
+
+    </div>
+  </div>
+</section>
+
+<!-- SOLUTIONS -->
+<section id="solutions" class="section section-dark">
+  <div class="container">
+    <div class="section-header">
+      <span class="section-eyebrow">Use Cases</span>
+      <h2>BuildX Solutions</h2>
+      <p>Every construction challenge has a dedicated BuildX solution designed around it.</p>
+    </div>
+    <div class="grid-3">
+
+      <a href="/products/buildx/solutions__project-cost-control" class="card card-dark">
+        <div class="card-icon"><i class="fas fa-rupee-sign"></i></div>
+        <h3>Project Cost Control</h3>
+        <p>Stop budget overruns with real-time committed cost tracking. Know the financial position of every project before it's too late to act.</p>
+        <span class="card-arrow">Explore Solution <i class="fas fa-arrow-right"></i></span>
+      </a>
+
+      <a href="/products/buildx/solutions__construction-budget-overruns" class="card card-dark">
+        <div class="card-icon"><i class="fas fa-exclamation-triangle"></i></div>
+        <h3>Prevent Budget Overruns</h3>
+        <p>Identify the root causes of budget overruns — scope creep, material wastage, contract variations — and close the gaps before they compound.</p>
+        <span class="card-arrow">Explore Solution <i class="fas fa-arrow-right"></i></span>
+      </a>
+
+      <a href="/products/buildx/solutions__project-delay-management" class="card card-dark">
+        <div class="card-icon"><i class="fas fa-clock"></i></div>
+        <h3>Project Delay Management</h3>
+        <p>Track progress against schedule, log delay causes, and give management early warning on projects at risk of missing milestones.</p>
+        <span class="card-arrow">Explore Solution <i class="fas fa-arrow-right"></i></span>
+      </a>
+
+      <a href="/products/buildx/solutions__daily-progress-reporting" class="card card-dark">
+        <div class="card-icon"><i class="fas fa-file-alt"></i></div>
+        <h3>Daily Progress Reporting</h3>
+        <p>Replace WhatsApp updates and spreadsheets with structured daily site reports — manpower, machinery, progress, and photos captured at the site.</p>
+        <span class="card-arrow">Explore Solution <i class="fas fa-arrow-right"></i></span>
+      </a>
+
+      <a href="/products/buildx/solutions__material-wastage-control" class="card card-dark">
+        <div class="card-icon"><i class="fas fa-recycle"></i></div>
+        <h3>Material Wastage Control</h3>
+        <p>Track material issuance and reconcile consumption against BOQ targets. Surface the trades and sites where wastage is eroding your margins.</p>
+        <span class="card-arrow">Explore Solution <i class="fas fa-arrow-right"></i></span>
+      </a>
+
+      <a href="/products/buildx/solutions__ra-billing-software" class="card card-dark">
+        <div class="card-icon"><i class="fas fa-file-invoice"></i></div>
+        <h3>RA Billing Software</h3>
+        <p>Automate running account billing cycles — measurement, deductions, retention, and contractor reconciliation — without errors or delay.</p>
+        <span class="card-arrow">Explore Solution <i class="fas fa-arrow-right"></i></span>
+      </a>
+
+      <a href="/products/buildx/solutions__contractor-management" class="card card-dark">
+        <div class="card-icon"><i class="fas fa-handshake"></i></div>
+        <h3>Contractor Management</h3>
+        <p>Manage all subcontractors from work order to final bill. Track performance, enforce SLAs, and reconcile every payment against measured work.</p>
+        <span class="card-arrow">Explore Solution <i class="fas fa-arrow-right"></i></span>
+      </a>
+
+      <a href="/products/buildx/solutions__punch-list-management" class="card card-dark">
+        <div class="card-icon"><i class="fas fa-list-ol"></i></div>
+        <h3>Punch List Management</h3>
+        <p>Structured punch lists by area and trade, tracked to closure. Produce handover documentation without manual chasing or spreadsheet chaos.</p>
+        <span class="card-arrow">Explore Solution <i class="fas fa-arrow-right"></i></span>
+      </a>
+
+      <a href="/products/buildx/solutions__snag-list-management" class="card card-dark">
+        <div class="card-icon"><i class="fas fa-search"></i></div>
+        <h3>Snag List Management</h3>
+        <p>Photo-based snag logging, trade-wise assignment, and closure tracking to ensure every defect is recorded, assigned, and resolved before handover.</p>
+        <span class="card-arrow">Explore Solution <i class="fas fa-arrow-right"></i></span>
+      </a>
+
+      <a href="/products/buildx/solutions__commissioning-management" class="card card-dark">
+        <div class="card-icon"><i class="fas fa-check-double"></i></div>
+        <h3>Commissioning Management</h3>
+        <p>System-wise commissioning checklists and test records so every MEP and civil system is verified, signed off, and documented before client handover.</p>
+        <span class="card-arrow">Explore Solution <i class="fas fa-arrow-right"></i></span>
+      </a>
+
+    </div>
+  </div>
+</section>
+
+<!-- INDUSTRIES -->
+<section id="industries" class="section section-alt">
+  <div class="container">
+    <div class="section-header">
+      <span class="section-eyebrow">Sector Coverage</span>
+      <h2>BuildX for Every Construction Segment</h2>
+      <p>From real estate developers to EPC contractors, BuildX is configured for the specific workflows of each construction sector.</p>
+    </div>
+    <div class="grid-3">
+
+      <a href="/products/buildx/industries__construction" class="card">
+        <div class="card-icon"><i class="fas fa-building"></i></div>
+        <h3>Construction</h3>
+        <p>End-to-end project management for builders and civil contractors — cost control, site reporting, billing, and subcontractor management in one platform.</p>
+        <span class="card-arrow">View Industry <i class="fas fa-arrow-right"></i></span>
+      </a>
+
+      <a href="/products/buildx/industries__real-estate-developers" class="card">
+        <div class="card-icon"><i class="fas fa-city"></i></div>
+        <h3>Real Estate Developers</h3>
+        <p>Project cost tracking, flat-wise billing, contractor management, and handover documentation for residential and commercial developers.</p>
+        <span class="card-arrow">View Industry <i class="fas fa-arrow-right"></i></span>
+      </a>
+
+      <a href="/products/buildx/industries__epc-project-management" class="card">
+        <div class="card-icon"><i class="fas fa-project-diagram"></i></div>
+        <h3>EPC Contractors</h3>
+        <p>Engineering, procurement, and construction project management with multi-discipline cost control, procurement tracking, and milestone billing.</p>
+        <span class="card-arrow">View Industry <i class="fas fa-arrow-right"></i></span>
+      </a>
+
+      <a href="/products/buildx/industries__infrastructure-project-management" class="card">
+        <div class="card-icon"><i class="fas fa-road"></i></div>
+        <h3>Infrastructure</h3>
+        <p>Cost and progress management for roads, water, government, and infrastructure projects with RA billing and BOQ-based cost control.</p>
+        <span class="card-arrow">View Industry <i class="fas fa-arrow-right"></i></span>
+      </a>
+
+      <a href="/products/buildx/industries__interior-project-management" class="card">
+        <div class="card-icon"><i class="fas fa-couch"></i></div>
+        <h3>Interior Contractors</h3>
+        <p>Project budgeting, material tracking, subcontractor management, and snag lists for interior fit-out and turnkey project firms.</p>
+        <span class="card-arrow">View Industry <i class="fas fa-arrow-right"></i></span>
+      </a>
+
+      <a href="/products/buildx/industries__mep-contractors" class="card">
+        <div class="card-icon"><i class="fas fa-bolt"></i></div>
+        <h3>MEP Contractors</h3>
+        <p>Electrical, HVAC, plumbing, and fire-fighting contractors — track BOQ progress, RA billing, commissioning checklists, and snag management in one place.</p>
+        <span class="card-arrow">View Industry <i class="fas fa-arrow-right"></i></span>
+      </a>
+
+      <a href="/products/buildx/industries__industrial-project-management" class="card">
+        <div class="card-icon"><i class="fas fa-industry"></i></div>
+        <h3>Industrial Projects</h3>
+        <p>Project cost control and commissioning management for industrial plant construction — equipment installation, piping, instrumentation, and civil works.</p>
+        <span class="card-arrow">View Industry <i class="fas fa-arrow-right"></i></span>
+      </a>
+
+    </div>
+  </div>
+</section>
+
+<!-- SERVICES -->
+<section id="services" class="section">
+  <div class="container">
+    <div class="section-header">
+      <span class="section-eyebrow">Implementation</span>
+      <h2>BuildX Services</h2>
+      <p>Certified Frappe partner implementation, ERPNext integration, and construction-specific configuration services.</p>
+    </div>
+    <div class="grid-3">
+
+      <a href="/services/erpnext-construction" class="card">
+        <div class="card-icon"><i class="fas fa-rocket"></i></div>
+        <h3>ERPNext for Construction</h3>
+        <p>Full ERPNext deployment tailored for construction businesses — project accounting, procurement, payroll, and HR alongside BuildX project operations.</p>
+        <span class="card-arrow">View Service <i class="fas fa-arrow-right"></i></span>
+      </a>
+
+      <a href="/services/erpnext-for-contractors" class="card">
+        <div class="card-icon"><i class="fas fa-hard-hat"></i></div>
+        <h3>ERPNext for Contractors</h3>
+        <p>ERPNext implementation designed for civil, EPC, MEP, and specialty contractors — from project accounting to subcontractor billing and compliance.</p>
+        <span class="card-arrow">View Service <i class="fas fa-arrow-right"></i></span>
+      </a>
+
+    </div>
+  </div>
+</section>
+
+<!-- CTA -->
+<section class="section section-alt">
+  <div class="container">
+    <div class="cta-banner">
+      <h2>Ready to Take Control of Your Construction Projects?</h2>
+      <p>Book a free demo and see how BuildX can give your team real-time visibility into cost, site, billing, and procurement on one integrated platform.</p>
+      <div class="hero-btns">
+        <a href="https://quantbit.io/contact" class="btn-primary"><i class="fas fa-calendar-check"></i> Book Free Demo</a>
+        <a href="/products/buildx" class="btn-outline"><i class="fas fa-info-circle"></i> Learn More About BuildX</a>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ================= FOOTER ================= -->
+<div id="footer"></div>
+
+<!-- ================= LOAD HEADER & FOOTER ================= -->
+<script>
+    fetch("../header.html")
+        .then(res => res.text())
+        .then(data => document.getElementById("header").innerHTML = data);
+
+    fetch("../footer.html")
+        .then(res => res.text())
+        .then(data => document.getElementById("footer").innerHTML = data);
+</script>
+<!-- ================= TEMPLATE JS ================= -->
+    <!--<< All JS Plugins >>-->
+    <script data-cfasync="false" src="../../cdn-cgi/scripts/5c5dd728/cloudflare-static/email-decode.min.js"></script>
+    <script src="/../assets/quantbit_website/js/jquery-3.7.1.min.js"></script>
+    <!--<< Viewport Js >>-->
+    <script src="/../assets/quantbit_website/js/viewport.jquery.js"></script>
+    <!--<< Bootstrap Js >>-->
+    <script src="/../assets/quantbit_website/js/bootstrap.bundle.min.js"></script>
+    <!--<< Nice Select Js >>-->
+    <script src="/../assets/quantbit_website/js/jquery.nice-select.min.js"></script>
+    <!--<< Waypoints Js >>-->
+    <script src="/../assets/quantbit_website/js/jquery.waypoints.js"></script>
+    <!--<< Counterup Js >>-->
+    <script src="/../assets/quantbit_website/js/jquery.counterup.min.js"></script>
+    <!--<< Slick Js >>-->
+    <script src="/../assets/quantbit_website/js/slick.min.js"></script>
+    <!--<< Slick Animation Js >>-->
+    <script src="/../assets/quantbit_website/js/slick-animation.min.js"></script>
+    <!--<< MeanMenu Js >>-->
+    <script src="/../assets/quantbit_website/js/jquery.meanmenu.min.js"></script>
+    <!--<< Magnific Popup Js >>-->
+    <script src="/../assets/quantbit_website/js/jquery.magnific-popup.min.js"></script>
+    <!--<< Wow Animation Js >>-->
+    <script src="/../assets/quantbit_website/js/wow.min.js"></script>
+    <!--<< Circle Progress Js >>-->
+    <script src="/../assets/quantbit_website/js/circle-progress.js"></script>
+    <!--<< Main.js >>-->
+    <script src="/../assets/quantbit_website/js/main.js"></script>
+    <script defer
+        src="../../../static.cloudflareinsights.com/beacon.min.js/v8c78df7c7c0f484497ecbca7046644da1771523124516"
+        integrity="sha512-8DS7rgIrAmghBFwoOTujcf6D9rXvH8xm8JQ1Ja01h9QX8EzXldiszufYa4IFfKdLUKTTrnSFXLDkUEOTrZQ8Qg=="
+        data-cf-beacon='{"version":"2024.11.0","token":"90f7972af14a48b4add7da2b74f5d675","r":1,"server_timing":{"name":{"cfCacheStatus":true,"cfEdge":true,"cfExtPri":true,"cfL4":true,"cfOrigin":true,"cfSpeedBrain":true},"location_startswith":null}}'
+        crossorigin="anonymous"></script>
+</body>
+</html>
