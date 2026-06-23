@@ -138,21 +138,21 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
 <div id="header"></div>
 <div class="service-nav-strip">
   <div class="service-nav-inner">
-    <a href="/services/erpnext-for-foundry" class="sn-link">Foundry</a>
-    <a href="/services/erpnext-for-engineering" class="sn-link">Engineering</a>
-    <a href="/services/erpnext-for-manufacturing" class="sn-link active">Manufacturing</a>
-    <a href="/services/erpnext-for-trading" class="sn-link">Trading</a>
-    <a href="/services/erpnext-for-sugar" class="sn-link">Sugar</a>
-    <a href="/services/erpnext-for-auto-components" class="sn-link">Auto Components</a>
-    <a href="/services/erpnext-for-textile" class="sn-link">Textile</a>
-    <a href="/services/erpnext-for-pharma" class="sn-link">Pharma</a>
-    <a href="/services/erpnext-for-government" class="sn-link">Government</a>
-    <a href="/services/erpnext-for-gems-jewellery" class="sn-link">Gems &amp; Jewellery</a>
-    <a href="/services/erpnext-for-mining" class="sn-link">Mining</a>
-    <a href="/services/erpnext-for-chemicals" class="sn-link">Chemicals</a>
-    <a href="/services/erpnext-for-leather" class="sn-link">Leather</a>
-    <a href="/services/erpnext-for-steel" class="sn-link">Steel</a>
-    <a href="/services/erpnext-for-garments-exports" class="sn-link">Garments &amp; Exports</a>
+    <a href="erpnext-for-foundry.html" class="sn-link">Foundry</a>
+    <a href="erpnext-for-engineering.html" class="sn-link">Engineering</a>
+    <a href="erpnext-for-manufacturing.html" class="sn-link active">Manufacturing</a>
+    <a href="erpnext-for-trading.html" class="sn-link">Trading</a>
+    <a href="erpnext-for-sugar.html" class="sn-link">Sugar</a>
+    <a href="erpnext-for-auto-components.html" class="sn-link">Auto Components</a>
+    <a href="erpnext-for-textile.html" class="sn-link">Textile</a>
+    <a href="erpnext-for-pharma.html" class="sn-link">Pharma</a>
+    <a href="erpnext-for-government.html" class="sn-link">Government</a>
+    <a href="erpnext-for-gems-jewellery.html" class="sn-link">Gems &amp; Jewellery</a>
+    <a href="erpnext-for-mining.html" class="sn-link">Mining</a>
+    <a href="erpnext-for-chemicals.html" class="sn-link">Chemicals</a>
+    <a href="erpnext-for-leather.html" class="sn-link">Leather</a>
+    <a href="erpnext-for-steel.html" class="sn-link">Steel</a>
+    <a href="erpnext-for-garments-exports.html" class="sn-link">Garments &amp; Exports</a>
   </div>
 </div>
 
@@ -164,8 +164,8 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
         <h1>ERP for <span class="accent">Manufacturing</span> Operations</h1>
         <p class="hero-desc">Production planning, BOM and routing, shop-floor control, quality, inventory and real-time costing — implemented on ERPNext by a certified Frappe partner whose team has delivered manufacturing solutions across multiple verticals.</p>
         <div class="hero-actions">
-          <a href="/contact" class="btn-primary">Book a Demo ↗</a>
-          <a href="/contact" class="btn-ghost">Discuss your project →</a>
+          <a href="/company/contact-us.html" class="btn-primary">Book a Demo ↗</a>
+          <a href="/company/contact-us.html" class="btn-ghost">Discuss your project →</a>
         </div>
       </div>
       <div class="code-card">
@@ -405,7 +405,7 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
   <div class="container">
     <h2>Planning ERPNext for your manufacturing operation?</h2>
     <p>Talk to a team that has delivered manufacturing ERP across many verticals. We will map your production reality and give you a clear plan.</p>
-    <a href="/contact" class="btn-dark">Book a Demo ↗</a>
+    <a href="/company/contact-us.html" class="btn-dark">Book a Demo ↗</a>
   </div>
 </section>
 
@@ -415,13 +415,13 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
 function toggleFaq(btn){const item=btn.closest('.faq-item');const isOpen=item.classList.contains('open');document.querySelectorAll('.faq-item').forEach(i=>i.classList.remove('open'));if(!isOpen)item.classList.add('open');}
 </script>
 <script>
-fetch("../header.html")
+fetch("/header.html")
     .then(res => res.text())
     .then(data => {
         document.getElementById("header").innerHTML = data;
     });
 
-fetch("../footer.html")
+fetch("/footer.html")
     .then(res => res.text())
     .then(data => {
         document.getElementById("footer").innerHTML = data;

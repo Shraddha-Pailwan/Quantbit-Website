@@ -135,11 +135,11 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
 
 <div class="service-nav-strip">
   <div class="service-nav-inner">
-    <a href="/services/erpnext-implementation" class="sn-link">ERPNext Implementation</a>
-    <a href="/services/frappe-development" class="sn-link active">Frappe Development</a>
-    <a href="/services/erpnext-customisation" class="sn-link">ERPNext Customisation</a>
-    <a href="/services/erpnext-migration" class="sn-link">Migration</a>
-    <a href="/services/saas-development" class="sn-link">SaaS Development</a>
+    <a href="erpnext-implementation.html" class="sn-link">ERPNext Implementation</a>
+    <a href="frappe-development.html" class="sn-link active">Frappe Development</a>
+    <a href="erpnext-customisation.html" class="sn-link">ERPNext Customisation</a>
+    <a href="erpnext-migration.html" class="sn-link">Migration</a>
+    <a href="saas-development.html" class="sn-link">SaaS Development</a>
   </div>
 </div>
 
@@ -151,8 +151,8 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
         <h1>Custom <span class="accent">Frappe Apps</span> Built by Framework Experts</h1>
         <p class="hero-desc">From standalone Frappe modules to full SaaS products — our certified developer team builds on the Frappe framework with the depth of people who have shipped 10 vertical products on it.</p>
         <div class="hero-actions">
-          <a href="/contact" class="btn-primary">Discuss your project ↗</a>
-          <a href="/services/saas-development" class="btn-ghost">Build a SaaS product →</a>
+          <a href="/company/contact-us.html" class="btn-primary">Discuss your project ↗</a>
+          <a href="saas-development.html" class="btn-ghost">Build a SaaS product →</a>
         </div>
       </div>
       <div class="code-card">
@@ -420,7 +420,7 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
   <div class="container">
     <h2>Have a Frappe development project in mind?</h2>
     <p>Talk to our certified Frappe architects. We will tell you honestly what is possible, how long it takes, and what it costs.</p>
-    <a href="/contact" class="btn-dark">Start the conversation ↗</a>
+    <a href="/company/contact-us.html" class="btn-dark">Start the conversation ↗</a>
   </div>
 </section>
 
@@ -429,13 +429,13 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
 function toggleFaq(btn){const item=btn.closest('.faq-item');const isOpen=item.classList.contains('open');document.querySelectorAll('.faq-item').forEach(i=>i.classList.remove('open'));if(!isOpen)item.classList.add('open');}
 </script>
 <script>
-fetch("../header.html")
+fetch("/header.html")
     .then(res => res.text())
     .then(data => {
         document.getElementById("header").innerHTML = data;
     });
 
-fetch("../footer.html")
+fetch("/footer.html")
     .then(res => res.text())
     .then(data => {
         document.getElementById("footer").innerHTML = data;

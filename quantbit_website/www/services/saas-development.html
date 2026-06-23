@@ -72,7 +72,7 @@ j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
 height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
 <!-- End Google Tag Manager (noscript) -->
 <div id="header"></div>
-<div class="service-nav-strip"><div class="service-nav-inner"><a href="/services/erpnext-implementation" class="sn-link">ERPNext Implementation</a><a href="/services/frappe-development" class="sn-link">Frappe Development</a><a href="/services/erpnext-customisation" class="sn-link">ERPNext Customisation</a><a href="/services/erpnext-migration" class="sn-link">Migration</a><a href="/services/saas-development" class="sn-link active">SaaS Development</a></div></div>
+<div class="service-nav-strip"><div class="service-nav-inner"><a href="erpnext-implementation.html" class="sn-link">ERPNext Implementation</a><a href="frappe-development.html" class="sn-link">Frappe Development</a><a href="erpnext-customisation.html" class="sn-link">ERPNext Customisation</a><a href="erpnext-migration.html" class="sn-link">Migration</a><a href="saas-development.html" class="sn-link active">SaaS Development</a></div></div>
 
 <section class="hero">
   <div class="container">
@@ -82,7 +82,7 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
         <h1>Build Your <span class="accent">Vertical SaaS</span> on the Framework We Know Best</h1>
         <p class="hero-desc">We have shipped 10 SaaS products on Frappe. FoundryX, CFMSX, PropX, WMSPro, FleetX and more. That is not portfolio decoration — it is the expertise your product will be built with.</p>
         <div class="hero-actions">
-          <a href="/contact" class="btn-primary">Discuss your product idea ↗</a>
+          <a href="/company/contact-us.html" class="btn-primary">Discuss your product idea ↗</a>
           <a href="/products" class="btn-ghost">See what we have built</a>
         </div>
       </div>
@@ -205,18 +205,18 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
   <div class="container">
     <h2>Have a SaaS product idea and a Frappe question?</h2>
     <p>Talk to our Frappe architects. We will tell you honestly whether Frappe is the right choice, how long it takes, and what it costs to build what you have in mind.</p>
-    <a href="/contact" class="btn-dark">Start the conversation ↗</a>
+    <a href="/company/contact-us.html" class="btn-dark">Start the conversation ↗</a>
   </div>
 </section>
 <div id="footer"></div><script>function toggleFaq(btn){const item=btn.closest('.faq-item');const isOpen=item.classList.contains('open');document.querySelectorAll('.faq-item').forEach(i=>i.classList.remove('open'));if(!isOpen)item.classList.add('open');}</script>
 <script>
-fetch("../header.html")
+fetch("/header.html")
     .then(res => res.text())
     .then(data => {
         document.getElementById("header").innerHTML = data;
     });
 
-fetch("../footer.html")
+fetch("/footer.html")
     .then(res => res.text())
     .then(data => {
         document.getElementById("footer").innerHTML = data;
