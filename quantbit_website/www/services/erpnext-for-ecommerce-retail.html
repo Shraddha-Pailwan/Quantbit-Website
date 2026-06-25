@@ -1,0 +1,526 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<title>ERPNext for E-Commerce & Online Retail | Marketplace Orders, Returns, GST TCS | Quantbit</title>
+<meta name="description" content="ERPNext for e-commerce and online retail — marketplace order aggregation, COD reconciliation, returns management, GST TCS compliance, multi-warehouse dispatch, and customer analytics.">
+<meta name="keywords" content="ERPNext ecommerce online retail India, ERPNext marketplace integration Amazon Flipkart, ERPNext COD reconciliation, ERPNext returns management, ERPNext GST TCS Section 52, open source ecommerce ERP India, ERPNext multi-warehouse dispatch, ERPNext seller fee reconciliation, online retail ERP India, ERPNext ecommerce analytics AOV CAC">
+<link rel="canonical" href="https://quantbit.io/industries/erpnext-for-ecommerce-retail/">
+<script type="application/ld+json">{
+  "@context":"https://schema.org",
+  "@graph":[
+    {"@type":"BreadcrumbList","itemListElement":[
+      {"@type":"ListItem","position":1,"name":"Home","item":"https://quantbit.io"},
+      {"@type":"ListItem","position":2,"name":"Industries","item":"https://quantbit.io/industries/"},
+      {"@type":"ListItem","position":3,"name":"ERPNext for E-Commerce & Online Retail","item":"https://quantbit.io/industries/erpnext-for-ecommerce-retail/"}
+    ]},
+    {"@type":"FAQPage","mainEntity":[
+      {"@type":"Question","name":"Can ERPNext integrate with Amazon and Flipkart for order management?","acceptedAnswer":{"@type":"Answer","text":"ERPNext integrates with Amazon and Flipkart through API connectors — either via Quantbit's custom integration layer or third-party middleware like Unicommerce or StoreHippo. Orders placed on the marketplace are automatically created as Sales Orders in ERPNext, inventory is reduced at the warehouse level, and dispatch tracking is updated back to the marketplace. Seller fee reconciliation from marketplace statements is handled through a custom settlement workflow."}},
+      {"@type":"Question","name":"How does ERPNext handle COD (Cash on Delivery) reconciliation?","acceptedAnswer":{"@type":"Answer","text":"ERPNext manages COD reconciliation by tracking the payment expected from the logistics partner against the amount actually remitted. The COD remittance report shows orders dispatched COD, amounts expected by remittance cycle, amounts received, and shortfalls. Unreconciled COD amounts are flagged for follow-up with the courier partner — preventing revenue leakage from unremitted cash."}},
+      {"@type":"Question","name":"Does ERPNext handle GST TCS deducted by e-commerce operators under Section 52?","acceptedAnswer":{"@type":"Answer","text":"Yes. GST TCS at 1% (0.5% CGST + 0.5% SGST or 1% IGST) deducted by e-commerce operators like Amazon and Flipkart is tracked in ERPNext as a receivable from the marketplace. Monthly TCS certificates received from the operator are matched against the ERPNext balance and adjusted in the GSTR-3B input credit for the period."}},
+      {"@type":"Question","name":"How does ERPNext manage returns and reverse logistics for e-commerce?","acceptedAnswer":{"@type":"Answer","text":"ERPNext's return system creates a Return Sales Invoice linked to the original order — reversing the GST liability, updating inventory (with quality inspection if required), and initiating the customer refund through the configured payment gateway or COD offset. Returns can be configured with reason codes for analysis — identifying products with high return rates or systematic quality issues."}},
+      {"@type":"Question","name":"Can ERPNext manage multi-warehouse dispatch optimisation for online orders?","acceptedAnswer":{"@type":"Answer","text":"Yes. ERPNext can be configured with routing rules that assign each online order to the nearest warehouse with available stock — reducing last-mile delivery cost and delivery time. For marketplaces, warehouse mapping (Amazon FBA warehouse vs own warehouse) is handled through the item-warehouse configuration."}},
+      {"@type":"Question","name":"What e-commerce analytics does ERPNext provide for online retailers?","acceptedAnswer":{"@type":"Answer","text":"ERPNext tracks key e-commerce KPIs including Average Order Value (AOV) by channel and period, return rate by product category, repeat purchase rate by customer cohort, revenue by marketplace vs own website, and fulfilment time from order to dispatch. Custom dashboards can be configured by Quantbit for management review and investor reporting."}}
+    ]}
+  ]
+}</script>
+<style>
+:root{--accent:#1a5fd4;--accent-dark:#1349a8;--teal:#0b7a5e;--teal-light:#e6f4f0;--amber:#b35e0a;--amber-light:#fef3e2;--dark:#0f2d47;--mid:#1e4a6e;--text:#1a2a38;--muted:#4a6278;--border:#d0dce8;--bg:#f5f8fc;--white:#ffffff;--radius:10px;--shadow:0 2px 16px rgba(15,45,71,.10)}
+*,*::before,*::after{box-sizing:border-box;margin:0;padding:0}html{scroll-behavior:smooth}
+body{font-family:'Segoe UI',system-ui,-apple-system,sans-serif;color:var(--text);background:var(--white);line-height:1.65;font-size:16px}
+.site-nav{background:var(--dark);padding:0 32px;display:flex;align-items:center;justify-content:space-between;height:60px;position:sticky;top:0;z-index:100}
+.nav-logo{color:#fff;font-weight:700;font-size:1.1rem;text-decoration:none;letter-spacing:.5px}
+.nav-links{display:flex;gap:24px;list-style:none}
+.nav-links a{color:rgba(255,255,255,.82);text-decoration:none;font-size:.9rem;font-weight:500;transition:color .2s}
+.nav-links a:hover{color:#fff}
+.nav-cta{background:var(--accent);color:#fff!important;padding:7px 18px;border-radius:6px;font-weight:600!important}
+.breadcrumb{background:var(--bg);border-bottom:1px solid var(--border);padding:10px 32px;font-size:.82rem;color:var(--muted)}
+.breadcrumb a{color:var(--accent);text-decoration:none}
+.hero{background:linear-gradient(135deg,var(--dark) 0%,var(--mid) 60%,#1a5fd4 100%);color:#fff;padding:72px 32px 64px;position:relative;overflow:hidden}
+.hero::before{content:'';position:absolute;right:-80px;top:-80px;width:420px;height:420px;background:rgba(255,255,255,.04);border-radius:50%;pointer-events:none}
+.hero-inner{max-width:1100px;margin:0 auto;display:grid;grid-template-columns:1fr 360px;gap:56px;align-items:center}
+.hero-badge{display:inline-flex;align-items:center;gap:8px;background:rgba(255,255,255,.12);border:1px solid rgba(255,255,255,.22);border-radius:40px;padding:5px 14px;font-size:.78rem;font-weight:600;letter-spacing:.8px;text-transform:uppercase;margin-bottom:18px;color:rgba(255,255,255,.9)}
+.hero h1{font-size:clamp(1.9rem,3.5vw,2.7rem);font-weight:800;line-height:1.2;margin-bottom:16px}
+.hero h1 span{color:#7eb8ff}
+.hero-desc{font-size:1.05rem;color:rgba(255,255,255,.82);margin-bottom:28px;max-width:540px}
+.hero-tags{display:flex;flex-wrap:wrap;gap:8px;margin-bottom:32px}
+.hero-tag{background:rgba(255,255,255,.1);border:1px solid rgba(255,255,255,.2);border-radius:20px;padding:4px 12px;font-size:.78rem;color:rgba(255,255,255,.85)}
+.hero-btns{display:flex;gap:14px;flex-wrap:wrap}
+.btn-primary{background:var(--accent);color:#fff;padding:12px 26px;border-radius:8px;font-weight:700;text-decoration:none;font-size:.95rem;transition:background .2s,transform .15s;display:inline-block}
+.btn-primary:hover{background:var(--accent-dark);transform:translateY(-1px)}
+.btn-ghost{background:transparent;color:#fff;padding:11px 24px;border:2px solid rgba(255,255,255,.4);border-radius:8px;font-weight:600;text-decoration:none;font-size:.95rem;transition:.2s;display:inline-block}
+.btn-ghost:hover{border-color:#fff;background:rgba(255,255,255,.1)}
+.hero-card{background:rgba(255,255,255,.1);border:1px solid rgba(255,255,255,.18);border-radius:14px;padding:28px;backdrop-filter:blur(8px)}
+.hero-card h3{font-size:.95rem;font-weight:700;margin-bottom:16px;color:rgba(255,255,255,.92)}
+.hero-stat{display:flex;align-items:center;gap:12px;margin-bottom:14px;padding-bottom:14px;border-bottom:1px solid rgba(255,255,255,.12)}
+.hero-stat:last-child{margin-bottom:0;padding-bottom:0;border-bottom:none}
+.stat-icon{width:36px;height:36px;background:rgba(255,255,255,.15);border-radius:8px;display:flex;align-items:center;justify-content:center;font-size:1.1rem;flex-shrink:0}
+.stat-val{font-size:1.1rem;font-weight:800;color:#fff}
+.stat-lbl{font-size:.73rem;color:rgba(255,255,255,.7);line-height:1.3}
+.section{padding:64px 32px}.section-alt{background:var(--bg)}.container{max-width:1100px;margin:0 auto}
+.section-label{font-size:.75rem;font-weight:700;letter-spacing:1.2px;text-transform:uppercase;color:var(--accent);margin-bottom:8px}
+.section-title{font-size:clamp(1.5rem,2.8vw,2.1rem);font-weight:800;color:var(--dark);margin-bottom:12px;line-height:1.25}
+.section-sub{font-size:1.02rem;color:var(--muted);max-width:680px;margin-bottom:44px;line-height:1.7}
+.pain-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(260px,1fr));gap:20px}
+.pain-card{background:var(--white);border:1px solid var(--border);border-left:4px solid #e74c3c;border-radius:var(--radius);padding:22px 24px}
+.pain-card h3{font-size:.95rem;font-weight:700;color:var(--dark);margin-bottom:8px;display:flex;align-items:center;gap:8px}
+.pain-icon{font-size:1.2rem}
+.pain-card p{font-size:.86rem;color:var(--muted);line-height:1.6}
+.pain-card .solve{font-size:.82rem;color:var(--teal);font-weight:600;margin-top:10px;padding-top:10px;border-top:1px solid var(--border)}
+.module-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(300px,1fr));gap:24px}
+.module-card{background:var(--white);border:1px solid var(--border);border-radius:var(--radius);padding:26px;transition:box-shadow .2s,transform .2s}
+.module-card:hover{box-shadow:var(--shadow);transform:translateY(-3px)}
+.module-icon{width:44px;height:44px;border-radius:10px;background:linear-gradient(135deg,var(--accent),var(--mid));display:flex;align-items:center;justify-content:center;font-size:1.3rem;margin-bottom:14px}
+.module-card h3{font-size:.98rem;font-weight:700;color:var(--dark);margin-bottom:6px}
+.module-link{font-size:.78rem;color:var(--accent);text-decoration:none;font-weight:600}
+.module-card p{font-size:.86rem;color:var(--muted);line-height:1.6;margin:8px 0}
+.module-card ul{padding-left:0;list-style:none}
+.module-card ul li{font-size:.84rem;color:var(--muted);padding:3px 0 3px 16px;position:relative;line-height:1.5}
+.module-card ul li::before{content:'✓';position:absolute;left:0;color:var(--teal);font-weight:700}
+.workflow-steps{display:grid;grid-template-columns:repeat(auto-fit,minmax(150px,1fr));gap:0;position:relative}
+.workflow-steps::before{content:'';position:absolute;top:28px;left:0;right:0;height:2px;background:var(--border);z-index:0}
+.w-step{background:var(--white);border:1px solid var(--border);border-radius:var(--radius);padding:20px 14px;text-align:center;position:relative;z-index:1}
+.w-num{width:36px;height:36px;background:var(--accent);color:#fff;border-radius:50%;display:flex;align-items:center;justify-content:center;font-size:.82rem;font-weight:700;margin:0 auto 10px}
+.w-step h4{font-size:.8rem;font-weight:700;color:var(--dark);margin-bottom:4px}
+.w-step p{font-size:.74rem;color:var(--muted);line-height:1.4}
+.compliance-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(240px,1fr));gap:18px}
+.comp-card{background:var(--white);border:1px solid var(--border);border-radius:var(--radius);padding:20px 22px;display:flex;gap:14px;align-items:flex-start}
+.comp-dot{width:10px;height:10px;background:var(--amber);border-radius:50%;flex-shrink:0;margin-top:5px}
+.comp-card h4{font-size:.88rem;font-weight:700;color:var(--dark);margin-bottom:4px}
+.comp-card p{font-size:.82rem;color:var(--muted);line-height:1.55}
+.reports-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(230px,1fr));gap:18px}
+.report-card{background:var(--white);border:1px solid var(--border);border-left:4px solid var(--accent);border-radius:var(--radius);padding:18px 20px}
+.report-card h4{font-size:.9rem;font-weight:700;color:var(--dark);margin-bottom:5px}
+.report-card p{font-size:.81rem;color:var(--muted);line-height:1.5}
+.report-tag{display:inline-block;background:var(--bg);border:1px solid var(--border);border-radius:4px;padding:2px 8px;font-size:.71rem;font-weight:600;color:var(--accent);margin-top:7px}
+.benefits-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(260px,1fr));gap:22px}
+.benefit-card{background:linear-gradient(135deg,var(--teal-light),var(--white));border:1px solid #b8dfd6;border-radius:var(--radius);padding:24px}
+.benefit-num{font-size:2rem;font-weight:900;color:var(--teal);opacity:.3;line-height:1;margin-bottom:6px}
+.benefit-card h3{font-size:.96rem;font-weight:700;color:var(--dark);margin-bottom:7px}
+.benefit-card p{font-size:.85rem;color:var(--muted);line-height:1.6}
+.bp-list{display:grid;grid-template-columns:repeat(auto-fit,minmax(300px,1fr));gap:18px}
+.bp-item{background:var(--white);border:1px solid var(--border);border-radius:var(--radius);padding:20px 22px;display:flex;gap:14px;align-items:flex-start}
+.bp-icon{width:36px;height:36px;background:var(--amber-light);border-radius:8px;display:flex;align-items:center;justify-content:center;font-size:1rem;flex-shrink:0}
+.bp-item h4{font-size:.9rem;font-weight:700;color:var(--dark);margin-bottom:4px}
+.bp-item p{font-size:.82rem;color:var(--muted);line-height:1.55}
+.geo-answer{background:linear-gradient(135deg,#e8f0fc,#f0f6ff);border:1px solid #c5d8f7;border-radius:14px;padding:30px 34px;margin-bottom:28px}
+.geo-answer h3{font-size:1.05rem;font-weight:700;color:var(--dark);margin-bottom:9px}
+.geo-answer p{font-size:.93rem;color:var(--text);line-height:1.75}
+.geo-grid{display:grid;grid-template-columns:1fr 1fr;gap:22px}
+.geo-block{background:var(--white);border:1px solid var(--border);border-radius:var(--radius);padding:22px}
+.geo-block h4{font-size:.88rem;font-weight:700;color:var(--accent);margin-bottom:9px;display:flex;align-items:center;gap:8px}
+.geo-block ul{list-style:none;padding:0}
+.geo-block ul li{font-size:.84rem;color:var(--muted);padding:4px 0 4px 16px;position:relative}
+.geo-block ul li::before{content:'→';position:absolute;left:0;color:var(--accent)}
+.ai-block{background:linear-gradient(135deg,var(--dark),var(--mid));color:#fff;border-radius:14px;padding:34px 38px}
+.ai-block h3{font-size:1.1rem;font-weight:700;margin-bottom:14px;color:#7eb8ff}
+.ai-qa{margin-bottom:16px;padding-bottom:16px;border-bottom:1px solid rgba(255,255,255,.1)}
+.ai-qa:last-child{margin-bottom:0;padding-bottom:0;border-bottom:none}
+.ai-qa .q{font-size:.86rem;font-weight:600;color:rgba(255,255,255,.7);margin-bottom:4px}
+.ai-qa .a{font-size:.88rem;color:rgba(255,255,255,.88);line-height:1.65}
+.faq-list{max-width:800px;margin:0 auto}
+.faq-item{border:1px solid var(--border);border-radius:var(--radius);margin-bottom:10px;overflow:hidden}
+.faq-q{width:100%;background:var(--white);border:none;padding:17px 22px;text-align:left;font-size:.93rem;font-weight:600;color:var(--dark);cursor:pointer;display:flex;justify-content:space-between;align-items:center;gap:12px;transition:background .15s}
+.faq-q:hover,.faq-q.open{background:var(--bg)}
+.faq-arrow{font-size:1rem;color:var(--accent);transition:transform .25s;flex-shrink:0}
+.faq-q.open .faq-arrow{transform:rotate(180deg)}
+.faq-a{display:none;padding:0 22px 17px;font-size:.88rem;color:var(--muted);line-height:1.7}
+.faq-a.open{display:block}
+.seo-box{background:var(--bg);border:1px solid var(--border);border-radius:var(--radius);padding:22px 26px}
+.seo-kw{display:flex;flex-wrap:wrap;gap:8px;margin-top:10px}
+.seo-kw span{background:var(--white);border:1px solid var(--border);border-radius:4px;padding:4px 10px;font-size:.76rem;color:var(--accent);font-weight:600}
+.cta-section{background:linear-gradient(135deg,var(--dark) 0%,var(--mid) 100%);color:#fff;padding:72px 32px;text-align:center}
+.cta-section h2{font-size:clamp(1.6rem,3vw,2.3rem);font-weight:800;margin-bottom:14px}
+.cta-section p{font-size:1.05rem;color:rgba(255,255,255,.8);max-width:580px;margin:0 auto 32px}
+.cta-btns{display:flex;gap:16px;justify-content:center;flex-wrap:wrap}
+.btn-white{background:#fff;color:var(--dark);padding:13px 28px;border-radius:8px;font-weight:700;text-decoration:none;font-size:.97rem;transition:.2s;display:inline-block}
+.btn-white:hover{background:#e8f0fc}
+.cta-trust{margin-top:22px;font-size:.82rem;color:rgba(255,255,255,.55)}
+.site-footer{background:#0a1e2e;color:rgba(255,255,255,.6);padding:40px 32px 24px;text-align:center;font-size:.83rem}
+.site-footer a{color:rgba(255,255,255,.5);text-decoration:none}
+@media(max-width:768px){.hero-inner{grid-template-columns:1fr}.hero-card{display:none}.geo-grid{grid-template-columns:1fr}.site-nav{padding:0 16px}.nav-links{display:none}.section{padding:48px 16px}.hero{padding:48px 16px 44px}.workflow-steps{grid-template-columns:1fr 1fr}.workflow-steps::before{display:none}.ai-block{padding:24px 20px}.geo-answer{padding:22px 20px}}
+</style>
+ <!-- TEMPLATE CSS (IMPORTANT) -->
+  <link rel="stylesheet" href="/../assets/quantbit_website/css/bootstrap.min.css">
+  <link rel="stylesheet" href="/../assets/quantbit_website/css/font-awesome.css">
+  <link rel="stylesheet" href="/../assets/quantbit_website/css/animate.css">
+  <link rel="stylesheet" href="/../assets/quantbit_website/css/magnific-popup.css">
+  <link rel="stylesheet" href="/../assets/quantbit_website/css/meanmenu.css">
+  <link rel="stylesheet" href="/../assets/quantbit_website/css/slick.css">
+  <link rel="stylesheet" href="/../assets/quantbit_website/css/nice-select.css">
+  <link rel="stylesheet" href="/../assets/quantbit_website/css/main.css">
+  <link rel="stylesheet" href="style.css">
+  <link rel="stylesheet" href="/assets/quantbit_website/css/_shared.css">
+
+
+  <!-- OPTIONAL CUSTOM -->
+  <link rel="stylesheet" href="/../assets/quantbit_website/css/hrms.css">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
+  <!-- Google Tag Manager -->
+  <script>(function (w, d, s, l, i) {
+      w[l] = w[l] || []; w[l].push({
+        'gtm.start':
+          new Date().getTime(), event: 'gtm.js'
+      }); var f = d.getElementsByTagName(s)[0],
+        j = d.createElement(s), dl = l != 'dataLayer' ? '&l=' + l : ''; j.async = true; j.src =
+          'https://www.googletagmanager.com/gtm.js?id=' + i + dl; f.parentNode.insertBefore(j, f);
+    })(window, document, 'script', 'dataLayer', 'GTM-P98Z6G8D');</script>
+  <!-- End Google Tag Manager -->
+</head>
+<body>
+  <!-- Google Tag Manager (noscript) -->
+  <noscript><iframe src="https://www.googletagmanager.com/ns.html?id=GTM-P98Z6G8D" height="0" width="0"
+      style="display:none;visibility:hidden"></iframe></noscript>
+  <!-- End Google Tag Manager (noscript) -->
+  <!-- NAV -->
+  <div id="header"></div>
+
+<section class="hero">
+  <div class="hero-inner">
+    <div>
+      <div class="hero-badge">&#128722; Industry Solution</div>
+      <h1>ERPNext for <span>E-Commerce</span><br>&amp; Online Retail</h1>
+      <p class="hero-desc">Aggregate marketplace orders, reconcile COD payments, manage returns, track GST TCS from platforms, optimise multi-warehouse dispatch, and measure true profitability per channel — all in one integrated system.</p>
+      <div class="hero-tags">
+        <span class="hero-tag">Marketplace Integration</span><span class="hero-tag">COD Reconciliation</span><span class="hero-tag">Returns Management</span><span class="hero-tag">GST TCS Section 52</span><span class="hero-tag">Multi-Warehouse Dispatch</span><span class="hero-tag">Seller Fee Tracking</span><span class="hero-tag">AOV Analytics</span><span class="hero-tag">Repeat Purchase Rate</span>
+      </div>
+      <div class="hero-btns">
+        <a href="/company/contact-us.html" class="btn-primary">Book Free Demo</a>
+        <a href="/services/" class="btn-ghost">Explore ERPNext Modules</a>
+      </div>
+    </div>
+    <div class="hero-card">
+      <h3>Why Online Retailers Choose ERPNext</h3>
+      <div class="hero-stat"><div class="stat-icon">&#128722;</div><div><div class="stat-val">Marketplace Sync</div><div class="stat-lbl">Amazon, Flipkart order auto-import</div></div></div>
+      <div class="hero-stat"><div class="stat-icon">&#128260;</div><div><div class="stat-val">COD Reconciliation</div><div class="stat-lbl">Remittance vs dispatched order match</div></div></div>
+      <div class="hero-stat"><div class="stat-icon">&#128260;</div><div><div class="stat-val">Returns Workflow</div><div class="stat-lbl">Return invoice + refund + QC</div></div></div>
+      <div class="hero-stat"><div class="stat-icon">&#128202;</div><div><div class="stat-val">Channel Profitability</div><div class="stat-lbl">True margin per marketplace</div></div></div>
+    </div>
+  </div>
+</section>
+
+<section class="section">
+  <div class="container">
+    <div class="section-label">Industry Challenges</div>
+    <h2 class="section-title">Problems ERPNext Solves for E-Commerce &amp; Online Retailers</h2>
+    <p class="section-sub">Online retail generates high order volume with complex financial reconciliation requirements. Disconnected systems create revenue leakage, compliance gaps, and blind spots in profitability.</p>
+    <div class="pain-grid">
+      <div class="pain-card">
+        <h3><span class="pain-icon">&#128260;</span> Multi-Marketplace Chaos</h3>
+        <p>Orders from Amazon, Flipkart, Meesho, own website, and WhatsApp come in through different portals. Finance teams manually consolidate these into spreadsheets for GST return — creating delays, errors, and missed TCS credits.</p>
+        <div class="solve">&#10003; ERPNext: All channels consolidate into one order queue — single GST return, unified inventory</div>
+      </div>
+      <div class="pain-card">
+        <h3><span class="pain-icon">&#128176;</span> COD Revenue Leakage</h3>
+        <p>COD remittances from logistics partners are frequently short — due to RTO adjustments, fraud, or administrative errors — and most online sellers don't track these shortfalls systematically, accepting the leakage silently.</p>
+        <div class="solve">&#10003; ERPNext: COD remittance reconciliation tracks every shortfall and generates follow-up outstanding</div>
+      </div>
+      <div class="pain-card">
+        <h3><span class="pain-icon">&#128683;</span> Returns Destroying Margin</h3>
+        <p>High return rates in fashion and electronics eat margin without a clear picture of which SKUs, which customers, or which courier zones are driving them. Returns are processed manually without quality inspection or root cause tracking.</p>
+        <div class="solve">&#10003; ERPNext: Return invoice with reason code, QC check, and analytics by product and return reason</div>
+      </div>
+      <div class="pain-card">
+        <h3><span class="pain-icon">&#129534;</span> Missing GST TCS Credits</h3>
+        <p>GST TCS deducted by Amazon and Flipkart under Section 52 is often not tracked in accounting — resulting in missed input credit claims that add up to lakhs of rupees annually for mid-sized sellers.</p>
+        <div class="solve">&#10003; ERPNext: TCS receivable tracked per marketplace — matched against GSTR-2A credit monthly</div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section class="section section-alt">
+  <div class="container">
+    <div class="section-label">Focus Modules</div>
+    <h2 class="section-title">ERPNext Modules That Matter Most for E-Commerce Retail</h2>
+    <p class="section-sub">Configured for D2C brands, marketplace sellers, and omnichannel online retailers operating in India and GCC.</p>
+    <div class="module-grid">
+      <div class="module-card">
+        <div class="module-icon">&#128722;</div>
+        <h3>E-Commerce — Own Store &amp; B2B Portal</h3>
+        <a href="/services/erpnext-ecommerce/" class="module-link">&#8594; View E-Commerce Module</a>
+        <p>Launch your own branded online store directly from ERPNext — with real-time inventory sync and payment gateway integration.</p>
+        <ul>
+          <li>Product catalog with variant and SEO support</li>
+          <li>Razorpay / PayU payment at checkout</li>
+          <li>Order auto-converts to Sales Order in ERP</li>
+          <li>B2B dealer portal with customer-specific pricing</li>
+        </ul>
+      </div>
+      <div class="module-card">
+        <div class="module-icon">&#128230;</div>
+        <h3>Inventory — Multi-Warehouse Management</h3>
+        <a href="/services/erpnext-inventory-stock/" class="module-link">&#8594; View Inventory Module</a>
+        <p>Track stock across own warehouse, 3PL warehouse, FBA inventory, and consignment locations — with dispatch routing rules.</p>
+        <ul>
+          <li>Multi-warehouse stock visibility per channel</li>
+          <li>Dispatch routing — nearest warehouse with stock</li>
+          <li>FBA inventory reconciliation vs Amazon dashboard</li>
+          <li>Low stock alerts triggering replenishment to 3PL</li>
+        </ul>
+      </div>
+      <div class="module-card">
+        <div class="module-icon">&#128196;</div>
+        <h3>Sales — Returns &amp; Reverse Logistics</h3>
+        <a href="/services/erpnext-sales-crm/" class="module-link">&#8594; View Sales Module</a>
+        <p>Process returns with reason codes, QC inspection, and automatic refund or credit note — linked to the original marketplace order.</p>
+        <ul>
+          <li>Return sales invoice linked to original order</li>
+          <li>Return reason code for analytics</li>
+          <li>QC check on returned item — resalable or damage</li>
+          <li>Refund via gateway or COD offset on next order</li>
+        </ul>
+      </div>
+      <div class="module-card">
+        <div class="module-icon">&#128202;</div>
+        <h3>Accounting — Marketplace Reconciliation</h3>
+        <a href="/services/erpnext-accounting-finance/" class="module-link">&#8594; View Accounting Module</a>
+        <p>Seller fee, commission, TCS, COD remittance — all reconciled against marketplace statements with ERPNext's transaction records.</p>
+        <ul>
+          <li>Seller fee and commission expense per marketplace</li>
+          <li>GST TCS receivable tracking under Section 52</li>
+          <li>COD remittance reconciliation vs logistics partner</li>
+          <li>Net settlement accounting per marketplace cycle</li>
+        </ul>
+      </div>
+      <div class="module-card">
+        <div class="module-icon">&#128100;</div>
+        <h3>CRM — Customer LTV &amp; Retention</h3>
+        <a href="/services/erpnext-sales-crm/" class="module-link">&#8594; View CRM Module</a>
+        <p>Track customer lifetime value, purchase frequency, and product preferences — segmenting for targeted retention campaigns.</p>
+        <ul>
+          <li>Customer purchase history across all channels</li>
+          <li>Repeat purchase rate by cohort and category</li>
+          <li>High-LTV customer identification for VIP treatment</li>
+          <li>Win-back campaigns for lapsed customers</li>
+        </ul>
+      </div>
+      <div class="module-card">
+        <div class="module-icon">&#128293;</div>
+        <h3>Analytics — Channel &amp; Product Performance</h3>
+        <a href="/services/erpnext-analytics-reports/" class="module-link">&#8594; View Analytics Module</a>
+        <p>True profitability by channel — after marketplace fees, logistics, returns, and TCS — with product-level margin and return rate analysis.</p>
+        <ul>
+          <li>Revenue by channel — Amazon, Flipkart, own site</li>
+          <li>Contribution margin after fees, logistics, returns</li>
+          <li>Return rate by product and return reason</li>
+          <li>AOV trend by channel and customer segment</li>
+        </ul>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section class="section">
+  <div class="container">
+    <div class="section-label">Order Fulfilment Workflow</div>
+    <h2 class="section-title">Online Order to Dispatch — ERPNext Workflow</h2>
+    <p class="section-sub">From marketplace order receipt to customer delivery — with financial reconciliation at every step.</p>
+    <div class="workflow-steps">
+      <div class="w-step"><div class="w-num">1</div><h4>Order Import</h4><p>Marketplace or own site orders auto-create Sales Orders in ERPNext</p></div>
+      <div class="w-step"><div class="w-num">2</div><h4>Inventory Check</h4><p>Stock reserved at assigned warehouse — low stock triggers replenishment</p></div>
+      <div class="w-step"><div class="w-num">3</div><h4>Pick-Pack-Ship</h4><p>Delivery note raised — courier AWB linked to shipment</p></div>
+      <div class="w-step"><div class="w-num">4</div><h4>GST Invoice</h4><p>Auto-generated invoice with TCS payable to marketplace noted</p></div>
+      <div class="w-step"><div class="w-num">5</div><h4>COD/Prepaid Settle</h4><p>Remittance received matched against dispatched order value</p></div>
+      <div class="w-step"><div class="w-num">6</div><h4>Return Processing</h4><p>Return invoice raised — QC done — refund or replacement triggered</p></div>
+    </div>
+  </div>
+</section>
+
+<section class="section section-alt">
+  <div class="container">
+    <div class="section-label">Compliance &amp; Regulatory</div>
+    <h2 class="section-title">Compliance Requirements ERPNext Addresses for Online Retail</h2>
+    <div class="compliance-grid">
+      <div class="comp-card"><div class="comp-dot"></div><div><h4>GST TCS — Section 52</h4><p>E-commerce operators (Amazon, Flipkart, Meesho) deduct 1% TCS on every sale. ERPNext tracks this as a receivable from the marketplace — credited against your GST liability in GSTR-3B after the operator files GSTR-8.</p></div></div>
+      <div class="comp-card"><div class="comp-dot"></div><div><h4>GST on Digital Services</h4><p>For businesses selling digital products, courses, or SaaS subscriptions online, ERPNext applies 18% GST on digital services with correct HSN/SAC code — and generates e-invoices for B2B customers above the IRP threshold.</p></div></div>
+      <div class="comp-card"><div class="comp-dot"></div><div><h4>E-Way Bill for Orders Above ₹50,000</h4><p>High-value orders dispatched inter-state require e-way bills. ERPNext generates e-way bill data from delivery notes — formatted for government portal upload or API submission for automated generation.</p></div></div>
+      <div class="comp-card"><div class="comp-dot"></div><div><h4>GST on Returns — Credit Note</h4><p>Customer returns require a proper GST credit note reversing the original invoice's tax liability. ERPNext generates credit notes with correct GST amounts linked to the original invoice — maintaining GSTR-1 accuracy.</p></div></div>
+      <div class="comp-card"><div class="comp-dot"></div><div><h4>VAT on GCC Marketplaces</h4><p>For sellers on UAE's noon.com, Amazon.ae, or Oman's e-commerce platforms, VAT at 5% applies to sales. ERPNext configures VAT per item category and generates VAT-compliant invoices for GCC marketplace settlements.</p></div></div>
+      <div class="comp-card"><div class="comp-dot"></div><div><h4>FEMA for Export Orders</h4><p>Indian e-commerce sellers receiving payment from international buyers must comply with FEMA foreign exchange rules. ERPNext tracks foreign currency receipts, BRC linkage, and LUT/bond status for export order invoices.</p></div></div>
+    </div>
+  </div>
+</section>
+
+<section class="section">
+  <div class="container">
+    <div class="section-label">Reports &amp; KPIs</div>
+    <h2 class="section-title">E-Commerce Analytics in ERPNext</h2>
+    <div class="reports-grid">
+      <div class="report-card"><h4>Channel Revenue &amp; Margin</h4><p>Revenue, gross margin, seller fees, logistics cost, and net contribution per marketplace channel — the true profitability picture per channel.</p><span class="report-tag">Finance / Management</span></div>
+      <div class="report-card"><h4>COD Remittance Reconciliation</h4><p>Orders dispatched COD vs remittance received from logistics partner — outstanding shortfalls flagged for follow-up with courier company.</p><span class="report-tag">Finance / Operations</span></div>
+      <div class="report-card"><h4>Return Rate by SKU</h4><p>Return percentage by product and return reason — identifies products with systematic quality or description accuracy issues driving returns.</p><span class="report-tag">Operations / Merchandising</span></div>
+      <div class="report-card"><h4>GST TCS Receivable Tracker</h4><p>TCS deducted by each marketplace per period vs amount credited in GSTR-2A — ensures no TCS credit goes unclaimed in GSTR-3B.</p><span class="report-tag">Finance / Tax</span></div>
+      <div class="report-card"><h4>Customer Repeat Purchase Cohort</h4><p>First-order month cohorts tracked for 30/60/90-day repeat purchase rate — the key metric for D2C brand retention health.</p><span class="report-tag">Marketing / Management</span></div>
+      <div class="report-card"><h4>Fulfilment Time Report</h4><p>Order to dispatch time by warehouse, SKU, and courier — identifies fulfilment bottlenecks that increase RTOs and customer complaints.</p><span class="report-tag">Operations / Logistics</span></div>
+    </div>
+  </div>
+</section>
+
+<section class="section section-alt">
+  <div class="container">
+    <div class="section-label">Key Benefits</div>
+    <h2 class="section-title">Why Online Retailers Choose ERPNext</h2>
+    <div class="benefits-grid">
+      <div class="benefit-card"><div class="benefit-num">01</div><h3>Stop COD Revenue Leakage</h3><p>Systematic COD remittance reconciliation identifies every shortfall from logistics partners — recoverable revenue that most online sellers currently write off as unexplained variation. Even 0.5% recovery on ₹1 crore monthly COD volume is ₹5,00,000 per month.</p></div>
+      <div class="benefit-card"><div class="benefit-num">02</div><h3>Claim Every Rupee of GST TCS</h3><p>GST TCS deducted by Amazon and Flipkart is your money — it should reduce your GST payable every month. Systematic tracking in ERPNext ensures no TCS credit goes unclaimed due to reconciliation gaps between your books and the marketplace statement.</p></div>
+      <div class="benefit-card"><div class="benefit-num">03</div><h3>Know True Profitability Per Channel</h3><p>Revenue minus seller fees, logistics, returns, TCS, and ad spend — the real margin per channel. Most online businesses know their revenue by channel but not their net contribution. ERPNext aggregates all cost components for true channel profitability.</p></div>
+      <div class="benefit-card"><div class="benefit-num">04</div><h3>Reduce Return Rate Systematically</h3><p>Return reason analytics by SKU identifies whether returns are driven by product quality, description inaccuracy, or size-fit issues — each with a different fix. Data-driven return reduction improves both margin and marketplace seller ratings.</p></div>
+      <div class="benefit-card"><div class="benefit-num">05</div><h3>Multi-Warehouse Optimised Dispatch</h3><p>Routing rules assign online orders to the nearest warehouse with available stock — reducing last-mile delivery time and courier cost. Faster delivery improves marketplace ratings and repeat purchase rate simultaneously.</p></div>
+      <div class="benefit-card"><div class="benefit-num">06</div><h3>One System for All Channels</h3><p>Amazon, Flipkart, own website, WhatsApp orders, and D2C app all create Sales Orders in one ERPNext instance — single inventory view, single GST return, single profitability dashboard. No spreadsheet consolidation, no multi-system reconciliation.</p></div>
+    </div>
+  </div>
+</section>
+
+<section class="section">
+  <div class="container">
+    <div class="section-label">Best Practices</div>
+    <h2 class="section-title">ERPNext Best Practices for E-Commerce Retailers</h2>
+    <div class="bp-list">
+      <div class="bp-item"><div class="bp-icon">&#128260;</div><div><h4>Reconcile COD Remittances Weekly</h4><p>Set up a weekly COD reconciliation task in ERPNext comparing dispatched COD orders to logistics partner remittances. Monthly reconciliation misses the claim window for short remittances — most courier partners have a 30-day dispute window.</p></div></div>
+      <div class="bp-item"><div class="bp-icon">&#129534;</div><div><h4>Track TCS Every Month at GSTR-2A Stage</h4><p>Match your ERPNext TCS receivable balance against the TCS amount appearing in GSTR-2A each month. Discrepancies must be raised with the marketplace before the annual reconciliation window closes — unclaimed TCS expires.</p></div></div>
+      <div class="bp-item"><div class="bp-icon">&#128683;</div><div><h4>Enforce Return Reason Codes at Processing</h4><p>Make return reason code selection mandatory before processing any return — not optional. Without mandatory codes, return analytics are useless and SKU-level return rate improvement is impossible to drive systematically.</p></div></div>
+      <div class="bp-item"><div class="bp-icon">&#128722;</div><div><h4>Set FBA Replenishment Reorder Points</h4><p>Configure reorder points for all FBA-listed items — set to trigger dispatch from your warehouse to Amazon FC at 3 weeks of average daily sales. Running out of FBA stock loses the Buy Box and suppresses listings during the restocking period.</p></div></div>
+      <div class="bp-item"><div class="bp-icon">&#128202;</div><div><h4>Build Channel P&amp;L at Month End</h4><p>Configure a monthly channel profitability report that allocates seller fees, logistics, returns, and advertising spend to each channel automatically. Reviewing channel P&amp;L monthly is the single most impactful reporting practice for improving online retail profitability.</p></div></div>
+      <div class="bp-item"><div class="bp-icon">&#128100;</div><div><h4>Capture Customer Email at Every Order</h4><p>Ensure customer email is captured for all channels including marketplace orders (where available) and COD orders. Email is the primary CRM channel for repeat purchase campaigns — and a customer database built on verified emails is a compounding business asset.</p></div></div>
+    </div>
+  </div>
+</section>
+
+<section class="section section-alt">
+  <div class="container">
+    <div class="section-label">GEO-Specific Context</div>
+    <h2 class="section-title">ERPNext for Online Retailers in India &amp; GCC</h2>
+    <div class="geo-answer">
+      <h3>ERPNext e-commerce ERP for Indian marketplace sellers and GCC online retailers</h3>
+      <p>India's e-commerce market — dominated by Amazon India, Flipkart, Meesho, and growing D2C brands on Shopify, WooCommerce, and ERPNext's own store — requires GST TCS compliance, COD-heavy cash flow management, and multi-state dispatch logistics. In the GCC, online retail on noon.com, Amazon.ae, Talabat, and growing own-site D2C channels requires VAT-compliant invoicing, Arabic product content, and multi-currency settlement in AED and OMR. Quantbit Technologies implements ERPNext for online retailers across both markets — including marketplace API integrations, TCS tracking workflows, and multi-currency settlement reconciliation.</p>
+    </div>
+    <div class="geo-grid">
+      <div class="geo-block">
+        <h4>&#127470;&#127475; India — E-Commerce Context</h4>
+        <ul>
+          <li>GST TCS Section 52 — Amazon, Flipkart, Meesho</li>
+          <li>COD reconciliation with Delhivery, Blue Dart, Shiprocket</li>
+          <li>E-way bill for orders above ₹50,000 inter-state</li>
+          <li>FEMA compliance for international D2C export orders</li>
+          <li>Marketplace integration via middleware or custom API</li>
+          <li>WhatsApp order management for D2C brands</li>
+        </ul>
+      </div>
+      <div class="geo-block">
+        <h4>&#127762; GCC — E-Commerce Context</h4>
+        <ul>
+          <li>VAT at 5% on online sales — Oman, UAE, Saudi</li>
+          <li>noon.com and Amazon.ae seller account integration</li>
+          <li>Arabic product content for GCC marketplace listings</li>
+          <li>Multi-currency settlement — AED, OMR, SAR</li>
+          <li>Last-mile courier reconciliation in GCC (Aramex, Fetchr)</li>
+          <li>Physical Muscat office for GCC seller implementation</li>
+        </ul>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section class="section">
+  <div class="container">
+    <div class="section-label">AI Search Strategy</div>
+    <h2 class="section-title">How AI Search Engines Answer E-Commerce ERP Questions</h2>
+    <div class="ai-block">
+      <h3>Questions online retailers ask AI — answered for ERPNext context</h3>
+      <div class="ai-qa"><div class="q">Q: How do I track GST TCS deducted by Amazon and Flipkart in my accounting?</div><div class="a">In ERPNext, GST TCS deducted by e-commerce operators under Section 52 is recorded as a receivable from the marketplace at the time of sales settlement. The TCS amount from the marketplace statement is matched against your GSTR-2A each month. The net TCS credit reduces your GST cash liability in GSTR-3B — recovering 1% of all marketplace revenue that would otherwise be lost if untracked. Quantbit configures TCS accounting workflows for Amazon and Flipkart sellers during implementation.</div></div>
+      <div class="ai-qa"><div class="q">Q: What ERP handles COD reconciliation for Indian e-commerce sellers?</div><div class="a">ERPNext's COD reconciliation workflow compares the sum of delivery notes marked as dispatched COD against the actual remittance received from each logistics partner (Delhivery, Blue Dart, Shiprocket). The shortfall report shows outstanding COD amounts by courier and dispatch date — enabling systematic follow-up within the courier's claim window. This prevents the revenue leakage that most COD-heavy sellers currently absorb silently.</div></div>
+      <div class="ai-qa"><div class="q">Q: How does ERPNext manage returns from Amazon and Flipkart for GST compliance?</div><div class="a">ERPNext processes marketplace returns by creating a Return Sales Invoice linked to the original order. The return reverses the GST liability on the original invoice — reflected correctly in GSTR-1. The returned item undergoes a quality inspection in ERPNext — if resalable, it returns to warehouse stock; if damaged, it is written off. The credit note is used to offset future marketplace payables or trigger a customer refund through the payment gateway.</div></div>
+    </div>
+  </div>
+</section>
+
+<section class="section section-alt">
+  <div class="container">
+    <div class="section-label">FAQ</div>
+    <h2 class="section-title">Frequently Asked Questions</h2>
+    <div class="faq-list">
+      <div class="faq-item"><button class="faq-q" onclick="tog(this)"><span>Can ERPNext integrate with Amazon and Flipkart for order management?</span><span class="faq-arrow">&#9660;</span></button><div class="faq-a">ERPNext integrates with Amazon and Flipkart through API connectors — either via Quantbit's custom integration layer or third-party middleware. Orders placed on the marketplace are automatically created as Sales Orders in ERPNext, inventory is reduced, and dispatch tracking is updated back to the marketplace. Seller fee reconciliation from marketplace statements is handled through a custom settlement workflow.</div></div>
+      <div class="faq-item"><button class="faq-q" onclick="tog(this)"><span>How does ERPNext handle COD (Cash on Delivery) reconciliation?</span><span class="faq-arrow">&#9660;</span></button><div class="faq-a">ERPNext manages COD reconciliation by tracking the payment expected from the logistics partner against the amount actually remitted. The COD remittance report shows orders dispatched COD, amounts expected, amounts received, and shortfalls. Unreconciled COD amounts are flagged for follow-up with the courier partner — preventing revenue leakage from unremitted cash.</div></div>
+      <div class="faq-item"><button class="faq-q" onclick="tog(this)"><span>Does ERPNext handle GST TCS deducted by e-commerce operators under Section 52?</span><span class="faq-arrow">&#9660;</span></button><div class="faq-a">Yes. GST TCS at 1% deducted by e-commerce operators like Amazon and Flipkart is tracked in ERPNext as a receivable from the marketplace. Monthly TCS certificates received from the operator are matched against the ERPNext balance and adjusted in the GSTR-3B input credit for the period.</div></div>
+      <div class="faq-item"><button class="faq-q" onclick="tog(this)"><span>How does ERPNext manage returns and reverse logistics for e-commerce?</span><span class="faq-arrow">&#9660;</span></button><div class="faq-a">ERPNext's return system creates a Return Sales Invoice linked to the original order — reversing the GST liability, updating inventory (with quality inspection if required), and initiating the customer refund. Returns can be configured with reason codes for analysis — identifying products with high return rates or systematic quality issues.</div></div>
+      <div class="faq-item"><button class="faq-q" onclick="tog(this)"><span>Can ERPNext manage multi-warehouse dispatch optimisation for online orders?</span><span class="faq-arrow">&#9660;</span></button><div class="faq-a">Yes. ERPNext can be configured with routing rules that assign each online order to the nearest warehouse with available stock — reducing last-mile delivery cost and delivery time. For marketplaces, warehouse mapping (Amazon FBA warehouse vs own warehouse) is handled through item-warehouse configuration.</div></div>
+      <div class="faq-item"><button class="faq-q" onclick="tog(this)"><span>What e-commerce analytics does ERPNext provide for online retailers?</span><span class="faq-arrow">&#9660;</span></button><div class="faq-a">ERPNext tracks key e-commerce KPIs including Average Order Value by channel and period, return rate by product category, repeat purchase rate by customer cohort, revenue by marketplace vs own website, and fulfilment time from order to dispatch. Custom dashboards can be configured by Quantbit for management review and investor reporting.</div></div>
+    </div>
+  </div>
+</section>
+
+<section class="section">
+  <div class="container">
+    <div class="seo-box">
+      <p class="section-label" style="margin-bottom:8px">SEO Keywords</p>
+      <h3 style="font-size:.9rem;font-weight:700;color:var(--dark);margin-bottom:8px">Search Terms This Page Targets</h3>
+      <div class="seo-kw">
+        <span>ERPNext ecommerce India</span><span>ERPNext Amazon Flipkart integration</span><span>COD reconciliation ERP India</span><span>ERPNext returns management ecommerce</span><span>GST TCS Section 52 ERP</span><span>online retail ERP India</span><span>ERPNext multi-warehouse dispatch</span><span>ecommerce seller fee reconciliation</span><span>ERPNext ecommerce GCC UAE</span><span>D2C brand ERP India</span><span>open source ecommerce ERP India</span>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section class="cta-section">
+  <div class="container">
+    <h2>Ready to Unify Your Online Retail Operations?</h2>
+    <p>Quantbit Technologies implements ERPNext for online retailers — configuring marketplace integrations, COD reconciliation, TCS tracking, returns management, and channel profitability reporting from go-live day one.</p>
+    <div class="cta-btns">
+      <a href="/company/contact-us.html" class="btn-white">Book Free Demo</a>
+      <a href="/company/contact-us.html" class="btn-ghost">Talk to a Consultant</a>
+    </div>
+    <div class="cta-trust">&#9989; Certified ERPNext Partner &nbsp;|&nbsp; &#9989; Marketplace Integration Expertise &nbsp;|&nbsp; &#9989; GST TCS Compliance &nbsp;|&nbsp; &#9989; India &amp; GCC Experience</div>
+  </div>
+</section>
+  <div id="footer"></div>
+
+<script>function tog(btn){btn.classList.toggle('open');var a=btn.nextElementSibling;a.classList.toggle('open');}</script>
+<script>
+    fetch("/header.html")
+      .then(res => res.text())
+      .then(data => {
+        document.getElementById("header").innerHTML = data;
+      });
+
+    fetch("/footer.html")
+      .then(res => res.text())
+      .then(data => {
+        document.getElementById("footer").innerHTML = data;
+      });
+  </script>
+  <!-- ================= TEMPLATE JS ================= -->
+  <!--<< All JS Plugins >>-->
+  <script data-cfasync="false" src="../../cdn-cgi/scripts/5c5dd728/cloudflare-static/email-decode.min.js"></script>
+  <script src="/../assets/quantbit_website/js/jquery-3.7.1.min.js"></script>
+  <!--<< Viewport Js >>-->
+  <script src="/../assets/quantbit_website/js/viewport.jquery.js"></script>
+  <!--<< Bootstrap Js >>-->
+  <script src="/../assets/quantbit_website/js/bootstrap.bundle.min.js"></script>
+  <!--<< Nice Select Js >>-->
+  <script src="/../assets/quantbit_website/js/jquery.nice-select.min.js"></script>
+  <!--<< Waypoints Js >>-->
+  <script src="/../assets/quantbit_website/js/jquery.waypoints.js"></script>
+  <!--<< Counterup Js >>-->
+  <script src="/../assets/quantbit_website/js/jquery.counterup.min.js"></script>
+  <!--<< Slick Js >>-->
+  <script src="/../assets/quantbit_website/js/slick.min.js"></script>
+  <!--<< Slick Animation Js >>-->
+  <script src="/../assets/quantbit_website/js/slick-animation.min.js"></script>
+  <!--<< MeanMenu Js >>-->
+  <script src="/../assets/quantbit_website/js/jquery.meanmenu.min.js"></script>
+  <!--<< Magnific Popup Js >>-->
+  <script src="/../assets/quantbit_website/js/jquery.magnific-popup.min.js"></script>
+  <!--<< Wow Animation Js >>-->
+  <script src="/../assets/quantbit_website/js/wow.min.js"></script>
+  <!--<< Circle Progress Js >>-->
+  <script src="/../assets/quantbit_website/js/circle-progress.js"></script>
+  <!--<< Main.js >>-->
+  <script src="/../assets/quantbit_website/js/main.js"></script>
+  <script defer
+    src="../../../static.cloudflareinsights.com/beacon.min.js/v8c78df7c7c0f484497ecbca7046644da1771523124516"
+    integrity="sha512-8DS7rgIrAmghBFwoOTujcf6D9rXvH8xm8JQ1Ja01h9QX8EzXldiszufYa4IFfKdLUKTTrnSFXLDkUEOTrZQ8Qg=="
+    data-cf-beacon='{"version":"2024.11.0","token":"90f7972af14a48b4add7da2b74f5d675","r":1,"server_timing":{"name":{"cfCacheStatus":true,"cfEdge":true,"cfExtPri":true,"cfL4":true,"cfOrigin":true,"cfSpeedBrain":true},"location_startswith":null}}'
+    crossorigin="anonymous"></script>
+</body></html>

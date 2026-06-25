@@ -1,0 +1,428 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<title>Quality Management | ERPNext Module | Quantbit Technologies</title>
+<meta name="description" content="Embed quality control at every stage of your operations — from incoming goods inspection and in-process checks to customer complaint resolution and correct">
+<meta name="keywords" content="ERPNext quality management India, ERPNext quality inspection module, ERPNext CAPA non-conformance, ERPNext ISO 9001 software, ERPNext supplier quality scorecard, ERPNext quality control manufacturing Pune, ERPNext GMP pharma quality, ERPNext FSSAI food quality">
+<link rel="canonical" href="https://quantbit.io/services/erpnext-quality-management/">
+<script type="application/ld+json">{
+  "@context":"https://schema.org",
+  "@graph":[
+    {"@type":"BreadcrumbList","itemListElement":[
+      {"@type":"ListItem","position":1,"name":"Home","item":"https://quantbit.io"},
+      {"@type":"ListItem","position":2,"name":"ERPNext Services","item":"https://quantbit.io/services/"},
+      {"@type":"ListItem","position":3,"name":"ERPNext Quality Management","item":"https://quantbit.io/services/erpnext-quality-management/"}
+    ]},
+    {"@type":"FAQPage","mainEntity":[{"@type":"Question","name":"Can ERPNext enforce quality inspection before stock is moved to the production floor?","acceptedAnswer":{"@type":"Answer","text":"Yes. ERPNext can be configured to block stock transfer from a quarantine or incoming warehouse to a usable warehouse until the quality inspection is marked as Accepted. This ensures no uninspected or rejected material enters production."}},
+{"@type":"Question","name":"How does ERPNext handle rejected goods from suppliers?","acceptedAnswer":{"@type":"Answer","text":"When a GRN inspection results in rejection, ERPNext generates a Non-Conformance Report with disposition options — return to supplier, rework, scrap, or use-as-is with a concession. If returned, a Purchase Return and Debit Note are raised against the same GRN."}},
+{"@type":"Question","name":"Does ERPNext support CAPA for customer complaints?","acceptedAnswer":{"@type":"Answer","text":"Yes. Customer complaints can be logged in ERPNext and linked to a CAPA with root cause analysis, corrective action items, target dates, and effectiveness review. The CAPA Tracker report shows all open actions with owner and due date for management review."}},
+{"@type":"Question","name":"Can we generate supplier quality scorecards from ERPNext?","acceptedAnswer":{"@type":"Answer","text":"Yes. ERPNext calculates supplier quality scores based on actual incoming inspection data — rejection rate, NCR count, and on-time delivery performance — and generates a Supplier Quality Scorecard that can be shared in annual supplier reviews."}},
+{"@type":"Question","name":"Is ERPNext Quality module suitable for ISO 9001 certification?","acceptedAnswer":{"@type":"Answer","text":"ERPNext provides most of the evidence required for ISO 9001 certification — documented inspection procedures, CAPA records, quality objectives and results, supplier quality data, and document control. Quantbit configures the module to align with your quality management system documentation."}},
+{"@type":"Question","name":"How long does Quality module implementation take with Quantbit?","acceptedAnswer":{"@type":"Answer","text":"A standalone quality module implementation with inspection templates, CAPA workflow, and basic reports typically takes 3 to 5 weeks. When implemented with Manufacturing or Inventory modules, it runs concurrently and adds 1 to 2 weeks to the overall timeline."}}]}
+  ]
+}</script>
+<style>/* Quantbit ERPNext Module Pages — Shared Design System */
+:root {
+  --accent: #1a5fd4;
+  --accent-dark: #1349a8;
+  --teal: #0b7a5e;
+  --teal-light: #e6f4f0;
+  --amber: #b35e0a;
+  --amber-light: #fef3e2;
+  --dark: #0f2d47;
+  --mid: #1e4a6e;
+  --text: #1a2a38;
+  --muted: #4a6278;
+  --border: #d0dce8;
+  --bg: #f5f8fc;
+  --white: #ffffff;
+  --radius: 10px;
+  --shadow: 0 2px 16px rgba(15,45,71,0.10);
+  --shadow-lg: 0 6px 32px rgba(15,45,71,0.14);
+}
+*,*::before,*::after{box-sizing:border-box;margin:0;padding:0}
+html{scroll-behavior:smooth}
+body{font-family:'Segoe UI',system-ui,-apple-system,sans-serif;color:var(--text);background:var(--white);line-height:1.65;font-size:16px}
+.site-nav{background:var(--dark);padding:0 32px;display:flex;align-items:center;justify-content:space-between;height:60px;position:sticky;top:0;z-index:100}
+.nav-logo{color:#fff;font-weight:700;font-size:1.1rem;text-decoration:none;letter-spacing:.5px}
+.nav-links{display:flex;gap:24px;list-style:none}
+.nav-links a{color:rgba(255,255,255,.82);text-decoration:none;font-size:.9rem;font-weight:500;transition:color .2s}
+.nav-links a:hover{color:#fff}
+.nav-cta{background:var(--accent);color:#fff!important;padding:7px 18px;border-radius:6px;font-weight:600!important}
+.breadcrumb{background:var(--bg);border-bottom:1px solid var(--border);padding:10px 32px;font-size:.82rem;color:var(--muted)}
+.breadcrumb a{color:var(--accent);text-decoration:none}
+.breadcrumb a:hover{text-decoration:underline}
+.hero{background:linear-gradient(135deg,var(--dark) 0%,var(--mid) 60%,#1a5fd4 100%);color:#fff;padding:72px 32px 64px;position:relative;overflow:hidden}
+.hero::before{content:'';position:absolute;right:-80px;top:-80px;width:420px;height:420px;background:rgba(255,255,255,.04);border-radius:50%;pointer-events:none}
+.hero-inner{max-width:1100px;margin:0 auto;display:grid;grid-template-columns:1fr 380px;gap:56px;align-items:center}
+.hero-badge{display:inline-flex;align-items:center;gap:8px;background:rgba(255,255,255,.12);border:1px solid rgba(255,255,255,.22);border-radius:40px;padding:5px 14px;font-size:.78rem;font-weight:600;letter-spacing:.8px;text-transform:uppercase;margin-bottom:18px;color:rgba(255,255,255,.9)}
+.hero h1{font-size:clamp(1.9rem,3.5vw,2.7rem);font-weight:800;line-height:1.2;margin-bottom:16px}
+.hero h1 span{color:#7eb8ff}
+.hero-desc{font-size:1.05rem;color:rgba(255,255,255,.82);margin-bottom:28px;max-width:540px}
+.hero-tags{display:flex;flex-wrap:wrap;gap:8px;margin-bottom:32px}
+.hero-tag{background:rgba(255,255,255,.1);border:1px solid rgba(255,255,255,.2);border-radius:20px;padding:4px 12px;font-size:.78rem;color:rgba(255,255,255,.85)}
+.hero-btns{display:flex;gap:14px;flex-wrap:wrap}
+.btn-primary{background:var(--accent);color:#fff;padding:12px 26px;border-radius:8px;font-weight:700;text-decoration:none;font-size:.95rem;transition:background .2s,transform .15s;display:inline-block}
+.btn-primary:hover{background:var(--accent-dark);transform:translateY(-1px)}
+.btn-ghost{background:transparent;color:#fff;padding:11px 24px;border:2px solid rgba(255,255,255,.4);border-radius:8px;font-weight:600;text-decoration:none;font-size:.95rem;transition:.2s;display:inline-block}
+.btn-ghost:hover{border-color:#fff;background:rgba(255,255,255,.1)}
+.hero-card{background:rgba(255,255,255,.1);border:1px solid rgba(255,255,255,.18);border-radius:14px;padding:28px;backdrop-filter:blur(8px)}
+.hero-card h3{font-size:1rem;font-weight:700;margin-bottom:16px;color:rgba(255,255,255,.92)}
+.hero-stat{display:flex;align-items:center;gap:12px;margin-bottom:14px;padding-bottom:14px;border-bottom:1px solid rgba(255,255,255,.12)}
+.hero-stat:last-child{margin-bottom:0;padding-bottom:0;border-bottom:none}
+.stat-icon{width:36px;height:36px;background:rgba(255,255,255,.15);border-radius:8px;display:flex;align-items:center;justify-content:center;font-size:1.1rem;flex-shrink:0}
+.stat-val{font-size:1.2rem;font-weight:800;color:#fff}
+.stat-lbl{font-size:.75rem;color:rgba(255,255,255,.7);line-height:1.3}
+.section{padding:64px 32px}
+.section-alt{background:var(--bg)}
+.container{max-width:1100px;margin:0 auto}
+.section-label{font-size:.75rem;font-weight:700;letter-spacing:1.2px;text-transform:uppercase;color:var(--accent);margin-bottom:8px}
+.section-title{font-size:clamp(1.5rem,2.8vw,2.1rem);font-weight:800;color:var(--dark);margin-bottom:12px;line-height:1.25}
+.section-sub{font-size:1.02rem;color:var(--muted);max-width:640px;margin-bottom:44px;line-height:1.7}
+.feature-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(280px,1fr));gap:24px}
+.feature-card{background:var(--white);border:1px solid var(--border);border-radius:var(--radius);padding:26px;transition:box-shadow .2s,transform .2s}
+.feature-card:hover{box-shadow:var(--shadow);transform:translateY(-3px)}
+.feature-icon{width:44px;height:44px;border-radius:10px;background:linear-gradient(135deg,var(--accent),var(--mid));display:flex;align-items:center;justify-content:center;font-size:1.3rem;margin-bottom:14px}
+.feature-card h3{font-size:1rem;font-weight:700;color:var(--dark);margin-bottom:8px}
+.feature-card p{font-size:.88rem;color:var(--muted);line-height:1.6}
+.feature-card ul{margin-top:10px;padding-left:0;list-style:none}
+.feature-card ul li{font-size:.85rem;color:var(--muted);padding:3px 0 3px 16px;position:relative;line-height:1.5}
+.feature-card ul li::before{content:'✓';position:absolute;left:0;color:var(--teal);font-weight:700}
+.reports-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(240px,1fr));gap:20px}
+.report-card{background:var(--white);border:1px solid var(--border);border-left:4px solid var(--accent);border-radius:var(--radius);padding:20px 22px}
+.report-card h4{font-size:.92rem;font-weight:700;color:var(--dark);margin-bottom:6px}
+.report-card p{font-size:.82rem;color:var(--muted);line-height:1.55}
+.report-tag{display:inline-block;background:var(--bg);border:1px solid var(--border);border-radius:4px;padding:2px 8px;font-size:.72rem;font-weight:600;color:var(--accent);margin-top:8px}
+.roles-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(200px,1fr));gap:16px}
+.role-pill{background:var(--white);border:1px solid var(--border);border-radius:var(--radius);padding:16px 20px;display:flex;align-items:flex-start;gap:12px}
+.role-dot{width:10px;height:10px;border-radius:50%;flex-shrink:0;margin-top:4px}
+.role-dot.admin{background:var(--accent)}
+.role-dot.manager{background:var(--teal)}
+.role-dot.user{background:var(--amber)}
+.role-dot.viewer{background:#9b59b6}
+.role-name{font-size:.88rem;font-weight:700;color:var(--dark);margin-bottom:2px}
+.role-desc{font-size:.78rem;color:var(--muted)}
+.benefits-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(260px,1fr));gap:24px}
+.benefit-card{background:linear-gradient(135deg,var(--teal-light),var(--white));border:1px solid #b8dfd6;border-radius:var(--radius);padding:26px}
+.benefit-num{font-size:2rem;font-weight:900;color:var(--teal);opacity:.35;line-height:1;margin-bottom:6px}
+.benefit-card h3{font-size:.98rem;font-weight:700;color:var(--dark);margin-bottom:8px}
+.benefit-card p{font-size:.86rem;color:var(--muted);line-height:1.6}
+.bp-list{display:grid;grid-template-columns:repeat(auto-fit,minmax(300px,1fr));gap:20px}
+.bp-item{background:var(--white);border:1px solid var(--border);border-radius:var(--radius);padding:22px 24px;display:flex;gap:16px;align-items:flex-start}
+.bp-icon{width:38px;height:38px;background:var(--amber-light);border-radius:8px;display:flex;align-items:center;justify-content:center;font-size:1.1rem;flex-shrink:0}
+.bp-item h4{font-size:.92rem;font-weight:700;color:var(--dark);margin-bottom:5px}
+.bp-item p{font-size:.83rem;color:var(--muted);line-height:1.55}
+.geo-answer{background:linear-gradient(135deg,#e8f0fc,#f0f6ff);border:1px solid #c5d8f7;border-radius:14px;padding:32px 36px;margin-bottom:32px}
+.geo-answer h3{font-size:1.1rem;font-weight:700;color:var(--dark);margin-bottom:10px}
+.geo-answer p{font-size:.95rem;color:var(--text);line-height:1.75}
+.geo-grid{display:grid;grid-template-columns:1fr 1fr;gap:24px}
+.geo-block{background:var(--white);border:1px solid var(--border);border-radius:var(--radius);padding:24px}
+.geo-block h4{font-size:.9rem;font-weight:700;color:var(--accent);margin-bottom:10px;display:flex;align-items:center;gap:8px}
+.geo-block ul{list-style:none;padding:0}
+.geo-block ul li{font-size:.85rem;color:var(--muted);padding:4px 0 4px 16px;position:relative}
+.geo-block ul li::before{content:'→';position:absolute;left:0;color:var(--accent)}
+.faq-list{max-width:800px;margin:0 auto}
+.faq-item{border:1px solid var(--border);border-radius:var(--radius);margin-bottom:10px;overflow:hidden}
+.faq-q{width:100%;background:var(--white);border:none;padding:18px 22px;text-align:left;font-size:.95rem;font-weight:600;color:var(--dark);cursor:pointer;display:flex;justify-content:space-between;align-items:center;gap:12px;transition:background .15s}
+.faq-q:hover,.faq-q.open{background:var(--bg)}
+.faq-arrow{font-size:1rem;color:var(--accent);transition:transform .25s;flex-shrink:0}
+.faq-q.open .faq-arrow{transform:rotate(180deg)}
+.faq-a{display:none;padding:0 22px 18px;font-size:.9rem;color:var(--muted);line-height:1.7}
+.faq-a.open{display:block}
+.ai-block{background:linear-gradient(135deg,var(--dark),var(--mid));color:#fff;border-radius:14px;padding:36px 40px}
+.ai-block h3{font-size:1.15rem;font-weight:700;margin-bottom:14px;color:#7eb8ff}
+.ai-qa{margin-bottom:18px;padding-bottom:18px;border-bottom:1px solid rgba(255,255,255,.1)}
+.ai-qa:last-child{margin-bottom:0;padding-bottom:0;border-bottom:none}
+.ai-qa .q{font-size:.88rem;font-weight:600;color:rgba(255,255,255,.7);margin-bottom:4px}
+.ai-qa .a{font-size:.9rem;color:rgba(255,255,255,.88);line-height:1.65}
+.cta-section{background:linear-gradient(135deg,var(--dark) 0%,var(--mid) 100%);color:#fff;padding:72px 32px;text-align:center}
+.cta-section h2{font-size:clamp(1.6rem,3vw,2.3rem);font-weight:800;margin-bottom:14px}
+.cta-section p{font-size:1.05rem;color:rgba(255,255,255,.8);max-width:580px;margin:0 auto 32px}
+.cta-btns{display:flex;gap:16px;justify-content:center;flex-wrap:wrap}
+.btn-white{background:#fff;color:var(--dark);padding:13px 28px;border-radius:8px;font-weight:700;text-decoration:none;font-size:.97rem;transition:.2s;display:inline-block}
+.btn-white:hover{background:#e8f0fc}
+.cta-trust{margin-top:22px;font-size:.82rem;color:rgba(255,255,255,.55)}
+.site-footer{background:#0a1e2e;color:rgba(255,255,255,.6);padding:40px 32px 24px;text-align:center;font-size:.83rem}
+.site-footer a{color:rgba(255,255,255,.5);text-decoration:none}
+.table-wrap{overflow-x:auto;border-radius:var(--radius);border:1px solid var(--border)}
+table{width:100%;border-collapse:collapse}
+th{background:var(--dark);color:#fff;padding:12px 16px;text-align:left;font-size:.82rem;font-weight:600;letter-spacing:.4px}
+td{padding:11px 16px;font-size:.87rem;color:var(--text);border-bottom:1px solid var(--border)}
+tr:last-child td{border-bottom:none}
+tr:nth-child(even) td{background:var(--bg)}
+.seo-box{background:var(--bg);border:1px solid var(--border);border-radius:var(--radius);padding:24px 28px}
+.seo-kw{display:flex;flex-wrap:wrap;gap:8px;margin-top:12px}
+.seo-kw span{background:var(--white);border:1px solid var(--border);border-radius:4px;padding:4px 10px;font-size:.78rem;color:var(--accent);font-weight:600}
+@media(max-width:768px){
+  .hero-inner{grid-template-columns:1fr}
+  .hero-card{display:none}
+  .geo-grid{grid-template-columns:1fr}
+  .site-nav{padding:0 16px}
+  .nav-links{display:none}
+  .section{padding:48px 16px}
+  .hero{padding:48px 16px 44px}
+  .ai-block{padding:24px 20px}
+  .geo-answer{padding:22px 20px}
+}
+</style>
+</style>
+<link rel="stylesheet" href="/assets/quantbit_website/css/_shared.css">
+
+  <!-- TEMPLATE CSS (IMPORTANT) -->
+  <link rel="stylesheet" href="/../assets/quantbit_website/css/bootstrap.min.css">
+  <link rel="stylesheet" href="/../assets/quantbit_website/css/font-awesome.css">
+  <link rel="stylesheet" href="/../assets/quantbit_website/css/animate.css">
+  <link rel="stylesheet" href="/../assets/quantbit_website/css/magnific-popup.css">
+  <link rel="stylesheet" href="/../assets/quantbit_website/css/meanmenu.css">
+  <link rel="stylesheet" href="/../assets/quantbit_website/css/slick.css">
+  <link rel="stylesheet" href="/../assets/quantbit_website/css/nice-select.css">
+  <link rel="stylesheet" href="/../assets/quantbit_website/css/main.css">
+  <link rel="stylesheet" href="style.css">
+  <!-- <link rel="stylesheet" href="/assets/quantbit_website/css/_shared.css"> -->
+
+
+  <!-- OPTIONAL CUSTOM -->
+  <link rel="stylesheet" href="/../assets/quantbit_website/css/hrms.css">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
+  <!-- Google Tag Manager -->
+  <script>(function (w, d, s, l, i) {
+      w[l] = w[l] || []; w[l].push({
+        'gtm.start':
+          new Date().getTime(), event: 'gtm.js'
+      }); var f = d.getElementsByTagName(s)[0],
+        j = d.createElement(s), dl = l != 'dataLayer' ? '&l=' + l : ''; j.async = true; j.src =
+          'https://www.googletagmanager.com/gtm.js?id=' + i + dl; f.parentNode.insertBefore(j, f);
+    })(window, document, 'script', 'dataLayer', 'GTM-P98Z6G8D');</script>
+  <!-- End Google Tag Manager -->
+</head>
+<body>
+<noscript><iframe src="https://www.googletagmanager.com/ns.html?id=GTM-P98Z6G8D" height="0" width="0"
+      style="display:none;visibility:hidden"></iframe></noscript>
+  <!-- End Google Tag Manager (noscript) -->
+  <!-- NAV -->
+  <div id="header"></div>
+<section class="hero">
+  <div class="hero-inner">
+    <div>
+      <div class="hero-badge">&#128311; ERPNext Module</div>
+      <h1>ERPNext <span>Quality Management</span><br>for Indian &amp; GCC Businesses</h1>
+      <p class="hero-desc">Embed quality control at every stage of your operations — from incoming goods inspection and in-process checks to customer complaint resolution and corrective actions — with ERPNext's integrated Quality module.</p>
+      <div class="hero-tags"><span class="hero-tag">Quality Inspection</span><span class="hero-tag">Non-Conformance</span><span class="hero-tag">CAPA</span><span class="hero-tag">Quality Goals</span><span class="hero-tag">Supplier Quality</span><span class="hero-tag">Customer Complaint</span><span class="hero-tag">ISO Readiness</span><span class="hero-tag">Batch QC</span></div>
+      <div class="hero-btns">
+        <a href="/company/contact-us.html" class="btn-primary">Book Free Demo</a>
+        <a href="/services/" class="btn-ghost">All ERPNext Modules</a>
+      </div>
+    </div>
+    <div class="hero-card">
+      <h3>Module Snapshot</h3><div class="hero-stat"><div class="stat-icon">&#128300;</div><div><div class="stat-val">Inspection</div><div class="stat-lbl">Incoming, in-process & final QC</div></div></div>
+<div class="hero-stat"><div class="stat-icon">&#128203;</div><div><div class="stat-val">CAPA</div><div class="stat-lbl">Corrective and preventive action</div></div></div>
+<div class="hero-stat"><div class="stat-icon">&#128200;</div><div><div class="stat-val">Dashboards</div><div class="stat-lbl">Real-time quality KPIs</div></div></div>
+<div class="hero-stat"><div class="stat-icon">&#127919;</div><div><div class="stat-val">Zero Escape</div><div class="stat-lbl">Prevent defects reaching customers</div></div></div>
+</div>
+  </div>
+</section>
+<section class="section">
+  <div class="container">
+    <div class="section-label">Overview</div>
+    <h2 class="section-title">What is ERPNext Quality Management?</h2>
+    <p style="font-size:.97rem;color:var(--muted);line-height:1.85;max-width:840px">ERPNext Quality Management embeds quality control directly into your procurement, production, and delivery workflows — so quality is not a separate afterthought but an integrated gate at every material movement. The module supports Quality Inspection at Goods Receipt, during production in-process checks, and at final goods dispatch before delivery to customers. Inspection templates are fully configurable with pass/fail criteria, numeric tolerances, and visual check instructions — ensuring every inspector follows the same standard regardless of shift or location. Non-conformance reports capture rejected materials with root cause analysis, disposition decisions — return to supplier, rework, scrap, use-as-is — and link directly to purchase return or production rework orders. Corrective and Preventive Action (CAPA) tracks every quality problem through investigation, root cause identification, action assignment, and effectiveness verification with due dates and escalation. Quality Goals let you set measurable targets — incoming rejection rate, in-process defect percentage, customer complaint response time — and track actuals on the Quality Dashboard in real time. For Indian businesses, this supports BIS, FSSAI, and pharmaceutical GMP inspection requirements. For GCC businesses in Oman and UAE, the module supports ISO 9001 readiness and food safety HACCP documentation. Quantbit Technologies configures inspection checklists, acceptance criteria, CAPA workflows, and supplier quality rating calculations during implementation.</p>
+  </div>
+</section>
+<section class="section section-alt">
+  <div class="container">
+    <div class="section-label">Features &amp; Functions</div>
+    <h2 class="section-title">Core Capabilities</h2>
+    <p class="section-sub">Every feature built into ERPNext — no extra licensing. Quantbit configures these for your exact processes.</p>
+    <div class="feature-grid"><div class="feature-card"><div class="feature-icon">&#128300;</div><h3>Quality Inspection</h3><p>Configurable inspection checklists at every transaction point.</p><ul><li>Inward inspection at GRN with accept/reject</li><li>In-process inspection at production stage</li><li>Pre-delivery outward inspection</li><li>Mobile-friendly inspection entry by QC team</li></ul></div>
+<div class="feature-card"><div class="feature-icon">&#128203;</div><h3>Inspection Templates</h3><p>Standardised test parameters with acceptance criteria.</p><ul><li>Parameter-wise numeric tolerance or pass/fail</li><li>Measurement units and required readings</li><li>Automatic status: Accepted, Rejected, Under Review</li><li>Batch-wise inspection record and history</li></ul></div>
+<div class="feature-card"><div class="feature-icon">&#9940;</div><h3>Non-Conformance Report</h3><p>Capture and manage all deviations from quality standards.</p><ul><li>NCR linked to GRN, production, or delivery</li><li>Disposition: return, rework, scrap, use-as-is</li><li>Responsible person assignment and due date</li><li>Link to purchase return or production rework order</li></ul></div>
+<div class="feature-card"><div class="feature-icon">&#128203;</div><h3>Corrective & Preventive Action</h3><p>Systematic quality problem resolution with accountability.</p><ul><li>CAPA raised from NCR or customer complaint</li><li>Root cause analysis fields</li><li>Action items with owner and due date</li><li>Effectiveness review and closure verification</li></ul></div>
+<div class="feature-card"><div class="feature-icon">&#127919;</div><h3>Quality Goals & KPIs</h3><p>Set measurable quality targets and track performance monthly.</p><ul><li>Incoming material rejection rate target</li><li>In-process defect percentage goal</li><li>Customer complaint closure time SLA</li><li>Goal-wise trend dashboard with alerts</li></ul></div>
+<div class="feature-card"><div class="feature-icon">&#127775;</div><h3>Supplier Quality Rating</h3><p>Score suppliers on delivery performance and incoming quality.</p><ul><li>Rejection rate per supplier and item</li><li>On-time delivery score from GRN data</li><li>Supplier quality scorecard and ranking</li><li>Annual supplier performance review report</li></ul></div>
+<div class="feature-card"><div class="feature-icon">&#128227;</div><h3>Customer Complaint Management</h3><p>Log, track, and resolve customer quality complaints systematically.</p><ul><li>Complaint registration from customer or sales</li><li>Product, batch, and delivery reference linkage</li><li>Resolution workflow with customer communication</li><li>Complaint trend analysis by product and reason</li></ul></div>
+<div class="feature-card"><div class="feature-icon">&#128203;</div><h3>Document Control</h3><p>Maintain quality documents, SOPs, and inspection standards centrally.</p><ul><li>Document version control and approval</li><li>Effective date and expiry management</li><li>Employee acknowledgement tracking</li><li>ISO audit document readiness checklist</li></ul></div>
+</div>
+  </div>
+</section>
+<section class="section">
+  <div class="container">
+    <div class="section-label">Reports &amp; Dashboards</div>
+    <h2 class="section-title">Built-in Reports &amp; Analytics</h2>
+    <p class="section-sub">Decision-ready reports available out-of-the-box, fully customisable by Quantbit's certified team.</p>
+    <div class="reports-grid"><div class="report-card"><h4>Quality Inspection Summary</h4><p>Pass/fail rates by item, supplier, batch, and period with acceptance trend.</p><span class="report-tag">QA Manager / Management</span></div>
+<div class="report-card"><h4>NCR Status Report</h4><p>Open and closed non-conformances with disposition, root cause, and aging.</p><span class="report-tag">QA / Operations</span></div>
+<div class="report-card"><h4>CAPA Tracker</h4><p>Corrective actions by owner, due date, and status — with overdue escalation.</p><span class="report-tag">Quality Head / Management</span></div>
+<div class="report-card"><h4>Supplier Quality Scorecard</h4><p>Rejection rate and on-time delivery score per supplier for annual review.</p><span class="report-tag">Purchase / Management</span></div>
+<div class="report-card"><h4>Customer Complaint Analysis</h4><p>Complaints by product, reason, region, and resolution time with trend.</p><span class="report-tag">Sales / Quality</span></div>
+<div class="report-card"><h4>Rejection Cost Report</h4><p>Financial impact of incoming and in-process rejections by period and item.</p><span class="report-tag">Finance / Management</span></div>
+<div class="report-card"><h4>Batch Quality History</h4><p>Complete inspection and CAPA history for any batch from receipt to delivery.</p><span class="report-tag">QA / Regulatory</span></div>
+<div class="report-card"><h4>Quality Goal Achievement</h4><p>Actual vs target for all quality KPIs with monthly trend dashboard.</p><span class="report-tag">Quality Head / CEO</span></div>
+</div>
+  </div>
+</section>
+<section class="section section-alt">
+  <div class="container">
+    <div class="section-label">User Roles</div>
+    <h2 class="section-title">Who Uses This Module?</h2>
+    <p class="section-sub">Role-based permissions ensure each user sees only what they need. Quantbit aligns roles to your org chart on Day 1.</p>
+    <div class="roles-grid"><div class="role-pill"><div class="role-dot admin"></div><div><div class="role-name">Quality Manager</div><div class="role-desc">Configure templates, set goals, approve CAPAs, view all quality reports</div></div></div>
+<div class="role-pill"><div class="role-dot manager"></div><div><div class="role-name">QA Supervisor</div><div class="role-desc">Assign inspections, review NCRs, track CAPA progress, manage supplier scores</div></div></div>
+<div class="role-pill"><div class="role-dot user"></div><div><div class="role-name">QC Inspector</div><div class="role-desc">Perform and record inspections, raise NCRs, update readings on mobile</div></div></div>
+<div class="role-pill"><div class="role-dot viewer"></div><div><div class="role-name">Management / Audit</div><div class="role-desc">Read-only access to quality reports, scorecards, and goal tracking</div></div></div>
+<div class="role-pill"><div class="role-dot user"></div><div><div class="role-name">Production / Store</div><div class="role-desc">View inspection results that affect their work; raise complaint from field</div></div></div>
+</div>
+  </div>
+</section>
+<section class="section">
+  <div class="container">
+    <div class="section-label">Business Benefits</div>
+    <h2 class="section-title">Why Implement ERPNext Quality Management?</h2>
+    <p class="section-sub">Quantbit's certified implementations deliver measurable outcomes — not just software installation.</p>
+    <div class="benefits-grid"><div class="benefit-card"><div class="benefit-num">01</div><h3>Prevent Defects Reaching Customers</h3><p>Mandatory outward quality inspection before dispatch means no sub-standard product reaches customers — protecting your brand, reducing returns, and building trust.</p></div>
+<div class="benefit-card"><div class="benefit-num">02</div><h3>Root Cause Elimination, Not Firefighting</h3><p>CAPA workflows force systematic investigation and resolution of every quality problem. Recurring issues are tracked and eliminated rather than repeatedly patched.</p></div>
+<div class="benefit-card"><div class="benefit-num">03</div><h3>Supplier Accountability</h3><p>Supplier quality scorecards based on actual incoming rejection data give your purchase team objective data for annual negotiations, approval decisions, and source reduction.</p></div>
+<div class="benefit-card"><div class="benefit-num">04</div><h3>ISO 9001 and FSSAI Readiness</h3><p>Quality Inspection records, CAPA logs, document control, and goal tracking are the core evidence requirements for ISO 9001, FSSAI, BIS, and GMP audits — all captured systematically in ERPNext.</p></div>
+<div class="benefit-card"><div class="benefit-num">05</div><h3>Real-time Quality Dashboard</h3><p>Management sees incoming rejection rates, in-process defect percentages, and complaint SLA compliance in real time — not at month-end when it's too late to act.</p></div>
+<div class="benefit-card"><div class="benefit-num">06</div><h3>Reduced Cost of Poor Quality</h3><p>Systematic quality control reduces scrap, rework, warranty claims, and customer returns — typical savings far exceed the cost of ERPNext implementation within the first year.</p></div>
+</div>
+  </div>
+</section>
+<section class="section section-alt">
+  <div class="container">
+    <div class="section-label">Best Practices</div>
+    <h2 class="section-title">Best Practices for Quality Management in ERPNext</h2>
+    <p class="section-sub">Quantbit ensures effective adoption from Day 1 with field-tested implementation standards.</p>
+    <div class="bp-list"><div class="bp-item"><div class="bp-icon">&#128300;</div><div><h4>Define Inspection Templates Before Go-live</h4><p>Create item-wise or category-wise inspection templates with acceptance criteria before the first GRN. Inspections without standards are subjective and inconsistent.</p></div></div>
+<div class="bp-item"><div class="bp-icon">&#127919;</div><div><h4>Make Inspection Mandatory at GRN</h4><p>Configure ERPNext to require quality inspection before a GRN can move stock to usable warehouse. Bypassing inspection at receipt leads to mixed stock and downstream problems.</p></div></div>
+<div class="bp-item"><div class="bp-icon">&#128203;</div><div><h4>Every NCR Gets a CAPA</h4><p>Institute a rule that every Non-Conformance Report must generate a CAPA — even for minor deviations. This builds a quality culture and provides audit trail for ISO certification.</p></div></div>
+<div class="bp-item"><div class="bp-icon">&#127942;</div><div><h4>Score Suppliers Quarterly</h4><p>Run the Supplier Quality Scorecard quarterly and share results with your top suppliers. Visibility of their performance data drives supplier improvement better than complaints alone.</p></div></div>
+<div class="bp-item"><div class="bp-icon">&#128197;</div><div><h4>Set CAPA Due Dates Firmly</h4><p>Always set and enforce due dates on CAPA action items. Open-ended CAPAs become permanent fixtures — configure overdue alerts and escalation in ERPNext.</p></div></div>
+<div class="bp-item"><div class="bp-icon">&#128202;</div><div><h4>Review Quality Goals Monthly</h4><p>Hold a monthly quality review meeting with the Quality Dashboard. Trends in rejection rates and complaint frequency often predict production or supplier problems 2 to 4 weeks before they escalate.</p></div></div>
+</div>
+  </div>
+</section>
+<section class="section">
+  <div class="container">
+    <div class="section-label">India &amp; GCC Context</div>
+    <h2 class="section-title">Compliance &amp; Regional Considerations</h2>
+    <p class="section-sub">ERPNext configured for India's statutory requirements and GCC regulatory frameworks out of the box.</p>
+    <div class="geo-answer">
+      <h3>&#127470;&#127475; For Indian Businesses</h3>
+      <p>For Indian manufacturers, ERPNext Quality supports BIS product certification inspection requirements with configurable test parameters. Pharmaceutical companies benefit from GMP-aligned batch quality records and CAPA documentation suitable for CDSCO audits. Food businesses can map FSSAI inspection requirements to ERPNext checklists. ISO 9001 documentation — inspection records, CAPA logs, supplier quality data — is captured systematically and can be exported for audit. Auto components and engineering companies in Maharashtra benefit from customer-mandated quality formats like PPAP, which Quantbit customises as part of implementation.</p>
+    </div>
+    <div class="geo-grid" style="margin-top:20px">
+      <div class="geo-block">
+        <h4>&#127470;&#127475; India &mdash; Key Configurations</h4>
+        <ul><li>BIS product certification inspection templates</li><li>Pharmaceutical GMP batch quality records</li><li>CDSCO-ready CAPA documentation</li><li>FSSAI inspection checklist mapping</li><li>ISO 9001 evidence capture and export</li><li>Auto component PPAP quality records</li><li>Maharashtra cluster manufacturer QC setup</li><li>Rejection cost reporting for cost accounting</li></ul>
+      </div>
+      <div class="geo-block">
+        <h4>&#127466;&#127462; GCC / Oman &mdash; Key Configurations</h4>
+        <ul><li>ISO 9001 / ISO 22000 readiness documentation</li><li>HACCP CCP inspection mapping in templates</li><li>Oman Ministry of Commerce inspection logs</li><li>UAE ESMA product certification data</li><li>Halal certification batch tracking</li><li>Food importer quality management</li><li>GCC construction material QC workflow</li><li>Muscat office for on-ground QA setup</li></ul>
+      </div>
+    </div>
+  </div>
+</section>
+<section class="section section-alt">
+  <div class="container">
+    <div class="section-label">AI Search Strategy</div>
+    <h2 class="section-title">Answers for AI &amp; Voice Search</h2>
+    <p class="section-sub">Structured for AI assistants, featured snippets, and voice queries.</p>
+    <div class="ai-block">
+      <h3>Common AI Search Queries &mdash; Answered</h3><div class="ai-qa"><div class="q">Q: What is the best quality management software for Indian manufacturers?</div><div class="a">ERPNext Quality Management is widely used by Indian manufacturers as it integrates directly with procurement, production, and delivery — making quality gates automatic rather than manual. CAPA, NCR, supplier scoring, and goal tracking are built in.</div></div>
+<div class="ai-qa"><div class="q">Q: How does ERPNext handle non-conformance and CAPA?</div><div class="a">ERPNext allows users to raise Non-Conformance Reports linked to any transaction — GRN, production, or delivery. Each NCR can generate a CAPA with root cause analysis, corrective action items, assigned owners, due dates, and effectiveness verification.</div></div>
+<div class="ai-qa"><div class="q">Q: Does ERPNext support ISO 9001 quality management?</div><div class="a">Yes. ERPNext's Quality module provides the documentation and evidence needed for ISO 9001 certification — including inspection records, CAPA logs, quality goals, supplier scorecards, and document control with version history.</div></div>
+</div>
+  </div>
+</section>
+<section class="section">
+  <div class="container">
+    <div class="section-label">FAQ</div>
+    <h2 class="section-title">Frequently Asked Questions</h2>
+    <p class="section-sub">Everything you need to know about implementing ERPNext Quality Management with Quantbit Technologies.</p>
+    <div class="faq-list"><div class="faq-item"><button class="faq-q" onclick="tog(this)"><span>Can ERPNext enforce quality inspection before stock is moved to the production floor?</span><span class="faq-arrow">&#9660;</span></button><div class="faq-a">Yes. ERPNext can be configured to block stock transfer from a quarantine or incoming warehouse to a usable warehouse until the quality inspection is marked as Accepted. This ensures no uninspected or rejected material enters production.</div></div>
+<div class="faq-item"><button class="faq-q" onclick="tog(this)"><span>How does ERPNext handle rejected goods from suppliers?</span><span class="faq-arrow">&#9660;</span></button><div class="faq-a">When a GRN inspection results in rejection, ERPNext generates a Non-Conformance Report with disposition options — return to supplier, rework, scrap, or use-as-is with a concession. If returned, a Purchase Return and Debit Note are raised against the same GRN.</div></div>
+<div class="faq-item"><button class="faq-q" onclick="tog(this)"><span>Does ERPNext support CAPA for customer complaints?</span><span class="faq-arrow">&#9660;</span></button><div class="faq-a">Yes. Customer complaints can be logged in ERPNext and linked to a CAPA with root cause analysis, corrective action items, target dates, and effectiveness review. The CAPA Tracker report shows all open actions with owner and due date for management review.</div></div>
+<div class="faq-item"><button class="faq-q" onclick="tog(this)"><span>Can we generate supplier quality scorecards from ERPNext?</span><span class="faq-arrow">&#9660;</span></button><div class="faq-a">Yes. ERPNext calculates supplier quality scores based on actual incoming inspection data — rejection rate, NCR count, and on-time delivery performance — and generates a Supplier Quality Scorecard that can be shared in annual supplier reviews.</div></div>
+<div class="faq-item"><button class="faq-q" onclick="tog(this)"><span>Is ERPNext Quality module suitable for ISO 9001 certification?</span><span class="faq-arrow">&#9660;</span></button><div class="faq-a">ERPNext provides most of the evidence required for ISO 9001 certification — documented inspection procedures, CAPA records, quality objectives and results, supplier quality data, and document control. Quantbit configures the module to align with your quality management system documentation.</div></div>
+<div class="faq-item"><button class="faq-q" onclick="tog(this)"><span>How long does Quality module implementation take with Quantbit?</span><span class="faq-arrow">&#9660;</span></button><div class="faq-a">A standalone quality module implementation with inspection templates, CAPA workflow, and basic reports typically takes 3 to 5 weeks. When implemented with Manufacturing or Inventory modules, it runs concurrently and adds 1 to 2 weeks to the overall timeline.</div></div>
+</div>
+  </div>
+</section>
+<section class="section section-alt">
+  <div class="container">
+    <div class="seo-box">
+      <p class="section-label" style="margin-bottom:8px">SEO Keywords</p>
+      <h3 style="font-size:.92rem;font-weight:700;color:var(--dark);margin-bottom:8px">Search Terms This Page Targets</h3>
+      <div class="seo-kw"><span>ERPNext quality management India</span><span>ERPNext quality inspection module</span><span>ERPNext CAPA non-conformance</span><span>ERPNext ISO 9001 software</span><span>ERPNext supplier quality scorecard</span><span>ERPNext quality control manufacturing Pune</span><span>ERPNext GMP pharma quality</span><span>ERPNext FSSAI food quality</span><span>ERPNext quality management GCC Oman</span><span>open source quality management software</span><span>ERPNext batch quality tracking</span><span>ERPNext customer complaint management</span><span>ERPNext quality goals KPI dashboard</span><span>ERPNext PPAP quality records</span></div>
+    </div>
+  </div>
+</section>
+<section class="cta-section">
+  <div class="container">
+    <h2>Ready to Implement ERPNext Quality Management?</h2>
+    <p>Quantbit Technologies implements ERPNext Quality Management with your inspection templates, acceptance criteria, CAPA workflows, and supplier scoring — so quality becomes systematic, auditable, and continuously improving from Day 1.</p>
+    <div class="cta-btns">
+      <a href="/company/contact-us.html" class="btn-white">Book Free Demo</a>
+      <a href="/company/contact-us.html" class="btn-ghost">Talk to a Consultant</a>
+    </div>
+    <div class="cta-trust">&#9989; Certified ERPNext Partner &nbsp;|&nbsp; &#9989; In-house Dev Team &nbsp;|&nbsp; &#9989; India &amp; GCC Experience &nbsp;|&nbsp; &#9989; Post-go-live Support</div>
+  </div>
+</section>
+  <div id="footer"></div>
+
+<script>
+function tog(btn){
+  btn.classList.toggle('open');
+  var a=btn.nextElementSibling;
+  a.classList.toggle('open');
+}
+</script>
+<script>
+    fetch("/header.html")
+      .then(res => res.text())
+      .then(data => {
+        document.getElementById("header").innerHTML = data;
+      });
+
+    fetch("/footer.html")
+      .then(res => res.text())
+      .then(data => {
+        document.getElementById("footer").innerHTML = data;
+      });
+  </script>
+  <!-- ================= TEMPLATE JS ================= -->
+  <!--<< All JS Plugins >>-->
+  <script data-cfasync="false" src="../../cdn-cgi/scripts/5c5dd728/cloudflare-static/email-decode.min.js"></script>
+  <script src="/../assets/quantbit_website/js/jquery-3.7.1.min.js"></script>
+  <!--<< Viewport Js >>-->
+  <script src="/../assets/quantbit_website/js/viewport.jquery.js"></script>
+  <!--<< Bootstrap Js >>-->
+  <script src="/../assets/quantbit_website/js/bootstrap.bundle.min.js"></script>
+  <!--<< Nice Select Js >>-->
+  <script src="/../assets/quantbit_website/js/jquery.nice-select.min.js"></script>
+  <!--<< Waypoints Js >>-->
+  <script src="/../assets/quantbit_website/js/jquery.waypoints.js"></script>
+  <!--<< Counterup Js >>-->
+  <script src="/../assets/quantbit_website/js/jquery.counterup.min.js"></script>
+  <!--<< Slick Js >>-->
+  <script src="/../assets/quantbit_website/js/slick.min.js"></script>
+  <!--<< Slick Animation Js >>-->
+  <script src="/../assets/quantbit_website/js/slick-animation.min.js"></script>
+  <!--<< MeanMenu Js >>-->
+  <script src="/../assets/quantbit_website/js/jquery.meanmenu.min.js"></script>
+  <!--<< Magnific Popup Js >>-->
+  <script src="/../assets/quantbit_website/js/jquery.magnific-popup.min.js"></script>
+  <!--<< Wow Animation Js >>-->
+  <script src="/../assets/quantbit_website/js/wow.min.js"></script>
+  <!--<< Circle Progress Js >>-->
+  <script src="/../assets/quantbit_website/js/circle-progress.js"></script>
+  <!--<< Main.js >>-->
+  <script src="/../assets/quantbit_website/js/main.js"></script>
+  <script defer
+    src="../../../static.cloudflareinsights.com/beacon.min.js/v8c78df7c7c0f484497ecbca7046644da1771523124516"
+    integrity="sha512-8DS7rgIrAmghBFwoOTujcf6D9rXvH8xm8JQ1Ja01h9QX8EzXldiszufYa4IFfKdLUKTTrnSFXLDkUEOTrZQ8Qg=="
+    data-cf-beacon='{"version":"2024.11.0","token":"90f7972af14a48b4add7da2b74f5d675","r":1,"server_timing":{"name":{"cfCacheStatus":true,"cfEdge":true,"cfExtPri":true,"cfL4":true,"cfOrigin":true,"cfSpeedBrain":true},"location_startswith":null}}'
+    crossorigin="anonymous"></script>
+</body></html>

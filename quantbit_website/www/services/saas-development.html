@@ -1,94 +1,192 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
-<meta charset="UTF-8"><meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>SaaS Product Development on ERPNext &amp; Frappe | Build Your Vertical SaaS | Quantbit</title>
-<meta name="description" content="Build your vertical SaaS product on the ERPNext and Frappe framework with Quantbit Technologies — a certified Frappe partner that has already shipped 10 vertical SaaS products. From architecture to go-to-market, we build SaaS on Frappe for ISVs and founders worldwide.">
-<meta name="keywords" content="SaaS development on ERPNext, SaaS on Frappe, build SaaS on Frappe, ERPNext SaaS product development, Frappe SaaS, vertical SaaS ERPNext, ISV on Frappe, build ERP SaaS product, Frappe product development company">
-<link rel="canonical" href="https://quantbit.io/services/saas-development">
-<meta property="og:title" content="SaaS Development on ERPNext &amp; Frappe | Quantbit Technologies">
-<meta property="og:description" content="Build your vertical SaaS on Frappe with the team that has already shipped 10 products on the same framework. Architecture, development, cloud deployment, and go-to-market.">
-<meta property="og:url" content="https://quantbit.io/services/saas-development">
-<meta name="twitter:card" content="summary_large_image">
-<script type="application/ld+json">
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>SaaS Product Development on ERPNext &amp; Frappe | Build Your Vertical SaaS | Quantbit</title>
+  <meta name="description"
+    content="Build your vertical SaaS product on the ERPNext and Frappe framework with Quantbit Technologies — a certified Frappe partner that has already shipped 10 vertical SaaS products. From architecture to go-to-market, we build SaaS on Frappe for ISVs and founders worldwide.">
+  <meta name="keywords"
+    content="SaaS development on ERPNext, SaaS on Frappe, build SaaS on Frappe, ERPNext SaaS product development, Frappe SaaS, vertical SaaS ERPNext, ISV on Frappe, build ERP SaaS product, Frappe product development company">
+  <link rel="canonical" href="https://quantbit.io/services/saas-development">
+  <meta property="og:title" content="SaaS Development on ERPNext &amp; Frappe | Quantbit Technologies">
+  <meta property="og:description"
+    content="Build your vertical SaaS on Frappe with the team that has already shipped 10 products on the same framework. Architecture, development, cloud deployment, and go-to-market.">
+  <meta property="og:url" content="https://quantbit.io/services/saas-development">
+  <meta name="twitter:card" content="summary_large_image">
+  <script type="application/ld+json">
 {"@context":"https://schema.org","@graph":[{"@type":"Organization","@id":"https://quantbit.io/#org","name":"Quantbit Technologies Pvt. Ltd.","url":"https://quantbit.io"},{"@type":"Service","@id":"https://quantbit.io/services/saas-development#service","name":"SaaS Product Development on ERPNext and Frappe","serviceType":"SaaS Product Development","description":"End-to-end SaaS product development on the ERPNext and Frappe framework. Architecture, custom app development, multi-tenancy, cloud deployment, Frappe Marketplace listing, and ongoing product evolution. Built by a certified Frappe partner that has shipped 10 vertical SaaS products on the same framework.","provider":{"@id":"https://quantbit.io/#org"},"areaServed":{"@type":"Country","name":"Worldwide"}},{"@type":"FAQPage","mainEntity":[{"@type":"Question","name":"Why build a SaaS product on Frappe rather than from scratch?","acceptedAnswer":{"@type":"Answer","text":"Building a business application SaaS from scratch on Django, Node.js, or Rails means building the database layer, ORM, permissions, REST API, UI components, reports, and workflows yourself — typically 12–18 months before you have an MVP. Frappe provides all of this out of the box. A SaaS product that would take 18 months to build from scratch takes 4–6 months on Frappe. You get to market faster, with a more mature infrastructure, and at a fraction of the development cost."}},{"@type":"Question","name":"What kinds of SaaS products can be built on Frappe?","acceptedAnswer":{"@type":"Answer","text":"Any industry-specific business application can be built on Frappe. Quantbit has built FoundryX (foundry ERP), MachineX (machine shop management), CFMSX (facility management), PropX (real estate), WMSPro (warehouse management), FleetX (fleet management), RestoX (restaurant ERP), HRX (HR and payroll), AlsensePro (AI vision quality inspection), and PosX (point of sale) — all on the Frappe framework. The framework is particularly suited to workflow-heavy, multi-module business applications with complex permissions and reporting requirements."}},{"@type":"Question","name":"Can a Frappe SaaS product handle multiple tenants?","acceptedAnswer":{"@type":"Answer","text":"Yes. Frappe's multi-tenancy model is well-established — it is how Frappe Cloud itself works. Each tenant gets a separate site with its own database, configurations, and data. Quantbit implements multi-tenant Frappe deployments on cloud infrastructure (AWS, GCP, Azure) with automated provisioning, monitoring, and backup. Your customers get isolated, secure environments without you managing separate servers for each."}},{"@type":"Question","name":"How is a Frappe SaaS product different from ERPNext?","acceptedAnswer":{"@type":"Answer","text":"ERPNext is a specific application built on Frappe. Your SaaS product is a different application — also built on Frappe — that may or may not include ERPNext modules. You can build a completely standalone product (just your custom DocTypes and logic), or build on top of ERPNext and extend it with your vertical-specific modules. Quantbit advises on the right architecture based on your product scope, target market, and upgrade path requirements."}},{"@type":"Question","name":"Can Quantbit list my SaaS product on the Frappe Marketplace?","acceptedAnswer":{"@type":"Answer","text":"Yes. The Frappe Marketplace (frappe.io/marketplace) is the primary distribution channel for Frappe apps. Quantbit can help you package your product as a proper Frappe app, prepare documentation and screenshots, and submit it to the marketplace. Marketplace listing gives your product organic discovery from the 50,000+ monthly visitors actively looking for ERPNext extensions and Frappe-based solutions."}},{"@type":"Question","name":"What does Quantbit's SaaS development engagement look like?","acceptedAnswer":{"@type":"Answer","text":"Quantbit offers two engagement models for SaaS development: (1) Build-to-spec — you bring the product requirements and we design, build, test, and deliver the product. (2) Co-build — we work as your embedded engineering team alongside your product manager, building in agile sprints with fortnightly deliverables. Both models include architecture review, code quality standards, deployment infrastructure, and documentation. Timeline from kickoff to MVP: 3–6 months depending on scope."}}]}]}
 </script>
-<link rel="stylesheet" href="/assets/quantbit_website/css/_shared.css">
-<style>
-.product-showcase { display: grid; grid-template-columns: repeat(4,1fr); gap: 12px; margin-top: 32px; }
-.product-pill {
-  background: var(--white); border: 1px solid var(--border);
-  border-radius: var(--radius); padding: 16px;
-  text-align: center; font-size: .825rem; font-weight: 600; color: var(--navy);
-  transition: all .15s;
-}
-.product-pill:hover { border-color: var(--teal); color: var(--teal); }
-.product-pill .pp-tag { display: block; font-size: .7rem; font-weight: 400; color: var(--slate-l); margin-top: 3px; font-family: var(--mono); }
-.engage-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 24px; margin-top: 40px; }
-.engage-card {
-  border: 2px solid var(--border); border-radius: var(--radius-lg); padding: 32px;
-  position: relative; overflow: hidden;
-}
-.engage-card.featured { border-color: var(--teal); }
-.engage-card.featured::before {
-  content: 'POPULAR'; position: absolute; top: 16px; right: 16px;
-  background: var(--teal); color: var(--navy); font-size: .65rem;
-  font-weight: 800; letter-spacing: .08em; padding: 3px 8px; border-radius: 4px;
-}
-.engage-card h3 { font-size: 1.1rem; margin-bottom: 8px; }
-.engage-card p { font-size: .875rem; color: var(--slate); margin-bottom: 16px; }
-.engage-card ul { list-style: none; padding: 0; }
-.engage-card ul li { font-size: .85rem; color: var(--slate); padding: 4px 0; display:flex; gap:8px; }
-.engage-card ul li::before { content: '✓'; color: var(--teal); flex-shrink: 0; }
-@media(max-width:768px){ .product-showcase{grid-template-columns:1fr 1fr} .engage-grid{grid-template-columns:1fr} }
-</style>
-<!-- TEMPLATE CSS (IMPORTANT) -->
-    <link rel="stylesheet" href="/../assets/quantbit_website/css/bootstrap.min.css">
-    <link rel="stylesheet" href="/../assets/quantbit_website/css/font-awesome.css">
-    <link rel="stylesheet" href="/../assets/quantbit_website/css/animate.css">
-    <link rel="stylesheet" href="/../assets/quantbit_website/css/magnific-popup.css">
-    <link rel="stylesheet" href="/../assets/quantbit_website/css/meanmenu.css">
-    <link rel="stylesheet" href="/../assets/quantbit_website/css/slick.css">
-    <link rel="stylesheet" href="/../assets/quantbit_website/css/nice-select.css">
-    <link rel="stylesheet" href="/../assets/quantbit_website/css/main.css">
-    <link rel="stylesheet" href="style.css">
-    <!-- <link rel="stylesheet" href="/assets/quantbit_website/css/_shared.css"> -->
+  <link rel="stylesheet" href="/assets/quantbit_website/css/_shared.css">
+  <style>
+    .product-showcase {
+      display: grid;
+      grid-template-columns: repeat(4, 1fr);
+      gap: 12px;
+      margin-top: 32px;
+    }
+
+    .product-pill {
+      background: var(--white);
+      border: 1px solid var(--border);
+      border-radius: var(--radius);
+      padding: 16px;
+      text-align: center;
+      font-size: .825rem;
+      font-weight: 600;
+      color: var(--navy);
+      transition: all .15s;
+    }
+
+    .product-pill:hover {
+      border-color: var(--teal);
+      color: var(--teal);
+    }
+
+    .product-pill .pp-tag {
+      display: block;
+      font-size: .7rem;
+      font-weight: 400;
+      color: var(--slate-l);
+      margin-top: 3px;
+      font-family: var(--mono);
+    }
+
+    .engage-grid {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 24px;
+      margin-top: 40px;
+    }
+
+    .engage-card {
+      border: 2px solid var(--border);
+      border-radius: var(--radius-lg);
+      padding: 32px;
+      position: relative;
+      overflow: hidden;
+    }
+
+    .engage-card.featured {
+      border-color: var(--teal);
+    }
+
+    .engage-card.featured::before {
+      content: 'POPULAR';
+      position: absolute;
+      top: 16px;
+      right: 16px;
+      background: var(--teal);
+      color: var(--navy);
+      font-size: .65rem;
+      font-weight: 800;
+      letter-spacing: .08em;
+      padding: 3px 8px;
+      border-radius: 4px;
+    }
+
+    .engage-card h3 {
+      font-size: 1.1rem;
+      margin-bottom: 8px;
+    }
+
+    .engage-card p {
+      font-size: .875rem;
+      color: var(--slate);
+      margin-bottom: 16px;
+    }
+
+    .engage-card ul {
+      list-style: none;
+      padding: 0;
+    }
+
+    .engage-card ul li {
+      font-size: .85rem;
+      color: var(--slate);
+      padding: 4px 0;
+      display: flex;
+      gap: 8px;
+    }
+
+    .engage-card ul li::before {
+      content: '✓';
+      color: var(--teal);
+      flex-shrink: 0;
+    }
+
+    @media(max-width:768px) {
+      .product-showcase {
+        grid-template-columns: 1fr 1fr
+      }
+
+      .engage-grid {
+        grid-template-columns: 1fr
+      }
+    }
+  </style>
+  <!-- TEMPLATE CSS (IMPORTANT) -->
+  <link rel="stylesheet" href="/../assets/quantbit_website/css/bootstrap.min.css">
+  <link rel="stylesheet" href="/../assets/quantbit_website/css/font-awesome.css">
+  <link rel="stylesheet" href="/../assets/quantbit_website/css/animate.css">
+  <link rel="stylesheet" href="/../assets/quantbit_website/css/magnific-popup.css">
+  <link rel="stylesheet" href="/../assets/quantbit_website/css/meanmenu.css">
+  <link rel="stylesheet" href="/../assets/quantbit_website/css/slick.css">
+  <link rel="stylesheet" href="/../assets/quantbit_website/css/nice-select.css">
+  <link rel="stylesheet" href="/../assets/quantbit_website/css/main.css">
+  <link rel="stylesheet" href="style.css">
+  <!-- <link rel="stylesheet" href="/assets/quantbit_website/css/_shared.css"> -->
 
 
-    <!-- OPTIONAL CUSTOM -->
-    <link rel="stylesheet" href="/../assets/quantbit_website/css/hrms.css">
-      <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
-<!-- Google Tag Manager -->
-<script>(function(w,d,s,l,i){w[l]=w[l]||[];w[l].push({'gtm.start':
-new Date().getTime(),event:'gtm.js'});var f=d.getElementsByTagName(s)[0],
-j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
-'https://www.googletagmanager.com/gtm.js?id='+i+dl;f.parentNode.insertBefore(j,f);
-})(window,document,'script','dataLayer','GTM-P98Z6G8D');</script>
-<!-- End Google Tag Manager -->
+  <!-- OPTIONAL CUSTOM -->
+  <link rel="stylesheet" href="/../assets/quantbit_website/css/hrms.css">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
+  <!-- Google Tag Manager -->
+  <script>(function (w, d, s, l, i) {
+      w[l] = w[l] || []; w[l].push({
+        'gtm.start':
+          new Date().getTime(), event: 'gtm.js'
+      }); var f = d.getElementsByTagName(s)[0],
+        j = d.createElement(s), dl = l != 'dataLayer' ? '&l=' + l : ''; j.async = true; j.src =
+          'https://www.googletagmanager.com/gtm.js?id=' + i + dl; f.parentNode.insertBefore(j, f);
+    })(window, document, 'script', 'dataLayer', 'GTM-P98Z6G8D');</script>
+  <!-- End Google Tag Manager -->
 </head>
+
 <body>
   <!-- Google Tag Manager (noscript) -->
-<noscript><iframe src="https://www.googletagmanager.com/ns.html?id=GTM-P98Z6G8D"
-height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
-<!-- End Google Tag Manager (noscript) -->
-<div id="header"></div>
-<div class="service-nav-strip"><div class="service-nav-inner"><a href="erpnext-implementation.html" class="sn-link">ERPNext Implementation</a><a href="frappe-development.html" class="sn-link">Frappe Development</a><a href="erpnext-customisation.html" class="sn-link">ERPNext Customisation</a><a href="erpnext-migration.html" class="sn-link">Migration</a><a href="saas-development.html" class="sn-link active">SaaS Development</a></div></div>
+  <noscript><iframe src="https://www.googletagmanager.com/ns.html?id=GTM-P98Z6G8D" height="0" width="0"
+      style="display:none;visibility:hidden"></iframe></noscript>
+  <!-- End Google Tag Manager (noscript) -->
+  <div id="header"></div>
+  <div class="service-nav-strip">
+    <div class="service-nav-inner"><a href="erpnext-implementation.html" class="sn-link">ERPNext Implementation</a><a
+        href="frappe-development.html" class="sn-link">Frappe Development</a><a href="erpnext-customisation.html"
+        class="sn-link">ERPNext Customisation</a><a href="erpnext-migration.html" class="sn-link">Migration</a><a
+        href="saas-development.html" class="sn-link active">SaaS Development</a></div>
+  </div>
 
-<section class="hero">
-  <div class="container">
-    <div class="hero-grid">
-      <div>
-        <div class="hero-eyebrow">SaaS Product Development on Frappe</div>
-        <h1>Build Your <span class="accent">Vertical SaaS</span> on the Framework We Know Best</h1>
-        <p class="hero-desc">We have shipped 10 SaaS products on Frappe. FoundryX, CFMSX, PropX, WMSPro, FleetX and more. That is not portfolio decoration — it is the expertise your product will be built with.</p>
-        <div class="hero-actions">
-          <a href="/company/contact-us.html" class="btn-primary">Discuss your product idea ↗</a>
-          <a href="/products" class="btn-ghost">See what we have built</a>
+  <section class="hero">
+    <div class="container">
+      <div class="hero-grid">
+        <div>
+          <div class="hero-eyebrow">SaaS Product Development on Frappe</div>
+          <h1>Build Your <span class="accent">Vertical SaaS</span> on the Framework We Know Best</h1>
+          <p class="hero-desc">We have shipped 10 SaaS products on Frappe. FoundryX, CFMSX, PropX, WMSPro, FleetX and
+            more. That is not portfolio decoration — it is the expertise your product will be built with.</p>
+          <div class="hero-actions">
+            <a href="/company/contact-us.html" class="btn-primary">Discuss your product idea ↗</a>
+            <a href="/products" class="btn-ghost">See what we have built</a>
+          </div>
         </div>
-      </div>
-      <div class="code-card">
-        <div class="code-card-bar"><div class="cc-dot r"></div><div class="cc-dot y"></div><div class="cc-dot g"></div><span class="cc-file">saas_product/setup.py</span></div>
-        <pre><span class="cc-comment"># Your SaaS — built on Frappe</span>
+        <div class="code-card">
+          <div class="code-card-bar">
+            <div class="cc-dot r"></div>
+            <div class="cc-dot y"></div>
+            <div class="cc-dot g"></div><span class="cc-file">saas_product/setup.py</span>
+          </div>
+          <pre><span class="cc-comment"># Your SaaS — built on Frappe</span>
 
 <span class="cc-key">from</span> frappe <span class="cc-key">import</span> _
 
@@ -99,163 +197,315 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
   setup_subscription_model()
   enable_marketplace_listing()
   <span class="cc-comment"># Go to market.</span></pre>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <div class="trust-strip">
+    <div class="trust-inner">
+      <div class="trust-item"><span class="trust-icon">📦</span> 10 SaaS Products Already Shipped on Frappe</div>
+      <div class="trust-divider"></div>
+      <div class="trust-item"><span class="trust-icon">✦</span> Certified Frappe Partner</div>
+      <div class="trust-divider"></div>
+      <div class="trust-item"><span class="trust-icon">☁️</span> Cloud-Native Multi-Tenant Deployment</div>
+      <div class="trust-divider"></div>
+      <div class="trust-item"><span class="trust-icon">🛒</span> Frappe Marketplace Distribution</div>
+      <div class="trust-divider"></div>
+      <div class="trust-item"><span class="trust-icon">📱</span> Mobile App Included</div>
+    </div>
+  </div>
+
+  <section class="section">
+    <div class="container">
+      <span class="label">What we build for you</span>
+      <h2>End-to-End SaaS Product Engineering on Frappe</h2>
+      <p style="max-width:600px;margin-top:12px">From the first architecture decision to the day your first paying
+        customer signs up — Quantbit handles the full engineering journey.</p>
+      <div class="offer-grid">
+        <div class="offer-card">
+          <div class="offer-icon">🏗️</div>
+          <h3>Product Architecture</h3>
+          <p>DocType design, data model, module structure, multi-tenancy strategy, and scalability planning — done right
+            before the first line of code.</p>
+        </div>
+        <div class="offer-card">
+          <div class="offer-icon">💻</div>
+          <h3>Full-Stack Development</h3>
+          <p>Backend in Python/Frappe, frontend in Frappe UI or Vue.js, REST API, background jobs, and scheduled tasks —
+            your complete product stack.</p>
+        </div>
+        <div class="offer-card">
+          <div class="offer-icon">☁️</div>
+          <h3>Cloud Deployment &amp; DevOps</h3>
+          <p>Multi-tenant cloud infrastructure on AWS or GCP, automated site provisioning, monitoring, backups, and
+            CI/CD pipeline.</p>
+        </div>
+        <div class="offer-card">
+          <div class="offer-icon">📱</div>
+          <h3>Mobile Application</h3>
+          <p>React Native or Flutter companion app for your SaaS product — barcode scanning, field operations,
+            approvals, and offline capability.</p>
+        </div>
+        <div class="offer-card">
+          <div class="offer-icon">🛒</div>
+          <h3>Marketplace &amp; Distribution</h3>
+          <p>Frappe Marketplace submission, G2 and Capterra listing, documentation, and demo environment — so customers
+            can discover and try your product.</p>
+        </div>
+        <div class="offer-card">
+          <div class="offer-icon">🔄</div>
+          <h3>Ongoing Product Evolution</h3>
+          <p>Agile sprint teams that continue building features, fixing bugs, managing upgrades, and scaling your
+            product as your customer base grows.</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section class="section-sm" style="background:var(--bg2)">
+    <div class="container">
+      <span class="label">Proven at scale</span>
+      <h2>10 Products We Have Already Built on Frappe</h2>
+      <p style="max-width:600px;margin-top:12px">These are not concepts or demos. These are production SaaS products
+        with real customers, built and maintained by the same team that will build yours.</p>
+
+      <div class="product-showcase">
+        <div class="product-pill"><a href="/products/foundryx.html">FoundryX</a><span class="pp-tag">foundry-erp</span>
+        </div>
+
+        <div class="product-pill"><a href="/products/machinex.html">MachineX</a><span class="pp-tag">machine-shop</span>
+        </div>
+
+        <div class="product-pill"><a href="/products/buildx.html">BuildX</a><span class="pp-tag">construction</span>
+        </div>
+
+        <div class="product-pill"><a href="/products/posx.html">POSX</a><span class="pp-tag">point-of-sale</span></div>
+
+        <div class="product-pill"><a href="/products/restox.html">RestoX</a><span class="pp-tag">restaurant</span></div>
+
+        <div class="product-pill"><a href="/products/propx.html">PropX</a><span class="pp-tag">real-estate</span></div>
+
+        <div class="product-pill"><a href="/products/cafmx.html">CAFMX</a><span class="pp-tag">facility-mgmt</span>
+        </div>
+
+        <div class="product-pill"><a href="/products/rentx.html">RentX</a><span class="pp-tag">rental</span></div>
+
+        <div class="product-pill"><a href="/products/tradex.html">TradeX</a><span class="pp-tag">trading</span></div>
+
+        <div class="product-pill"><a href="/products/wmspro.html">WareX</a><span class="pp-tag">warehouse-3pl</span>
+        </div>
+
+        <div class="product-pill"><a href="/products/hrms.html">HRX</a><span class="pp-tag">hr-payroll</span></div>
+
+        <div class="product-pill"><a href="/products/hims.html">HIMS</a><span class="pp-tag">healthcare</span></div>
+
+        <div class="product-pill"><a href="/products/crm.html">CRM</a><span class="pp-tag">customer-management</span>
+        </div>
+
+        <div class="product-pill"><a href="/products/sugar-erp.html">Sugar ERP</a><span
+            class="pp-tag">sugar-industry</span></div>
+
+        <div class="product-pill"><a href="/products/manufacturing-erp.html">Manufacturing ERP</a><span
+            class="pp-tag">manufacturing</span></div>
+
+        <div class="product-pill"><a href="/products/krishi-astra.html">KrishiAstra</a><span
+            class="pp-tag">agriculture</span></div>
+
+        <div class="product-pill"><a href="/products/agri-university.html">Agri University</a><span
+            class="pp-tag">education</span></div>
+
+        <div class="product-pill"><a href="/products/cane-management.html">Cane Management</a><span
+            class="pp-tag">cane-management</span></div>
+
+        <div class="product-pill"><a href="/products/helpdesk.html">Helpdesk</a><span class="pp-tag">support</span>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section class="section-sm" style="background:var(--white)">
+    <div class="container">
+      <div class="stats-row">
+        <div class="stat-item">
+          <div class="stat-num">10<span>+</span></div>
+          <div class="stat-label">SaaS products shipped on Frappe</div>
+        </div>
+        <div class="stat-item">
+          <div class="stat-num">4–6</div>
+          <div class="stat-label">Months average MVP delivery</div>
+        </div>
+        <div class="stat-item">
+          <div class="stat-num">50<span>+</span></div>
+          <div class="stat-label">Frappe developers in-house</div>
+        </div>
+        <div class="stat-item">
+          <div class="stat-num">60<span>%</span></div>
+          <div class="stat-label">Faster than building from scratch</div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section class="section" style="background:var(--bg)">
+    <div class="container">
+      <span class="label">Engagement models</span>
+      <h2>Two Ways to Work with Quantbit on Your SaaS Product</h2>
+      <p style="max-width:600px;margin-top:12px">Whether you need a complete build or an embedded engineering team —
+        choose the model that fits your stage and team structure.</p>
+      <div class="engage-grid">
+        <div class="engage-card featured">
+          <h3>Build-to-Spec</h3>
+          <p>You bring the product vision. We design the architecture, build the product, set up infrastructure, and
+            deliver a launch-ready SaaS.</p>
+          <ul>
+            <li>Full product architecture design</li>
+            <li>Agile sprint delivery (2-week cycles)</li>
+            <li>Cloud infrastructure setup</li>
+            <li>Frappe Marketplace listing support</li>
+            <li>3-month post-launch support included</li>
+            <li>Complete IP ownership to you</li>
+          </ul>
+        </div>
+        <div class="engage-card">
+          <h3>Co-Build (Embedded Team)</h3>
+          <p>We work as your embedded engineering team — alongside your product manager, building feature by feature,
+            sprint by sprint.</p>
+          <ul>
+            <li>Dedicated Frappe developers assigned</li>
+            <li>Work within your PM and sprint process</li>
+            <li>Daily standups and Slack communication</li>
+            <li>Code review and quality standards</li>
+            <li>Flexible team scaling up or down</li>
+            <li>Monthly or quarterly engagement model</li>
+          </ul>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <div class="cert-band">
+    <div class="cert-inner">
+      <div class="cert-label">Why Frappe for SaaS</div>
+      <div class="cert-badges">
+        <div class="cert-badge"><span class="cb-icon">✦</span> 60–70% Faster MVP Than From Scratch</div>
+        <div class="cert-badge"><span class="cb-icon">✦</span> Built-In Multi-Tenancy</div>
+        <div class="cert-badge"><span class="cb-icon">✦</span> Frappe Marketplace Distribution</div>
+        <div class="cert-badge"><span class="cb-icon">✦</span> Zero Platform Licence Fee</div>
       </div>
     </div>
   </div>
-</section>
 
-<div class="trust-strip"><div class="trust-inner"><div class="trust-item"><span class="trust-icon">📦</span> 10 SaaS Products Already Shipped on Frappe</div><div class="trust-divider"></div><div class="trust-item"><span class="trust-icon">✦</span> Certified Frappe Partner</div><div class="trust-divider"></div><div class="trust-item"><span class="trust-icon">☁️</span> Cloud-Native Multi-Tenant Deployment</div><div class="trust-divider"></div><div class="trust-item"><span class="trust-icon">🛒</span> Frappe Marketplace Distribution</div><div class="trust-divider"></div><div class="trust-item"><span class="trust-icon">📱</span> Mobile App Included</div></div></div>
-
-<section class="section">
-  <div class="container">
-    <span class="label">What we build for you</span>
-    <h2>End-to-End SaaS Product Engineering on Frappe</h2>
-    <p style="max-width:600px;margin-top:12px">From the first architecture decision to the day your first paying customer signs up — Quantbit handles the full engineering journey.</p>
-    <div class="offer-grid">
-      <div class="offer-card"><div class="offer-icon">🏗️</div><h3>Product Architecture</h3><p>DocType design, data model, module structure, multi-tenancy strategy, and scalability planning — done right before the first line of code.</p></div>
-      <div class="offer-card"><div class="offer-icon">💻</div><h3>Full-Stack Development</h3><p>Backend in Python/Frappe, frontend in Frappe UI or Vue.js, REST API, background jobs, and scheduled tasks — your complete product stack.</p></div>
-      <div class="offer-card"><div class="offer-icon">☁️</div><h3>Cloud Deployment &amp; DevOps</h3><p>Multi-tenant cloud infrastructure on AWS or GCP, automated site provisioning, monitoring, backups, and CI/CD pipeline.</p></div>
-      <div class="offer-card"><div class="offer-icon">📱</div><h3>Mobile Application</h3><p>React Native or Flutter companion app for your SaaS product — barcode scanning, field operations, approvals, and offline capability.</p></div>
-      <div class="offer-card"><div class="offer-icon">🛒</div><h3>Marketplace &amp; Distribution</h3><p>Frappe Marketplace submission, G2 and Capterra listing, documentation, and demo environment — so customers can discover and try your product.</p></div>
-      <div class="offer-card"><div class="offer-icon">🔄</div><h3>Ongoing Product Evolution</h3><p>Agile sprint teams that continue building features, fixing bugs, managing upgrades, and scaling your product as your customer base grows.</p></div>
-    </div>
-  </div>
-</section>
-
-<section class="section-sm" style="background:var(--bg2)">
-  <div class="container">
-    <span class="label">Proven at scale</span>
-    <h2>10 Products We Have Already Built on Frappe</h2>
-    <p style="max-width:600px;margin-top:12px">These are not concepts or demos. These are production SaaS products with real customers, built and maintained by the same team that will build yours.</p>
-    <div class="product-showcase">
-      <div class="product-pill">FoundryX<span class="pp-tag">foundry-erp</span></div>
-      <div class="product-pill">MachineX<span class="pp-tag">machine-shop</span></div>
-      <div class="product-pill">PropX<span class="pp-tag">real-estate</span></div>
-      <div class="product-pill">CFMSX<span class="pp-tag">facility-mgmt</span></div>
-      <div class="product-pill">WMSPro<span class="pp-tag">warehouse-3pl</span></div>
-      <div class="product-pill">FleetX<span class="pp-tag">fleet-mgmt</span></div>
-      <div class="product-pill">RestoX<span class="pp-tag">restaurant</span></div>
-      <div class="product-pill">HRX<span class="pp-tag">hr-payroll</span></div>
-      <div class="product-pill">AlsensePro<span class="pp-tag">ai-vision-qc</span></div>
-      <div class="product-pill">PosX<span class="pp-tag">point-of-sale</span></div>
-    </div>
-  </div>
-</section>
-
-<section class="section-sm" style="background:var(--white)">
-  <div class="container"><div class="stats-row">
-    <div class="stat-item"><div class="stat-num">10<span>+</span></div><div class="stat-label">SaaS products shipped on Frappe</div></div>
-    <div class="stat-item"><div class="stat-num">4–6</div><div class="stat-label">Months average MVP delivery</div></div>
-    <div class="stat-item"><div class="stat-num">50<span>+</span></div><div class="stat-label">Frappe developers in-house</div></div>
-    <div class="stat-item"><div class="stat-num">60<span>%</span></div><div class="stat-label">Faster than building from scratch</div></div>
-  </div></div>
-</section>
-
-<section class="section" style="background:var(--bg)">
-  <div class="container">
-    <span class="label">Engagement models</span>
-    <h2>Two Ways to Work with Quantbit on Your SaaS Product</h2>
-    <p style="max-width:600px;margin-top:12px">Whether you need a complete build or an embedded engineering team — choose the model that fits your stage and team structure.</p>
-    <div class="engage-grid">
-      <div class="engage-card featured">
-        <h3>Build-to-Spec</h3>
-        <p>You bring the product vision. We design the architecture, build the product, set up infrastructure, and deliver a launch-ready SaaS.</p>
-        <ul>
-          <li>Full product architecture design</li>
-          <li>Agile sprint delivery (2-week cycles)</li>
-          <li>Cloud infrastructure setup</li>
-          <li>Frappe Marketplace listing support</li>
-          <li>3-month post-launch support included</li>
-          <li>Complete IP ownership to you</li>
-        </ul>
-      </div>
-      <div class="engage-card">
-        <h3>Co-Build (Embedded Team)</h3>
-        <p>We work as your embedded engineering team — alongside your product manager, building feature by feature, sprint by sprint.</p>
-        <ul>
-          <li>Dedicated Frappe developers assigned</li>
-          <li>Work within your PM and sprint process</li>
-          <li>Daily standups and Slack communication</li>
-          <li>Code review and quality standards</li>
-          <li>Flexible team scaling up or down</li>
-          <li>Monthly or quarterly engagement model</li>
-        </ul>
+  <section class="faq-section">
+    <div class="container">
+      <span class="label">Common questions</span>
+      <h2>SaaS on Frappe — Answered</h2>
+      <div class="faq-terminal">
+        <div class="faq-item open"><button class="faq-question" onclick="toggleFaq(this)"><span
+              class="faq-prompt">❯</span><span class="faq-q-text">Why build a SaaS product on Frappe rather than from
+              scratch?</span><span class="faq-chevron">›</span></button>
+          <div class="faq-answer">Building business application SaaS from scratch means building the database layer,
+            ORM, permissions, REST API, UI components, reports, and workflows yourself — typically 12–18 months before
+            MVP. Frappe provides all of this out of the box. A product that takes 18 months from scratch takes 4–6
+            months on Frappe. You reach market faster with more mature infrastructure at a fraction of the cost.</div>
+        </div>
+        <div class="faq-item"><button class="faq-question" onclick="toggleFaq(this)"><span
+              class="faq-prompt">❯</span><span class="faq-q-text">What kinds of SaaS products can be built on
+              Frappe?</span><span class="faq-chevron">›</span></button>
+          <div class="faq-answer">Any industry-specific business application. Quantbit has built foundry ERP, machine
+            shop management, facility management, real estate ERP, warehouse management, fleet management, restaurant
+            ERP, HR and payroll, AI vision quality inspection, and point of sale — all on Frappe. The framework is
+            particularly suited to workflow-heavy, multi-module business applications with complex permissions and
+            reporting requirements.</div>
+        </div>
+        <div class="faq-item"><button class="faq-question" onclick="toggleFaq(this)"><span
+              class="faq-prompt">❯</span><span class="faq-q-text">Can a Frappe SaaS product handle multiple customers
+              (multi-tenancy)?</span><span class="faq-chevron">›</span></button>
+          <div class="faq-answer">Yes. Frappe's multi-tenancy model is well-established — it is how Frappe Cloud itself
+            works. Each customer gets a separate site with their own database, configurations, and data. Quantbit
+            implements multi-tenant Frappe deployments on AWS or GCP with automated provisioning, monitoring, and
+            backup. Your customers get isolated, secure environments without you managing separate servers for each.
+          </div>
+        </div>
+        <div class="faq-item"><button class="faq-question" onclick="toggleFaq(this)"><span
+              class="faq-prompt">❯</span><span class="faq-q-text">How is a Frappe SaaS different from
+              ERPNext?</span><span class="faq-chevron">›</span></button>
+          <div class="faq-answer">ERPNext is one specific application built on Frappe. Your SaaS is a different
+            application — also on Frappe — that may or may not include ERPNext modules. You can build completely
+            standalone (just your DocTypes and logic), or extend ERPNext with your vertical-specific modules. Quantbit
+            advises on the right architecture based on your product scope and target market.</div>
+        </div>
+        <div class="faq-item"><button class="faq-question" onclick="toggleFaq(this)"><span
+              class="faq-prompt">❯</span><span class="faq-q-text">Can Quantbit list my product on the Frappe
+              Marketplace?</span><span class="faq-chevron">›</span></button>
+          <div class="faq-answer">Yes. The Frappe Marketplace (frappe.io/marketplace) has 50,000+ monthly visitors
+            actively looking for ERPNext extensions. Quantbit packages your product as a proper Frappe app, prepares
+            documentation and screenshots, and supports your marketplace submission. Listing gives your product organic
+            discovery from inside the ERPNext ecosystem — the most qualified possible audience for a Frappe-based SaaS.
+          </div>
+        </div>
       </div>
     </div>
-  </div>
-</section>
+  </section>
 
-<div class="cert-band"><div class="cert-inner"><div class="cert-label">Why Frappe for SaaS</div><div class="cert-badges"><div class="cert-badge"><span class="cb-icon">✦</span> 60–70% Faster MVP Than From Scratch</div><div class="cert-badge"><span class="cb-icon">✦</span> Built-In Multi-Tenancy</div><div class="cert-badge"><span class="cb-icon">✦</span> Frappe Marketplace Distribution</div><div class="cert-badge"><span class="cb-icon">✦</span> Zero Platform Licence Fee</div></div></div></div>
-
-<section class="faq-section">
-  <div class="container">
-    <span class="label">Common questions</span>
-    <h2>SaaS on Frappe — Answered</h2>
-    <div class="faq-terminal">
-      <div class="faq-item open"><button class="faq-question" onclick="toggleFaq(this)"><span class="faq-prompt">❯</span><span class="faq-q-text">Why build a SaaS product on Frappe rather than from scratch?</span><span class="faq-chevron">›</span></button><div class="faq-answer">Building business application SaaS from scratch means building the database layer, ORM, permissions, REST API, UI components, reports, and workflows yourself — typically 12–18 months before MVP. Frappe provides all of this out of the box. A product that takes 18 months from scratch takes 4–6 months on Frappe. You reach market faster with more mature infrastructure at a fraction of the cost.</div></div>
-      <div class="faq-item"><button class="faq-question" onclick="toggleFaq(this)"><span class="faq-prompt">❯</span><span class="faq-q-text">What kinds of SaaS products can be built on Frappe?</span><span class="faq-chevron">›</span></button><div class="faq-answer">Any industry-specific business application. Quantbit has built foundry ERP, machine shop management, facility management, real estate ERP, warehouse management, fleet management, restaurant ERP, HR and payroll, AI vision quality inspection, and point of sale — all on Frappe. The framework is particularly suited to workflow-heavy, multi-module business applications with complex permissions and reporting requirements.</div></div>
-      <div class="faq-item"><button class="faq-question" onclick="toggleFaq(this)"><span class="faq-prompt">❯</span><span class="faq-q-text">Can a Frappe SaaS product handle multiple customers (multi-tenancy)?</span><span class="faq-chevron">›</span></button><div class="faq-answer">Yes. Frappe's multi-tenancy model is well-established — it is how Frappe Cloud itself works. Each customer gets a separate site with their own database, configurations, and data. Quantbit implements multi-tenant Frappe deployments on AWS or GCP with automated provisioning, monitoring, and backup. Your customers get isolated, secure environments without you managing separate servers for each.</div></div>
-      <div class="faq-item"><button class="faq-question" onclick="toggleFaq(this)"><span class="faq-prompt">❯</span><span class="faq-q-text">How is a Frappe SaaS different from ERPNext?</span><span class="faq-chevron">›</span></button><div class="faq-answer">ERPNext is one specific application built on Frappe. Your SaaS is a different application — also on Frappe — that may or may not include ERPNext modules. You can build completely standalone (just your DocTypes and logic), or extend ERPNext with your vertical-specific modules. Quantbit advises on the right architecture based on your product scope and target market.</div></div>
-      <div class="faq-item"><button class="faq-question" onclick="toggleFaq(this)"><span class="faq-prompt">❯</span><span class="faq-q-text">Can Quantbit list my product on the Frappe Marketplace?</span><span class="faq-chevron">›</span></button><div class="faq-answer">Yes. The Frappe Marketplace (frappe.io/marketplace) has 50,000+ monthly visitors actively looking for ERPNext extensions. Quantbit packages your product as a proper Frappe app, prepares documentation and screenshots, and supports your marketplace submission. Listing gives your product organic discovery from inside the ERPNext ecosystem — the most qualified possible audience for a Frappe-based SaaS.</div></div>
+  <section class="cta-band">
+    <div class="container">
+      <h2>Have a SaaS product idea and a Frappe question?</h2>
+      <p>Talk to our Frappe architects. We will tell you honestly whether Frappe is the right choice, how long it takes,
+        and what it costs to build what you have in mind.</p>
+      <a href="/company/contact-us.html" class="btn-dark">Start the conversation ↗</a>
     </div>
-  </div>
-</section>
-
-<section class="cta-band">
-  <div class="container">
-    <h2>Have a SaaS product idea and a Frappe question?</h2>
-    <p>Talk to our Frappe architects. We will tell you honestly whether Frappe is the right choice, how long it takes, and what it costs to build what you have in mind.</p>
-    <a href="/company/contact-us.html" class="btn-dark">Start the conversation ↗</a>
-  </div>
-</section>
-<div id="footer"></div><script>function toggleFaq(btn){const item=btn.closest('.faq-item');const isOpen=item.classList.contains('open');document.querySelectorAll('.faq-item').forEach(i=>i.classList.remove('open'));if(!isOpen)item.classList.add('open');}</script>
-<script>
-fetch("/header.html")
-    .then(res => res.text())
-    .then(data => {
+  </section>
+  <div id="footer"></div>
+  <script>function toggleFaq(btn) { const item = btn.closest('.faq-item'); const isOpen = item.classList.contains('open'); document.querySelectorAll('.faq-item').forEach(i => i.classList.remove('open')); if (!isOpen) item.classList.add('open'); }</script>
+  <script>
+    fetch("/header.html")
+      .then(res => res.text())
+      .then(data => {
         document.getElementById("header").innerHTML = data;
-    });
+      });
 
-fetch("/footer.html")
-    .then(res => res.text())
-    .then(data => {
+    fetch("/footer.html")
+      .then(res => res.text())
+      .then(data => {
         document.getElementById("footer").innerHTML = data;
-    });
-</script>
-<!-- ================= TEMPLATE JS ================= -->
-    <!--<< All JS Plugins >>-->
-    <script data-cfasync="false" src="../../cdn-cgi/scripts/5c5dd728/cloudflare-static/email-decode.min.js"></script>
-    <script src="/../assets/quantbit_website/js/jquery-3.7.1.min.js"></script>
-    <!--<< Viewport Js >>-->
-    <script src="/../assets/quantbit_website/js/viewport.jquery.js"></script>
-    <!--<< Bootstrap Js >>-->
-    <script src="/../assets/quantbit_website/js/bootstrap.bundle.min.js"></script>
-    <!--<< Nice Select Js >>-->
-    <script src="/../assets/quantbit_website/js/jquery.nice-select.min.js"></script>
-    <!--<< Waypoints Js >>-->
-    <script src="/../assets/quantbit_website/js/jquery.waypoints.js"></script>
-    <!--<< Counterup Js >>-->
-    <script src="/../assets/quantbit_website/js/jquery.counterup.min.js"></script>
-    <!--<< Slick Js >>-->
-    <script src="/../assets/quantbit_website/js/slick.min.js"></script>
-    <!--<< Slick Animation Js >>-->
-    <script src="/../assets/quantbit_website/js/slick-animation.min.js"></script>
-    <!--<< MeanMenu Js >>-->
-    <script src="/../assets/quantbit_website/js/jquery.meanmenu.min.js"></script>
-    <!--<< Magnific Popup Js >>-->
-    <script src="/../assets/quantbit_website/js/jquery.magnific-popup.min.js"></script>
-    <!--<< Wow Animation Js >>-->
-    <script src="/../assets/quantbit_website/js/wow.min.js"></script>
-    <!--<< Circle Progress Js >>-->
-    <script src="/../assets/quantbit_website/js/circle-progress.js"></script>
-    <!--<< Main.js >>-->
-    <script src="/../assets/quantbit_website/js/main.js"></script>
-    <script defer
-        src="../../../static.cloudflareinsights.com/beacon.min.js/v8c78df7c7c0f484497ecbca7046644da1771523124516"
-        integrity="sha512-8DS7rgIrAmghBFwoOTujcf6D9rXvH8xm8JQ1Ja01h9QX8EzXldiszufYa4IFfKdLUKTTrnSFXLDkUEOTrZQ8Qg=="
-        data-cf-beacon='{"version":"2024.11.0","token":"90f7972af14a48b4add7da2b74f5d675","r":1,"server_timing":{"name":{"cfCacheStatus":true,"cfEdge":true,"cfExtPri":true,"cfL4":true,"cfOrigin":true,"cfSpeedBrain":true},"location_startswith":null}}'
-        crossorigin="anonymous"></script>
+      });
+  </script>
+  <!-- ================= TEMPLATE JS ================= -->
+  <!--<< All JS Plugins >>-->
+  <script data-cfasync="false" src="../../cdn-cgi/scripts/5c5dd728/cloudflare-static/email-decode.min.js"></script>
+  <script src="/../assets/quantbit_website/js/jquery-3.7.1.min.js"></script>
+  <!--<< Viewport Js >>-->
+  <script src="/../assets/quantbit_website/js/viewport.jquery.js"></script>
+  <!--<< Bootstrap Js >>-->
+  <script src="/../assets/quantbit_website/js/bootstrap.bundle.min.js"></script>
+  <!--<< Nice Select Js >>-->
+  <script src="/../assets/quantbit_website/js/jquery.nice-select.min.js"></script>
+  <!--<< Waypoints Js >>-->
+  <script src="/../assets/quantbit_website/js/jquery.waypoints.js"></script>
+  <!--<< Counterup Js >>-->
+  <script src="/../assets/quantbit_website/js/jquery.counterup.min.js"></script>
+  <!--<< Slick Js >>-->
+  <script src="/../assets/quantbit_website/js/slick.min.js"></script>
+  <!--<< Slick Animation Js >>-->
+  <script src="/../assets/quantbit_website/js/slick-animation.min.js"></script>
+  <!--<< MeanMenu Js >>-->
+  <script src="/../assets/quantbit_website/js/jquery.meanmenu.min.js"></script>
+  <!--<< Magnific Popup Js >>-->
+  <script src="/../assets/quantbit_website/js/jquery.magnific-popup.min.js"></script>
+  <!--<< Wow Animation Js >>-->
+  <script src="/../assets/quantbit_website/js/wow.min.js"></script>
+  <!--<< Circle Progress Js >>-->
+  <script src="/../assets/quantbit_website/js/circle-progress.js"></script>
+  <!--<< Main.js >>-->
+  <script src="/../assets/quantbit_website/js/main.js"></script>
+  <script defer
+    src="../../../static.cloudflareinsights.com/beacon.min.js/v8c78df7c7c0f484497ecbca7046644da1771523124516"
+    integrity="sha512-8DS7rgIrAmghBFwoOTujcf6D9rXvH8xm8JQ1Ja01h9QX8EzXldiszufYa4IFfKdLUKTTrnSFXLDkUEOTrZQ8Qg=="
+    data-cf-beacon='{"version":"2024.11.0","token":"90f7972af14a48b4add7da2b74f5d675","r":1,"server_timing":{"name":{"cfCacheStatus":true,"cfEdge":true,"cfExtPri":true,"cfL4":true,"cfOrigin":true,"cfSpeedBrain":true},"location_startswith":null}}'
+    crossorigin="anonymous"></script>
 
 
 </body>
+
 </html>

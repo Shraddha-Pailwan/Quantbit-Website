@@ -25026,3 +25026,38 @@ i[class*="fa-"].fab::before {
     font-weight: 600 !important;
     color: #222222 !important;
 }
+
+/* for srevices menu */
+/* SERVICES ONLY */
+.services-dropdown{
+    position: static !important;
+}
+
+.services-mega-menu{
+    position: absolute;
+    left: 0 !important;
+    right: 0 !important;
+    width: 100% !important;
+    max-width: 100% !important;
+    transform: none !important;
+
+    display: grid !important;
+    grid-template-columns: repeat(4, 1fr);
+    gap: 0 40px;
+
+    padding: 28px 70px !important;
+    box-sizing: border-box;
+}
+
+.services-mega-menu li{
+    width:100%;
+}
+
+.services-mega-menu li a{
+    display:flex;
+    align-items:center;
+    gap:10px;
+    padding:12px 0;
+    border-bottom:1px solid #ececec;
+    white-space:nowrap;
+}

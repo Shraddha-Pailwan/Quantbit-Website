@@ -1,0 +1,541 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<title>ERPNext for Pharmacy | Schedule H Drug Tracking, FEFO Batch Expiry, CDSCO Compliance | Quantbit</title>
+<meta name="description" content="ERPNext for pharmacies and pharma distributors — Schedule H/H1/X drug tracking, FEFO batch and expiry management, CDSCO compliance, cold chain, GST on medicines, and NDPS Act compliance.">
+<meta name="keywords" content="ERPNext pharmacy India, ERPNext Schedule H drug tracking, FEFO batch expiry pharmacy ERP, CDSCO compliance ERP, ERPNext pharmacy distributor India, Schedule H1 narcotic tracking ERP, cold chain pharmacy ERP India, ERPNext NDPS Act compliance, pharmacy ERP GCC Oman, ERPNext medicine GST 5% 12%, open source pharmacy ERP India, HISx hospital pharmacy management">
+<link rel="canonical" href="https://quantbit.io/industries/erpnext-for-pharmacy/">
+<script type="application/ld+json">{
+  "@context":"https://schema.org",
+  "@graph":[
+    {"@type":"BreadcrumbList","itemListElement":[
+      {"@type":"ListItem","position":1,"name":"Home","item":"https://quantbit.io"},
+      {"@type":"ListItem","position":2,"name":"Industries","item":"https://quantbit.io/industries/"},
+      {"@type":"ListItem","position":3,"name":"ERPNext for Pharmacy","item":"https://quantbit.io/industries/erpnext-for-pharmacy/"}
+    ]},
+    {"@type":"FAQPage","mainEntity":[
+      {"@type":"Question","name":"How does ERPNext handle Schedule H and H1 drug tracking for pharmacies?","acceptedAnswer":{"@type":"Answer","text":"ERPNext tags Schedule H and H1 drugs at the item master level. Schedule H drugs require a valid prescription record before sale — ERPNext's custom workflow can enforce prescription linkage before a delivery note is generated for these items. Schedule H1 drugs carry additional record-keeping requirements — quantity sold, patient name, prescriber details — which ERPNext captures through custom fields and generates in the Schedule H1 register format required by CDSCO."}},
+      {"@type":"Question","name":"Can ERPNext manage FEFO for pharmacy inventory with batch and expiry tracking?","acceptedAnswer":{"@type":"Answer","text":"Yes. ERPNext enforces First Expired First Out at the warehouse level for pharmacy inventory. Every batch of medicine received carries a manufacturing date and expiry date in the system. At the time of dispensing or billing, ERPNext automatically selects the batch with the nearest expiry date. Expiry alerts at 30, 60, and 90 days allow the pharmacy to initiate return-to-supplier or disposal processes before expiry — preventing both financial loss and regulatory violation."}},
+      {"@type":"Question","name":"How does ERPNext manage supplier credit terms for high-value pharmaceutical products?","acceptedAnswer":{"@type":"Answer","text":"ERPNext's purchase module tracks supplier payment terms per vendor — 30-day, 45-day, or 60-day credit cycles common in pharmaceutical distribution. Outstanding payable reports show upcoming supplier dues by date — enabling pharmacies to plan cash flow around the credit cycle rather than managing it reactively. Supplier-wise purchase ledger shows outstanding balance, credit limit, and overdue amounts for credit control."}},
+      {"@type":"Question","name":"Does ERPNext handle GST on pharmaceutical products at different rates?","acceptedAnswer":{"@type":"Answer","text":"Pharmaceutical products in India attract GST at 5%, 12%, or 18% depending on the drug category and HSN code. Life-saving drugs attract nil or 5% GST while other formulations attract 12%. ERPNext applies the correct GST rate per item HSN code automatically on every invoice — eliminating manual rate selection errors. GSTR-1 data is extracted by HSN and GST rate bucket for accurate return filing."}},
+      {"@type":"Question","name":"Can ERPNext track cold chain requirements for temperature-sensitive medicines?","acceptedAnswer":{"@type":"Answer","text":"ERPNext supports custom fields on batch records to capture storage temperature requirements, cold chain documentation references, and temperature excursion logs for temperature-sensitive medicines including vaccines, biologics, and insulin. Cold chain items can be flagged in the item master to trigger special handling instructions at every stage from GRN to dispensing."}},
+      {"@type":"Question","name":"Is there a specialised hospital pharmacy management system that works with ERPNext?","acceptedAnswer":{"@type":"Answer","text":"Yes. Quantbit Technologies has built HISx — a Hospital Inventory and Pharmacy Management System built on the Frappe/ERPNext framework. HISx provides dedicated pharmacy workflows for hospital settings including prescription-linked dispensing, ward-wise indenting, narcotic register management, and integration with the hospital billing system. For retail pharmacies and distributors, ERPNext with pharmacy-specific configuration handles the full workflow."}}
+    ]}
+  ]
+}</script>
+<style>
+:root{--accent:#1a5fd4;--accent-dark:#1349a8;--teal:#0b7a5e;--teal-light:#e6f4f0;--amber:#b35e0a;--amber-light:#fef3e2;--dark:#0f2d47;--mid:#1e4a6e;--text:#1a2a38;--muted:#4a6278;--border:#d0dce8;--bg:#f5f8fc;--white:#ffffff;--radius:10px;--shadow:0 2px 16px rgba(15,45,71,.10)}
+*,*::before,*::after{box-sizing:border-box;margin:0;padding:0}html{scroll-behavior:smooth}
+body{font-family:'Segoe UI',system-ui,-apple-system,sans-serif;color:var(--text);background:var(--white);line-height:1.65;font-size:16px}
+.site-nav{background:var(--dark);padding:0 32px;display:flex;align-items:center;justify-content:space-between;height:60px;position:sticky;top:0;z-index:100}
+.nav-logo{color:#fff;font-weight:700;font-size:1.1rem;text-decoration:none}
+.nav-links{display:flex;gap:24px;list-style:none}
+.nav-links a{color:rgba(255,255,255,.82);text-decoration:none;font-size:.9rem;font-weight:500;transition:color .2s}
+.nav-links a:hover{color:#fff}
+.nav-cta{background:var(--accent);color:#fff!important;padding:7px 18px;border-radius:6px;font-weight:600!important}
+.breadcrumb{background:var(--bg);border-bottom:1px solid var(--border);padding:10px 32px;font-size:.82rem;color:var(--muted)}
+.breadcrumb a{color:var(--accent);text-decoration:none}
+.hero{background:linear-gradient(135deg,var(--dark) 0%,var(--mid) 60%,#1a5fd4 100%);color:#fff;padding:72px 32px 64px;position:relative;overflow:hidden}
+.hero::before{content:'';position:absolute;right:-80px;top:-80px;width:420px;height:420px;background:rgba(255,255,255,.04);border-radius:50%;pointer-events:none}
+.hero-inner{max-width:1100px;margin:0 auto;display:grid;grid-template-columns:1fr 360px;gap:56px;align-items:center}
+.hero-badge{display:inline-flex;align-items:center;gap:8px;background:rgba(255,255,255,.12);border:1px solid rgba(255,255,255,.22);border-radius:40px;padding:5px 14px;font-size:.78rem;font-weight:600;letter-spacing:.8px;text-transform:uppercase;margin-bottom:18px;color:rgba(255,255,255,.9)}
+.hero h1{font-size:clamp(1.9rem,3.5vw,2.7rem);font-weight:800;line-height:1.2;margin-bottom:16px}
+.hero h1 span{color:#7eb8ff}
+.hero-desc{font-size:1.05rem;color:rgba(255,255,255,.82);margin-bottom:28px;max-width:540px}
+.hero-tags{display:flex;flex-wrap:wrap;gap:8px;margin-bottom:32px}
+.hero-tag{background:rgba(255,255,255,.1);border:1px solid rgba(255,255,255,.2);border-radius:20px;padding:4px 12px;font-size:.78rem;color:rgba(255,255,255,.85)}
+.hero-btns{display:flex;gap:14px;flex-wrap:wrap}
+.btn-primary{background:var(--accent);color:#fff;padding:12px 26px;border-radius:8px;font-weight:700;text-decoration:none;font-size:.95rem;transition:background .2s,transform .15s;display:inline-block}
+.btn-primary:hover{background:var(--accent-dark);transform:translateY(-1px)}
+.btn-ghost{background:transparent;color:#fff;padding:11px 24px;border:2px solid rgba(255,255,255,.4);border-radius:8px;font-weight:600;text-decoration:none;font-size:.95rem;transition:.2s;display:inline-block}
+.btn-ghost:hover{border-color:#fff;background:rgba(255,255,255,.1)}
+.hero-card{background:rgba(255,255,255,.1);border:1px solid rgba(255,255,255,.18);border-radius:14px;padding:28px;backdrop-filter:blur(8px)}
+.hero-card h3{font-size:.95rem;font-weight:700;margin-bottom:16px;color:rgba(255,255,255,.92)}
+.hero-stat{display:flex;align-items:center;gap:12px;margin-bottom:14px;padding-bottom:14px;border-bottom:1px solid rgba(255,255,255,.12)}
+.hero-stat:last-child{margin-bottom:0;padding-bottom:0;border-bottom:none}
+.stat-icon{width:36px;height:36px;background:rgba(255,255,255,.15);border-radius:8px;display:flex;align-items:center;justify-content:center;font-size:1.1rem;flex-shrink:0}
+.stat-val{font-size:1.05rem;font-weight:800;color:#fff}
+.stat-lbl{font-size:.73rem;color:rgba(255,255,255,.7);line-height:1.3}
+.section{padding:64px 32px}.section-alt{background:var(--bg)}.container{max-width:1100px;margin:0 auto}
+.section-label{font-size:.75rem;font-weight:700;letter-spacing:1.2px;text-transform:uppercase;color:var(--accent);margin-bottom:8px}
+.section-title{font-size:clamp(1.5rem,2.8vw,2.1rem);font-weight:800;color:var(--dark);margin-bottom:12px;line-height:1.25}
+.section-sub{font-size:1.02rem;color:var(--muted);max-width:680px;margin-bottom:44px;line-height:1.7}
+.hisx-banner{background:linear-gradient(135deg,var(--teal),#0a6050);color:#fff;border-radius:12px;padding:22px 28px;margin-bottom:44px;display:flex;align-items:center;gap:20px;flex-wrap:wrap}
+.hisx-banner .hb-icon{font-size:2rem;flex-shrink:0}
+.hisx-banner h3{font-size:1rem;font-weight:700;margin-bottom:5px}
+.hisx-banner p{font-size:.86rem;color:rgba(255,255,255,.85);line-height:1.55;margin-bottom:10px}
+.hisx-banner a{background:#fff;color:var(--teal);padding:8px 18px;border-radius:6px;font-weight:700;text-decoration:none;font-size:.85rem;display:inline-block}
+.pain-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(260px,1fr));gap:20px}
+.pain-card{background:var(--white);border:1px solid var(--border);border-left:4px solid #e74c3c;border-radius:var(--radius);padding:22px 24px}
+.pain-card h3{font-size:.95rem;font-weight:700;color:var(--dark);margin-bottom:8px;display:flex;align-items:center;gap:8px}
+.pain-card p{font-size:.86rem;color:var(--muted);line-height:1.6}
+.pain-card .solve{font-size:.82rem;color:var(--teal);font-weight:600;margin-top:10px;padding-top:10px;border-top:1px solid var(--border)}
+.module-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(300px,1fr));gap:24px}
+.module-card{background:var(--white);border:1px solid var(--border);border-radius:var(--radius);padding:26px;transition:box-shadow .2s,transform .2s}
+.module-card:hover{box-shadow:var(--shadow);transform:translateY(-3px)}
+.module-icon{width:44px;height:44px;border-radius:10px;background:linear-gradient(135deg,var(--accent),var(--mid));display:flex;align-items:center;justify-content:center;font-size:1.3rem;margin-bottom:14px}
+.module-card h3{font-size:.98rem;font-weight:700;color:var(--dark);margin-bottom:6px}
+.module-link{font-size:.78rem;color:var(--accent);text-decoration:none;font-weight:600}
+.module-card p{font-size:.86rem;color:var(--muted);line-height:1.6;margin:8px 0}
+.module-card ul{padding-left:0;list-style:none}
+.module-card ul li{font-size:.84rem;color:var(--muted);padding:3px 0 3px 16px;position:relative;line-height:1.5}
+.module-card ul li::before{content:'✓';position:absolute;left:0;color:var(--teal);font-weight:700}
+.workflow-steps{display:grid;grid-template-columns:repeat(auto-fit,minmax(150px,1fr));gap:0;position:relative}
+.workflow-steps::before{content:'';position:absolute;top:28px;left:0;right:0;height:2px;background:var(--border);z-index:0}
+.w-step{background:var(--white);border:1px solid var(--border);border-radius:var(--radius);padding:20px 14px;text-align:center;position:relative;z-index:1}
+.w-num{width:36px;height:36px;background:var(--accent);color:#fff;border-radius:50%;display:flex;align-items:center;justify-content:center;font-size:.82rem;font-weight:700;margin:0 auto 10px}
+.w-step h4{font-size:.8rem;font-weight:700;color:var(--dark);margin-bottom:4px}
+.w-step p{font-size:.74rem;color:var(--muted);line-height:1.4}
+.compliance-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(240px,1fr));gap:18px}
+.comp-card{background:var(--white);border:1px solid var(--border);border-radius:var(--radius);padding:20px 22px;display:flex;gap:14px;align-items:flex-start}
+.comp-dot{width:10px;height:10px;background:var(--amber);border-radius:50%;flex-shrink:0;margin-top:5px}
+.comp-card h4{font-size:.88rem;font-weight:700;color:var(--dark);margin-bottom:4px}
+.comp-card p{font-size:.82rem;color:var(--muted);line-height:1.55}
+.reports-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(230px,1fr));gap:18px}
+.report-card{background:var(--white);border:1px solid var(--border);border-left:4px solid var(--accent);border-radius:var(--radius);padding:18px 20px}
+.report-card h4{font-size:.9rem;font-weight:700;color:var(--dark);margin-bottom:5px}
+.report-card p{font-size:.81rem;color:var(--muted);line-height:1.5}
+.report-tag{display:inline-block;background:var(--bg);border:1px solid var(--border);border-radius:4px;padding:2px 8px;font-size:.71rem;font-weight:600;color:var(--accent);margin-top:7px}
+.benefits-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(260px,1fr));gap:22px}
+.benefit-card{background:linear-gradient(135deg,var(--teal-light),var(--white));border:1px solid #b8dfd6;border-radius:var(--radius);padding:24px}
+.benefit-num{font-size:2rem;font-weight:900;color:var(--teal);opacity:.3;line-height:1;margin-bottom:6px}
+.benefit-card h3{font-size:.96rem;font-weight:700;color:var(--dark);margin-bottom:7px}
+.benefit-card p{font-size:.85rem;color:var(--muted);line-height:1.6}
+.bp-list{display:grid;grid-template-columns:repeat(auto-fit,minmax(300px,1fr));gap:18px}
+.bp-item{background:var(--white);border:1px solid var(--border);border-radius:var(--radius);padding:20px 22px;display:flex;gap:14px;align-items:flex-start}
+.bp-icon{width:36px;height:36px;background:var(--amber-light);border-radius:8px;display:flex;align-items:center;justify-content:center;font-size:1rem;flex-shrink:0}
+.bp-item h4{font-size:.9rem;font-weight:700;color:var(--dark);margin-bottom:4px}
+.bp-item p{font-size:.82rem;color:var(--muted);line-height:1.55}
+.geo-answer{background:linear-gradient(135deg,#e8f0fc,#f0f6ff);border:1px solid #c5d8f7;border-radius:14px;padding:30px 34px;margin-bottom:28px}
+.geo-answer h3{font-size:1.05rem;font-weight:700;color:var(--dark);margin-bottom:9px}
+.geo-answer p{font-size:.93rem;color:var(--text);line-height:1.75}
+.geo-grid{display:grid;grid-template-columns:1fr 1fr;gap:22px}
+.geo-block{background:var(--white);border:1px solid var(--border);border-radius:var(--radius);padding:22px}
+.geo-block h4{font-size:.88rem;font-weight:700;color:var(--accent);margin-bottom:9px}
+.geo-block ul{list-style:none;padding:0}
+.geo-block ul li{font-size:.84rem;color:var(--muted);padding:4px 0 4px 16px;position:relative}
+.geo-block ul li::before{content:'→';position:absolute;left:0;color:var(--accent)}
+.ai-block{background:linear-gradient(135deg,var(--dark),var(--mid));color:#fff;border-radius:14px;padding:34px 38px}
+.ai-block h3{font-size:1.1rem;font-weight:700;margin-bottom:14px;color:#7eb8ff}
+.ai-qa{margin-bottom:16px;padding-bottom:16px;border-bottom:1px solid rgba(255,255,255,.1)}
+.ai-qa:last-child{margin-bottom:0;padding-bottom:0;border-bottom:none}
+.ai-qa .q{font-size:.86rem;font-weight:600;color:rgba(255,255,255,.7);margin-bottom:4px}
+.ai-qa .a{font-size:.88rem;color:rgba(255,255,255,.88);line-height:1.65}
+.faq-list{max-width:800px;margin:0 auto}
+.faq-item{border:1px solid var(--border);border-radius:var(--radius);margin-bottom:10px;overflow:hidden}
+.faq-q{width:100%;background:var(--white);border:none;padding:17px 22px;text-align:left;font-size:.93rem;font-weight:600;color:var(--dark);cursor:pointer;display:flex;justify-content:space-between;align-items:center;gap:12px;transition:background .15s}
+.faq-q:hover,.faq-q.open{background:var(--bg)}
+.faq-arrow{font-size:1rem;color:var(--accent);transition:transform .25s;flex-shrink:0}
+.faq-q.open .faq-arrow{transform:rotate(180deg)}
+.faq-a{display:none;padding:0 22px 17px;font-size:.88rem;color:var(--muted);line-height:1.7}
+.faq-a.open{display:block}
+.seo-box{background:var(--bg);border:1px solid var(--border);border-radius:var(--radius);padding:22px 26px}
+.seo-kw{display:flex;flex-wrap:wrap;gap:8px;margin-top:10px}
+.seo-kw span{background:var(--white);border:1px solid var(--border);border-radius:4px;padding:4px 10px;font-size:.76rem;color:var(--accent);font-weight:600}
+.cta-section{background:linear-gradient(135deg,var(--dark) 0%,var(--mid) 100%);color:#fff;padding:72px 32px;text-align:center}
+.cta-section h2{font-size:clamp(1.6rem,3vw,2.3rem);font-weight:800;margin-bottom:14px}
+.cta-section p{font-size:1.05rem;color:rgba(255,255,255,.8);max-width:580px;margin:0 auto 32px}
+.cta-btns{display:flex;gap:16px;justify-content:center;flex-wrap:wrap}
+.btn-white{background:#fff;color:var(--dark);padding:13px 28px;border-radius:8px;font-weight:700;text-decoration:none;font-size:.97rem;display:inline-block}
+.btn-white:hover{background:#e8f0fc}
+.cta-trust{margin-top:22px;font-size:.82rem;color:rgba(255,255,255,.55)}
+.site-footer{background:#0a1e2e;color:rgba(255,255,255,.6);padding:40px 32px 24px;text-align:center;font-size:.83rem}
+.site-footer a{color:rgba(255,255,255,.5);text-decoration:none}
+@media(max-width:768px){.hero-inner{grid-template-columns:1fr}.hero-card{display:none}.geo-grid{grid-template-columns:1fr}.site-nav{padding:0 16px}.nav-links{display:none}.section{padding:48px 16px}.hero{padding:48px 16px 44px}.workflow-steps{grid-template-columns:1fr 1fr}.workflow-steps::before{display:none}.ai-block{padding:24px 20px}.geo-answer{padding:22px 20px}.hisx-banner{flex-direction:column;gap:12px}}
+</style>
+ <!-- TEMPLATE CSS (IMPORTANT) -->
+  <link rel="stylesheet" href="/../assets/quantbit_website/css/bootstrap.min.css">
+  <link rel="stylesheet" href="/../assets/quantbit_website/css/font-awesome.css">
+  <link rel="stylesheet" href="/../assets/quantbit_website/css/animate.css">
+  <link rel="stylesheet" href="/../assets/quantbit_website/css/magnific-popup.css">
+  <link rel="stylesheet" href="/../assets/quantbit_website/css/meanmenu.css">
+  <link rel="stylesheet" href="/../assets/quantbit_website/css/slick.css">
+  <link rel="stylesheet" href="/../assets/quantbit_website/css/nice-select.css">
+  <link rel="stylesheet" href="/../assets/quantbit_website/css/main.css">
+  <link rel="stylesheet" href="style.css">
+  <link rel="stylesheet" href="/assets/quantbit_website/css/_shared.css">
+
+
+  <!-- OPTIONAL CUSTOM -->
+  <link rel="stylesheet" href="/../assets/quantbit_website/css/hrms.css">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
+  <!-- Google Tag Manager -->
+  <script>(function (w, d, s, l, i) {
+      w[l] = w[l] || []; w[l].push({
+        'gtm.start':
+          new Date().getTime(), event: 'gtm.js'
+      }); var f = d.getElementsByTagName(s)[0],
+        j = d.createElement(s), dl = l != 'dataLayer' ? '&l=' + l : ''; j.async = true; j.src =
+          'https://www.googletagmanager.com/gtm.js?id=' + i + dl; f.parentNode.insertBefore(j, f);
+    })(window, document, 'script', 'dataLayer', 'GTM-P98Z6G8D');</script>
+  <!-- End Google Tag Manager -->
+
+</head>
+<body>
+  <!-- Google Tag Manager (noscript) -->
+  <noscript><iframe src="https://www.googletagmanager.com/ns.html?id=GTM-P98Z6G8D" height="0" width="0"
+      style="display:none;visibility:hidden"></iframe></noscript>
+  <!-- End Google Tag Manager (noscript) -->
+  <!-- NAV -->
+  <div id="header"></div>
+<section class="hero">
+  <div class="hero-inner">
+    <div>
+      <div class="hero-badge">&#128138; Industry Solution</div>
+      <h1>ERPNext for <span>Pharmacy</span><br>Retail, Distribution &amp; Institutional</h1>
+      <p class="hero-desc">Manage Schedule H, H1, and X drug tracking, enforce FEFO batch and expiry management, maintain CDSCO-compliant records, handle cold chain documentation, and stay GST-accurate on every medicine sale — all in one integrated system for pharmacies and distributors.</p>
+      <div class="hero-tags">
+        <span class="hero-tag">Schedule H / H1 / X</span><span class="hero-tag">FEFO Batch Expiry</span><span class="hero-tag">CDSCO Compliance</span><span class="hero-tag">Cold Chain Tracking</span><span class="hero-tag">NDPS Narcotic Register</span><span class="hero-tag">Supplier Credit Terms</span><span class="hero-tag">Medicine GST 5%/12%</span><span class="hero-tag">Drug License Records</span>
+      </div>
+      <div class="hero-btns">
+        <a href="/company/contact-us.html" class="btn-primary">Book Free Demo</a>
+        <a href="/products/hims.html" class="btn-ghost">Explore HISx for Hospitals</a>
+      </div>
+    </div>
+    <div class="hero-card">
+      <h3>Why Pharmacies Choose ERPNext</h3>
+      <div class="hero-stat"><div class="stat-icon">&#128197;</div><div><div class="stat-val">FEFO Enforced</div><div class="stat-lbl">Nearest expiry auto-selected at billing</div></div></div>
+      <div class="hero-stat"><div class="stat-icon">&#128138;</div><div><div class="stat-val">Schedule H/H1</div><div class="stat-lbl">Prescription-linked dispensing workflow</div></div></div>
+      <div class="hero-stat"><div class="stat-icon">&#9928;</div><div><div class="stat-val">Cold Chain</div><div class="stat-lbl">Temperature-sensitive batch records</div></div></div>
+      <div class="hero-stat"><div class="stat-icon">&#128202;</div><div><div class="stat-val">CDSCO Ready</div><div class="stat-lbl">Drug register reports for inspection</div></div></div>
+    </div>
+  </div>
+</section>
+
+<section class="section">
+  <div class="container">
+    <div class="section-label">Hospital Pharmacy?</div>
+    <div class="hisx-banner">
+      <div class="hb-icon">&#127973;</div>
+      <div>
+        <h3>Running a Hospital Pharmacy? Consider HISx — Purpose-Built for Hospital Settings</h3>
+        <p>For hospital pharmacies requiring integration with ward indenting, OT consumption, NABH documentation, and hospital billing — Quantbit's proprietary HISx platform delivers deeper hospital-specific workflows than standard ERPNext configuration.</p>
+        <a href="/products/hisx/">Explore HISx &#8594;</a>
+      </div>
+    </div>
+
+    <div class="section-label">Industry Challenges</div>
+    <h2 class="section-title">Problems ERPNext Solves for Pharmacies &amp; Distributors</h2>
+    <p class="section-sub">Pharmacy operations are high-stakes — expired stock, incorrect Schedule H records, and missed drug license renewals all carry regulatory consequences. ERPNext eliminates each risk systematically.</p>
+    <div class="pain-grid">
+      <div class="pain-card">
+        <h3><span style="font-size:1.2rem">&#128197;</span> Expired Stock Dispensed</h3>
+        <p>Without FEFO enforcement, pharmacy staff pick the most accessible stock — not the earliest expiry. Medicines expire undetected until a patient or inspector raises the issue. Both create legal liability and erode patient trust.</p>
+        <div class="solve">&#10003; ERPNext: FEFO enforced at warehouse level — nearest expiry auto-selected, no override without approval</div>
+      </div>
+      <div class="pain-card">
+        <h3><span style="font-size:1.2rem">&#128683;</span> Schedule H Record Gaps</h3>
+        <p>CDSCO inspections routinely find missing or incomplete Schedule H1 and narcotic registers — the documentation required for each controlled drug sale. Manual registers are incomplete, illegible, and impossible to audit quickly.</p>
+        <div class="solve">&#10003; ERPNext: Schedule H1 register auto-generated from dispensing entries — always inspection-ready</div>
+      </div>
+      <div class="pain-card">
+        <h3><span style="font-size:1.2rem">&#128176;</span> Supplier Credit Cash Flow Blindness</h3>
+        <p>High-value pharmaceutical products come with 30 to 60-day supplier credit. Without a system tracking due dates, pharmacies pay early (losing float) or pay late (losing credit limits and supplier goodwill) — both costly outcomes.</p>
+        <div class="solve">&#10003; ERPNext: Due date-wise payable calendar — plan cash flow around credit cycle, not against it</div>
+      </div>
+      <div class="pain-card">
+        <h3><span style="font-size:1.2rem">&#129534;</span> GST Rate Confusion on Medicines</h3>
+        <p>Pharmaceutical GST rates span nil, 5%, 12%, and 18% by drug category and HSN. Manual rate selection on billing results in misclassifications — creating GSTR mismatches and the potential for CDSCO-linked GST department scrutiny.</p>
+        <div class="solve">&#10003; ERPNext: HSN-mapped GST rate per item — zero manual selection, zero misclassification on every bill</div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section class="section section-alt">
+  <div class="container">
+    <div class="section-label">Focus Modules</div>
+    <h2 class="section-title">ERPNext Modules That Matter Most for Pharmacy</h2>
+    <p class="section-sub">Configured for retail pharmacies, pharmaceutical distributors, and institutional pharmacy departments across India and GCC.</p>
+    <div class="module-grid">
+      <div class="module-card">
+        <div class="module-icon">&#128230;</div>
+        <h3>Inventory — FEFO, Batch &amp; Expiry</h3>
+        <a href="/services/erpnext-inventory-stock/" class="module-link">&#8594; View Inventory Module</a>
+        <p>Shelf life-aware pharmaceutical inventory with FEFO enforcement, batch-wise stock ledger, and expiry alerts at configurable lead times.</p>
+        <ul>
+          <li>Batch-wise stock with manufacturing and expiry date</li>
+          <li>FEFO auto-picking at billing and dispensing</li>
+          <li>Expiry alert dashboard — 30/60/90/180 day buckets</li>
+          <li>Near-expiry return-to-supplier workflow</li>
+        </ul>
+      </div>
+      <div class="module-card">
+        <div class="module-icon">&#128203;</div>
+        <h3>Quality — CDSCO &amp; Drug Schedules</h3>
+        <a href="/services/erpnext-quality/" class="module-link">&#8594; View Quality Module</a>
+        <p>Schedule H, H1, and X drug classification at item level with prescription linkage, register auto-generation, and CDSCO inspection reports.</p>
+        <ul>
+          <li>Drug schedule tag — H, H1, X per item master</li>
+          <li>Prescription number linkage at dispensing</li>
+          <li>Schedule H1 register auto-generated from entries</li>
+          <li>NDPS narcotic stock register — daily balance</li>
+        </ul>
+      </div>
+      <div class="module-card">
+        <div class="module-icon">&#128230;</div>
+        <h3>Purchase — Supplier Credit &amp; Terms</h3>
+        <a href="/services/erpnext-purchase/" class="module-link">&#8594; View Purchase Module</a>
+        <p>Supplier credit term tracking, due date-wise payable calendar, and purchase lot number linked to batch record for full backward traceability.</p>
+        <ul>
+          <li>Supplier-wise credit term and limit configuration</li>
+          <li>Due date-wise upcoming payable report</li>
+          <li>Supplier lot number at GRN linked to inventory batch</li>
+          <li>Supplier credit note for near-expiry return</li>
+        </ul>
+      </div>
+      <div class="module-card">
+        <div class="module-icon">&#128200;</div>
+        <h3>Accounting — GST on Medicines</h3>
+        <a href="/services/erpnext-accounting-finance/" class="module-link">&#8594; View Accounting Module</a>
+        <p>HSN-mapped GST rates across all pharmaceutical categories — nil, 5%, 12%, 18% — applied automatically at billing with accurate GSTR-1 extraction.</p>
+        <ul>
+          <li>Item-wise GST rate mapping by HSN code</li>
+          <li>GSTR-1 data by HSN and rate bucket</li>
+          <li>GSTR-3B input tax credit reconciliation</li>
+          <li>E-way bill for high-value inter-state drug shipments</li>
+        </ul>
+      </div>
+      <div class="module-card">
+        <div class="module-icon">&#9928;</div>
+        <h3>Cold Chain — Temperature Tracking</h3>
+        <a href="/services/erpnext-inventory-stock/" class="module-link">&#8594; View Inventory Module</a>
+        <p>Cold chain documentation, storage condition flags, and temperature excursion records for vaccines, biologics, insulin, and other temperature-sensitive drugs.</p>
+        <ul>
+          <li>Cold chain item flag in item master</li>
+          <li>Storage temperature requirement per item</li>
+          <li>Temperature log attachment at GRN per batch</li>
+          <li>Cold chain breach documentation workflow</li>
+        </ul>
+      </div>
+      <div class="module-card">
+        <div class="module-icon">&#128202;</div>
+        <h3>Analytics — Drug Sales &amp; Margin</h3>
+        <a href="/services/erpnext-analytics-reports/" class="module-link">&#8594; View Analytics Module</a>
+        <p>Sales by drug category, supplier-wise purchase analysis, slow-moving drug identification, and margin by product group for pharmacy profitability management.</p>
+        <ul>
+          <li>Drug category-wise revenue and margin</li>
+          <li>Slow-moving and near-expiry value dashboard</li>
+          <li>Supplier purchase concentration analysis</li>
+          <li>Generic vs branded sales mix report</li>
+        </ul>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section class="section">
+  <div class="container">
+    <div class="section-label">Pharmacy Workflow</div>
+    <h2 class="section-title">Pharmacy Operations Cycle in ERPNext</h2>
+    <p class="section-sub">From drug procurement to dispensing and regulatory reporting — every step documented and traceable.</p>
+    <div class="workflow-steps">
+      <div class="w-step"><div class="w-num">1</div><h4>Purchase Order</h4><p>PO raised to approved supplier with drug schedule and credit terms</p></div>
+      <div class="w-step"><div class="w-num">2</div><h4>GRN &amp; Batch Entry</h4><p>Stock received with batch, lot number, MFD, and expiry date</p></div>
+      <div class="w-step"><div class="w-num">3</div><h4>Quality Check</h4><p>COA verified — cold chain items temperature-logged at receipt</p></div>
+      <div class="w-step"><div class="w-num">4</div><h4>FEFO Dispensing</h4><p>Billing auto-picks nearest expiry batch — Schedule H prescription linked</p></div>
+      <div class="w-step"><div class="w-num">5</div><h4>Supplier Payment</h4><p>Credit due date alert triggers payment on time — cash flow protected</p></div>
+      <div class="w-step"><div class="w-num">6</div><h4>Regulatory Reports</h4><p>Schedule H1 and narcotic registers generated for CDSCO inspection</p></div>
+    </div>
+  </div>
+</section>
+
+<section class="section section-alt">
+  <div class="container">
+    <div class="section-label">Compliance &amp; Regulatory</div>
+    <h2 class="section-title">Compliance Requirements ERPNext Addresses for Pharmacy</h2>
+    <div class="compliance-grid">
+      <div class="comp-card"><div class="comp-dot"></div><div><h4>CDSCO — Drug License Records</h4><p>CDSCO requires pharmacies to maintain purchase, sale, and stock registers for each scheduled drug. ERPNext's batch-level inventory ledger serves as the continuous stock register — with audit trail, date-wise entries, and opening/closing balance available for any period.</p></div></div>
+      <div class="comp-card"><div class="comp-dot"></div><div><h4>Schedule H1 Register</h4><p>Schedule H1 drugs require a register with patient name, prescriber name, prescription date, drug name, quantity, and batch number for each sale. ERPNext auto-generates this register from dispensing entries — replacing the manual register that is both incomplete and illegible at most pharmacies.</p></div></div>
+      <div class="comp-card"><div class="comp-dot"></div><div><h4>NDPS Act — Narcotic Register</h4><p>Narcotics and psychotropics under the NDPS Act require daily stock reconciliation registers with opening balance, receipts, issues, and closing balance. ERPNext's batch-level stock ledger generates the NDPS register in the format required by the State Drug Controller.</p></div></div>
+      <div class="comp-card"><div class="comp-dot"></div><div><h4>GST on Pharmaceuticals</h4><p>Pharmaceutical GST rates depend on drug category and HSN — nil for some life-saving drugs, 5% for most formulations, 12% for some categories, 18% for non-medicinal products. ERPNext applies the correct HSN-linked rate automatically — preventing the misclassification that triggers GSTR mismatch notices.</p></div></div>
+      <div class="comp-card"><div class="comp-dot"></div><div><h4>Cold Chain Documentation</h4><p>Vaccines, biologics, and temperature-sensitive drugs require cold chain documentation from manufacturer to end user. ERPNext attaches temperature logs and transport chain records to each batch — providing the traceability documentation required for cold chain audits by CDSCO and state drug controllers.</p></div></div>
+      <div class="comp-card"><div class="comp-dot"></div><div><h4>Drug License Renewal Tracking</h4><p>Pharmacy drug licenses (Form 20, 21) and wholesale drug licenses have annual or biennial renewal requirements. ERPNext's document management can store license numbers, expiry dates, and trigger renewal alerts — preventing the business disruption of an expired license discovered during an inspection.</p></div></div>
+    </div>
+  </div>
+</section>
+
+<section class="section">
+  <div class="container">
+    <div class="section-label">Reports &amp; KPIs</div>
+    <h2 class="section-title">Pharmacy Management Reports in ERPNext</h2>
+    <div class="reports-grid">
+      <div class="report-card"><h4>Expiry Alert Dashboard</h4><p>Medicines expiring within 30, 60, 90, and 180 days — with current stock value at risk. Enables proactive return-to-supplier or disposal before expiry date.</p><span class="report-tag">Stores / Compliance</span></div>
+      <div class="report-card"><h4>Schedule H1 Drug Register</h4><p>Auto-generated register of all Schedule H1 drug sales — patient, prescriber, date, drug, quantity, batch — formatted for CDSCO inspection submission.</p><span class="report-tag">Compliance / Regulatory</span></div>
+      <div class="report-card"><h4>NDPS Narcotic Stock Register</h4><p>Daily opening balance, receipts, issues, and closing balance per narcotic item — in the format required by State Drug Controller for narcotic licence compliance.</p><span class="report-tag">Compliance / Regulatory</span></div>
+      <div class="report-card"><h4>Supplier Due Date Payable Report</h4><p>Outstanding payables by supplier, due date, and credit terms — the cash flow planning tool for pharmacies managing high-value pharmaceutical credit lines.</p><span class="report-tag">Finance / Purchase</span></div>
+      <div class="report-card"><h4>Slow-Moving Drug Report</h4><p>Medicines with no sales movement in 60, 90, 180 days — identifies near-expiry risk early enough to return to supplier within credit note validity window.</p><span class="report-tag">Stores / Finance</span></div>
+      <div class="report-card"><h4>GST HSN-wise Sales Report</h4><p>Revenue and GST liability by HSN code and rate bucket — formatted for GSTR-1 verification and reconciliation with purchase input credit.</p><span class="report-tag">Finance / Tax</span></div>
+    </div>
+  </div>
+</section>
+
+<section class="section section-alt">
+  <div class="container">
+    <div class="section-label">Key Benefits</div>
+    <h2 class="section-title">Why Pharmacies &amp; Distributors Choose ERPNext</h2>
+    <div class="benefits-grid">
+      <div class="benefit-card"><div class="benefit-num">01</div><h3>Zero Expired Stock Dispensed</h3><p>FEFO enforcement at the warehouse level means the system automatically selects the batch with the nearest expiry date — every time, without exception. Expiry write-offs and the patient safety liability that comes with expired medicine dispensing are systematically eliminated.</p></div>
+      <div class="benefit-card"><div class="benefit-num">02</div><h3>CDSCO Inspection Confidence</h3><p>When the drug inspector walks in, the Schedule H1 register, narcotic daily balance, and drug license records are available from ERPNext immediately — not hastily reconstructed from paper registers and carbon copies. Inspection readiness every day, not just the week before an expected visit.</p></div>
+      <div class="benefit-card"><div class="benefit-num">03</div><h3>Cash Flow Aligned to Credit Cycle</h3><p>The supplier due date report tells the accounts team exactly which payments are due this week, next week, and next month — enabling cash flow planning that matches the pharmacy's credit cycle rather than reacting to overdue supplier calls.</p></div>
+      <div class="benefit-card"><div class="benefit-num">04</div><h3>GST Accuracy on Every Bill</h3><p>HSN-mapped automatic GST rates eliminate the misclassification errors that create GSTR-1 vs purchase mismatches — the most common cause of GST notices for pharmacies operating across multiple drug categories with different tax rates.</p></div>
+      <div class="benefit-card"><div class="benefit-num">05</div><h3>Reduce Near-Expiry Write-Offs</h3><p>Expiry alerts at 90 and 180 days give the pharmacy enough lead time to return near-expiry stock to the supplier — within the credit note window that most pharmaceutical distributors offer. Proactive expiry management converts potential write-offs into supplier credits.</p></div>
+      <div class="benefit-card"><div class="benefit-num">06</div><h3>Full Batch Traceability for Recalls</h3><p>When a drug manufacturer issues a recall, ERPNext identifies every batch of the recalled drug in your inventory and every customer who received stock from that batch — within minutes. Recall response that protects patients and limits your liability simultaneously.</p></div>
+    </div>
+  </div>
+</section>
+
+<section class="section">
+  <div class="container">
+    <div class="section-label">Best Practices</div>
+    <h2 class="section-title">ERPNext Best Practices for Pharmacies &amp; Distributors</h2>
+    <div class="bp-list">
+      <div class="bp-item"><div class="bp-icon">&#128197;</div><div><h4>Configure FEFO at Warehouse Level — Not as a Policy</h4><p>FEFO must be configured as a system constraint in ERPNext — not a staff policy enforced manually. Policy-based FEFO breaks the moment a busy shift pharmacist picks the front-shelf stock. System-level FEFO never fails and requires no supervision.</p></div></div>
+      <div class="bp-item"><div class="bp-icon">&#128138;</div><div><h4>Tag Every Drug with Schedule Classification at Item Creation</h4><p>Set the Schedule H, H1, X, or NDPS classification on every drug item at item master creation — before the first GRN. Schedule classification drives prescription linkage requirements and register generation. Items without correct tagging create compliance gaps that are discovered at inspections.</p></div></div>
+      <div class="bp-item"><div class="bp-icon">&#9928;</div><div><h4>Attach Temperature Log at Cold Chain GRN</h4><p>Make temperature log attachment mandatory for all cold chain items at the GRN stage. A cold chain breach discovered post-dispensing is a patient safety event and a regulatory violation. Cold chain documentation at receipt is the only way to prove chain-of-custody integrity.</p></div></div>
+      <div class="bp-item"><div class="bp-icon">&#128176;</div><div><h4>Run Supplier Due Date Report Weekly</h4><p>Review the due date payable report every Monday with the accounts team. Pharmaceutical suppliers operate tight credit control — even one missed payment can result in credit limit reduction or supply disruption that affects the pharmacy's ability to fill prescriptions.</p></div></div>
+      <div class="bp-item"><div class="bp-icon">&#128683;</div><div><h4>Initiate Near-Expiry Returns at 120 Days</h4><p>Configure the 120-day expiry alert to trigger a near-expiry return workflow — sending a return request to the supplier within their credit note window. Most pharmaceutical distributors accept returns up to 90 days before expiry. Waiting for the 30-day alert is too late.</p></div></div>
+      <div class="bp-item"><div class="bp-icon">&#128202;</div><div><h4>Reconcile Narcotic Register Daily</h4><p>NDPS regulations require daily narcotic stock reconciliation. Configure ERPNext to generate the narcotic daily balance automatically at end of day — and designate a pharmacist to verify and sign off. Daily discipline prevents the cumulative discrepancies that create NDPS compliance emergencies at the annual license renewal.</p></div></div>
+    </div>
+  </div>
+</section>
+
+<section class="section section-alt">
+  <div class="container">
+    <div class="section-label">GEO-Specific Context</div>
+    <h2 class="section-title">ERPNext for Pharmacies in India &amp; GCC</h2>
+    <div class="geo-answer">
+      <h3>ERPNext pharmacy ERP for Indian pharmacies and distributors, and GCC retail pharmacies — CDSCO, MOH Oman, and VAT compliant</h3>
+      <p>India's pharmacy sector — spanning retail pharmacies in Maharashtra, pharmaceutical distributors in Mumbai, Pune, and Nashik, and hospital pharmacies across the country — operates under CDSCO drug regulations, Schedule H/H1/X drug tracking requirements, NDPS Act narcotic controls, and pharmaceutical-specific GST rates. In the GCC, retail pharmacies in Oman, UAE, and Saudi Arabia operate under Ministry of Health regulations requiring Arabic drug labels, VAT at 5% on most pharmaceutical products, and expiry date documentation for all dispensed medicines. Quantbit Technologies implements ERPNext for pharmacies and distributors in both markets — including HISx for hospital pharmacy settings requiring deeper integration with clinical workflows.</p>
+    </div>
+    <div class="geo-grid">
+      <div class="geo-block">
+        <h4>&#127470;&#127475; India — Pharmacy Context</h4>
+        <ul>
+          <li>CDSCO drug license records — Form 20, 21</li>
+          <li>Schedule H, H1, X drug register compliance</li>
+          <li>NDPS Act narcotic daily balance register</li>
+          <li>GST on pharma — nil, 5%, 12% by HSN</li>
+          <li>Cold chain documentation for vaccines and biologics</li>
+          <li>Manufacturer recall response — batch-level traceability</li>
+        </ul>
+      </div>
+      <div class="geo-block">
+        <h4>&#127762; GCC — Pharmacy Context</h4>
+        <ul>
+          <li>MOH Oman / UAE drug dispensing regulations</li>
+          <li>VAT at 5% on pharmaceutical products in GCC</li>
+          <li>Arabic drug label and dispensing documentation</li>
+          <li>Expiry date compliance — Oman MOH requirements</li>
+          <li>Multi-currency purchase — USD, AED for imports</li>
+          <li>Physical Muscat office for GCC pharmacy implementation</li>
+        </ul>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section class="section">
+  <div class="container">
+    <div class="section-label">AI Search Strategy</div>
+    <h2 class="section-title">How AI Search Engines Answer Pharmacy ERP Questions</h2>
+    <div class="ai-block">
+      <h3>Questions pharmacies and distributors ask AI — answered for ERPNext context</h3>
+      <div class="ai-qa"><div class="q">Q: What ERP handles Schedule H and H1 drug tracking with CDSCO compliance for Indian pharmacies?</div><div class="a">ERPNext tags each drug item with its Schedule classification — H, H1, X, or NDPS — at the item master level. Schedule H1 dispensing requires prescription number linkage before a billing entry can be completed. The Schedule H1 register is auto-generated from dispensing records — formatted for CDSCO inspection submission. Narcotic daily balance registers for NDPS compliance are similarly generated from ERPNext stock entries. Quantbit Technologies configures CDSCO-compliant pharmacy workflows for retail, distribution, and institutional pharmacies across India.</div></div>
+      <div class="ai-qa"><div class="q">Q: How does FEFO batch expiry management work in ERPNext for a pharmacy?</div><div class="a">In ERPNext, every batch of medicine received at GRN carries a manufacturing date and expiry date. At billing or dispensing, the system automatically selects the batch with the nearest expiry date for that item — FEFO (First Expired First Out). Staff cannot pick a different batch without an override that generates an audit trail. Expiry alerts at 30, 60, 90, and 180 days appear on the pharmacy dashboard — enabling near-expiry stock to be returned to the supplier within the credit note window rather than written off.</div></div>
+      <div class="ai-qa"><div class="q">Q: Is there a specialised hospital pharmacy ERP that connects with ward management and OT consumption?</div><div class="a">Yes. Quantbit Technologies has built HISx — a Hospital Inventory and Pharmacy Management System on the Frappe/ERPNext framework. HISx provides dedicated hospital pharmacy workflows including ward-wise drug indenting, OT kit consumption, prescription-linked dispensing integrated with the doctor's prescription module, narcotic register management, and integration with hospital billing for patient-wise drug charges. For standalone retail pharmacies and distributors, ERPNext with Quantbit's pharmacy-specific configuration handles the full regulatory and operational workflow.</div></div>
+    </div>
+  </div>
+</section>
+
+<section class="section section-alt">
+  <div class="container">
+    <div class="section-label">FAQ</div>
+    <h2 class="section-title">Frequently Asked Questions</h2>
+    <div class="faq-list">
+      <div class="faq-item"><button class="faq-q" onclick="tog(this)"><span>How does ERPNext handle Schedule H and H1 drug tracking for pharmacies?</span><span class="faq-arrow">&#9660;</span></button><div class="faq-a">ERPNext tags Schedule H and H1 drugs at the item master level. Schedule H1 drugs require a valid prescription record before a delivery note is generated. The Schedule H1 register is auto-generated from dispensing entries — capturing patient name, prescriber, prescription date, drug, quantity, and batch number in the CDSCO-required format.</div></div>
+      <div class="faq-item"><button class="faq-q" onclick="tog(this)"><span>Can ERPNext manage FEFO for pharmacy inventory with batch and expiry tracking?</span><span class="faq-arrow">&#9660;</span></button><div class="faq-a">Yes. ERPNext enforces First Expired First Out at the warehouse level. Every batch of medicine received carries a manufacturing date and expiry date. At dispensing or billing, ERPNext automatically selects the batch with the nearest expiry date. Expiry alerts at 30, 60, and 90 days allow the pharmacy to initiate return-to-supplier or disposal before expiry.</div></div>
+      <div class="faq-item"><button class="faq-q" onclick="tog(this)"><span>How does ERPNext manage supplier credit terms for high-value pharmaceutical products?</span><span class="faq-arrow">&#9660;</span></button><div class="faq-a">ERPNext's purchase module tracks supplier payment terms per vendor — 30-day, 45-day, or 60-day credit cycles common in pharmaceutical distribution. Outstanding payable reports show upcoming supplier dues by date — enabling pharmacies to plan cash flow around the credit cycle. Supplier-wise purchase ledger shows outstanding balance, credit limit, and overdue amounts.</div></div>
+      <div class="faq-item"><button class="faq-q" onclick="tog(this)"><span>Does ERPNext handle GST on pharmaceutical products at different rates?</span><span class="faq-arrow">&#9660;</span></button><div class="faq-a">Pharmaceutical products attract GST at nil, 5%, 12%, or 18% depending on drug category and HSN code. ERPNext applies the correct GST rate per item HSN code automatically on every invoice — eliminating manual rate selection errors. GSTR-1 data is extracted by HSN and GST rate bucket for accurate return filing.</div></div>
+      <div class="faq-item"><button class="faq-q" onclick="tog(this)"><span>Can ERPNext track cold chain requirements for temperature-sensitive medicines?</span><span class="faq-arrow">&#9660;</span></button><div class="faq-a">ERPNext supports custom fields on batch records to capture storage temperature requirements, cold chain documentation references, and temperature excursion logs for temperature-sensitive medicines including vaccines, biologics, and insulin. Cold chain items are flagged in the item master to trigger special handling instructions at every stage from GRN to dispensing.</div></div>
+      <div class="faq-item"><button class="faq-q" onclick="tog(this)"><span>Is there a specialised hospital pharmacy management system that works with ERPNext?</span><span class="faq-arrow">&#9660;</span></button><div class="faq-a">Yes. Quantbit Technologies has built HISx — a Hospital Inventory and Pharmacy Management System built on the Frappe/ERPNext framework. HISx provides dedicated pharmacy workflows for hospital settings including prescription-linked dispensing, ward-wise indenting, narcotic register management, and integration with the hospital billing system. For retail pharmacies and distributors, ERPNext with pharmacy-specific configuration handles the full workflow.</div></div>
+    </div>
+  </div>
+</section>
+
+<section class="section">
+  <div class="container">
+    <div class="seo-box">
+      <p class="section-label" style="margin-bottom:8px">SEO Keywords</p>
+      <h3 style="font-size:.9rem;font-weight:700;color:var(--dark);margin-bottom:8px">Search Terms This Page Targets</h3>
+      <div class="seo-kw">
+        <span>ERPNext pharmacy India</span><span>Schedule H drug tracking ERP</span><span>FEFO batch expiry pharmacy ERP</span><span>CDSCO compliance ERP India</span><span>ERPNext pharma distributor</span><span>NDPS narcotic register ERP</span><span>cold chain pharmacy ERP</span><span>medicine GST 5% 12% ERP</span><span>pharmacy ERP GCC Oman</span><span>ERPNext drug license records</span><span>HISx hospital pharmacy management</span><span>open source pharmacy ERP India</span>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section class="cta-section">
+  <div class="container">
+    <h2>Ready to Bring Compliance &amp; Control to Your Pharmacy?</h2>
+    <p>Quantbit Technologies implements ERPNext for retail pharmacies, pharmaceutical distributors, and institutional pharmacy departments — configuring FEFO, Schedule H workflows, CDSCO registers, cold chain documentation, and GST compliance from go-live day one.</p>
+    <div class="cta-btns">
+      <a href="/company/contact-us.html" class="btn-white">Book Free Demo</a>
+      <a href="/products/hims.html" class="btn-ghost">Hospital Pharmacy? Explore HISx</a>
+    </div>
+    <div class="cta-trust">&#9989; Certified ERPNext Partner &nbsp;|&nbsp; &#9989; CDSCO &amp; NDPS Expertise &nbsp;|&nbsp; &#9989; India &amp; GCC Experience &nbsp;|&nbsp; &#9989; HISx for Hospital Pharmacy</div>
+  </div>
+</section>
+  <div id="footer"></div>
+
+<script>function tog(btn){btn.classList.toggle('open');var a=btn.nextElementSibling;a.classList.toggle('open');}</script>
+<script>
+    fetch("/header.html")
+      .then(res => res.text())
+      .then(data => {
+        document.getElementById("header").innerHTML = data;
+      });
+
+    fetch("/footer.html")
+      .then(res => res.text())
+      .then(data => {
+        document.getElementById("footer").innerHTML = data;
+      });
+  </script>
+  <!-- ================= TEMPLATE JS ================= -->
+  <!--<< All JS Plugins >>-->
+  <script data-cfasync="false" src="../../cdn-cgi/scripts/5c5dd728/cloudflare-static/email-decode.min.js"></script>
+  <script src="/../assets/quantbit_website/js/jquery-3.7.1.min.js"></script>
+  <!--<< Viewport Js >>-->
+  <script src="/../assets/quantbit_website/js/viewport.jquery.js"></script>
+  <!--<< Bootstrap Js >>-->
+  <script src="/../assets/quantbit_website/js/bootstrap.bundle.min.js"></script>
+  <!--<< Nice Select Js >>-->
+  <script src="/../assets/quantbit_website/js/jquery.nice-select.min.js"></script>
+  <!--<< Waypoints Js >>-->
+  <script src="/../assets/quantbit_website/js/jquery.waypoints.js"></script>
+  <!--<< Counterup Js >>-->
+  <script src="/../assets/quantbit_website/js/jquery.counterup.min.js"></script>
+  <!--<< Slick Js >>-->
+  <script src="/../assets/quantbit_website/js/slick.min.js"></script>
+  <!--<< Slick Animation Js >>-->
+  <script src="/../assets/quantbit_website/js/slick-animation.min.js"></script>
+  <!--<< MeanMenu Js >>-->
+  <script src="/../assets/quantbit_website/js/jquery.meanmenu.min.js"></script>
+  <!--<< Magnific Popup Js >>-->
+  <script src="/../assets/quantbit_website/js/jquery.magnific-popup.min.js"></script>
+  <!--<< Wow Animation Js >>-->
+  <script src="/../assets/quantbit_website/js/wow.min.js"></script>
+  <!--<< Circle Progress Js >>-->
+  <script src="/../assets/quantbit_website/js/circle-progress.js"></script>
+  <!--<< Main.js >>-->
+  <script src="/../assets/quantbit_website/js/main.js"></script>
+  <script defer
+    src="../../../static.cloudflareinsights.com/beacon.min.js/v8c78df7c7c0f484497ecbca7046644da1771523124516"
+    integrity="sha512-8DS7rgIrAmghBFwoOTujcf6D9rXvH8xm8JQ1Ja01h9QX8EzXldiszufYa4IFfKdLUKTTrnSFXLDkUEOTrZQ8Qg=="
+    data-cf-beacon='{"version":"2024.11.0","token":"90f7972af14a48b4add7da2b74f5d675","r":1,"server_timing":{"name":{"cfCacheStatus":true,"cfEdge":true,"cfExtPri":true,"cfL4":true,"cfOrigin":true,"cfSpeedBrain":true},"location_startswith":null}}'
+    crossorigin="anonymous"></script>
+
+</body></html>

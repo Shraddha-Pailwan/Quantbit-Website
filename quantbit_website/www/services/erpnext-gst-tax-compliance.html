@@ -1,0 +1,424 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<title>GST & Tax Compliance | ERPNext Module | Quantbit Technologies</title>
+<meta name="description" content="Automate India's complete GST compliance cycle — from invoice-level tax calculation and e-invoicing to GSTR-1, GSTR-3B, GSTR-2B reconciliation, TDS, TCS, a">
+<meta name="keywords" content="ERPNext GST compliance India, ERPNext GSTR-1 GSTR-3B generation, ERPNext e-invoicing IRP IRN, ERPNext GSTR-2B reconciliation, ERPNext e-way bill automation, ERPNext TDS automation India, ERPNext GST Pune implementation, ERPNext GST multi-state GSTIN">
+<link rel="canonical" href="https://quantbit.io/services/erpnext-gst-tax-compliance/">
+<script type="application/ld+json">{
+  "@context":"https://schema.org",
+  "@graph":[
+    {"@type":"BreadcrumbList","itemListElement":[
+      {"@type":"ListItem","position":1,"name":"Home","item":"https://quantbit.io"},
+      {"@type":"ListItem","position":2,"name":"ERPNext Services","item":"https://quantbit.io/services/"},
+      {"@type":"ListItem","position":3,"name":"ERPNext GST & Tax Compliance","item":"https://quantbit.io/services/erpnext-gst-tax-compliance/"}
+    ]},
+    {"@type":"FAQPage","mainEntity":[{"@type":"Question","name":"Can ERPNext generate GSTR-1 and GSTR-3B data directly?","acceptedAnswer":{"@type":"Answer","text":"Yes. ERPNext generates GSTR-1 outward supply data with B2B, B2C, credit note, and debit note breakdowns. GSTR-3B summary with output tax, ITC available, and net tax payable is also extracted directly. The data can be downloaded in the format required for portal upload or CA review."}},
+{"@type":"Question","name":"Does ERPNext integrate with the Invoice Registration Portal for e-invoicing?","acceptedAnswer":{"@type":"Answer","text":"Yes. ERPNext integrates with the IRP via API for real-time IRN generation. When a sales invoice is submitted, ERPNext sends the data to IRP, receives the IRN, embeds it in the invoice PDF along with the signed QR code, and marks the invoice as e-invoiced — all automatically."}},
+{"@type":"Question","name":"How does ERPNext handle GSTR-2B reconciliation for input tax credit?","acceptedAnswer":{"@type":"Answer","text":"You import the GSTR-2B JSON file from the GST portal into ERPNext. The system matches each entry against your purchase invoices and flags matched, mismatched — price or tax variance — and missing invoices. This helps identify ITC eligible for claim versus amounts at risk of reversal."}},
+{"@type":"Question","name":"Can ERPNext automatically generate e-way bills for outward supplies?","acceptedAnswer":{"@type":"Answer","text":"Yes. ERPNext can be configured to automatically trigger e-way bill generation for delivery notes where the consignment value exceeds ₹50,000. The e-way bill number is embedded in the delivery note and can be printed on the challan. Manual generation is also supported for inter-warehouse transfers."}},
+{"@type":"Question","name":"How does ERPNext deduct TDS automatically on vendor payments?","acceptedAnswer":{"@type":"Answer","text":"When a vendor payment is made in ERPNext, the system checks the TDS category configured on the vendor master, calculates TDS at the applicable rate under the correct section, creates the TDS payable entry, and posts the net payment to the vendor. The TDS payable report provides data for Form 26Q quarterly filing."}},
+{"@type":"Question","name":"Is ERPNext suitable for businesses with multiple GSTINs in different states?","acceptedAnswer":{"@type":"Answer","text":"Yes. ERPNext supports multi-company and multi-branch setups where each GSTIN is managed as a separate company or branch. Tax rules, returns data, and ITC are tracked separately per GSTIN, with consolidated management reporting across the group."}}]}
+  ]
+}</script>
+<style>/* Quantbit ERPNext Module Pages — Shared Design System */
+:root {
+  --accent: #1a5fd4;
+  --accent-dark: #1349a8;
+  --teal: #0b7a5e;
+  --teal-light: #e6f4f0;
+  --amber: #b35e0a;
+  --amber-light: #fef3e2;
+  --dark: #0f2d47;
+  --mid: #1e4a6e;
+  --text: #1a2a38;
+  --muted: #4a6278;
+  --border: #d0dce8;
+  --bg: #f5f8fc;
+  --white: #ffffff;
+  --radius: 10px;
+  --shadow: 0 2px 16px rgba(15,45,71,0.10);
+  --shadow-lg: 0 6px 32px rgba(15,45,71,0.14);
+}
+*,*::before,*::after{box-sizing:border-box;margin:0;padding:0}
+html{scroll-behavior:smooth}
+body{font-family:'Segoe UI',system-ui,-apple-system,sans-serif;color:var(--text);background:var(--white);line-height:1.65;font-size:16px}
+.site-nav{background:var(--dark);padding:0 32px;display:flex;align-items:center;justify-content:space-between;height:60px;position:sticky;top:0;z-index:100}
+.nav-logo{color:#fff;font-weight:700;font-size:1.1rem;text-decoration:none;letter-spacing:.5px}
+.nav-links{display:flex;gap:24px;list-style:none}
+.nav-links a{color:rgba(255,255,255,.82);text-decoration:none;font-size:.9rem;font-weight:500;transition:color .2s}
+.nav-links a:hover{color:#fff}
+.nav-cta{background:var(--accent);color:#fff!important;padding:7px 18px;border-radius:6px;font-weight:600!important}
+.breadcrumb{background:var(--bg);border-bottom:1px solid var(--border);padding:10px 32px;font-size:.82rem;color:var(--muted)}
+.breadcrumb a{color:var(--accent);text-decoration:none}
+.breadcrumb a:hover{text-decoration:underline}
+.hero{background:linear-gradient(135deg,var(--dark) 0%,var(--mid) 60%,#1a5fd4 100%);color:#fff;padding:72px 32px 64px;position:relative;overflow:hidden}
+.hero::before{content:'';position:absolute;right:-80px;top:-80px;width:420px;height:420px;background:rgba(255,255,255,.04);border-radius:50%;pointer-events:none}
+.hero-inner{max-width:1100px;margin:0 auto;display:grid;grid-template-columns:1fr 380px;gap:56px;align-items:center}
+.hero-badge{display:inline-flex;align-items:center;gap:8px;background:rgba(255,255,255,.12);border:1px solid rgba(255,255,255,.22);border-radius:40px;padding:5px 14px;font-size:.78rem;font-weight:600;letter-spacing:.8px;text-transform:uppercase;margin-bottom:18px;color:rgba(255,255,255,.9)}
+.hero h1{font-size:clamp(1.9rem,3.5vw,2.7rem);font-weight:800;line-height:1.2;margin-bottom:16px}
+.hero h1 span{color:#7eb8ff}
+.hero-desc{font-size:1.05rem;color:rgba(255,255,255,.82);margin-bottom:28px;max-width:540px}
+.hero-tags{display:flex;flex-wrap:wrap;gap:8px;margin-bottom:32px}
+.hero-tag{background:rgba(255,255,255,.1);border:1px solid rgba(255,255,255,.2);border-radius:20px;padding:4px 12px;font-size:.78rem;color:rgba(255,255,255,.85)}
+.hero-btns{display:flex;gap:14px;flex-wrap:wrap}
+.btn-primary{background:var(--accent);color:#fff;padding:12px 26px;border-radius:8px;font-weight:700;text-decoration:none;font-size:.95rem;transition:background .2s,transform .15s;display:inline-block}
+.btn-primary:hover{background:var(--accent-dark);transform:translateY(-1px)}
+.btn-ghost{background:transparent;color:#fff;padding:11px 24px;border:2px solid rgba(255,255,255,.4);border-radius:8px;font-weight:600;text-decoration:none;font-size:.95rem;transition:.2s;display:inline-block}
+.btn-ghost:hover{border-color:#fff;background:rgba(255,255,255,.1)}
+.hero-card{background:rgba(255,255,255,.1);border:1px solid rgba(255,255,255,.18);border-radius:14px;padding:28px;backdrop-filter:blur(8px)}
+.hero-card h3{font-size:1rem;font-weight:700;margin-bottom:16px;color:rgba(255,255,255,.92)}
+.hero-stat{display:flex;align-items:center;gap:12px;margin-bottom:14px;padding-bottom:14px;border-bottom:1px solid rgba(255,255,255,.12)}
+.hero-stat:last-child{margin-bottom:0;padding-bottom:0;border-bottom:none}
+.stat-icon{width:36px;height:36px;background:rgba(255,255,255,.15);border-radius:8px;display:flex;align-items:center;justify-content:center;font-size:1.1rem;flex-shrink:0}
+.stat-val{font-size:1.2rem;font-weight:800;color:#fff}
+.stat-lbl{font-size:.75rem;color:rgba(255,255,255,.7);line-height:1.3}
+.section{padding:64px 32px}
+.section-alt{background:var(--bg)}
+.container{max-width:1100px;margin:0 auto}
+.section-label{font-size:.75rem;font-weight:700;letter-spacing:1.2px;text-transform:uppercase;color:var(--accent);margin-bottom:8px}
+.section-title{font-size:clamp(1.5rem,2.8vw,2.1rem);font-weight:800;color:var(--dark);margin-bottom:12px;line-height:1.25}
+.section-sub{font-size:1.02rem;color:var(--muted);max-width:640px;margin-bottom:44px;line-height:1.7}
+.feature-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(280px,1fr));gap:24px}
+.feature-card{background:var(--white);border:1px solid var(--border);border-radius:var(--radius);padding:26px;transition:box-shadow .2s,transform .2s}
+.feature-card:hover{box-shadow:var(--shadow);transform:translateY(-3px)}
+.feature-icon{width:44px;height:44px;border-radius:10px;background:linear-gradient(135deg,var(--accent),var(--mid));display:flex;align-items:center;justify-content:center;font-size:1.3rem;margin-bottom:14px}
+.feature-card h3{font-size:1rem;font-weight:700;color:var(--dark);margin-bottom:8px}
+.feature-card p{font-size:.88rem;color:var(--muted);line-height:1.6}
+.feature-card ul{margin-top:10px;padding-left:0;list-style:none}
+.feature-card ul li{font-size:.85rem;color:var(--muted);padding:3px 0 3px 16px;position:relative;line-height:1.5}
+.feature-card ul li::before{content:'✓';position:absolute;left:0;color:var(--teal);font-weight:700}
+.reports-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(240px,1fr));gap:20px}
+.report-card{background:var(--white);border:1px solid var(--border);border-left:4px solid var(--accent);border-radius:var(--radius);padding:20px 22px}
+.report-card h4{font-size:.92rem;font-weight:700;color:var(--dark);margin-bottom:6px}
+.report-card p{font-size:.82rem;color:var(--muted);line-height:1.55}
+.report-tag{display:inline-block;background:var(--bg);border:1px solid var(--border);border-radius:4px;padding:2px 8px;font-size:.72rem;font-weight:600;color:var(--accent);margin-top:8px}
+.roles-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(200px,1fr));gap:16px}
+.role-pill{background:var(--white);border:1px solid var(--border);border-radius:var(--radius);padding:16px 20px;display:flex;align-items:flex-start;gap:12px}
+.role-dot{width:10px;height:10px;border-radius:50%;flex-shrink:0;margin-top:4px}
+.role-dot.admin{background:var(--accent)}
+.role-dot.manager{background:var(--teal)}
+.role-dot.user{background:var(--amber)}
+.role-dot.viewer{background:#9b59b6}
+.role-name{font-size:.88rem;font-weight:700;color:var(--dark);margin-bottom:2px}
+.role-desc{font-size:.78rem;color:var(--muted)}
+.benefits-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(260px,1fr));gap:24px}
+.benefit-card{background:linear-gradient(135deg,var(--teal-light),var(--white));border:1px solid #b8dfd6;border-radius:var(--radius);padding:26px}
+.benefit-num{font-size:2rem;font-weight:900;color:var(--teal);opacity:.35;line-height:1;margin-bottom:6px}
+.benefit-card h3{font-size:.98rem;font-weight:700;color:var(--dark);margin-bottom:8px}
+.benefit-card p{font-size:.86rem;color:var(--muted);line-height:1.6}
+.bp-list{display:grid;grid-template-columns:repeat(auto-fit,minmax(300px,1fr));gap:20px}
+.bp-item{background:var(--white);border:1px solid var(--border);border-radius:var(--radius);padding:22px 24px;display:flex;gap:16px;align-items:flex-start}
+.bp-icon{width:38px;height:38px;background:var(--amber-light);border-radius:8px;display:flex;align-items:center;justify-content:center;font-size:1.1rem;flex-shrink:0}
+.bp-item h4{font-size:.92rem;font-weight:700;color:var(--dark);margin-bottom:5px}
+.bp-item p{font-size:.83rem;color:var(--muted);line-height:1.55}
+.geo-answer{background:linear-gradient(135deg,#e8f0fc,#f0f6ff);border:1px solid #c5d8f7;border-radius:14px;padding:32px 36px;margin-bottom:32px}
+.geo-answer h3{font-size:1.1rem;font-weight:700;color:var(--dark);margin-bottom:10px}
+.geo-answer p{font-size:.95rem;color:var(--text);line-height:1.75}
+.geo-grid{display:grid;grid-template-columns:1fr 1fr;gap:24px}
+.geo-block{background:var(--white);border:1px solid var(--border);border-radius:var(--radius);padding:24px}
+.geo-block h4{font-size:.9rem;font-weight:700;color:var(--accent);margin-bottom:10px;display:flex;align-items:center;gap:8px}
+.geo-block ul{list-style:none;padding:0}
+.geo-block ul li{font-size:.85rem;color:var(--muted);padding:4px 0 4px 16px;position:relative}
+.geo-block ul li::before{content:'→';position:absolute;left:0;color:var(--accent)}
+.faq-list{max-width:800px;margin:0 auto}
+.faq-item{border:1px solid var(--border);border-radius:var(--radius);margin-bottom:10px;overflow:hidden}
+.faq-q{width:100%;background:var(--white);border:none;padding:18px 22px;text-align:left;font-size:.95rem;font-weight:600;color:var(--dark);cursor:pointer;display:flex;justify-content:space-between;align-items:center;gap:12px;transition:background .15s}
+.faq-q:hover,.faq-q.open{background:var(--bg)}
+.faq-arrow{font-size:1rem;color:var(--accent);transition:transform .25s;flex-shrink:0}
+.faq-q.open .faq-arrow{transform:rotate(180deg)}
+.faq-a{display:none;padding:0 22px 18px;font-size:.9rem;color:var(--muted);line-height:1.7}
+.faq-a.open{display:block}
+.ai-block{background:linear-gradient(135deg,var(--dark),var(--mid));color:#fff;border-radius:14px;padding:36px 40px}
+.ai-block h3{font-size:1.15rem;font-weight:700;margin-bottom:14px;color:#7eb8ff}
+.ai-qa{margin-bottom:18px;padding-bottom:18px;border-bottom:1px solid rgba(255,255,255,.1)}
+.ai-qa:last-child{margin-bottom:0;padding-bottom:0;border-bottom:none}
+.ai-qa .q{font-size:.88rem;font-weight:600;color:rgba(255,255,255,.7);margin-bottom:4px}
+.ai-qa .a{font-size:.9rem;color:rgba(255,255,255,.88);line-height:1.65}
+.cta-section{background:linear-gradient(135deg,var(--dark) 0%,var(--mid) 100%);color:#fff;padding:72px 32px;text-align:center}
+.cta-section h2{font-size:clamp(1.6rem,3vw,2.3rem);font-weight:800;margin-bottom:14px}
+.cta-section p{font-size:1.05rem;color:rgba(255,255,255,.8);max-width:580px;margin:0 auto 32px}
+.cta-btns{display:flex;gap:16px;justify-content:center;flex-wrap:wrap}
+.btn-white{background:#fff;color:var(--dark);padding:13px 28px;border-radius:8px;font-weight:700;text-decoration:none;font-size:.97rem;transition:.2s;display:inline-block}
+.btn-white:hover{background:#e8f0fc}
+.cta-trust{margin-top:22px;font-size:.82rem;color:rgba(255,255,255,.55)}
+.site-footer{background:#0a1e2e;color:rgba(255,255,255,.6);padding:40px 32px 24px;text-align:center;font-size:.83rem}
+.site-footer a{color:rgba(255,255,255,.5);text-decoration:none}
+.table-wrap{overflow-x:auto;border-radius:var(--radius);border:1px solid var(--border)}
+table{width:100%;border-collapse:collapse}
+th{background:var(--dark);color:#fff;padding:12px 16px;text-align:left;font-size:.82rem;font-weight:600;letter-spacing:.4px}
+td{padding:11px 16px;font-size:.87rem;color:var(--text);border-bottom:1px solid var(--border)}
+tr:last-child td{border-bottom:none}
+tr:nth-child(even) td{background:var(--bg)}
+.seo-box{background:var(--bg);border:1px solid var(--border);border-radius:var(--radius);padding:24px 28px}
+.seo-kw{display:flex;flex-wrap:wrap;gap:8px;margin-top:12px}
+.seo-kw span{background:var(--white);border:1px solid var(--border);border-radius:4px;padding:4px 10px;font-size:.78rem;color:var(--accent);font-weight:600}
+@media(max-width:768px){
+  .hero-inner{grid-template-columns:1fr}
+  .hero-card{display:none}
+  .geo-grid{grid-template-columns:1fr}
+  .site-nav{padding:0 16px}
+  .nav-links{display:none}
+  .section{padding:48px 16px}
+  .hero{padding:48px 16px 44px}
+  .ai-block{padding:24px 20px}
+  .geo-answer{padding:22px 20px}
+}
+</style>
+<link rel="stylesheet" href="/assets/quantbit_website/css/_shared.css">
+<!-- TEMPLATE CSS (IMPORTANT) -->
+    <link rel="stylesheet" href="/../assets/quantbit_website/css/bootstrap.min.css">
+    <link rel="stylesheet" href="/../assets/quantbit_website/css/font-awesome.css">
+    <link rel="stylesheet" href="/../assets/quantbit_website/css/animate.css">
+    <link rel="stylesheet" href="/../assets/quantbit_website/css/magnific-popup.css">
+    <link rel="stylesheet" href="/../assets/quantbit_website/css/meanmenu.css">
+    <link rel="stylesheet" href="/../assets/quantbit_website/css/slick.css">
+    <link rel="stylesheet" href="/../assets/quantbit_website/css/nice-select.css">
+    <link rel="stylesheet" href="/../assets/quantbit_website/css/main.css">
+    <link rel="stylesheet" href="style.css">
+    <link rel="stylesheet" href="/assets/quantbit_website/css/_shared.css">
+
+
+    <!-- OPTIONAL CUSTOM -->
+    <link rel="stylesheet" href="/../assets/quantbit_website/css/hrms.css">
+      <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
+<!-- Google Tag Manager -->
+<script>(function(w,d,s,l,i){w[l]=w[l]||[];w[l].push({'gtm.start':
+new Date().getTime(),event:'gtm.js'});var f=d.getElementsByTagName(s)[0],
+j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
+'https://www.googletagmanager.com/gtm.js?id='+i+dl;f.parentNode.insertBefore(j,f);
+})(window,document,'script','dataLayer','GTM-P98Z6G8D');</script>
+<!-- End Google Tag Manager -->
+</head>
+<body>
+  <!-- Google Tag Manager (noscript) -->
+<noscript><iframe src="https://www.googletagmanager.com/ns.html?id=GTM-P98Z6G8D"
+height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
+<!-- End Google Tag Manager (noscript) -->
+<div id="header"></div>
+<section class="hero">
+  <div class="hero-inner">
+    <div>
+      <div class="hero-badge">&#128311; ERPNext Module</div>
+      <h1>ERPNext <span>GST & Tax Compliance</span><br>for Indian &amp; GCC Businesses</h1>
+      <p class="hero-desc">Automate India's complete GST compliance cycle — from invoice-level tax calculation and e-invoicing to GSTR-1, GSTR-3B, GSTR-2B reconciliation, TDS, TCS, and e-way bill — entirely within ERPNext.</p>
+      <div class="hero-tags"><span class="hero-tag">GST Automation</span><span class="hero-tag">GSTR-1</span><span class="hero-tag">GSTR-3B</span><span class="hero-tag">GSTR-2B Reconciliation</span><span class="hero-tag">E-Invoicing IRP</span><span class="hero-tag">E-Way Bill</span><span class="hero-tag">TDS Automation</span><span class="hero-tag">TCS Compliance</span></div>
+      <div class="hero-btns">
+        <a href="/company/contact-us.html" class="btn-primary">Book Free Demo</a>
+        <a href="/services/" class="btn-ghost">All ERPNext Modules</a>
+      </div>
+    </div>
+    <div class="hero-card">
+      <h3>Module Snapshot</h3><div class="hero-stat"><div class="stat-icon">&#129534;</div><div><div class="stat-val">GST Auto</div><div class="stat-lbl">Tax auto-applied on every transaction</div></div></div>
+<div class="hero-stat"><div class="stat-icon">&#128203;</div><div><div class="stat-val">GSTR Ready</div><div class="stat-lbl">GSTR-1, 3B, 2B, 9 data export</div></div></div>
+<div class="hero-stat"><div class="stat-icon">&#128176;</div><div><div class="stat-val">TDS/TCS</div><div class="stat-lbl">Auto-deduction at source</div></div></div>
+<div class="hero-stat"><div class="stat-icon">&#9889;</div><div><div class="stat-val">E-Invoice</div><div class="stat-lbl">IRP integration for IRN generation</div></div></div>
+</div>
+  </div>
+</section>
+<section class="section">
+  <div class="container">
+    <div class="section-label">Overview</div>
+    <h2 class="section-title">What is ERPNext GST & Tax Compliance?</h2>
+    <p style="font-size:.97rem;color:var(--muted);line-height:1.85;max-width:840px">ERPNext GST and Tax Compliance is not a separate compliance software — it is GST built directly into every transaction your business creates. When a salesperson raises a quotation, GST is calculated automatically. When a purchase invoice is booked, ITC is captured. When a payment is made to a vendor, TDS is deducted. When goods move above ₹50,000, an e-way bill is triggered. Everything happens at the source, in real time, with zero manual calculation. For Indian businesses, this means the GSTR-1 report for outward supplies, GSTR-3B for tax liability summary, GSTR-2B reconciliation for input tax credit verification, and GSTR-9 for annual return are all data-ready from ERPNext at the end of each period — requiring only upload, not manual preparation. E-invoicing via the Invoice Registration Portal generates IRN and QR codes for eligible businesses. E-way bill integration handles both automatic and manual generation for outward supplies and inter-warehouse transfers. TDS deduction on vendor payments under all applicable sections — 194C, 194J, 194H, 194I, 194Q — is automated at the payment stage with Form 26Q data extraction. TCS on sales above ₹50 lakh per buyer is handled at the invoice level. Quantbit Technologies configures HSN and SAC code mapping, tax groups, state-wise GSTIN setup, e-invoicing API credentials, TDS categories for all vendor types, and GST reconciliation workflows during implementation — ensuring your business is fully compliant from the first transaction.</p>
+  </div>
+</section>
+<section class="section section-alt">
+  <div class="container">
+    <div class="section-label">Features &amp; Functions</div>
+    <h2 class="section-title">Core Capabilities</h2>
+    <p class="section-sub">Every feature built into ERPNext — no extra licensing. Quantbit configures these for your exact processes.</p>
+    <div class="feature-grid"><div class="feature-card"><div class="feature-icon">&#129534;</div><h3>GST Auto-Calculation</h3><p>Automatic GST application on every sales and purchase transaction.</p><ul><li>CGST/SGST for intra-state, IGST for inter-state</li><li>Tax group configuration by HSN/SAC and rate</li><li>RCM (Reverse Charge Mechanism) handling</li><li>Composite supply and mixed supply support</li></ul></div>
+<div class="feature-card"><div class="feature-icon">&#128203;</div><h3>GSTR Data Extraction</h3><p>Period-end GST return data ready for portal upload.</p><ul><li>GSTR-1 outward supply with B2B, B2C, CDNR</li><li>GSTR-3B tax liability summary data</li><li>GSTR-9 annual return data compilation</li><li>HSN summary for GSTR-1 Table 12</li></ul></div>
+<div class="feature-card"><div class="feature-icon">&#128260;</div><h3>GSTR-2B Reconciliation</h3><p>Match ERPNext purchase invoices with GSTR-2B data for ITC accuracy.</p><ul><li>Import GSTR-2B JSON from GST portal</li><li>Matched, mismatched, and missing invoice report</li><li>ITC eligible vs ineligible classification</li><li>Reconciliation worksheet for CA and accounts team</li></ul></div>
+<div class="feature-card"><div class="feature-icon">&#9889;</div><h3>E-Invoicing via IRP</h3><p>IRN and QR code generation for eligible businesses.</p><ul><li>API integration with Invoice Registration Portal</li><li>IRN embedded in sales invoice PDF</li><li>QR code generation and print layout</li><li>Cancel and amend e-invoice with portal sync</li></ul></div>
+<div class="feature-card"><div class="feature-icon">&#128666;</div><h3>E-Way Bill</h3><p>Automated and manual e-way bill generation for goods movement.</p><ul><li>Auto-trigger on sales delivery above ₹50K</li><li>Manual generation for inter-warehouse transfer</li><li>E-way bill number on GRN and delivery note</li><li>Part-A and Part-B update for multi-modal transport</li></ul></div>
+<div class="feature-card"><div class="feature-icon">&#128176;</div><h3>TDS Automation</h3><p>Tax Deducted at Source on vendor payments without manual calculation.</p><ul><li>TDS category on supplier master by section</li><li>Auto-deduction at payment entry posting</li><li>TDS payable report for challan payment</li><li>Form 26Q data extraction for quarterly filing</li></ul></div>
+<div class="feature-card"><div class="feature-icon">&#128203;</div><h3>TCS on Sales</h3><p>Tax Collected at Source on high-value sales above threshold.</p><ul><li>TCS at 0.1% on sales above ₹50 lakh per buyer</li><li>TCS invoice and receipt accounting entries</li><li>TCS payable and collected reconciliation</li><li>Form 27EQ data for quarterly TCS return</li></ul></div>
+<div class="feature-card"><div class="feature-icon">&#128202;</div><h3>Tax Reports & Audit Trail</h3><p>Complete tax audit trail and management reporting.</p><ul><li>Ledger-wise GST payable and receivable</li><li>Input tax credit register by period</li><li>Tax audit report for Section 44AB</li><li>Complete voucher-level GST audit trail</li></ul></div>
+</div>
+  </div>
+</section>
+<section class="section">
+  <div class="container">
+    <div class="section-label">Reports &amp; Dashboards</div>
+    <h2 class="section-title">Built-in Reports &amp; Analytics</h2>
+    <p class="section-sub">Decision-ready reports available out-of-the-box, fully customisable by Quantbit's certified team.</p>
+    <div class="reports-grid"><div class="report-card"><h4>GSTR-1 Outward Supply Report</h4><p>B2B, B2C, CDNR, and CDNUR data with HSN summary ready for portal filing.</p><span class="report-tag">Accounts / Tax</span></div>
+<div class="report-card"><h4>GSTR-3B Summary</h4><p>Net tax liability — output tax minus ITC — with all Table 3 fields populated.</p><span class="report-tag">Accounts / CFO</span></div>
+<div class="report-card"><h4>GSTR-2B Reconciliation Report</h4><p>Matched and unmatched purchase invoices with GSTR-2B for ITC accuracy.</p><span class="report-tag">Accounts / CA</span></div>
+<div class="report-card"><h4>E-Way Bill Register</h4><p>All e-way bills generated with validity, transporter, and status tracking.</p><span class="report-tag">Logistics / Accounts</span></div>
+<div class="report-card"><h4>TDS Payable Report</h4><p>Section-wise TDS deducted on vendor payments for challan and 26Q filing.</p><span class="report-tag">Accounts / Tax</span></div>
+<div class="report-card"><h4>ITC Register</h4><p>Input Tax Credit available, utilised, and pending with voucher linkage.</p><span class="report-tag">Finance / Tax</span></div>
+<div class="report-card"><h4>Tax Audit Trail</h4><p>Every GST transaction with tax amounts, document reference, and party GSTIN.</p><span class="report-tag">Audit / CA</span></div>
+<div class="report-card"><h4>HSN-wise Tax Summary</h4><p>Tax collected and paid by HSN and SAC code for compliance analysis.</p><span class="report-tag">Tax / Accounts</span></div>
+</div>
+  </div>
+</section>
+<section class="section section-alt">
+  <div class="container">
+    <div class="section-label">User Roles</div>
+    <h2 class="section-title">Who Uses This Module?</h2>
+    <p class="section-sub">Role-based permissions ensure each user sees only what they need. Quantbit aligns roles to your org chart on Day 1.</p>
+    <div class="roles-grid"><div class="role-pill"><div class="role-dot admin"></div><div><div class="role-name">Accounts Manager / CFO</div><div class="role-desc">Configure GST rules, validate GSTIN, review tax reports, approve return data</div></div></div>
+<div class="role-pill"><div class="role-dot manager"></div><div><div class="role-name">Tax Consultant / CA</div><div class="role-desc">Run GSTR extracts, reconcile GSTR-2B, review audit trail, prepare returns</div></div></div>
+<div class="role-pill"><div class="role-dot user"></div><div><div class="role-name">Accounts Executive</div><div class="role-desc">Raise GST invoices, book purchase ITC, trigger e-way bills, deduct TDS</div></div></div>
+<div class="role-pill"><div class="role-dot viewer"></div><div><div class="role-name">Management</div><div class="role-desc">Read-only tax liability summary and ITC position for financial review</div></div></div>
+<div class="role-pill"><div class="role-dot user"></div><div><div class="role-name">Sales / Purchase Team</div><div class="role-desc">Raise transactions where GST is auto-calculated; no manual tax intervention</div></div></div>
+</div>
+  </div>
+</section>
+<section class="section">
+  <div class="container">
+    <div class="section-label">Business Benefits</div>
+    <h2 class="section-title">Why Implement ERPNext GST & Tax Compliance?</h2>
+    <p class="section-sub">Quantbit's certified implementations deliver measurable outcomes — not just software installation.</p>
+    <div class="benefits-grid"><div class="benefit-card"><div class="benefit-num">01</div><h3>Zero Manual GST Calculation</h3><p>Every invoice, payment, and goods movement applies the correct GST rate automatically based on party state, item HSN code, and supply type — eliminating manual tax computation errors.</p></div>
+<div class="benefit-card"><div class="benefit-num">02</div><h3>Return-Ready Every Month</h3><p>GSTR-1, GSTR-3B, and GSTR-2B reconciliation data is available from ERPNext at month-end without any manual preparation — just extract, verify, and file.</p></div>
+<div class="benefit-card"><div class="benefit-num">03</div><h3>Maximum ITC Recovery</h3><p>GSTR-2B reconciliation within ERPNext identifies mismatches between your purchase records and supplier-filed returns — ensuring you claim every rupee of eligible input tax credit without over-claiming.</p></div>
+<div class="benefit-card"><div class="benefit-num">04</div><h3>E-Invoice Compliance Built-in</h3><p>IRN generation via IRP and QR code printing are automatic for eligible businesses — ensuring compliance without a separate e-invoicing tool or middleware.</p></div>
+<div class="benefit-card"><div class="benefit-num">05</div><h3>TDS Error Elimination</h3><p>Automatic TDS deduction under the correct section at the time of payment posting eliminates the most common source of TDS short-deduction notices from the Income Tax Department.</p></div>
+<div class="benefit-card"><div class="benefit-num">06</div><h3>Complete GST Audit Trail</h3><p>Every transaction carries the GST amount, GSTIN of both parties, HSN code, and supply type — making GST audits by the department straightforward and defending ITC claims simple.</p></div>
+</div>
+  </div>
+</section>
+<section class="section section-alt">
+  <div class="container">
+    <div class="section-label">Best Practices</div>
+    <h2 class="section-title">Best Practices for GST & Tax Compliance in ERPNext</h2>
+    <p class="section-sub">Quantbit ensures effective adoption from Day 1 with field-tested implementation standards.</p>
+    <div class="bp-list"><div class="bp-item"><div class="bp-icon">&#129534;</div><div><h4>Map HSN/SAC to Every Item</h4><p>Assign HSN codes (goods) or SAC codes (services) to every item in the master before go-live. Invoices without correct HSN/SAC codes are rejected by the GST portal and IRP.</p></div></div>
+<div class="bp-item"><div class="bp-icon">&#127970;</div><div><h4>Validate GSTIN Before First Purchase</h4><p>Verify supplier GSTIN with the GST portal before raising the first purchase. Purchases from suppliers with invalid GSTIN will result in ITC reversal on GSTR-2B mismatch.</p></div></div>
+<div class="bp-item"><div class="bp-icon">&#128197;</div><div><h4>Reconcile GSTR-2B Monthly</h4><p>Run GSTR-2B reconciliation every month within 7 days of portal availability. Deferred reconciliation leads to ITC reversal at year-end that is harder to dispute.</p></div></div>
+<div class="bp-item"><div class="bp-icon">&#128203;</div><div><h4>Configure RCM Vendors Separately</h4><p>Mark vendors liable for Reverse Charge Mechanism in ERPNext before the first transaction. RCM tax must be self-assessed and paid — missing it triggers interest and penalties.</p></div></div>
+<div class="bp-item"><div class="bp-icon">&#128176;</div><div><h4>TDS Category on Vendor Master at Onboarding</h4><p>Set the correct TDS section on every vendor master during onboarding. Correcting TDS categories after payments compounds reconciliation complexity significantly.</p></div></div>
+<div class="bp-item"><div class="bp-icon">&#9889;</div><div><h4>Test E-Invoice in Sandbox First</h4><p>Before activating live IRP integration, test your e-invoice configuration in the IRP sandbox. Template errors caught here prevent production invoice failures at month-end.</p></div></div>
+</div>
+  </div>
+</section>
+<section class="section">
+  <div class="container">
+    <div class="section-label">India &amp; GCC Context</div>
+    <h2 class="section-title">Compliance &amp; Regional Considerations</h2>
+    <p class="section-sub">ERPNext configured for India's statutory requirements and GCC regulatory frameworks out of the box.</p>
+    <div class="geo-answer">
+      <h3>&#127470;&#127475; For Indian Businesses</h3>
+      <p>ERPNext GST and Tax Compliance is purpose-built for India's tax landscape. All GST rates — 0%, 5%, 12%, 18%, 28% — and Cess on applicable goods are pre-configured. CGST, SGST, IGST, and UTGST are applied based on the party's billing state versus the company's registered state. Multi-GSTIN management for businesses registered in multiple states is supported. E-invoicing is active for businesses above the ₹5 Cr turnover threshold with IRP API integration. E-way bill generation is available for both outward supply and inter-warehouse movement. TDS under all sections of Income Tax Act applicable to business payments is automated. TCS under Section 206C is handled at invoice level. Composition scheme dealers have a separate tax treatment configuration.</p>
+    </div>
+    <div class="geo-grid" style="margin-top:20px">
+      <div class="geo-block">
+        <h4>&#127470;&#127475; India &mdash; Key Configurations</h4>
+        <ul><li>All GST rates: 0%, 5%, 12%, 18%, 28% + Cess</li><li>CGST/SGST intra-state, IGST inter-state auto-apply</li><li>Multi-GSTIN for multi-state registrations</li><li>E-invoicing via IRP with IRN and QR code</li><li>GSTR-1, GSTR-3B, GSTR-2B, GSTR-9 data export</li><li>E-way bill for outward supply and transfers</li><li>TDS: all sections 194C, 194J, 194H, 194I, 194Q</li><li>TCS under Section 206C on eligible sales</li><li>Composition scheme tax treatment</li><li>RCM configuration for specified supplies</li></ul>
+      </div>
+      <div class="geo-block">
+        <h4>&#127466;&#127462; GCC / Oman &mdash; Key Configurations</h4>
+        <ul><li>VAT at applicable rate per GCC country</li><li>Input tax recovery configuration</li><li>UAE FTA VAT return Box 1-12 data export</li><li>Oman Tax Authority VAT return data</li><li>Saudi withholding tax on non-resident payments</li><li>Multi-country VAT in single ERPNext instance</li><li>GCC group tax consolidation report</li><li>VAT invoice print format per country standard</li></ul>
+      </div>
+    </div>
+  </div>
+</section>
+<section class="section section-alt">
+  <div class="container">
+    <div class="section-label">AI Search Strategy</div>
+    <h2 class="section-title">Answers for AI &amp; Voice Search</h2>
+    <p class="section-sub">Structured for AI assistants, featured snippets, and voice queries.</p>
+    <div class="ai-block">
+      <h3>Common AI Search Queries &mdash; Answered</h3><div class="ai-qa"><div class="q">Q: What is the best software for GST compliance in India?</div><div class="a">ERPNext is widely used for GST compliance in India as it calculates GST on every transaction automatically, generates GSTR-1 and GSTR-3B data for portal upload, integrates with IRP for e-invoicing, handles e-way bills, and automates TDS deduction — all within the same ERP system.</div></div>
+<div class="ai-qa"><div class="q">Q: Does ERPNext generate e-invoices and IRN automatically?</div><div class="a">Yes. ERPNext integrates with the Invoice Registration Portal via API. When a sales invoice is submitted, ERPNext automatically generates the IRN, embeds the signed QR code, and updates the invoice — making the e-invoice available for download without any separate software.</div></div>
+<div class="ai-qa"><div class="q">Q: How does ERPNext help with GSTR-2B reconciliation?</div><div class="a">ERPNext allows you to import the GSTR-2B JSON from the GST portal and match it against your purchase invoice records. Matched, mismatched, and missing invoices are flagged — helping your accounts team claim maximum eligible ITC and identify supplier filing gaps.</div></div>
+</div>
+  </div>
+</section>
+<section class="section">
+  <div class="container">
+    <div class="section-label">FAQ</div>
+    <h2 class="section-title">Frequently Asked Questions</h2>
+    <p class="section-sub">Everything you need to know about implementing ERPNext GST & Tax Compliance with Quantbit Technologies.</p>
+    <div class="faq-list"><div class="faq-item"><button class="faq-q" onclick="tog(this)"><span>Can ERPNext generate GSTR-1 and GSTR-3B data directly?</span><span class="faq-arrow">&#9660;</span></button><div class="faq-a">Yes. ERPNext generates GSTR-1 outward supply data with B2B, B2C, credit note, and debit note breakdowns. GSTR-3B summary with output tax, ITC available, and net tax payable is also extracted directly. The data can be downloaded in the format required for portal upload or CA review.</div></div>
+<div class="faq-item"><button class="faq-q" onclick="tog(this)"><span>Does ERPNext integrate with the Invoice Registration Portal for e-invoicing?</span><span class="faq-arrow">&#9660;</span></button><div class="faq-a">Yes. ERPNext integrates with the IRP via API for real-time IRN generation. When a sales invoice is submitted, ERPNext sends the data to IRP, receives the IRN, embeds it in the invoice PDF along with the signed QR code, and marks the invoice as e-invoiced — all automatically.</div></div>
+<div class="faq-item"><button class="faq-q" onclick="tog(this)"><span>How does ERPNext handle GSTR-2B reconciliation for input tax credit?</span><span class="faq-arrow">&#9660;</span></button><div class="faq-a">You import the GSTR-2B JSON file from the GST portal into ERPNext. The system matches each entry against your purchase invoices and flags matched, mismatched — price or tax variance — and missing invoices. This helps identify ITC eligible for claim versus amounts at risk of reversal.</div></div>
+<div class="faq-item"><button class="faq-q" onclick="tog(this)"><span>Can ERPNext automatically generate e-way bills for outward supplies?</span><span class="faq-arrow">&#9660;</span></button><div class="faq-a">Yes. ERPNext can be configured to automatically trigger e-way bill generation for delivery notes where the consignment value exceeds ₹50,000. The e-way bill number is embedded in the delivery note and can be printed on the challan. Manual generation is also supported for inter-warehouse transfers.</div></div>
+<div class="faq-item"><button class="faq-q" onclick="tog(this)"><span>How does ERPNext deduct TDS automatically on vendor payments?</span><span class="faq-arrow">&#9660;</span></button><div class="faq-a">When a vendor payment is made in ERPNext, the system checks the TDS category configured on the vendor master, calculates TDS at the applicable rate under the correct section, creates the TDS payable entry, and posts the net payment to the vendor. The TDS payable report provides data for Form 26Q quarterly filing.</div></div>
+<div class="faq-item"><button class="faq-q" onclick="tog(this)"><span>Is ERPNext suitable for businesses with multiple GSTINs in different states?</span><span class="faq-arrow">&#9660;</span></button><div class="faq-a">Yes. ERPNext supports multi-company and multi-branch setups where each GSTIN is managed as a separate company or branch. Tax rules, returns data, and ITC are tracked separately per GSTIN, with consolidated management reporting across the group.</div></div>
+</div>
+  </div>
+</section>
+<section class="section section-alt">
+  <div class="container">
+    <div class="seo-box">
+      <p class="section-label" style="margin-bottom:8px">SEO Keywords</p>
+      <h3 style="font-size:.92rem;font-weight:700;color:var(--dark);margin-bottom:8px">Search Terms This Page Targets</h3>
+      <div class="seo-kw"><span>ERPNext GST compliance India</span><span>ERPNext GSTR-1 GSTR-3B generation</span><span>ERPNext e-invoicing IRP IRN</span><span>ERPNext GSTR-2B reconciliation</span><span>ERPNext e-way bill automation</span><span>ERPNext TDS automation India</span><span>ERPNext GST Pune implementation</span><span>ERPNext GST multi-state GSTIN</span><span>ERPNext TCS Section 206C</span><span>ERPNext GST accounting software India</span><span>open source GST software India</span><span>ERPNext VAT Oman UAE GCC</span><span>ERPNext tax compliance manufacturing</span><span>ERPNext RCM reverse charge</span></div>
+    </div>
+  </div>
+</section>
+<section class="cta-section">
+  <div class="container">
+    <h2>Ready to Implement ERPNext GST & Tax Compliance?</h2>
+    <p>Quantbit Technologies configures ERPNext for complete GST compliance — from HSN mapping and GSTIN setup to e-invoicing credentials, GSTR reconciliation workflows, and TDS categories — so your tax team files accurate returns every month without manual effort.</p>
+    <div class="cta-btns">
+      <a href="/company/contact-us.html" class="btn-white">Book Free Demo</a>
+      <a href="/company/contact-us.html" class="btn-ghost">Talk to a Consultant</a>
+    </div>
+    <div class="cta-trust">&#9989; Certified ERPNext Partner &nbsp;|&nbsp; &#9989; In-house Dev Team &nbsp;|&nbsp; &#9989; India &amp; GCC Experience &nbsp;|&nbsp; &#9989; Post-go-live Support</div>
+  </div>
+</section>
+<div id="footer"></div>
+
+<script>
+function tog(btn){
+  btn.classList.toggle('open');
+  var a=btn.nextElementSibling;
+  a.classList.toggle('open');
+}
+</script>
+<script>
+fetch("/header.html")
+    .then(res => res.text())
+    .then(data => {
+        document.getElementById("header").innerHTML = data;
+    });
+
+fetch("/footer.html")
+    .then(res => res.text())
+    .then(data => {
+        document.getElementById("footer").innerHTML = data;
+    });
+</script>
+<!-- ================= TEMPLATE JS ================= -->
+    <!--<< All JS Plugins >>-->
+    <script data-cfasync="false" src="../../cdn-cgi/scripts/5c5dd728/cloudflare-static/email-decode.min.js"></script>
+    <script src="/../assets/quantbit_website/js/jquery-3.7.1.min.js"></script>
+    <!--<< Viewport Js >>-->
+    <script src="/../assets/quantbit_website/js/viewport.jquery.js"></script>
+    <!--<< Bootstrap Js >>-->
+    <script src="/../assets/quantbit_website/js/bootstrap.bundle.min.js"></script>
+    <!--<< Nice Select Js >>-->
+    <script src="/../assets/quantbit_website/js/jquery.nice-select.min.js"></script>
+    <!--<< Waypoints Js >>-->
+    <script src="/../assets/quantbit_website/js/jquery.waypoints.js"></script>
+    <!--<< Counterup Js >>-->
+    <script src="/../assets/quantbit_website/js/jquery.counterup.min.js"></script>
+    <!--<< Slick Js >>-->
+    <script src="/../assets/quantbit_website/js/slick.min.js"></script>
+    <!--<< Slick Animation Js >>-->
+    <script src="/../assets/quantbit_website/js/slick-animation.min.js"></script>
+    <!--<< MeanMenu Js >>-->
+    <script src="/../assets/quantbit_website/js/jquery.meanmenu.min.js"></script>
+    <!--<< Magnific Popup Js >>-->
+    <script src="/../assets/quantbit_website/js/jquery.magnific-popup.min.js"></script>
+    <!--<< Wow Animation Js >>-->
+    <script src="/../assets/quantbit_website/js/wow.min.js"></script>
+    <!--<< Circle Progress Js >>-->
+    <script src="/../assets/quantbit_website/js/circle-progress.js"></script>
+    <!--<< Main.js >>-->
+    <script src="/../assets/quantbit_website/js/main.js"></script>
+    <script defer
+        src="../../../static.cloudflareinsights.com/beacon.min.js/v8c78df7c7c0f484497ecbca7046644da1771523124516"
+        integrity="sha512-8DS7rgIrAmghBFwoOTujcf6D9rXvH8xm8JQ1Ja01h9QX8EzXldiszufYa4IFfKdLUKTTrnSFXLDkUEOTrZQ8Qg=="
+        data-cf-beacon='{"version":"2024.11.0","token":"90f7972af14a48b4add7da2b74f5d675","r":1,"server_timing":{"name":{"cfCacheStatus":true,"cfEdge":true,"cfExtPri":true,"cfL4":true,"cfOrigin":true,"cfSpeedBrain":true},"location_startswith":null}}'
+        crossorigin="anonymous"></script>
+
+</body></html>

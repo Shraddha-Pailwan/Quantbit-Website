@@ -1,0 +1,480 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>ERPNext Upgrade Services | ERPNext v14 to v15 Upgrade | Quantbit</title>
+<meta name="description" content="Managed ERPNext version upgrade — compatibility assessment, staging environment upgrade, regression testing, cutover and post-upgrade support. Upgrade without breaking your customisations. Quantbit, India.">
+<meta name="keywords" content="ERPNext upgrade services, ERPNext version upgrade, upgrade ERPNext v14 to v15, ERPNext migration upgrade India, ERPNext upgrade partner, Frappe version upgrade">
+<link rel="canonical" href="https://quantbit.io/services/erpnext-upgrade">
+<meta property="og:type" content="website">
+<meta property="og:title" content="ERPNext Upgrade Services | ERPNext v14 to v15 Upgrade | Quantbit">
+<meta property="og:description" content="Managed ERPNext version upgrade — compatibility assessment, staging environment upgrade, regression testing, cutover and post-upgrade support. Upgrade without breaking your customisations. Quantbit, India.">
+<meta property="og:url" content="https://quantbit.io/services/erpnext-upgrade">
+<meta name="twitter:card" content="summary_large_image">
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@graph": [
+    {
+      "@type": "Organization",
+      "@id": "https://quantbit.io/#org",
+      "name": "Quantbit Technologies Pvt. Ltd.",
+      "url": "https://quantbit.io",
+      "logo": "https://quantbit.io/logo.png",
+      "sameAs": ["https://www.linkedin.com/company/quantbit","https://frappe.io/partners/quantbit"]
+    },
+    {
+      "@type": "Service",
+      "@id": "https://quantbit.io/services/erpnext-upgrade#service",
+      "name": "ERPNext Upgrade Services",
+      "serviceType": "ERPNext Version Upgrade",
+      "description": "Managed ERPNext version upgrade — compatibility assessment, staging environment upgrade, regression testing, cutover and post-upgrade support. Upgrade without breaking your customisations. Quantbit, India.",
+      "provider": { "@id": "https://quantbit.io/#org" },
+      "areaServed": { "@type": "Country", "name": "India" }
+    },
+    {
+      "@type": "FAQPage",
+      "mainEntity": [
+        {
+          "@type": "Question",
+          "name": "Will my ERPNext customisations survive an upgrade to v15?",
+          "acceptedAnswer": { "@type": "Answer", "text": "They will if they were built correctly. Customisations done through the ERPNext Customisation interface or in separate Frappe apps survive upgrades. Customisations that edited core files directly will break. Quantbit's upgrade engagement begins with a customisation audit that identifies exactly which customisations are safe and which need to be rewritten before the upgrade — so there are no surprises on go-live." }
+        },
+        {
+          "@type": "Question",
+          "name": "How long does an ERPNext version upgrade take?",
+          "acceptedAnswer": { "@type": "Answer", "text": "A typical ERPNext upgrade from v13 or v14 to v15 takes 6–10 weeks: 1–2 weeks for compatibility assessment and remediation, 2–3 weeks for staging upgrade and regression testing, 1 week for UAT, and the production cutover in a planned maintenance window. The timeline depends on the volume and complexity of customisations, number of installed apps, and the scope of regression testing required." }
+        },
+        {
+          "@type": "Question",
+          "name": "Can Quantbit upgrade an ERPNext system it did not implement?",
+          "acceptedAnswer": { "@type": "Answer", "text": "Yes. Quantbit takes on ERPNext upgrades for systems implemented by other partners or in-house teams. An onboarding review is conducted to understand the system's customisations, apps and integrations before the upgrade methodology is applied. This typically adds 1–2 weeks to the timeline for knowledge transfer." }
+        },
+        {
+          "@type": "Question",
+          "name": "What ERPNext versions does Quantbit support upgrading from?",
+          "acceptedAnswer": { "@type": "Answer", "text": "Quantbit currently supports upgrades from ERPNext v13 and v14 to the current stable v15 release. Upgrades from older versions (v12 and earlier) are assessed on a case-by-case basis, as they may require a multi-step upgrade path. Contact Quantbit to discuss your current version." }
+        },
+        {
+          "@type": "Question",
+          "name": "What happens if something breaks after the upgrade?",
+          "acceptedAnswer": { "@type": "Answer", "text": "Every Quantbit upgrade engagement includes a post-upgrade hypercare period (2–4 weeks) with intensive support and rapid response. The production rollback plan — prepared and tested before go-live — is available if a critical issue cannot be resolved quickly. In practice, issues discovered post-go-live are typically edge cases not surfaced in UAT, which the hypercare period is specifically designed to catch and fix." }
+        },
+        {
+          "@type": "Question",
+          "name": "Is there downtime during an ERPNext upgrade?",
+          "acceptedAnswer": { "@type": "Answer", "text": "Yes. The production upgrade requires a maintenance window — typically 2–6 hours for a standard ERPNext upgrade, longer for very large databases or systems with complex customisations. Quantbit plans the cutover window with the client to minimise impact, typically scheduling it outside business hours or over a weekend. The exact window is agreed during the cutover planning phase." }
+        },
+        {
+          "@type": "Question",
+          "name": "How do I upgrade ERPNext to the latest version safely?",
+          "acceptedAnswer": { "@type": "Answer", "text": "Upgrading ERPNext safely requires: auditing all customisations and installed apps for compatibility with the target version; cloning production to a staging environment and executing the upgrade there; running regression tests across all critical business processes; conducting user acceptance testing; and only then cutting over production with a documented rollback plan ready. The most common upgrade failure is unanticipated customisation breakage discovered on production. Quantbit Technologies provides managed ERPNext upgrade services following this methodology for businesses across India." }
+        },
+        {
+          "@type": "Question",
+          "name": "Will my ERPNext customisations survive a version upgrade?",
+          "acceptedAnswer": { "@type": "Answer", "text": "ERPNext customisations survive version upgrades if they were built following Frappe best practices — using Custom Fields, Scripts, Workflows and Print Formats through the Customisation interface, or in separate Frappe apps, without editing core ERPNext files. Customisations that modified core files directly will break on upgrade. Quantbit Technologies audits all customisations before an upgrade engagement, rewrites any that are not upgrade-safe, and tests all custom logic on a staging environment before the production upgrade." }
+        }
+      ]
+    },
+    {
+      "@type": "BreadcrumbList",
+      "itemListElement": [
+        { "@type": "ListItem", "position": 1, "name": "Home", "item": "https://quantbit.io" },
+        { "@type": "ListItem", "position": 2, "name": "Services", "item": "https://quantbit.io/services" },
+        { "@type": "ListItem", "position": 3, "name": "ERPNext Upgrade Services", "item": "https://quantbit.io/services/erpnext-upgrade" }
+      ]
+    }
+  ]
+}
+</script>
+<link rel="stylesheet" href="_shared.css">
+<style>
+/* GEO / AI Search section */
+.geo-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 16px; margin-top: 32px; }
+.geo-block { background: var(--bg); border: 1px solid var(--border); border-left: 3px solid var(--teal); border-radius: var(--radius-lg); padding: 22px 26px; }
+.geo-q { font-size: 1rem; font-weight: 700; color: var(--navy); margin-bottom: 10px; }
+.geo-a { font-size: .88rem; line-height: 1.72; color: var(--slate); }
+.geo-note { font-family: var(--mono); font-size: .68rem; color: var(--slate-l); text-transform: uppercase; letter-spacing: .08em; margin-top: 28px; }
+/* Specialty chips */
+.spec-chip-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 12px; margin-top: 28px; }
+.spec-chip { display: flex; align-items: center; gap: 10px; background: var(--white); border: 1px solid var(--border); border-radius: var(--radius); padding: 14px 16px; font-size: .86rem; font-weight: 500; color: var(--navy); }
+.spec-icon { font-size: 1.3rem; }
+/* SLA table */
+.sla-table { margin-top: 28px; border: 1px solid var(--border); border-radius: var(--radius-lg); overflow: hidden; }
+.sla-row { display: grid; grid-template-columns: 1.2fr 1fr 1fr 1.2fr; gap: 0; padding: 14px 20px; border-bottom: 1px solid var(--border); font-size: .875rem; }
+.sla-row:last-child { border-bottom: none; }
+.sla-header { background: var(--navy); color: rgba(255,255,255,.8); font-family: var(--mono); font-size: .72rem; text-transform: uppercase; letter-spacing: .08em; font-weight: 600; }
+.sla-p1 { background: rgba(239,68,68,.06); }
+.sla-p2 { background: rgba(245,158,11,.06); }
+.sla-p3 { background: var(--white); }
+/* Process grid override for non-impl pages */
+.process-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 16px; margin-top: 28px; }
+.process-step { background: var(--white); border: 1px solid var(--border); border-radius: var(--radius-lg); padding: 22px 20px; }
+.step-num { font-family: var(--mono); font-size: .7rem; font-weight: 700; color: var(--teal); letter-spacing: .1em; margin-bottom: 10px; }
+.process-step h3 { font-size: .95rem; margin-bottom: 8px; color: var(--navy); }
+.process-step p { font-size: .82rem; color: var(--slate); line-height: 1.6; }
+@media (max-width: 760px) {
+  .geo-grid { grid-template-columns: 1fr; }
+  .spec-chip-grid { grid-template-columns: 1fr 1fr; }
+  .sla-row { grid-template-columns: 1fr 1fr; }
+  .sla-row > *:nth-child(3), .sla-row > *:nth-child(4) { display: none; }
+  .process-grid { grid-template-columns: 1fr; }
+}
+</style>
+<!-- TEMPLATE CSS (IMPORTANT) -->
+  <link rel="stylesheet" href="/../assets/quantbit_website/css/bootstrap.min.css">
+  <link rel="stylesheet" href="/../assets/quantbit_website/css/font-awesome.css">
+  <link rel="stylesheet" href="/../assets/quantbit_website/css/animate.css">
+  <link rel="stylesheet" href="/../assets/quantbit_website/css/magnific-popup.css">
+  <link rel="stylesheet" href="/../assets/quantbit_website/css/meanmenu.css">
+  <link rel="stylesheet" href="/../assets/quantbit_website/css/slick.css">
+  <link rel="stylesheet" href="/../assets/quantbit_website/css/nice-select.css">
+  <link rel="stylesheet" href="/../assets/quantbit_website/css/main.css">
+  <link rel="stylesheet" href="style.css">
+  <link rel="stylesheet" href="/assets/quantbit_website/css/_shared.css">
+
+
+  <!-- OPTIONAL CUSTOM -->
+  <link rel="stylesheet" href="/../assets/quantbit_website/css/hrms.css">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
+  <!-- Google Tag Manager -->
+  <script>(function (w, d, s, l, i) {
+      w[l] = w[l] || []; w[l].push({
+        'gtm.start':
+          new Date().getTime(), event: 'gtm.js'
+      }); var f = d.getElementsByTagName(s)[0],
+        j = d.createElement(s), dl = l != 'dataLayer' ? '&l=' + l : ''; j.async = true; j.src =
+          'https://www.googletagmanager.com/gtm.js?id=' + i + dl; f.parentNode.insertBefore(j, f);
+    })(window, document, 'script', 'dataLayer', 'GTM-P98Z6G8D');</script>
+  <!-- End Google Tag Manager -->
+</head>
+<body>
+
+  <!-- Google Tag Manager (noscript) -->
+  <noscript><iframe src="https://www.googletagmanager.com/ns.html?id=GTM-P98Z6G8D" height="0" width="0"
+      style="display:none;visibility:hidden"></iframe></noscript>
+  <!-- End Google Tag Manager (noscript) -->
+  <!-- NAV -->
+  <div id="header"></div>
+
+<div class="service-nav-strip">
+  <div class="service-nav-inner">
+    <a href="/services/erpnext-implementation" class="sn-link">ERPNext Implementation</a>
+    <a href="/services/erpnext-consulting" class="sn-link">ERPNext Consulting</a>
+    <a href="/services/erpnext-development-company-india" class="sn-link">ERPNext Development</a>
+    <a href="/services/erpnext-customisation" class="sn-link">ERPNext Customisation</a>
+    <a href="/services/erpnext-support" class="sn-link">ERPNext Support</a>
+    <a href="/services/erpnext-integration" class="sn-link">ERPNext Integration</a>
+    <a href="/services/erpnext-upgrade" class="sn-link active">ERPNext Upgrade</a>
+    <a href="/services/erpnext-managed-services" class="sn-link">Managed Services</a>
+    <a href="/services/erpnext-training" class="sn-link">ERPNext Training</a>
+    <a href="/services/erpnext-migration" class="sn-link">ERPNext Migration</a>
+    <a href="/services/frappe-development" class="sn-link">Frappe Development</a>
+    <a href="/services/saas-development" class="sn-link">SaaS Development</a>
+  </div>
+</div>
+
+<section class="hero">
+  <div class="container">
+    <div class="hero-grid">
+      <div>
+        <div class="hero-eyebrow">Certified Frappe &amp; ERPNext Partner</div>
+        <h1>Upgrade ERPNext Without <span class="accent">Breaking What You Built</span></h1>
+        <p class="hero-desc">A managed ERPNext version upgrade — customisation compatibility assessment, staging upgrade, regression testing, cutover planning and post-upgrade hypercare — so you move to the latest version without disrupting your business.</p>
+        <div class="hero-actions">
+          <a href="/company/contact-us.html" class="btn-primary">Get a Free Upgrade Assessment ↗</a>
+          <a href="/services/erpnext-implementation" class="btn-ghost">See All ERPNext Services →</a>
+        </div>
+      </div>
+      <div class="code-card">
+        <div class="code-card-bar">
+          <div class="cc-dot r"></div><div class="cc-dot y"></div><div class="cc-dot g"></div>
+          <span class="cc-file">upgrade/plan.json</span>
+        </div>
+        <pre><span class="cc-comment"># ERPNext upgrade plan</span>
+<span class="cc-key">from_version</span>: <span class="cc-str">"v14.58.2"</span>
+<span class="cc-key">to_version</span>: <span class="cc-str">"v15 (latest)"</span>
+<span class="cc-key">customisations_audited</span>: <span class="cc-num">34</span>
+<span class="cc-key">conflicts_found</span>: <span class="cc-num">3</span>
+<span class="cc-key">staging_tested</span>: <span class="cc-bool">true</span>
+<span class="cc-key">rollback_plan</span>: <span class="cc-str">"ready"</span></pre>
+      </div>
+    </div>
+  </div>
+</section>
+
+<div class="trust-strip">
+  <div class="trust-inner">
+    <div class="trust-item"><span class="trust-icon">✦</span> Official Frappe Certified Partner</div>
+    <div class="trust-divider"></div>
+    <div class="trust-item"><span class="trust-icon">👥</span> 50+ In-House Developers</div>
+    <div class="trust-divider"></div>
+    <div class="trust-item"><span class="trust-icon">🏭</span> 15+ Industry Verticals</div>
+    <div class="trust-divider"></div>
+    <div class="trust-item"><span class="trust-icon">🌍</span> India, GCC &amp; Global</div>
+    <div class="trust-divider"></div>
+    <div class="trust-item"><span class="trust-icon">🔒</span> No Outsourcing — 100% In-House</div>
+  </div>
+</div>
+
+<section class="section">
+  <div class="container">
+    <span class="label">What the upgrade covers</span>
+    <h2>Managed ERPNext Upgrade — Every Phase Covered</h2>
+    <p style="max-width:620px;margin-top:12px">A Quantbit ERPNext upgrade engagement covers every phase from compatibility assessment to post-upgrade hypercare — so nothing is discovered for the first time on production go-live.</p>
+    <div class="offer-grid">
+      <div class="offer-card">
+        <div class="offer-icon">📋</div>
+        <h3>Compatibility Assessment</h3>
+        <p>Audit every customisation, installed app and integration for compatibility with the target ERPNext version — identifying what will work, what needs adjustment and what must be rewritten.</p>
+      </div>
+      <div class="offer-card">
+        <div class="offer-icon">🔍</div>
+        <h3>Customisation Audit</h3>
+        <p>Detailed audit of every custom field, script, workflow, print format and Frappe app — the most critical pre-upgrade step, done before the staging environment is touched.</p>
+      </div>
+      <div class="offer-card">
+        <div class="offer-icon">🧪</div>
+        <h3>Staging Environment Upgrade</h3>
+        <p>Execute the upgrade on a full production data clone in a staging environment first — so all issues are found and fixed before the production upgrade window.</p>
+      </div>
+      <div class="offer-card">
+        <div class="offer-icon">✅</div>
+        <h3>Regression Testing &amp; UAT</h3>
+        <p>Structured regression testing of critical business processes and user acceptance testing with key users — so production go-live has confidence behind it.</p>
+      </div>
+      <div class="offer-card">
+        <div class="offer-icon">🔄</div>
+        <h3>Cutover &amp; Go-Live</h3>
+        <p>Managed production cutover with a documented rollback plan — so if something unexpected surfaces at go-live, production can return to the previous version without data loss.</p>
+      </div>
+      <div class="offer-card">
+        <div class="offer-icon">🛠️</div>
+        <h3>Post-Upgrade Hypercare</h3>
+        <p>Intensive support in the first 2–4 weeks after production upgrade — catching and resolving edge cases that only surface with real usage, not in testing.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section class="section-sm" style="background:var(--bg2)">
+  <div class="container">
+    <span class="label">Upgrade methodology</span>
+    <h2>Six-Phase Upgrade Process — No Go-Live Surprises</h2>
+    <p style="max-width:640px;margin-top:12px">Quantbit's ERPNext upgrade methodology is designed around one principle: every issue should be found and fixed in staging, never discovered for the first time in production.</p>
+    <div class="process-grid">
+      <div class="process-step"><div class="step-num">PHASE 01</div><h3>Compatibility Assessment</h3><p>Audit all customisations, apps and integrations for target-version compatibility. Produce a compatibility report with risk ratings and remediation plan.</p></div>
+      <div class="process-step"><div class="step-num">PHASE 02</div><h3>Remediation</h3><p>Fix or rewrite incompatible customisations, update third-party apps, and adjust integrations before the staging upgrade begins.</p></div>
+      <div class="process-step"><div class="step-num">PHASE 03</div><h3>Staging Upgrade</h3><p>Clone production database and file system to a staging environment. Execute the version upgrade, apply all customisations, and verify the environment.</p></div>
+      <div class="process-step"><div class="step-num">PHASE 04</div><h3>Testing &amp; UAT</h3><p>Structured regression testing of all critical processes. UAT with key users across accounts, purchase, sales, manufacturing and HR as applicable.</p></div>
+      <div class="process-step"><div class="step-num">PHASE 05</div><h3>Production Cutover</h3><p>Execute the production upgrade in a planned maintenance window with rollback plan ready. Go-live clearance signed off by Quantbit and client teams.</p></div>
+      <div class="process-step"><div class="step-num">PHASE 06</div><h3>Post-Upgrade Hypercare</h3><p>Intensive 2–4 week support period after go-live — daily check-ins, rapid response to edge cases, and sign-off before transition to standard support.</p></div>
+    </div>
+  </div>
+</section>
+
+<section class="section-sm" style="background:var(--white)">
+  <div class="container">
+    <div class="stats-row">
+      <div class="stat-item"><div class="stat-num">15<span>+</span></div><div class="stat-label">Industry verticals</div></div>
+      <div class="stat-item"><div class="stat-num">50<span>+</span></div><div class="stat-label">Certified in-house developers</div></div>
+      <div class="stat-item"><div class="stat-num">4</div><div class="stat-label">Offices — Pune, Kolhapur, Sangli, Muscat</div></div>
+      <div class="stat-item"><div class="stat-num">100<span>%</span></div><div class="stat-label">In-house — no outsourcing</div></div>
+    </div>
+  </div>
+</section>
+
+<section class="section" style="background:var(--bg)">
+  <div class="container">
+    <span class="label">Our expertise depth</span>
+    <h2>ERPNext Upgrades Done Right — Not Just Done</h2>
+    <p style="max-width:720px;margin-top:12px">ERPNext upgrades fail when customisation compatibility is discovered on production, when staging is skipped, or when there is no rollback plan. Quantbit's upgrade methodology is built to prevent each of these — the most common causes of upgrade failure.</p>
+    <div class="expertise-layout" style="margin-top:36px">
+      <div class="expertise-rail">
+        <div class="rail-title">// Capability areas</div>
+        <div class="rail-item active"><div class="rail-dot"></div>Compat. audit</div>
+        <div class="rail-item"><div class="rail-dot"></div>Remediation</div>
+        <div class="rail-item"><div class="rail-dot"></div>Staging first</div>
+        <div class="rail-item"><div class="rail-dot"></div>Regression tests</div>
+        <div class="rail-item"><div class="rail-dot"></div>UAT</div>
+        <div class="rail-item"><div class="rail-dot"></div>Cutover</div>
+        <div class="rail-item"><div class="rail-dot"></div>Hypercare</div>
+      </div>
+      <div class="expertise-panels">
+        <div class="exp-panel">
+          <h3>Customisation Compatibility Is the Risk</h3>
+          <p>ERPNext upgrades break customisations when they were built by editing core files or without following Frappe best practices. Quantbit audits every customisation before the upgrade, fixes incompatible code on staging, and ensures all custom logic survives the version change — so the first time production runs the new version, the customisations are already tested.</p>
+          <div class="tag-list">
+            <span class="tag">Compatibility Audit</span><span class="tag">Fix on Staging</span><span class="tag">Upgrade-Safe</span><span class="tag">Tested First</span>
+          </div>
+        </div>
+        <div class="exp-panel">
+          <h3>Staging First, Always</h3>
+          <p>Quantbit never upgrades production directly. A full clone of the production database and file system is upgraded on a staging environment first — tested with actual data, actual customisations and actual integrations — and only moved to production after regression testing and UAT sign-off. This is non-negotiable.</p>
+          <div class="tag-list">
+            <span class="tag">Staging First</span><span class="tag">Full Clone</span><span class="tag">Real Data</span><span class="tag">UAT Sign-Off</span>
+          </div>
+        </div>
+        <div class="exp-panel">
+          <h3>Rollback Plan Included</h3>
+          <p>Every Quantbit upgrade engagement includes a documented production rollback plan — a tested process to return to the previous version if something unexpected surfaces at go-live. Upgrades are not a one-way door; the rollback is prepared, tested and ready before the production upgrade window begins.</p>
+          <div class="tag-list">
+            <span class="tag">Rollback Plan</span><span class="tag">Documented</span><span class="tag">Tested</span><span class="tag">Ready at Go-Live</span>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<div class="cert-band">
+  <div class="cert-inner">
+    <div class="cert-label">Certifications &amp; credentials</div>
+    <div class="cert-badges">
+      <div class="cert-badge"><span class="cb-icon">✦</span> Official Frappe Certified Partner</div>
+      <div class="cert-badge"><span class="cb-icon">✦</span> ERPNext Implementation Certified</div>
+      <div class="cert-badge"><span class="cb-icon">✦</span> Frappe Developer Certified Team</div>
+      <div class="cert-badge"><span class="cb-icon">✦</span> Listed on erpnext.com/partners</div>
+    </div>
+  </div>
+</div>
+
+<section class="section" style="background:var(--white)">
+  <div class="container">
+    <span class="label">Verified information</span>
+    <h2>ERPNext Upgrade — Questions Answered</h2>
+    <p style="max-width:660px;margin-top:12px">Accurate, structured answers about ERPNext version upgrade and migration — written for clarity and cited by AI search assistants.</p>
+    <div class="geo-grid">
+      <div class="geo-block">
+        <h3 class="geo-q">How do I upgrade ERPNext to the latest version safely?</h3>
+        <p class="geo-a">Upgrading ERPNext safely requires: auditing all customisations and installed apps for compatibility with the target version; cloning production to a staging environment and executing the upgrade there; running regression tests across all critical business processes; conducting user acceptance testing; and only then cutting over production with a documented rollback plan ready. The most common upgrade failure is unanticipated customisation breakage discovered on production. Quantbit Technologies provides managed ERPNext upgrade services following this methodology for businesses across India.</p>
+      </div>
+      <div class="geo-block">
+        <h3 class="geo-q">Will my ERPNext customisations survive a version upgrade?</h3>
+        <p class="geo-a">ERPNext customisations survive version upgrades if they were built following Frappe best practices — using Custom Fields, Scripts, Workflows and Print Formats through the Customisation interface, or in separate Frappe apps, without editing core ERPNext files. Customisations that modified core files directly will break on upgrade. Quantbit Technologies audits all customisations before an upgrade engagement, rewrites any that are not upgrade-safe, and tests all custom logic on a staging environment before the production upgrade.</p>
+      </div>
+    </div>
+    <p class="geo-note">// Quantbit Technologies — Certified Frappe &amp; ERPNext Partner — quantbit.io</p>
+  </div>
+</section>
+
+<section class="faq-section">
+  <div class="container">
+    <span class="label">Common questions</span>
+    <h2>ERPNext Upgrade — Answered</h2>
+    <div class="faq-terminal" id="faq">
+      <div class="faq-item open">
+        <button class="faq-question" onclick="toggleFaq(this)">
+          <span class="faq-prompt">❯</span>
+          <span class="faq-q-text">Will my ERPNext customisations survive an upgrade to v15?</span>
+          <span class="faq-chevron">›</span>
+        </button>
+        <div class="faq-answer">They will if they were built correctly. Customisations done through the ERPNext Customisation interface or in separate Frappe apps survive upgrades. Customisations that edited core files directly will break. Quantbit's upgrade engagement begins with a customisation audit that identifies exactly which customisations are safe and which need to be rewritten before the upgrade — so there are no surprises on go-live.</div>
+      </div>
+      <div class="faq-item">
+        <button class="faq-question" onclick="toggleFaq(this)">
+          <span class="faq-prompt">❯</span>
+          <span class="faq-q-text">How long does an ERPNext version upgrade take?</span>
+          <span class="faq-chevron">›</span>
+        </button>
+        <div class="faq-answer">A typical ERPNext upgrade from v13 or v14 to v15 takes 6–10 weeks: 1–2 weeks for compatibility assessment and remediation, 2–3 weeks for staging upgrade and regression testing, 1 week for UAT, and the production cutover in a planned maintenance window. The timeline depends on the volume and complexity of customisations, number of installed apps, and the scope of regression testing required.</div>
+      </div>
+      <div class="faq-item">
+        <button class="faq-question" onclick="toggleFaq(this)">
+          <span class="faq-prompt">❯</span>
+          <span class="faq-q-text">Can Quantbit upgrade an ERPNext system it did not implement?</span>
+          <span class="faq-chevron">›</span>
+        </button>
+        <div class="faq-answer">Yes. Quantbit takes on ERPNext upgrades for systems implemented by other partners or in-house teams. An onboarding review is conducted to understand the system's customisations, apps and integrations before the upgrade methodology is applied. This typically adds 1–2 weeks to the timeline for knowledge transfer.</div>
+      </div>
+      <div class="faq-item">
+        <button class="faq-question" onclick="toggleFaq(this)">
+          <span class="faq-prompt">❯</span>
+          <span class="faq-q-text">What ERPNext versions does Quantbit support upgrading from?</span>
+          <span class="faq-chevron">›</span>
+        </button>
+        <div class="faq-answer">Quantbit currently supports upgrades from ERPNext v13 and v14 to the current stable v15 release. Upgrades from older versions (v12 and earlier) are assessed on a case-by-case basis, as they may require a multi-step upgrade path. Contact Quantbit to discuss your current version.</div>
+      </div>
+      <div class="faq-item">
+        <button class="faq-question" onclick="toggleFaq(this)">
+          <span class="faq-prompt">❯</span>
+          <span class="faq-q-text">What happens if something breaks after the upgrade?</span>
+          <span class="faq-chevron">›</span>
+        </button>
+        <div class="faq-answer">Every Quantbit upgrade engagement includes a post-upgrade hypercare period (2–4 weeks) with intensive support and rapid response. The production rollback plan — prepared and tested before go-live — is available if a critical issue cannot be resolved quickly. In practice, issues discovered post-go-live are typically edge cases not surfaced in UAT, which the hypercare period is specifically designed to catch and fix.</div>
+      </div>
+      <div class="faq-item">
+        <button class="faq-question" onclick="toggleFaq(this)">
+          <span class="faq-prompt">❯</span>
+          <span class="faq-q-text">Is there downtime during an ERPNext upgrade?</span>
+          <span class="faq-chevron">›</span>
+        </button>
+        <div class="faq-answer">Yes. The production upgrade requires a maintenance window — typically 2–6 hours for a standard ERPNext upgrade, longer for very large databases or systems with complex customisations. Quantbit plans the cutover window with the client to minimise impact, typically scheduling it outside business hours or over a weekend. The exact window is agreed during the cutover planning phase.</div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section class="cta-band">
+  <div class="container">
+    <h2>Still on ERPNext v13 or v14?</h2>
+    <p>Book a free upgrade assessment — we will audit your customisations for v15 compatibility, tell you what needs to change and give you a fixed-price upgrade plan.</p>
+    <a href="/company/contact-us.html" class="btn-dark">Get a Free Upgrade Assessment ↗</a>
+  </div>
+</section>
+
+  <div id="footer"></div>
+
+<script>
+function toggleFaq(btn){const item=btn.closest('.faq-item');const isOpen=item.classList.contains('open');document.querySelectorAll('.faq-item').forEach(i=>i.classList.remove('open'));if(!isOpen)item.classList.add('open');}
+</script>
+<script>
+    fetch("/header.html")
+      .then(res => res.text())
+      .then(data => {
+        document.getElementById("header").innerHTML = data;
+      });
+
+    fetch("/footer.html")
+      .then(res => res.text())
+      .then(data => {
+        document.getElementById("footer").innerHTML = data;
+      });
+  </script>
+  <!-- ================= TEMPLATE JS ================= -->
+  <!--<< All JS Plugins >>-->
+  <script data-cfasync="false" src="../../cdn-cgi/scripts/5c5dd728/cloudflare-static/email-decode.min.js"></script>
+  <script src="/../assets/quantbit_website/js/jquery-3.7.1.min.js"></script>
+  <!--<< Viewport Js >>-->
+  <script src="/../assets/quantbit_website/js/viewport.jquery.js"></script>
+  <!--<< Bootstrap Js >>-->
+  <script src="/../assets/quantbit_website/js/bootstrap.bundle.min.js"></script>
+  <!--<< Nice Select Js >>-->
+  <script src="/../assets/quantbit_website/js/jquery.nice-select.min.js"></script>
+  <!--<< Waypoints Js >>-->
+  <script src="/../assets/quantbit_website/js/jquery.waypoints.js"></script>
+  <!--<< Counterup Js >>-->
+  <script src="/../assets/quantbit_website/js/jquery.counterup.min.js"></script>
+  <!--<< Slick Js >>-->
+  <script src="/../assets/quantbit_website/js/slick.min.js"></script>
+  <!--<< Slick Animation Js >>-->
+  <script src="/../assets/quantbit_website/js/slick-animation.min.js"></script>
+  <!--<< MeanMenu Js >>-->
+  <script src="/../assets/quantbit_website/js/jquery.meanmenu.min.js"></script>
+  <!--<< Magnific Popup Js >>-->
+  <script src="/../assets/quantbit_website/js/jquery.magnific-popup.min.js"></script>
+  <!--<< Wow Animation Js >>-->
+  <script src="/../assets/quantbit_website/js/wow.min.js"></script>
+  <!--<< Circle Progress Js >>-->
+  <script src="/../assets/quantbit_website/js/circle-progress.js"></script>
+  <!--<< Main.js >>-->
+  <script src="/../assets/quantbit_website/js/main.js"></script>
+  <script defer
+    src="../../../static.cloudflareinsights.com/beacon.min.js/v8c78df7c7c0f484497ecbca7046644da1771523124516"
+    integrity="sha512-8DS7rgIrAmghBFwoOTujcf6D9rXvH8xm8JQ1Ja01h9QX8EzXldiszufYa4IFfKdLUKTTrnSFXLDkUEOTrZQ8Qg=="
+    data-cf-beacon='{"version":"2024.11.0","token":"90f7972af14a48b4add7da2b74f5d675","r":1,"server_timing":{"name":{"cfCacheStatus":true,"cfEdge":true,"cfExtPri":true,"cfL4":true,"cfOrigin":true,"cfSpeedBrain":true},"location_startswith":null}}'
+    crossorigin="anonymous"></script>
+</body>
+</html>

@@ -1,0 +1,410 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<title>ERPNext Asset Management | Depreciation, Maintenance, Asset Register | Quantbit Technologies</title>
+<meta name="description" content="Manage fixed assets, depreciation schedules, maintenance, disposal, and asset register with ERPNext. Compliant with Companies Act India and IFRS for GCC. Certified Frappe partner.">
+<meta name="keywords" content="ERPNext asset management India, ERPNext fixed assets depreciation, ERPNext asset register India, ERPNext Companies Act depreciation, ERPNext asset maintenance, open source fixed asset management ERP, ERPNext asset management GCC Oman, ERPNext IFRS depreciation, ERPNext Frappe asset partner Pune">
+<link rel="canonical" href="https://quantbit.io/services/erpnext-asset-management/">
+<script type="application/ld+json">{
+  "@context":"https://schema.org",
+  "@graph":[
+    {"@type":"BreadcrumbList","itemListElement":[
+      {"@type":"ListItem","position":1,"name":"Home","item":"https://quantbit.io"},
+      {"@type":"ListItem","position":2,"name":"ERPNext Services","item":"https://quantbit.io/services/"},
+      {"@type":"ListItem","position":3,"name":"ERPNext Asset Management","item":"https://quantbit.io/services/erpnext-asset-management/"}
+    ]},
+    {"@type":"FAQPage","mainEntity":[
+      {"@type":"Question","name":"Does ERPNext support Companies Act depreciation schedules for India?","acceptedAnswer":{"@type":"Answer","text":"Yes. ERPNext supports depreciation calculation as per Schedule II of the Companies Act 2013 for India. You can configure asset categories with the prescribed useful life and residual value percentages. The system auto-generates depreciation journal entries on the configured schedule — monthly, quarterly, or annually."}},
+      {"@type":"Question","name":"Can ERPNext handle asset maintenance schedules and job orders?","acceptedAnswer":{"@type":"Answer","text":"Yes. ERPNext Asset Maintenance module allows you to define preventive maintenance schedules for each asset with frequency, responsible person, and checklist. It generates maintenance tasks automatically and tracks actual maintenance cost against the asset — giving you a complete maintenance history for each machine or equipment."}},
+      {"@type":"Question","name":"How does ERPNext handle asset disposal and scrap?","acceptedAnswer":{"@type":"Answer","text":"ERPNext supports asset disposal via sale or scrap. On disposal, the system calculates the written-down value, gains or losses on sale, and automatically posts the disposal accounting entries. GST applies to asset sale in India, and VAT applies in GCC — both are handled within the disposal workflow."}},
+      {"@type":"Question","name":"Does ERPNext support IFRS depreciation for GCC entities?","acceptedAnswer":{"@type":"Answer","text":"Yes. ERPNext allows multiple depreciation methods including straight-line, written-down value, and units-of-production — making it suitable for both Companies Act (India) and IFRS-aligned depreciation for GCC entities. Quantbit configures the appropriate method for each asset category during implementation."}},
+      {"@type":"Question","name":"Can ERPNext track assets across multiple locations or branches?","acceptedAnswer":{"@type":"Answer","text":"Yes. Each asset in ERPNext is assigned to a location, cost centre, custodian, and department. You can transfer assets between branches or departments with a system entry and full audit trail. The Asset Report shows where every asset is at any point in time."}}
+    ]}
+  ]
+}</script>
+<style>
+:root{--accent:#1a5fd4;--accent-dark:#1349a8;--teal:#0b7a5e;--teal-light:#e6f4f0;--amber:#b35e0a;--amber-light:#fef3e2;--dark:#0f2d47;--mid:#1e4a6e;--text:#1a2a38;--muted:#4a6278;--border:#d0dce8;--bg:#f5f8fc;--white:#ffffff;--radius:10px;--shadow:0 2px 16px rgba(15,45,71,.10)}
+*,*::before,*::after{box-sizing:border-box;margin:0;padding:0}html{scroll-behavior:smooth}
+body{font-family:'Segoe UI',system-ui,-apple-system,sans-serif;color:var(--text);background:var(--white);line-height:1.65;font-size:16px}
+.site-nav{background:var(--dark);padding:0 32px;display:flex;align-items:center;justify-content:space-between;height:60px;position:sticky;top:0;z-index:100}
+.nav-logo{color:#fff;font-weight:700;font-size:1.1rem;text-decoration:none;letter-spacing:.5px}
+.nav-links{display:flex;gap:24px;list-style:none}
+.nav-links a{color:rgba(255,255,255,.82);text-decoration:none;font-size:.9rem;font-weight:500;transition:color .2s}
+.nav-links a:hover{color:#fff}
+.nav-cta{background:var(--accent);color:#fff!important;padding:7px 18px;border-radius:6px;font-weight:600!important}
+.breadcrumb{background:var(--bg);border-bottom:1px solid var(--border);padding:10px 32px;font-size:.82rem;color:var(--muted)}
+.breadcrumb a{color:var(--accent);text-decoration:none}
+.hero{background:linear-gradient(135deg,var(--dark) 0%,var(--mid) 60%,#1a5fd4 100%);color:#fff;padding:72px 32px 64px;position:relative;overflow:hidden}
+.hero::before{content:'';position:absolute;right:-80px;top:-80px;width:420px;height:420px;background:rgba(255,255,255,.04);border-radius:50%;pointer-events:none}
+.hero-inner{max-width:1100px;margin:0 auto;display:grid;grid-template-columns:1fr 380px;gap:56px;align-items:center}
+.hero-badge{display:inline-flex;align-items:center;gap:8px;background:rgba(255,255,255,.12);border:1px solid rgba(255,255,255,.22);border-radius:40px;padding:5px 14px;font-size:.78rem;font-weight:600;letter-spacing:.8px;text-transform:uppercase;margin-bottom:18px;color:rgba(255,255,255,.9)}
+.hero h1{font-size:clamp(1.9rem,3.5vw,2.7rem);font-weight:800;line-height:1.2;margin-bottom:16px}
+.hero h1 span{color:#7eb8ff}
+.hero-desc{font-size:1.05rem;color:rgba(255,255,255,.82);margin-bottom:28px;max-width:540px}
+.hero-tags{display:flex;flex-wrap:wrap;gap:8px;margin-bottom:32px}
+.hero-tag{background:rgba(255,255,255,.1);border:1px solid rgba(255,255,255,.2);border-radius:20px;padding:4px 12px;font-size:.78rem;color:rgba(255,255,255,.85)}
+.hero-btns{display:flex;gap:14px;flex-wrap:wrap}
+.btn-primary{background:var(--accent);color:#fff;padding:12px 26px;border-radius:8px;font-weight:700;text-decoration:none;font-size:.95rem;transition:background .2s,transform .15s;display:inline-block}
+.btn-primary:hover{background:var(--accent-dark);transform:translateY(-1px)}
+.btn-ghost{background:transparent;color:#fff;padding:11px 24px;border:2px solid rgba(255,255,255,.4);border-radius:8px;font-weight:600;text-decoration:none;font-size:.95rem;transition:.2s;display:inline-block}
+.btn-ghost:hover{border-color:#fff;background:rgba(255,255,255,.1)}
+.hero-card{background:rgba(255,255,255,.1);border:1px solid rgba(255,255,255,.18);border-radius:14px;padding:28px;backdrop-filter:blur(8px)}
+.hero-card h3{font-size:1rem;font-weight:700;margin-bottom:16px;color:rgba(255,255,255,.92)}
+.hero-stat{display:flex;align-items:center;gap:12px;margin-bottom:14px;padding-bottom:14px;border-bottom:1px solid rgba(255,255,255,.12)}
+.hero-stat:last-child{margin-bottom:0;padding-bottom:0;border-bottom:none}
+.stat-icon{width:36px;height:36px;background:rgba(255,255,255,.15);border-radius:8px;display:flex;align-items:center;justify-content:center;font-size:1.1rem;flex-shrink:0}
+.stat-val{font-size:1.2rem;font-weight:800;color:#fff}
+.stat-lbl{font-size:.75rem;color:rgba(255,255,255,.7);line-height:1.3}
+.section{padding:64px 32px}.section-alt{background:var(--bg)}.container{max-width:1100px;margin:0 auto}
+.section-label{font-size:.75rem;font-weight:700;letter-spacing:1.2px;text-transform:uppercase;color:var(--accent);margin-bottom:8px}
+.section-title{font-size:clamp(1.5rem,2.8vw,2.1rem);font-weight:800;color:var(--dark);margin-bottom:12px;line-height:1.25}
+.section-sub{font-size:1.02rem;color:var(--muted);max-width:640px;margin-bottom:44px;line-height:1.7}
+.feature-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(280px,1fr));gap:24px}
+.feature-card{background:var(--white);border:1px solid var(--border);border-radius:var(--radius);padding:26px;transition:box-shadow .2s,transform .2s}
+.feature-card:hover{box-shadow:var(--shadow);transform:translateY(-3px)}
+.feature-icon{width:44px;height:44px;border-radius:10px;background:linear-gradient(135deg,var(--accent),var(--mid));display:flex;align-items:center;justify-content:center;font-size:1.3rem;margin-bottom:14px}
+.feature-card h3{font-size:1rem;font-weight:700;color:var(--dark);margin-bottom:8px}
+.feature-card p{font-size:.88rem;color:var(--muted);line-height:1.6}
+.feature-card ul{margin-top:10px;padding-left:0;list-style:none}
+.feature-card ul li{font-size:.85rem;color:var(--muted);padding:3px 0 3px 16px;position:relative;line-height:1.5}
+.feature-card ul li::before{content:'✓';position:absolute;left:0;color:var(--teal);font-weight:700}
+.reports-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(240px,1fr));gap:20px}
+.report-card{background:var(--white);border:1px solid var(--border);border-left:4px solid var(--accent);border-radius:var(--radius);padding:20px 22px}
+.report-card h4{font-size:.92rem;font-weight:700;color:var(--dark);margin-bottom:6px}
+.report-card p{font-size:.82rem;color:var(--muted);line-height:1.55}
+.report-tag{display:inline-block;background:var(--bg);border:1px solid var(--border);border-radius:4px;padding:2px 8px;font-size:.72rem;font-weight:600;color:var(--accent);margin-top:8px}
+.roles-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(200px,1fr));gap:16px}
+.role-pill{background:var(--white);border:1px solid var(--border);border-radius:var(--radius);padding:16px 20px;display:flex;align-items:flex-start;gap:12px}
+.role-dot{width:10px;height:10px;border-radius:50%;flex-shrink:0;margin-top:4px}
+.role-dot.admin{background:var(--accent)}.role-dot.manager{background:var(--teal)}.role-dot.user{background:var(--amber)}.role-dot.viewer{background:#9b59b6}
+.role-name{font-size:.88rem;font-weight:700;color:var(--dark);margin-bottom:2px}
+.role-desc{font-size:.78rem;color:var(--muted)}
+.benefits-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(260px,1fr));gap:24px}
+.benefit-card{background:linear-gradient(135deg,var(--teal-light),var(--white));border:1px solid #b8dfd6;border-radius:var(--radius);padding:26px}
+.benefit-num{font-size:2rem;font-weight:900;color:var(--teal);opacity:.35;line-height:1;margin-bottom:6px}
+.benefit-card h3{font-size:.98rem;font-weight:700;color:var(--dark);margin-bottom:8px}
+.benefit-card p{font-size:.86rem;color:var(--muted);line-height:1.6}
+.bp-list{display:grid;grid-template-columns:repeat(auto-fit,minmax(300px,1fr));gap:20px}
+.bp-item{background:var(--white);border:1px solid var(--border);border-radius:var(--radius);padding:22px 24px;display:flex;gap:16px;align-items:flex-start}
+.bp-icon{width:38px;height:38px;background:var(--amber-light);border-radius:8px;display:flex;align-items:center;justify-content:center;font-size:1.1rem;flex-shrink:0}
+.bp-item h4{font-size:.92rem;font-weight:700;color:var(--dark);margin-bottom:5px}
+.bp-item p{font-size:.83rem;color:var(--muted);line-height:1.55}
+.geo-answer{background:linear-gradient(135deg,#e8f0fc,#f0f6ff);border:1px solid #c5d8f7;border-radius:14px;padding:32px 36px;margin-bottom:32px}
+.geo-answer h3{font-size:1.1rem;font-weight:700;color:var(--dark);margin-bottom:10px}
+.geo-answer p{font-size:.95rem;color:var(--text);line-height:1.75}
+.geo-grid{display:grid;grid-template-columns:1fr 1fr;gap:24px}
+.geo-block{background:var(--white);border:1px solid var(--border);border-radius:var(--radius);padding:24px}
+.geo-block h4{font-size:.9rem;font-weight:700;color:var(--accent);margin-bottom:10px;display:flex;align-items:center;gap:8px}
+.geo-block ul{list-style:none;padding:0}
+.geo-block ul li{font-size:.85rem;color:var(--muted);padding:4px 0 4px 16px;position:relative}
+.geo-block ul li::before{content:'→';position:absolute;left:0;color:var(--accent)}
+.faq-list{max-width:800px;margin:0 auto}
+.faq-item{border:1px solid var(--border);border-radius:var(--radius);margin-bottom:10px;overflow:hidden}
+.faq-q{width:100%;background:var(--white);border:none;padding:18px 22px;text-align:left;font-size:.95rem;font-weight:600;color:var(--dark);cursor:pointer;display:flex;justify-content:space-between;align-items:center;gap:12px;transition:background .15s}
+.faq-q:hover,.faq-q.open{background:var(--bg)}
+.faq-arrow{font-size:1rem;color:var(--accent);transition:transform .25s;flex-shrink:0}
+.faq-q.open .faq-arrow{transform:rotate(180deg)}
+.faq-a{display:none;padding:0 22px 18px;font-size:.9rem;color:var(--muted);line-height:1.7}
+.faq-a.open{display:block}
+.ai-block{background:linear-gradient(135deg,var(--dark),var(--mid));color:#fff;border-radius:14px;padding:36px 40px}
+.ai-block h3{font-size:1.15rem;font-weight:700;margin-bottom:14px;color:#7eb8ff}
+.ai-qa{margin-bottom:18px;padding-bottom:18px;border-bottom:1px solid rgba(255,255,255,.1)}
+.ai-qa:last-child{margin-bottom:0;padding-bottom:0;border-bottom:none}
+.ai-qa .q{font-size:.88rem;font-weight:600;color:rgba(255,255,255,.7);margin-bottom:4px}
+.ai-qa .a{font-size:.9rem;color:rgba(255,255,255,.88);line-height:1.65}
+.cta-section{background:linear-gradient(135deg,var(--dark) 0%,var(--mid) 100%);color:#fff;padding:72px 32px;text-align:center}
+.cta-section h2{font-size:clamp(1.6rem,3vw,2.3rem);font-weight:800;margin-bottom:14px}
+.cta-section p{font-size:1.05rem;color:rgba(255,255,255,.8);max-width:580px;margin:0 auto 32px}
+.cta-btns{display:flex;gap:16px;justify-content:center;flex-wrap:wrap}
+.btn-white{background:#fff;color:var(--dark);padding:13px 28px;border-radius:8px;font-weight:700;text-decoration:none;font-size:.97rem;transition:.2s;display:inline-block}
+.btn-white:hover{background:#e8f0fc}
+.cta-trust{margin-top:22px;font-size:.82rem;color:rgba(255,255,255,.55)}
+.site-footer{background:#0a1e2e;color:rgba(255,255,255,.6);padding:40px 32px 24px;text-align:center;font-size:.83rem}
+.site-footer a{color:rgba(255,255,255,.5);text-decoration:none}
+.seo-box{background:var(--bg);border:1px solid var(--border);border-radius:var(--radius);padding:24px 28px}
+.seo-kw{display:flex;flex-wrap:wrap;gap:8px;margin-top:12px}
+.seo-kw span{background:var(--white);border:1px solid var(--border);border-radius:4px;padding:4px 10px;font-size:.78rem;color:var(--accent);font-weight:600}
+@media(max-width:768px){.hero-inner{grid-template-columns:1fr}.hero-card{display:none}.geo-grid{grid-template-columns:1fr}.site-nav{padding:0 16px}.nav-links{display:none}.section{padding:48px 16px}.hero{padding:48px 16px 44px}.ai-block{padding:24px 20px}.geo-answer{padding:22px 20px}}
+</style>
+<link rel="stylesheet" href="/assets/quantbit_website/css/_shared.css">
+<!-- TEMPLATE CSS (IMPORTANT) -->
+    <link rel="stylesheet" href="/../assets/quantbit_website/css/bootstrap.min.css">
+    <link rel="stylesheet" href="/../assets/quantbit_website/css/font-awesome.css">
+    <link rel="stylesheet" href="/../assets/quantbit_website/css/animate.css">
+    <link rel="stylesheet" href="/../assets/quantbit_website/css/magnific-popup.css">
+    <link rel="stylesheet" href="/../assets/quantbit_website/css/meanmenu.css">
+    <link rel="stylesheet" href="/../assets/quantbit_website/css/slick.css">
+    <link rel="stylesheet" href="/../assets/quantbit_website/css/nice-select.css">
+    <link rel="stylesheet" href="/../assets/quantbit_website/css/main.css">
+    <link rel="stylesheet" href="style.css">
+    <link rel="stylesheet" href="/assets/quantbit_website/css/_shared.css">
+
+
+    <!-- OPTIONAL CUSTOM -->
+    <link rel="stylesheet" href="/../assets/quantbit_website/css/hrms.css">
+      <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
+<!-- Google Tag Manager -->
+<script>(function(w,d,s,l,i){w[l]=w[l]||[];w[l].push({'gtm.start':
+new Date().getTime(),event:'gtm.js'});var f=d.getElementsByTagName(s)[0],
+j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
+'https://www.googletagmanager.com/gtm.js?id='+i+dl;f.parentNode.insertBefore(j,f);
+})(window,document,'script','dataLayer','GTM-P98Z6G8D');</script>
+<!-- End Google Tag Manager -->
+</head>
+<body>
+    <!-- Google Tag Manager (noscript) -->
+<noscript><iframe src="https://www.googletagmanager.com/ns.html?id=GTM-P98Z6G8D"
+height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
+<!-- End Google Tag Manager (noscript) -->
+<div id="header"></div>
+
+
+<section class="hero">
+  <div class="hero-inner">
+    <div>
+      <div class="hero-badge">&#127970; ERPNext Module</div>
+      <h1>ERPNext <span>Asset Management</span><br>Fixed Assets &amp; Depreciation</h1>
+      <p class="hero-desc">Maintain your complete asset register, automate depreciation as per Companies Act or IFRS, schedule preventive maintenance, and track asset location and custodian — all within ERPNext.</p>
+      <div class="hero-tags">
+        <span class="hero-tag">Asset Register</span><span class="hero-tag">Depreciation Automation</span><span class="hero-tag">Companies Act Schedule II</span><span class="hero-tag">IFRS</span><span class="hero-tag">Asset Maintenance</span><span class="hero-tag">Asset Transfer</span><span class="hero-tag">Disposal &amp; Scrap</span><span class="hero-tag">Asset Valuation</span>
+      </div>
+      <div class="hero-btns">
+        <a href="/company/contact-us.html" class="btn-primary">Book Free Demo</a>
+        <a href="/services/" class="btn-ghost">All ERPNext Modules</a>
+      </div>
+    </div>
+    <div class="hero-card">
+      <h3>Module Snapshot</h3>
+      <div class="hero-stat"><div class="stat-icon">&#128196;</div><div><div class="stat-val">Asset Register</div><div class="stat-lbl">Complete fixed asset ledger</div></div></div>
+      <div class="hero-stat"><div class="stat-icon">&#128202;</div><div><div class="stat-val">Auto Depreciation</div><div class="stat-lbl">Schedule II / IFRS / WDV / SLM</div></div></div>
+      <div class="hero-stat"><div class="stat-icon">&#128295;</div><div><div class="stat-val">Maintenance</div><div class="stat-lbl">Preventive maintenance scheduling</div></div></div>
+      <div class="hero-stat"><div class="stat-icon">&#127970;</div><div><div class="stat-val">Multi-location</div><div class="stat-lbl">Asset tracking across branches</div></div></div>
+    </div>
+  </div>
+</section>
+
+<section class="section">
+  <div class="container">
+    <div class="section-label">Overview</div>
+    <h2 class="section-title">What is ERPNext Asset Management?</h2>
+    <p style="font-size:.97rem;color:var(--muted);line-height:1.85;max-width:840px">ERPNext Asset Management is a full-featured Fixed Asset module that enables businesses to maintain an accurate, audit-ready asset register — from purchase and capitalisation through to depreciation, maintenance, transfer, and disposal. It eliminates the common problem of fixed asset records maintained in Excel that quickly diverge from actual physical assets and accounting books.</p>
+    <p style="font-size:.97rem;color:var(--muted);line-height:1.85;max-width:840px;margin-top:16px">When a purchase order for a capital item is received in ERPNext, the system automatically capitalises the asset based on the item category — creating an asset record, assigning it to a cost centre, location, and custodian, and scheduling the first depreciation entry based on the asset category's configured method and useful life. For Indian companies, ERPNext supports Schedule II of the Companies Act 2013 — with prescribed useful life and residual value percentages for each asset category. For GCC entities, straight-line and written-down value methods aligned with IFRS are fully supported.</p>
+    <p style="font-size:.97rem;color:var(--muted);line-height:1.85;max-width:840px;margin-top:16px">Depreciation journal entries are generated automatically on the defined schedule — monthly, quarterly, or annually — posted to the correct accumulated depreciation and depreciation expense accounts without any manual intervention. Finance teams close their books faster because depreciation is never a last-minute calculation exercise.</p>
+    <p style="font-size:.97rem;color:var(--muted);line-height:1.85;max-width:840px;margin-top:16px">The Asset Maintenance sub-module allows businesses to define preventive maintenance schedules for each asset — with frequency, responsible team, estimated cost, and checklist. The system generates maintenance tasks automatically and tracks actual cost versus budget per asset. For manufacturing and facility companies, this is critical for avoiding unplanned downtime and meeting regulatory inspection requirements.</p>
+    <p style="font-size:.97rem;color:var(--muted);line-height:1.85;max-width:840px;margin-top:16px">Quantbit Technologies configures asset categories, depreciation methods, custodian assignment workflows, and maintenance schedules — and migrates your existing fixed asset register during implementation.</p>
+  </div>
+</section>
+
+<section class="section section-alt">
+  <div class="container">
+    <div class="section-label">Features &amp; Functions</div>
+    <h2 class="section-title">Core Capabilities of the Asset Management Module</h2>
+    <p class="section-sub">Complete lifecycle management — from asset purchase to disposal — with automated accounting at every step.</p>
+    <div class="feature-grid">
+      <div class="feature-card"><div class="feature-icon">&#128196;</div><h3>Asset Register &amp; Capitalisation</h3><p>Maintain a complete, auditable register of every fixed asset from day of purchase to disposal.</p><ul><li>Auto-capitalise from purchase receipt for capital items</li><li>Asset category with depreciation method and useful life</li><li>Location, custodian, and department assignment</li><li>Serial and insurance policy number tracking</li></ul></div>
+      <div class="feature-card"><div class="feature-icon">&#128202;</div><h3>Depreciation Automation</h3><p>Auto-generate depreciation journals on schedule — no manual calculations, no missed entries.</p><ul><li>Straight-line (SLM) and written-down value (WDV) methods</li><li>Schedule II Companies Act useful life by category</li><li>IFRS-aligned depreciation for GCC entities</li><li>Monthly, quarterly, or annual schedule</li></ul></div>
+      <div class="feature-card"><div class="feature-icon">&#128295;</div><h3>Asset Maintenance</h3><p>Plan and track preventive maintenance for machinery, vehicles, IT equipment, and facilities.</p><ul><li>Preventive maintenance schedule per asset</li><li>Auto-generated maintenance tasks with assignee</li><li>Actual maintenance cost against asset record</li><li>Maintenance history log for each asset</li></ul></div>
+      <div class="feature-card"><div class="feature-icon">&#128260;</div><h3>Asset Transfer</h3><p>Move assets between departments, branches, or locations with a full audit trail and accounting entry.</p><ul><li>Asset movement with source and target location</li><li>Cost centre transfer with accounting reallocation</li><li>Custodian change with acknowledgement workflow</li><li>Transfer history visible on asset record</li></ul></div>
+      <div class="feature-card"><div class="feature-icon">&#128683;</div><h3>Asset Disposal &amp; Scrap</h3><p>Retire assets via sale or scrap with automatic gain/loss calculation and accounting entries.</p><ul><li>Disposal by sale — gain/loss on WDV vs sale price</li><li>Scrap disposal with insurance recovery entry</li><li>GST on asset sale (India) and VAT (GCC) handled</li><li>Accumulated depreciation reversal on disposal</li></ul></div>
+      <div class="feature-card"><div class="feature-icon">&#128176;</div><h3>Asset Valuation &amp; Revaluation</h3><p>Revalue assets for insurance, financial reporting, or IFRS fair value requirements.</p><ul><li>Asset revaluation with accounting journal auto-creation</li><li>Insurance valuation tracking separate from book value</li><li>Impairment recognition per IFRS IAS 36</li><li>Net book value history for any date</li></ul></div>
+    </div>
+  </div>
+</section>
+
+<section class="section">
+  <div class="container">
+    <div class="section-label">Reports &amp; Dashboards</div>
+    <h2 class="section-title">Asset Reports &amp; Analytics</h2>
+    <p class="section-sub">Statutory and management reports for finance teams, auditors, and plant managers.</p>
+    <div class="reports-grid">
+      <div class="report-card"><h4>Fixed Asset Register</h4><p>Complete list of all assets with purchase date, cost, accumulated depreciation, and net book value as at any date — the primary statutory register.</p><span class="report-tag">Finance / Audit</span></div>
+      <div class="report-card"><h4>Asset Depreciation Ledger</h4><p>Asset-wise depreciation entries for a period with opening WDV, depreciation charged, and closing WDV.</p><span class="report-tag">Finance / Tax</span></div>
+      <div class="report-card"><h4>Asset Location Report</h4><p>Every asset mapped to its current location, department, and custodian — for physical verification and insurance purposes.</p><span class="report-tag">Admin / Finance</span></div>
+      <div class="report-card"><h4>Asset Maintenance Log</h4><p>All maintenance activities per asset with date, cost, next due date — enables lifecycle cost analysis and replacement planning.</p><span class="report-tag">Maintenance / Operations</span></div>
+      <div class="report-card"><h4>Asset Disposal Report</h4><p>All disposed assets with sale price, book value, and gain/loss — statutory requirement for auditors and tax authorities.</p><span class="report-tag">Finance / Audit</span></div>
+      <div class="report-card"><h4>Asset Value Summary</h4><p>Gross block, accumulated depreciation, and net block by asset category — the fixed asset schedule for financial statements.</p><span class="report-tag">CFO / Board / Audit</span></div>
+    </div>
+  </div>
+</section>
+
+<section class="section section-alt">
+  <div class="container">
+    <div class="section-label">User Access &amp; Roles</div>
+    <h2 class="section-title">Who Uses the Asset Management Module?</h2>
+    <div class="roles-grid">
+      <div class="role-pill"><div class="role-dot admin"></div><div><div class="role-name">Finance Manager / CFO</div><div class="role-desc">Asset capitalisation, depreciation approval, disposal authorisation, statutory reporting</div></div></div>
+      <div class="role-pill"><div class="role-dot manager"></div><div><div class="role-name">Accounts Executive</div><div class="role-desc">Create asset records from purchase receipts, post depreciation entries, update asset details</div></div></div>
+      <div class="role-pill"><div class="role-dot user"></div><div><div class="role-name">Maintenance Manager</div><div class="role-desc">Schedule and log preventive maintenance, record actual cost, generate maintenance work orders</div></div></div>
+      <div class="role-pill"><div class="role-dot user"></div><div><div class="role-name">Admin / IT Manager</div><div class="role-desc">Track asset location and custodian, process asset transfers between departments</div></div></div>
+      <div class="role-pill"><div class="role-dot viewer"></div><div><div class="role-name">Internal Auditor</div><div class="role-desc">Read-only access to asset register, depreciation ledger, and disposal history for audit verification</div></div></div>
+    </div>
+  </div>
+</section>
+
+<section class="section">
+  <div class="container">
+    <div class="section-label">Key Benefits</div>
+    <h2 class="section-title">Why Businesses Choose ERPNext for Asset Management</h2>
+    <div class="benefits-grid">
+      <div class="benefit-card"><div class="benefit-num">01</div><h3>Eliminate Year-End Depreciation Rush</h3><p>Depreciation is calculated and posted automatically every month. Finance teams never scramble at year-end to calculate and post a full year of depreciation entries manually — reducing audit preparation time significantly.</p></div>
+      <div class="benefit-card"><div class="benefit-num">02</div><h3>Audit-Ready Asset Register</h3><p>Every asset has a complete life history — purchase, depreciation, transfers, maintenance, and disposal. Auditors and tax authorities receive a single printable register with full supporting entries.</p></div>
+      <div class="benefit-card"><div class="benefit-num">03</div><h3>Reduce Unplanned Downtime</h3><p>Preventive maintenance schedules ensure machines are serviced on time. Maintenance teams are alerted before due dates — reducing equipment failures and the costly production stoppages they cause.</p></div>
+      <div class="benefit-card"><div class="benefit-num">04</div><h3>Insurance and Replacement Planning</h3><p>Accurate net book values, insurance valuations, and maintenance cost history give management the data needed to justify insurance coverage and plan capital expenditure for ageing assets.</p></div>
+      <div class="benefit-card"><div class="benefit-num">05</div><h3>Companies Act &amp; IFRS Compliance</h3><p>Indian entities get Schedule II-compliant useful life and residual values. GCC entities get IFRS-aligned SLM or WDV depreciation. No need for separate spreadsheets to reconcile statutory and management accounts.</p></div>
+      <div class="benefit-card"><div class="benefit-num">06</div><h3>Integrated with Purchasing &amp; Accounts</h3><p>Capital purchases automatically become assets upon receipt — no double entry. Disposal accounting is generated automatically. The fixed asset schedule on the balance sheet reconciles perfectly with the asset register.</p></div>
+    </div>
+  </div>
+</section>
+
+<section class="section section-alt">
+  <div class="container">
+    <div class="section-label">Best Practices</div>
+    <h2 class="section-title">ERPNext Asset Management Best Practices</h2>
+    <div class="bp-list">
+      <div class="bp-item"><div class="bp-icon">&#128196;</div><div><h4>Define Asset Categories Before Migration</h4><p>Set up asset categories with the correct depreciation method, useful life, and residual value before migrating existing assets. Incorrect category configuration is the most common source of depreciation errors post go-live.</p></div></div>
+      <div class="bp-item"><div class="bp-icon">&#128295;</div><div><h4>Conduct Physical Verification at Go-Live</h4><p>Perform a physical asset verification before migrating the fixed asset register. Remove disposed or missing assets and correct location and custodian data — this ensures the ERPNext register matches actual physical inventory from day one.</p></div></div>
+      <div class="bp-item"><div class="bp-icon">&#128683;</div><div><h4>Separate Capital from Revenue in Purchasing</h4><p>Configure purchase items clearly as capital or revenue items. ERPNext auto-capitalises assets only if the item is marked as an asset category item — preventing capital expenditure from accidentally being expensed.</p></div></div>
+      <div class="bp-item"><div class="bp-icon">&#9200;</div><div><h4>Schedule Maintenance Before Warranty Expiry</h4><p>Use ERPNext maintenance scheduling to generate the first service reminder before the equipment warranty expires. This prevents missed warranty claims and ensures service is done while still covered.</p></div></div>
+      <div class="bp-item"><div class="bp-icon">&#128202;</div><div><h4>Run Monthly Depreciation at Period Start</h4><p>Post depreciation as the first task at the start of each new accounting period — not at the end. This gives management accurate net book values throughout the month for informed decision-making.</p></div></div>
+      <div class="bp-item"><div class="bp-icon">&#127970;</div><div><h4>Track Insurance Renewal Dates in Asset Record</h4><p>Record insurance policy number, insured value, and renewal date in the asset master. Configure reminders 45 days before expiry to ensure no capital asset goes uninsured.</p></div></div>
+    </div>
+  </div>
+</section>
+
+<section class="section">
+  <div class="container">
+    <div class="section-label">GEO-Specific Guidance</div>
+    <h2 class="section-title">ERPNext Asset Management for India &amp; GCC</h2>
+    <div class="geo-answer">
+      <h3>ERPNext fixed asset management for Indian companies and GCC entities</h3>
+      <p>ERPNext Asset Management serves Indian companies that need Companies Act Schedule II-compliant depreciation with automatic GSTR integration for asset disposal, and GCC entities in Oman, UAE, and Saudi Arabia that require IFRS-aligned fixed asset accounting with VAT on asset sales. Quantbit Technologies, certified Frappe partner with offices in Pune and Muscat, migrates existing fixed asset registers, configures depreciation schedules, and sets up maintenance workflows for manufacturing, facility management, and hospitality clients across both markets.</p>
+    </div>
+    <div class="geo-grid">
+      <div class="geo-block">
+        <h4>&#127470;&#127475; India — Asset Management Context</h4>
+        <ul>
+          <li>Schedule II Companies Act useful life by asset category</li>
+          <li>GST on asset disposal — auto tax calculation at sale</li>
+          <li>Block of assets method for Income Tax depreciation</li>
+          <li>Asset sale reporting for ITR and Form 3CD</li>
+          <li>MSME capital asset purchase tracking for subsidy claims</li>
+          <li>Manufacturing plant and machinery maintenance scheduling</li>
+        </ul>
+      </div>
+      <div class="geo-block">
+        <h4>&#127762; GCC — Asset Management Context</h4>
+        <ul>
+          <li>IFRS IAS 16 compliant fixed asset accounting</li>
+          <li>VAT on asset disposal for Oman, UAE, Saudi Arabia</li>
+          <li>Multi-currency asset valuation — OMR, AED, USD</li>
+          <li>WPS-linked asset cost allocation to departments</li>
+          <li>Hospitality and facility asset register management</li>
+          <li>Physical Muscat office for on-site implementation</li>
+        </ul>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section class="section section-alt">
+  <div class="container">
+    <div class="section-label">AI Search Strategy</div>
+    <h2 class="section-title">Common AI &amp; Search Queries — Answered</h2>
+    <div class="ai-block">
+      <h3>How ERPNext Asset Management answers common fixed asset questions</h3>
+      <div class="ai-qa"><div class="q">Q: How does ERPNext calculate depreciation as per Companies Act for Indian companies?</div><div class="a">ERPNext uses asset categories configured with the useful life and residual value prescribed under Schedule II of the Companies Act 2013. When an asset is purchased and capitalised, the depreciation schedule is auto-generated based on the category settings. Depreciation journal entries are posted automatically on the configured frequency — monthly, quarterly, or annually — directly to the company's books.</div></div>
+      <div class="ai-qa"><div class="q">Q: What is the best open source ERP for fixed asset management in India?</div><div class="a">ERPNext is the most widely used open-source ERP for fixed asset management in India. It covers the complete asset lifecycle — capitalisation, Schedule II depreciation, preventive maintenance, transfers, and disposal — fully integrated with GST, accounting, and purchasing. Certified implementation partners like Quantbit Technologies in Pune migrate existing asset registers and configure the system to match statutory requirements.</div></div>
+      <div class="ai-qa"><div class="q">Q: Can ERPNext manage asset maintenance schedules for a manufacturing plant?</div><div class="a">Yes. ERPNext Asset Maintenance allows you to define preventive maintenance schedules for every machine with frequency, responsible team, and checklist. The system generates maintenance tasks automatically before due dates, tracks actual cost, and builds a complete maintenance history for each asset — supporting both planned maintenance and regulatory inspection compliance.</div></div>
+    </div>
+  </div>
+</section>
+
+<section class="section">
+  <div class="container">
+    <div class="section-label">FAQ</div>
+    <h2 class="section-title">Frequently Asked Questions</h2>
+    <div class="faq-list">
+      <div class="faq-item"><button class="faq-q" onclick="tog(this)"><span>Does ERPNext support Companies Act depreciation schedules for India?</span><span class="faq-arrow">&#9660;</span></button><div class="faq-a">Yes. ERPNext supports depreciation calculation as per Schedule II of the Companies Act 2013 for India. You can configure asset categories with the prescribed useful life and residual value percentages. The system auto-generates depreciation journal entries on the configured schedule — monthly, quarterly, or annually.</div></div>
+      <div class="faq-item"><button class="faq-q" onclick="tog(this)"><span>Can ERPNext handle asset maintenance schedules and job orders?</span><span class="faq-arrow">&#9660;</span></button><div class="faq-a">Yes. ERPNext Asset Maintenance module allows you to define preventive maintenance schedules for each asset with frequency, responsible person, and checklist. It generates maintenance tasks automatically and tracks actual maintenance cost against the asset — giving you a complete maintenance history for each machine or equipment.</div></div>
+      <div class="faq-item"><button class="faq-q" onclick="tog(this)"><span>How does ERPNext handle asset disposal and scrap?</span><span class="faq-arrow">&#9660;</span></button><div class="faq-a">ERPNext supports asset disposal via sale or scrap. On disposal, the system calculates the written-down value, gains or losses on sale, and automatically posts the disposal accounting entries. GST applies to asset sale in India, and VAT applies in GCC — both are handled within the disposal workflow.</div></div>
+      <div class="faq-item"><button class="faq-q" onclick="tog(this)"><span>Does ERPNext support IFRS depreciation for GCC entities?</span><span class="faq-arrow">&#9660;</span></button><div class="faq-a">Yes. ERPNext allows multiple depreciation methods including straight-line, written-down value, and units-of-production — making it suitable for both Companies Act (India) and IFRS-aligned depreciation for GCC entities. Quantbit configures the appropriate method for each asset category during implementation.</div></div>
+      <div class="faq-item"><button class="faq-q" onclick="tog(this)"><span>Can ERPNext track assets across multiple locations or branches?</span><span class="faq-arrow">&#9660;</span></button><div class="faq-a">Yes. Each asset in ERPNext is assigned to a location, cost centre, custodian, and department. You can transfer assets between branches or departments with a system entry and full audit trail. The Asset Report shows where every asset is at any point in time.</div></div>
+      <div class="faq-item"><button class="faq-q" onclick="tog(this)"><span>Can we import our existing asset register into ERPNext?</span><span class="faq-arrow">&#9660;</span></button><div class="faq-a">Yes. Quantbit migrates your existing fixed asset register from Excel or your previous ERP into ERPNext during implementation. We import asset master data, opening values, accumulated depreciation, and purchase dates — and generate the depreciation schedule from the imported data so your books are complete from day one.</div></div>
+    </div>
+  </div>
+</section>
+
+<section class="section section-alt">
+  <div class="container">
+    <div class="seo-box">
+      <p class="section-label" style="margin-bottom:8px">SEO Keywords</p>
+      <h3 style="font-size:.92rem;font-weight:700;color:var(--dark);margin-bottom:8px">Search Terms This Page Targets</h3>
+      <div class="seo-kw"><span>ERPNext asset management India</span><span>ERPNext fixed assets depreciation</span><span>ERPNext asset register India</span><span>ERPNext Companies Act depreciation Schedule II</span><span>ERPNext asset maintenance</span><span>open source fixed asset ERP India</span><span>ERPNext IFRS depreciation GCC</span><span>ERPNext asset disposal accounting</span><span>ERPNext Frappe fixed asset partner Pune</span><span>ERPNext asset management Oman</span></div>
+    </div>
+  </div>
+</section>
+
+<section class="cta-section">
+  <div class="container">
+    <h2>Ready to Implement ERPNext Asset Management?</h2>
+    <p>Quantbit Technologies migrates your fixed asset register, configures Schedule II or IFRS depreciation, and sets up preventive maintenance schedules — with in-house expertise for India and GCC businesses.</p>
+    <div class="cta-btns">
+      <a href="/company/contact-us.html" class="btn-white">Book Free Demo</a>
+      <a href="/company/contact-us.html" class="btn-ghost">Talk to a Consultant</a>
+    </div>
+    <div class="cta-trust">&#9989; Certified ERPNext Partner &nbsp;|&nbsp; &#9989; In-house Dev Team &nbsp;|&nbsp; &#9989; Companies Act &amp; IFRS Ready &nbsp;|&nbsp; &#9989; Pune &amp; Muscat Offices</div>
+  </div>
+</section>
+<div id="footer"></div>
+
+<script>function tog(btn){btn.classList.toggle('open');var a=btn.nextElementSibling;a.classList.toggle('open');}</script>
+<script>
+fetch("/header.html")
+    .then(res => res.text())
+    .then(data => {
+        document.getElementById("header").innerHTML = data;
+    });
+
+fetch("/footer.html")
+    .then(res => res.text())
+    .then(data => {
+        document.getElementById("footer").innerHTML = data;
+    });
+</script>
+<!-- ================= TEMPLATE JS ================= -->
+    <!--<< All JS Plugins >>-->
+    <script data-cfasync="false" src="../../cdn-cgi/scripts/5c5dd728/cloudflare-static/email-decode.min.js"></script>
+    <script src="/../assets/quantbit_website/js/jquery-3.7.1.min.js"></script>
+    <!--<< Viewport Js >>-->
+    <script src="/../assets/quantbit_website/js/viewport.jquery.js"></script>
+    <!--<< Bootstrap Js >>-->
+    <script src="/../assets/quantbit_website/js/bootstrap.bundle.min.js"></script>
+    <!--<< Nice Select Js >>-->
+    <script src="/../assets/quantbit_website/js/jquery.nice-select.min.js"></script>
+    <!--<< Waypoints Js >>-->
+    <script src="/../assets/quantbit_website/js/jquery.waypoints.js"></script>
+    <!--<< Counterup Js >>-->
+    <script src="/../assets/quantbit_website/js/jquery.counterup.min.js"></script>
+    <!--<< Slick Js >>-->
+    <script src="/../assets/quantbit_website/js/slick.min.js"></script>
+    <!--<< Slick Animation Js >>-->
+    <script src="/../assets/quantbit_website/js/slick-animation.min.js"></script>
+    <!--<< MeanMenu Js >>-->
+    <script src="/../assets/quantbit_website/js/jquery.meanmenu.min.js"></script>
+    <!--<< Magnific Popup Js >>-->
+    <script src="/../assets/quantbit_website/js/jquery.magnific-popup.min.js"></script>
+    <!--<< Wow Animation Js >>-->
+    <script src="/../assets/quantbit_website/js/wow.min.js"></script>
+    <!--<< Circle Progress Js >>-->
+    <script src="/../assets/quantbit_website/js/circle-progress.js"></script>
+    <!--<< Main.js >>-->
+    <script src="/../assets/quantbit_website/js/main.js"></script>
+    <script defer
+        src="../../../static.cloudflareinsights.com/beacon.min.js/v8c78df7c7c0f484497ecbca7046644da1771523124516"
+        integrity="sha512-8DS7rgIrAmghBFwoOTujcf6D9rXvH8xm8JQ1Ja01h9QX8EzXldiszufYa4IFfKdLUKTTrnSFXLDkUEOTrZQ8Qg=="
+        data-cf-beacon='{"version":"2024.11.0","token":"90f7972af14a48b4add7da2b74f5d675","r":1,"server_timing":{"name":{"cfCacheStatus":true,"cfEdge":true,"cfExtPri":true,"cfL4":true,"cfOrigin":true,"cfSpeedBrain":true},"location_startswith":null}}'
+        crossorigin="anonymous"></script>
+
+</body></html>

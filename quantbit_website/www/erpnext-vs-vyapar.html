@@ -1,0 +1,403 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>ERPNext vs Vyapar: Which is Right for Your Growing Business? | Quantbit</title>
+<meta name="description" content="ERPNext vs Vyapar app comparison: features, GST billing, inventory, payroll, manufacturing. See when to move from Vyapar to ERPNext as your business grows.">
+<meta name="keywords" content="ERPNext vs Vyapar, Vyapar alternative, Vyapar vs ERPNext India, switch Vyapar to ERPNext, Vyapar GST billing vs ERPNext, small business ERP India, Vyapar app comparison">
+<link rel="canonical" href="https://quantbit.io/erpnext-vs-vyapar">
+
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "BreadcrumbList",
+  "itemListElement": [
+    {"@type": "ListItem", "position": 1, "name": "Home", "item": "https://quantbit.io"},
+    {"@type": "ListItem", "position": 2, "name": "Compare ERP", "item": "https://quantbit.io/compare"},
+    {"@type": "ListItem", "position": 3, "name": "ERPNext vs Vyapar", "item": "https://quantbit.io/erpnext-vs-vyapar"}
+  ]
+}
+</script>
+
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "FAQPage",
+  "mainEntity": [
+    {
+      "@type": "Question",
+      "name": "Should I switch from Vyapar to ERPNext?",
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": "You should consider switching from Vyapar to ERPNext when: your business has 5+ employees and you need HR/payroll, you're running a manufacturing or workshop operation needing production tracking, you have multiple godowns or warehouses requiring bin-level inventory, you need purchase order approval workflows, or your monthly turnover crosses ₹25–50L and you need tighter financial controls. Vyapar is excellent for solo traders and micro-businesses. ERPNext is designed for businesses with operations complexity."
+      }
+    },
+    {
+      "@type": "Question",
+      "name": "What does Vyapar not do that ERPNext does?",
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": "Vyapar handles GST billing, basic inventory, and simple accounting well. ERPNext adds: full HR and payroll (PF, ESI, PT, attendance, leave), manufacturing with BOM and work orders, multi-warehouse with bin-level tracking, purchase order approval workflows, CRM and sales pipeline, quality control, project management, customer portal, REST API for integrations, multi-company for business groups, and advanced analytics. Vyapar is a billing app; ERPNext is a business operating system."
+      }
+    },
+    {
+      "@type": "Question",
+      "name": "What is the cost difference between Vyapar and ERPNext?",
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": "Vyapar's business plan costs approximately ₹3,499–₹7,999/year per device. For a 10-user team on Vyapar Silver, expect ₹15,000–₹30,000/year. ERPNext for the same team starts at ₹1.5L–₹3L/year on Frappe Cloud — higher, but with HR, payroll, manufacturing, multi-warehouse, CRM, and approvals included. For growing businesses, the ERPNext investment replaces Vyapar + separate HR software + separate payroll + spreadsheets for everything else."
+      }
+    },
+    {
+      "@type": "Question",
+      "name": "Can Vyapar data be migrated to ERPNext?",
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": "Yes. Vyapar allows data export in Excel/CSV format covering customers, suppliers, items, and transaction history. Quantbit's migration process imports Vyapar masters into ERPNext, maps GST tax types (CGST/SGST/IGST), sets up opening stock from Vyapar's closing inventory, and enters outstanding receivables/payables as opening balances. Historical Vyapar invoices can remain in Vyapar for reference. Migration typically takes 2–4 weeks for micro and small businesses."
+      }
+    },
+    {
+      "@type": "Question",
+      "name": "Is ERPNext too complex for a small business?",
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": "ERPNext can be configured for any complexity level. A 5-user trading company can use only the Accounting, Purchase, Sales, and Inventory modules — keeping it as simple as Vyapar but with cloud access, multi-user roles, and better reporting. Quantbit configures ERPNext to match exactly the modules your business needs today, with a clear path to activate manufacturing, HR, or CRM modules as you grow."
+      }
+    }
+  ]
+}
+</script>
+
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "SpeakableSpecification",
+  "cssSelector": [".ai-answer-block", ".hero-verdict", ".when-to-switch"]
+}
+</script>
+
+<style>
+  :root {
+    --ink:#0f1117;--ink-mid:#3a3d4a;--ink-soft:#6b6f80;
+    --paper:#f7f8fc;--white:#ffffff;--border:#e2e4ec;
+    --accent:#1a56db;--accent-dark:#1241b0;--accent-light:#eff4ff;
+    --vyapar:#FF6B00;--vyapar-light:#fff3e8;
+    --erpnext:#0f9d58;--erpnext-light:#e8f7ef;
+    --warn:#d97706;--warn-light:#fef3c7;
+    --green:#059669;--green-light:#ecfdf5;
+    --font-head:'Georgia','Times New Roman',serif;
+    --font-body:-apple-system,'Segoe UI',sans-serif;
+    --r:8px;--shadow:0 2px 12px rgba(15,17,23,0.08);
+  }
+  *{box-sizing:border-box;margin:0;padding:0}html{scroll-behavior:smooth}
+  body{font-family:var(--font-body);background:var(--paper);color:var(--ink);font-size:16px;line-height:1.65}
+  /* Orange-to-green hero — from small to grown */
+  .hero{background:linear-gradient(135deg,#1a0800 0%,#7a2e00 40%,#0a3320 75%,#083d25 100%);color:#fff;padding:80px 24px 60px;text-align:center}
+  .hero-eyebrow{display:inline-block;background:rgba(255,107,0,0.2);border:1px solid rgba(255,107,0,0.4);color:#fed7aa;font-size:12px;font-weight:700;letter-spacing:1.5px;text-transform:uppercase;padding:5px 14px;border-radius:20px;margin-bottom:24px}
+  .hero h1{font-family:var(--font-head);font-size:clamp(1.9rem,4.5vw,3rem);font-weight:700;line-height:1.2;margin-bottom:20px;max-width:800px;margin-left:auto;margin-right:auto}
+  .vyapar-word{color:#fdba74}.erpnext-word{color:#4ade80}
+  .hero-verdict{font-size:1.1rem;color:#d1fae5;max-width:660px;margin:0 auto 36px;line-height:1.7}
+  .hero-stats{display:flex;justify-content:center;gap:48px;flex-wrap:wrap;margin-top:40px;padding-top:40px;border-top:1px solid rgba(255,255,255,0.1)}
+  .stat{text-align:center}.stat-num{font-family:var(--font-head);font-size:2.4rem;font-weight:700;color:#fff;display:block;line-height:1}
+  .stat-label{font-size:12px;color:#a7f3d0;margin-top:4px}
+  .hero-ctas{display:flex;gap:12px;justify-content:center;flex-wrap:wrap}
+  .btn-primary{background:var(--erpnext);color:#fff;padding:13px 28px;border-radius:var(--r);font-weight:700;text-decoration:none;font-size:15px}
+  .btn-outline{background:transparent;color:#fff;border:1.5px solid rgba(255,255,255,0.4);padding:13px 28px;border-radius:var(--r);font-weight:600;text-decoration:none;font-size:15px}
+  .container{max-width:1100px;margin:0 auto;padding:0 24px}
+  section{padding:64px 0}section+section{border-top:1px solid var(--border)}
+  h2{font-family:var(--font-head);font-size:clamp(1.5rem,3vw,2rem);font-weight:700;color:var(--ink);margin-bottom:12px;line-height:1.3}
+  .section-sub{color:var(--ink-soft);font-size:1rem;margin-bottom:40px;max-width:620px}
+  /* When to switch */
+  .when-to-switch{background:var(--erpnext-light);border:1.5px solid #6ee7b7;border-left:4px solid var(--erpnext);border-radius:var(--r);padding:24px 28px;margin-bottom:32px}
+  .switch-title{font-weight:700;color:var(--erpnext);margin-bottom:12px;font-size:15px}
+  .switch-list{list-style:none}
+  .switch-list li{padding:5px 0;font-size:14px;color:var(--ink-mid);display:flex;align-items:flex-start;gap:8px}
+  .switch-list li::before{content:"→";color:var(--erpnext);font-weight:700;flex-shrink:0;margin-top:1px}
+  /* Compare table */
+  .compare-wrap{overflow-x:auto;-webkit-overflow-scrolling:touch}
+  table.compare{width:100%;border-collapse:collapse;font-size:14px;min-width:540px}
+  table.compare thead th{padding:14px 16px;text-align:left;font-weight:700;font-size:13px}
+  table.compare thead th:first-child{background:var(--paper);color:var(--ink-mid)}
+  table.compare thead th.col-erpnext{background:var(--erpnext-light);color:var(--erpnext)}
+  table.compare thead th.col-vyapar{background:var(--vyapar-light);color:var(--vyapar)}
+  table.compare tbody tr{border-bottom:1px solid var(--border)}
+  table.compare tbody tr:hover{background:#fafbff}
+  table.compare td{padding:12px 16px;vertical-align:top}
+  table.compare td:first-child{font-weight:600;color:var(--ink-mid);font-size:13px}
+  .tag-win{display:inline-block;background:var(--green-light);color:var(--green);font-size:11px;font-weight:700;padding:2px 8px;border-radius:4px;margin-left:6px}
+  .tag-vyapar{display:inline-block;background:var(--vyapar-light);color:var(--vyapar);font-size:11px;font-weight:700;padding:2px 8px;border-radius:4px;margin-left:6px}
+  .tag-tie{display:inline-block;background:var(--warn-light);color:var(--warn);font-size:11px;font-weight:700;padding:2px 8px;border-radius:4px;margin-left:6px}
+  .check{color:var(--green);font-weight:700}.cross{color:#dc2626;font-weight:700}
+  /* Growth journey */
+  .journey-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:20px}
+  .journey-card{background:var(--white);border:1px solid var(--border);border-radius:var(--r);padding:22px;text-align:center}
+  .journey-card.vyapar-card{border-top:3px solid var(--vyapar)}
+  .journey-card.transition-card{border-top:3px solid var(--warn)}
+  .journey-card.erpnext-card{border-top:3px solid var(--erpnext)}
+  .journey-icon{font-size:32px;margin-bottom:10px}
+  .journey-label{font-size:11px;font-weight:700;letter-spacing:1px;text-transform:uppercase;margin-bottom:8px}
+  .vyapar-card .journey-label{color:var(--vyapar)}
+  .transition-card .journey-label{color:var(--warn)}
+  .erpnext-card .journey-label{color:var(--erpnext)}
+  .journey-desc{font-size:13px;color:var(--ink-mid);line-height:1.5}
+  .journey-revenue{font-size:12px;font-weight:700;color:var(--ink-soft);margin-top:10px;padding-top:10px;border-top:1px solid var(--border)}
+  /* AI block */
+  .ai-answer-block{background:linear-gradient(135deg,#f0f4ff,#e8f0fe);border:1px solid #c7d7fd;border-radius:var(--r);padding:28px 32px;margin:32px 0}
+  .ai-q{font-weight:700;color:var(--accent-dark);font-size:15px;margin-bottom:10px;display:flex;align-items:center;gap:8px}
+  .ai-q::before{content:"AI";background:var(--accent);color:#fff;font-size:10px;font-weight:700;padding:2px 6px;border-radius:4px}
+  .ai-a{color:var(--ink-mid);font-size:15px;line-height:1.7}
+  /* Migration steps */
+  .mig-steps{display:grid;gap:0}
+  .mig-step{display:grid;grid-template-columns:48px 1fr;gap:0 18px;padding:22px 0;border-bottom:1px solid var(--border);align-items:start}
+  .mig-step:last-child{border-bottom:none}
+  .step-num{width:38px;height:38px;background:var(--erpnext-light);border:2px solid var(--erpnext);border-radius:50%;display:flex;align-items:center;justify-content:center;font-weight:800;font-size:15px;color:var(--erpnext);flex-shrink:0}
+  .step-title{font-weight:700;font-size:14px;color:var(--ink);margin-bottom:4px}
+  .step-detail{font-size:13px;color:var(--ink-mid);line-height:1.6}
+  /* Geo */
+  .geo-grid{display:grid;grid-template-columns:1fr 1fr;gap:32px}
+  .geo-col h3{font-size:14px;font-weight:700;text-transform:uppercase;letter-spacing:1px;color:var(--ink-soft);margin-bottom:16px}
+  .geo-item{padding:12px 0;border-bottom:1px solid var(--border);font-size:14px;color:var(--ink-mid)}
+  .geo-item:last-child{border-bottom:none}
+  .geo-item strong{display:block;color:var(--ink);font-size:13px;margin-bottom:2px}
+  /* FAQ */
+  .faq-item{border:1px solid var(--border);border-radius:var(--r);margin-bottom:10px;background:var(--white);overflow:hidden}
+  .faq-q{padding:16px 20px;font-weight:600;font-size:15px;cursor:pointer;display:flex;justify-content:space-between;align-items:center;color:var(--ink)}
+  .faq-q:hover{background:var(--accent-light)}
+  .faq-icon{font-size:18px;color:var(--accent);font-weight:400;flex-shrink:0}
+  .faq-a{padding:0 20px;max-height:0;overflow:hidden;transition:max-height .3s ease,padding .3s ease;color:var(--ink-mid);font-size:14px;line-height:1.7}
+  .faq-a.open{max-height:400px;padding:0 20px 18px}
+  .cta-section{background:linear-gradient(135deg,#083d25,#0a3320);color:#fff;text-align:center;padding:72px 24px}
+  .cta-section h2{color:#fff;font-family:var(--font-head);font-size:clamp(1.6rem,3vw,2.2rem)}
+  .cta-section p{color:#a7f3d0;margin:16px auto 32px;max-width:560px;font-size:1rem}
+  .cta-btns{display:flex;gap:12px;justify-content:center;flex-wrap:wrap}
+  .cta-btns a.primary{background:var(--erpnext);color:#fff;padding:14px 32px;border-radius:var(--r);font-weight:700;text-decoration:none}
+  .cta-btns a.sec{border:1.5px solid rgba(255,255,255,.4);color:#fff;padding:14px 32px;border-radius:var(--r);font-weight:600;text-decoration:none}
+  .keyword-cloud{display:flex;flex-wrap:wrap;gap:8px}
+  .kw-tag{background:var(--white);border:1px solid var(--border);border-radius:4px;padding:4px 12px;font-size:12px;color:var(--ink-soft)}
+  footer{background:var(--ink);color:#8892a4;text-align:center;padding:28px 24px;font-size:13px}
+  footer a{color:#93b4ff;text-decoration:none}
+  @media(max-width:700px){.journey-grid{grid-template-columns:1fr}.geo-grid{grid-template-columns:1fr}.hero-stats{gap:28px}.stat-num{font-size:1.8rem}}
+</style>
+</head>
+<body>
+<div id="header"></div>
+
+<section class="hero">
+  <div class="container">
+    <span class="hero-eyebrow">Business Growth Guide 2025</span>
+    <h1>When to Move from <span class="vyapar-word">Vyapar</span> to <span class="erpnext-word">ERPNext</span></h1>
+    <p class="hero-verdict">Vyapar is a great tool for starting out — fast GST billing, simple inventory, works on mobile. But when your business grows beyond billing into operations, HR, manufacturing, and multi-location, Vyapar hits its ceiling. Here's how to know when it's time.</p>
+    <div class="hero-ctas">
+      <a href="#when-to-switch" class="btn-primary">See the Signals</a>
+      <a href="https://quantbit.io/contact" class="btn-outline">Free Assessment</a>
+    </div>
+    <div class="hero-stats">
+      <div class="stat"><span class="stat-num">₹25–50L/mo</span><span class="stat-label">Typical Vyapar → ERPNext Switch Point</span></div>
+      <div class="stat"><span class="stat-num">2–4 wks</span><span class="stat-label">Vyapar Data Migration</span></div>
+      <div class="stat"><span class="stat-num">10+</span><span class="stat-label">Modules Vyapar Doesn't Have</span></div>
+    </div>
+  </div>
+</section>
+
+<!-- GROWTH JOURNEY -->
+<section style="background:var(--white)">
+  <div class="container">
+    <h2>The Business Software Growth Journey</h2>
+    <p class="section-sub">Every business starts somewhere. Here's where Vyapar and ERPNext fit in the natural growth path.</p>
+    <div class="journey-grid">
+      <div class="journey-card vyapar-card">
+        <div class="journey-icon">🛒</div>
+        <div class="journey-label">Starter Stage</div>
+        <h3 style="font-size:15px;margin-bottom:8px">Vyapar is Perfect</h3>
+        <div class="journey-desc">GST billing, basic stock, simple accounts, mobile-first. 1–4 users. Solo trader or micro business. Quick setup, low cost.</div>
+        <div class="journey-revenue">Revenue: Up to ₹2–5Cr/year</div>
+      </div>
+      <div class="journey-card transition-card">
+        <div class="journey-icon">📈</div>
+        <div class="journey-label">Growth Stage</div>
+        <h3 style="font-size:15px;margin-bottom:8px">Outgrowing Vyapar</h3>
+        <div class="journey-desc">5+ employees, multiple godowns, HR needs emerging, manufacturing or service ops, purchase approvals needed — Vyapar starts showing gaps.</div>
+        <div class="journey-revenue">Revenue: ₹3Cr–₹15Cr/year</div>
+      </div>
+      <div class="journey-card erpnext-card">
+        <div class="journey-icon">🏢</div>
+        <div class="journey-label">Scale Stage</div>
+        <h3 style="font-size:15px;margin-bottom:8px">ERPNext Takes Over</h3>
+        <div class="journey-desc">Full ERP: HR, payroll, manufacturing, CRM, multi-warehouse, workflows, approvals, analytics, mobile app, API integrations.</div>
+        <div class="journey-revenue">Revenue: ₹5Cr+ and scaling</div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- WHEN TO SWITCH -->
+<section id="when-to-switch">
+  <div class="container">
+    <h2>7 Signals You've Outgrown Vyapar</h2>
+    <p class="section-sub">If you're seeing these in your business, it's time to assess ERPNext.</p>
+    <div class="when-to-switch">
+      <div class="switch-title">Signs your business has outgrown Vyapar:</div>
+      <ul class="switch-list">
+        <li>You have 5+ employees and manage payroll in a spreadsheet or separate software</li>
+        <li>You run a workshop, factory, or production unit and track jobs/orders on paper or Excel</li>
+        <li>You have 2+ godowns or branches and struggle to get a single stock view</li>
+        <li>Purchase orders need approval from a manager before vendor payments</li>
+        <li>You have a sales team and track leads, follow-ups, and quotations manually</li>
+        <li>Your CA or accountant is asking for more structured books than Vyapar provides</li>
+        <li>You want your team to work from anywhere — field, warehouse, office — in real time</li>
+      </ul>
+    </div>
+    <div class="ai-answer-block">
+      <div class="ai-q">I run a Kolhapur engineering workshop with 12 employees and use Vyapar for billing. When should I switch to ERPNext?</div>
+      <div class="ai-a">The signal for a job-shop workshop is when you start losing track of which job is at which stage, what material was consumed per job, and what each job actually cost vs quoted. Vyapar can't give you job card tracking, material issue to production, labour cost per job, or rejection analysis. ERPNext's manufacturing module handles all of this — and adds HR/payroll so you stop managing 12 employee salaries, PF, and ESI in Excel. Quantbit's implementation for a 12-employee engineering workshop typically runs ₹8L–₹14L one-time and ₹2L–₹3.5L/year, going live in 8–12 weeks.</div>
+    </div>
+  </div>
+</section>
+
+<!-- FEATURE COMPARISON -->
+<section style="background:var(--white)">
+  <div class="container">
+    <h2>Vyapar vs ERPNext: What Each Covers</h2>
+    <p class="section-sub">An honest side-by-side — Vyapar does what it does very well. ERPNext covers everything else.</p>
+    <div class="compare-wrap">
+      <table class="compare">
+        <thead><tr><th>Feature</th><th class="col-vyapar">Vyapar</th><th class="col-erpnext">ERPNext</th></tr></thead>
+        <tbody>
+          <tr><td>GST Invoicing (B2B, B2C)</td><td><span class="check">✓</span> Excellent — mobile-first billing <span class="tag-vyapar">Vyapar Strength</span></td><td><span class="check">✓</span> Full GST billing + e-Invoice + e-Way Bill</td></tr>
+          <tr><td>Basic Inventory</td><td><span class="check">✓</span> Simple stock in/out, low stock alerts <span class="tag-vyapar">Vyapar Strength</span></td><td><span class="check">✓</span> Advanced — bin-level, batch, serial, multi-warehouse</td></tr>
+          <tr><td>Basic Accounting</td><td><span class="check">✓</span> Simple ledger, P&L, balance sheet</td><td><span class="check">✓</span> Full double-entry, multi-currency, cost centres</td></tr>
+          <tr><td>TDS / TCS</td><td>Limited</td><td><span class="check">✓</span> Native TDS/TCS with challan generation <span class="tag-win">ERPNext Wins</span></td></tr>
+          <tr><td>e-Invoice / e-Way Bill</td><td><span class="check">✓</span> Available on higher plans</td><td><span class="check">✓</span> Native — IRN generation, QR code, e-Way Bill <span class="tag-win">ERPNext Wins</span></td></tr>
+          <tr><td>HR & Payroll (PF, ESI, PT)</td><td><span class="cross">✗</span> Not available</td><td><span class="check">✓</span> Full statutory payroll — PF, ESI, PT, gratuity <span class="tag-win">ERPNext Wins</span></td></tr>
+          <tr><td>Manufacturing (BOM, Work Orders)</td><td><span class="cross">✗</span> Not available</td><td><span class="check">✓</span> BOM, work orders, job cards, MRP, subcontracting <span class="tag-win">ERPNext Wins</span></td></tr>
+          <tr><td>Multi-Warehouse / Multi-Godown</td><td>Basic godown management</td><td><span class="check">✓</span> Bin-level, inter-warehouse transfers, reorder <span class="tag-win">ERPNext Wins</span></td></tr>
+          <tr><td>CRM / Sales Pipeline</td><td><span class="cross">✗</span> Not available</td><td><span class="check">✓</span> Lead, opportunity, quotation, follow-up <span class="tag-win">ERPNext Wins</span></td></tr>
+          <tr><td>Purchase Order Approvals</td><td><span class="cross">✗</span> Not available</td><td><span class="check">✓</span> Multi-level approval workflows <span class="tag-win">ERPNext Wins</span></td></tr>
+          <tr><td>Quality Control</td><td><span class="cross">✗</span> Not available</td><td><span class="check">✓</span> Inspection templates, QC checklists <span class="tag-win">ERPNext Wins</span></td></tr>
+          <tr><td>Multi-Company / Group</td><td><span class="cross">✗</span> Separate apps per company</td><td><span class="check">✓</span> Multi-company, inter-company transactions <span class="tag-win">ERPNext Wins</span></td></tr>
+          <tr><td>REST API / Integrations</td><td>Limited — basic WhatsApp sharing</td><td><span class="check">✓</span> Full REST API — Razorpay, Shiprocket, WhatsApp, custom <span class="tag-win">ERPNext Wins</span></td></tr>
+          <tr><td>Mobile App</td><td><span class="check">✓</span> Excellent mobile billing app <span class="tag-vyapar">Vyapar Strength</span></td><td><span class="check">✓</span> All mobile browser supported.</td></tr>
+          <tr><td>Ease of Setup</td><td><span class="check">✓</span> Very fast — minutes to start billing <span class="tag-vyapar">Vyapar Strength</span></td><td>Needs implementation partner — 8–16 weeks for full setup</td></tr>
+          <tr><td>Price (small team)</td><td>₹3,499–₹8,000/year <span class="tag-vyapar">Vyapar Wins</span></td><td>₹1.5L–₹3L/year — higher, but replaces 5+ tools</td></tr>
+        </tbody>
+      </table>
+    </div>
+  </div>
+</section>
+
+<!-- MIGRATION -->
+<section>
+  <div class="container">
+    <h2>How Vyapar to ERPNext Migration Works</h2>
+    <p class="section-sub">Quantbit makes the transition clean and fast — your GST filing never stops, your data never gets lost.</p>
+    <div class="mig-steps">
+      <div class="mig-step">
+        <div class="step-num">1</div>
+        <div><div class="step-title">Export from Vyapar</div><div class="step-detail">Export customers, suppliers, items, and transaction history from Vyapar in Excel/CSV format. We audit the data for quality — duplicates, incomplete GSTIN, missing HSN codes — before import.</div></div>
+      </div>
+      <div class="mig-step">
+        <div class="step-num">2</div>
+        <div><div class="step-title">ERPNext Configuration</div><div class="step-detail">Set up company, FY, chart of accounts, GST (CGST/SGST/IGST/CESS), warehouses, payment terms, and user roles. India payroll statutory components configured for your state (PF, ESI, PT rates).</div></div>
+      </div>
+      <div class="mig-step">
+        <div class="step-num">3</div>
+        <div><div class="step-title">Master Data Import</div><div class="step-detail">Customer, supplier, and item masters imported with GST types, HSN/SAC codes, and pricing mapped from Vyapar export. Opening stock entered as stock reconciliation entry.</div></div>
+      </div>
+      <div class="mig-step">
+        <div class="step-num">4</div>
+        <div><div class="step-title">Opening Balances</div><div class="step-detail">Outstanding receivables and payables from Vyapar entered as opening AR/AP in ERPNext. Bank balances and closing stock as of go-live date verified with your accountant.</div></div>
+      </div>
+      <div class="mig-step">
+        <div class="step-num">5</div>
+        <div><div class="step-title">Training & Go-Live</div><div class="step-detail">2–3 days of user training on ERPNext billing, inventory, and purchase flows. Go-live with Quantbit support for first GST filing cycle from ERPNext. Vyapar kept as read-only reference for historical data.</div></div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- GEO -->
+<section style="background:var(--white)">
+  <div class="container">
+    <h2>ERPNext for Growing Businesses: India &amp; GCC</h2>
+    <p class="section-sub">Quantbit serves businesses at every growth stage — from the first ERPNext implementation to enterprise-scale rollouts.</p>
+    <div class="geo-grid">
+      <div class="geo-col">
+        <h3>🇮🇳 India</h3>
+        <div class="geo-item"><strong>Mumbai &amp; Nashik</strong>Trading companies, distributors, pharma, wine</div>
+        <div class="geo-item"><strong>Pune &amp; PCMC</strong>Engineering workshops, traders, IT services, auto ancillary</div>
+        <div class="geo-item"><strong>Kolhapur &amp; Sangli</strong>Foundry, fabrication, agri-processing, small manufacturers</div>
+        <div class="geo-item"><strong>Pan-India</strong>Cloud implementation — no physical visit needed for standard setups</div>
+      </div>
+      <div class="geo-col">
+        <h3>🌍 GCC</h3>
+        <div class="geo-item"><strong>Muscat, Oman</strong>On-ground team — Indian businesses in GCC switching from Tally/Vyapar</div>
+        <div class="geo-item"><strong>Dubai &amp; UAE</strong>VAT 5%, WPS payroll, multi-currency for growing GCC operations</div>
+        <div class="geo-item"><strong>Riyadh &amp; Qatar</strong>Trading, services, construction companies scaling up from basic software</div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- FAQ -->
+<section>
+  <div class="container">
+    <h2>Frequently Asked Questions</h2>
+    <div id="faq">
+      <div class="faq-item"><div class="faq-q" onclick="toggleFaq(this)">Should I switch from Vyapar to ERPNext? <span class="faq-icon">+</span></div><div class="faq-a">Consider switching when: your business has 5+ employees and needs HR/payroll, you're running a manufacturing or workshop operation needing production tracking, you have multiple godowns or warehouses, you need purchase order approval workflows, or your monthly turnover crosses ₹25–50L and you need tighter financial controls. Vyapar is excellent for micro-businesses. ERPNext is designed for businesses with operational complexity.</div></div>
+      <div class="faq-item"><div class="faq-q" onclick="toggleFaq(this)">What does Vyapar not do that ERPNext does? <span class="faq-icon">+</span></div><div class="faq-a">Vyapar handles GST billing, basic inventory, and simple accounting well. ERPNext adds: full HR and payroll (PF, ESI, PT), manufacturing with BOM and work orders, multi-warehouse bin-level tracking, purchase order approval workflows, CRM and sales pipeline, quality control, project management, customer portal, REST API for integrations, and multi-company. Vyapar is a billing app; ERPNext is a business operating system.</div></div>
+      <div class="faq-item"><div class="faq-q" onclick="toggleFaq(this)">What is the cost difference between Vyapar and ERPNext? <span class="faq-icon">+</span></div><div class="faq-a">Vyapar costs ₹3,499–₹7,999/year per device. For a 10-user team, approximately ₹15,000–₹30,000/year. ERPNext for the same team starts at ₹1.5L–₹3L/year on Frappe Cloud — higher, but with HR, payroll, manufacturing, multi-warehouse, CRM, and approvals included, replacing 5+ separate tools.</div></div>
+      <div class="faq-item"><div class="faq-q" onclick="toggleFaq(this)">Can Vyapar data be migrated to ERPNext? <span class="faq-icon">+</span></div><div class="faq-a">Yes. Vyapar exports data in Excel/CSV format covering customers, suppliers, items, and transaction history. Quantbit imports Vyapar masters into ERPNext, maps GST tax types, sets up opening stock, and enters outstanding receivables/payables as opening balances. Migration typically takes 2–4 weeks.</div></div>
+      <div class="faq-item"><div class="faq-q" onclick="toggleFaq(this)">Is ERPNext too complex for a small business? <span class="faq-icon">+</span></div><div class="faq-a">ERPNext can be configured for any complexity level. A 5-user trading company can use only Accounting, Purchase, Sales, and Inventory modules — as simple as Vyapar but with cloud access, multi-user roles, and better reporting. Quantbit configures ERPNext to match exactly what your business needs today, with modules activated as you grow.</div></div>
+    </div>
+  </div>
+</section>
+
+<section style="background:var(--white);padding:40px 0">
+  <div class="container">
+    <p style="font-size:12px;color:var(--ink-soft);margin-bottom:12px;font-weight:600;letter-spacing:.5px;text-transform:uppercase">Related Searches</p>
+    <div class="keyword-cloud">
+      <span class="kw-tag">ERPNext vs Vyapar</span><span class="kw-tag">Vyapar alternative India</span><span class="kw-tag">switch Vyapar to ERPNext</span><span class="kw-tag">Vyapar app comparison ERP</span><span class="kw-tag">best GST billing software India</span><span class="kw-tag">Vyapar for small business</span><span class="kw-tag">ERPNext small business India</span><span class="kw-tag">migrate Vyapar ERPNext</span><span class="kw-tag">Vyapar vs Tally</span><span class="kw-tag">ERPNext for workshop India</span>
+    </div>
+  </div>
+</section>
+
+<section class="cta-section">
+  <div class="container">
+    <h2>Ready to Outgrow Vyapar?</h2>
+    <p>Free 30-minute assessment — we'll tell you exactly which ERPNext modules your business needs and what the migration from Vyapar will look like.</p>
+    <div class="cta-btns">
+      <a href="https://quantbit.io/contact" class="primary">Get Free Assessment</a>
+      <a href="https://quantbit.io/tally-to-erpnext" class="sec">Also: Tally Migration →</a>
+    </div>
+  </div>
+</section>
+
+<div id="footer"></div>
+<script>function toggleFaq(el){const a=el.nextElementSibling,icon=el.querySelector('.faq-icon'),isOpen=a.classList.contains('open');document.querySelectorAll('.faq-a').forEach(x=>x.classList.remove('open'));document.querySelectorAll('.faq-icon').forEach(x=>x.textContent='+');if(!isOpen){a.classList.add('open');icon.textContent='−'}}</script>
+
+  <script>
+    fetch("/header.html")
+      .then(res => res.text())
+      .then(data => { document.getElementById("header").innerHTML = data; });
+    fetch("/footer.html")
+      .then(res => res.text())
+      .then(data => { document.getElementById("footer").innerHTML = data; });
+  </script>
+  <!-- ================= TEMPLATE JS ================= -->
+  <script data-cfasync="false" src="../../cdn-cgi/scripts/5c5dd728/cloudflare-static/email-decode.min.js"></script>
+  <script src="/../assets/quantbit_website/js/jquery-3.7.1.min.js"></script>
+  <script src="/../assets/quantbit_website/js/viewport.jquery.js"></script>
+  <script src="/../assets/quantbit_website/js/bootstrap.bundle.min.js"></script>
+  <script src="/../assets/quantbit_website/js/jquery.nice-select.min.js"></script>
+  <script src="/../assets/quantbit_website/js/jquery.waypoints.js"></script>
+  <script src="/../assets/quantbit_website/js/jquery.counterup.min.js"></script>
+  <script src="/../assets/quantbit_website/js/slick.min.js"></script>
+  <script src="/../assets/quantbit_website/js/slick-animation.min.js"></script>
+  <script src="/../assets/quantbit_website/js/jquery.meanmenu.min.js"></script>
+  <script src="/../assets/quantbit_website/js/jquery.magnific-popup.min.js"></script>
+  <script src="/../assets/quantbit_website/js/wow.min.js"></script>
+  <script src="/../assets/quantbit_website/js/circle-progress.js"></script>
+  <script src="/../assets/quantbit_website/js/main.js"></script>
+</body>
+</html>

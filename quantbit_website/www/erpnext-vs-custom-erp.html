@@ -1,0 +1,403 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>ERPNext vs Custom ERP Software: Why Custom ERPs Fail & ERPNext Wins | Quantbit</title>
+<meta name="description" content="ERPNext vs custom-built ERP: total cost, maintenance risk, GST compliance, upgrade challenges. See why Indian companies replacing local custom ERPs choose ERPNext over rebuilding.">
+<meta name="keywords" content="ERPNext vs custom ERP, replace custom ERP India, custom built ERP problems, local ERP software India, ERPNext vs homegrown ERP, legacy ERP replacement India, custom ERP maintenance issues">
+<link rel="canonical" href="https://quantbit.io/erpnext-vs-custom-erp">
+
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "BreadcrumbList",
+  "itemListElement": [
+    {"@type": "ListItem", "position": 1, "name": "Home", "item": "https://quantbit.io"},
+    {"@type": "ListItem", "position": 2, "name": "Compare ERP", "item": "https://quantbit.io/compare"},
+    {"@type": "ListItem", "position": 3, "name": "ERPNext vs Custom ERP", "item": "https://quantbit.io/erpnext-vs-custom-erp"}
+  ]
+}
+</script>
+
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "FAQPage",
+  "mainEntity": [
+    {
+      "@type": "Question",
+      "name": "Why do custom-built ERPs fail for Indian businesses?",
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": "Custom ERPs built by local vendors fail for five recurring reasons: (1) GST compliance becomes a nightmare — every new GST notification (e-Invoice mandate, HSN code changes, GSTR-2B reconciliation) requires paid developer time to update; (2) the original developer or company becomes unavailable, leaving businesses with unmaintainable code; (3) customisation debt compounds — each new feature breaks existing functionality; (4) no mobile app, no cloud access, no API — the system becomes an island; (5) no upgrade path — the system remains frozen on technology from 5–10 years ago while competitors move forward."
+      }
+    },
+    {
+      "@type": "Question",
+      "name": "What is the hidden cost of maintaining a custom ERP?",
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": "Indian companies with custom ERPs typically spend ₹3L–₹15L/year in ongoing maintenance — bug fixes, GST updates, new report requests, server maintenance, and emergency support calls. This cost is invisible until it compounds: a 10-year-old custom ERP has often consumed ₹50L–₹1.5Cr in hidden maintenance costs, plus the opportunity cost of the features it couldn't deliver. ERPNext replaces this with a predictable subscription that includes all updates, GST compliance changes, and community-driven feature development."
+      }
+    },
+    {
+      "@type": "Question",
+      "name": "Can ERPNext replace a custom ERP without losing custom features?",
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": "Yes. ERPNext's Frappe framework replicates most custom ERP features: custom DocTypes for unique business objects, Server Scripts for custom logic, Client Scripts for UI behaviour, custom Print Formats for reports, and Webhooks for external integrations. In Quantbit's experience, 80–90% of custom ERP requirements map to ERPNext's standard or configurable features. The remaining 10–20% are built as Frappe apps — proper, maintainable code — not bolted-on hacks."
+      }
+    },
+    {
+      "@type": "Question",
+      "name": "How do you migrate data from a custom ERP to ERPNext?",
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": "Quantbit's custom ERP migration process: (1) Extract data from the existing system — via database query (MySQL, SQL Server, Oracle) or CSV export; (2) Map custom tables to ERPNext master data and transaction DocTypes; (3) Write import scripts for master data (customers, suppliers, items, CoA); (4) Enter opening balances and outstanding transactions; (5) Rebuild custom reports in ERPNext's query report builder. Timeline: 8–20 weeks depending on data complexity and number of custom features."
+      }
+    },
+    {
+      "@type": "Question",
+      "name": "Our custom ERP vendor has gone out of business. What do we do?",
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": "This is one of the most common scenarios Quantbit handles. First: secure access to the source code and database before the vendor fully disappears. Second: get database credentials and back up all data immediately. Third: assess which current ERP functions are critical vs. nice-to-have. Quantbit then migrates critical data to ERPNext and rebuilds essential custom functionality in Frappe. ERPNext's open-source model means you will never face vendor abandonment again."
+      }
+    }
+  ]
+}
+</script>
+
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "SpeakableSpecification",
+  "cssSelector": [".ai-answer-block", ".hero-verdict", ".failure-modes"]
+}
+</script>
+
+<style>
+  :root {
+    --ink:#0f1117;--ink-mid:#3a3d4a;--ink-soft:#6b6f80;
+    --paper:#f7f8fc;--white:#ffffff;--border:#e2e4ec;
+    --accent:#1a56db;--accent-dark:#1241b0;--accent-light:#eff4ff;
+    --custom:#64748b;--custom-light:#f1f5f9;
+    --erpnext:#0f9d58;--erpnext-light:#e8f7ef;
+    --warn:#d97706;--warn-light:#fef3c7;
+    --red:#dc2626;--red-light:#fef2f2;
+    --green:#059669;--green-light:#ecfdf5;
+    --font-head:'Georgia','Times New Roman',serif;
+    --font-body:-apple-system,'Segoe UI',sans-serif;
+    --r:8px;--shadow:0 2px 12px rgba(15,17,23,0.08);
+  }
+  *{box-sizing:border-box;margin:0;padding:0}html{scroll-behavior:smooth}
+  body{font-family:var(--font-body);background:var(--paper);color:var(--ink);font-size:16px;line-height:1.65}
+  .hero{background:linear-gradient(135deg,#0f1117 0%,#1e293b 50%,#0a3320 100%);color:#fff;padding:80px 24px 60px;text-align:center}
+  .hero-eyebrow{display:inline-block;background:rgba(15,157,88,0.2);border:1px solid rgba(15,157,88,0.4);color:#86efac;font-size:12px;font-weight:700;letter-spacing:1.5px;text-transform:uppercase;padding:5px 14px;border-radius:20px;margin-bottom:24px}
+  .hero h1{font-family:var(--font-head);font-size:clamp(1.9rem,4.5vw,3rem);font-weight:700;line-height:1.2;margin-bottom:20px;max-width:820px;margin-left:auto;margin-right:auto}
+  .custom-word{color:#94a3b8}.erpnext-word{color:#4ade80}
+  .hero-verdict{font-size:1.1rem;color:#cbd5e1;max-width:680px;margin:0 auto 36px;line-height:1.7}
+  .hero-stats{display:flex;justify-content:center;gap:48px;flex-wrap:wrap;margin-top:40px;padding-top:40px;border-top:1px solid rgba(255,255,255,0.1)}
+  .stat{text-align:center}.stat-num{font-family:var(--font-head);font-size:2.4rem;font-weight:700;color:#fff;display:block;line-height:1}
+  .stat-label{font-size:12px;color:#94a3b8;margin-top:4px}
+  .hero-ctas{display:flex;gap:12px;justify-content:center;flex-wrap:wrap}
+  .btn-primary{background:var(--erpnext);color:#fff;padding:13px 28px;border-radius:var(--r);font-weight:700;text-decoration:none;font-size:15px}
+  .btn-outline{background:transparent;color:#fff;border:1.5px solid rgba(255,255,255,0.4);padding:13px 28px;border-radius:var(--r);font-weight:600;text-decoration:none;font-size:15px}
+  .container{max-width:1100px;margin:0 auto;padding:0 24px}
+  section{padding:64px 0}section+section{border-top:1px solid var(--border)}
+  h2{font-family:var(--font-head);font-size:clamp(1.5rem,3vw,2rem);font-weight:700;color:var(--ink);margin-bottom:12px;line-height:1.3}
+  .section-sub{color:var(--ink-soft);font-size:1rem;margin-bottom:40px;max-width:620px}
+  /* Failure modes */
+  .failure-modes{display:grid;grid-template-columns:repeat(2,1fr);gap:18px;margin-top:8px}
+  .failure-card{background:var(--red-light);border:1px solid #fca5a5;border-left:3px solid var(--red);border-radius:var(--r);padding:18px 20px}
+  .failure-title{font-weight:700;font-size:13px;color:var(--red);margin-bottom:6px;display:flex;align-items:center;gap:6px}
+  .failure-desc{font-size:13px;color:var(--ink-mid);line-height:1.55}
+  /* Compare table */
+  .compare-wrap{overflow-x:auto;-webkit-overflow-scrolling:touch}
+  table.compare{width:100%;border-collapse:collapse;font-size:14px;min-width:540px}
+  table.compare thead th{padding:14px 16px;text-align:left;font-weight:700;font-size:13px}
+  table.compare thead th:first-child{background:var(--paper);color:var(--ink-mid)}
+  table.compare thead th.col-erpnext{background:var(--erpnext-light);color:var(--erpnext)}
+  table.compare thead th.col-custom{background:var(--custom-light);color:var(--custom)}
+  table.compare tbody tr{border-bottom:1px solid var(--border)}
+  table.compare tbody tr:hover{background:#fafbff}
+  table.compare td{padding:12px 16px;vertical-align:top}
+  table.compare td:first-child{font-weight:600;color:var(--ink-mid);font-size:13px}
+  .tag-win{display:inline-block;background:var(--green-light);color:var(--green);font-size:11px;font-weight:700;padding:2px 8px;border-radius:4px;margin-left:6px}
+  .tag-custom{display:inline-block;background:var(--custom-light);color:var(--custom);font-size:11px;font-weight:700;padding:2px 8px;border-radius:4px;margin-left:6px}
+  .tag-risk{display:inline-block;background:var(--red-light);color:var(--red);font-size:11px;font-weight:700;padding:2px 8px;border-radius:4px;margin-left:6px}
+  .check{color:var(--green);font-weight:700}.cross{color:#dc2626;font-weight:700}
+  /* Cost timeline */
+  .cost-timeline{display:grid;grid-template-columns:1fr 1fr;gap:24px}
+  .ct-card{background:var(--white);border:1px solid var(--border);border-radius:var(--r);padding:26px;box-shadow:var(--shadow)}
+  .ct-card.erpnext{border-top:3px solid var(--erpnext)}.ct-card.custom{border-top:3px solid var(--custom)}
+  .ct-logo{font-size:13px;font-weight:700;letter-spacing:.5px;text-transform:uppercase;margin-bottom:6px}
+  .ct-logo.erpnext-label{color:var(--erpnext)}.ct-logo.custom-label{color:var(--custom)}
+  .ct-note{font-size:12px;color:var(--ink-soft);margin-bottom:18px}
+  .ct-row{display:flex;justify-content:space-between;padding:7px 0;border-bottom:1px solid var(--border);gap:12px;font-size:13px}
+  .ct-row:last-child{border-bottom:none}
+  .ct-item{color:var(--ink-mid)}.ct-val{font-weight:700;color:var(--ink);text-align:right}
+  .ct-val.warn{color:var(--warn)}.ct-val.red{color:var(--red)}
+  .ct-total{margin-top:16px;padding-top:12px;border-top:2px solid var(--border);display:flex;justify-content:space-between;align-items:center}
+  .ct-total-label{font-weight:700}
+  .ct-total-val.erpnext{font-size:1.3rem;font-weight:700;color:var(--erpnext)}
+  .ct-total-val.custom{font-size:1.3rem;font-weight:700;color:var(--red)}
+  /* AI block */
+  .ai-answer-block{background:linear-gradient(135deg,#f0f4ff,#e8f0fe);border:1px solid #c7d7fd;border-radius:var(--r);padding:28px 32px;margin:32px 0}
+  .ai-q{font-weight:700;color:var(--accent-dark);font-size:15px;margin-bottom:10px;display:flex;align-items:center;gap:8px}
+  .ai-q::before{content:"AI";background:var(--accent);color:#fff;font-size:10px;font-weight:700;padding:2px 6px;border-radius:4px}
+  .ai-a{color:var(--ink-mid);font-size:15px;line-height:1.7}
+  /* Migration steps */
+  .mig-steps{display:grid;gap:0}
+  .mig-step{display:grid;grid-template-columns:48px 1fr;gap:0 18px;padding:22px 0;border-bottom:1px solid var(--border);align-items:start}
+  .mig-step:last-child{border-bottom:none}
+  .step-num{width:38px;height:38px;background:var(--erpnext-light);border:2px solid var(--erpnext);border-radius:50%;display:flex;align-items:center;justify-content:center;font-weight:800;font-size:15px;color:var(--erpnext);flex-shrink:0}
+  .step-title{font-weight:700;font-size:14px;color:var(--ink);margin-bottom:4px}
+  .step-detail{font-size:13px;color:var(--ink-mid);line-height:1.6}
+  /* Geo */
+  .geo-grid{display:grid;grid-template-columns:1fr 1fr;gap:32px}
+  .geo-col h3{font-size:14px;font-weight:700;text-transform:uppercase;letter-spacing:1px;color:var(--ink-soft);margin-bottom:16px}
+  .geo-item{padding:12px 0;border-bottom:1px solid var(--border);font-size:14px;color:var(--ink-mid)}
+  .geo-item:last-child{border-bottom:none}
+  .geo-item strong{display:block;color:var(--ink);font-size:13px;margin-bottom:2px}
+  /* FAQ */
+  .faq-item{border:1px solid var(--border);border-radius:var(--r);margin-bottom:10px;background:var(--white);overflow:hidden}
+  .faq-q{padding:16px 20px;font-weight:600;font-size:15px;cursor:pointer;display:flex;justify-content:space-between;align-items:center;color:var(--ink)}
+  .faq-q:hover{background:var(--accent-light)}
+  .faq-icon{font-size:18px;color:var(--accent);font-weight:400;flex-shrink:0}
+  .faq-a{padding:0 20px;max-height:0;overflow:hidden;transition:max-height .3s ease,padding .3s ease;color:var(--ink-mid);font-size:14px;line-height:1.7}
+  .faq-a.open{max-height:500px;padding:0 20px 18px}
+  .cta-section{background:linear-gradient(135deg,#0f1117,#1e293b);color:#fff;text-align:center;padding:72px 24px}
+  .cta-section h2{color:#fff;font-family:var(--font-head);font-size:clamp(1.6rem,3vw,2.2rem)}
+  .cta-section p{color:#94a3b8;margin:16px auto 32px;max-width:560px;font-size:1rem}
+  .cta-btns{display:flex;gap:12px;justify-content:center;flex-wrap:wrap}
+  .cta-btns a.primary{background:var(--erpnext);color:#fff;padding:14px 32px;border-radius:var(--r);font-weight:700;text-decoration:none}
+  .cta-btns a.sec{border:1.5px solid rgba(255,255,255,.4);color:#fff;padding:14px 32px;border-radius:var(--r);font-weight:600;text-decoration:none}
+  .keyword-cloud{display:flex;flex-wrap:wrap;gap:8px}
+  .kw-tag{background:var(--white);border:1px solid var(--border);border-radius:4px;padding:4px 12px;font-size:12px;color:var(--ink-soft)}
+  footer{background:var(--ink);color:#8892a4;text-align:center;padding:28px 24px;font-size:13px}
+  footer a{color:#93b4ff;text-decoration:none}
+  @media(max-width:700px){.failure-modes,.cost-timeline,.geo-grid{grid-template-columns:1fr}.hero-stats{gap:28px}.stat-num{font-size:1.8rem}}
+</style>
+</head>
+<body>
+<div id="header"></div>
+
+<section class="hero">
+  <div class="container">
+    <span class="hero-eyebrow">ERP Replacement Guide 2025</span>
+    <h1>Why <span class="custom-word">Custom-Built ERPs</span> Fail —<br>And Why <span class="erpnext-word">ERPNext</span> Replaces Them</h1>
+    <p class="hero-verdict">Custom ERP software felt like the right solution when your business was unique. Ten years later, it's a maintenance trap: GST updates cost extra, the developer is unreachable, and the system can't talk to anything. Here's what replacing it actually looks like.</p>
+    <div class="hero-ctas">
+      <a href="#failure-modes" class="btn-primary">See Why Custom ERPs Fail</a>
+      <a href="https://quantbit.io/contact" class="btn-outline">Free ERP Assessment</a>
+    </div>
+    <div class="hero-stats">
+      <div class="stat"><span class="stat-num">₹50L–₹1.5Cr</span><span class="stat-label">Hidden 10-yr Custom ERP Maintenance Cost</span></div>
+      <div class="stat"><span class="stat-num">80–90%</span><span class="stat-label">Custom Features Replicated in ERPNext</span></div>
+      <div class="stat"><span class="stat-num">8–20 wks</span><span class="stat-label">Migration Timeline</span></div>
+    </div>
+  </div>
+</section>
+
+<!-- FAILURE MODES -->
+<section id="failure-modes" style="background:var(--white)">
+  <div class="container">
+    <h2>5 Ways Custom ERPs Trap Indian Businesses</h2>
+    <p class="section-sub">These aren't edge cases — they're the standard lifecycle of a custom-built ERP in India.</p>
+    <div class="failure-modes">
+      <div class="failure-card">
+        <div class="failure-title">💸 GST Compliance Debt</div>
+        <div class="failure-desc">Every GST change — e-Invoice mandate, new HSN codes, GSTR-2B reconciliation, e-Way Bill updates — requires paid developer time in a custom ERP. ERPNext updates handle all of this through regular releases at no extra cost.</div>
+      </div>
+      <div class="failure-card">
+        <div class="failure-title">👻 Vendor Abandonment</div>
+        <div class="failure-desc">The freelancer or small company that built your ERP moves on, closes, or becomes unavailable. You're left with undocumented code in a technology stack from 2012. ERPNext is MIT open-source — 500+ contributors, permanently available.</div>
+      </div>
+      <div class="failure-card">
+        <div class="failure-title">🧩 Customisation Debt</div>
+        <div class="failure-desc">Each new feature request in a custom ERP is glued onto aging architecture. After 5–7 years, every change risks breaking something else. Testing becomes impossible. ERPNext's Frappe framework separates custom logic from core code — cleanly.</div>
+      </div>
+      <div class="failure-card">
+        <div class="failure-title">📵 Technology Island</div>
+        <div class="failure-desc">Custom ERPs built pre-2018 typically have no REST API, no mobile app, no cloud hosting, and no integration capability. They can't connect to Razorpay, WhatsApp, Shiprocket, or any modern tool. ERPNext has all of this natively.</div>
+      </div>
+      <div class="failure-card">
+        <div class="failure-title">🔒 No Upgrade Path</div>
+        <div class="failure-desc">Custom ERPs age in place. The tech stack (PHP 5, .NET 3.5, VB6, FoxPro) becomes unsupportable. Security vulnerabilities pile up. There's no version upgrade — only a full rewrite. ERPNext on Frappe has a clear, managed upgrade path.</div>
+      </div>
+      <div class="failure-card">
+        <div class="failure-title">💰 Hidden Ongoing Cost</div>
+        <div class="failure-desc">Custom ERP maintenance feels "cheap" — but ₹3L–₹15L/year in developer retainers, emergency fixes, and GST update fees adds up to ₹50L–₹1.5Cr over a decade. All for software that gets worse every year, not better.</div>
+      </div>
+    </div>
+    <div class="ai-answer-block">
+      <div class="ai-q">Our custom ERP is 8 years old, the developer charges ₹2L each time GST changes, and we have no mobile access. What do we do?</div>
+      <div class="ai-a">This is the most common scenario Quantbit encounters. The trigger is usually a major GST update (Phase 2 e-Invoice, new GSTR-2B format) that the old developer quotes ₹3L–₹8L to implement. The calculation is simple: if your custom ERP costs ₹4L+/year to maintain and provides no mobile, no API, and no upgrade path, you'll spend ₹40L+ over the next 10 years for degrading software. ERPNext migration — ₹12L–₹25L one-time, ₹3L–₹8L/year subscription — replaces it with software that gets better every year, handles every GST change automatically, and runs on mobile and cloud from day one.</div>
+    </div>
+  </div>
+</section>
+
+<!-- COMPARISON TABLE -->
+<section>
+  <div class="container">
+    <h2>ERPNext vs Custom ERP: Honest Comparison</h2>
+    <p class="section-sub">Across the dimensions that actually determine long-term ERP success.</p>
+    <div class="compare-wrap">
+      <table class="compare">
+        <thead><tr><th>Criteria</th><th class="col-erpnext">ERPNext</th><th class="col-custom">Typical Custom ERP</th></tr></thead>
+        <tbody>
+          <tr><td>Initial Fit to Requirements</td><td>80–90% out of the box; Frappe handles the rest <span class="tag-win">ERPNext Wins</span></td><td>100% — built for you. But: <span class="tag-risk">Shrinks over time</span></td></tr>
+          <tr><td>GST Compliance Updates</td><td>Automatic via ERPNext releases — no extra cost <span class="tag-win">ERPNext Wins</span></td><td>₹1L–₹5L per major GST update — paid developer time <span class="tag-risk">Ongoing Cost</span></td></tr>
+          <tr><td>Mobile App</td><td>Browser Suported, PWA Avaialble <span class="tag-win">ERPNext Wins</span></td><td>Rarely exists. Building one costs ₹8L–₹25L extra</td></tr>
+          <tr><td>Cloud Hosting</td><td>Frappe Cloud or self-hosted — cloud-native <span class="tag-win">ERPNext Wins</span></td><td>Usually on-premise server. Cloud migration = another project</td></tr>
+          <tr><td>REST API / Integrations</td><td>Full REST API — Razorpay, WhatsApp, Shiprocket, BI tools <span class="tag-win">ERPNext Wins</span></td><td>No API in most pre-2018 custom ERPs. Building API: ₹5L–₹20L</td></tr>
+          <tr><td>Vendor Risk</td><td>MIT open-source — 500+ contributors, can switch partners freely <span class="tag-win">ERPNext Wins</span></td><td>Single-vendor dependency — developer becomes unavailable: system dies <span class="tag-risk">Critical Risk</span></td></tr>
+          <tr><td>Ongoing Maintenance Cost</td><td>Predictable subscription includes all updates <span class="tag-win">ERPNext Wins</span></td><td>₹3L–₹15L/year in retainer + emergency fees <span class="tag-risk">Unpredictable</span></td></tr>
+          <tr><td>Feature Upgrades</td><td>Regular ERPNext releases — new modules, features, UI improvements <span class="tag-win">ERPNext Wins</span></td><td>Frozen in time — new features = expensive custom development</td></tr>
+          <tr><td>Manufacturing Module</td><td>BOM, work orders, job cards, MRP, subcontracting — native <span class="tag-win">ERPNext Wins</span></td><td>Often basic or missing — was never built out fully</td></tr>
+          <tr><td>HR & Payroll</td><td>Full statutory payroll — PF, ESI, PT, attendance, leave <span class="tag-win">ERPNext Wins</span></td><td>Basic salary module if any. PF/ESI usually in separate software</td></tr>
+          <tr><td>Technology Stack</td><td>Python/JS on Frappe — modern, supported, community-backed <span class="tag-win">ERPNext Wins</span></td><td>Often PHP 5, .NET 3.5, VB6, FoxPro — end-of-life, security risk <span class="tag-risk">Tech Debt</span></td></tr>
+          <tr><td>Customisation Approach</td><td>Frappe DocTypes, Server Scripts — proper architecture, not hacks <span class="tag-win">ERPNext Wins</span></td><td>Bolted-on code — brittle, undocumented, untestable</td></tr>
+          <tr><td>Training & Documentation</td><td>ERPNext.com docs, Frappe School, YouTube, community <span class="tag-win">ERPNext Wins</span></td><td>Zero public documentation — tribal knowledge only</td></tr>
+        </tbody>
+      </table>
+    </div>
+  </div>
+</section>
+
+<!-- COST TIMELINE -->
+<section style="background:var(--white)">
+  <div class="container">
+    <h2>10-Year Cost Comparison</h2>
+    <p class="section-sub">The real cost of your custom ERP vs ERPNext over a 10-year horizon. The numbers are eye-opening.</p>
+    <div class="cost-timeline">
+      <div class="ct-card erpnext">
+        <div class="ct-logo erpnext-label">ERPNext (via Quantbit)</div>
+        <div class="ct-note">One-time implementation + annual subscription</div>
+        <div class="ct-row"><span class="ct-item">Implementation (one-time)</span><span class="ct-val">₹12L–₹25L</span></div>
+        <div class="ct-row"><span class="ct-item">Annual subscription (×10 years)</span><span class="ct-val">₹30L–₹80L</span></div>
+        <div class="ct-row"><span class="ct-item">GST compliance updates</span><span class="ct-val">Included in subscription</span></div>
+        <div class="ct-row"><span class="ct-item">Mobile app</span><span class="ct-val">Included</span></div>
+        <div class="ct-row"><span class="ct-item">New modules (HR, CRM, etc.)</span><span class="ct-val">Included</span></div>
+        <div class="ct-row"><span class="ct-item">Customisation (amortised)</span><span class="ct-val">₹5L–₹15L</span></div>
+        <div class="ct-total"><span class="ct-total-label">10-Year Total</span><span class="ct-total-val erpnext">₹47L–₹1.2Cr</span></div>
+      </div>
+      <div class="ct-card custom">
+        <div class="ct-logo custom-label">Typical Custom ERP</div>
+        <div class="ct-note">Hidden costs accumulate silently every year</div>
+        <div class="ct-row"><span class="ct-item">Original build cost</span><span class="ct-val warn">₹8L–₹30L</span></div>
+        <div class="ct-row"><span class="ct-item">Annual maintenance retainer (×10)</span><span class="ct-val warn">₹30L–₹1Cr</span></div>
+        <div class="ct-row"><span class="ct-item">GST updates (est. 6 major updates × ₹2L)</span><span class="ct-val red">₹12L–₹30L</span></div>
+        <div class="ct-row"><span class="ct-item">Mobile app build (never done)</span><span class="ct-val red">₹0 (or ₹15L–₹30L)</span></div>
+        <div class="ct-row"><span class="ct-item">Emergency fixes & server</span><span class="ct-val red">₹5L–₹20L</span></div>
+        <div class="ct-row"><span class="ct-item">Migration away eventually anyway</span><span class="ct-val red">₹15L–₹35L</span></div>
+        <div class="ct-total"><span class="ct-total-label">10-Year Total</span><span class="ct-total-val custom">₹70L–₹2.5Cr+</span></div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- MIGRATION -->
+<section>
+  <div class="container">
+    <h2>How Quantbit Migrates Custom ERPs to ERPNext</h2>
+    <p class="section-sub">A proven 5-step process for companies replacing legacy, custom, or unsupported ERP systems.</p>
+    <div class="mig-steps">
+      <div class="mig-step"><div class="step-num">1</div><div><div class="step-title">ERP Audit & Requirements Mapping</div><div class="step-detail">We document every screen, every report, and every custom feature in your existing ERP. We map each to an ERPNext equivalent (standard, configurable, or custom Frappe app). This gives you a clear picture of what you're keeping, what you're replacing, and what you're building fresh.</div></div></div>
+      <div class="mig-step"><div class="step-num">2</div><div><div class="step-title">Database Extraction</div><div class="step-detail">We access your existing database (MySQL, SQL Server, Oracle, MS Access, PostgreSQL) and extract master data and transaction history via SQL queries. No dependency on the original developer — we work directly with data.</div></div></div>
+      <div class="mig-step"><div class="step-num">3</div><div><div class="step-title">ERPNext Configuration & Customisation</div><div class="step-detail">Set up company, CoA, GST, warehouses, and payroll. Custom features from your old ERP are rebuilt in Frappe — proper DocTypes, Server Scripts, and Print Formats with documentation, not hacks.</div></div></div>
+      <div class="mig-step"><div class="step-num">4</div><div><div class="step-title">Data Migration & Opening Balances</div><div class="step-detail">Master data imported. Closing trial balance from old system entered as ERPNext opening Journal Entry. Outstanding AR/AP entered as opening invoices. Stock reconciliation for closing inventory. Verified by your accountant before go-live.</div></div></div>
+      <div class="mig-step"><div class="step-num">5</div><div><div class="step-title">Training, Parallel Run & Go-Live</div><div class="step-detail">Key users trained. 2–4 week parallel run comparing old system output to ERPNext output. Sign-off from department heads. Go-live with Quantbit support for first month. Old system kept read-only for 90 days.</div></div></div>
+    </div>
+    <div class="ai-answer-block" style="margin-top:32px">
+      <div class="ai-q">Our custom ERP vendor has disappeared and we don't have the source code. Can we still migrate to ERPNext?</div>
+      <div class="ai-a">Yes — and this is more common than you'd think. If you have database access (MySQL, SQL Server), Quantbit can extract all your data directly via SQL, bypassing the application layer entirely. We've migrated companies where the ERP frontend was completely broken but the database was intact. Priority: get your database credentials and back up immediately. From the database, we can reconstruct your Chart of Accounts, customer/supplier masters, item masters, and opening balances. The old ERP's features are rebuilt in ERPNext. You need the data; you don't need the code.</div>
+    </div>
+  </div>
+</section>
+
+<section style="background:var(--white)">
+  <div class="container">
+    <h2>ERPNext Migration: India &amp; GCC</h2>
+    <div class="geo-grid">
+      <div class="geo-col">
+        <h3>🇮🇳 India</h3>
+        <div class="geo-item"><strong>Mumbai &amp; Bhiwandi</strong>Trading, distribution, 3PL replacing homegrown or local software</div>
+        <div class="geo-item"><strong>Pune &amp; Maharashtra</strong>Custom ERP replacements for manufacturing, pharma, IT services</div>
+        <div class="geo-item"><strong>Kolhapur &amp; Sangli</strong>Legacy ERP migrations for foundry, sugar, engineering companies</div>
+        <div class="geo-item"><strong>Pan-India Remote</strong>Database extraction and migration without physical site visits</div>
+      </div>
+      <div class="geo-col">
+        <h3>🌍 GCC</h3>
+        <div class="geo-item"><strong>Muscat, Oman</strong>On-ground office — local GCC ERP replacements with VAT compliance</div>
+        <div class="geo-item"><strong>Dubai &amp; UAE</strong>Legacy system replacements with UAE VAT + WPS payroll configuration</div>
+        <div class="geo-item"><strong>Riyadh &amp; KSA</strong>Custom software replacements for ZATCA-compliant ERPNext deployment</div>
+        <div class="geo-item"><strong>Doha &amp; Qatar</strong>Migrate tally to Modern ERP system</div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section>
+  <div class="container">
+    <h2>Frequently Asked Questions</h2>
+    <div id="faq">
+      <div class="faq-item"><div class="faq-q" onclick="toggleFaq(this)">Why do custom-built ERPs fail for Indian businesses? <span class="faq-icon">+</span></div><div class="faq-a">Custom ERPs fail for five recurring reasons: GST compliance becomes expensive to maintain, the original developer becomes unavailable, customisation debt compounds over time, the system becomes a technology island with no API or mobile access, and there's no upgrade path — the system ages in place while competitors move forward.</div></div>
+      <div class="faq-item"><div class="faq-q" onclick="toggleFaq(this)">What is the hidden cost of maintaining a custom ERP? <span class="faq-icon">+</span></div><div class="faq-a">Indian companies with custom ERPs typically spend ₹3L–₹15L/year in ongoing maintenance — bug fixes, GST updates, new reports, server maintenance, and emergency support. Over 10 years, this compounds to ₹50L–₹1.5Cr, plus the opportunity cost of features the system couldn't deliver. ERPNext replaces this with a predictable subscription that includes all updates.</div></div>
+      <div class="faq-item"><div class="faq-q" onclick="toggleFaq(this)">Can ERPNext replace a custom ERP without losing custom features? <span class="faq-icon">+</span></div><div class="faq-a">Yes. ERPNext's Frappe framework replicates most custom ERP features: custom DocTypes, Server Scripts, Client Scripts, Print Formats, and Webhooks. In Quantbit's experience, 80–90% of custom ERP requirements map to ERPNext's standard or configurable features. The remaining 10–20% are built as proper Frappe apps.</div></div>
+      <div class="faq-item"><div class="faq-q" onclick="toggleFaq(this)">How do you migrate data from a custom ERP to ERPNext? <span class="faq-icon">+</span></div><div class="faq-a">Quantbit extracts data directly from the existing database via SQL queries — no dependency on the original developer. We map custom tables to ERPNext DocTypes, import master data, enter opening balances, and rebuild custom reports. Timeline: 8–20 weeks depending on data complexity.</div></div>
+      <div class="faq-item"><div class="faq-q" onclick="toggleFaq(this)">Our custom ERP vendor has gone out of business. What do we do? <span class="faq-icon">+</span></div><div class="faq-a">First: secure database access and back up all data immediately. Second: get database credentials before the vendor fully disappears. Third: Quantbit extracts data directly from the database and migrates to ERPNext. You don't need the source code — just the data. ERPNext's open-source model means you will never face vendor abandonment again.</div></div>
+    </div>
+  </div>
+</section>
+
+<section style="background:var(--white);padding:40px 0">
+  <div class="container">
+    <p style="font-size:12px;color:var(--ink-soft);margin-bottom:12px;font-weight:600;letter-spacing:.5px;text-transform:uppercase">Related Searches</p>
+    <div class="keyword-cloud">
+      <span class="kw-tag">ERPNext vs custom ERP India</span><span class="kw-tag">replace custom ERP ERPNext</span><span class="kw-tag">legacy ERP migration India</span><span class="kw-tag">custom ERP maintenance cost India</span><span class="kw-tag">homegrown ERP replacement</span><span class="kw-tag">local ERP software problems India</span><span class="kw-tag">ERPNext migration from old ERP</span><span class="kw-tag">ERP vendor abandoned software India</span><span class="kw-tag">ERPNext Frappe replacement</span><span class="kw-tag">India ERP upgrade 2025</span>
+    </div>
+  </div>
+</section>
+
+<section class="cta-section">
+  <div class="container">
+    <h2>Ready to Replace Your Custom ERP?</h2>
+    <p>Free assessment — we'll audit your existing system, identify what maps to ERPNext out of the box, and give you a clear migration plan with timeline and cost estimate.</p>
+    <div class="cta-btns">
+      <a href="https://quantbit.io/contact" class="primary">Get Free ERP Assessment</a>
+      <a href="https://quantbit.io/tally-to-erpnext" class="sec">Coming from Tally? →</a>
+    </div>
+  </div>
+</section>
+
+<div id="footer"></div>
+<script>function toggleFaq(el){const a=el.nextElementSibling,icon=el.querySelector('.faq-icon'),isOpen=a.classList.contains('open');document.querySelectorAll('.faq-a').forEach(x=>x.classList.remove('open'));document.querySelectorAll('.faq-icon').forEach(x=>x.textContent='+');if(!isOpen){a.classList.add('open');icon.textContent='−'}}</script>
+
+  <script>
+    fetch("/header.html")
+      .then(res => res.text())
+      .then(data => { document.getElementById("header").innerHTML = data; });
+    fetch("/footer.html")
+      .then(res => res.text())
+      .then(data => { document.getElementById("footer").innerHTML = data; });
+  </script>
+  <!-- ================= TEMPLATE JS ================= -->
+  <script data-cfasync="false" src="../../cdn-cgi/scripts/5c5dd728/cloudflare-static/email-decode.min.js"></script>
+  <script src="/../assets/quantbit_website/js/jquery-3.7.1.min.js"></script>
+  <script src="/../assets/quantbit_website/js/viewport.jquery.js"></script>
+  <script src="/../assets/quantbit_website/js/bootstrap.bundle.min.js"></script>
+  <script src="/../assets/quantbit_website/js/jquery.nice-select.min.js"></script>
+  <script src="/../assets/quantbit_website/js/jquery.waypoints.js"></script>
+  <script src="/../assets/quantbit_website/js/jquery.counterup.min.js"></script>
+  <script src="/../assets/quantbit_website/js/slick.min.js"></script>
+  <script src="/../assets/quantbit_website/js/slick-animation.min.js"></script>
+  <script src="/../assets/quantbit_website/js/jquery.meanmenu.min.js"></script>
+  <script src="/../assets/quantbit_website/js/jquery.magnific-popup.min.js"></script>
+  <script src="/../assets/quantbit_website/js/wow.min.js"></script>
+  <script src="/../assets/quantbit_website/js/circle-progress.js"></script>
+  <script src="/../assets/quantbit_website/js/main.js"></script>
+</body>
+</html>

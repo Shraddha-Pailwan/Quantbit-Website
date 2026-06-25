@@ -1,0 +1,428 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<title>ERPNext Manufacturing Module | Production Planning, BOM, Work Orders | Quantbit Technologies</title>
+<meta name="description" content="Manage BOM, work orders, production planning, job cards, quality inspection, and shop floor operations with ERPNext Manufacturing. Certified partner implementation for India and GCC.">
+<meta name="keywords" content="ERPNext manufacturing module India, ERPNext production planning Pune, ERPNext BOM work order, ERPNext manufacturing ERP India, open source manufacturing ERP, ERPNext job card shop floor, ERPNext subcontracting India, ERPNext MRP production, ERPNext manufacturing GCC Oman, ERPNext Frappe manufacturing partner">
+<link rel="canonical" href="https://quantbit.io/services/erpnext-manufacturing/">
+<script type="application/ld+json">{
+  "@context":"https://schema.org",
+  "@graph":[
+    {"@type":"BreadcrumbList","itemListElement":[
+      {"@type":"ListItem","position":1,"name":"Home","item":"https://quantbit.io"},
+      {"@type":"ListItem","position":2,"name":"ERPNext Services","item":"https://quantbit.io/services/"},
+      {"@type":"ListItem","position":3,"name":"ERPNext Manufacturing","item":"https://quantbit.io/services/erpnext-manufacturing/"}
+    ]},
+    {"@type":"FAQPage","mainEntity":[
+      {"@type":"Question","name":"Can ERPNext handle multi-level BOM for complex assemblies?","acceptedAnswer":{"@type":"Answer","text":"Yes. ERPNext supports multi-level Bills of Materials with unlimited nesting. Each sub-assembly can have its own BOM, work order, and routing. Exploded BOM reports show the total raw material requirement across all levels for production planning."}},
+      {"@type":"Question","name":"Does ERPNext support subcontracting for job work?","acceptedAnswer":{"@type":"Answer","text":"Yes. ERPNext has a dedicated Subcontracting module where you send materials to a vendor, track the job work, receive finished goods back, and reconcile raw material consumption. GST reversal on subcontracting materials is handled automatically."}},
+      {"@type":"Question","name":"How does ERPNext help with production planning and material requirement?","acceptedAnswer":{"@type":"Answer","text":"ERPNext's Material Requirement Planning (MRP) analyses open sales orders, current stock, and reorder levels to generate a production plan with work orders and purchase orders automatically. Quantbit configures MRP parameters to match your planning cycle."}},
+      {"@type":"Question","name":"Can shop floor operators update job card progress on mobile?","acceptedAnswer":{"@type":"Answer","text":"Yes. ERPNext's Job Card interface is mobile-optimised. Operators can log start time, end time, quantity produced, and scrap on a tablet or phone at the workstation without needing desktop access."}},
+      {"@type":"Question","name":"How long does ERPNext Manufacturing implementation take?","acceptedAnswer":{"@type":"Answer","text":"A manufacturing implementation with BOM, work orders, routing, job cards, and production planning typically takes 8 to 14 weeks. Foundry, auto component, and machining clients with complex routing may take 12 to 20 weeks. Quantbit's team has deep experience in Maharashtra's manufacturing clusters."}}
+    ]}
+  ]
+}</script>
+<style>
+:root{--accent:#1a5fd4;--accent-dark:#1349a8;--teal:#0b7a5e;--teal-light:#e6f4f0;--amber:#b35e0a;--amber-light:#fef3e2;--dark:#0f2d47;--mid:#1e4a6e;--text:#1a2a38;--muted:#4a6278;--border:#d0dce8;--bg:#f5f8fc;--white:#ffffff;--radius:10px;--shadow:0 2px 16px rgba(15,45,71,.10);--shadow-lg:0 6px 32px rgba(15,45,71,.14)}
+*,*::before,*::after{box-sizing:border-box;margin:0;padding:0}
+html{scroll-behavior:smooth}
+body{font-family:'Segoe UI',system-ui,-apple-system,sans-serif;color:var(--text);background:var(--white);line-height:1.65;font-size:16px}
+.site-nav{background:var(--dark);padding:0 32px;display:flex;align-items:center;justify-content:space-between;height:60px;position:sticky;top:0;z-index:100}
+.nav-logo{color:#fff;font-weight:700;font-size:1.1rem;text-decoration:none;letter-spacing:.5px}
+.nav-links{display:flex;gap:24px;list-style:none}
+.nav-links a{color:rgba(255,255,255,.82);text-decoration:none;font-size:.9rem;font-weight:500;transition:color .2s}
+.nav-links a:hover{color:#fff}
+.nav-cta{background:var(--accent);color:#fff!important;padding:7px 18px;border-radius:6px;font-weight:600!important}
+.breadcrumb{background:var(--bg);border-bottom:1px solid var(--border);padding:10px 32px;font-size:.82rem;color:var(--muted)}
+.breadcrumb a{color:var(--accent);text-decoration:none}
+.hero{background:linear-gradient(135deg,var(--dark) 0%,var(--mid) 60%,#1a5fd4 100%);color:#fff;padding:72px 32px 64px;position:relative;overflow:hidden}
+.hero::before{content:'';position:absolute;right:-80px;top:-80px;width:420px;height:420px;background:rgba(255,255,255,.04);border-radius:50%;pointer-events:none}
+.hero-inner{max-width:1100px;margin:0 auto;display:grid;grid-template-columns:1fr 380px;gap:56px;align-items:center}
+.hero-badge{display:inline-flex;align-items:center;gap:8px;background:rgba(255,255,255,.12);border:1px solid rgba(255,255,255,.22);border-radius:40px;padding:5px 14px;font-size:.78rem;font-weight:600;letter-spacing:.8px;text-transform:uppercase;margin-bottom:18px;color:rgba(255,255,255,.9)}
+.hero h1{font-size:clamp(1.9rem,3.5vw,2.7rem);font-weight:800;line-height:1.2;margin-bottom:16px}
+.hero h1 span{color:#7eb8ff}
+.hero-desc{font-size:1.05rem;color:rgba(255,255,255,.82);margin-bottom:28px;max-width:540px}
+.hero-tags{display:flex;flex-wrap:wrap;gap:8px;margin-bottom:32px}
+.hero-tag{background:rgba(255,255,255,.1);border:1px solid rgba(255,255,255,.2);border-radius:20px;padding:4px 12px;font-size:.78rem;color:rgba(255,255,255,.85)}
+.hero-btns{display:flex;gap:14px;flex-wrap:wrap}
+.btn-primary{background:var(--accent);color:#fff;padding:12px 26px;border-radius:8px;font-weight:700;text-decoration:none;font-size:.95rem;transition:background .2s,transform .15s;display:inline-block}
+.btn-primary:hover{background:var(--accent-dark);transform:translateY(-1px)}
+.btn-ghost{background:transparent;color:#fff;padding:11px 24px;border:2px solid rgba(255,255,255,.4);border-radius:8px;font-weight:600;text-decoration:none;font-size:.95rem;transition:.2s;display:inline-block}
+.btn-ghost:hover{border-color:#fff;background:rgba(255,255,255,.1)}
+.hero-card{background:rgba(255,255,255,.1);border:1px solid rgba(255,255,255,.18);border-radius:14px;padding:28px;backdrop-filter:blur(8px)}
+.hero-card h3{font-size:1rem;font-weight:700;margin-bottom:16px;color:rgba(255,255,255,.92)}
+.hero-stat{display:flex;align-items:center;gap:12px;margin-bottom:14px;padding-bottom:14px;border-bottom:1px solid rgba(255,255,255,.12)}
+.hero-stat:last-child{margin-bottom:0;padding-bottom:0;border-bottom:none}
+.stat-icon{width:36px;height:36px;background:rgba(255,255,255,.15);border-radius:8px;display:flex;align-items:center;justify-content:center;font-size:1.1rem;flex-shrink:0}
+.stat-val{font-size:1.2rem;font-weight:800;color:#fff}
+.stat-lbl{font-size:.75rem;color:rgba(255,255,255,.7);line-height:1.3}
+.section{padding:64px 32px}
+.section-alt{background:var(--bg)}
+.container{max-width:1100px;margin:0 auto}
+.section-label{font-size:.75rem;font-weight:700;letter-spacing:1.2px;text-transform:uppercase;color:var(--accent);margin-bottom:8px}
+.section-title{font-size:clamp(1.5rem,2.8vw,2.1rem);font-weight:800;color:var(--dark);margin-bottom:12px;line-height:1.25}
+.section-sub{font-size:1.02rem;color:var(--muted);max-width:640px;margin-bottom:44px;line-height:1.7}
+.feature-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(280px,1fr));gap:24px}
+.feature-card{background:var(--white);border:1px solid var(--border);border-radius:var(--radius);padding:26px;transition:box-shadow .2s,transform .2s}
+.feature-card:hover{box-shadow:var(--shadow);transform:translateY(-3px)}
+.feature-icon{width:44px;height:44px;border-radius:10px;background:linear-gradient(135deg,var(--accent),var(--mid));display:flex;align-items:center;justify-content:center;font-size:1.3rem;margin-bottom:14px}
+.feature-card h3{font-size:1rem;font-weight:700;color:var(--dark);margin-bottom:8px}
+.feature-card p{font-size:.88rem;color:var(--muted);line-height:1.6}
+.feature-card ul{margin-top:10px;padding-left:0;list-style:none}
+.feature-card ul li{font-size:.85rem;color:var(--muted);padding:3px 0 3px 16px;position:relative;line-height:1.5}
+.feature-card ul li::before{content:'✓';position:absolute;left:0;color:var(--teal);font-weight:700}
+.reports-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(240px,1fr));gap:20px}
+.report-card{background:var(--white);border:1px solid var(--border);border-left:4px solid var(--accent);border-radius:var(--radius);padding:20px 22px}
+.report-card h4{font-size:.92rem;font-weight:700;color:var(--dark);margin-bottom:6px}
+.report-card p{font-size:.82rem;color:var(--muted);line-height:1.55}
+.report-tag{display:inline-block;background:var(--bg);border:1px solid var(--border);border-radius:4px;padding:2px 8px;font-size:.72rem;font-weight:600;color:var(--accent);margin-top:8px}
+.roles-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(200px,1fr));gap:16px}
+.role-pill{background:var(--white);border:1px solid var(--border);border-radius:var(--radius);padding:16px 20px;display:flex;align-items:flex-start;gap:12px}
+.role-dot{width:10px;height:10px;border-radius:50%;flex-shrink:0;margin-top:4px}
+.role-dot.admin{background:var(--accent)}
+.role-dot.manager{background:var(--teal)}
+.role-dot.user{background:var(--amber)}
+.role-dot.viewer{background:#9b59b6}
+.role-name{font-size:.88rem;font-weight:700;color:var(--dark);margin-bottom:2px}
+.role-desc{font-size:.78rem;color:var(--muted)}
+.benefits-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(260px,1fr));gap:24px}
+.benefit-card{background:linear-gradient(135deg,var(--teal-light),var(--white));border:1px solid #b8dfd6;border-radius:var(--radius);padding:26px}
+.benefit-num{font-size:2rem;font-weight:900;color:var(--teal);opacity:.35;line-height:1;margin-bottom:6px}
+.benefit-card h3{font-size:.98rem;font-weight:700;color:var(--dark);margin-bottom:8px}
+.benefit-card p{font-size:.86rem;color:var(--muted);line-height:1.6}
+.bp-list{display:grid;grid-template-columns:repeat(auto-fit,minmax(300px,1fr));gap:20px}
+.bp-item{background:var(--white);border:1px solid var(--border);border-radius:var(--radius);padding:22px 24px;display:flex;gap:16px;align-items:flex-start}
+.bp-icon{width:38px;height:38px;background:var(--amber-light);border-radius:8px;display:flex;align-items:center;justify-content:center;font-size:1.1rem;flex-shrink:0}
+.bp-item h4{font-size:.92rem;font-weight:700;color:var(--dark);margin-bottom:5px}
+.bp-item p{font-size:.83rem;color:var(--muted);line-height:1.55}
+.geo-answer{background:linear-gradient(135deg,#e8f0fc,#f0f6ff);border:1px solid #c5d8f7;border-radius:14px;padding:32px 36px;margin-bottom:32px}
+.geo-answer h3{font-size:1.1rem;font-weight:700;color:var(--dark);margin-bottom:10px}
+.geo-answer p{font-size:.95rem;color:var(--text);line-height:1.75}
+.geo-grid{display:grid;grid-template-columns:1fr 1fr;gap:24px}
+.geo-block{background:var(--white);border:1px solid var(--border);border-radius:var(--radius);padding:24px}
+.geo-block h4{font-size:.9rem;font-weight:700;color:var(--accent);margin-bottom:10px;display:flex;align-items:center;gap:8px}
+.geo-block ul{list-style:none;padding:0}
+.geo-block ul li{font-size:.85rem;color:var(--muted);padding:4px 0 4px 16px;position:relative}
+.geo-block ul li::before{content:'→';position:absolute;left:0;color:var(--accent)}
+.faq-list{max-width:800px;margin:0 auto}
+.faq-item{border:1px solid var(--border);border-radius:var(--radius);margin-bottom:10px;overflow:hidden}
+.faq-q{width:100%;background:var(--white);border:none;padding:18px 22px;text-align:left;font-size:.95rem;font-weight:600;color:var(--dark);cursor:pointer;display:flex;justify-content:space-between;align-items:center;gap:12px;transition:background .15s}
+.faq-q:hover,.faq-q.open{background:var(--bg)}
+.faq-arrow{font-size:1rem;color:var(--accent);transition:transform .25s;flex-shrink:0}
+.faq-q.open .faq-arrow{transform:rotate(180deg)}
+.faq-a{display:none;padding:0 22px 18px;font-size:.9rem;color:var(--muted);line-height:1.7}
+.faq-a.open{display:block}
+.ai-block{background:linear-gradient(135deg,var(--dark),var(--mid));color:#fff;border-radius:14px;padding:36px 40px}
+.ai-block h3{font-size:1.15rem;font-weight:700;margin-bottom:14px;color:#7eb8ff}
+.ai-qa{margin-bottom:18px;padding-bottom:18px;border-bottom:1px solid rgba(255,255,255,.1)}
+.ai-qa:last-child{margin-bottom:0;padding-bottom:0;border-bottom:none}
+.ai-qa .q{font-size:.88rem;font-weight:600;color:rgba(255,255,255,.7);margin-bottom:4px}
+.ai-qa .a{font-size:.9rem;color:rgba(255,255,255,.88);line-height:1.65}
+.cta-section{background:linear-gradient(135deg,var(--dark) 0%,var(--mid) 100%);color:#fff;padding:72px 32px;text-align:center}
+.cta-section h2{font-size:clamp(1.6rem,3vw,2.3rem);font-weight:800;margin-bottom:14px}
+.cta-section p{font-size:1.05rem;color:rgba(255,255,255,.8);max-width:580px;margin:0 auto 32px}
+.cta-btns{display:flex;gap:16px;justify-content:center;flex-wrap:wrap}
+.btn-white{background:#fff;color:var(--dark);padding:13px 28px;border-radius:8px;font-weight:700;text-decoration:none;font-size:.97rem;transition:.2s;display:inline-block}
+.btn-white:hover{background:#e8f0fc}
+.cta-trust{margin-top:22px;font-size:.82rem;color:rgba(255,255,255,.55)}
+.site-footer{background:#0a1e2e;color:rgba(255,255,255,.6);padding:40px 32px 24px;text-align:center;font-size:.83rem}
+.site-footer a{color:rgba(255,255,255,.5);text-decoration:none}
+.seo-box{background:var(--bg);border:1px solid var(--border);border-radius:var(--radius);padding:24px 28px}
+.seo-kw{display:flex;flex-wrap:wrap;gap:8px;margin-top:12px}
+.seo-kw span{background:var(--white);border:1px solid var(--border);border-radius:4px;padding:4px 10px;font-size:.78rem;color:var(--accent);font-weight:600}
+@media(max-width:768px){.hero-inner{grid-template-columns:1fr}.hero-card{display:none}.geo-grid{grid-template-columns:1fr}.site-nav{padding:0 16px}.nav-links{display:none}.section{padding:48px 16px}.hero{padding:48px 16px 44px}.ai-block{padding:24px 20px}.geo-answer{padding:22px 20px}}
+</style>
+</style>
+  <!-- TEMPLATE CSS (IMPORTANT) -->
+  <link rel="stylesheet" href="/../assets/quantbit_website/css/bootstrap.min.css">
+  <link rel="stylesheet" href="/../assets/quantbit_website/css/font-awesome.css">
+  <link rel="stylesheet" href="/../assets/quantbit_website/css/animate.css">
+  <link rel="stylesheet" href="/../assets/quantbit_website/css/magnific-popup.css">
+  <link rel="stylesheet" href="/../assets/quantbit_website/css/meanmenu.css">
+  <link rel="stylesheet" href="/../assets/quantbit_website/css/slick.css">
+  <link rel="stylesheet" href="/../assets/quantbit_website/css/nice-select.css">
+  <link rel="stylesheet" href="/../assets/quantbit_website/css/main.css">
+  <link rel="stylesheet" href="style.css">
+  <link rel="stylesheet" href="/assets/quantbit_website/css/_shared.css">
+
+
+  <!-- OPTIONAL CUSTOM -->
+  <link rel="stylesheet" href="/../assets/quantbit_website/css/hrms.css">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
+  <!-- Google Tag Manager -->
+  <script>(function (w, d, s, l, i) {
+      w[l] = w[l] || []; w[l].push({
+        'gtm.start':
+          new Date().getTime(), event: 'gtm.js'
+      }); var f = d.getElementsByTagName(s)[0],
+        j = d.createElement(s), dl = l != 'dataLayer' ? '&l=' + l : ''; j.async = true; j.src =
+          'https://www.googletagmanager.com/gtm.js?id=' + i + dl; f.parentNode.insertBefore(j, f);
+    })(window, document, 'script', 'dataLayer', 'GTM-P98Z6G8D');</script>
+  <!-- End Google Tag Manager -->
+</head>
+<body>
+<!-- Google Tag Manager (noscript) -->
+  <noscript><iframe src="https://www.googletagmanager.com/ns.html?id=GTM-P98Z6G8D" height="0" width="0"
+      style="display:none;visibility:hidden"></iframe></noscript>
+  <!-- End Google Tag Manager (noscript) -->
+  <!-- NAV -->
+  <div id="header"></div>
+
+<section class="hero">
+  <div class="hero-inner">
+    <div>
+      <div class="hero-badge">&#9881; ERPNext Module</div>
+      <h1>ERPNext <span>Manufacturing</span><br>Production Planning &amp; Shop Floor</h1>
+      <p class="hero-desc">Plan production, manage Bills of Materials, issue work orders, track job cards on the shop floor, and control subcontracting — all integrated with Inventory and Accounting in ERPNext.</p>
+      <div class="hero-tags">
+        <span class="hero-tag">Bill of Materials</span><span class="hero-tag">Work Orders</span><span class="hero-tag">Production Planning</span><span class="hero-tag">Job Cards</span><span class="hero-tag">Routing</span><span class="hero-tag">Subcontracting</span><span class="hero-tag">MRP</span><span class="hero-tag">Scrap Management</span>
+      </div>
+      <div class="hero-btns">
+        <a href="/company/contact-us.html" class="btn-primary">Book Free Demo</a>
+        <a href="/services/" class="btn-ghost">All ERPNext Modules</a>
+      </div>
+    </div>
+    <div class="hero-card">
+      <h3>Module Snapshot</h3>
+      <div class="hero-stat"><div class="stat-icon">&#128196;</div><div><div class="stat-val">Multi-Level BOM</div><div class="stat-lbl">Unlimited sub-assembly nesting</div></div></div>
+      <div class="hero-stat"><div class="stat-icon">&#128202;</div><div><div class="stat-val">MRP Engine</div><div class="stat-lbl">Auto work orders from sales plan</div></div></div>
+      <div class="hero-stat"><div class="stat-icon">&#128241;</div><div><div class="stat-val">Mobile Job Card</div><div class="stat-lbl">Shop floor updates on tablet</div></div></div>
+      <div class="hero-stat"><div class="stat-icon">&#9889;</div><div><div class="stat-val">Real-time WIP</div><div class="stat-lbl">Live work-in-progress tracking</div></div></div>
+    </div>
+  </div>
+</section>
+
+<section class="section">
+  <div class="container">
+    <div class="section-label">Overview</div>
+    <h2 class="section-title">What is ERPNext Manufacturing?</h2>
+    <p style="font-size:.97rem;color:var(--muted);line-height:1.85;max-width:840px">ERPNext Manufacturing is an integrated production management system that connects raw material procurement, shop floor execution, quality inspection, and finished goods inventory in a single platform. It is purpose-built for discrete, process, and jobbing manufacturers across sectors such as engineering, auto components, foundry, machining, fabrication, food processing, and garments.</p>
+    <p style="font-size:.97rem;color:var(--muted);line-height:1.85;max-width:840px;margin-top:16px">At the core is the Bill of Materials — a structured recipe that defines every raw material, sub-assembly, operation, and routing step required to produce a finished good. ERPNext supports multi-level BOMs where each sub-assembly has its own BOM, enabling accurate cost rollup and material planning across complex assemblies. Once a BOM is defined, production managers can create Work Orders linked to sales orders or a production plan, and the system automatically triggers material transfer requests and job card generation for each operation.</p>
+    <p style="font-size:.97rem;color:var(--muted);line-height:1.85;max-width:840px;margin-top:16px">The Material Requirement Planning (MRP) engine analyses current stock levels, open purchase orders, and planned production to generate a consolidated material demand plan. With one click, planners can convert MRP output into purchase orders and work orders — dramatically reducing manual planning effort.</p>
+    <p style="font-size:.97rem;color:var(--muted);line-height:1.85;max-width:840px;margin-top:16px">On the shop floor, operators use ERPNext Job Cards on tablets or phones to log start time, completion time, quantity produced, and scrap at each workstation. Supervisors see real-time Work-in-Progress (WIP) dashboards showing which orders are running, behind schedule, or completed. Subcontracting workflows track materials sent to job workers and finished goods received back, with automatic GST reversal compliance for India.</p>
+    <p style="font-size:.97rem;color:var(--muted);line-height:1.85;max-width:840px;margin-top:16px">Quantbit Technologies, a certified Frappe and ERPNext partner based in Pune, has deep experience implementing the Manufacturing module for foundry clusters in Kolhapur, engineering firms in Pune, and industrial companies in Muscat. Our in-house development team customises routing templates, production dashboards, and mobile job card interfaces to match your exact shop floor workflow.</p>
+  </div>
+</section>
+
+<section class="section section-alt">
+  <div class="container">
+    <div class="section-label">Features &amp; Functions</div>
+    <h2 class="section-title">Core Capabilities of the Manufacturing Module</h2>
+    <p class="section-sub">Every feature is standard in ERPNext. Quantbit configures and extends these to match your production processes.</p>
+    <div class="feature-grid">
+      <div class="feature-card"><div class="feature-icon">&#128196;</div><h3>Bill of Materials (BOM)</h3><p>Define the complete recipe for every finished good and sub-assembly with cost rollup.</p><ul><li>Multi-level BOM with unlimited nesting</li><li>Operation and routing steps with time standards</li><li>BOM versioning and amendment history</li><li>Exploded BOM for total raw material planning</li></ul></div>
+      <div class="feature-card"><div class="feature-icon">&#128293;</div><h3>Work Orders</h3><p>Issue and track production orders from planned start to completion with full material and labour visibility.</p><ul><li>Work order from sales order or production plan</li><li>Material transfer request auto-generation</li><li>Batch and serial number tracking per work order</li><li>Work order amendment for mid-run changes</li></ul></div>
+      <div class="feature-card"><div class="feature-icon">&#128200;</div><h3>Production Planning &amp; MRP</h3><p>Convert sales forecasts and open orders into a production plan with automatic material requirement calculation.</p><ul><li>MRP based on sales orders and stock projection</li><li>Consolidated raw material demand across orders</li><li>Auto purchase order and work order generation</li><li>Capacity-based scheduling per workstation</li></ul></div>
+      <div class="feature-card"><div class="feature-icon">&#128241;</div><h3>Job Cards &amp; Shop Floor</h3><p>Track operator time and output at each workstation in real time — on desktop or mobile.</p><ul><li>Job card per operation with start/end time</li><li>Quantity produced and scrap logging</li><li>Operator performance dashboard</li><li>Mobile-optimised job card interface for shop floor</li></ul></div>
+      <div class="feature-card"><div class="feature-icon">&#128260;</div><h3>Routing &amp; Workstations</h3><p>Define the sequence of operations, standard times, and resource requirements for each product.</p><ul><li>Routing templates reusable across products</li><li>Workstation-wise capacity and available hours</li><li>Operation cost calculation per routing step</li><li>Bottleneck identification from job card data</li></ul></div>
+      <div class="feature-card"><div class="feature-icon">&#128230;</div><h3>Subcontracting</h3><p>Manage job work with vendors — material issue, production tracking, and goods receipt in one workflow.</p><ul><li>Subcontracting order with material issue slip</li><li>Supplier stock ledger for materials sent out</li><li>Finished goods receipt against subcontract order</li><li>GST job work challan and return compliance</li></ul></div>
+      <div class="feature-card"><div class="feature-icon">&#128683;</div><h3>Scrap &amp; By-Product Management</h3><p>Track scrap generated at each operation and account for by-products in the production cost.</p><ul><li>Scrap item definition in BOM per operation</li><li>Scrap stock entry at work order completion</li><li>By-product valuation and inventory update</li><li>Scrap sale invoice linked to production record</li></ul></div>
+      <div class="feature-card"><div class="feature-icon">&#128203;</div><h3>Production Cost Analysis</h3><p>Compare planned versus actual cost for every production order to identify cost overruns.</p><ul><li>Planned vs actual material consumption</li><li>Labour cost per operation from job card time</li><li>Manufacturing overhead allocation per work order</li><li>Finished good valuation with full cost breakup</li></ul></div>
+    </div>
+  </div>
+</section>
+
+<section class="section">
+  <div class="container">
+    <div class="section-label">Reports &amp; Dashboards</div>
+    <h2 class="section-title">Built-in Manufacturing Reports &amp; Analytics</h2>
+    <p class="section-sub">Real-time visibility from raw material demand to finished goods — configurable for your production review cadence.</p>
+    <div class="reports-grid">
+      <div class="report-card"><h4>Production Plan Summary</h4><p>Overview of planned vs scheduled vs completed production orders for a period with completion percentage.</p><span class="report-tag">Production Manager</span></div>
+      <div class="report-card"><h4>Work Order Status Report</h4><p>All open work orders with expected completion date, quantity pending, and current status by shop.</p><span class="report-tag">Production / Planning</span></div>
+      <div class="report-card"><h4>Job Card Summary</h4><p>Operator-wise time logged per operation, completed quantities, and efficiency against standard times.</p><span class="report-tag">Supervisor / HR</span></div>
+      <div class="report-card"><h4>BOM Stock Report</h4><p>Required vs available stock for all items in a BOM to identify material shortages before production starts.</p><span class="report-tag">Production / Stores</span></div>
+      <div class="report-card"><h4>Planned vs Actual Costs</h4><p>Comparison of BOM-estimated material and labour cost versus actual consumption from work order completion.</p><span class="report-tag">Costing / Finance</span></div>
+      <div class="report-card"><h4>Subcontracting Dashboard</h4><p>Materials sent to job workers, pending returns, overdue dates, and finished goods received status.</p><span class="report-tag">Purchase / QC</span></div>
+      <div class="report-card"><h4>Scrap Report</h4><p>Operation-wise scrap quantity and value — identifies problem workstations and products with excess waste.</p><span class="report-tag">Quality / Production</span></div>
+      <div class="report-card"><h4>Capacity Utilisation</h4><p>Workstation-wise planned vs actual hours utilised for scheduling optimisation and capex planning.</p><span class="report-tag">Management / Planning</span></div>
+    </div>
+  </div>
+</section>
+
+<section class="section section-alt">
+  <div class="container">
+    <div class="section-label">User Access &amp; Roles</div>
+    <h2 class="section-title">Who Uses the Manufacturing Module?</h2>
+    <p class="section-sub">Role-based access ensures every user sees exactly what they need — from shop floor operator to plant head.</p>
+    <div class="roles-grid">
+      <div class="role-pill"><div class="role-dot admin"></div><div><div class="role-name">Manufacturing Manager</div><div class="role-desc">Full access — BOM approval, work order creation, routing setup, production plan sign-off</div></div></div>
+      <div class="role-pill"><div class="role-dot manager"></div><div><div class="role-name">Production Supervisor</div><div class="role-desc">Issue work orders, monitor job card progress, manage operator assignments, record scrap</div></div></div>
+      <div class="role-pill"><div class="role-dot user"></div><div><div class="role-name">Shop Floor Operator</div><div class="role-desc">Log job card start/end, report quantity produced and scrap per operation on mobile</div></div></div>
+      <div class="role-pill"><div class="role-dot user"></div><div><div class="role-name">Production Planner</div><div class="role-desc">Run MRP, create production plans, generate purchase orders from material demand</div></div></div>
+      <div class="role-pill"><div class="role-dot manager"></div><div><div class="role-name">Stores / Material Handler</div><div class="role-desc">Execute material transfer to production, receive finished goods, manage WIP stock</div></div></div>
+      <div class="role-pill"><div class="role-dot viewer"></div><div><div class="role-name">Plant Head / Director</div><div class="role-desc">View-only dashboards — production KPIs, capacity utilisation, cost variance, delivery status</div></div></div>
+    </div>
+  </div>
+</section>
+
+<section class="section">
+  <div class="container">
+    <div class="section-label">Key Benefits</div>
+    <h2 class="section-title">Why Manufacturers Choose ERPNext</h2>
+    <p class="section-sub">Tangible operational and financial outcomes from a single integrated platform.</p>
+    <div class="benefits-grid">
+      <div class="benefit-card"><div class="benefit-num">01</div><h3>Eliminate Production Stoppages</h3><p>MRP engine calculates material shortages before production starts, triggering purchase orders automatically — preventing shop floor stoppages due to missing raw materials.</p></div>
+      <div class="benefit-card"><div class="benefit-num">02</div><h3>Accurate Production Costing</h3><p>Every work order captures actual material consumption, operator hours, and overhead — giving finance a precise cost per unit versus the BOM estimate for margin analysis.</p></div>
+      <div class="benefit-card"><div class="benefit-num">03</div><h3>Real-Time WIP Visibility</h3><p>Supervisors and plant managers see live work-in-progress status — which orders are running, delayed, or complete — enabling faster decisions and on-time delivery.</p></div>
+      <div class="benefit-card"><div class="benefit-num">04</div><h3>GST-Compliant Subcontracting</h3><p>ERPNext generates job work challans, tracks materials at vendor locations, and handles GST reversal on return — keeping your subcontracting process compliant and auditable.</p></div>
+      <div class="benefit-card"><div class="benefit-num">05</div><h3>Reduce Scrap and Rework</h3><p>Operation-level scrap tracking identifies problem workstations and products with high waste rates. Data-driven insights guide process improvement and reduce material cost.</p></div>
+      <div class="benefit-card"><div class="benefit-num">06</div><h3>Seamless ERP Integration</h3><p>Manufacturing integrates natively with Inventory, Purchase, Quality, Accounting, and HR — no data re-entry, no reconciliation effort, and a single source of truth across departments.</p></div>
+    </div>
+  </div>
+</section>
+
+<section class="section section-alt">
+  <div class="container">
+    <div class="section-label">Best Practices</div>
+    <h2 class="section-title">ERPNext Manufacturing Best Practices</h2>
+    <p class="section-sub">Quantbit follows these practices during implementation to ensure your manufacturing operations run smoothly from go-live.</p>
+    <div class="bp-list">
+      <div class="bp-item"><div class="bp-icon">&#128196;</div><div><h4>Standardise BOM Before Go-Live</h4><p>Audit and validate all Bills of Materials before data migration. Incorrect BOM quantities are the most common source of production cost variance and material shortfall after go-live.</p></div></div>
+      <div class="bp-item"><div class="bp-icon">&#9200;</div><div><h4>Define Standard Operation Times</h4><p>Set realistic standard times per operation in your routing. These drive capacity planning, job card scheduling, and actual vs planned efficiency reporting.</p></div></div>
+      <div class="bp-item"><div class="bp-icon">&#128683;</div><div><h4>Enable Mandatory Scrap Reporting</h4><p>Configure job cards to require scrap quantity entry before completion. This ensures scrap data is always captured and stock balances remain accurate without manual intervention.</p></div></div>
+      <div class="bp-item"><div class="bp-icon">&#128241;</div><div><h4>Train Operators on Mobile Job Cards</h4><p>Invest in shop floor operator training on the ERPNext mobile interface. When operators log data in real time, WIP reports are accurate and supervisors can take corrective action immediately.</p></div></div>
+      <div class="bp-item"><div class="bp-icon">&#128202;</div><div><h4>Run MRP Weekly, Not Ad Hoc</h4><p>Schedule a weekly MRP run aligned to your procurement lead times. Consistent planning cycles prevent both material shortages and over-purchasing from emergency buys.</p></div></div>
+      <div class="bp-item"><div class="bp-icon">&#128260;</div><h4>Use Work Order Status for Dispatch Planning</h4><p>Configure your dispatch team to use the Work Order Status report as the primary production tracking tool — eliminating separate WhatsApp groups and Excel trackers.</p></div></div>
+    </div>
+  </div>
+</section>
+
+<section class="section">
+  <div class="container">
+    <div class="section-label">GEO-Specific Guidance</div>
+    <h2 class="section-title">ERPNext Manufacturing for India &amp; GCC</h2>
+    <div class="geo-answer">
+      <h3>ERPNext manufacturing software for Indian SMEs and GCC industrial companies</h3>
+      <p>ERPNext Manufacturing is widely adopted by mid-sized manufacturers in Maharashtra, Gujarat, Tamil Nadu, and Rajasthan as an affordable, open-source alternative to SAP and Oracle. In the GCC — particularly Oman, UAE, and Saudi Arabia — it serves industrial companies and fabricators needing Arabic-language support, VAT-compliant job work challans, and multi-currency cost accounting in OMR, AED, and SAR. Quantbit Technologies is a certified Frappe partner with an in-house implementation team and a physical office in Muscat, Oman, providing local GCC support without timezone barriers.</p>
+    </div>
+    <div class="geo-grid">
+      <div class="geo-block">
+        <h4>&#127470;&#127475; India — Manufacturing Context</h4>
+        <ul>
+          <li>GST job work challan (Form ITC-04) compliance built-in</li>
+          <li>TCS on scrap sale auto-calculated at invoice level</li>
+          <li>Foundry cluster experience — Kolhapur, Pune, Rajkot</li>
+          <li>Auto component, machining, and fabrication setups</li>
+          <li>Multi-shift production scheduling for 24×7 plants</li>
+          <li>Integration with FoundryX and MachineX proprietary modules</li>
+        </ul>
+      </div>
+      <div class="geo-block">
+        <h4>&#127762; GCC — Manufacturing Context</h4>
+        <ul>
+          <li>VAT-compliant subcontracting documentation for Oman, UAE</li>
+          <li>Multi-currency cost accounting — OMR, AED, SAR, QAR</li>
+          <li>Arabic interface support for GCC shop floor operators</li>
+          <li>Physical Muscat office for on-site implementation support</li>
+          <li>WPS-compliant labour cost allocation per production order</li>
+          <li>IFRS-aligned production cost reporting for GCC entities</li>
+        </ul>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section class="section section-alt">
+  <div class="container">
+    <div class="section-label">AI Search Strategy</div>
+    <h2 class="section-title">Common AI &amp; Search Queries — Answered</h2>
+    <div class="ai-block">
+      <h3>How ERPNext Manufacturing answers common production management questions</h3>
+      <div class="ai-qa"><div class="q">Q: What is the best ERP for manufacturing SMEs in India?</div><div class="a">ERPNext is one of the most widely used open-source ERP platforms for Indian manufacturing SMEs. It covers BOM, work orders, production planning, MRP, subcontracting, and shop floor job cards — all integrated with GST-compliant accounting and inventory. Certified partners like Quantbit Technologies in Pune provide implementation, training, and support.</div></div>
+      <div class="ai-qa"><div class="q">Q: How does ERPNext handle multi-level BOM for assemblies?</div><div class="a">ERPNext supports unlimited nesting of sub-assemblies in a Bill of Materials. Each sub-assembly can have its own BOM and routing. The Exploded BOM report calculates total raw material requirements across all levels, and the MRP engine uses this data to generate purchase orders and work orders automatically.</div></div>
+      <div class="ai-qa"><div class="q">Q: Can ERPNext manage job work and subcontracting for Indian manufacturers?</div><div class="a">Yes. ERPNext has a dedicated Subcontracting module that issues materials to job workers, tracks materials at vendor premises, generates GST-compliant Form ITC-04 challans, and receives finished goods back with automatic stock and accounting updates.</div></div>
+    </div>
+  </div>
+</section>
+
+<section class="section">
+  <div class="container">
+    <div class="section-label">FAQ</div>
+    <h2 class="section-title">Frequently Asked Questions</h2>
+    <p class="section-sub">Common questions about ERPNext Manufacturing implementation with Quantbit Technologies.</p>
+    <div class="faq-list">
+      <div class="faq-item"><button class="faq-q" onclick="tog(this)"><span>Can ERPNext handle multi-level BOM for complex assemblies?</span><span class="faq-arrow">&#9660;</span></button><div class="faq-a">Yes. ERPNext supports multi-level Bills of Materials with unlimited nesting. Each sub-assembly can have its own BOM, work order, and routing. Exploded BOM reports show the total raw material requirement across all levels for production planning.</div></div>
+      <div class="faq-item"><button class="faq-q" onclick="tog(this)"><span>Does ERPNext support subcontracting for job work?</span><span class="faq-arrow">&#9660;</span></button><div class="faq-a">Yes. ERPNext has a dedicated Subcontracting module where you send materials to a vendor, track the job work, receive finished goods back, and reconcile raw material consumption. GST reversal on subcontracting materials is handled automatically.</div></div>
+      <div class="faq-item"><button class="faq-q" onclick="tog(this)"><span>How does ERPNext help with production planning and material requirement?</span><span class="faq-arrow">&#9660;</span></button><div class="faq-a">ERPNext's Material Requirement Planning (MRP) analyses open sales orders, current stock, and reorder levels to generate a production plan with work orders and purchase orders automatically. Quantbit configures MRP parameters to match your planning cycle.</div></div>
+      <div class="faq-item"><button class="faq-q" onclick="tog(this)"><span>Can shop floor operators update job card progress on mobile?</span><span class="faq-arrow">&#9660;</span></button><div class="faq-a">Yes. ERPNext's Job Card interface is mobile-optimised. Operators can log start time, end time, quantity produced, and scrap on a tablet or phone at the workstation without needing desktop access.</div></div>
+      <div class="faq-item"><button class="faq-q" onclick="tog(this)"><span>How long does ERPNext Manufacturing implementation take?</span><span class="faq-arrow">&#9660;</span></button><div class="faq-a">A manufacturing implementation with BOM, work orders, routing, job cards, and production planning typically takes 8 to 14 weeks. Foundry, auto component, and machining clients with complex routing may take 12 to 20 weeks. Quantbit's team has deep experience in Maharashtra's manufacturing clusters.</div></div>
+      <div class="faq-item"><button class="faq-q" onclick="tog(this)"><span>Does ERPNext integrate manufacturing with accounting for production costing?</span><span class="faq-arrow">&#9660;</span></button><div class="faq-a">Yes. Every material transfer, labour entry, and finished goods receipt from a work order automatically creates the corresponding accounting entries. Finance sees real-time WIP value, production cost per batch, and manufacturing overhead allocation without any manual journal work.</div></div>
+    </div>
+  </div>
+</section>
+
+<section class="section section-alt">
+  <div class="container">
+    <div class="seo-box">
+      <p class="section-label" style="margin-bottom:8px">SEO Keywords</p>
+      <h3 style="font-size:.92rem;font-weight:700;color:var(--dark);margin-bottom:8px">Search Terms This Page Targets</h3>
+      <div class="seo-kw"><span>ERPNext manufacturing module India</span><span>ERPNext BOM work order</span><span>ERPNext production planning Pune</span><span>ERPNext MRP India</span><span>ERPNext subcontracting job work</span><span>ERPNext shop floor job card</span><span>open source manufacturing ERP India</span><span>ERPNext manufacturing GCC Oman</span><span>ERPNext foundry ERP Kolhapur</span><span>ERPNext Frappe manufacturing partner</span><span>ERPNext routing workstation</span><span>ERPNext production cost analysis</span></div>
+    </div>
+  </div>
+</section>
+
+<section class="cta-section">
+  <div class="container">
+    <h2>Ready to Implement ERPNext Manufacturing?</h2>
+    <p>Quantbit Technologies is a certified ERPNext partner with hands-on manufacturing implementation experience across foundry, engineering, auto components, and machining industries in India and GCC.</p>
+    <div class="cta-btns">
+      <a href="/company/contact-us.html" class="btn-white">Book Free Demo</a>
+      <a href="/company/contact-us.html" class="btn-ghost">Talk to a Consultant</a>
+    </div>
+    <div class="cta-trust">&#9989; Certified ERPNext Partner &nbsp;|&nbsp; &#9989; In-house Dev Team &nbsp;|&nbsp; &#9989; Foundry &amp; Engineering Experience &nbsp;|&nbsp; &#9989; Muscat &amp; Pune Offices</div>
+  </div>
+</section>
+  <div id="footer"></div>
+
+<script>function tog(btn){btn.classList.toggle('open');var a=btn.nextElementSibling;a.classList.toggle('open');}</script>
+<script>
+    fetch("/header.html")
+      .then(res => res.text())
+      .then(data => {
+        document.getElementById("header").innerHTML = data;
+      });
+
+    fetch("/footer.html")
+      .then(res => res.text())
+      .then(data => {
+        document.getElementById("footer").innerHTML = data;
+      });
+  </script>
+  <!-- ================= TEMPLATE JS ================= -->
+  <!--<< All JS Plugins >>-->
+  <script data-cfasync="false" src="../../cdn-cgi/scripts/5c5dd728/cloudflare-static/email-decode.min.js"></script>
+  <script src="/../assets/quantbit_website/js/jquery-3.7.1.min.js"></script>
+  <!--<< Viewport Js >>-->
+  <script src="/../assets/quantbit_website/js/viewport.jquery.js"></script>
+  <!--<< Bootstrap Js >>-->
+  <script src="/../assets/quantbit_website/js/bootstrap.bundle.min.js"></script>
+  <!--<< Nice Select Js >>-->
+  <script src="/../assets/quantbit_website/js/jquery.nice-select.min.js"></script>
+  <!--<< Waypoints Js >>-->
+  <script src="/../assets/quantbit_website/js/jquery.waypoints.js"></script>
+  <!--<< Counterup Js >>-->
+  <script src="/../assets/quantbit_website/js/jquery.counterup.min.js"></script>
+  <!--<< Slick Js >>-->
+  <script src="/../assets/quantbit_website/js/slick.min.js"></script>
+  <!--<< Slick Animation Js >>-->
+  <script src="/../assets/quantbit_website/js/slick-animation.min.js"></script>
+  <!--<< MeanMenu Js >>-->
+  <script src="/../assets/quantbit_website/js/jquery.meanmenu.min.js"></script>
+  <!--<< Magnific Popup Js >>-->
+  <script src="/../assets/quantbit_website/js/jquery.magnific-popup.min.js"></script>
+  <!--<< Wow Animation Js >>-->
+  <script src="/../assets/quantbit_website/js/wow.min.js"></script>
+  <!--<< Circle Progress Js >>-->
+  <script src="/../assets/quantbit_website/js/circle-progress.js"></script>
+  <!--<< Main.js >>-->
+  <script src="/../assets/quantbit_website/js/main.js"></script>
+  <script defer
+    src="../../../static.cloudflareinsights.com/beacon.min.js/v8c78df7c7c0f484497ecbca7046644da1771523124516"
+    integrity="sha512-8DS7rgIrAmghBFwoOTujcf6D9rXvH8xm8JQ1Ja01h9QX8EzXldiszufYa4IFfKdLUKTTrnSFXLDkUEOTrZQ8Qg=="
+    data-cf-beacon='{"version":"2024.11.0","token":"90f7972af14a48b4add7da2b74f5d675","r":1,"server_timing":{"name":{"cfCacheStatus":true,"cfEdge":true,"cfExtPri":true,"cfL4":true,"cfOrigin":true,"cfSpeedBrain":true},"location_startswith":null}}'
+    crossorigin="anonymous"></script>
+
+</body></html>

@@ -1,0 +1,412 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<title>ERPNext Payroll & Compliance | Salary Processing, PF, ESI, TDS | Quantbit Technologies</title>
+<meta name="description" content="Automate salary processing, PF, ESI, TDS, professional tax, and statutory compliance with ERPNext Payroll. Certified Frappe partner for India and GCC WPS payroll.">
+<meta name="keywords" content="ERPNext payroll India, ERPNext salary processing PF ESI, ERPNext TDS on salary, ERPNext payroll compliance India, ERPNext professional tax, open source payroll ERP India, ERPNext payroll GCC WPS Oman, ERPNext HRMS payroll Pune, ERPNext Frappe payroll partner, ERPNext salary slip generation">
+<link rel="canonical" href="https://quantbit.io/services/erpnext-payroll-compliance/">
+<script type="application/ld+json">{
+  "@context":"https://schema.org",
+  "@graph":[
+    {"@type":"BreadcrumbList","itemListElement":[
+      {"@type":"ListItem","position":1,"name":"Home","item":"https://quantbit.io"},
+      {"@type":"ListItem","position":2,"name":"ERPNext Services","item":"https://quantbit.io/services/"},
+      {"@type":"ListItem","position":3,"name":"ERPNext Payroll & Compliance","item":"https://quantbit.io/services/erpnext-payroll-compliance/"}
+    ]},
+    {"@type":"FAQPage","mainEntity":[
+      {"@type":"Question","name":"Does ERPNext calculate PF, ESI, and professional tax automatically?","acceptedAnswer":{"@type":"Answer","text":"Yes. ERPNext Payroll auto-calculates PF (12% employee + 12% employer on basic), ESI (0.75% employee + 3.25% employer up to the statutory wage limit), and professional tax by state slab. These deductions are applied on salary slip generation and posted to the correct liability accounts automatically."}},
+      {"@type":"Question","name":"Can ERPNext generate Form 16 and Form 24Q for TDS compliance?","acceptedAnswer":{"@type":"Answer","text":"Yes. ERPNext tracks TDS deducted per employee per quarter and generates the data required for Form 24Q quarterly TDS return filing. Form 16 generation for annual TDS certificates is also supported. Quantbit configures the tax regime selection (old vs new) and exemptions during implementation."}},
+      {"@type":"Question","name":"How does ERPNext handle WPS payroll for GCC?","acceptedAnswer":{"@type":"Answer","text":"ERPNext generates WPS (Wage Protection System) salary files in the SIF format required by UAE, Oman, and other GCC labour ministries. WPS compliance ensures employees are paid through the banking channel on time, and the system logs WPS submission details for audit trail purposes."}},
+      {"@type":"Question","name":"Can ERPNext manage payroll for employees across multiple branches?","acceptedAnswer":{"@type":"Answer","text":"Yes. ERPNext supports multi-company and multi-branch payroll in a single instance. Each branch can have its own salary structures, cost centres, and compliance rules. Consolidated payroll reports are available at the group level while branch-level salary registers are separately accessible."}},
+      {"@type":"Question","name":"Does ERPNext payroll integrate with attendance and leave?","acceptedAnswer":{"@type":"Answer","text":"Yes. ERPNext payroll pulls attendance data from the Leave and Attendance module automatically. Leave without pay (LWP) is calculated and deducted from salary based on attendance records. Overtime, late deductions, and bonus payments can also be configured to flow from attendance data into salary slips."}}
+    ]}
+  ]
+}</script>
+<style>
+:root{--accent:#1a5fd4;--accent-dark:#1349a8;--teal:#0b7a5e;--teal-light:#e6f4f0;--amber:#b35e0a;--amber-light:#fef3e2;--dark:#0f2d47;--mid:#1e4a6e;--text:#1a2a38;--muted:#4a6278;--border:#d0dce8;--bg:#f5f8fc;--white:#ffffff;--radius:10px;--shadow:0 2px 16px rgba(15,45,71,.10)}
+*,*::before,*::after{box-sizing:border-box;margin:0;padding:0}html{scroll-behavior:smooth}
+body{font-family:'Segoe UI',system-ui,-apple-system,sans-serif;color:var(--text);background:var(--white);line-height:1.65;font-size:16px}
+.site-nav{background:var(--dark);padding:0 32px;display:flex;align-items:center;justify-content:space-between;height:60px;position:sticky;top:0;z-index:100}
+.nav-logo{color:#fff;font-weight:700;font-size:1.1rem;text-decoration:none;letter-spacing:.5px}
+.nav-links{display:flex;gap:24px;list-style:none}
+.nav-links a{color:rgba(255,255,255,.82);text-decoration:none;font-size:.9rem;font-weight:500;transition:color .2s}
+.nav-links a:hover{color:#fff}
+.nav-cta{background:var(--accent);color:#fff!important;padding:7px 18px;border-radius:6px;font-weight:600!important}
+.breadcrumb{background:var(--bg);border-bottom:1px solid var(--border);padding:10px 32px;font-size:.82rem;color:var(--muted)}
+.breadcrumb a{color:var(--accent);text-decoration:none}
+.hero{background:linear-gradient(135deg,var(--dark) 0%,var(--mid) 60%,#1a5fd4 100%);color:#fff;padding:72px 32px 64px;position:relative;overflow:hidden}
+.hero::before{content:'';position:absolute;right:-80px;top:-80px;width:420px;height:420px;background:rgba(255,255,255,.04);border-radius:50%;pointer-events:none}
+.hero-inner{max-width:1100px;margin:0 auto;display:grid;grid-template-columns:1fr 380px;gap:56px;align-items:center}
+.hero-badge{display:inline-flex;align-items:center;gap:8px;background:rgba(255,255,255,.12);border:1px solid rgba(255,255,255,.22);border-radius:40px;padding:5px 14px;font-size:.78rem;font-weight:600;letter-spacing:.8px;text-transform:uppercase;margin-bottom:18px;color:rgba(255,255,255,.9)}
+.hero h1{font-size:clamp(1.9rem,3.5vw,2.7rem);font-weight:800;line-height:1.2;margin-bottom:16px}
+.hero h1 span{color:#7eb8ff}
+.hero-desc{font-size:1.05rem;color:rgba(255,255,255,.82);margin-bottom:28px;max-width:540px}
+.hero-tags{display:flex;flex-wrap:wrap;gap:8px;margin-bottom:32px}
+.hero-tag{background:rgba(255,255,255,.1);border:1px solid rgba(255,255,255,.2);border-radius:20px;padding:4px 12px;font-size:.78rem;color:rgba(255,255,255,.85)}
+.hero-btns{display:flex;gap:14px;flex-wrap:wrap}
+.btn-primary{background:var(--accent);color:#fff;padding:12px 26px;border-radius:8px;font-weight:700;text-decoration:none;font-size:.95rem;transition:background .2s,transform .15s;display:inline-block}
+.btn-primary:hover{background:var(--accent-dark);transform:translateY(-1px)}
+.btn-ghost{background:transparent;color:#fff;padding:11px 24px;border:2px solid rgba(255,255,255,.4);border-radius:8px;font-weight:600;text-decoration:none;font-size:.95rem;transition:.2s;display:inline-block}
+.btn-ghost:hover{border-color:#fff;background:rgba(255,255,255,.1)}
+.hero-card{background:rgba(255,255,255,.1);border:1px solid rgba(255,255,255,.18);border-radius:14px;padding:28px;backdrop-filter:blur(8px)}
+.hero-card h3{font-size:1rem;font-weight:700;margin-bottom:16px;color:rgba(255,255,255,.92)}
+.hero-stat{display:flex;align-items:center;gap:12px;margin-bottom:14px;padding-bottom:14px;border-bottom:1px solid rgba(255,255,255,.12)}
+.hero-stat:last-child{margin-bottom:0;padding-bottom:0;border-bottom:none}
+.stat-icon{width:36px;height:36px;background:rgba(255,255,255,.15);border-radius:8px;display:flex;align-items:center;justify-content:center;font-size:1.1rem;flex-shrink:0}
+.stat-val{font-size:1.2rem;font-weight:800;color:#fff}
+.stat-lbl{font-size:.75rem;color:rgba(255,255,255,.7);line-height:1.3}
+.section{padding:64px 32px}.section-alt{background:var(--bg)}.container{max-width:1100px;margin:0 auto}
+.section-label{font-size:.75rem;font-weight:700;letter-spacing:1.2px;text-transform:uppercase;color:var(--accent);margin-bottom:8px}
+.section-title{font-size:clamp(1.5rem,2.8vw,2.1rem);font-weight:800;color:var(--dark);margin-bottom:12px;line-height:1.25}
+.section-sub{font-size:1.02rem;color:var(--muted);max-width:640px;margin-bottom:44px;line-height:1.7}
+.feature-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(280px,1fr));gap:24px}
+.feature-card{background:var(--white);border:1px solid var(--border);border-radius:var(--radius);padding:26px;transition:box-shadow .2s,transform .2s}
+.feature-card:hover{box-shadow:var(--shadow);transform:translateY(-3px)}
+.feature-icon{width:44px;height:44px;border-radius:10px;background:linear-gradient(135deg,var(--accent),var(--mid));display:flex;align-items:center;justify-content:center;font-size:1.3rem;margin-bottom:14px}
+.feature-card h3{font-size:1rem;font-weight:700;color:var(--dark);margin-bottom:8px}
+.feature-card p{font-size:.88rem;color:var(--muted);line-height:1.6}
+.feature-card ul{margin-top:10px;padding-left:0;list-style:none}
+.feature-card ul li{font-size:.85rem;color:var(--muted);padding:3px 0 3px 16px;position:relative;line-height:1.5}
+.feature-card ul li::before{content:'✓';position:absolute;left:0;color:var(--teal);font-weight:700}
+.reports-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(240px,1fr));gap:20px}
+.report-card{background:var(--white);border:1px solid var(--border);border-left:4px solid var(--accent);border-radius:var(--radius);padding:20px 22px}
+.report-card h4{font-size:.92rem;font-weight:700;color:var(--dark);margin-bottom:6px}
+.report-card p{font-size:.82rem;color:var(--muted);line-height:1.55}
+.report-tag{display:inline-block;background:var(--bg);border:1px solid var(--border);border-radius:4px;padding:2px 8px;font-size:.72rem;font-weight:600;color:var(--accent);margin-top:8px}
+.roles-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(200px,1fr));gap:16px}
+.role-pill{background:var(--white);border:1px solid var(--border);border-radius:var(--radius);padding:16px 20px;display:flex;align-items:flex-start;gap:12px}
+.role-dot{width:10px;height:10px;border-radius:50%;flex-shrink:0;margin-top:4px}
+.role-dot.admin{background:var(--accent)}.role-dot.manager{background:var(--teal)}.role-dot.user{background:var(--amber)}.role-dot.viewer{background:#9b59b6}
+.role-name{font-size:.88rem;font-weight:700;color:var(--dark);margin-bottom:2px}
+.role-desc{font-size:.78rem;color:var(--muted)}
+.benefits-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(260px,1fr));gap:24px}
+.benefit-card{background:linear-gradient(135deg,var(--teal-light),var(--white));border:1px solid #b8dfd6;border-radius:var(--radius);padding:26px}
+.benefit-num{font-size:2rem;font-weight:900;color:var(--teal);opacity:.35;line-height:1;margin-bottom:6px}
+.benefit-card h3{font-size:.98rem;font-weight:700;color:var(--dark);margin-bottom:8px}
+.benefit-card p{font-size:.86rem;color:var(--muted);line-height:1.6}
+.bp-list{display:grid;grid-template-columns:repeat(auto-fit,minmax(300px,1fr));gap:20px}
+.bp-item{background:var(--white);border:1px solid var(--border);border-radius:var(--radius);padding:22px 24px;display:flex;gap:16px;align-items:flex-start}
+.bp-icon{width:38px;height:38px;background:var(--amber-light);border-radius:8px;display:flex;align-items:center;justify-content:center;font-size:1.1rem;flex-shrink:0}
+.bp-item h4{font-size:.92rem;font-weight:700;color:var(--dark);margin-bottom:5px}
+.bp-item p{font-size:.83rem;color:var(--muted);line-height:1.55}
+.geo-answer{background:linear-gradient(135deg,#e8f0fc,#f0f6ff);border:1px solid #c5d8f7;border-radius:14px;padding:32px 36px;margin-bottom:32px}
+.geo-answer h3{font-size:1.1rem;font-weight:700;color:var(--dark);margin-bottom:10px}
+.geo-answer p{font-size:.95rem;color:var(--text);line-height:1.75}
+.geo-grid{display:grid;grid-template-columns:1fr 1fr;gap:24px}
+.geo-block{background:var(--white);border:1px solid var(--border);border-radius:var(--radius);padding:24px}
+.geo-block h4{font-size:.9rem;font-weight:700;color:var(--accent);margin-bottom:10px;display:flex;align-items:center;gap:8px}
+.geo-block ul{list-style:none;padding:0}
+.geo-block ul li{font-size:.85rem;color:var(--muted);padding:4px 0 4px 16px;position:relative}
+.geo-block ul li::before{content:'→';position:absolute;left:0;color:var(--accent)}
+.faq-list{max-width:800px;margin:0 auto}
+.faq-item{border:1px solid var(--border);border-radius:var(--radius);margin-bottom:10px;overflow:hidden}
+.faq-q{width:100%;background:var(--white);border:none;padding:18px 22px;text-align:left;font-size:.95rem;font-weight:600;color:var(--dark);cursor:pointer;display:flex;justify-content:space-between;align-items:center;gap:12px;transition:background .15s}
+.faq-q:hover,.faq-q.open{background:var(--bg)}
+.faq-arrow{font-size:1rem;color:var(--accent);transition:transform .25s;flex-shrink:0}
+.faq-q.open .faq-arrow{transform:rotate(180deg)}
+.faq-a{display:none;padding:0 22px 18px;font-size:.9rem;color:var(--muted);line-height:1.7}
+.faq-a.open{display:block}
+.ai-block{background:linear-gradient(135deg,var(--dark),var(--mid));color:#fff;border-radius:14px;padding:36px 40px}
+.ai-block h3{font-size:1.15rem;font-weight:700;margin-bottom:14px;color:#7eb8ff}
+.ai-qa{margin-bottom:18px;padding-bottom:18px;border-bottom:1px solid rgba(255,255,255,.1)}
+.ai-qa:last-child{margin-bottom:0;padding-bottom:0;border-bottom:none}
+.ai-qa .q{font-size:.88rem;font-weight:600;color:rgba(255,255,255,.7);margin-bottom:4px}
+.ai-qa .a{font-size:.9rem;color:rgba(255,255,255,.88);line-height:1.65}
+.cta-section{background:linear-gradient(135deg,var(--dark) 0%,var(--mid) 100%);color:#fff;padding:72px 32px;text-align:center}
+.cta-section h2{font-size:clamp(1.6rem,3vw,2.3rem);font-weight:800;margin-bottom:14px}
+.cta-section p{font-size:1.05rem;color:rgba(255,255,255,.8);max-width:580px;margin:0 auto 32px}
+.cta-btns{display:flex;gap:16px;justify-content:center;flex-wrap:wrap}
+.btn-white{background:#fff;color:var(--dark);padding:13px 28px;border-radius:8px;font-weight:700;text-decoration:none;font-size:.97rem;transition:.2s;display:inline-block}
+.btn-white:hover{background:#e8f0fc}
+.cta-trust{margin-top:22px;font-size:.82rem;color:rgba(255,255,255,.55)}
+.site-footer{background:#0a1e2e;color:rgba(255,255,255,.6);padding:40px 32px 24px;text-align:center;font-size:.83rem}
+.site-footer a{color:rgba(255,255,255,.5);text-decoration:none}
+.seo-box{background:var(--bg);border:1px solid var(--border);border-radius:var(--radius);padding:24px 28px}
+.seo-kw{display:flex;flex-wrap:wrap;gap:8px;margin-top:12px}
+.seo-kw span{background:var(--white);border:1px solid var(--border);border-radius:4px;padding:4px 10px;font-size:.78rem;color:var(--accent);font-weight:600}
+@media(max-width:768px){.hero-inner{grid-template-columns:1fr}.hero-card{display:none}.geo-grid{grid-template-columns:1fr}.site-nav{padding:0 16px}.nav-links{display:none}.section{padding:48px 16px}.hero{padding:48px 16px 44px}.ai-block{padding:24px 20px}.geo-answer{padding:22px 20px}}
+</style>
+</style>
+  <!-- TEMPLATE CSS (IMPORTANT) -->
+  <link rel="stylesheet" href="/../assets/quantbit_website/css/bootstrap.min.css">
+  <link rel="stylesheet" href="/../assets/quantbit_website/css/font-awesome.css">
+  <link rel="stylesheet" href="/../assets/quantbit_website/css/animate.css">
+  <link rel="stylesheet" href="/../assets/quantbit_website/css/magnific-popup.css">
+  <link rel="stylesheet" href="/../assets/quantbit_website/css/meanmenu.css">
+  <link rel="stylesheet" href="/../assets/quantbit_website/css/slick.css">
+  <link rel="stylesheet" href="/../assets/quantbit_website/css/nice-select.css">
+  <link rel="stylesheet" href="/../assets/quantbit_website/css/main.css">
+  <link rel="stylesheet" href="style.css">
+  <link rel="stylesheet" href="/assets/quantbit_website/css/_shared.css">
+
+
+  <!-- OPTIONAL CUSTOM -->
+  <link rel="stylesheet" href="/../assets/quantbit_website/css/hrms.css">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
+  <!-- Google Tag Manager -->
+  <script>(function (w, d, s, l, i) {
+      w[l] = w[l] || []; w[l].push({
+        'gtm.start':
+          new Date().getTime(), event: 'gtm.js'
+      }); var f = d.getElementsByTagName(s)[0],
+        j = d.createElement(s), dl = l != 'dataLayer' ? '&l=' + l : ''; j.async = true; j.src =
+          'https://www.googletagmanager.com/gtm.js?id=' + i + dl; f.parentNode.insertBefore(j, f);
+    })(window, document, 'script', 'dataLayer', 'GTM-P98Z6G8D');</script>
+  <!-- End Google Tag Manager -->
+</head>
+<body>
+<!-- Google Tag Manager (noscript) -->
+  <noscript><iframe src="https://www.googletagmanager.com/ns.html?id=GTM-P98Z6G8D" height="0" width="0"
+      style="display:none;visibility:hidden"></iframe></noscript>
+  <!-- End Google Tag Manager (noscript) -->
+  <!-- NAV -->
+  <div id="header"></div>
+
+<section class="hero">
+  <div class="hero-inner">
+    <div>
+      <div class="hero-badge">&#128176; ERPNext Module</div>
+      <h1>ERPNext <span>Payroll &amp; Compliance</span><br>PF, ESI, TDS &amp; WPS</h1>
+      <p class="hero-desc">Process accurate salaries, auto-deduct PF, ESI, TDS, and professional tax, generate salary slips, and stay compliant with Indian labour laws and GCC WPS requirements — all within ERPNext.</p>
+      <div class="hero-tags">
+        <span class="hero-tag">Salary Processing</span><span class="hero-tag">PF &amp; ESI</span><span class="hero-tag">TDS on Salary</span><span class="hero-tag">Form 16</span><span class="hero-tag">Professional Tax</span><span class="hero-tag">WPS GCC</span><span class="hero-tag">Salary Slips</span><span class="hero-tag">Gratuity</span>
+      </div>
+      <div class="hero-btns">
+        <a href="/company/contact-us.html" class="btn-primary">Book Free Demo</a>
+        <a href="/services/" class="btn-ghost">All ERPNext Modules</a>
+      </div>
+    </div>
+    <div class="hero-card">
+      <h3>Module Snapshot</h3>
+      <div class="hero-stat"><div class="stat-icon">&#128176;</div><div><div class="stat-val">Auto PF / ESI</div><div class="stat-lbl">Statutory deductions auto-calculated</div></div></div>
+      <div class="hero-stat"><div class="stat-icon">&#128196;</div><div><div class="stat-val">Form 16 / 24Q</div><div class="stat-lbl">TDS compliance for employees</div></div></div>
+      <div class="hero-stat"><div class="stat-icon">&#127462;&#127466;</div><div><div class="stat-val">WPS Ready</div><div class="stat-lbl">SIF file for GCC payroll</div></div></div>
+      <div class="hero-stat"><div class="stat-icon">&#128202;</div><div><div class="stat-val">Salary Register</div><div class="stat-lbl">Component-wise payroll summary</div></div></div>
+    </div>
+  </div>
+</section>
+
+<section class="section">
+  <div class="container">
+    <div class="section-label">Overview</div>
+    <h2 class="section-title">What is ERPNext Payroll &amp; Compliance?</h2>
+    <p style="font-size:.97rem;color:var(--muted);line-height:1.85;max-width:840px">ERPNext Payroll is a comprehensive salary management system that automates the monthly payroll cycle — from salary structure definition to salary slip generation, statutory deduction calculation, bank payment advice, and accounting journal entry — all within the same ERP that handles your HR, attendance, and finance. It eliminates the common disconnect where payroll is processed in a standalone system and then manually re-entered into accounting.</p>
+    <p style="font-size:.97rem;color:var(--muted);line-height:1.85;max-width:840px;margin-top:16px">For Indian businesses, ERPNext handles the full statutory compliance burden automatically: Provident Fund (PF) at 12% employee and 12% employer on basic salary, Employee State Insurance (ESI) at 0.75% employee and 3.25% employer for eligible employees, TDS on salary based on the declared tax regime (old or new), and professional tax by state slab. PTEC and PTRC calculations for Maharashtra and other states are supported. PF challan data and ESI return data are exportable for portal submission.</p>
+    <p style="font-size:.97rem;color:var(--muted);line-height:1.85;max-width:840px;margin-top:16px">Salary structures in ERPNext are fully configurable — you define earnings components (Basic, HRA, Special Allowance, LTA, Medical) and deductions (PF, ESI, PT, TDS, Loan EMI) with formula-based calculation. One salary structure can apply to hundreds of employees, with individual overrides for variable pay, ad hoc deductions, and incentives. Employees with different CTC structures — staff, management, factory workers — can each have their own salary structure.</p>
+    <p style="font-size:.97rem;color:var(--muted);line-height:1.85;max-width:840px;margin-top:16px">For GCC businesses in Oman, UAE, and Saudi Arabia, ERPNext generates WPS (Wage Protection System) salary files in the SIF format required for bank submission. Gratuity calculation per GCC labour laws, end-of-service benefits, and WPS compliance reports are included. Quantbit Technologies configures salary structures, statutory components, and payroll journals for both India and GCC clients from a single ERPNext instance.</p>
+  </div>
+</section>
+
+<section class="section section-alt">
+  <div class="container">
+    <div class="section-label">Features &amp; Functions</div>
+    <h2 class="section-title">Core Capabilities of the Payroll &amp; Compliance Module</h2>
+    <p class="section-sub">From salary structure design to statutory filing data — complete payroll in one system.</p>
+    <div class="feature-grid">
+      <div class="feature-card"><div class="feature-icon">&#128176;</div><h3>Salary Structure &amp; Components</h3><p>Define flexible salary structures with formula-based earnings and deductions for every employee category.</p><ul><li>Multi-component salary structures with formulas</li><li>Basic, HRA, special allowance, LTA, medical configuration</li><li>Variable pay and performance bonus components</li><li>Multiple structures for staff, management, workers</li></ul></div>
+      <div class="feature-card"><div class="feature-icon">&#128202;</div><h3>PF, ESI &amp; Professional Tax</h3><p>Statutory deductions auto-calculated and posted — no manual spreadsheet calculations needed.</p><ul><li>PF employer and employee contribution auto-deduction</li><li>ESI eligibility check and deduction by wage limit</li><li>Professional tax by state slab (Maharashtra, Karnataka, etc.)</li><li>PF challan and ECR file export for EPFO portal</li></ul></div>
+      <div class="feature-card"><div class="feature-icon">&#128196;</div><h3>TDS on Salary</h3><p>Accurate income tax deduction at source based on declared investments and tax regime.</p><ul><li>Old vs new tax regime selection per employee</li><li>Investment declaration (80C, 80D, HRA exemption)</li><li>Monthly TDS calculation with projection</li><li>Form 24Q quarterly return data extraction</li></ul></div>
+      <div class="feature-card"><div class="feature-icon">&#128203;</div><h3>Salary Slip Generation</h3><p>Generate and email salary slips for all employees in one batch run at month-end.</p><ul><li>Batch salary slip generation for entire company</li><li>Attendance-integrated LWP auto-deduction</li><li>Loan EMI and advance recovery on salary slip</li><li>Password-protected PDF salary slip email</li></ul></div>
+      <div class="feature-card"><div class="feature-icon">&#127462;&#127466;</div><h3>GCC WPS Payroll</h3><p>Generate WPS SIF files for on-time salary transfer compliance in Oman, UAE, and Saudi Arabia.</p><ul><li>WPS SIF file generation per company</li><li>Gratuity calculation per GCC labour law</li><li>End-of-service benefit tracking and provision</li><li>Multi-currency payroll — OMR, AED, SAR, QAR</li></ul></div>
+      <div class="feature-card"><div class="feature-icon">&#128260;</div><h3>Payroll Accounting &amp; Cost Allocation</h3><p>Salary journal entries posted automatically to accounting — with cost centre allocation per employee.</p><ul><li>Salary expense posted to cost centre / department</li><li>PF and ESI liability accounts auto-updated</li><li>Bank payment advice for salary transfer</li><li>Project-wise salary cost allocation from timesheets</li></ul></div>
+    </div>
+  </div>
+</section>
+
+<section class="section">
+  <div class="container">
+    <div class="section-label">Reports &amp; Dashboards</div>
+    <h2 class="section-title">Payroll Reports &amp; Compliance Documents</h2>
+    <p class="section-sub">All the statutory reports and management summaries you need — exportable for portal submission.</p>
+    <div class="reports-grid">
+      <div class="report-card"><h4>Salary Register</h4><p>Component-wise payroll summary for all employees for a month — the primary payroll audit document and management report.</p><span class="report-tag">HR / Finance / Audit</span></div>
+      <div class="report-card"><h4>PF Challan &amp; ECR File</h4><p>EPFO ECR file for employee and employer PF contribution upload — ready for EPFO Unified Portal submission.</p><span class="report-tag">HR / Compliance</span></div>
+      <div class="report-card"><h4>ESI Monthly Contribution</h4><p>ESI employer and employee contribution data for ESIC portal return filing — employee-wise challan data.</p><span class="report-tag">HR / Compliance</span></div>
+      <div class="report-card"><h4>TDS / Form 24Q Data</h4><p>Quarterly TDS deduction data per employee in the format required for Form 24Q return filing with the income tax department.</p><span class="report-tag">Finance / Tax</span></div>
+      <div class="report-card"><h4>Form 16 Generation</h4><p>Annual TDS certificate for each employee — generated from salary slip and investment declaration data for the financial year.</p><span class="report-tag">Employee / Finance</span></div>
+      <div class="report-card"><h4>Gratuity Provision Report</h4><p>Gratuity accrual per employee based on service tenure — for financial provision and audit purposes (India and GCC).</p><span class="report-tag">Finance / HR</span></div>
+    </div>
+  </div>
+</section>
+
+<section class="section section-alt">
+  <div class="container">
+    <div class="section-label">User Access &amp; Roles</div>
+    <h2 class="section-title">Who Uses the Payroll Module?</h2>
+    <div class="roles-grid">
+      <div class="role-pill"><div class="role-dot admin"></div><div><div class="role-name">Payroll Manager / HR Head</div><div class="role-desc">Configure salary structures, run payroll, approve salary slips, generate statutory compliance reports</div></div></div>
+      <div class="role-pill"><div class="role-dot user"></div><div><div class="role-name">HR Executive</div><div class="role-desc">Update employee salary data, process increments, collect investment declarations, distribute salary slips</div></div></div>
+      <div class="role-pill"><div class="role-dot manager"></div><div><div class="role-name">Finance / CFO</div><div class="role-desc">Approve payroll accounting entries, review salary cost by department, manage PF and ESI liability</div></div></div>
+      <div class="role-pill"><div class="role-dot viewer"></div><div><div class="role-name">Employee (Self-Service)</div><div class="role-desc">View and download own salary slips, submit investment declarations, check leave balance and payslip history</div></div></div>
+      <div class="role-pill"><div class="role-dot viewer"></div><div><div class="role-name">Compliance Officer</div><div class="role-desc">Extract PF, ESI, and TDS return data for statutory submission, review challan accuracy before filing</div></div></div>
+    </div>
+  </div>
+</section>
+
+<section class="section">
+  <div class="container">
+    <div class="section-label">Key Benefits</div>
+    <h2 class="section-title">Why Businesses Choose ERPNext for Payroll</h2>
+    <div class="benefits-grid">
+      <div class="benefit-card"><div class="benefit-num">01</div><h3>Zero Manual Statutory Calculations</h3><p>PF, ESI, professional tax, and TDS are calculated automatically on every salary slip. No more Excel formulas, no more manual double-checking — statutory accuracy is built into the system.</p></div>
+      <div class="benefit-card"><div class="benefit-num">02</div><h3>Integrated Attendance-Payroll</h3><p>Leave without pay is deducted automatically from salaries based on attendance records. No manual LWP calculation and no disputes — the data trail from biometric to salary slip is complete and auditable.</p></div>
+      <div class="benefit-card"><div class="benefit-num">03</div><h3>Payroll Journal Entries Automatically</h3><p>When payroll is confirmed, accounting entries are posted automatically — salary expense to cost centres, PF and ESI to liability accounts, and net pay to the bank account. Finance never waits for payroll data.</p></div>
+      <div class="benefit-card"><div class="benefit-num">04</div><h3>WPS Compliance for GCC</h3><p>GCC businesses avoid WPS penalties by generating the SIF file directly from ERPNext payroll and submitting it to the bank on time. Gratuity provisions are calculated and tracked automatically.</p></div>
+      <div class="benefit-card"><div class="benefit-num">05</div><h3>Employee Self-Service</h3><p>Employees access their salary slips, tax projections, and investment declaration forms through the ERPNext employee portal — reducing HR's administrative workload for routine payroll queries significantly.</p></div>
+      <div class="benefit-card"><div class="benefit-num">06</div><h3>Audit-Ready Compliance Trail</h3><p>Every salary slip, PF deduction, and TDS payment is logged with user and timestamp. Tax auditors and labour inspectors receive a complete, exportable compliance trail without any data reconstruction effort.</p></div>
+    </div>
+  </div>
+</section>
+
+<section class="section section-alt">
+  <div class="container">
+    <div class="section-label">Best Practices</div>
+    <h2 class="section-title">ERPNext Payroll Best Practices</h2>
+    <div class="bp-list">
+      <div class="bp-item"><div class="bp-icon">&#128176;</div><div><h4>Finalise Salary Structures Before Go-Live</h4><p>Define and validate all salary structures with component formulas and statutory configurations before processing the first payroll. Mid-month structure changes cause re-calculation and audit issues that are time-consuming to resolve.</p></div></div>
+      <div class="bp-item"><div class="bp-icon">&#128196;</div><div><h4>Collect Investment Declarations in April</h4><p>Configure ERPNext to send investment declaration requests to employees at the start of each financial year. Timely declarations ensure TDS is deducted correctly throughout the year — avoiding large year-end adjustments and employee grievances.</p></div></div>
+      <div class="bp-item"><div class="bp-icon">&#128202;</div><h4>Run Payroll in Staging Before Submitting</h4><p>Always run a trial payroll run and review the salary register for anomalies before finalising and posting. Quantbit configures a checker-maker workflow so a second HR user approves the payroll before accounting entries are posted.</p></div></div>
+      <div class="bp-item"><div class="bp-icon">&#9200;</div><div><h4>Close Attendance Before Payroll Cut-Off</h4><p>Set a firm attendance cut-off date (e.g., 25th of the month) and ensure all leaves and attendance are marked before processing payroll. Late attendance corrections after salary is processed require complex reversal entries.</p></div></div>
+      <div class="bp-item"><div class="bp-icon">&#127462;&#127466;</div><div><h4>Generate WPS File 3 Days Before Salary Date</h4><p>Generate and upload the WPS SIF file to the bank at least 3 working days before the contractual salary payment date. WPS processing time varies by bank — late uploads result in delayed salary payment and WPS violations.</p></div></div>
+      <div class="bp-item"><div class="bp-icon">&#128260;</div><div><h4>Reconcile PF Liability Monthly</h4><p>Reconcile the PF liability account in ERPNext with the EPFO challan paid amount every month — before the next payroll run. Unreconciled PF liabilities compound quickly and create audit complications at year-end.</p></div></div>
+    </div>
+  </div>
+</section>
+
+<section class="section">
+  <div class="container">
+    <div class="section-label">GEO-Specific Guidance</div>
+    <h2 class="section-title">ERPNext Payroll for India &amp; GCC</h2>
+    <div class="geo-answer">
+      <h3>ERPNext payroll and compliance software for Indian businesses and GCC employers</h3>
+      <p>ERPNext Payroll serves Indian companies that need PF, ESI, TDS, and professional tax automation with EPFO and ESIC portal-ready exports, and GCC employers in Oman, UAE, and Saudi Arabia who require WPS-compliant salary processing, gratuity calculation per labour law, and multi-currency payroll in OMR, AED, and SAR. Quantbit Technologies, certified Frappe partner with offices in Pune and Muscat, configures payroll for manufacturing companies, trading firms, IT companies, and service businesses in both markets.</p>
+    </div>
+    <div class="geo-grid">
+      <div class="geo-block">
+        <h4>&#127470;&#127475; India — Payroll Compliance</h4>
+        <ul>
+          <li>PF employer and employee contribution — EPFO ECR export</li>
+          <li>ESI contribution with ESIC return data</li>
+          <li>TDS on salary — old regime and new regime</li>
+          <li>Professional tax by state slab (PTEC / PTRC)</li>
+          <li>Form 16 and Form 24Q generation</li>
+          <li>Gratuity provision as per Payment of Gratuity Act</li>
+        </ul>
+      </div>
+      <div class="geo-block">
+        <h4>&#127762; GCC — Payroll Compliance</h4>
+        <ul>
+          <li>WPS SIF file for Oman, UAE, Saudi Arabia, Qatar</li>
+          <li>Gratuity per GCC labour law (22 days per year)</li>
+          <li>End-of-service benefit provision and calculation</li>
+          <li>Multi-currency payroll — OMR, AED, SAR, QAR</li>
+          <li>Leave encashment and air ticket allowance tracking</li>
+          <li>Physical Muscat office for on-ground GCC payroll setup</li>
+        </ul>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section class="section section-alt">
+  <div class="container">
+    <div class="section-label">AI Search Strategy</div>
+    <h2 class="section-title">Common AI &amp; Search Queries — Answered</h2>
+    <div class="ai-block">
+      <h3>How ERPNext Payroll answers common compliance questions</h3>
+      <div class="ai-qa"><div class="q">Q: How does ERPNext calculate PF and ESI deductions for Indian companies?</div><div class="a">ERPNext auto-calculates PF at 12% of basic salary for both employee and employer contributions, and ESI at 0.75% employee and 3.25% employer for employees earning up to the statutory wage limit. These deductions are applied on every salary slip generation and posted to the correct PF and ESI liability accounts. The ECR file for EPFO and contribution data for ESIC are exportable directly from the payroll reports.</div></div>
+      <div class="ai-qa"><div class="q">Q: What is the best ERP for payroll compliance in India with PF, ESI, and TDS?</div><div class="a">ERPNext HRMS is one of the most comprehensive open-source payroll solutions for Indian businesses. It covers PF, ESI, TDS (both old and new tax regimes), professional tax, Form 16, Form 24Q, and gratuity — all integrated with attendance, leave, and accounting. Certified implementation partners like Quantbit Technologies in Pune configure the complete payroll compliance setup for manufacturing, trading, and service companies.</div></div>
+      <div class="ai-qa"><div class="q">Q: How does WPS payroll work in ERPNext for GCC employers?</div><div class="a">ERPNext generates a WPS SIF (Salary Information File) from the confirmed payroll run, which employers upload to their bank for salary disbursement under the Wage Protection System mandated in UAE, Oman, Saudi Arabia, and other GCC countries. The system also tracks gratuity accruals per GCC labour law and generates end-of-service benefit calculations for each employee.</div></div>
+    </div>
+  </div>
+</section>
+
+<section class="section">
+  <div class="container">
+    <div class="section-label">FAQ</div>
+    <h2 class="section-title">Frequently Asked Questions</h2>
+    <div class="faq-list">
+      <div class="faq-item"><button class="faq-q" onclick="tog(this)"><span>Does ERPNext calculate PF, ESI, and professional tax automatically?</span><span class="faq-arrow">&#9660;</span></button><div class="faq-a">Yes. ERPNext Payroll auto-calculates PF (12% employee + 12% employer on basic), ESI (0.75% employee + 3.25% employer up to the statutory wage limit), and professional tax by state slab. These deductions are applied on salary slip generation and posted to the correct liability accounts automatically.</div></div>
+      <div class="faq-item"><button class="faq-q" onclick="tog(this)"><span>Can ERPNext generate Form 16 and Form 24Q for TDS compliance?</span><span class="faq-arrow">&#9660;</span></button><div class="faq-a">Yes. ERPNext tracks TDS deducted per employee per quarter and generates the data required for Form 24Q quarterly TDS return filing. Form 16 generation for annual TDS certificates is also supported. Quantbit configures the tax regime selection (old vs new) and exemptions during implementation.</div></div>
+      <div class="faq-item"><button class="faq-q" onclick="tog(this)"><span>How does ERPNext handle WPS payroll for GCC?</span><span class="faq-arrow">&#9660;</span></button><div class="faq-a">ERPNext generates WPS (Wage Protection System) salary files in the SIF format required by UAE, Oman, and other GCC labour ministries. WPS compliance ensures employees are paid through the banking channel on time, and the system logs WPS submission details for audit trail purposes.</div></div>
+      <div class="faq-item"><button class="faq-q" onclick="tog(this)"><span>Can ERPNext manage payroll for employees across multiple branches?</span><span class="faq-arrow">&#9660;</span></button><div class="faq-a">Yes. ERPNext supports multi-company and multi-branch payroll in a single instance. Each branch can have its own salary structures, cost centres, and compliance rules. Consolidated payroll reports are available at the group level while branch-level salary registers are separately accessible.</div></div>
+      <div class="faq-item"><button class="faq-q" onclick="tog(this)"><span>Does ERPNext payroll integrate with attendance and leave?</span><span class="faq-arrow">&#9660;</span></button><div class="faq-a">Yes. ERPNext payroll pulls attendance data from the Leave and Attendance module automatically. Leave without pay (LWP) is calculated and deducted from salary based on attendance records. Overtime, late deductions, and bonus payments can also be configured to flow from attendance data into salary slips.</div></div>
+      <div class="faq-item"><button class="faq-q" onclick="tog(this)"><span>Can employees view their own salary slips and tax details in ERPNext?</span><span class="faq-arrow">&#9660;</span></button><div class="faq-a">Yes. ERPNext includes an employee self-service portal where employees can view and download their salary slips, check tax deduction projections for the financial year, and submit investment declarations (80C, HRA, 80D). This reduces HR's workload for routine payroll queries significantly.</div></div>
+    </div>
+  </div>
+</section>
+
+<section class="section section-alt">
+  <div class="container">
+    <div class="seo-box">
+      <p class="section-label" style="margin-bottom:8px">SEO Keywords</p>
+      <h3 style="font-size:.92rem;font-weight:700;color:var(--dark);margin-bottom:8px">Search Terms This Page Targets</h3>
+      <div class="seo-kw"><span>ERPNext payroll India</span><span>ERPNext salary processing PF ESI</span><span>ERPNext TDS on salary Form 16</span><span>ERPNext payroll compliance India</span><span>ERPNext professional tax</span><span>open source payroll ERP India</span><span>ERPNext WPS payroll GCC Oman</span><span>ERPNext HRMS payroll Pune</span><span>ERPNext Frappe payroll partner</span><span>ERPNext Form 24Q ESI challan</span></div>
+    </div>
+  </div>
+</section>
+
+<section class="cta-section">
+  <div class="container">
+    <h2>Ready to Implement ERPNext Payroll &amp; Compliance?</h2>
+    <p>Quantbit Technologies configures salary structures, statutory compliance, WPS payroll, and payroll accounting for Indian and GCC businesses — with an in-house HR and finance implementation team.</p>
+    <div class="cta-btns">
+      <a href="/company/contact-us.html" class="btn-white">Book Free Demo</a>
+      <a href="/company/contact-us.html" class="btn-ghost">Talk to a Consultant</a>
+    </div>
+    <div class="cta-trust">&#9989; Certified ERPNext Partner &nbsp;|&nbsp; &#9989; PF ESI TDS Ready &nbsp;|&nbsp; &#9989; WPS GCC Compliant &nbsp;|&nbsp; &#9989; Pune &amp; Muscat Offices</div>
+  </div>
+</section>
+  <div id="footer"></div>
+
+<script>function tog(btn){btn.classList.toggle('open');var a=btn.nextElementSibling;a.classList.toggle('open');}</script>
+<script>
+    fetch("/header.html")
+      .then(res => res.text())
+      .then(data => {
+        document.getElementById("header").innerHTML = data;
+      });
+
+    fetch("/footer.html")
+      .then(res => res.text())
+      .then(data => {
+        document.getElementById("footer").innerHTML = data;
+      });
+  </script>
+  <!-- ================= TEMPLATE JS ================= -->
+  <!--<< All JS Plugins >>-->
+  <script data-cfasync="false" src="../../cdn-cgi/scripts/5c5dd728/cloudflare-static/email-decode.min.js"></script>
+  <script src="/../assets/quantbit_website/js/jquery-3.7.1.min.js"></script>
+  <!--<< Viewport Js >>-->
+  <script src="/../assets/quantbit_website/js/viewport.jquery.js"></script>
+  <!--<< Bootstrap Js >>-->
+  <script src="/../assets/quantbit_website/js/bootstrap.bundle.min.js"></script>
+  <!--<< Nice Select Js >>-->
+  <script src="/../assets/quantbit_website/js/jquery.nice-select.min.js"></script>
+  <!--<< Waypoints Js >>-->
+  <script src="/../assets/quantbit_website/js/jquery.waypoints.js"></script>
+  <!--<< Counterup Js >>-->
+  <script src="/../assets/quantbit_website/js/jquery.counterup.min.js"></script>
+  <!--<< Slick Js >>-->
+  <script src="/../assets/quantbit_website/js/slick.min.js"></script>
+  <!--<< Slick Animation Js >>-->
+  <script src="/../assets/quantbit_website/js/slick-animation.min.js"></script>
+  <!--<< MeanMenu Js >>-->
+  <script src="/../assets/quantbit_website/js/jquery.meanmenu.min.js"></script>
+  <!--<< Magnific Popup Js >>-->
+  <script src="/../assets/quantbit_website/js/jquery.magnific-popup.min.js"></script>
+  <!--<< Wow Animation Js >>-->
+  <script src="/../assets/quantbit_website/js/wow.min.js"></script>
+  <!--<< Circle Progress Js >>-->
+  <script src="/../assets/quantbit_website/js/circle-progress.js"></script>
+  <!--<< Main.js >>-->
+  <script src="/../assets/quantbit_website/js/main.js"></script>
+  <script defer
+    src="../../../static.cloudflareinsights.com/beacon.min.js/v8c78df7c7c0f484497ecbca7046644da1771523124516"
+    integrity="sha512-8DS7rgIrAmghBFwoOTujcf6D9rXvH8xm8JQ1Ja01h9QX8EzXldiszufYa4IFfKdLUKTTrnSFXLDkUEOTrZQ8Qg=="
+    data-cf-beacon='{"version":"2024.11.0","token":"90f7972af14a48b4add7da2b74f5d675","r":1,"server_timing":{"name":{"cfCacheStatus":true,"cfEdge":true,"cfExtPri":true,"cfL4":true,"cfOrigin":true,"cfSpeedBrain":true},"location_startswith":null}}'
+    crossorigin="anonymous"></script>
+
+</body></html>
