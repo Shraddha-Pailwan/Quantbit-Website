@@ -133,12 +133,13 @@
       pointer-events: none;
     }
 
-    .hero-inner {
-      position: relative;
-      max-width: 1100px;
-      margin: 0 auto;
-      padding: 0 24px;
-    }
+.hero-inner {
+  position: relative;
+  max-width: 1100px;
+  margin: 0 auto;
+  padding: 0 24px;
+  text-align: center;
+}
 
     .hero-eyebrow {
       display: inline-flex;
@@ -155,36 +156,41 @@
       border-radius: 20px;
       margin-bottom: 28px;
     }
-
-    .hero h1 {
-      font-family: var(--font-head);
-      font-size: clamp(2.2rem, 5vw, 3.4rem);
-      font-weight: 700;
-      line-height: 1.15;
-      margin-bottom: 20px;
-      max-width: 780px;
-      letter-spacing: -0.5px;
-    }
+.hero h1 {
+  font-family: var(--font-head);
+  font-size: clamp(2.2rem, 5vw, 3.4rem);
+  font-weight: 700;
+  line-height: 1.15;
+  margin-bottom: 20px;
+  max-width: 780px;
+  letter-spacing: -0.5px;
+  margin-left: auto;   /* add this */
+  margin-right: auto;  /* add this */
+}
 
     .hero h1 span {
       color: #93b4ff;
     }
 
-    .hero-intro {
-      font-size: 1.1rem;
-      color: #c5d0e8;
-      max-width: 640px;
-      line-height: 1.75;
-      margin-bottom: 40px;
-    }
+.hero-intro {
+  font-size: 1.1rem;
+  color: #c5d0e8;
+  max-width: 640px;
+  line-height: 1.75;
+  margin-bottom: 40px;
+  text-align: center;   /* add this */
+  margin-left: auto;    /* add this */
+  margin-right: auto;   /* add this */
+}
 
-    .hero-meta {
-      display: flex;
-      gap: 32px;
-      flex-wrap: wrap;
-      padding-top: 32px;
-      border-top: 1px solid rgba(255, 255, 255, 0.1);
-    }
+ .hero-meta {
+  display: flex;
+  gap: 32px;
+  flex-wrap: wrap;
+  padding-top: 32px;
+  border-top: 1px solid rgba(255, 255, 255, 0.1);
+  justify-content: center;  /* add this */
+}
 
     .meta-item {
       display: flex;
@@ -1033,49 +1039,49 @@
               <td>Evaluating "proper ERP" for the first time</td>
               <td>Tally / Vyapar / Excel</td>
               <td>₹5Cr–₹50Cr</td>
-              <td><a href="https://quantbit.io/tally-to-erpnext-migration"
+              <td><a href="tally-to-erpnext.html"
                   style="color:var(--accent);font-weight:600;text-decoration:none">Tally Migration →</a></td>
             </tr>
             <tr>
               <td>Comparing open-source ERPs</td>
               <td>Evaluating Odoo vs ERPNext</td>
               <td>₹10Cr–₹200Cr</td>
-              <td><a href="https://quantbit.io/erpnext-vs-odoo"
+              <td><a href="erpnext-vs-odoo.html"
                   style="color:var(--accent);font-weight:600;text-decoration:none">ERPNext vs Odoo →</a></td>
             </tr>
             <tr>
               <td>SAP quote on the table</td>
               <td>Nothing / Legacy</td>
               <td>₹50Cr–₹500Cr</td>
-              <td><a href="https://quantbit.io/erpnext-vs-sap"
+              <td><a href="erpnext-vs-sap.html"
                   style="color:var(--accent);font-weight:600;text-decoration:none">ERPNext vs SAP →</a></td>
             </tr>
             <tr>
               <td>Deep in Microsoft 365 stack</td>
               <td>Evaluating Dynamics 365</td>
               <td>₹20Cr–₹300Cr</td>
-              <td><a href="https://quantbit.io/erpnext-vs-microsoft-dynamics-365"
+              <td><a href="erpnext-vs-dynamics365.html"
                   style="color:var(--accent);font-weight:600;text-decoration:none">ERPNext vs Dynamics →</a></td>
             </tr>
             <tr>
               <td>VC-backed / investor-required NetSuite</td>
               <td>NetSuite or evaluating it</td>
               <td>₹20Cr–₹600Cr</td>
-              <td><a href="https://quantbit.io/erpnext-vs-oracle-netsuite"
+              <td><a href="erpnext-vs-netsuite.html"
                   style="color:var(--accent);font-weight:600;text-decoration:none">ERPNext vs NetSuite →</a></td>
             </tr>
             <tr>
               <td>Old custom / local ERP falling apart</td>
               <td>Homegrown / VB6 / PHP ERP</td>
               <td>Any</td>
-              <td><a href="https://quantbit.io/erpnext-vs-custom-erp"
+              <td><a href="erpnext-vs-custom-erp.html"
                   style="color:var(--accent);font-weight:600;text-decoration:none">Custom ERP Replacement →</a></td>
             </tr>
             <tr>
               <td>Growing past Vyapar or Zoho Books</td>
               <td>Vyapar / Zoho / Busy</td>
               <td>₹3Cr–₹30Cr</td>
-              <td><a href="https://quantbit.io/erpnext-vs-vyapar"
+              <td><a href="erpnext-vs-vyapar.html"
                   style="color:var(--accent);font-weight:600;text-decoration:none">ERPNext vs Vyapar →</a></td>
             </tr>
           </tbody>
@@ -1156,7 +1162,7 @@
       </div>
 
       <p style="margin-top:20px;font-size:13px;color:var(--ink-soft)">
-        Want a specific comparison faster? <a href="https://quantbit.io/contact"
+        Want a specific comparison faster? <a href="/company/contact-us.html"
           style="color:var(--accent);font-weight:600;text-decoration:none">Tell us which product you're evaluating →</a>
       </p>
     </div>
@@ -1230,8 +1236,8 @@
       <p>Tell us your industry, revenue, and current software. We'll recommend the right comparison to read — or just
         tell you directly.</p>
       <div class="cta-buttons">
-        <a href="https://quantbit.io/contact" class="primary">Get a Free Recommendation</a>
-        <a href="https://quantbit.io/services" class="sec">View ERPNext Services →</a>
+        <a href="/company/contact-us.html" class="primary">Get a Free Recommendation</a>
+        <a href="/services/" class="sec">View ERPNext Services →</a>
       </div>
     </div>
   </section>
