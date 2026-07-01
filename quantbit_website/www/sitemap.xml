@@ -1,181 +1,1773 @@
-<?xml version="1.0" encoding="UTF-8"?>
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
-  <!-- CORE PAGES -->
-  <url>
-    <loc>https://quantbit.io/</loc>
-    <lastmod>2025-04-01</lastmod>
-    <changefreq>weekly</changefreq>
-    <priority>1.0</priority>
-  </url>
-  <url>
-    <loc>https://quantbit.io/about.html</loc>
-    <lastmod>2025-04-01</lastmod>
-    <changefreq>monthly</changefreq>
-    <priority>0.9</priority>
-  </url>
-  <url>
-    <loc>https://quantbit.io/contact-us.html</loc>
-    <lastmod>2025-04-01</lastmod>
-    <changefreq>monthly</changefreq>
-    <priority>0.8</priority>
-  </url>
-  <url>
-    <loc>https://quantbit.io/industries.html</loc>
-    <lastmod>2025-04-01</lastmod>
-    <changefreq>monthly</changefreq>
-    <priority>0.8</priority>
-  </url>
-  <url>
-    <loc>https://quantbit.io/market.html</loc>
-    <lastmod>2025-04-01</lastmod>
-    <changefreq>monthly</changefreq>
-    <priority>0.7</priority>
-  </url>
-  <url>
-    <loc>https://quantbit.io/careers.html</loc>
-    <lastmod>2025-04-01</lastmod>
-    <changefreq>monthly</changefreq>
-    <priority>0.6</priority>
-  </url>
-  <url>
-    <loc>https://quantbit.io/partners.html</loc>
-    <lastmod>2025-04-01</lastmod>
-    <changefreq>monthly</changefreq>
-    <priority>0.6</priority>
-  </url>
-  <url>
-    <loc>https://quantbit.io/case-studies.html</loc>
-    <lastmod>2025-04-01</lastmod>
-    <changefreq>monthly</changefreq>
-    <priority>0.7</priority>
-  </url>
-  <url>
-    <loc>https://quantbit.io/faq.html</loc>
-    <lastmod>2025-04-01</lastmod>
-    <changefreq>monthly</changefreq>
-    <priority>0.5</priority>
-  </url>
-  <!-- PRODUCT PAGES -->
-  <url>
-    <loc>https://quantbit.io/products.html</loc>
-    <lastmod>2026-06-12</lastmod>
-    <changefreq>monthly</changefreq>
-    <priority>0.8</priority>
-  </url>
-  <url>
-    <loc>https://quantbit.io/hrms.html</loc>
-    <lastmod>2025-04-01</lastmod>
-    <changefreq>monthly</changefreq>
-    <priority>0.8</priority>
-  </url>
-  <url>
-    <loc>https://quantbit.io/crm.html</loc>
-    <lastmod>2025-04-01</lastmod>
-    <changefreq>monthly</changefreq>
-    <priority>0.8</priority>
-  </url>
-  <url>
-    <loc>https://quantbit.io/posx.html</loc>
-    <lastmod>2025-04-01</lastmod>
-    <changefreq>monthly</changefreq>
-    <priority>0.8</priority>
-  </url>
-  <url>
-    <loc>https://quantbit.io/wmspro.html</loc>
-    <lastmod>2025-04-01</lastmod>
-    <changefreq>monthly</changefreq>
-    <priority>0.8</priority>
-  </url>
-  <url>
-    <loc>https://quantbit.io/manufacturing-erp.html</loc>
-    <lastmod>2025-04-01</lastmod>
-    <changefreq>monthly</changefreq>
-    <priority>0.9</priority>
-  </url>
-  <!-- INDUSTRY PAGES -->
-  <url>
-    <loc>https://quantbit.io/manufacturing.html</loc>
-    <lastmod>2025-04-01</lastmod>
-    <changefreq>monthly</changefreq>
-    <priority>0.8</priority>
-  </url>
-  <url>
-    <loc>https://quantbit.io/trading.html</loc>
-    <lastmod>2025-04-01</lastmod>
-    <changefreq>monthly</changefreq>
-    <priority>0.7</priority>
-  </url>
-  <url>
-    <loc>https://quantbit.io/retail.html</loc>
-    <lastmod>2025-04-01</lastmod>
-    <changefreq>monthly</changefreq>
-    <priority>0.7</priority>
-  </url>
-  <url>
-    <loc>https://quantbit.io/logistics.html</loc>
-    <lastmod>2025-04-01</lastmod>
-    <changefreq>monthly</changefreq>
-    <priority>0.7</priority>
-  </url>
-  <url>
-    <loc>https://quantbit.io/construction.html</loc>
-    <lastmod>2025-04-01</lastmod>
-    <changefreq>monthly</changefreq>
-    <priority>0.7</priority>
-  </url>
-  <url>
-    <loc>https://quantbit.io/agriculture.html</loc>
-    <lastmod>2025-04-01</lastmod>
-    <changefreq>monthly</changefreq>
-    <priority>0.7</priority>
-  </url>
-  <url>
-    <loc>https://quantbit.io/healthcare.html</loc>
-    <lastmod>2025-04-01</lastmod>
-    <changefreq>monthly</changefreq>
-    <priority>0.7</priority>
-  </url>
-  <url>
-    <loc>https://quantbit.io/restaurant.html</loc>
-    <lastmod>2025-04-01</lastmod>
-    <changefreq>monthly</changefreq>
-    <priority>0.7</priority>
-  </url>
-  <url>
-    <loc>https://quantbit.io/facility.html</loc>
-    <lastmod>2025-04-01</lastmod>
-    <changefreq>monthly</changefreq>
-    <priority>0.7</priority>
-  </url>
-  <!-- COMPARISON PAGES -->
-  <url>
-    <loc>https://quantbit.io/compare-erp-tally.html</loc>
-    <lastmod>2025-04-01</lastmod>
-    <changefreq>monthly</changefreq>
-    <priority>0.7</priority>
-  </url>
-  <url>
-    <loc>https://quantbit.io/compare-ion.html</loc>
-    <lastmod>2025-04-01</lastmod>
-    <changefreq>monthly</changefreq>
-    <priority>0.7</priority>
-  </url>
-  <url>
-    <loc>https://quantbit.io/sugar-erp.html</loc>
-    <lastmod>2026-06-12</lastmod>
-    <changefreq>monthly</changefreq>
-    <priority>0.9</priority>
-  </url>
-  <url>
-      <loc>https://quantbit.io/foundry-erp.html</loc>
-      <lastmod>2026-06-12</lastmod>
-      <changefreq>monthly</changefreq>
-      <priority>0.9</priority>
-  </url>
-  <url>
-      <loc>https://quantbit.io/foundryx.html</loc>
-      <lastmod>2026-06-12</lastmod>
-      <changefreq>monthly</changefreq>
-      <priority>0.8</priority>
-  </url>
+<!--  HOMEPAGE  -->
+<url>
+<loc>https://quantbit.io/</loc>
+<lastmod>2026-06-30</lastmod>
+<changefreq>weekly</changefreq>
+<priority>1.0</priority>
+</url>
+<!--  CORE - COMPANY (4 pages)  -->
+<url>
+<loc>https://quantbit.io/company/about.html</loc>
+<lastmod>2025-04-01</lastmod>
+<changefreq>monthly</changefreq>
+<priority>0.7</priority>
+</url>
+<url>
+<loc>https://quantbit.io/company/careers.html</loc>
+<lastmod>2025-04-01</lastmod>
+<changefreq>monthly</changefreq>
+<priority>0.7</priority>
+</url>
+<url>
+<loc>https://quantbit.io/company/contact-us.html</loc>
+<lastmod>2025-04-01</lastmod>
+<changefreq>monthly</changefreq>
+<priority>0.7</priority>
+</url>
+<url>
+<loc>https://quantbit.io/company/partner.html</loc>
+<lastmod>2025-04-01</lastmod>
+<changefreq>monthly</changefreq>
+<priority>0.7</priority>
+</url>
+<!--  COMPARISON HUB (1 pages)  -->
+<url>
+<loc>https://quantbit.io/compare.html</loc>
+<lastmod>2026-06-30</lastmod>
+<changefreq>monthly</changefreq>
+<priority>0.8</priority>
+</url>
+<!--  GEO - ERPNEXT CITY (20 pages)  -->
+<url>
+<loc>https://quantbit.io/erpnext-ahmedabad.html</loc>
+<lastmod>2026-06-30</lastmod>
+<changefreq>monthly</changefreq>
+<priority>0.6</priority>
+</url>
+<url>
+<loc>https://quantbit.io/erpnext-aurangabad.html</loc>
+<lastmod>2026-06-30</lastmod>
+<changefreq>monthly</changefreq>
+<priority>0.6</priority>
+</url>
+<url>
+<loc>https://quantbit.io/erpnext-bengaluru.html</loc>
+<lastmod>2026-06-30</lastmod>
+<changefreq>monthly</changefreq>
+<priority>0.6</priority>
+</url>
+<url>
+<loc>https://quantbit.io/erpnext-chennai.html</loc>
+<lastmod>2026-06-30</lastmod>
+<changefreq>monthly</changefreq>
+<priority>0.6</priority>
+</url>
+<url>
+<loc>https://quantbit.io/erpnext-coimbatore.html</loc>
+<lastmod>2026-06-30</lastmod>
+<changefreq>monthly</changefreq>
+<priority>0.6</priority>
+</url>
+<url>
+<loc>https://quantbit.io/erpnext-delhi.html</loc>
+<lastmod>2026-06-30</lastmod>
+<changefreq>monthly</changefreq>
+<priority>0.6</priority>
+</url>
+<url>
+<loc>https://quantbit.io/erpnext-faridabad.html</loc>
+<lastmod>2026-06-30</lastmod>
+<changefreq>monthly</changefreq>
+<priority>0.6</priority>
+</url>
+<url>
+<loc>https://quantbit.io/erpnext-gurugram.html</loc>
+<lastmod>2026-06-30</lastmod>
+<changefreq>monthly</changefreq>
+<priority>0.6</priority>
+</url>
+<url>
+<loc>https://quantbit.io/erpnext-hyderabad.html</loc>
+<lastmod>2026-06-30</lastmod>
+<changefreq>monthly</changefreq>
+<priority>0.6</priority>
+</url>
+<url>
+<loc>https://quantbit.io/erpnext-jamshedpur.html</loc>
+<lastmod>2026-06-30</lastmod>
+<changefreq>monthly</changefreq>
+<priority>0.6</priority>
+</url>
+<url>
+<loc>https://quantbit.io/erpnext-kolhapur.html</loc>
+<lastmod>2026-06-30</lastmod>
+<changefreq>monthly</changefreq>
+<priority>0.6</priority>
+</url>
+<url>
+<loc>https://quantbit.io/erpnext-ludhiana.html</loc>
+<lastmod>2026-06-30</lastmod>
+<changefreq>monthly</changefreq>
+<priority>0.6</priority>
+</url>
+<url>
+<loc>https://quantbit.io/erpnext-mumbai.html</loc>
+<lastmod>2026-06-30</lastmod>
+<changefreq>monthly</changefreq>
+<priority>0.6</priority>
+</url>
+<url>
+<loc>https://quantbit.io/erpnext-nagpur.html</loc>
+<lastmod>2026-06-30</lastmod>
+<changefreq>monthly</changefreq>
+<priority>0.6</priority>
+</url>
+<url>
+<loc>https://quantbit.io/erpnext-nashik.html</loc>
+<lastmod>2026-06-30</lastmod>
+<changefreq>monthly</changefreq>
+<priority>0.6</priority>
+</url>
+<url>
+<loc>https://quantbit.io/erpnext-noida.html</loc>
+<lastmod>2026-06-30</lastmod>
+<changefreq>monthly</changefreq>
+<priority>0.6</priority>
+</url>
+<url>
+<loc>https://quantbit.io/erpnext-pune.html</loc>
+<lastmod>2026-06-30</lastmod>
+<changefreq>monthly</changefreq>
+<priority>0.6</priority>
+</url>
+<url>
+<loc>https://quantbit.io/erpnext-rajkot.html</loc>
+<lastmod>2026-06-30</lastmod>
+<changefreq>monthly</changefreq>
+<priority>0.6</priority>
+</url>
+<url>
+<loc>https://quantbit.io/erpnext-surat.html</loc>
+<lastmod>2026-06-30</lastmod>
+<changefreq>monthly</changefreq>
+<priority>0.6</priority>
+</url>
+<url>
+<loc>https://quantbit.io/erpnext-vadodara.html</loc>
+<lastmod>2026-06-30</lastmod>
+<changefreq>monthly</changefreq>
+<priority>0.6</priority>
+</url>
+<!--  COMPARISON (6 pages)  -->
+<url>
+<loc>https://quantbit.io/erpnext-vs-custom-erp.html</loc>
+<lastmod>2026-06-30</lastmod>
+<changefreq>monthly</changefreq>
+<priority>0.7</priority>
+</url>
+<url>
+<loc>https://quantbit.io/erpnext-vs-dynamics365.html</loc>
+<lastmod>2026-06-30</lastmod>
+<changefreq>monthly</changefreq>
+<priority>0.7</priority>
+</url>
+<url>
+<loc>https://quantbit.io/erpnext-vs-netsuite.html</loc>
+<lastmod>2026-06-30</lastmod>
+<changefreq>monthly</changefreq>
+<priority>0.7</priority>
+</url>
+<url>
+<loc>https://quantbit.io/erpnext-vs-odoo.html</loc>
+<lastmod>2026-06-30</lastmod>
+<changefreq>monthly</changefreq>
+<priority>0.7</priority>
+</url>
+<url>
+<loc>https://quantbit.io/erpnext-vs-sap.html</loc>
+<lastmod>2026-06-30</lastmod>
+<changefreq>monthly</changefreq>
+<priority>0.7</priority>
+</url>
+<url>
+<loc>https://quantbit.io/erpnext-vs-vyapar.html</loc>
+<lastmod>2026-06-30</lastmod>
+<changefreq>monthly</changefreq>
+<priority>0.7</priority>
+</url>
+<!--  INDUSTRIES HUB (1 pages)  -->
+<url>
+<loc>https://quantbit.io/industries.html</loc>
+<lastmod>2026-06-30</lastmod>
+<changefreq>monthly</changefreq>
+<priority>0.8</priority>
+</url>
+<!--  INDUSTRY VERTICAL (10 pages)  -->
+<url>
+<loc>https://quantbit.io/industries/agriculture-erp.html</loc>
+<lastmod>2026-06-30</lastmod>
+<changefreq>monthly</changefreq>
+<priority>0.7</priority>
+</url>
+<url>
+<loc>https://quantbit.io/industries/construction-erp.html</loc>
+<lastmod>2026-06-30</lastmod>
+<changefreq>monthly</changefreq>
+<priority>0.7</priority>
+</url>
+<url>
+<loc>https://quantbit.io/industries/facility-erp.html</loc>
+<lastmod>2026-06-30</lastmod>
+<changefreq>monthly</changefreq>
+<priority>0.7</priority>
+</url>
+<url>
+<loc>https://quantbit.io/industries/foundry-erp.html</loc>
+<lastmod>2026-06-30</lastmod>
+<changefreq>monthly</changefreq>
+<priority>0.7</priority>
+</url>
+<url>
+<loc>https://quantbit.io/industries/healthcare-erp.html</loc>
+<lastmod>2026-06-30</lastmod>
+<changefreq>monthly</changefreq>
+<priority>0.7</priority>
+</url>
+<url>
+<loc>https://quantbit.io/industries/logistics-erp.html</loc>
+<lastmod>2026-06-30</lastmod>
+<changefreq>monthly</changefreq>
+<priority>0.7</priority>
+</url>
+<url>
+<loc>https://quantbit.io/industries/manufacturing-erp.html</loc>
+<lastmod>2026-06-30</lastmod>
+<changefreq>monthly</changefreq>
+<priority>0.7</priority>
+</url>
+<url>
+<loc>https://quantbit.io/industries/restaurant-erp.html</loc>
+<lastmod>2026-06-30</lastmod>
+<changefreq>monthly</changefreq>
+<priority>0.7</priority>
+</url>
+<url>
+<loc>https://quantbit.io/industries/retail-erp.html</loc>
+<lastmod>2026-06-30</lastmod>
+<changefreq>monthly</changefreq>
+<priority>0.7</priority>
+</url>
+<url>
+<loc>https://quantbit.io/industries/trading-erp.html</loc>
+<lastmod>2026-06-30</lastmod>
+<changefreq>monthly</changefreq>
+<priority>0.7</priority>
+</url>
+<!--  FOUNDRYX - GEO/CLUSTER (11 pages)  -->
+<url>
+<loc>https://quantbit.io/industries/foundryx/foundry-erp-kolhapur-group.html</loc>
+<lastmod>2026-06-30</lastmod>
+<changefreq>monthly</changefreq>
+<priority>0.6</priority>
+</url>
+<url>
+<loc>https://quantbit.io/industries/foundryx/foundryx-batala.html</loc>
+<lastmod>2026-06-30</lastmod>
+<changefreq>monthly</changefreq>
+<priority>0.6</priority>
+</url>
+<url>
+<loc>https://quantbit.io/industries/foundryx/foundryx-belgaum.html</loc>
+<lastmod>2026-06-30</lastmod>
+<changefreq>monthly</changefreq>
+<priority>0.6</priority>
+</url>
+<url>
+<loc>https://quantbit.io/industries/foundryx/foundryx-coimbatore.html</loc>
+<lastmod>2026-06-30</lastmod>
+<changefreq>monthly</changefreq>
+<priority>0.6</priority>
+</url>
+<url>
+<loc>https://quantbit.io/industries/foundryx/foundryx-faridabad.html</loc>
+<lastmod>2026-06-30</lastmod>
+<changefreq>monthly</changefreq>
+<priority>0.6</priority>
+</url>
+<url>
+<loc>https://quantbit.io/industries/foundryx/foundryx-howrah.html</loc>
+<lastmod>2026-06-30</lastmod>
+<changefreq>monthly</changefreq>
+<priority>0.6</priority>
+</url>
+<url>
+<loc>https://quantbit.io/industries/foundryx/foundryx-hyderabad.html</loc>
+<lastmod>2026-06-30</lastmod>
+<changefreq>monthly</changefreq>
+<priority>0.6</priority>
+</url>
+<url>
+<loc>https://quantbit.io/industries/foundryx/foundryx-kolhapur.html</loc>
+<lastmod>2026-06-30</lastmod>
+<changefreq>monthly</changefreq>
+<priority>0.6</priority>
+</url>
+<url>
+<loc>https://quantbit.io/industries/foundryx/foundryx-pune.html</loc>
+<lastmod>2026-06-30</lastmod>
+<changefreq>monthly</changefreq>
+<priority>0.6</priority>
+</url>
+<url>
+<loc>https://quantbit.io/industries/foundryx/foundryx-raipur.html</loc>
+<lastmod>2026-06-30</lastmod>
+<changefreq>monthly</changefreq>
+<priority>0.6</priority>
+</url>
+<url>
+<loc>https://quantbit.io/industries/foundryx/foundryx-rajkot.html</loc>
+<lastmod>2026-06-30</lastmod>
+<changefreq>monthly</changefreq>
+<priority>0.6</priority>
+</url>
+<!--  FOUNDRYX - RESOURCE (3 pages)  -->
+<url>
+<loc>https://quantbit.io/industries/foundryx/foundry-roi-calculator.html</loc>
+<lastmod>2026-06-30</lastmod>
+<changefreq>monthly</changefreq>
+<priority>0.5</priority>
+</url>
+<url>
+<loc>https://quantbit.io/industries/foundryx/top-10-foundry-erp-features.html</loc>
+<lastmod>2026-06-30</lastmod>
+<changefreq>monthly</changefreq>
+<priority>0.5</priority>
+</url>
+<url>
+<loc>https://quantbit.io/industries/foundryx/what-is-heat-tracking-foundry-erp.html</loc>
+<lastmod>2026-06-30</lastmod>
+<changefreq>monthly</changefreq>
+<priority>0.5</priority>
+</url>
+<!--  PRODUCTS HUB (1 pages)  -->
+<url>
+<loc>https://quantbit.io/products.html</loc>
+<lastmod>2026-06-30</lastmod>
+<changefreq>monthly</changefreq>
+<priority>0.9</priority>
+</url>
+<!--  PRODUCT - TIER 1 LANDING (17 pages)  -->
+<url>
+<loc>https://quantbit.io/products/agri-university.html</loc>
+<lastmod>2026-06-30</lastmod>
+<changefreq>monthly</changefreq>
+<priority>0.8</priority>
+</url>
+<url>
+<loc>https://quantbit.io/products/crm.html</loc>
+<lastmod>2026-06-30</lastmod>
+<changefreq>monthly</changefreq>
+<priority>0.8</priority>
+</url>
+<url>
+<loc>https://quantbit.io/products/foundryx.html</loc>
+<lastmod>2026-06-30</lastmod>
+<changefreq>monthly</changefreq>
+<priority>0.8</priority>
+</url>
+<url>
+<loc>https://quantbit.io/products/helpdesk.html</loc>
+<lastmod>2026-06-30</lastmod>
+<changefreq>monthly</changefreq>
+<priority>0.8</priority>
+</url>
+<url>
+<loc>https://quantbit.io/products/hims.html</loc>
+<lastmod>2026-06-30</lastmod>
+<changefreq>monthly</changefreq>
+<priority>0.8</priority>
+</url>
+<url>
+<loc>https://quantbit.io/products/hrms.html</loc>
+<lastmod>2026-06-30</lastmod>
+<changefreq>monthly</changefreq>
+<priority>0.8</priority>
+</url>
+<url>
+<loc>https://quantbit.io/products/krishi-astra.html</loc>
+<lastmod>2026-06-30</lastmod>
+<changefreq>monthly</changefreq>
+<priority>0.8</priority>
+</url>
+<url>
+<loc>https://quantbit.io/products/machinex.html</loc>
+<lastmod>2026-06-30</lastmod>
+<changefreq>monthly</changefreq>
+<priority>0.8</priority>
+</url>
+<url>
+<loc>https://quantbit.io/products/manufacturing-erp.html</loc>
+<lastmod>2026-06-30</lastmod>
+<changefreq>monthly</changefreq>
+<priority>0.8</priority>
+</url>
+<url>
+<loc>https://quantbit.io/products/posx.html</loc>
+<lastmod>2026-06-30</lastmod>
+<changefreq>monthly</changefreq>
+<priority>0.8</priority>
+</url>
+<url>
+<loc>https://quantbit.io/products/propx.html</loc>
+<lastmod>2026-06-30</lastmod>
+<changefreq>monthly</changefreq>
+<priority>0.8</priority>
+</url>
+<url>
+<loc>https://quantbit.io/products/rentx.html</loc>
+<lastmod>2026-06-30</lastmod>
+<changefreq>monthly</changefreq>
+<priority>0.8</priority>
+</url>
+<url>
+<loc>https://quantbit.io/products/restox.html</loc>
+<lastmod>2026-06-30</lastmod>
+<changefreq>monthly</changefreq>
+<priority>0.8</priority>
+</url>
+<url>
+<loc>https://quantbit.io/products/sugar-agri.html</loc>
+<lastmod>2026-06-30</lastmod>
+<changefreq>monthly</changefreq>
+<priority>0.8</priority>
+</url>
+<url>
+<loc>https://quantbit.io/products/sugar-erp.html</loc>
+<lastmod>2026-06-30</lastmod>
+<changefreq>monthly</changefreq>
+<priority>0.8</priority>
+</url>
+<url>
+<loc>https://quantbit.io/products/tradex.html</loc>
+<lastmod>2026-06-30</lastmod>
+<changefreq>monthly</changefreq>
+<priority>0.8</priority>
+</url>
+<url>
+<loc>https://quantbit.io/products/wmspro.html</loc>
+<lastmod>2026-06-30</lastmod>
+<changefreq>monthly</changefreq>
+<priority>0.8</priority>
+</url>
+<!--  BUILDX - TIER 1 LANDING (2 pages)  -->
+<url>
+<loc>https://quantbit.io/products/buildx/index.html</loc>
+<lastmod>2026-06-30</lastmod>
+<changefreq>monthly</changefreq>
+<priority>0.8</priority>
+</url>
+<url>
+<loc>https://quantbit.io/products/buildx/products__buildx.html</loc>
+<lastmod>2026-06-30</lastmod>
+<changefreq>monthly</changefreq>
+<priority>0.8</priority>
+</url>
+<!--  BUILDX - INDUSTRY VERTICAL (7 pages)  -->
+<url>
+<loc>https://quantbit.io/products/buildx/industries__construction.html</loc>
+<lastmod>2026-06-30</lastmod>
+<changefreq>monthly</changefreq>
+<priority>0.7</priority>
+</url>
+<url>
+<loc>https://quantbit.io/products/buildx/industries__epc-project-management.html</loc>
+<lastmod>2026-06-30</lastmod>
+<changefreq>monthly</changefreq>
+<priority>0.7</priority>
+</url>
+<url>
+<loc>https://quantbit.io/products/buildx/industries__industrial-project-management.html</loc>
+<lastmod>2026-06-30</lastmod>
+<changefreq>monthly</changefreq>
+<priority>0.7</priority>
+</url>
+<url>
+<loc>https://quantbit.io/products/buildx/industries__infrastructure-project-management.html</loc>
+<lastmod>2026-06-30</lastmod>
+<changefreq>monthly</changefreq>
+<priority>0.7</priority>
+</url>
+<url>
+<loc>https://quantbit.io/products/buildx/industries__interior-project-management.html</loc>
+<lastmod>2026-06-30</lastmod>
+<changefreq>monthly</changefreq>
+<priority>0.7</priority>
+</url>
+<url>
+<loc>https://quantbit.io/products/buildx/industries__mep-contractors.html</loc>
+<lastmod>2026-06-30</lastmod>
+<changefreq>monthly</changefreq>
+<priority>0.7</priority>
+</url>
+<url>
+<loc>https://quantbit.io/products/buildx/industries__real-estate-developers.html</loc>
+<lastmod>2026-06-30</lastmod>
+<changefreq>monthly</changefreq>
+<priority>0.7</priority>
+</url>
+<!--  BUILDX - MODULE/FEATURE (12 pages)  -->
+<url>
+<loc>https://quantbit.io/products/buildx/products__buildx__commissioning-management.html</loc>
+<lastmod>2026-06-30</lastmod>
+<changefreq>monthly</changefreq>
+<priority>0.7</priority>
+</url>
+<url>
+<loc>https://quantbit.io/products/buildx/products__buildx__contractor-management.html</loc>
+<lastmod>2026-06-30</lastmod>
+<changefreq>monthly</changefreq>
+<priority>0.7</priority>
+</url>
+<url>
+<loc>https://quantbit.io/products/buildx/products__buildx__material-management.html</loc>
+<lastmod>2026-06-30</lastmod>
+<changefreq>monthly</changefreq>
+<priority>0.7</priority>
+</url>
+<url>
+<loc>https://quantbit.io/products/buildx/products__buildx__mobile-site-reporting.html</loc>
+<lastmod>2026-06-30</lastmod>
+<changefreq>monthly</changefreq>
+<priority>0.7</priority>
+</url>
+<url>
+<loc>https://quantbit.io/products/buildx/products__buildx__procurement-management.html</loc>
+<lastmod>2026-06-30</lastmod>
+<changefreq>monthly</changefreq>
+<priority>0.7</priority>
+</url>
+<url>
+<loc>https://quantbit.io/products/buildx/products__buildx__project-analytics.html</loc>
+<lastmod>2026-06-30</lastmod>
+<changefreq>monthly</changefreq>
+<priority>0.7</priority>
+</url>
+<url>
+<loc>https://quantbit.io/products/buildx/products__buildx__project-budgeting.html</loc>
+<lastmod>2026-06-30</lastmod>
+<changefreq>monthly</changefreq>
+<priority>0.7</priority>
+</url>
+<url>
+<loc>https://quantbit.io/products/buildx/products__buildx__project-cost-control.html</loc>
+<lastmod>2026-06-30</lastmod>
+<changefreq>monthly</changefreq>
+<priority>0.7</priority>
+</url>
+<url>
+<loc>https://quantbit.io/products/buildx/products__buildx__punch-list-management.html</loc>
+<lastmod>2026-06-30</lastmod>
+<changefreq>monthly</changefreq>
+<priority>0.7</priority>
+</url>
+<url>
+<loc>https://quantbit.io/products/buildx/products__buildx__ra-billing.html</loc>
+<lastmod>2026-06-30</lastmod>
+<changefreq>monthly</changefreq>
+<priority>0.7</priority>
+</url>
+<url>
+<loc>https://quantbit.io/products/buildx/products__buildx__site-management.html</loc>
+<lastmod>2026-06-30</lastmod>
+<changefreq>monthly</changefreq>
+<priority>0.7</priority>
+</url>
+<url>
+<loc>https://quantbit.io/products/buildx/products__buildx__snag-management.html</loc>
+<lastmod>2026-06-30</lastmod>
+<changefreq>monthly</changefreq>
+<priority>0.7</priority>
+</url>
+<!--  BUILDX - SERVICE (2 pages)  -->
+<url>
+<loc>https://quantbit.io/products/buildx/services__erpnext-construction.html</loc>
+<lastmod>2026-06-30</lastmod>
+<changefreq>monthly</changefreq>
+<priority>0.7</priority>
+</url>
+<url>
+<loc>https://quantbit.io/products/buildx/services__erpnext-for-contractors.html</loc>
+<lastmod>2026-06-30</lastmod>
+<changefreq>monthly</changefreq>
+<priority>0.7</priority>
+</url>
+<!--  BUILDX - SOLUTION/USE-CASE (10 pages)  -->
+<url>
+<loc>https://quantbit.io/products/buildx/solutions__commissioning-management.html</loc>
+<lastmod>2026-06-30</lastmod>
+<changefreq>monthly</changefreq>
+<priority>0.6</priority>
+</url>
+<url>
+<loc>https://quantbit.io/products/buildx/solutions__construction-budget-overruns.html</loc>
+<lastmod>2026-06-30</lastmod>
+<changefreq>monthly</changefreq>
+<priority>0.6</priority>
+</url>
+<url>
+<loc>https://quantbit.io/products/buildx/solutions__contractor-management.html</loc>
+<lastmod>2026-06-30</lastmod>
+<changefreq>monthly</changefreq>
+<priority>0.6</priority>
+</url>
+<url>
+<loc>https://quantbit.io/products/buildx/solutions__daily-progress-reporting.html</loc>
+<lastmod>2026-06-30</lastmod>
+<changefreq>monthly</changefreq>
+<priority>0.6</priority>
+</url>
+<url>
+<loc>https://quantbit.io/products/buildx/solutions__material-wastage-control.html</loc>
+<lastmod>2026-06-30</lastmod>
+<changefreq>monthly</changefreq>
+<priority>0.6</priority>
+</url>
+<url>
+<loc>https://quantbit.io/products/buildx/solutions__project-cost-control.html</loc>
+<lastmod>2026-06-30</lastmod>
+<changefreq>monthly</changefreq>
+<priority>0.6</priority>
+</url>
+<url>
+<loc>https://quantbit.io/products/buildx/solutions__project-delay-management.html</loc>
+<lastmod>2026-06-30</lastmod>
+<changefreq>monthly</changefreq>
+<priority>0.6</priority>
+</url>
+<url>
+<loc>https://quantbit.io/products/buildx/solutions__punch-list-management.html</loc>
+<lastmod>2026-06-30</lastmod>
+<changefreq>monthly</changefreq>
+<priority>0.6</priority>
+</url>
+<url>
+<loc>https://quantbit.io/products/buildx/solutions__ra-billing-software.html</loc>
+<lastmod>2026-06-30</lastmod>
+<changefreq>monthly</changefreq>
+<priority>0.6</priority>
+</url>
+<url>
+<loc>https://quantbit.io/products/buildx/solutions__snag-list-management.html</loc>
+<lastmod>2026-06-30</lastmod>
+<changefreq>monthly</changefreq>
+<priority>0.6</priority>
+</url>
+<!--  FMX - GEO CITY (22 pages)  -->
+<url>
+<loc>https://quantbit.io/products/fmx/facility-management-software-ahmedabad.html</loc>
+<lastmod>2026-06-30</lastmod>
+<changefreq>monthly</changefreq>
+<priority>0.6</priority>
+</url>
+<url>
+<loc>https://quantbit.io/products/fmx/facility-management-software-bangalore.html</loc>
+<lastmod>2026-06-30</lastmod>
+<changefreq>monthly</changefreq>
+<priority>0.6</priority>
+</url>
+<url>
+<loc>https://quantbit.io/products/fmx/facility-management-software-bhopal.html</loc>
+<lastmod>2026-06-30</lastmod>
+<changefreq>monthly</changefreq>
+<priority>0.6</priority>
+</url>
+<url>
+<loc>https://quantbit.io/products/fmx/facility-management-software-chandigarh.html</loc>
+<lastmod>2026-06-30</lastmod>
+<changefreq>monthly</changefreq>
+<priority>0.6</priority>
+</url>
+<url>
+<loc>https://quantbit.io/products/fmx/facility-management-software-chennai.html</loc>
+<lastmod>2026-06-30</lastmod>
+<changefreq>monthly</changefreq>
+<priority>0.6</priority>
+</url>
+<url>
+<loc>https://quantbit.io/products/fmx/facility-management-software-coimbatore.html</loc>
+<lastmod>2026-06-30</lastmod>
+<changefreq>monthly</changefreq>
+<priority>0.6</priority>
+</url>
+<url>
+<loc>https://quantbit.io/products/fmx/facility-management-software-delhi.html</loc>
+<lastmod>2026-06-30</lastmod>
+<changefreq>monthly</changefreq>
+<priority>0.6</priority>
+</url>
+<url>
+<loc>https://quantbit.io/products/fmx/facility-management-software-hyderabad.html</loc>
+<lastmod>2026-06-30</lastmod>
+<changefreq>monthly</changefreq>
+<priority>0.6</priority>
+</url>
+<url>
+<loc>https://quantbit.io/products/fmx/facility-management-software-india.html</loc>
+<lastmod>2026-06-30</lastmod>
+<changefreq>monthly</changefreq>
+<priority>0.6</priority>
+</url>
+<url>
+<loc>https://quantbit.io/products/fmx/facility-management-software-indore.html</loc>
+<lastmod>2026-06-30</lastmod>
+<changefreq>monthly</changefreq>
+<priority>0.6</priority>
+</url>
+<url>
+<loc>https://quantbit.io/products/fmx/facility-management-software-jaipur.html</loc>
+<lastmod>2026-06-30</lastmod>
+<changefreq>monthly</changefreq>
+<priority>0.6</priority>
+</url>
+<url>
+<loc>https://quantbit.io/products/fmx/facility-management-software-kochi.html</loc>
+<lastmod>2026-06-30</lastmod>
+<changefreq>monthly</changefreq>
+<priority>0.6</priority>
+</url>
+<url>
+<loc>https://quantbit.io/products/fmx/facility-management-software-kolkata.html</loc>
+<lastmod>2026-06-30</lastmod>
+<changefreq>monthly</changefreq>
+<priority>0.6</priority>
+</url>
+<url>
+<loc>https://quantbit.io/products/fmx/facility-management-software-lucknow.html</loc>
+<lastmod>2026-06-30</lastmod>
+<changefreq>monthly</changefreq>
+<priority>0.6</priority>
+</url>
+<url>
+<loc>https://quantbit.io/products/fmx/facility-management-software-mumbai.html</loc>
+<lastmod>2026-06-30</lastmod>
+<changefreq>monthly</changefreq>
+<priority>0.6</priority>
+</url>
+<url>
+<loc>https://quantbit.io/products/fmx/facility-management-software-nagpur.html</loc>
+<lastmod>2026-06-30</lastmod>
+<changefreq>monthly</changefreq>
+<priority>0.6</priority>
+</url>
+<url>
+<loc>https://quantbit.io/products/fmx/facility-management-software-nashik.html</loc>
+<lastmod>2026-06-30</lastmod>
+<changefreq>monthly</changefreq>
+<priority>0.6</priority>
+</url>
+<url>
+<loc>https://quantbit.io/products/fmx/facility-management-software-pune.html</loc>
+<lastmod>2026-06-30</lastmod>
+<changefreq>monthly</changefreq>
+<priority>0.6</priority>
+</url>
+<url>
+<loc>https://quantbit.io/products/fmx/facility-management-software-surat.html</loc>
+<lastmod>2026-06-30</lastmod>
+<changefreq>monthly</changefreq>
+<priority>0.6</priority>
+</url>
+<url>
+<loc>https://quantbit.io/products/fmx/facility-management-software-vadodara.html</loc>
+<lastmod>2026-06-30</lastmod>
+<changefreq>monthly</changefreq>
+<priority>0.6</priority>
+</url>
+<url>
+<loc>https://quantbit.io/products/fmx/facility-management-software-visakhapatnam.html</loc>
+<lastmod>2026-06-30</lastmod>
+<changefreq>monthly</changefreq>
+<priority>0.6</priority>
+</url>
+<url>
+<loc>https://quantbit.io/products/fmx/services__facility-management-software-india.html</loc>
+<lastmod>2026-06-30</lastmod>
+<changefreq>monthly</changefreq>
+<priority>0.6</priority>
+</url>
+<!--  FMX - TIER 1 LANDING (3 pages)  -->
+<url>
+<loc>https://quantbit.io/products/fmx/facility-management-software.html</loc>
+<lastmod>2026-06-30</lastmod>
+<changefreq>monthly</changefreq>
+<priority>0.8</priority>
+</url>
+<url>
+<loc>https://quantbit.io/products/fmx/index.html</loc>
+<lastmod>2026-06-30</lastmod>
+<changefreq>monthly</changefreq>
+<priority>0.8</priority>
+</url>
+<url>
+<loc>https://quantbit.io/products/fmx/products__fmx.html</loc>
+<lastmod>2026-06-30</lastmod>
+<changefreq>monthly</changefreq>
+<priority>0.8</priority>
+</url>
+<!--  FMX - INDUSTRY VERTICAL (9 pages)  -->
+<url>
+<loc>https://quantbit.io/products/fmx/industries-FMX.html</loc>
+<lastmod>2026-06-30</lastmod>
+<changefreq>monthly</changefreq>
+<priority>0.7</priority>
+</url>
+<url>
+<loc>https://quantbit.io/products/fmx/industries__airports.html</loc>
+<lastmod>2026-06-30</lastmod>
+<changefreq>monthly</changefreq>
+<priority>0.7</priority>
+</url>
+<url>
+<loc>https://quantbit.io/products/fmx/industries__commercial-buildings.html</loc>
+<lastmod>2026-06-30</lastmod>
+<changefreq>monthly</changefreq>
+<priority>0.7</priority>
+</url>
+<url>
+<loc>https://quantbit.io/products/fmx/industries__facility-management-companies.html</loc>
+<lastmod>2026-06-30</lastmod>
+<changefreq>monthly</changefreq>
+<priority>0.7</priority>
+</url>
+<url>
+<loc>https://quantbit.io/products/fmx/industries__government-facilities.html</loc>
+<lastmod>2026-06-30</lastmod>
+<changefreq>monthly</changefreq>
+<priority>0.7</priority>
+</url>
+<url>
+<loc>https://quantbit.io/products/fmx/industries__hospitals-healthcare.html</loc>
+<lastmod>2026-06-30</lastmod>
+<changefreq>monthly</changefreq>
+<priority>0.7</priority>
+</url>
+<url>
+<loc>https://quantbit.io/products/fmx/industries__manufacturing-plants.html</loc>
+<lastmod>2026-06-30</lastmod>
+<changefreq>monthly</changefreq>
+<priority>0.7</priority>
+</url>
+<url>
+<loc>https://quantbit.io/products/fmx/industries__retail-chains.html</loc>
+<lastmod>2026-06-30</lastmod>
+<changefreq>monthly</changefreq>
+<priority>0.7</priority>
+</url>
+<url>
+<loc>https://quantbit.io/products/fmx/industries__universities-education.html</loc>
+<lastmod>2026-06-30</lastmod>
+<changefreq>monthly</changefreq>
+<priority>0.7</priority>
+</url>
+<!--  FMX - MODULE/FEATURE (10 pages)  -->
+<url>
+<loc>https://quantbit.io/products/fmx/products__fmx__asset-management.html</loc>
+<lastmod>2026-06-30</lastmod>
+<changefreq>monthly</changefreq>
+<priority>0.7</priority>
+</url>
+<url>
+<loc>https://quantbit.io/products/fmx/products__fmx__energy-management.html</loc>
+<lastmod>2026-06-30</lastmod>
+<changefreq>monthly</changefreq>
+<priority>0.7</priority>
+</url>
+<url>
+<loc>https://quantbit.io/products/fmx/products__fmx__facility-analytics.html</loc>
+<lastmod>2026-06-30</lastmod>
+<changefreq>monthly</changefreq>
+<priority>0.7</priority>
+</url>
+<url>
+<loc>https://quantbit.io/products/fmx/products__fmx__helpdesk.html</loc>
+<lastmod>2026-06-30</lastmod>
+<changefreq>monthly</changefreq>
+<priority>0.7</priority>
+</url>
+<url>
+<loc>https://quantbit.io/products/fmx/products__fmx__preventive-maintenance.html</loc>
+<lastmod>2026-06-30</lastmod>
+<changefreq>monthly</changefreq>
+<priority>0.7</priority>
+</url>
+<url>
+<loc>https://quantbit.io/products/fmx/products__fmx__sla-management.html</loc>
+<lastmod>2026-06-30</lastmod>
+<changefreq>monthly</changefreq>
+<priority>0.7</priority>
+</url>
+<url>
+<loc>https://quantbit.io/products/fmx/products__fmx__space-management.html</loc>
+<lastmod>2026-06-30</lastmod>
+<changefreq>monthly</changefreq>
+<priority>0.7</priority>
+</url>
+<url>
+<loc>https://quantbit.io/products/fmx/products__fmx__technician-mobile-app.html</loc>
+<lastmod>2026-06-30</lastmod>
+<changefreq>monthly</changefreq>
+<priority>0.7</priority>
+</url>
+<url>
+<loc>https://quantbit.io/products/fmx/products__fmx__vendor-management.html</loc>
+<lastmod>2026-06-30</lastmod>
+<changefreq>monthly</changefreq>
+<priority>0.7</priority>
+</url>
+<url>
+<loc>https://quantbit.io/products/fmx/products__fmx__work-order-management.html</loc>
+<lastmod>2026-06-30</lastmod>
+<changefreq>monthly</changefreq>
+<priority>0.7</priority>
+</url>
+<!--  FMX - SERVICE (2 pages)  -->
+<url>
+<loc>https://quantbit.io/products/fmx/services__cafm-implementation.html</loc>
+<lastmod>2026-06-30</lastmod>
+<changefreq>monthly</changefreq>
+<priority>0.7</priority>
+</url>
+<url>
+<loc>https://quantbit.io/products/fmx/services__frappe-facility-management.html</loc>
+<lastmod>2026-06-30</lastmod>
+<changefreq>monthly</changefreq>
+<priority>0.7</priority>
+</url>
+<!--  FMX - SOLUTION/USE-CASE (10 pages)  -->
+<url>
+<loc>https://quantbit.io/products/fmx/solutions__asset-tracking.html</loc>
+<lastmod>2026-06-30</lastmod>
+<changefreq>monthly</changefreq>
+<priority>0.6</priority>
+</url>
+<url>
+<loc>https://quantbit.io/products/fmx/solutions__cmms-software.html</loc>
+<lastmod>2026-06-30</lastmod>
+<changefreq>monthly</changefreq>
+<priority>0.6</priority>
+</url>
+<url>
+<loc>https://quantbit.io/products/fmx/solutions__energy-cost-reduction.html</loc>
+<lastmod>2026-06-30</lastmod>
+<changefreq>monthly</changefreq>
+<priority>0.6</priority>
+</url>
+<url>
+<loc>https://quantbit.io/products/fmx/solutions__multi-location-facility-management.html</loc>
+<lastmod>2026-06-30</lastmod>
+<changefreq>monthly</changefreq>
+<priority>0.6</priority>
+</url>
+<url>
+<loc>https://quantbit.io/products/fmx/solutions__preventive-maintenance-software.html</loc>
+<lastmod>2026-06-30</lastmod>
+<changefreq>monthly</changefreq>
+<priority>0.6</priority>
+</url>
+<url>
+<loc>https://quantbit.io/products/fmx/solutions__qr-code-asset-management.html</loc>
+<lastmod>2026-06-30</lastmod>
+<changefreq>monthly</changefreq>
+<priority>0.6</priority>
+</url>
+<url>
+<loc>https://quantbit.io/products/fmx/solutions__reduce-equipment-downtime.html</loc>
+<lastmod>2026-06-30</lastmod>
+<changefreq>monthly</changefreq>
+<priority>0.6</priority>
+</url>
+<url>
+<loc>https://quantbit.io/products/fmx/solutions__reduce-maintenance-cost.html</loc>
+<lastmod>2026-06-30</lastmod>
+<changefreq>monthly</changefreq>
+<priority>0.6</priority>
+</url>
+<url>
+<loc>https://quantbit.io/products/fmx/solutions__sla-compliance.html</loc>
+<lastmod>2026-06-30</lastmod>
+<changefreq>monthly</changefreq>
+<priority>0.6</priority>
+</url>
+<url>
+<loc>https://quantbit.io/products/fmx/solutions__technician-productivity.html</loc>
+<lastmod>2026-06-30</lastmod>
+<changefreq>monthly</changefreq>
+<priority>0.6</priority>
+</url>
+<!--  HISx - MODULE (7 pages)  -->
+<url>
+<loc>https://quantbit.io/products/hims/hisx-asset-management.html</loc>
+<lastmod>2026-06-30</lastmod>
+<changefreq>monthly</changefreq>
+<priority>0.7</priority>
+</url>
+<url>
+<loc>https://quantbit.io/products/hims/hisx-billing.html</loc>
+<lastmod>2026-06-30</lastmod>
+<changefreq>monthly</changefreq>
+<priority>0.7</priority>
+</url>
+<url>
+<loc>https://quantbit.io/products/hims/hisx-inventory.html</loc>
+<lastmod>2026-06-30</lastmod>
+<changefreq>monthly</changefreq>
+<priority>0.7</priority>
+</url>
+<url>
+<loc>https://quantbit.io/products/hims/hisx-lab-inventory.html</loc>
+<lastmod>2026-06-30</lastmod>
+<changefreq>monthly</changefreq>
+<priority>0.7</priority>
+</url>
+<url>
+<loc>https://quantbit.io/products/hims/hisx-narcotics.html</loc>
+<lastmod>2026-06-30</lastmod>
+<changefreq>monthly</changefreq>
+<priority>0.7</priority>
+</url>
+<url>
+<loc>https://quantbit.io/products/hims/hisx-pharmacy.html</loc>
+<lastmod>2026-06-30</lastmod>
+<changefreq>monthly</changefreq>
+<priority>0.7</priority>
+</url>
+<url>
+<loc>https://quantbit.io/products/hims/hisx-procurement.html</loc>
+<lastmod>2026-06-30</lastmod>
+<changefreq>monthly</changefreq>
+<priority>0.7</priority>
+</url>
+<!--  HISx - TIER 1 LANDING (1 pages)  -->
+<url>
+<loc>https://quantbit.io/products/hims/hisx-hub.html</loc>
+<lastmod>2026-06-30</lastmod>
+<changefreq>monthly</changefreq>
+<priority>0.8</priority>
+</url>
+<!--  HISx - L2 SEGMENT (6 pages)  -->
+<url>
+<loc>https://quantbit.io/products/hims/l2-ayurvedic.html</loc>
+<lastmod>2026-06-30</lastmod>
+<changefreq>monthly</changefreq>
+<priority>0.65</priority>
+</url>
+<url>
+<loc>https://quantbit.io/products/hims/l2-diagnostic-lab.html</loc>
+<lastmod>2026-06-30</lastmod>
+<changefreq>monthly</changefreq>
+<priority>0.65</priority>
+</url>
+<url>
+<loc>https://quantbit.io/products/hims/l2-government-hospital.html</loc>
+<lastmod>2026-06-30</lastmod>
+<changefreq>monthly</changefreq>
+<priority>0.65</priority>
+</url>
+<url>
+<loc>https://quantbit.io/products/hims/l2-hospital-inventory.html</loc>
+<lastmod>2026-06-30</lastmod>
+<changefreq>monthly</changefreq>
+<priority>0.65</priority>
+</url>
+<url>
+<loc>https://quantbit.io/products/hims/l2-nursing-home.html</loc>
+<lastmod>2026-06-30</lastmod>
+<changefreq>monthly</changefreq>
+<priority>0.65</priority>
+</url>
+<url>
+<loc>https://quantbit.io/products/hims/l2-pharmacy-chain.html</loc>
+<lastmod>2026-06-30</lastmod>
+<changefreq>monthly</changefreq>
+<priority>0.65</priority>
+</url>
+<!--  HISx - L3 FEATURE (8 pages)  -->
+<url>
+<loc>https://quantbit.io/products/hims/l3-barcode.html</loc>
+<lastmod>2026-06-30</lastmod>
+<changefreq>monthly</changefreq>
+<priority>0.6</priority>
+</url>
+<url>
+<loc>https://quantbit.io/products/hims/l3-billing-integration.html</loc>
+<lastmod>2026-06-30</lastmod>
+<changefreq>monthly</changefreq>
+<priority>0.6</priority>
+</url>
+<url>
+<loc>https://quantbit.io/products/hims/l3-cost-per-test.html</loc>
+<lastmod>2026-06-30</lastmod>
+<changefreq>monthly</changefreq>
+<priority>0.6</priority>
+</url>
+<url>
+<loc>https://quantbit.io/products/hims/l3-drug-expiry.html</loc>
+<lastmod>2026-06-30</lastmod>
+<changefreq>monthly</changefreq>
+<priority>0.6</priority>
+</url>
+<url>
+<loc>https://quantbit.io/products/hims/l3-narcotics.html</loc>
+<lastmod>2026-06-30</lastmod>
+<changefreq>monthly</changefreq>
+<priority>0.6</priority>
+</url>
+<url>
+<loc>https://quantbit.io/products/hims/l3-procurement-automation.html</loc>
+<lastmod>2026-06-30</lastmod>
+<changefreq>monthly</changefreq>
+<priority>0.6</priority>
+</url>
+<url>
+<loc>https://quantbit.io/products/hims/l3-vendor-rate.html</loc>
+<lastmod>2026-06-30</lastmod>
+<changefreq>monthly</changefreq>
+<priority>0.6</priority>
+</url>
+<url>
+<loc>https://quantbit.io/products/hims/l3-ward-stock.html</loc>
+<lastmod>2026-06-30</lastmod>
+<changefreq>monthly</changefreq>
+<priority>0.6</priority>
+</url>
+<!--  HISx - L4 COMPARISON/PLATFORM (5 pages)  -->
+<url>
+<loc>https://quantbit.io/products/hims/l4-erpnext-hospitals.html</loc>
+<lastmod>2026-06-30</lastmod>
+<changefreq>monthly</changefreq>
+<priority>0.6</priority>
+</url>
+<url>
+<loc>https://quantbit.io/products/hims/l4-erpnext-pharmacy.html</loc>
+<lastmod>2026-06-30</lastmod>
+<changefreq>monthly</changefreq>
+<priority>0.6</priority>
+</url>
+<url>
+<loc>https://quantbit.io/products/hims/l4-frappe-healthcare.html</loc>
+<lastmod>2026-06-30</lastmod>
+<changefreq>monthly</changefreq>
+<priority>0.6</priority>
+</url>
+<url>
+<loc>https://quantbit.io/products/hims/l4-vs-ezeerx.html</loc>
+<lastmod>2026-06-30</lastmod>
+<changefreq>monthly</changefreq>
+<priority>0.6</priority>
+</url>
+<url>
+<loc>https://quantbit.io/products/hims/l4-vs-mediware.html</loc>
+<lastmod>2026-06-30</lastmod>
+<changefreq>monthly</changefreq>
+<priority>0.6</priority>
+</url>
+<!--  HISx - L6 EDUCATIONAL (6 pages)  -->
+<url>
+<loc>https://quantbit.io/products/hims/l6-cpoe.html</loc>
+<lastmod>2026-06-30</lastmod>
+<changefreq>monthly</changefreq>
+<priority>0.55</priority>
+</url>
+<url>
+<loc>https://quantbit.io/products/hims/l6-drug-expiry-guide.html</loc>
+<lastmod>2026-06-30</lastmod>
+<changefreq>monthly</changefreq>
+<priority>0.55</priority>
+</url>
+<url>
+<loc>https://quantbit.io/products/hims/l6-fefo.html</loc>
+<lastmod>2026-06-30</lastmod>
+<changefreq>monthly</changefreq>
+<priority>0.55</priority>
+</url>
+<url>
+<loc>https://quantbit.io/products/hims/l6-inventory-audit.html</loc>
+<lastmod>2026-06-30</lastmod>
+<changefreq>monthly</changefreq>
+<priority>0.55</priority>
+</url>
+<url>
+<loc>https://quantbit.io/products/hims/l6-schedule-h.html</loc>
+<lastmod>2026-06-30</lastmod>
+<changefreq>monthly</changefreq>
+<priority>0.55</priority>
+</url>
+<url>
+<loc>https://quantbit.io/products/hims/l6-what-is-hospital-pharmacy-erp.html</loc>
+<lastmod>2026-06-30</lastmod>
+<changefreq>monthly</changefreq>
+<priority>0.55</priority>
+</url>
+<!--  HISx - L7 CONVERSION (6 pages)  -->
+<url>
+<loc>https://quantbit.io/products/hims/l7-case-studies.html</loc>
+<lastmod>2026-06-30</lastmod>
+<changefreq>monthly</changefreq>
+<priority>0.6</priority>
+</url>
+<url>
+<loc>https://quantbit.io/products/hims/l7-demo.html</loc>
+<lastmod>2026-06-30</lastmod>
+<changefreq>monthly</changefreq>
+<priority>0.6</priority>
+</url>
+<url>
+<loc>https://quantbit.io/products/hims/l7-implementation.html</loc>
+<lastmod>2026-06-30</lastmod>
+<changefreq>monthly</changefreq>
+<priority>0.6</priority>
+</url>
+<url>
+<loc>https://quantbit.io/products/hims/l7-integrations.html</loc>
+<lastmod>2026-06-30</lastmod>
+<changefreq>monthly</changefreq>
+<priority>0.6</priority>
+</url>
+<url>
+<loc>https://quantbit.io/products/hims/l7-pricing.html</loc>
+<lastmod>2026-06-30</lastmod>
+<changefreq>monthly</changefreq>
+<priority>0.6</priority>
+</url>
+<url>
+<loc>https://quantbit.io/products/hims/l7-roi-calculator.html</loc>
+<lastmod>2026-06-30</lastmod>
+<changefreq>monthly</changefreq>
+<priority>0.6</priority>
+</url>
+<!--  RESOURCES (3 pages)  -->
+<url>
+<loc>https://quantbit.io/resources/case-studies.html</loc>
+<lastmod>2026-06-30</lastmod>
+<changefreq>monthly</changefreq>
+<priority>0.7</priority>
+</url>
+<url>
+<loc>https://quantbit.io/resources/faqs.html</loc>
+<lastmod>2026-06-30</lastmod>
+<changefreq>monthly</changefreq>
+<priority>0.7</priority>
+</url>
+<url>
+<loc>https://quantbit.io/resources/market.html</loc>
+<lastmod>2026-06-30</lastmod>
+<changefreq>monthly</changefreq>
+<priority>0.7</priority>
+</url>
+<!--  SERVICES HUB (4 pages)  -->
+<url>
+<loc>https://quantbit.io/services/core-services.html</loc>
+<lastmod>2026-06-30</lastmod>
+<changefreq>monthly</changefreq>
+<priority>0.85</priority>
+</url>
+<url>
+<loc>https://quantbit.io/services/erpnext-industries-hub.html</loc>
+<lastmod>2026-06-30</lastmod>
+<changefreq>monthly</changefreq>
+<priority>0.85</priority>
+</url>
+<url>
+<loc>https://quantbit.io/services/erpnext-services-hub.html</loc>
+<lastmod>2026-06-30</lastmod>
+<changefreq>monthly</changefreq>
+<priority>0.85</priority>
+</url>
+<url>
+<loc>https://quantbit.io/services/index.html</loc>
+<lastmod>2026-06-30</lastmod>
+<changefreq>monthly</changefreq>
+<priority>0.85</priority>
+</url>
+<!--  SERVICES - CORE OFFERING (27 pages)  -->
+<url>
+<loc>https://quantbit.io/services/erpnext-accounting-finance.html</loc>
+<lastmod>2026-06-30</lastmod>
+<changefreq>monthly</changefreq>
+<priority>0.75</priority>
+</url>
+<url>
+<loc>https://quantbit.io/services/erpnext-analytics-reports.html</loc>
+<lastmod>2026-06-30</lastmod>
+<changefreq>monthly</changefreq>
+<priority>0.75</priority>
+</url>
+<url>
+<loc>https://quantbit.io/services/erpnext-asset-management.html</loc>
+<lastmod>2026-06-30</lastmod>
+<changefreq>monthly</changefreq>
+<priority>0.75</priority>
+</url>
+<url>
+<loc>https://quantbit.io/services/erpnext-consulting.html</loc>
+<lastmod>2026-06-30</lastmod>
+<changefreq>monthly</changefreq>
+<priority>0.75</priority>
+</url>
+<url>
+<loc>https://quantbit.io/services/erpnext-customisation.html</loc>
+<lastmod>2026-06-30</lastmod>
+<changefreq>monthly</changefreq>
+<priority>0.75</priority>
+</url>
+<url>
+<loc>https://quantbit.io/services/erpnext-development-company-india.html</loc>
+<lastmod>2026-06-30</lastmod>
+<changefreq>monthly</changefreq>
+<priority>0.75</priority>
+</url>
+<url>
+<loc>https://quantbit.io/services/erpnext-ecommerce.html</loc>
+<lastmod>2026-06-30</lastmod>
+<changefreq>monthly</changefreq>
+<priority>0.75</priority>
+</url>
+<url>
+<loc>https://quantbit.io/services/erpnext-gst-tax-compliance.html</loc>
+<lastmod>2026-06-30</lastmod>
+<changefreq>monthly</changefreq>
+<priority>0.75</priority>
+</url>
+<url>
+<loc>https://quantbit.io/services/erpnext-hr-leave-attendance.html</loc>
+<lastmod>2026-06-30</lastmod>
+<changefreq>monthly</changefreq>
+<priority>0.75</priority>
+</url>
+<url>
+<loc>https://quantbit.io/services/erpnext-implementation.html</loc>
+<lastmod>2026-06-30</lastmod>
+<changefreq>monthly</changefreq>
+<priority>0.75</priority>
+</url>
+<url>
+<loc>https://quantbit.io/services/erpnext-inventory-stock.html</loc>
+<lastmod>2026-06-30</lastmod>
+<changefreq>monthly</changefreq>
+<priority>0.75</priority>
+</url>
+<url>
+<loc>https://quantbit.io/services/erpnext-managed-services.html</loc>
+<lastmod>2026-06-30</lastmod>
+<changefreq>monthly</changefreq>
+<priority>0.75</priority>
+</url>
+<url>
+<loc>https://quantbit.io/services/erpnext-manufacturing.html</loc>
+<lastmod>2026-06-30</lastmod>
+<changefreq>monthly</changefreq>
+<priority>0.75</priority>
+</url>
+<url>
+<loc>https://quantbit.io/services/erpnext-migration.html</loc>
+<lastmod>2026-06-30</lastmod>
+<changefreq>monthly</changefreq>
+<priority>0.75</priority>
+</url>
+<url>
+<loc>https://quantbit.io/services/erpnext-payroll-compliance.html</loc>
+<lastmod>2026-06-30</lastmod>
+<changefreq>monthly</changefreq>
+<priority>0.75</priority>
+</url>
+<url>
+<loc>https://quantbit.io/services/erpnext-point-of-sale.html</loc>
+<lastmod>2026-06-30</lastmod>
+<changefreq>monthly</changefreq>
+<priority>0.75</priority>
+</url>
+<url>
+<loc>https://quantbit.io/services/erpnext-project-task-management.html</loc>
+<lastmod>2026-06-30</lastmod>
+<changefreq>monthly</changefreq>
+<priority>0.75</priority>
+</url>
+<url>
+<loc>https://quantbit.io/services/erpnext-purchase.html</loc>
+<lastmod>2026-06-30</lastmod>
+<changefreq>monthly</changefreq>
+<priority>0.75</priority>
+</url>
+<url>
+<loc>https://quantbit.io/services/erpnext-quality.html</loc>
+<lastmod>2026-06-30</lastmod>
+<changefreq>monthly</changefreq>
+<priority>0.75</priority>
+</url>
+<url>
+<loc>https://quantbit.io/services/erpnext-recruitment-management.html</loc>
+<lastmod>2026-06-30</lastmod>
+<changefreq>monthly</changefreq>
+<priority>0.75</priority>
+</url>
+<url>
+<loc>https://quantbit.io/services/erpnext-sales-crm.html</loc>
+<lastmod>2026-06-30</lastmod>
+<changefreq>monthly</changefreq>
+<priority>0.75</priority>
+</url>
+<url>
+<loc>https://quantbit.io/services/erpnext-support-helpdesk.html</loc>
+<lastmod>2026-06-30</lastmod>
+<changefreq>monthly</changefreq>
+<priority>0.75</priority>
+</url>
+<url>
+<loc>https://quantbit.io/services/erpnext-support.html</loc>
+<lastmod>2026-06-30</lastmod>
+<changefreq>monthly</changefreq>
+<priority>0.75</priority>
+</url>
+<url>
+<loc>https://quantbit.io/services/erpnext-training.html</loc>
+<lastmod>2026-06-30</lastmod>
+<changefreq>monthly</changefreq>
+<priority>0.75</priority>
+</url>
+<url>
+<loc>https://quantbit.io/services/erpnext-upgrade.html</loc>
+<lastmod>2026-06-30</lastmod>
+<changefreq>monthly</changefreq>
+<priority>0.75</priority>
+</url>
+<url>
+<loc>https://quantbit.io/services/frappe-development.html</loc>
+<lastmod>2026-06-30</lastmod>
+<changefreq>monthly</changefreq>
+<priority>0.75</priority>
+</url>
+<url>
+<loc>https://quantbit.io/services/saas-development.html</loc>
+<lastmod>2026-06-30</lastmod>
+<changefreq>monthly</changefreq>
+<priority>0.75</priority>
+</url>
+<!--  SERVICES - INTEGRATION CONNECTOR (13 pages)  -->
+<url>
+<loc>https://quantbit.io/services/erpnext-bms-integration.html</loc>
+<lastmod>2026-06-30</lastmod>
+<changefreq>monthly</changefreq>
+<priority>0.65</priority>
+</url>
+<url>
+<loc>https://quantbit.io/services/erpnext-integration-sdk.html</loc>
+<lastmod>2026-06-30</lastmod>
+<changefreq>monthly</changefreq>
+<priority>0.65</priority>
+</url>
+<url>
+<loc>https://quantbit.io/services/erpnext-integration.html</loc>
+<lastmod>2026-06-30</lastmod>
+<changefreq>monthly</changefreq>
+<priority>0.65</priority>
+</url>
+<url>
+<loc>https://quantbit.io/services/erpnext-integrations.html</loc>
+<lastmod>2026-06-30</lastmod>
+<changefreq>monthly</changefreq>
+<priority>0.65</priority>
+</url>
+<url>
+<loc>https://quantbit.io/services/erpnext-ldap-integration.html</loc>
+<lastmod>2026-06-30</lastmod>
+<changefreq>monthly</changefreq>
+<priority>0.65</priority>
+</url>
+<url>
+<loc>https://quantbit.io/services/erpnext-lis-integration.html</loc>
+<lastmod>2026-06-30</lastmod>
+<changefreq>monthly</changefreq>
+<priority>0.65</priority>
+</url>
+<url>
+<loc>https://quantbit.io/services/erpnext-openai-integration.html</loc>
+<lastmod>2026-06-30</lastmod>
+<changefreq>monthly</changefreq>
+<priority>0.65</priority>
+</url>
+<url>
+<loc>https://quantbit.io/services/erpnext-plc-integration.html</loc>
+<lastmod>2026-06-30</lastmod>
+<changefreq>monthly</changefreq>
+<priority>0.65</priority>
+</url>
+<url>
+<loc>https://quantbit.io/services/erpnext-powerbi-integration.html</loc>
+<lastmod>2026-06-30</lastmod>
+<changefreq>monthly</changefreq>
+<priority>0.65</priority>
+</url>
+<url>
+<loc>https://quantbit.io/services/erpnext-razorpay-integration.html</loc>
+<lastmod>2026-06-30</lastmod>
+<changefreq>monthly</changefreq>
+<priority>0.65</priority>
+</url>
+<url>
+<loc>https://quantbit.io/services/erpnext-shiprocket-integration.html</loc>
+<lastmod>2026-06-30</lastmod>
+<changefreq>monthly</changefreq>
+<priority>0.65</priority>
+</url>
+<url>
+<loc>https://quantbit.io/services/erpnext-shopify-integration.html</loc>
+<lastmod>2026-06-30</lastmod>
+<changefreq>monthly</changefreq>
+<priority>0.65</priority>
+</url>
+<url>
+<loc>https://quantbit.io/services/erpnext-whatsapp-integration.html</loc>
+<lastmod>2026-06-30</lastmod>
+<changefreq>monthly</changefreq>
+<priority>0.65</priority>
+</url>
+<!--  SERVICES - INDUSTRY VERTICAL (28 pages)  -->
+<url>
+<loc>https://quantbit.io/services/erpnext-for-agriculture.html</loc>
+<lastmod>2026-06-30</lastmod>
+<changefreq>monthly</changefreq>
+<priority>0.7</priority>
+</url>
+<url>
+<loc>https://quantbit.io/services/erpnext-for-agrochemicals.html</loc>
+<lastmod>2026-06-30</lastmod>
+<changefreq>monthly</changefreq>
+<priority>0.7</priority>
+</url>
+<url>
+<loc>https://quantbit.io/services/erpnext-for-auto-components.html</loc>
+<lastmod>2026-06-30</lastmod>
+<changefreq>monthly</changefreq>
+<priority>0.7</priority>
+</url>
+<url>
+<loc>https://quantbit.io/services/erpnext-for-chemicals.html</loc>
+<lastmod>2026-06-30</lastmod>
+<changefreq>monthly</changefreq>
+<priority>0.7</priority>
+</url>
+<url>
+<loc>https://quantbit.io/services/erpnext-for-construction-management.html</loc>
+<lastmod>2026-06-30</lastmod>
+<changefreq>monthly</changefreq>
+<priority>0.7</priority>
+</url>
+<url>
+<loc>https://quantbit.io/services/erpnext-for-ecommerce-retail.html</loc>
+<lastmod>2026-06-30</lastmod>
+<changefreq>monthly</changefreq>
+<priority>0.7</priority>
+</url>
+<url>
+<loc>https://quantbit.io/services/erpnext-for-education-institutes.html</loc>
+<lastmod>2026-06-30</lastmod>
+<changefreq>monthly</changefreq>
+<priority>0.7</priority>
+</url>
+<url>
+<loc>https://quantbit.io/services/erpnext-for-electronics-manufacturing.html</loc>
+<lastmod>2026-06-30</lastmod>
+<changefreq>monthly</changefreq>
+<priority>0.7</priority>
+</url>
+<url>
+<loc>https://quantbit.io/services/erpnext-for-engineering.html</loc>
+<lastmod>2026-06-30</lastmod>
+<changefreq>monthly</changefreq>
+<priority>0.7</priority>
+</url>
+<url>
+<loc>https://quantbit.io/services/erpnext-for-fashion-retail.html</loc>
+<lastmod>2026-06-30</lastmod>
+<changefreq>monthly</changefreq>
+<priority>0.7</priority>
+</url>
+<url>
+<loc>https://quantbit.io/services/erpnext-for-financial-services.html</loc>
+<lastmod>2026-06-30</lastmod>
+<changefreq>monthly</changefreq>
+<priority>0.7</priority>
+</url>
+<url>
+<loc>https://quantbit.io/services/erpnext-for-foods-beverage.html</loc>
+<lastmod>2026-06-30</lastmod>
+<changefreq>monthly</changefreq>
+<priority>0.7</priority>
+</url>
+<url>
+<loc>https://quantbit.io/services/erpnext-for-foundry.html</loc>
+<lastmod>2026-06-30</lastmod>
+<changefreq>monthly</changefreq>
+<priority>0.7</priority>
+</url>
+<url>
+<loc>https://quantbit.io/services/erpnext-for-garments-exports.html</loc>
+<lastmod>2026-06-30</lastmod>
+<changefreq>monthly</changefreq>
+<priority>0.7</priority>
+</url>
+<url>
+<loc>https://quantbit.io/services/erpnext-for-gems-jewellery.html</loc>
+<lastmod>2026-06-30</lastmod>
+<changefreq>monthly</changefreq>
+<priority>0.7</priority>
+</url>
+<url>
+<loc>https://quantbit.io/services/erpnext-for-government.html</loc>
+<lastmod>2026-06-30</lastmod>
+<changefreq>monthly</changefreq>
+<priority>0.7</priority>
+</url>
+<url>
+<loc>https://quantbit.io/services/erpnext-for-healthcare.html</loc>
+<lastmod>2026-06-30</lastmod>
+<changefreq>monthly</changefreq>
+<priority>0.7</priority>
+</url>
+<url>
+<loc>https://quantbit.io/services/erpnext-for-insurance.html</loc>
+<lastmod>2026-06-30</lastmod>
+<changefreq>monthly</changefreq>
+<priority>0.7</priority>
+</url>
+<url>
+<loc>https://quantbit.io/services/erpnext-for-leather.html</loc>
+<lastmod>2026-06-30</lastmod>
+<changefreq>monthly</changefreq>
+<priority>0.7</priority>
+</url>
+<url>
+<loc>https://quantbit.io/services/erpnext-for-manufacturing.html</loc>
+<lastmod>2026-06-30</lastmod>
+<changefreq>monthly</changefreq>
+<priority>0.7</priority>
+</url>
+<url>
+<loc>https://quantbit.io/services/erpnext-for-mining.html</loc>
+<lastmod>2026-06-30</lastmod>
+<changefreq>monthly</changefreq>
+<priority>0.7</priority>
+</url>
+<url>
+<loc>https://quantbit.io/services/erpnext-for-pharma.html</loc>
+<lastmod>2026-06-30</lastmod>
+<changefreq>monthly</changefreq>
+<priority>0.7</priority>
+</url>
+<url>
+<loc>https://quantbit.io/services/erpnext-for-pharmacy-management.html</loc>
+<lastmod>2026-06-30</lastmod>
+<changefreq>monthly</changefreq>
+<priority>0.7</priority>
+</url>
+<url>
+<loc>https://quantbit.io/services/erpnext-for-professional-services.html</loc>
+<lastmod>2026-06-30</lastmod>
+<changefreq>monthly</changefreq>
+<priority>0.7</priority>
+</url>
+<url>
+<loc>https://quantbit.io/services/erpnext-for-steel.html</loc>
+<lastmod>2026-06-30</lastmod>
+<changefreq>monthly</changefreq>
+<priority>0.7</priority>
+</url>
+<url>
+<loc>https://quantbit.io/services/erpnext-for-sugar.html</loc>
+<lastmod>2026-06-30</lastmod>
+<changefreq>monthly</changefreq>
+<priority>0.7</priority>
+</url>
+<url>
+<loc>https://quantbit.io/services/erpnext-for-textile.html</loc>
+<lastmod>2026-06-30</lastmod>
+<changefreq>monthly</changefreq>
+<priority>0.7</priority>
+</url>
+<url>
+<loc>https://quantbit.io/services/erpnext-for-trading.html</loc>
+<lastmod>2026-06-30</lastmod>
+<changefreq>monthly</changefreq>
+<priority>0.7</priority>
+</url>
+<!--  SOLUTIONS / USE-CASE (5 pages)  -->
+<url>
+<loc>https://quantbit.io/solutions/cafmx.html</loc>
+<lastmod>2026-06-30</lastmod>
+<changefreq>monthly</changefreq>
+<priority>0.6</priority>
+</url>
+<url>
+<loc>https://quantbit.io/solutions/foundryx.html</loc>
+<lastmod>2026-06-30</lastmod>
+<changefreq>monthly</changefreq>
+<priority>0.6</priority>
+</url>
+<url>
+<loc>https://quantbit.io/solutions/hrms-payroll-software.html</loc>
+<lastmod>2026-06-30</lastmod>
+<changefreq>monthly</changefreq>
+<priority>0.6</priority>
+</url>
+<url>
+<loc>https://quantbit.io/solutions/manufacturing-erp.html</loc>
+<lastmod>2026-06-30</lastmod>
+<changefreq>monthly</changefreq>
+<priority>0.6</priority>
+</url>
+<url>
+<loc>https://quantbit.io/solutions/solutions__asset-tracking.html</loc>
+<lastmod>2026-06-30</lastmod>
+<changefreq>monthly</changefreq>
+<priority>0.6</priority>
+</url>
+<!--  SUGARX - GEO CITY (5 pages)  -->
+<url>
+<loc>https://quantbit.io/sugar-erp/sugar-erp-ahmednagar.html</loc>
+<lastmod>2026-06-30</lastmod>
+<changefreq>monthly</changefreq>
+<priority>0.6</priority>
+</url>
+<url>
+<loc>https://quantbit.io/sugar-erp/sugar-erp-belagavi.html</loc>
+<lastmod>2026-06-30</lastmod>
+<changefreq>monthly</changefreq>
+<priority>0.6</priority>
+</url>
+<url>
+<loc>https://quantbit.io/sugar-erp/sugar-erp-kolhapur.html</loc>
+<lastmod>2026-06-30</lastmod>
+<changefreq>monthly</changefreq>
+<priority>0.6</priority>
+</url>
+<url>
+<loc>https://quantbit.io/sugar-erp/sugar-erp-solapur.html</loc>
+<lastmod>2026-06-30</lastmod>
+<changefreq>monthly</changefreq>
+<priority>0.6</priority>
+</url>
+<url>
+<loc>https://quantbit.io/sugar-erp/sugar-erp-venkateshwara.html</loc>
+<lastmod>2026-06-30</lastmod>
+<changefreq>monthly</changefreq>
+<priority>0.6</priority>
+</url>
+<!--  MIGRATION (1 pages)  -->
+<url>
+<loc>https://quantbit.io/tally-to-erpnext.html</loc>
+<lastmod>2026-06-30</lastmod>
+<changefreq>monthly</changefreq>
+<priority>0.7</priority>
+</url>
 </urlset>

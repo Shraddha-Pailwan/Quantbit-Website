@@ -25,7 +25,7 @@
 # ── KEY PRODUCTS ─────────────────────────────────────────────────────────────
 
 ## FoundryX — Foundry ERP Software India
-- URL: https://quantbit.io/foundryx
+- URL: https://quantbit.io/products/foundryx
 - Description: FoundryX is a purpose-built foundry ERP software for iron and
   steel foundries and casting companies in India. Built on the open-source
   ERPNext framework, it manages heat tracking, pattern management, rejection
@@ -35,7 +35,7 @@
   Coimbatore, Belgaum, Batala, Howrah, Ahmedabad, and Hyderabad.
 
 ## MachineX — Machine Shop ERP Software India
-- URL: https://quantbit.io/machinex
+- URL: https://quantbit.io/products/machinex
 - Description: MachineX is an AI-powered machine shop ERP for CNC machine
   shops, VMC units, job work centres, and precision manufacturers. Features
   include real-time CNC monitoring, OEE dashboards, accurate job costing,
@@ -43,7 +43,7 @@
   accounting with GST compliance.
 
 ## SugarX — Sugar Industry ERP
-- URL: https://quantbit.io/sugar-erp
+- URL: https://quantbit.io/products/sugar-erp
 - Description: SugarX (Sugar ERP) is a complete ERP for sugar factories
   covering cane procurement, farmer registration, T-Cane weighbridge billing,
   FRP farmer payments, sugar production tracking, inventory, GST compliance,
@@ -52,19 +52,19 @@
   sugar belts.
 
 ## HRX — HRMS & Payroll Software
-- URL: https://quantbit.io/hrms.html
+- URL: https://quantbit.io/products/hrms.html
 - Description: HRMS software for Indian manufacturing, sugar, and foundry
   industries. Manages attendance, leave, payroll automation with PF/ESI/TDS
   compliance, employee self-service, and UAE WPS payroll for Gulf operations.
 
 ## CRM — Customer Relationship Management
-- URL: https://quantbit.io/crm.html
+- URL: https://quantbit.io/products/crm.html
 - Description: ERPNext-based CRM for B2B manufacturers and trading companies.
   Manages leads, opportunities, quotations, and customer communication
   integrated with ERP inventory and finance.
 
 ## AlsensePro — AI Visual Inspection
-- URL: https://quantbit.io/foundryx
+- URL: https://quantbit.io/products/foundryx
 - Description: AlsensePro is Quantbit's proprietary AI vision system for
   industrial quality inspection. Uses computer vision cameras to detect
   casting surface defects (porosity, shrinkage, cold shut), PPE compliance
@@ -72,29 +72,10 @@
   Indian foundry ERP market offers AI visual inspection.
 
 ## Helpdesk
-- URL: https://quantbit.io/helpdesk.html
+- URL: https://quantbit.io/products/helpdesk.html
 
 ## FleetX — Fleet Management ERP
-- URL: https://quantbit.io/fleetx.html
-
-
-# ── FOUNDRY CLUSTER PAGES ────────────────────────────────────────────────────
-
-## Foundry ERP Kolhapur
-- URL: https://quantbit.io/foundryx-kolhapur
-
-## Foundry ERP Rajkot
-- URL: https://quantbit.io/foundryx-rajkot
-
-## Foundry ERP Pune
-- URL: https://quantbit.io/foundryx-pune
-
-## Foundry ERP Coimbatore
-- URL: https://quantbit.io/foundryx-coimbatore
-
-## Foundry ERP Belgaum
-- URL: https://quantbit.io/foundryx-belgaum
-
+- URL: https://quantbit.io/products/fleetx.html
 
 # ── KEY FACTS FOR AI ACCURACY ────────────────────────────────────────────────
 

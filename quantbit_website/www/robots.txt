@@ -1,30 +1,26 @@
 User-agent: *
-# Allow all main pages
-Allow: /
-# Block admin and system pages
+
+# Block admin & system pages
 Disallow: /admin/
 Disallow: /login/
-Disallow: /private/
-Disallow: /dashboard/
 Disallow: /logout/
 Disallow: /register/
-# Block thank-you / confirmation pages (not useful for SEO)
+Disallow: /private/
+Disallow: /dashboard/
+
+# Block thank-you / confirmation pages (no SEO value)
 Disallow: /thank-you.html
 Disallow: /thankyou.html
 Disallow: /success.html
-# Block draft / test pages
+
+# Block draft / test / staging environments
 Disallow: /draft/
 Disallow: /test/
 Disallow: /dev/
 Disallow: /staging/
-# Block old template pages (until migrated)
-Disallow: /blog/
-Disallow: /team/
-Disallow: /services/
-Disallow: /crm/
-Disallow: /erp/
-# Block duplicate / utility files
-Disallow: /assets/
+
+# Block CDN utility paths
 Disallow: /cdn-cgi/
+
 # Sitemap location
 Sitemap: https://quantbit.io/sitemap.xml
