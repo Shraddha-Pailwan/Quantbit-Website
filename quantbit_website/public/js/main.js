@@ -591,9 +591,16 @@
 
       //>> Mouse Cursor Start <<//
       function mousecursor() {
+          const e = document.querySelector(".cursor-inner"),
+              t = document.querySelector(".cursor-outer");
+
+          // On mobile / touch devices (or any layout without these elements)
+          // these nodes don't exist, so bail out instead of crashing.
+          if (!e || !t) {
+              return;
+          }
+
           if ($("body")) {
-              const e = document.querySelector(".cursor-inner"),
-                  t = document.querySelector(".cursor-outer");
               let n,
                   i = 0,
                   o = !1;
