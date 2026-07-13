@@ -1,0 +1,612 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>ERPNext Industrial IoT Integration | PLC, MQTT, RFID, Weighbridge, SCADA — Quantbit</title>
+<meta name="description" content="Connect ERPNext to shop floor machines — PLC, MQTT, RFID, weighbridges, and SCADA systems. Automate production entries, quality records, and OEE tracking from machine data.">
+<meta name="keywords" content="ERPNext PLC integration, ERPNext MQTT integration, ERPNext RFID integration, ERPNext weighbridge integration, ERPNext SCADA integration, ERPNext industrial IoT, ERPNext shop floor integration, ERPNext machine integration, ERPNext OEE tracking, ERPNext production automation, ERPNext manufacturing IoT, ERPNext Industry 4.0, ERPNext sensor integration, ERPNext MES integration India, ERPNext foundry integration, ERPNext weighbridge ERPNext auto entry">
+<link rel="canonical" href="https://quantbit.io/services/integrations/industrial-iot/">
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@graph": [
+    {"@type":"Organization","@id":"https://quantbit.io/#org","name":"Quantbit Technologies","url":"https://quantbit.io"},
+    {
+      "@type":"Service",
+      "@id":"https://quantbit.io/services/integrations/industrial-iot/#service",
+      "name":"ERPNext Industrial IoT Integration",
+      "provider":{"@id":"https://quantbit.io/#org"},
+      "serviceType":"Industrial IoT Integration",
+      "areaServed":["India","Oman"],
+      "description":"Pre-built ERPNext connectors for PLC, MQTT, RFID, weighbridge, and SCADA systems — automating production entries, quality records, and OEE tracking directly from machine data."
+    },
+    {
+      "@type":"FAQPage",
+      "mainEntity":[
+        {"@type":"Question","name":"How does ERPNext integrate with weighbridge systems for automatic material entry?","acceptedAnswer":{"@type":"Answer","text":"Quantbit's weighbridge connector reads weight data from your weighbridge indicator via RS232, RS485, or TCP/IP and creates stock entries in ERPNext automatically. When a truck pulls onto the weighbridge, the gross weight is captured. When it leaves, the tare weight is captured. The connector calculates net weight, matches it to the open purchase order or gate entry in ERPNext, and creates the goods receipt note automatically. No manual weight entry, no transcription errors, and no discrepancy between the weighbridge register and ERPNext."}},
+        {"@type":"Question","name":"Can ERPNext receive real-time production data from PLC machines on the shop floor?","acceptedAnswer":{"@type":"Answer","text":"Yes. Quantbit's PLC connector for ERPNext communicates with Siemens, Allen Bradley, Mitsubishi, and other PLC brands through OPC-UA, Modbus TCP, or MQTT protocols. Production counts, machine cycle times, reject quantities, and process parameter readings from PLCs are translated into ERPNext manufacturing log entries in real time. Work orders update automatically as production happens — no operator entry, no end-of-shift data collection delays."}}
+      ]
+    },
+    {"@type":"BreadcrumbList","itemListElement":[
+      {"@type":"ListItem","position":1,"name":"Home","item":"https://quantbit.io/"},
+      {"@type":"ListItem","position":2,"name":"Services","item":"https://quantbit.io/services/"},
+      {"@type":"ListItem","position":3,"name":"Integrations","item":"https://quantbit.io/services/integrations/"},
+      {"@type":"ListItem","position":4,"name":"Industrial IoT Integration","item":"https://quantbit.io/services/integrations/industrial-iot/"}
+    ]},
+    {"@type":"SpeakableSpecification","cssSelector":[".geo-answer-q1",".geo-answer-q2"]}
+  ]
+}
+</script>
+<style>
+*{box-sizing:border-box;margin:0;padding:0}
+:root{
+  --accent:#b35e0a;--accent-dark:#8a4a08;--accent-light:#fdf0e6;
+  --blue:#1a5fd4;--blue-light:#e8f0fc;--blue-dark:#0f3d8c;
+  --teal:#0b7a5e;--teal-light:#e6f4f0;
+  --navy:#0f2d47;--navy-mid:#1a3f5c;
+  --gray-100:#f8f9fb;--gray-200:#eef0f4;--gray-300:#d4d8e2;
+  --gray-600:#5a6272;--text:#1e2535;--text-light:#4a5568;
+  --radius:10px;--radius-lg:16px;
+  --shadow:0 2px 12px rgba(15,45,71,0.08);--shadow-md:0 6px 24px rgba(15,45,71,0.12);
+}
+body{font-family:'Segoe UI',system-ui,-apple-system,sans-serif;color:var(--text);line-height:1.65;font-size:16px}
+a{color:var(--blue);text-decoration:none}a:hover{text-decoration:underline}
+.container{max-width:1160px;margin:0 auto;padding:0 24px}
+#header{display:block;margin:0;padding:0}
+.breadcrumb{background:var(--gray-100);padding:12px 0;font-size:0.82rem;color:var(--gray-600)}
+.breadcrumb a{color:var(--gray-600)}.breadcrumb span{margin:0 6px}
+.geo-section{padding:40px 0 0;background:var(--gray-100)}
+.geo-label{font-size:0.75rem;font-weight:700;text-transform:uppercase;letter-spacing:0.8px;color:var(--gray-600);margin-bottom:14px}
+.geo-block{background:var(--accent-light);border-left:4px solid var(--accent);border-radius:0 var(--radius) var(--radius) 0;padding:20px 24px;margin-bottom:10px}
+.geo-block strong{display:block;color:var(--accent-dark);font-size:0.88rem;margin-bottom:6px}
+.geo-block p{font-size:0.92rem;color:var(--text-light);line-height:1.7}
+.hero{background:linear-gradient(135deg,#1a0f00 0%,#2d1a00 50%,#0f2030 100%);color:#fff;padding:72px 0 56px}
+.hero-grid{display:grid;grid-template-columns:1fr 1fr;gap:60px;align-items:center}
+.hero-eyebrow{display:inline-flex;align-items:center;gap:6px;background:rgba(255,255,255,0.1);border:1px solid rgba(255,255,255,0.15);padding:5px 14px;border-radius:100px;font-size:0.78rem;letter-spacing:0.5px;text-transform:uppercase;margin-bottom:20px}
+.hero h1{font-size:clamp(1.8rem,3.5vw,2.6rem);font-weight:800;line-height:1.15;letter-spacing:-0.3px;margin-bottom:18px}
+.hero h1 .hl{color:#fb923c}
+.hero-sub{font-size:1rem;color:rgba(255,255,255,0.78);line-height:1.75;margin-bottom:28px}
+.hero-btns{display:flex;gap:12px;flex-wrap:wrap}
+.btn-primary{background:var(--accent);color:#fff;padding:13px 26px;border-radius:8px;font-weight:600;font-size:0.95rem;border:2px solid var(--accent);transition:all 0.2s;display:inline-flex;align-items:center;gap:6px}
+.btn-primary:hover{background:var(--accent-dark);text-decoration:none;transform:translateY(-1px)}
+.btn-ghost{background:transparent;color:rgba(255,255,255,0.9);padding:13px 24px;border-radius:8px;font-weight:600;font-size:0.95rem;border:2px solid rgba(255,255,255,0.3)}
+.btn-ghost:hover{border-color:#fff;text-decoration:none}
+.machine-feed{background:rgba(255,255,255,0.04);border:1px solid rgba(255,255,255,0.1);border-radius:var(--radius-lg);padding:20px;font-family:monospace}
+.mf-header{display:flex;align-items:center;gap:8px;margin-bottom:14px;padding-bottom:10px;border-bottom:1px solid rgba(255,255,255,0.08)}
+.mf-dot{width:8px;height:8px;border-radius:50%;background:#22c55e;animation:pulse 2s infinite}
+@keyframes pulse{0%,100%{opacity:1}50%{opacity:0.4}}
+.mf-title{font-size:0.72rem;text-transform:uppercase;letter-spacing:0.5px;color:rgba(255,255,255,0.45)}
+.mf-row{display:flex;justify-content:space-between;align-items:center;padding:7px 0;border-bottom:1px solid rgba(255,255,255,0.05);font-size:0.76rem}
+.mf-row:last-child{border-bottom:none}
+.mf-label{color:rgba(255,255,255,0.45)}
+.mf-value{color:#fb923c;font-weight:700}
+.mf-value.green{color:#4ade80}
+.mf-value.blue{color:#60a5fa}
+.mf-value.red{color:#f87171}
+.mf-footer{margin-top:12px;padding-top:10px;border-top:1px solid rgba(255,255,255,0.06);font-size:0.68rem;color:rgba(255,255,255,0.25)}
+section{padding:72px 0}
+.section-eyebrow{font-size:0.75rem;font-weight:700;text-transform:uppercase;letter-spacing:1px;color:var(--accent);margin-bottom:8px}
+.section-title{font-size:clamp(1.5rem,2.8vw,2rem);font-weight:800;color:var(--navy);line-height:1.2;letter-spacing:-0.3px;margin-bottom:14px}
+.section-sub{font-size:1rem;color:var(--text-light);max-width:640px;line-height:1.75}
+.text-center{text-align:center}.text-center .section-sub{margin:0 auto}
+.connectors-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:20px;margin-top:44px}
+.conn-card{border:1px solid var(--gray-200);border-radius:var(--radius-lg);padding:24px;background:#fff;transition:all 0.25s}
+.conn-card:hover{border-color:var(--accent);box-shadow:var(--shadow-md)}
+.conn-icon{font-size:2rem;margin-bottom:12px}
+.conn-card h3{font-size:1rem;font-weight:700;color:var(--navy);margin-bottom:8px}
+.conn-card p{font-size:0.875rem;color:var(--text-light);line-height:1.65;margin-bottom:12px}
+.feature-list{list-style:none}
+.feature-list li{font-size:0.82rem;color:var(--text-light);padding:4px 0;display:flex;gap:6px;align-items:flex-start}
+.feature-list li::before{content:'✓';color:var(--teal);font-weight:700;flex-shrink:0}
+.verticals-section{background:var(--gray-100)}
+.verticals-grid{display:grid;grid-template-columns:repeat(4,1fr);gap:16px;margin-top:40px}
+.vert-card{background:#fff;border-radius:var(--radius);padding:20px;text-align:center;border-top:3px solid var(--accent)}
+.vert-icon{font-size:2rem;margin-bottom:10px;display:block}
+.vert-card h4{font-size:0.9rem;font-weight:700;color:var(--navy);margin-bottom:8px}
+.vert-card p{font-size:0.78rem;color:var(--text-light);line-height:1.6}
+.usecases-section{background:#fff}
+.uc-grid{display:grid;grid-template-columns:1fr 1fr;gap:24px;margin-top:44px}
+.uc-card{background:var(--gray-100);border-radius:var(--radius-lg);padding:28px 30px}
+.uc-badge{display:inline-block;font-size:0.7rem;font-weight:700;text-transform:uppercase;letter-spacing:0.5px;padding:3px 10px;border-radius:100px;margin-bottom:14px}
+.uc-badge.amber{background:var(--accent-light);color:var(--accent-dark)}
+.uc-badge.blue{background:var(--blue-light);color:var(--blue-dark)}
+.uc-badge.teal{background:var(--teal-light);color:var(--teal)}
+.uc-card h3{font-size:1.02rem;font-weight:700;color:var(--navy);margin-bottom:12px;line-height:1.3}
+.uc-card p{font-size:0.88rem;color:var(--text-light);line-height:1.78}
+.uc-outcome{margin-top:16px;padding-top:14px;border-top:1px solid var(--gray-200);font-size:0.82rem;color:var(--teal);font-weight:600}
+.protocol-section{background:var(--gray-100)}
+.protocol-table{width:100%;border-collapse:collapse;margin-top:40px}
+.protocol-table th{background:var(--navy);color:#fff;padding:12px 16px;text-align:left;font-size:0.82rem;font-weight:600}
+.protocol-table td{padding:12px 16px;border-bottom:1px solid var(--gray-200);font-size:0.85rem;color:var(--text-light)}
+.protocol-table tr:last-child td{border-bottom:none}
+.protocol-table tr:nth-child(even) td{background:#fff}
+.proto-badge{font-size:0.7rem;font-weight:700;padding:2px 8px;border-radius:100px;background:var(--accent-light);color:var(--accent-dark)}
+.specs-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:20px;margin-top:40px}
+.spec-card{background:var(--gray-100);border-radius:var(--radius);padding:20px 22px}
+.spec-card h4{font-size:0.82rem;font-weight:700;text-transform:uppercase;letter-spacing:0.5px;color:var(--accent);margin-bottom:10px}
+.spec-card ul{list-style:none}
+.spec-card li{font-size:0.84rem;color:var(--text-light);padding:4px 0;border-bottom:1px solid var(--gray-200)}
+.spec-card li:last-child{border-bottom:none}
+.faq-section{background:#fff}
+.faq-list{max-width:820px;margin:40px auto 0}
+.faq-item{border-radius:var(--radius);border:1px solid var(--gray-200);margin-bottom:10px;overflow:hidden}
+.faq-q{padding:18px 22px;font-weight:600;color:var(--navy);cursor:pointer;display:flex;justify-content:space-between;align-items:center;font-size:0.92rem}
+.faq-q::after{content:'＋';font-size:1.1rem;color:var(--accent);flex-shrink:0}
+.faq-a{padding:0 22px 18px;color:var(--text-light);font-size:0.875rem;line-height:1.75;display:none}
+.faq-item.open .faq-a{display:block}
+.faq-item.open .faq-q::after{content:'−'}
+.related-section{background:var(--gray-100)}
+.related-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:20px;margin-top:32px}
+.related-card{background:#fff;border-radius:var(--radius);padding:20px 22px}
+.related-card h4{font-size:0.95rem;font-weight:700;color:var(--navy);margin-bottom:6px}
+.related-card p{font-size:0.82rem;color:var(--text-light);margin-bottom:12px;line-height:1.55}
+.cta-section{background:linear-gradient(135deg,var(--navy),var(--navy-mid));color:#fff;text-align:center;padding:80px 0}
+.cta-section h2{font-size:clamp(1.5rem,2.8vw,2rem);font-weight:800;margin-bottom:14px}
+.cta-section p{color:rgba(255,255,255,0.72);max-width:520px;margin:0 auto 32px;font-size:1rem}
+footer{background:var(--navy);color:rgba(255,255,255,0.55);text-align:center;padding:20px;font-size:0.8rem}
+@media(max-width:900px){.hero-grid{grid-template-columns:1fr}.connectors-grid,.specs-grid{grid-template-columns:1fr 1fr}.verticals-grid{grid-template-columns:1fr 1fr}}
+@media(max-width:600px){.connectors-grid,.uc-grid,.specs-grid,.verticals-grid,.related-grid{grid-template-columns:1fr}}
+</style>
+<link rel="stylesheet" href="/assets/quantbit_website/css/_shared.css">
+<!-- TEMPLATE CSS (IMPORTANT) -->
+    <link rel="stylesheet" href="/../assets/quantbit_website/css/bootstrap.min.css">
+    <link rel="stylesheet" href="/../assets/quantbit_website/css/font-awesome.css">
+    <link rel="stylesheet" href="/../assets/quantbit_website/css/animate.css">
+    <link rel="stylesheet" href="/../assets/quantbit_website/css/magnific-popup.css">
+    <link rel="stylesheet" href="/../assets/quantbit_website/css/meanmenu.css">
+    <link rel="stylesheet" href="/../assets/quantbit_website/css/slick.css">
+    <link rel="stylesheet" href="/../assets/quantbit_website/css/nice-select.css">
+    <link rel="stylesheet" href="/../assets/quantbit_website/css/main.css">
+    <link rel="stylesheet" href="style.css">
+    <link rel="stylesheet" href="/assets/quantbit_website/css/_shared.css">
+
+
+    <!-- OPTIONAL CUSTOM -->
+    <link rel="stylesheet" href="/../assets/quantbit_website/css/hrms.css">
+      <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
+<!-- Google Tag Manager -->
+<script>(function(w,d,s,l,i){w[l]=w[l]||[];w[l].push({'gtm.start':
+new Date().getTime(),event:'gtm.js'});var f=d.getElementsByTagName(s)[0],
+j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
+'https://www.googletagmanager.com/gtm.js?id='+i+dl;f.parentNode.insertBefore(j,f);
+})(window,document,'script','dataLayer','GTM-P98Z6G8D');</script>
+<!-- End Google Tag Manager -->
+</head>
+<body>
+    <!-- Google Tag Manager (noscript) -->
+<noscript><iframe src="https://www.googletagmanager.com/ns.html?id=GTM-P98Z6G8D"
+height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
+<!-- End Google Tag Manager (noscript) -->
+<div id="header"></div><div class="breadcrumb"><div class="container"><a href="/">Home</a><span>›</span><a href="/services/">Services</a><span>›</span><a href="/services/integrations/">Integrations</a><span>›</span>Industrial IoT Integration</div></div>
+
+<div class="geo-section">
+  <div class="container">
+    <div class="geo-label">Direct Answers · ERPNext Industrial IoT Integration</div>
+    <div class="geo-block geo-answer-q1">
+      <strong>Q: How does ERPNext integrate with weighbridge systems for automatic inward material entry?</strong>
+      <p>Quantbit's weighbridge connector reads net weight data from your weighbridge indicator in real time over RS232, RS485, or TCP/IP. When a truck arrives at the gate, the connector captures the gross weight reading, creates a draft gate entry in ERPNext, and waits for the tare weight on exit. The net weight is calculated automatically and matched to the open purchase order. A goods receipt note is created in ERPNext without anyone typing a single number. The weighbridge register and ERPNext always agree — because they are the same data source.</p>
+    </div>
+    <div class="geo-block geo-answer-q2">
+      <strong>Q: Can ERPNext receive live production data from PLC machines in a foundry or manufacturing plant?</strong>
+      <p>Yes. Quantbit's PLC connector for ERPNext reads production counts, reject quantities, cycle times, and process parameters directly from Siemens S7, Allen Bradley, Mitsubishi, and other PLC brands via OPC-UA or Modbus TCP. Every shot counted by the PLC becomes a manufacturing log entry in ERPNext. Every alarm becomes a quality flag. Work order progress updates in real time as the machine runs — not at the end of the shift when an operator fills in a form from memory. This is the foundation of real Industry 4.0 for Indian manufacturing.</p>
+    </div>
+  </div>
+</div>
+
+<section class="hero">
+  <div class="container">
+    <div class="hero-grid">
+      <div>
+        <div class="hero-eyebrow">⚙️ Industrial IoT Connector Pack</div>
+        <h1>Your Shop Floor Machines. <span class="hl">Talking Directly to ERPNext.</span></h1>
+        <p class="hero-sub">Connect weighbridges, PLCs, RFID readers, SCADA systems, and MQTT sensors to ERPNext. Production entries, quality records, and material movements happen automatically — the moment the machine does the work.</p>
+        <div class="hero-btns">
+          <a href="/company/contact-us.html" class="btn-primary">Connect Your Shop Floor →</a>
+          <a href="#use-cases" class="btn-ghost">See Plant Stories</a>
+        </div>
+      </div>
+      <div class="machine-feed">
+        <div class="mf-header"><span class="mf-dot"></span><span class="mf-title">Live Machine Feed → ERPNext · FoundryX</span></div>
+        <div class="mf-row"><span class="mf-label">Machine ID</span><span class="mf-value">Induction Furnace #3</span></div>
+        <div class="mf-row"><span class="mf-label">Current Temp</span><span class="mf-value">1480 °C</span></div>
+        <div class="mf-row"><span class="mf-label">Heat No.</span><span class="mf-value green">HT-2024-0847</span></div>
+        <div class="mf-row"><span class="mf-label">Melt Weight</span><span class="mf-value">2,840 kg</span></div>
+        <div class="mf-row"><span class="mf-label">Charge Mix</span><span class="mf-value blue">Auto-posted to BOM</span></div>
+        <div class="mf-row"><span class="mf-label">Weighbridge GRN</span><span class="mf-value green">GRN-2024-1192 ✓</span></div>
+        <div class="mf-row"><span class="mf-label">Shift Scrap %</span><span class="mf-value red">2.4% ▲ Alert sent</span></div>
+        <div class="mf-footer">ERPNext Manufacturing Log updated · 14 seconds ago</div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section style="background:#fff">
+  <div class="container">
+    <div class="section-eyebrow">Industrial Connectors</div>
+    <h2 class="section-title">Every Machine Protocol That Indian Plants Actually Use</h2>
+    <p class="section-sub">Indian shop floors are a mix of old and new — a 1990s weighbridge sitting next to a 2022 PLC, connected by nothing except a clipboard. Our connectors bridge that gap without replacing your existing equipment.</p>
+    <div class="connectors-grid">
+      <div class="conn-card">
+        <div class="conn-icon">⚖️</div>
+        <h3>Weighbridge Integration</h3>
+        <p>The most common integration request from foundries, steel yards, quarries, and agri-processing plants. Your weighbridge already captures the correct data — we just bring it into ERPNext automatically instead of letting someone write it on a slip of paper.</p>
+        <ul class="feature-list">
+          <li>RS232, RS485, TCP/IP, and USB weighbridge connections</li>
+          <li>Gross and tare weight auto-capture</li>
+          <li>GRN creation matched to purchase orders</li>
+          <li>Outward delivery challan auto-generated on exit</li>
+          <li>Weighment slip printed from ERPNext</li>
+          <li>Multi-weighbridge support for large yards</li>
+          <li>Vehicle number and driver details via RFID or manual gate entry</li>
+          <li>Discrepancy alert when weight deviates from PO quantity</li>
+        </ul>
+      </div>
+      <div class="conn-card">
+        <div class="conn-icon">🔧</div>
+        <h3>PLC Integration (OPC-UA / Modbus)</h3>
+        <p>PLCs run your machines. Our connector reads the data they produce — counts, temperatures, pressures, cycle times — and pushes it to ERPNext manufacturing records in real time. No operator data entry, no end-of-shift estimates.</p>
+        <ul class="feature-list">
+          <li>Siemens S7-300, S7-400, S7-1200, S7-1500</li>
+          <li>Allen Bradley PLC5, SLC500, CompactLogix</li>
+          <li>Mitsubishi MELSEC series</li>
+          <li>Schneider Modicon, Omron, Beckhoff</li>
+          <li>OPC-UA and Modbus TCP/RTU protocols</li>
+          <li>Production count to ERPNext work order progress</li>
+          <li>Process parameter logging (temp, pressure, speed)</li>
+          <li>Alarm and fault events as ERPNext quality flags</li>
+        </ul>
+      </div>
+      <div class="conn-card">
+        <div class="conn-icon">📡</div>
+        <h3>MQTT / IoT Sensor Integration</h3>
+        <p>Modern IoT sensors publish data over MQTT — the lightweight protocol designed for machine-to-machine communication. Our connector subscribes to your MQTT broker and routes sensor readings directly into ERPNext records.</p>
+        <ul class="feature-list">
+          <li>MQTT broker integration (Mosquitto, HiveMQ, AWS IoT)</li>
+          <li>Temperature, humidity, vibration, flow, level sensors</li>
+          <li>Energy meter readings to ERPNext utility consumption</li>
+          <li>Environmental monitoring with threshold alerts</li>
+          <li>Cold chain temperature compliance logging</li>
+          <li>Custom topic-to-ERPNext field mapping</li>
+          <li>JSON and binary MQTT payload parsing</li>
+          <li>Historical data replay and gap filling</li>
+        </ul>
+      </div>
+      <div class="conn-card">
+        <div class="conn-icon">📟</div>
+        <h3>RFID Integration</h3>
+        <p>RFID readers at your warehouse gates, machine stations, or inspection points can trigger ERPNext transactions automatically. When a tagged item passes a reader, ERPNext knows — without anyone scanning a barcode or filling in a form.</p>
+        <ul class="feature-list">
+          <li>UHF RFID (Impinj, Zebra, Alien) reader integration</li>
+          <li>HF RFID (ISO 15693, ISO 14443) support</li>
+          <li>Work-in-progress tracking by station</li>
+          <li>Finished goods movement to ERPNext stock ledger</li>
+          <li>Tool and fixture tracking linked to work orders</li>
+          <li>Employee attendance via RFID badge</li>
+          <li>Anti-theft alerts for unauthorized RFID movement</li>
+          <li>Batch and serial number auto-linking on scan</li>
+        </ul>
+      </div>
+      <div class="conn-card">
+        <div class="conn-icon">🖥️</div>
+        <h3>SCADA Integration</h3>
+        <p>SCADA systems already aggregate data from your entire plant. Instead of maintaining a parallel system in ERPNext, our connector pulls production totals, downtime events, and quality data from SCADA directly into ERPNext records.</p>
+        <ul class="feature-list">
+          <li>Wonderware, Ignition, FactoryTalk, Siemens WinCC</li>
+          <li>OPC-DA and OPC-UA historian integration</li>
+          <li>Shift production summary to ERPNext manufacturing entries</li>
+          <li>Downtime events to ERPNext maintenance records</li>
+          <li>Quality parameter breaches to rejection entries</li>
+          <li>Energy consumption to utility cost entries</li>
+          <li>Batch record linking to ERPNext work orders</li>
+        </ul>
+      </div>
+      <div class="conn-card">
+        <div class="conn-icon">📊</div>
+        <h3>OEE & Production Dashboard</h3>
+        <p>Overall Equipment Effectiveness — availability, performance, and quality — calculated automatically from machine data in ERPNext and displayed on a live dashboard. No manual OEE calculations, no weekly spreadsheets.</p>
+        <ul class="feature-list">
+          <li>OEE calculated per machine and per shift</li>
+          <li>Availability: planned vs unplanned downtime</li>
+          <li>Performance: actual vs rated production speed</li>
+          <li>Quality: good count vs total count per shift</li>
+          <li>Trend analysis and shift comparison</li>
+          <li>OEE drill-down by machine, product, operator</li>
+          <li>Alert when OEE drops below threshold</li>
+          <li>Integration with Power BI or Metabase dashboards</li>
+        </ul>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section class="verticals-section">
+  <div class="container">
+    <div class="text-center">
+      <div class="section-eyebrow">Industry Verticals</div>
+      <h2 class="section-title">Built for How Each Industry's Plant Actually Works</h2>
+      <p class="section-sub" style="margin:0 auto">A foundry's integration needs are different from a food processor's. Each vertical connector pack is pre-configured for the equipment, process parameters, and ERPNext documents that matter in that industry.</p>
+    </div>
+    <div class="verticals-grid">
+      <div class="vert-card">
+        <span class="vert-icon">🏭</span>
+        <h4>Foundry (FoundryX)</h4>
+        <p>Induction furnace temperatures, charge mix, heat numbers, spectroscopy results, and mould counts — all flowing into ERPNext FoundryX automatically from furnace PLCs and weighbridges.</p>
+      </div>
+      <div class="vert-card">
+        <span class="vert-icon">⚙️</span>
+        <h4>Engineering / Machining (MachineX)</h4>
+        <p>CNC machine cycle times, tool wear tracking, rejection reasons from quality gauges, and production counts mapped to work orders and operation-level routing in ERPNext.</p>
+      </div>
+      <div class="vert-card">
+        <span class="vert-icon">🌾</span>
+        <h4>Sugar / Agri Processing (SugarX)</h4>
+        <p>Cane weighbridge entries, juice flow meters, boiling house process parameters, and sugar grading results tied to batch records in ERPNext for end-to-end traceability.</p>
+      </div>
+      <div class="vert-card">
+        <span class="vert-icon">🔩</span>
+        <h4>Auto Components</h4>
+        <p>Stamping press counts, heat treatment furnace logs, CMM inspection results, and RFID-based WIP tracking through multi-stage assembly lines.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section class="usecases-section" id="use-cases">
+  <div class="container">
+    <div class="section-eyebrow">Real Stories</div>
+    <h2 class="section-title">What Happens When Machines Start Talking to ERPNext</h2>
+    <p class="section-sub">These are stories from plant floors we have worked on. Not every plant is high-tech. Some are old buildings with reliable machines and clipboards that have worked for decades. The integration is not about replacing what works — it is about eliminating the part where someone has to transcribe what the machine already knows.</p>
+    <div class="uc-grid">
+
+      <div class="uc-card">
+        <span class="uc-badge amber">Foundry · Kolhapur</span>
+        <h3>The Weighbridge Slip That Went Missing Every Time There Was a Dispute</h3>
+        <p>A grey iron foundry in Kolhapur was receiving pig iron, scrap, and coke from 15 to 20 suppliers daily. The weighbridge at the gate would generate a printed slip with the truck number, gross weight, tare weight, and net weight. The gateman would hand one copy to the driver and keep one for the store. The store team would manually enter the weight into ERPNext as a goods receipt at the end of the day — usually all at once, from a pile of slips collected during the shift. Every few weeks, a supplier would raise a discrepancy — their delivery note said 12.4 tonnes, but the GRN in ERPNext showed 12.1. Without the original slip, it was impossible to tell whether the transcription was wrong or whether the weighbridge reading was disputed. After the weighbridge integration went live, every reading goes directly from the weighbridge indicator into ERPNext. The GRN is created the moment the truck exits the gate. When a supplier disputes a weight, the weighbridge timestamp, reading, and truck number are all in ERPNext — and the resolution takes minutes instead of weeks of back-and-forth. The foundry also discovered that their store team had been making an average of three data entry errors per day in weight recording — small errors individually, but they had caused Rs 4.5 lakh in reconciliation adjustments over the previous year.</p>
+        <div class="uc-outcome">✦ Weight entry errors eliminated; GRN created in real time; supplier disputes resolved in minutes not weeks</div>
+      </div>
+
+      <div class="uc-card">
+        <span class="uc-badge blue">Auto Components · Pune</span>
+        <h3>The Production Report That Was Always a Shift Behind Reality</h3>
+        <p>A Tier-2 auto components manufacturer in Pune was producing crankshaft forgings across two shifts. At the end of every shift, the shift supervisor would count the finished parts, fill in a production report on a pre-printed form, and hand it to the planning team who would enter it into ERPNext the next morning. This meant production data was always twelve to twenty hours behind. When the planning manager tried to check whether production was on track for a customer delivery tomorrow, the data in ERPNext showed yesterday's shift. He was making delivery commitment calls based on numbers that were already history. After PLC integration connected the forging press output counters to ERPNext, production counts update every ten minutes. The planning manager can open ERPNext at 2 PM and see exactly how many pieces came off the press as of 1:50 PM. Delivery commitment calls became factual rather than guesswork. One export customer specifically commented that the delivery accuracy improvement had led them to increase their order volume with this supplier.</p>
+        <div class="uc-outcome">✦ Production data lag cut from 12–20 hours to 10 minutes; delivery accuracy improved; export customer increased orders</div>
+      </div>
+
+      <div class="uc-card">
+        <span class="uc-badge teal">Engineering · Sangli</span>
+        <h3>The CNC Machine That Was Running at 60% Efficiency and Nobody Knew</h3>
+        <p>A precision engineering firm in Sangli was running twelve CNC machines on a three-shift operation. Their planned production numbers were based on the rated cycle time of each machine. But the actual cycle times — what the machines were producing in practice — were being measured only when there was a quality problem or a capacity crisis. Nobody was tracking OEE systematically. When the IoT connector was installed and OEE data from all twelve machines started flowing into ERPNext, the first month's report was uncomfortable reading. The average OEE across the plant was 58% — well below the 75 to 80% that these machines were capable of delivering. The breakdown was revealing: availability was 82% (reasonable), performance was 76% (acceptable), but quality was only 91% (a rejection rate of 9%). The quality issue was traced to a specific setting on three machines that operators were adjusting informally to compensate for tooling wear — a workaround that was causing dimensional variations. Fixing the tooling change schedule and eliminating the informal adjustments raised quality to 97.5%, and overall OEE to 74% within three months. That improvement translated to the equivalent of two additional CNC machines worth of capacity — without buying anything.</p>
+        <div class="uc-outcome">✦ OEE visibility revealed 9% rejection rate; root cause fixed; OEE up from 58% to 74% — equivalent to 2 additional machines in capacity</div>
+      </div>
+
+      <div class="uc-card">
+        <span class="uc-badge amber">Food Processing · Nashik</span>
+        <h3>Cold Chain Monitoring That Actually Caught a Temperature Breach Before the Consignment Was Lost</h3>
+        <p>A grape processing and export company in Nashik was storing fresh grapes and processed grape products in cold rooms maintained at 0 to 2 degrees Celsius. They had temperature loggers in each cold room that stored readings internally — but nobody looked at the logger data until there was a visible problem. On two occasions in the previous three years, they had discovered temperature excursions after the fact — refrigeration had malfunctioned overnight, temperature had risen to 8 degrees, and a portion of the stored consignment had been damaged by the time anyone noticed in the morning. After MQTT temperature sensors were integrated with ERPNext, any temperature reading above 3.5 degrees triggers an immediate WhatsApp alert to the plant manager and the maintenance in-charge. When a compressor failure caused a gradual temperature rise at 1:30 AM one night, the alert reached the maintenance team within four minutes. They arrived, identified the failed compressor, switched to the backup, and the temperature never exceeded 5 degrees. The consignment was saved. The estimated cost of what would have been lost: approximately Rs 18 lakh.</p>
+        <div class="uc-outcome">✦ Temperature breach caught at 1:30 AM; ₹18 lakh consignment saved; maintenance response time under 15 minutes</div>
+      </div>
+
+      <div class="uc-card">
+        <span class="uc-badge blue">Steel Plant · Bhiwandi</span>
+        <h3>The RFID Tags That Ended Three Years of Finished Goods Discrepancies</h3>
+        <p>A structural steel fabrication plant in Bhiwandi was producing beams, columns, and plates to order, tagging each piece with a painted job number and stacking them in a large open yard. Dispatch was supposed to happen from FIFO — oldest production first — but in practice, the yard was so large and the pieces so heavy that the fork-lift operator picked whatever was easiest to reach. When a customer order was due, someone would walk the yard, physically count the pieces, and update ERPNext. This manual count took half a day and was always slightly wrong because pieces got moved, mislabelled, or partially dispatched without a system update. After RFID tags were attached to each fabricated piece and readers were installed at the yard gate and dispatch area, every movement was tracked automatically. The stock count in ERPNext matched the physical yard within 2% instead of the previous 8 to 12% variance. Dispatch went from FIFO-in-theory to FIFO-in-practice because the system could now identify which pieces were produced first. Customer complaints about receiving older stock mixed with new production disappeared.</p>
+        <div class="uc-outcome">✦ Finished goods stock variance cut from 8–12% to under 2%; FIFO dispatch enforced automatically</div>
+      </div>
+
+      <div class="uc-card">
+        <span class="uc-badge teal">Pharma · Aurangabad</span>
+        <h3>The Batch Record That Used to Take an Hour to Compile After Production</h3>
+        <p>A pharmaceutical formulation plant in Aurangabad was manufacturing tablets on a batch basis. After each batch, the production team had to compile a batch manufacturing record — capturing granulation temperature and humidity, compression force settings, coating parameters, in-process test results, and final yield. This record was assembled from three different paper forms filled in by operators at different stages of the process. A quality executive would collect the forms, compile them into a master batch record, verify every entry, and enter it into ERPNext. The process took between 45 minutes and two hours per batch, and the risk of transcription error was real. Any batch record entry error required a formal deviation report under GMP rules. After MQTT sensors and PLC data from granulation, compression, and coating equipment were integrated with ERPNext, process parameters are captured automatically and timestamped during production. The operator still fills in manual observations and in-process test results — but the sensor data that previously required transcription is already there. Batch record compilation time dropped from 45 to 120 minutes to 12 to 20 minutes, and deviation reports due to transcription errors dropped to zero.</p>
+        <div class="uc-outcome">✦ Batch record compilation time cut by 75%; transcription-related deviation reports eliminated; GMP compliance strengthened</div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section class="protocol-section">
+  <div class="container">
+    <div class="section-eyebrow">Protocol Support</div>
+    <h2 class="section-title">Industrial Protocols We Connect to ERPNext</h2>
+    <p class="section-sub">Your machines speak different languages. Our connector infrastructure speaks all of them and translates into ERPNext.</p>
+    <table class="protocol-table">
+      <thead><tr><th>Protocol</th><th>Common Equipment</th><th>Connection Type</th><th>Data Frequency</th></tr></thead>
+      <tbody>
+        <tr><td><strong>OPC-UA</strong></td><td>Siemens S7, Beckhoff, modern CNC machines</td><td><span class="proto-badge">TCP/IP</span></td><td>Real-time (100ms to 1s)</td></tr>
+        <tr><td><strong>Modbus TCP</strong></td><td>Drives, inverters, energy meters, older PLCs</td><td><span class="proto-badge">TCP/IP</span></td><td>Configurable polling (1s to 60s)</td></tr>
+        <tr><td><strong>Modbus RTU</strong></td><td>Weighbridges, legacy PLCs, field instruments</td><td><span class="proto-badge">RS485</span></td><td>Configurable polling (1s to 60s)</td></tr>
+        <tr><td><strong>MQTT</strong></td><td>IoT sensors, gateways, ESP32/Arduino devices</td><td><span class="proto-badge">TCP/IP</span></td><td>Event-driven (immediate)</td></tr>
+        <tr><td><strong>RS232 / RS485</strong></td><td>Weighbridge indicators, barcode scanners, older gauges</td><td><span class="proto-badge">Serial</span></td><td>Event-driven on reading</td></tr>
+        <tr><td><strong>OPC-DA</strong></td><td>Legacy SCADA historians (WinCC, Wonderware)</td><td><span class="proto-badge">DCOM</span></td><td>Scheduled pull (1 min to 1 hr)</td></tr>
+        <tr><td><strong>REST / HTTP</strong></td><td>Modern CNC controllers, IoT gateways</td><td><span class="proto-badge">TCP/IP</span></td><td>Webhook or polling</td></tr>
+        <tr><td><strong>RFID UHF</strong></td><td>Impinj, Zebra FX series, Alien readers</td><td><span class="proto-badge">TCP/IP</span></td><td>Tag-read event (immediate)</td></tr>
+      </tbody>
+    </table>
+  </div>
+</section>
+
+<section style="background:#fff;padding:72px 0">
+  <div class="container">
+    <div class="section-eyebrow">Technical Specs</div>
+    <h2 class="section-title">How the Integration Architecture Works</h2>
+    <p class="section-sub">Understanding the technical approach helps your IT and automation team evaluate feasibility before we even visit the plant.</p>
+    <div class="specs-grid">
+      <div class="spec-card">
+        <h4>Edge Gateway</h4>
+        <ul>
+          <li>Lightweight agent runs on-premise (Windows/Linux)</li>
+          <li>Connects to machines on plant network</li>
+          <li>Buffers data during internet outages</li>
+          <li>Sends to ERPNext via secure HTTPS</li>
+          <li>Runs on mini-PC or existing server</li>
+          <li>No cloud dependency for machine reading</li>
+        </ul>
+      </div>
+      <div class="spec-card">
+        <h4>ERPNext Documents Created</h4>
+        <ul>
+          <li>Stock Entry (inward material from weighbridge)</li>
+          <li>Manufacturing Log (production counts)</li>
+          <li>Work Order Progress (real-time)</li>
+          <li>Quality Inspection (from machine parameters)</li>
+          <li>Maintenance Log (from downtime events)</li>
+          <li>Custom documents per vertical</li>
+        </ul>
+      </div>
+      <div class="spec-card">
+        <h4>Data Handling</h4>
+        <ul>
+          <li>Configurable dead-band filtering</li>
+          <li>Outlier and spike rejection</li>
+          <li>Data gap detection and alerting</li>
+          <li>Historical data backfill on reconnect</li>
+          <li>Raw data archive for audit trail</li>
+          <li>Timezone-aware timestamps</li>
+        </ul>
+      </div>
+      <div class="spec-card">
+        <h4>Network Requirements</h4>
+        <ul>
+          <li>Plant LAN access to target machines</li>
+          <li>Outbound HTTPS to ERPNext server</li>
+          <li>No inbound firewall ports required</li>
+          <li>Works with Frappe Cloud and self-hosted</li>
+          <li>VPN option for air-gapped plants</li>
+        </ul>
+      </div>
+      <div class="spec-card">
+        <h4>Security</h4>
+        <ul>
+          <li>Read-only access to machine PLCs</li>
+          <li>No write commands to production equipment</li>
+          <li>TLS 1.2+ for all ERPNext communication</li>
+          <li>API key authentication (not credentials)</li>
+          <li>Audit log of all data posted to ERPNext</li>
+        </ul>
+      </div>
+      <div class="spec-card">
+        <h4>Deployment Timeline</h4>
+        <ul>
+          <li>Site assessment: 1 day on-site</li>
+          <li>Protocol testing: 2–3 days</li>
+          <li>ERPNext mapping configuration: 3–5 days</li>
+          <li>Parallel run and validation: 5–10 days</li>
+          <li>Go-live: 2–4 weeks total</li>
+        </ul>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section class="faq-section">
+  <div class="container">
+    <div class="text-center">
+      <div class="section-eyebrow">FAQs</div>
+      <h2 class="section-title">Plant Managers and IT Teams Ask Us These Every Time</h2>
+    </div>
+    <div class="faq-list">
+      <div class="faq-item open">
+        <div class="faq-q" onclick="this.parentElement.classList.toggle('open')">Will connecting to our PLC affect machine performance or production safety?</div>
+        <div class="faq-a">No. The integration is strictly read-only — our connector reads data from the PLC's data registers but never writes commands or changes any values. This is a fundamental design principle we do not compromise on. Production equipment safety depends on its control systems operating in isolation from external software, and our connector architecture respects that. We connect to the communication ports of PLCs, not to the control logic. The machines continue running exactly as they were before — the connector is invisible to them.</div>
+      </div>
+      <div class="faq-item">
+        <div class="faq-q" onclick="this.parentElement.classList.toggle('open')">Our weighbridge is 15 years old. Can you still integrate it with ERPNext?</div>
+        <div class="faq-a">Almost certainly yes. Weighbridge indicators that were manufactured from the mid-1990s onward almost universally support RS232 serial output — a standard protocol that our connector handles. As long as the weighbridge can output weight data in a serial stream (which virtually all commercial weighbridge indicators can), the integration is possible regardless of the indicator's age. We have successfully connected weighbridges from Avery, Fairbanks, Mettler Toledo, Rice Lake, and dozens of Indian manufacturers — including some that are 20 years old. A site visit to verify the output specification is the first step.</div>
+      </div>
+      <div class="faq-item">
+        <div class="faq-q" onclick="this.parentElement.classList.toggle('open')">What happens to machine data if the internet goes down and ERPNext is cloud-hosted?</div>
+        <div class="faq-a">Our edge gateway agent runs on a local server or mini-PC in your plant and buffers all machine data locally during internet outages. The buffer holds data for up to 72 hours depending on storage configuration. When internet connectivity is restored, all buffered data is pushed to ERPNext in chronological order with the original timestamps preserved. From a reporting perspective, the data appears as if it was never interrupted. For plants with frequent connectivity issues, we recommend a self-hosted ERPNext on the local network as a more resilient architecture.</div>
+      </div>
+      <div class="faq-item">
+        <div class="faq-q" onclick="this.parentElement.classList.toggle('open')">We have different types of machines from different manufacturers across our plant. Can they all connect to ERPNext simultaneously?</div>
+        <div class="faq-a">Yes — this is actually the typical scenario. Most manufacturing plants have a mix of machine makes, vintages, and protocols. Our edge gateway is multi-protocol: it can simultaneously read from a Siemens PLC via OPC-UA, a weighbridge via RS232, RFID readers via TCP/IP, and IoT sensors via MQTT — all at the same time, all feeding into the correct ERPNext documents. The mapping between each machine's data and the corresponding ERPNext fields is configured individually for each machine type, which is part of the site assessment and setup process.</div>
+      </div>
+      <div class="faq-item">
+        <div class="faq-q" onclick="this.parentElement.classList.toggle('open')">We currently use a SCADA system to monitor our plant. Do we need to replace it to use ERPNext integration?</div>
+        <div class="faq-a">No — and we actively recommend keeping your SCADA system in place. SCADA is optimized for real-time plant visualization and operator HMI functions that ERPNext is not designed to replace. What the integration does is pull relevant production summary data from SCADA into ERPNext — shift totals, batch records, quality summaries, downtime logs — so that the business layer of your operation (costing, scheduling, invoicing, inventory) has accurate data without manual re-entry from SCADA screens into ERPNext. The two systems co-exist and serve their respective purposes.</div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section class="related-section">
+  <div class="container">
+    <div class="section-eyebrow">Related Integrations</div>
+    <h2 class="section-title">Industrial IoT Works Best Alongside These</h2>
+    <div class="related-grid">
+      <div class="related-card">
+        <h4>📊 Analytics Connectors</h4>
+        <p>Machine data in ERPNext powers live OEE, production, and quality dashboards in Power BI or Metabase — visible to management without opening ERPNext.</p>
+        <a href="/services/integrations/analytics/">View Analytics Pack →</a>
+      </div>
+      <div class="related-card">
+        <h4>💬 Communication Connectors</h4>
+        <p>Machine alerts — temperature breaches, rejection spikes, downtime events — sent automatically via WhatsApp to the right person the moment they occur.</p>
+        <a href="/services/integrations/communication/">View Communication Pack →</a>
+      </div>
+      <div class="related-card">
+        <h4>🤖 AI Connectors</h4>
+        <p>AI analyses machine data patterns in ERPNext to predict quality issues and recommend maintenance schedules before breakdowns occur.</p>
+        <a href="/services/integrations/ai-document/">View AI Pack →</a>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section class="cta-section">
+  <div class="container">
+    <h2>Your Machines Already Know Everything. ERPNext Should Too.</h2>
+    <p>Tell us what machines you run, what protocols they use, and what data you wish ERPNext had automatically. We will assess your plant and tell you exactly what is possible.</p>
+    <a href="/company/contact-us.html" class="btn-primary" style="font-size:1rem;padding:14px 32px">Book a Free Plant Assessment →</a>
+  </div>
+</section>
+<div id="footer"></div>
+<script>document.querySelectorAll('.faq-q').forEach(q=>{q.addEventListener('click',()=>{const item=q.parentElement;document.querySelectorAll('.faq-item').forEach(i=>{if(i!==item)i.classList.remove('open')});item.classList.toggle('open')})});</script>
+<script>
+fetch("/header.html")
+    .then(res => res.text())
+    .then(data => {
+        document.getElementById("header").innerHTML = data;
+    });
+
+fetch("/footer.html")
+    .then(res => res.text())
+    .then(data => {
+        document.getElementById("footer").innerHTML = data;
+    });
+</script>
+<!-- ================= TEMPLATE JS ================= -->
+    <!--<< All JS Plugins >>-->
+    <script data-cfasync="false" src="../../cdn-cgi/scripts/5c5dd728/cloudflare-static/email-decode.min.js"></script>
+    <script src="/../assets/quantbit_website/js/jquery-3.7.1.min.js"></script>
+    <!--<< Viewport Js >>-->
+    <script src="/../assets/quantbit_website/js/viewport.jquery.js"></script>
+    <!--<< Bootstrap Js >>-->
+    <script src="/../assets/quantbit_website/js/bootstrap.bundle.min.js"></script>
+    <!--<< Nice Select Js >>-->
+    <script src="/../assets/quantbit_website/js/jquery.nice-select.min.js"></script>
+    <!--<< Waypoints Js >>-->
+    <script src="/../assets/quantbit_website/js/jquery.waypoints.js"></script>
+    <!--<< Counterup Js >>-->
+    <script src="/../assets/quantbit_website/js/jquery.counterup.min.js"></script>
+    <!--<< Slick Js >>-->
+    <script src="/../assets/quantbit_website/js/slick.min.js"></script>
+    <!--<< Slick Animation Js >>-->
+    <script src="/../assets/quantbit_website/js/slick-animation.min.js"></script>
+    <!--<< MeanMenu Js >>-->
+    <script src="/../assets/quantbit_website/js/jquery.meanmenu.min.js"></script>
+    <!--<< Magnific Popup Js >>-->
+    <script src="/../assets/quantbit_website/js/jquery.magnific-popup.min.js"></script>
+    <!--<< Wow Animation Js >>-->
+    <script src="/../assets/quantbit_website/js/wow.min.js"></script>
+    <!--<< Circle Progress Js >>-->
+    <script src="/../assets/quantbit_website/js/circle-progress.js"></script>
+    <!--<< Main.js >>-->
+    <script src="/../assets/quantbit_website/js/main.js"></script>
+    <script defer
+        src="../../../static.cloudflareinsights.com/beacon.min.js/v8c78df7c7c0f484497ecbca7046644da1771523124516"
+        integrity="sha512-8DS7rgIrAmghBFwoOTujcf6D9rXvH8xm8JQ1Ja01h9QX8EzXldiszufYa4IFfKdLUKTTrnSFXLDkUEOTrZQ8Qg=="
+        data-cf-beacon='{"version":"2024.11.0","token":"90f7972af14a48b4add7da2b74f5d675","r":1,"server_timing":{"name":{"cfCacheStatus":true,"cfEdge":true,"cfExtPri":true,"cfL4":true,"cfOrigin":true,"cfSpeedBrain":true},"location_startswith":null}}'
+        crossorigin="anonymous"></script>
+</body>
+</html>

@@ -1,0 +1,428 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<title>Point of Sale (POS) | ERPNext Module | Quantbit Technologies</title>
+<meta name="description" content="Run fast, GST-compliant retail billing at the counter — online or offline — with ERPNext's built-in POS that syncs inventory, customer loyalty, and account">
+<meta name="keywords" content="ERPNext POS India, ERPNext point of sale GST, ERPNext offline POS retail, ERPNext multi-outlet POS, ERPNext POS loyalty program, ERPNext billing software India, ERPNext POS Oman GCC, ERPNext UPI payment POS">
+<link rel="canonical" href="https://quantbit.io/services/erpnext-point-of-sale/">
+<script type="application/ld+json">{
+  "@context":"https://schema.org",
+  "@graph":[
+    {"@type":"BreadcrumbList","itemListElement":[
+      {"@type":"ListItem","position":1,"name":"Home","item":"https://quantbit.io"},
+      {"@type":"ListItem","position":2,"name":"ERPNext Services","item":"https://quantbit.io/services/"},
+      {"@type":"ListItem","position":3,"name":"ERPNext Point of Sale (POS)","item":"https://quantbit.io/services/erpnext-point-of-sale/"}
+    ]},
+    {"@type":"FAQPage","mainEntity":[{"@type":"Question","name":"Does ERPNext POS work without internet connection?","acceptedAnswer":{"@type":"Answer","text":"Yes. ERPNext POS has an offline mode that queues all transactions locally in the browser when internet is unavailable. As soon as connectivity is restored, all transactions sync automatically to the ERPNext server without any manual intervention or re-entry."}},
+{"@type":"Question","name":"Can ERPNext POS handle multiple payment modes on one bill?","acceptedAnswer":{"@type":"Answer","text":"Yes. ERPNext POS allows split payment — a customer can pay part in cash, part via UPI, and redeem loyalty points on the same bill. All payment modes are recorded and reconciled in the shift-end cash report."}},
+{"@type":"Question","name":"Can we manage multiple retail outlets from one ERPNext system?","acceptedAnswer":{"@type":"Answer","text":"Yes. ERPNext supports multiple POS profiles — one per outlet or counter — within a single ERPNext instance. Each outlet has its own inventory warehouse, cashier assignments, and sales reports, while head office sees consolidated data across all locations in real time."}},
+{"@type":"Question","name":"Does ERPNext POS support customer loyalty programs?","acceptedAnswer":{"@type":"Answer","text":"Yes. ERPNext has a built-in loyalty program where customers earn points at a configured rate per transaction. Points can be redeemed at the counter against the bill value. Customer-wise loyalty history, balance, and redemption reports are available."}},
+{"@type":"Question","name":"How does the cashier shift management work in ERPNext POS?","acceptedAnswer":{"@type":"Answer","text":"At shift start, the cashier enters the opening cash denomination. During the shift, all transactions are recorded against their user. At shift end, ERPNext calculates the expected closing cash based on opening cash plus cash sales minus cash returns, and the cashier enters the actual cash counted — with any variance flagged immediately."}},
+{"@type":"Question","name":"How long does ERPNext POS implementation take with Quantbit?","acceptedAnswer":{"@type":"Answer","text":"A standalone POS implementation for a single outlet with item master, payment modes, GST setup, and cashier training typically takes 2 to 3 weeks. Multi-outlet rollouts with loyalty programs and central reporting take 4 to 8 weeks depending on outlet count."}}]}
+  ]
+}</script>
+<style>/* Quantbit ERPNext Module Pages — Shared Design System */
+:root {
+  --accent: #1a5fd4;
+  --accent-dark: #1349a8;
+  --teal: #0b7a5e;
+  --teal-light: #e6f4f0;
+  --amber: #b35e0a;
+  --amber-light: #fef3e2;
+  --dark: #0f2d47;
+  --mid: #1e4a6e;
+  --text: #1a2a38;
+  --muted: #4a6278;
+  --border: #d0dce8;
+  --bg: #f5f8fc;
+  --white: #ffffff;
+  --radius: 10px;
+  --shadow: 0 2px 16px rgba(15,45,71,0.10);
+  --shadow-lg: 0 6px 32px rgba(15,45,71,0.14);
+}
+*,*::before,*::after{box-sizing:border-box;margin:0;padding:0}
+html{scroll-behavior:smooth}
+body{font-family:'Segoe UI',system-ui,-apple-system,sans-serif;color:var(--text);background:var(--white);line-height:1.65;font-size:16px}
+.site-nav{background:var(--dark);padding:0 32px;display:flex;align-items:center;justify-content:space-between;height:60px;position:sticky;top:0;z-index:100}
+.nav-logo{color:#fff;font-weight:700;font-size:1.1rem;text-decoration:none;letter-spacing:.5px}
+.nav-links{display:flex;gap:24px;list-style:none}
+.nav-links a{color:rgba(255,255,255,.82);text-decoration:none;font-size:.9rem;font-weight:500;transition:color .2s}
+.nav-links a:hover{color:#fff}
+.nav-cta{background:var(--accent);color:#fff!important;padding:7px 18px;border-radius:6px;font-weight:600!important}
+.breadcrumb{background:var(--bg);border-bottom:1px solid var(--border);padding:10px 32px;font-size:.82rem;color:var(--muted)}
+.breadcrumb a{color:var(--accent);text-decoration:none}
+.breadcrumb a:hover{text-decoration:underline}
+.hero{background:linear-gradient(135deg,var(--dark) 0%,var(--mid) 60%,#1a5fd4 100%);color:#fff;padding:72px 32px 64px;position:relative;overflow:hidden}
+.hero::before{content:'';position:absolute;right:-80px;top:-80px;width:420px;height:420px;background:rgba(255,255,255,.04);border-radius:50%;pointer-events:none}
+.hero-inner{max-width:1100px;margin:0 auto;display:grid;grid-template-columns:1fr 380px;gap:56px;align-items:center}
+.hero-badge{display:inline-flex;align-items:center;gap:8px;background:rgba(255,255,255,.12);border:1px solid rgba(255,255,255,.22);border-radius:40px;padding:5px 14px;font-size:.78rem;font-weight:600;letter-spacing:.8px;text-transform:uppercase;margin-bottom:18px;color:rgba(255,255,255,.9)}
+.hero h1{font-size:clamp(1.9rem,3.5vw,2.7rem);font-weight:800;line-height:1.2;margin-bottom:16px}
+.hero h1 span{color:#7eb8ff}
+.hero-desc{font-size:1.05rem;color:rgba(255,255,255,.82);margin-bottom:28px;max-width:540px}
+.hero-tags{display:flex;flex-wrap:wrap;gap:8px;margin-bottom:32px}
+.hero-tag{background:rgba(255,255,255,.1);border:1px solid rgba(255,255,255,.2);border-radius:20px;padding:4px 12px;font-size:.78rem;color:rgba(255,255,255,.85)}
+.hero-btns{display:flex;gap:14px;flex-wrap:wrap}
+.btn-primary{background:var(--accent);color:#fff;padding:12px 26px;border-radius:8px;font-weight:700;text-decoration:none;font-size:.95rem;transition:background .2s,transform .15s;display:inline-block}
+.btn-primary:hover{background:var(--accent-dark);transform:translateY(-1px)}
+.btn-ghost{background:transparent;color:#fff;padding:11px 24px;border:2px solid rgba(255,255,255,.4);border-radius:8px;font-weight:600;text-decoration:none;font-size:.95rem;transition:.2s;display:inline-block}
+.btn-ghost:hover{border-color:#fff;background:rgba(255,255,255,.1)}
+.hero-card{background:rgba(255,255,255,.1);border:1px solid rgba(255,255,255,.18);border-radius:14px;padding:28px;backdrop-filter:blur(8px)}
+.hero-card h3{font-size:1rem;font-weight:700;margin-bottom:16px;color:rgba(255,255,255,.92)}
+.hero-stat{display:flex;align-items:center;gap:12px;margin-bottom:14px;padding-bottom:14px;border-bottom:1px solid rgba(255,255,255,.12)}
+.hero-stat:last-child{margin-bottom:0;padding-bottom:0;border-bottom:none}
+.stat-icon{width:36px;height:36px;background:rgba(255,255,255,.15);border-radius:8px;display:flex;align-items:center;justify-content:center;font-size:1.1rem;flex-shrink:0}
+.stat-val{font-size:1.2rem;font-weight:800;color:#fff}
+.stat-lbl{font-size:.75rem;color:rgba(255,255,255,.7);line-height:1.3}
+.section{padding:64px 32px}
+.section-alt{background:var(--bg)}
+.container{max-width:1100px;margin:0 auto}
+.section-label{font-size:.75rem;font-weight:700;letter-spacing:1.2px;text-transform:uppercase;color:var(--accent);margin-bottom:8px}
+.section-title{font-size:clamp(1.5rem,2.8vw,2.1rem);font-weight:800;color:var(--dark);margin-bottom:12px;line-height:1.25}
+.section-sub{font-size:1.02rem;color:var(--muted);max-width:640px;margin-bottom:44px;line-height:1.7}
+.feature-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(280px,1fr));gap:24px}
+.feature-card{background:var(--white);border:1px solid var(--border);border-radius:var(--radius);padding:26px;transition:box-shadow .2s,transform .2s}
+.feature-card:hover{box-shadow:var(--shadow);transform:translateY(-3px)}
+.feature-icon{width:44px;height:44px;border-radius:10px;background:linear-gradient(135deg,var(--accent),var(--mid));display:flex;align-items:center;justify-content:center;font-size:1.3rem;margin-bottom:14px}
+.feature-card h3{font-size:1rem;font-weight:700;color:var(--dark);margin-bottom:8px}
+.feature-card p{font-size:.88rem;color:var(--muted);line-height:1.6}
+.feature-card ul{margin-top:10px;padding-left:0;list-style:none}
+.feature-card ul li{font-size:.85rem;color:var(--muted);padding:3px 0 3px 16px;position:relative;line-height:1.5}
+.feature-card ul li::before{content:'✓';position:absolute;left:0;color:var(--teal);font-weight:700}
+.reports-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(240px,1fr));gap:20px}
+.report-card{background:var(--white);border:1px solid var(--border);border-left:4px solid var(--accent);border-radius:var(--radius);padding:20px 22px}
+.report-card h4{font-size:.92rem;font-weight:700;color:var(--dark);margin-bottom:6px}
+.report-card p{font-size:.82rem;color:var(--muted);line-height:1.55}
+.report-tag{display:inline-block;background:var(--bg);border:1px solid var(--border);border-radius:4px;padding:2px 8px;font-size:.72rem;font-weight:600;color:var(--accent);margin-top:8px}
+.roles-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(200px,1fr));gap:16px}
+.role-pill{background:var(--white);border:1px solid var(--border);border-radius:var(--radius);padding:16px 20px;display:flex;align-items:flex-start;gap:12px}
+.role-dot{width:10px;height:10px;border-radius:50%;flex-shrink:0;margin-top:4px}
+.role-dot.admin{background:var(--accent)}
+.role-dot.manager{background:var(--teal)}
+.role-dot.user{background:var(--amber)}
+.role-dot.viewer{background:#9b59b6}
+.role-name{font-size:.88rem;font-weight:700;color:var(--dark);margin-bottom:2px}
+.role-desc{font-size:.78rem;color:var(--muted)}
+.benefits-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(260px,1fr));gap:24px}
+.benefit-card{background:linear-gradient(135deg,var(--teal-light),var(--white));border:1px solid #b8dfd6;border-radius:var(--radius);padding:26px}
+.benefit-num{font-size:2rem;font-weight:900;color:var(--teal);opacity:.35;line-height:1;margin-bottom:6px}
+.benefit-card h3{font-size:.98rem;font-weight:700;color:var(--dark);margin-bottom:8px}
+.benefit-card p{font-size:.86rem;color:var(--muted);line-height:1.6}
+.bp-list{display:grid;grid-template-columns:repeat(auto-fit,minmax(300px,1fr));gap:20px}
+.bp-item{background:var(--white);border:1px solid var(--border);border-radius:var(--radius);padding:22px 24px;display:flex;gap:16px;align-items:flex-start}
+.bp-icon{width:38px;height:38px;background:var(--amber-light);border-radius:8px;display:flex;align-items:center;justify-content:center;font-size:1.1rem;flex-shrink:0}
+.bp-item h4{font-size:.92rem;font-weight:700;color:var(--dark);margin-bottom:5px}
+.bp-item p{font-size:.83rem;color:var(--muted);line-height:1.55}
+.geo-answer{background:linear-gradient(135deg,#e8f0fc,#f0f6ff);border:1px solid #c5d8f7;border-radius:14px;padding:32px 36px;margin-bottom:32px}
+.geo-answer h3{font-size:1.1rem;font-weight:700;color:var(--dark);margin-bottom:10px}
+.geo-answer p{font-size:.95rem;color:var(--text);line-height:1.75}
+.geo-grid{display:grid;grid-template-columns:1fr 1fr;gap:24px}
+.geo-block{background:var(--white);border:1px solid var(--border);border-radius:var(--radius);padding:24px}
+.geo-block h4{font-size:.9rem;font-weight:700;color:var(--accent);margin-bottom:10px;display:flex;align-items:center;gap:8px}
+.geo-block ul{list-style:none;padding:0}
+.geo-block ul li{font-size:.85rem;color:var(--muted);padding:4px 0 4px 16px;position:relative}
+.geo-block ul li::before{content:'→';position:absolute;left:0;color:var(--accent)}
+.faq-list{max-width:800px;margin:0 auto}
+.faq-item{border:1px solid var(--border);border-radius:var(--radius);margin-bottom:10px;overflow:hidden}
+.faq-q{width:100%;background:var(--white);border:none;padding:18px 22px;text-align:left;font-size:.95rem;font-weight:600;color:var(--dark);cursor:pointer;display:flex;justify-content:space-between;align-items:center;gap:12px;transition:background .15s}
+.faq-q:hover,.faq-q.open{background:var(--bg)}
+.faq-arrow{font-size:1rem;color:var(--accent);transition:transform .25s;flex-shrink:0}
+.faq-q.open .faq-arrow{transform:rotate(180deg)}
+.faq-a{display:none;padding:0 22px 18px;font-size:.9rem;color:var(--muted);line-height:1.7}
+.faq-a.open{display:block}
+.ai-block{background:linear-gradient(135deg,var(--dark),var(--mid));color:#fff;border-radius:14px;padding:36px 40px}
+.ai-block h3{font-size:1.15rem;font-weight:700;margin-bottom:14px;color:#7eb8ff}
+.ai-qa{margin-bottom:18px;padding-bottom:18px;border-bottom:1px solid rgba(255,255,255,.1)}
+.ai-qa:last-child{margin-bottom:0;padding-bottom:0;border-bottom:none}
+.ai-qa .q{font-size:.88rem;font-weight:600;color:rgba(255,255,255,.7);margin-bottom:4px}
+.ai-qa .a{font-size:.9rem;color:rgba(255,255,255,.88);line-height:1.65}
+.cta-section{background:linear-gradient(135deg,var(--dark) 0%,var(--mid) 100%);color:#fff;padding:72px 32px;text-align:center}
+.cta-section h2{font-size:clamp(1.6rem,3vw,2.3rem);font-weight:800;margin-bottom:14px}
+.cta-section p{font-size:1.05rem;color:rgba(255,255,255,.8);max-width:580px;margin:0 auto 32px}
+.cta-btns{display:flex;gap:16px;justify-content:center;flex-wrap:wrap}
+.btn-white{background:#fff;color:var(--dark);padding:13px 28px;border-radius:8px;font-weight:700;text-decoration:none;font-size:.97rem;transition:.2s;display:inline-block}
+.btn-white:hover{background:#e8f0fc}
+.cta-trust{margin-top:22px;font-size:.82rem;color:rgba(255,255,255,.55)}
+.site-footer{background:#0a1e2e;color:rgba(255,255,255,.6);padding:40px 32px 24px;text-align:center;font-size:.83rem}
+.site-footer a{color:rgba(255,255,255,.5);text-decoration:none}
+.table-wrap{overflow-x:auto;border-radius:var(--radius);border:1px solid var(--border)}
+table{width:100%;border-collapse:collapse}
+th{background:var(--dark);color:#fff;padding:12px 16px;text-align:left;font-size:.82rem;font-weight:600;letter-spacing:.4px}
+td{padding:11px 16px;font-size:.87rem;color:var(--text);border-bottom:1px solid var(--border)}
+tr:last-child td{border-bottom:none}
+tr:nth-child(even) td{background:var(--bg)}
+.seo-box{background:var(--bg);border:1px solid var(--border);border-radius:var(--radius);padding:24px 28px}
+.seo-kw{display:flex;flex-wrap:wrap;gap:8px;margin-top:12px}
+.seo-kw span{background:var(--white);border:1px solid var(--border);border-radius:4px;padding:4px 10px;font-size:.78rem;color:var(--accent);font-weight:600}
+@media(max-width:768px){
+  .hero-inner{grid-template-columns:1fr}
+  .hero-card{display:none}
+  .geo-grid{grid-template-columns:1fr}
+  .site-nav{padding:0 16px}
+  .nav-links{display:none}
+  .section{padding:48px 16px}
+  .hero{padding:48px 16px 44px}
+  .ai-block{padding:24px 20px}
+  .geo-answer{padding:22px 20px}
+}
+</style>
+</style>
+  <!-- TEMPLATE CSS (IMPORTANT) -->
+  <link rel="stylesheet" href="/../assets/quantbit_website/css/bootstrap.min.css">
+  <link rel="stylesheet" href="/../assets/quantbit_website/css/font-awesome.css">
+  <link rel="stylesheet" href="/../assets/quantbit_website/css/animate.css">
+  <link rel="stylesheet" href="/../assets/quantbit_website/css/magnific-popup.css">
+  <link rel="stylesheet" href="/../assets/quantbit_website/css/meanmenu.css">
+  <link rel="stylesheet" href="/../assets/quantbit_website/css/slick.css">
+  <link rel="stylesheet" href="/../assets/quantbit_website/css/nice-select.css">
+  <link rel="stylesheet" href="/../assets/quantbit_website/css/main.css">
+  <link rel="stylesheet" href="style.css">
+  <link rel="stylesheet" href="/assets/quantbit_website/css/_shared.css">
+
+
+  <!-- OPTIONAL CUSTOM -->
+  <link rel="stylesheet" href="/../assets/quantbit_website/css/hrms.css">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
+  <!-- Google Tag Manager -->
+  <script>(function (w, d, s, l, i) {
+      w[l] = w[l] || []; w[l].push({
+        'gtm.start':
+          new Date().getTime(), event: 'gtm.js'
+      }); var f = d.getElementsByTagName(s)[0],
+        j = d.createElement(s), dl = l != 'dataLayer' ? '&l=' + l : ''; j.async = true; j.src =
+          'https://www.googletagmanager.com/gtm.js?id=' + i + dl; f.parentNode.insertBefore(j, f);
+    })(window, document, 'script', 'dataLayer', 'GTM-P98Z6G8D');</script>
+  <!-- End Google Tag Manager -->
+</head>
+<body>
+<!-- Google Tag Manager (noscript) -->
+  <noscript><iframe src="https://www.googletagmanager.com/ns.html?id=GTM-P98Z6G8D" height="0" width="0"
+      style="display:none;visibility:hidden"></iframe></noscript>
+  <!-- End Google Tag Manager (noscript) -->
+  <!-- NAV -->
+  <div id="header"></div>
+<section class="hero">
+  <div class="hero-inner">
+    <div>
+      <div class="hero-badge">&#128311; ERPNext Module</div>
+      <h1>ERPNext <span>Point of Sale (POS)</span><br>for Indian &amp; GCC Businesses</h1>
+      <p class="hero-desc">Run fast, GST-compliant retail billing at the counter — online or offline — with ERPNext's built-in POS that syncs inventory, customer loyalty, and accounts in real time across every outlet.</p>
+      <div class="hero-tags"><span class="hero-tag">Offline POS</span><span class="hero-tag">Multi-Outlet</span><span class="hero-tag">GST Billing</span><span class="hero-tag">Customer Loyalty</span><span class="hero-tag">Barcode Scanning</span><span class="hero-tag">Shift Management</span><span class="hero-tag">Real-time Inventory</span><span class="hero-tag">Multi-Payment</span></div>
+      <div class="hero-btns">
+        <a href="/company/contact-us.html" class="btn-primary">Book Free Demo</a>
+        <a href="/services/" class="btn-ghost">All ERPNext Modules</a>
+      </div>
+    </div>
+    <div class="hero-card">
+      <h3>Module Snapshot</h3><div class="hero-stat"><div class="stat-icon">&#128246;</div><div><div class="stat-val">Offline POS</div><div class="stat-lbl">Works without internet connection</div></div></div>
+<div class="hero-stat"><div class="stat-icon">&#128104;&#8205;&#128187;</div><div><div class="stat-val">Multi-Outlet</div><div class="stat-lbl">Centralised multi-store management</div></div></div>
+<div class="hero-stat"><div class="stat-icon">&#129534;</div><div><div class="stat-val">GST Ready</div><div class="stat-lbl">Auto GST on every bill</div></div></div>
+<div class="hero-stat"><div class="stat-icon">&#128176;</div><div><div class="stat-val">Multi-Payment</div><div class="stat-lbl">Cash, card, UPI, credit note</div></div></div>
+</div>
+  </div>
+</section>
+<section class="section">
+  <div class="container">
+    <div class="section-label">Overview</div>
+    <h2 class="section-title">What is ERPNext Point of Sale (POS)?</h2>
+    <p style="font-size:.97rem;color:var(--muted);line-height:1.85;max-width:840px">ERPNext Point of Sale is a modern browser-based POS system that works on any tablet, laptop, or touchscreen counter — online or offline — without additional POS software licensing. The POS is built directly into ERPNext, meaning every sale at the counter instantly updates inventory levels, captures GST, records customer data, and creates the accounting entries in real time — with zero manual synchronisation between your billing software and back office. For retail businesses in India, ERPNext POS generates GST-compliant receipts with HSN codes, correct tax breakdowns, and optional e-invoice generation. UPI, credit card, cash, and loyalty points can be accepted in any combination on the same bill. Customer loyalty programs with points accumulation and redemption are built-in. Multi-outlet management lets head office see sales, inventory, and performance for every store from a central dashboard — eliminating the daily manual sales report consolidation that most retail chains still do. Offline mode ensures billing continues even when internet goes down — transactions queue and sync automatically when connectivity is restored. For restaurant and quick-service businesses, table-wise ordering, KOT printing, and split billing are available. For the GCC, ERPNext POS supports OMR, AED, and multi-currency billing, VAT-compliant receipts, and Arabic print formats. Quantbit Technologies configures POS profiles per outlet, payment modes, tax templates, customer groups, loyalty programs, and cashier shift management — ensuring your retail operations are live, compliant, and connected from Day 1.</p>
+  </div>
+</section>
+<section class="section section-alt">
+  <div class="container">
+    <div class="section-label">Features &amp; Functions</div>
+    <h2 class="section-title">Core Capabilities</h2>
+    <p class="section-sub">Every feature built into ERPNext — no extra licensing. Quantbit configures these for your exact processes.</p>
+    <div class="feature-grid"><div class="feature-card"><div class="feature-icon">&#128246;</div><h3>Offline-First POS</h3><p>Bills continue even without internet; auto-sync on reconnect.</p><ul><li>Browser-based — no software installation</li><li>Offline transaction queue with sync</li><li>Touchscreen and keyboard optimised UI</li><li>Auto bill number sequence per outlet</li></ul></div>
+<div class="feature-card"><div class="feature-icon">&#129534;</div><h3>GST-Compliant Billing</h3><p>Every receipt carries correct GST breakdown automatically.</p><ul><li>HSN code on every line item</li><li>CGST/SGST or IGST based on customer state</li><li>GST receipt with tax breakdown and GSTIN</li><li>Optional e-invoice for B2B POS transactions</li></ul></div>
+<div class="feature-card"><div class="feature-icon">&#128176;</div><h3>Multi-Payment Modes</h3><p>Accept any combination of payments on one bill.</p><ul><li>Cash with change calculation</li><li>UPI, debit, credit card</li><li>Customer loyalty point redemption</li><li>Credit note and gift voucher acceptance</li></ul></div>
+<div class="feature-card"><div class="feature-icon">&#128104;&#8205;&#128187;</div><h3>Multi-Outlet Management</h3><p>Central control over all stores from one ERPNext instance.</p><ul><li>POS profile per outlet with unique settings</li><li>Outlet-wise sales and inventory reports</li><li>Inter-outlet stock transfer tracking</li><li>Centralised product and pricing updates</li></ul></div>
+<div class="feature-card"><div class="feature-icon">&#127775;</div><h3>Customer Loyalty Program</h3><p>Earn and redeem points to drive repeat visits.</p><ul><li>Points earn rate per item or category</li><li>Minimum redemption threshold</li><li>Customer-wise loyalty history and balance</li><li>Birthday and anniversary offers</li></ul></div>
+<div class="feature-card"><div class="feature-icon">&#128203;</div><h3>Shift & Cashier Management</h3><p>Track cash and sales accountability per cashier shift.</p><ul><li>Shift opening with cash denomination entry</li><li>Shift-end reconciliation: cash expected vs actual</li><li>Per-cashier sales and payment summary</li><li>Shortage and excess reporting</li></ul></div>
+<div class="feature-card"><div class="feature-icon">&#128269;</div><h3>Barcode & Item Search</h3><p>Fast product lookup for efficient billing.</p><ul><li>Barcode scanner integration</li><li>Item search by name, code, or category</li><li>Recently sold and favourite items shortcut</li><li>Batch/serial selection for tracked items</li></ul></div>
+<div class="feature-card"><div class="feature-icon">&#128202;</div><h3>POS Analytics</h3><p>Store performance and customer insights for management.</p><ul><li>Daily, weekly, monthly sales by outlet</li><li>Item-wise and category-wise sales trend</li><li>Peak hour and day analysis</li><li>Customer purchase frequency report</li></ul></div>
+</div>
+  </div>
+</section>
+<section class="section">
+  <div class="container">
+    <div class="section-label">Reports &amp; Dashboards</div>
+    <h2 class="section-title">Built-in Reports &amp; Analytics</h2>
+    <p class="section-sub">Decision-ready reports available out-of-the-box, fully customisable by Quantbit's certified team.</p>
+    <div class="reports-grid"><div class="report-card"><h4>Daily Sales Summary</h4><p>Total sales, returns, and net revenue by payment mode for each outlet and cashier.</p><span class="report-tag">Store Manager / Finance</span></div>
+<div class="report-card"><h4>Shift-end Cash Report</h4><p>Expected cash based on sales versus actual cash counted — with shortage or excess.</p><span class="report-tag">Cashier / Manager</span></div>
+<div class="report-card"><h4>Item-wise Sales Report</h4><p>Quantity and value sold per product, category, and brand for merchandising decisions.</p><span class="report-tag">Store / Head Office</span></div>
+<div class="report-card"><h4>Customer Loyalty Report</h4><p>Points earned, redeemed, and balance per customer for loyalty program management.</p><span class="report-tag">Marketing / CRM</span></div>
+<div class="report-card"><h4>GST POS Invoice Summary</h4><p>Tax collected by rate for GST return input — segregated by CGST, SGST, IGST.</p><span class="report-tag">Accounts / Tax</span></div>
+<div class="report-card"><h4>Outlet Comparison Report</h4><p>Side-by-side sales, average bill value, and footfall proxy for all outlets.</p><span class="report-tag">Management / Operations</span></div>
+<div class="report-card"><h4>Slow-moving Products Report</h4><p>Items with low sales velocity for markdown or clearance decisions.</p><span class="report-tag">Merchandising / Purchase</span></div>
+<div class="report-card"><h4>Return Analysis Report</h4><p>Returns by reason, item, and cashier with refund mode breakdown.</p><span class="report-tag">Operations / QC</span></div>
+</div>
+  </div>
+</section>
+<section class="section section-alt">
+  <div class="container">
+    <div class="section-label">User Roles</div>
+    <h2 class="section-title">Who Uses This Module?</h2>
+    <p class="section-sub">Role-based permissions ensure each user sees only what they need. Quantbit aligns roles to your org chart on Day 1.</p>
+    <div class="roles-grid"><div class="role-pill"><div class="role-dot admin"></div><div><div class="role-name">Retail Operations Head</div><div class="role-desc">POS profile config, pricing, loyalty setup, all outlet reports, user management</div></div></div>
+<div class="role-pill"><div class="role-dot manager"></div><div><div class="role-name">Store Manager</div><div class="role-desc">Open/close shift, approve returns, view store reports, manage cashiers</div></div></div>
+<div class="role-pill"><div class="role-dot user"></div><div><div class="role-name">Cashier / Billing Staff</div><div class="role-desc">Process sales, accept payments, handle returns, apply loyalty points</div></div></div>
+<div class="role-pill"><div class="role-dot viewer"></div><div><div class="role-name">Finance / Accounts</div><div class="role-desc">Read-only POS reports, GST summary, shift reconciliation for accounting</div></div></div>
+<div class="role-pill"><div class="role-dot user"></div><div><div class="role-name">Customer Service</div><div class="role-desc">Handle complaints, process exchanges, look up customer purchase history</div></div></div>
+</div>
+  </div>
+</section>
+<section class="section">
+  <div class="container">
+    <div class="section-label">Business Benefits</div>
+    <h2 class="section-title">Why Implement ERPNext Point of Sale (POS)?</h2>
+    <p class="section-sub">Quantbit's certified implementations deliver measurable outcomes — not just software installation.</p>
+    <div class="benefits-grid"><div class="benefit-card"><div class="benefit-num">01</div><h3>Billing Never Stops</h3><p>Offline mode ensures your counter never goes down when internet fails — the most common POS complaint in retail. Transactions sync automatically without any manual re-entry when connectivity returns.</p></div>
+<div class="benefit-card"><div class="benefit-num">02</div><h3>Inventory Always Accurate</h3><p>Every POS sale immediately deducts stock from the correct outlet warehouse — no end-of-day manual stock adjustment or next-day reconciliation required.</p></div>
+<div class="benefit-card"><div class="benefit-num">03</div><h3>GST at Every Counter</h3><p>Every receipt is GST-compliant with HSN codes, tax breakdown, and your GSTIN — without the cashier knowing anything about taxes. Configuration happens once at setup.</p></div>
+<div class="benefit-card"><div class="benefit-num">04</div><h3>One System for All Outlets</h3><p>Head office sees real-time sales, inventory, and performance for every store from the ERPNext dashboard — eliminating WhatsApp reports and manual Excel consolidation.</p></div>
+<div class="benefit-card"><div class="benefit-num">05</div><h3>Customer Data Built-in</h3><p>Every customer transaction is recorded with loyalty points and purchase history — giving your marketing team real data for targeted promotions and re-engagement campaigns.</p></div>
+<div class="benefit-card"><div class="benefit-num">06</div><h3>Accountable Cash Management</h3><p>Cashier shift opening, denomination recording, and end-of-shift reconciliation create accountability for every rupee handled at the counter — reducing cash leakage and discrepancies.</p></div>
+</div>
+  </div>
+</section>
+<section class="section section-alt">
+  <div class="container">
+    <div class="section-label">Best Practices</div>
+    <h2 class="section-title">Best Practices for Point of Sale (POS) in ERPNext</h2>
+    <p class="section-sub">Quantbit ensures effective adoption from Day 1 with field-tested implementation standards.</p>
+    <div class="bp-list"><div class="bp-item"><div class="bp-icon">&#128246;</div><div><h4>Test Offline Mode Before Go-live</h4><p>Simulate an internet outage before going live and confirm offline billing and sync work correctly. Finding this gap during live operations is far more disruptive.</p></div></div>
+<div class="bp-item"><div class="bp-icon">&#128269;</div><div><h4>Barcode All Products at Launch</h4><p>Invest in barcoding your product range before POS go-live. Manual item search during peak billing is slow and error-prone — barcodes reduce billing time by 60 to 80 percent.</p></div></div>
+<div class="bp-item"><div class="bp-icon">&#128197;</div><div><h4>Daily Shift Closure Without Exception</h4><p>Train cashiers to close every shift the same day. Unclosed shifts make the daily sales report inaccurate and create cash accountability gaps that compound over time.</p></div></div>
+<div class="bp-item"><div class="bp-icon">&#129534;</div><div><h4>Verify GST Template on POS Profile</h4><p>Before billing the first customer, verify that the correct GST template is applied to the POS profile and that HSN codes are assigned to every item. An incorrect template on the first day is retroactively painful to fix.</p></div></div>
+<div class="bp-item"><div class="bp-icon">&#127775;</div><div><h4>Promote Loyalty at Counter</h4><p>Train cashiers to capture the customer's mobile number at every billing opportunity. Loyalty data is your most valuable re-marketing asset — but only if you collect it systematically from day one.</p></div></div>
+<div class="bp-item"><div class="bp-icon">&#128202;</div><div><h4>Weekly Outlet Comparison Review</h4><p>Hold a weekly review of the outlet comparison report. Sales per square foot, average bill value, and return rates across outlets reveal training needs, product placement issues, and demand patterns quickly.</p></div></div>
+</div>
+  </div>
+</section>
+<section class="section">
+  <div class="container">
+    <div class="section-label">India &amp; GCC Context</div>
+    <h2 class="section-title">Compliance &amp; Regional Considerations</h2>
+    <p class="section-sub">ERPNext configured for India's statutory requirements and GCC regulatory frameworks out of the box.</p>
+    <div class="geo-answer">
+      <h3>&#127470;&#127475; For Indian Businesses</h3>
+      <p>ERPNext POS is fully compliant with India's GST requirements for retail. Every bill generates CGST and SGST for intra-state sales or IGST for inter-state supply. HSN codes are mandatory on items and print on every receipt. For businesses above the e-invoicing threshold, POS invoices for B2B customers can generate IRN and QR codes. Composition scheme retailers have a separate billing format. Daily GST collection by rate is available for GSTR-1 B2C section. UPI payment acceptance — PhonePe, Google Pay, Paytm — via QR or intent is configured through payment modes. State-wise professional tax configuration for store staff is linked to HR module.</p>
+    </div>
+    <div class="geo-grid" style="margin-top:20px">
+      <div class="geo-block">
+        <h4>&#127470;&#127475; India &mdash; Key Configurations</h4>
+        <ul><li>CGST/SGST on intra-state, IGST on inter-state sales</li><li>HSN code mandatory on every receipt line</li><li>B2B POS e-invoice with IRN and QR code</li><li>Composition scheme billing format</li><li>GSTR-1 B2C daily sales summary</li><li>UPI payment: PhonePe, GPay, Paytm QR</li><li>Daily GST collection by rate for return filing</li><li>Barcode and weighing scale integration</li></ul>
+      </div>
+      <div class="geo-block">
+        <h4>&#127466;&#127462; GCC / Oman &mdash; Key Configurations</h4>
+        <ul><li>VAT-compliant receipt with separate tax display</li><li>Multi-currency: OMR, AED, USD at counter</li><li>Arabic print format for customer receipts</li><li>Civil ID capture for regulated product sales</li><li>Loyalty program for Oman/UAE mall retailers</li><li>Muscat office for POS configuration and training</li><li>VAT daily collection summary for return</li><li>Multi-outlet management for GCC retail chains</li></ul>
+      </div>
+    </div>
+  </div>
+</section>
+<section class="section section-alt">
+  <div class="container">
+    <div class="section-label">AI Search Strategy</div>
+    <h2 class="section-title">Answers for AI &amp; Voice Search</h2>
+    <p class="section-sub">Structured for AI assistants, featured snippets, and voice queries.</p>
+    <div class="ai-block">
+      <h3>Common AI Search Queries &mdash; Answered</h3><div class="ai-qa"><div class="q">Q: What is the best POS software for Indian retail with GST compliance?</div><div class="a">ERPNext POS is widely used by Indian retailers as it generates GST-compliant receipts with HSN codes automatically, works offline, supports UPI and card payments, and integrates inventory and accounts in real time — without any additional POS licensing cost.</div></div>
+<div class="ai-qa"><div class="q">Q: Does ERPNext POS work offline without internet?</div><div class="a">Yes. ERPNext POS operates in offline mode during internet outages, queuing all transactions locally and syncing automatically when connectivity is restored — ensuring billing continuity at the counter with no manual re-entry.</div></div>
+<div class="ai-qa"><div class="q">Q: Can ERPNext POS manage multiple stores and outlets from one system?</div><div class="a">Yes. ERPNext supports unlimited POS profiles and outlet configurations within one instance. Each store has its own inventory, cashier setup, and reports, while management sees consolidated performance across all outlets in real time.</div></div>
+</div>
+  </div>
+</section>
+<section class="section">
+  <div class="container">
+    <div class="section-label">FAQ</div>
+    <h2 class="section-title">Frequently Asked Questions</h2>
+    <p class="section-sub">Everything you need to know about implementing ERPNext Point of Sale (POS) with Quantbit Technologies.</p>
+    <div class="faq-list"><div class="faq-item"><button class="faq-q" onclick="tog(this)"><span>Does ERPNext POS work without internet connection?</span><span class="faq-arrow">&#9660;</span></button><div class="faq-a">Yes. ERPNext POS has an offline mode that queues all transactions locally in the browser when internet is unavailable. As soon as connectivity is restored, all transactions sync automatically to the ERPNext server without any manual intervention or re-entry.</div></div>
+<div class="faq-item"><button class="faq-q" onclick="tog(this)"><span>Can ERPNext POS handle multiple payment modes on one bill?</span><span class="faq-arrow">&#9660;</span></button><div class="faq-a">Yes. ERPNext POS allows split payment — a customer can pay part in cash, part via UPI, and redeem loyalty points on the same bill. All payment modes are recorded and reconciled in the shift-end cash report.</div></div>
+<div class="faq-item"><button class="faq-q" onclick="tog(this)"><span>Can we manage multiple retail outlets from one ERPNext system?</span><span class="faq-arrow">&#9660;</span></button><div class="faq-a">Yes. ERPNext supports multiple POS profiles — one per outlet or counter — within a single ERPNext instance. Each outlet has its own inventory warehouse, cashier assignments, and sales reports, while head office sees consolidated data across all locations in real time.</div></div>
+<div class="faq-item"><button class="faq-q" onclick="tog(this)"><span>Does ERPNext POS support customer loyalty programs?</span><span class="faq-arrow">&#9660;</span></button><div class="faq-a">Yes. ERPNext has a built-in loyalty program where customers earn points at a configured rate per transaction. Points can be redeemed at the counter against the bill value. Customer-wise loyalty history, balance, and redemption reports are available.</div></div>
+<div class="faq-item"><button class="faq-q" onclick="tog(this)"><span>How does the cashier shift management work in ERPNext POS?</span><span class="faq-arrow">&#9660;</span></button><div class="faq-a">At shift start, the cashier enters the opening cash denomination. During the shift, all transactions are recorded against their user. At shift end, ERPNext calculates the expected closing cash based on opening cash plus cash sales minus cash returns, and the cashier enters the actual cash counted — with any variance flagged immediately.</div></div>
+<div class="faq-item"><button class="faq-q" onclick="tog(this)"><span>How long does ERPNext POS implementation take with Quantbit?</span><span class="faq-arrow">&#9660;</span></button><div class="faq-a">A standalone POS implementation for a single outlet with item master, payment modes, GST setup, and cashier training typically takes 2 to 3 weeks. Multi-outlet rollouts with loyalty programs and central reporting take 4 to 8 weeks depending on outlet count.</div></div>
+</div>
+  </div>
+</section>
+<section class="section section-alt">
+  <div class="container">
+    <div class="seo-box">
+      <p class="section-label" style="margin-bottom:8px">SEO Keywords</p>
+      <h3 style="font-size:.92rem;font-weight:700;color:var(--dark);margin-bottom:8px">Search Terms This Page Targets</h3>
+      <div class="seo-kw"><span>ERPNext POS India</span><span>ERPNext point of sale GST</span><span>ERPNext offline POS retail</span><span>ERPNext multi-outlet POS</span><span>ERPNext POS loyalty program</span><span>ERPNext billing software India</span><span>ERPNext POS Oman GCC</span><span>ERPNext UPI payment POS</span><span>ERPNext POS barcode scanner</span><span>ERPNext retail management software</span><span>open source POS software India</span><span>ERPNext POS shift management</span><span>ERPNext VAT POS Oman</span><span>ERPNext restaurant POS India</span></div>
+    </div>
+  </div>
+</section>
+<section class="cta-section">
+  <div class="container">
+    <h2>Ready to Implement ERPNext Point of Sale (POS)?</h2>
+    <p>Quantbit Technologies configures ERPNext POS for your retail or restaurant outlets — from item setup, GST templates, and payment modes to loyalty programs, cashier training, and multi-outlet dashboards — so your counters are live and compliant from Day 1.</p>
+    <div class="cta-btns">
+      <a href="/company/contact-us.html" class="btn-white">Book Free Demo</a>
+      <a href="/company/contact-us.html" class="btn-ghost">Talk to a Consultant</a>
+    </div>
+    <div class="cta-trust">&#9989; Certified ERPNext Partner &nbsp;|&nbsp; &#9989; In-house Dev Team &nbsp;|&nbsp; &#9989; India &amp; GCC Experience &nbsp;|&nbsp; &#9989; Post-go-live Support</div>
+  </div>
+</section>
+  <div id="footer"></div>
+
+<script>
+function tog(btn){
+  btn.classList.toggle('open');
+  var a=btn.nextElementSibling;
+  a.classList.toggle('open');
+}
+</script>
+<script>
+    fetch("/header.html")
+      .then(res => res.text())
+      .then(data => {
+        document.getElementById("header").innerHTML = data;
+      });
+
+    fetch("/footer.html")
+      .then(res => res.text())
+      .then(data => {
+        document.getElementById("footer").innerHTML = data;
+      });
+  </script>
+  <!-- ================= TEMPLATE JS ================= -->
+  <!--<< All JS Plugins >>-->
+  <script data-cfasync="false" src="../../cdn-cgi/scripts/5c5dd728/cloudflare-static/email-decode.min.js"></script>
+  <script src="/../assets/quantbit_website/js/jquery-3.7.1.min.js"></script>
+  <!--<< Viewport Js >>-->
+  <script src="/../assets/quantbit_website/js/viewport.jquery.js"></script>
+  <!--<< Bootstrap Js >>-->
+  <script src="/../assets/quantbit_website/js/bootstrap.bundle.min.js"></script>
+  <!--<< Nice Select Js >>-->
+  <script src="/../assets/quantbit_website/js/jquery.nice-select.min.js"></script>
+  <!--<< Waypoints Js >>-->
+  <script src="/../assets/quantbit_website/js/jquery.waypoints.js"></script>
+  <!--<< Counterup Js >>-->
+  <script src="/../assets/quantbit_website/js/jquery.counterup.min.js"></script>
+  <!--<< Slick Js >>-->
+  <script src="/../assets/quantbit_website/js/slick.min.js"></script>
+  <!--<< Slick Animation Js >>-->
+  <script src="/../assets/quantbit_website/js/slick-animation.min.js"></script>
+  <!--<< MeanMenu Js >>-->
+  <script src="/../assets/quantbit_website/js/jquery.meanmenu.min.js"></script>
+  <!--<< Magnific Popup Js >>-->
+  <script src="/../assets/quantbit_website/js/jquery.magnific-popup.min.js"></script>
+  <!--<< Wow Animation Js >>-->
+  <script src="/../assets/quantbit_website/js/wow.min.js"></script>
+  <!--<< Circle Progress Js >>-->
+  <script src="/../assets/quantbit_website/js/circle-progress.js"></script>
+  <!--<< Main.js >>-->
+  <script src="/../assets/quantbit_website/js/main.js"></script>
+  <script defer
+    src="../../../static.cloudflareinsights.com/beacon.min.js/v8c78df7c7c0f484497ecbca7046644da1771523124516"
+    integrity="sha512-8DS7rgIrAmghBFwoOTujcf6D9rXvH8xm8JQ1Ja01h9QX8EzXldiszufYa4IFfKdLUKTTrnSFXLDkUEOTrZQ8Qg=="
+    data-cf-beacon='{"version":"2024.11.0","token":"90f7972af14a48b4add7da2b74f5d675","r":1,"server_timing":{"name":{"cfCacheStatus":true,"cfEdge":true,"cfExtPri":true,"cfL4":true,"cfOrigin":true,"cfSpeedBrain":true},"location_startswith":null}}'
+    crossorigin="anonymous"></script>
+
+</body></html>

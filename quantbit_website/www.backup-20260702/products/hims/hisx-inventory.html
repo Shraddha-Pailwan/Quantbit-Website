@@ -1,0 +1,545 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Hospital Inventory Management Software | Batch, Expiry & Audit Control | HISx by Quantbit</title>
+<meta name="description" content="HISx inventory module — batch and expiry tracking, barcode traceability, physical stock reconciliation, reorder automation, narcotics controls, and As-on-Date reporting for hospitals and pharmacy chains. Built on ERPNext.">
+<meta name="keywords" content="hospital inventory management software, batch expiry tracking hospital, medical inventory ERP, barcode inventory hospital India, physical stock audit hospital, ERPNext inventory management healthcare">
+<link rel="canonical" href="https://quantbit.io/hisx/inventory">
+<meta property="og:title" content="Hospital Inventory Management Software — HISx | Quantbit">
+<meta property="og:type" content="website">
+<script type="application/ld+json">
+{"@context":"https://schema.org","@type":"SoftwareApplication","name":"HISx — Inventory Management Module","applicationCategory":"BusinessApplication","operatingSystem":"Web","description":"Hospital inventory management with batch and expiry tracking, FEFO enforcement, barcode traceability, physical stock reconciliation, reorder automation, narcotics controls, and retrospective As-on-Date reporting. Built on ERPNext by Quantbit Technologies.","offers":{"@type":"Offer","priceCurrency":"INR"},"provider":{"@type":"Organization","name":"Quantbit Technologies Pvt. Ltd.","url":"https://quantbit.io"}}
+</script>
+<script type="application/ld+json">
+{"@context":"https://schema.org","@type":"BreadcrumbList","itemListElement":[{"@type":"ListItem","position":1,"name":"Home","item":"https://quantbit.io"},{"@type":"ListItem","position":2,"name":"HISx","item":"https://quantbit.io/hisx"},{"@type":"ListItem","position":3,"name":"Inventory Management","item":"https://quantbit.io/hisx/inventory"}]}
+</script>
+<script type="application/ld+json">
+{"@context":"https://schema.org","@type":"FAQPage","mainEntity":[
+{"@type":"Question","name":"How does HISx manage batch and expiry tracking for hospital inventory?","acceptedAnswer":{"@type":"Answer","text":"HISx tracks every item at the batch level from the moment it enters inventory at GRN through every transfer, dispensing, and return until the batch is fully consumed or written off. Each batch carries its expiry date, purchase rate, and supplier reference. The system enforces FEFO at dispensing, generates near-expiry alerts at configurable thresholds, and produces batch-wise stock movement reports including GST input and output values — giving hospitals complete visibility and compliance coverage across their entire formulary.","speakable":{"@type":"SpeakableSpecification","cssSelector":".fa-inv-1"}}},
+{"@type":"Question","name":"What is As-on-Date stock reporting in hospital inventory?","acceptedAnswer":{"@type":"Answer","text":"As-on-Date reporting allows hospital inventory managers to reconstruct the exact stock position — quantity, batch, and value — for any item at any point in the past. This is critical for audits, insurance claims, accreditation reviews, and investigations into stock discrepancies. HISx maintains a full retrospective stock ledger covering opening stock, purchases, returns, transfers, dispensing, and closing stock for every item and every date.","speakable":{"@type":"SpeakableSpecification","cssSelector":".fa-inv-2"}}},
+{"@type":"Question","name":"How does physical stock reconciliation work in HISx?","acceptedAnswer":{"@type":"Answer","text":"HISx supports structured physical stock audit workflows including cycle counting — where different sections of the store are audited on a rolling basis — and full periodic counts. Counted quantities are compared against system stock, variance reports are generated automatically, and write-offs or shrinkage adjustments go through a configurable approval process before being posted to inventory."}},
+{"@type":"Question","name":"Does HISx support barcode and QR code scanning for hospital inventory?","acceptedAnswer":{"@type":"Answer","text":"Yes. HISx integrates barcode and QR code scanning at every stage of the inventory cycle — GRN receipt, dispensing, internal transfers, and physical stock audits. Scanning speeds up operations, eliminates manual entry errors, and creates end-to-end item traceability from supplier delivery to patient dispensing."}},
+{"@type":"Question","name":"Can HISx manage non-medical inventory like housekeeping and consumables?","acceptedAnswer":{"@type":"Answer","text":"Yes. HISx handles non-medical inventory — general consumables, housekeeping supplies, utility items, and administrative materials — alongside pharmaceutical and medical inventory within the same platform. Each item category has configurable reorder levels, storage locations, and reporting parameters, and non-medical items appear in the same stock movement register as medical items for consolidated inventory reporting."}}
+]}
+</script>
+<style>
+/* SHARED BASE — all HISx module pages */
+*, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+:root {
+  --ink: #0f1117; --ink-2: #3d3f4a; --ink-3: #72747f; --ink-4: #a0a2ab;
+  --surface: #ffffff; --surface-2: #f5f6f8; --surface-3: #eef0f4;
+  --accent: #1a5fd4; --accent-light: #e8effc; --accent-mid: #c2d4f7;
+  --teal: #0b7a5e; --teal-light: #e0f4ef;
+  --amber: #b35e0a; --amber-light: #fef3e2;
+  --red: #b91c1c; --red-light: #fee2e2;
+  --border: #e2e4ea; --border-strong: #c8cad2;
+  --radius-sm: 6px; --radius-md: 10px; --radius-lg: 16px;
+  --font-display: 'Georgia','Times New Roman',serif;
+  --font-body: -apple-system,BlinkMacSystemFont,'Segoe UI',sans-serif;
+  --font-mono: 'SF Mono','Fira Code',monospace;
+  --max: 1120px; --gap: 96px;
+}
+html { scroll-behavior: smooth; }
+body { font-family: var(--font-body); color: var(--ink); background: var(--surface); line-height: 1.6; font-size: 16px; -webkit-font-smoothing: antialiased; }
+.nav { position: sticky; top: 0; z-index: 100; background: rgba(255,255,255,0.95); backdrop-filter: blur(8px); border-bottom: 1px solid var(--border); }
+.nav-inner { max-width: var(--max); margin: 0 auto; padding: 0 24px; height: 60px; display: flex; align-items: center; gap: 32px; }
+.nav-logo { font-size: 15px; font-weight: 600; color: var(--ink); text-decoration: none; }
+.nav-logo span { color: var(--accent); }
+.nav-bc { display: flex; align-items: center; gap: 8px; font-size: 13px; color: var(--ink-3); flex: 1; }
+.nav-bc a { color: var(--ink-3); text-decoration: none; }
+.nav-bc a:hover { color: var(--accent); }
+.nav-bc .sep { color: var(--border-strong); }
+.nav-bc .cur { color: var(--ink-2); font-weight: 500; }
+.nav-cta { background: var(--accent); color: #fff; padding: 8px 18px; border-radius: var(--radius-sm); font-size: 13px; font-weight: 500; text-decoration: none; white-space: nowrap; transition: opacity .15s; }
+.nav-cta:hover { opacity: .9; }
+.C { max-width: var(--max); margin: 0 auto; padding: 0 24px; }
+section { padding: var(--gap) 0; }
+section+section { padding-top: 0; }
+hr.div { border: none; border-top: 1px solid var(--border); }
+.ey { display: inline-block; font-size: 11px; font-weight: 600; letter-spacing: .1em; text-transform: uppercase; color: var(--accent); margin-bottom: 14px; }
+.sh { font-family: var(--font-display); font-size: clamp(26px,3.5vw,38px); font-weight: 400; line-height: 1.2; letter-spacing: -.02em; color: var(--ink); margin-bottom: 16px; }
+.ss { font-size: 17px; color: var(--ink-2); line-height: 1.65; max-width: 560px; }
+.hero { padding: 80px 0 72px; border-bottom: 1px solid var(--border); }
+.hero-in { max-width: var(--max); margin: 0 auto; padding: 0 24px; display: grid; grid-template-columns: 1fr 1fr; gap: 64px; align-items: center; }
+.htag { display: inline-flex; align-items: center; gap: 7px; font-size: 12px; font-weight: 500; color: var(--accent); background: var(--accent-light); border: 1px solid var(--accent-mid); padding: 5px 12px; border-radius: 100px; margin-bottom: 22px; }
+.hero h1 { font-family: var(--font-display); font-size: clamp(30px,4vw,48px); font-weight: 400; line-height: 1.15; letter-spacing: -.025em; color: var(--ink); margin-bottom: 20px; }
+.hero h1 em { font-style: italic; color: var(--accent); }
+.hero-sub { font-size: 17px; color: var(--ink-2); line-height: 1.65; margin-bottom: 32px; max-width: 480px; }
+.ctas { display: flex; gap: 12px; flex-wrap: wrap; }
+.bp { background: var(--accent); color: #fff; padding: 12px 24px; border-radius: var(--radius-sm); font-size: 14px; font-weight: 500; text-decoration: none; transition: opacity .15s; display: inline-block; }
+.bp:hover { opacity: .88; }
+.bg { background: transparent; color: var(--ink-2); padding: 12px 24px; border-radius: var(--radius-sm); font-size: 14px; font-weight: 500; text-decoration: none; border: 1px solid var(--border-strong); transition: border-color .15s,color .15s; display: inline-block; }
+.bg:hover { border-color: var(--accent); color: var(--accent); }
+.hv { background: var(--surface-2); border: 1px solid var(--border); border-radius: var(--radius-lg); padding: 28px; }
+.hv-lbl { font-size: 11px; font-weight: 600; letter-spacing: .08em; text-transform: uppercase; color: var(--ink-4); margin-bottom: 18px; }
+.proof { background: var(--surface-2); border-bottom: 1px solid var(--border); padding: 28px 0; }
+.proof-in { max-width: var(--max); margin: 0 auto; padding: 0 24px; display: flex; align-items: center; gap: 48px; flex-wrap: wrap; }
+.proof-lbl { font-size: 12px; color: var(--ink-4); font-weight: 500; text-transform: uppercase; letter-spacing: .06em; }
+.proof-stats { display: flex; gap: 40px; flex-wrap: wrap; }
+.psn { font-size: 20px; font-weight: 700; color: var(--ink); font-family: var(--font-display); line-height: 1; }
+.psl { font-size: 12px; color: var(--ink-3); margin-top: 3px; }
+.pdiv { width: 1px; height: 32px; background: var(--border-strong); flex-shrink: 0; }
+.proof-plat { margin-left: auto; display: flex; align-items: center; gap: 8px; font-size: 12px; color: var(--ink-3); }
+.proof-plat strong { color: var(--ink-2); }
+.pain-grid { display: grid; grid-template-columns: repeat(3,1fr); gap: 20px; margin-top: 48px; }
+.pc { border: 1px solid var(--border); border-radius: var(--radius-md); padding: 24px; }
+.pi { width: 40px; height: 40px; border-radius: 10px; background: var(--red-light); color: var(--red); display: flex; align-items: center; justify-content: center; margin-bottom: 16px; }
+.pi svg { width: 18px; height: 18px; }
+.pt { font-size: 15px; font-weight: 600; color: var(--ink); margin-bottom: 8px; line-height: 1.3; }
+.pd { font-size: 14px; color: var(--ink-3); line-height: 1.6; }
+.dd { padding: var(--gap) 0; }
+.dd-in { display: grid; grid-template-columns: 1fr 1fr; gap: 72px; align-items: center; }
+.dd-in.fl { direction: rtl; }
+.dd-in.fl>* { direction: ltr; }
+.dh { font-family: var(--font-display); font-size: clamp(22px,2.8vw,32px); font-weight: 400; line-height: 1.25; letter-spacing: -.02em; color: var(--ink); margin-bottom: 20px; }
+.dd { font-size: 15px; color: var(--ink-2); line-height: 1.7; margin-bottom: 24px; }
+.buls { list-style: none; display: flex; flex-direction: column; gap: 12px; }
+.buls li { display: flex; align-items: flex-start; gap: 10px; font-size: 14px; color: var(--ink-2); line-height: 1.55; }
+.bchk { width: 18px; height: 18px; border-radius: 50%; background: var(--teal-light); color: var(--teal); display: flex; align-items: center; justify-content: center; flex-shrink: 0; margin-top: 1px; }
+.bchk svg { width: 10px; height: 10px; }
+.dl { display: inline-flex; align-items: center; gap: 6px; font-size: 13px; font-weight: 500; color: var(--accent); text-decoration: none; margin-top: 24px; }
+.dl:hover { text-decoration: underline; }
+.dv { background: var(--surface-2); border: 1px solid var(--border); border-radius: var(--radius-lg); padding: 24px; }
+.dvl { font-size: 11px; font-weight: 600; letter-spacing: .08em; text-transform: uppercase; color: var(--ink-4); margin-bottom: 16px; }
+.fg { display: grid; grid-template-columns: repeat(3,1fr); gap: 1px; background: var(--border); border: 1px solid var(--border); border-radius: var(--radius-lg); overflow: hidden; margin-top: 48px; }
+.fc { background: var(--surface); padding: 28px 24px; transition: background .15s; }
+.fc:hover { background: var(--surface-2); }
+.fi { width: 40px; height: 40px; border-radius: 10px; display: flex; align-items: center; justify-content: center; margin-bottom: 16px; }
+.fi svg { width: 18px; height: 18px; }
+.fi.bl { background: var(--accent-light); color: var(--accent); }
+.fi.tl { background: var(--teal-light); color: var(--teal); }
+.fi.am { background: var(--amber-light); color: var(--amber); }
+.ft { font-size: 15px; font-weight: 600; color: var(--ink); margin-bottom: 8px; line-height: 1.3; }
+.fd { font-size: 13px; color: var(--ink-3); line-height: 1.6; }
+.rs { background: var(--surface-2); }
+.rg { display: grid; grid-template-columns: repeat(3,1fr); gap: 20px; margin-top: 48px; }
+.rc { background: var(--surface); border: 1px solid var(--border); border-radius: var(--radius-md); padding: 28px 24px; }
+.ri { width: 44px; height: 44px; border-radius: 10px; background: var(--accent-light); color: var(--accent); display: flex; align-items: center; justify-content: center; margin-bottom: 18px; }
+.ri svg { width: 20px; height: 20px; }
+.rt { font-size: 15px; font-weight: 600; color: var(--ink); margin-bottom: 6px; }
+.rd { font-size: 13px; color: var(--ink-3); line-height: 1.6; }
+.dark-co { background: #0f2d47; color: #fff; padding: var(--gap) 0; }
+.dark-in { max-width: var(--max); margin: 0 auto; padding: 0 24px; display: grid; grid-template-columns: 1fr 1fr; gap: 64px; align-items: center; }
+.dark-ey { font-size: 11px; font-weight: 600; letter-spacing: .1em; text-transform: uppercase; color: #7db3e8; margin-bottom: 14px; }
+.dark-h { font-family: var(--font-display); font-size: clamp(22px,2.8vw,32px); font-weight: 400; line-height: 1.25; letter-spacing: -.02em; color: #fff; margin-bottom: 18px; }
+.dark-d { font-size: 15px; color: #b0c8e4; line-height: 1.65; }
+.dark-buls { display: flex; flex-direction: column; gap: 14px; margin-top: 24px; }
+.dbul { display: flex; align-items: flex-start; gap: 12px; font-size: 14px; color: #b0c8e4; line-height: 1.5; }
+.ddot { width: 6px; height: 6px; border-radius: 50%; background: #7db3e8; flex-shrink: 0; margin-top: 7px; }
+.dbul strong { color: #e8f2fd; }
+.dbadges { display: flex; flex-wrap: wrap; gap: 10px; margin-top: 28px; }
+.dbadge { display: inline-flex; align-items: center; gap: 6px; font-size: 12px; font-weight: 500; color: #e8f2fd; background: rgba(255,255,255,.08); border: 1px solid rgba(255,255,255,.15); padding: 6px 14px; border-radius: 100px; }
+.faq-list { margin-top: 48px; }
+.faq-item { border-top: 1px solid var(--border); }
+.faq-item:last-child { border-bottom: 1px solid var(--border); }
+.fq { width: 100%; background: none; border: none; padding: 22px 0; display: flex; align-items: center; justify-content: space-between; gap: 24px; cursor: pointer; text-align: left; font-size: 16px; font-weight: 500; color: var(--ink); line-height: 1.4; }
+.fq:hover { color: var(--accent); }
+.fchev { width: 20px; height: 20px; flex-shrink: 0; color: var(--ink-4); transition: transform .2s; }
+.faq-item.open .fchev { transform: rotate(180deg); }
+.fa { display: none; padding: 0 0 22px; font-size: 15px; color: var(--ink-2); line-height: 1.7; max-width: 760px; }
+.faq-item.open .fa { display: block; }
+.cta-s { background: var(--surface-2); border-top: 1px solid var(--border); padding: var(--gap) 0; }
+.cta-in { max-width: 680px; margin: 0 auto; padding: 0 24px; text-align: center; }
+.cta-h { font-family: var(--font-display); font-size: clamp(24px,3vw,36px); font-weight: 400; line-height: 1.2; letter-spacing: -.02em; color: var(--ink); margin-bottom: 16px; }
+.cta-d { font-size: 16px; color: var(--ink-3); line-height: 1.6; margin-bottom: 32px; }
+.cta-bs { display: flex; gap: 12px; justify-content: center; flex-wrap: wrap; }
+.cta-bs .bp,.cta-bs .bg { padding: 14px 28px; font-size: 15px; }
+.rel-s { padding: 48px 0; border-top: 1px solid var(--border); }
+.rel-in { max-width: var(--max); margin: 0 auto; padding: 0 24px; }
+.rel-lbl { font-size: 12px; font-weight: 600; letter-spacing: .08em; text-transform: uppercase; color: var(--ink-4); margin-bottom: 16px; }
+.rel-ls { display: flex; flex-wrap: wrap; gap: 10px; }
+.rl { font-size: 13px; font-weight: 500; color: var(--ink-2); text-decoration: none; padding: 8px 16px; border: 1px solid var(--border); border-radius: var(--radius-sm); transition: border-color .15s,color .15s; }
+.rl:hover { border-color: var(--accent); color: var(--accent); }
+footer { background: var(--ink); color: #a0a2ab; padding: 28px 0; }
+.foot-in { max-width: var(--max); margin: 0 auto; padding: 0 24px; display: flex; align-items: center; justify-content: space-between; flex-wrap: wrap; gap: 12px; }
+.flogo { font-size: 14px; font-weight: 600; color: #fff; }
+.flogo span { color: #6b9de8; }
+.flinks { display: flex; gap: 24px; }
+.flinks a { font-size: 13px; color: #a0a2ab; text-decoration: none; }
+.flinks a:hover { color: #fff; }
+.fcopy { font-size: 12px; color: #5f6170; }
+@media(max-width:768px){
+  :root{--gap:64px}
+  .hero-in{grid-template-columns:1fr;gap:40px}
+  .hv{display:none}
+  .pain-grid{grid-template-columns:1fr}
+  .fg{grid-template-columns:1fr 1fr}
+  .dd-in{grid-template-columns:1fr;gap:40px}
+  .dd-in.fl{direction:ltr}
+  .rg{grid-template-columns:1fr}
+  .dark-in{grid-template-columns:1fr;gap:40px}
+  .proof-plat{margin-left:0}
+  .nav-bc{display:none}
+}
+@media(max-width:540px){.fg{grid-template-columns:1fr}}
+@media(prefers-reduced-motion:reduce){*{transition:none!important}}
+/* Page-specific */
+.stock-ledger{width:100%;border-collapse:collapse}
+.stock-ledger th{font-size:10px;font-weight:600;color:var(--ink-4);text-transform:uppercase;letter-spacing:.05em;padding:7px 10px;text-align:right;border-bottom:1px solid var(--border);background:var(--surface-3)}
+.stock-ledger th:first-child{text-align:left}
+.stock-ledger td{font-size:12px;padding:9px 10px;border-bottom:1px solid var(--border);color:var(--ink-2);text-align:right}
+.stock-ledger td:first-child{text-align:left;font-weight:500;color:var(--ink)}
+.stock-ledger tr:last-child td{border-bottom:none;font-weight:700;color:var(--ink)}
+.sl-pos{color:var(--teal);font-weight:600}
+.sl-neg{color:var(--red);font-weight:600}
+.bc-steps{display:flex;flex-direction:column;gap:8px}
+.bc-step{display:flex;align-items:center;gap:12px;background:var(--surface);border:1px solid var(--border);border-radius:var(--radius-sm);padding:10px 14px}
+.bc-dot{width:8px;height:8px;border-radius:50%;flex-shrink:0}
+.bc-text{font-size:13px;color:var(--ink-2);flex:1}
+.bc-tag{font-size:10px;font-weight:600;padding:2px 7px;border-radius:100px;white-space:nowrap}
+.bc-scan{background:var(--accent-light);color:var(--accent)}
+.bc-auto{background:var(--teal-light);color:var(--teal)}
+.bc-flag{background:var(--amber-light);color:var(--amber)}
+.reorder-panel{display:flex;flex-direction:column;gap:10px}
+.ro-item{background:var(--surface);border:1px solid var(--border);border-radius:var(--radius-md);padding:14px 16px}
+.ro-header{display:flex;justify-content:space-between;align-items:center;margin-bottom:10px}
+.ro-name{font-size:13px;font-weight:600;color:var(--ink)}
+.ro-status{font-size:10px;font-weight:600;padding:3px 8px;border-radius:100px}
+.ro-ok{background:var(--teal-light);color:var(--teal)}
+.ro-warn{background:var(--amber-light);color:var(--amber)}
+.ro-crit{background:var(--red-light);color:var(--red)}
+.ro-bar-bg{height:6px;background:var(--surface-3);border-radius:3px;overflow:hidden}
+.ro-bar-fill{height:100%;border-radius:3px}
+.ro-bar-teal{background:var(--teal)}
+.ro-bar-amber{background:#EF9F27}
+.ro-bar-red{background:var(--red)}
+.ro-meta{display:flex;justify-content:space-between;margin-top:6px;font-size:11px;color:var(--ink-4)}
+</style>
+
+<!-- TEMPLATE CSS (IMPORTANT) -->
+    <link rel="stylesheet" href="/../assets/quantbit_website/css/bootstrap.min.css">
+    <link rel="stylesheet" href="/../assets/quantbit_website/css/font-awesome.css">
+    <link rel="stylesheet" href="/../assets/quantbit_website/css/animate.css">
+    <link rel="stylesheet" href="/../assets/quantbit_website/css/magnific-popup.css">
+    <link rel="stylesheet" href="/../assets/quantbit_website/css/meanmenu.css">
+    <link rel="stylesheet" href="/../assets/quantbit_website/css/slick.css">
+    <link rel="stylesheet" href="/../assets/quantbit_website/css/nice-select.css">
+    <link rel="stylesheet" href="/../assets/quantbit_website/css/main.css">
+    <link rel="stylesheet" href="style.css">
+    <!-- <link rel="stylesheet" href="/assets/quantbit_website/css/_shared.css"> -->
+
+
+    <!-- OPTIONAL CUSTOM -->
+    <link rel="stylesheet" href="/../assets/quantbit_website/css/hrms.css">
+      <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
+<!-- Google Tag Manager -->
+<script>(function(w,d,s,l,i){w[l]=w[l]||[];w[l].push({'gtm.start':
+new Date().getTime(),event:'gtm.js'});var f=d.getElementsByTagName(s)[0],
+j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
+'https://www.googletagmanager.com/gtm.js?id='+i+dl;f.parentNode.insertBefore(j,f);
+})(window,document,'script','dataLayer','GTM-P98Z6G8D');</script>
+<!-- End Google Tag Manager -->
+
+</head>
+<body>
+  <!-- Google Tag Manager (noscript) -->
+<noscript><iframe src="https://www.googletagmanager.com/ns.html?id=GTM-P98Z6G8D"
+height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
+<!-- End Google Tag Manager (noscript) -->
+<div id="header"></div>
+
+
+<section class="hero">
+  <div class="hero-in">
+    <div>
+      <div class="htag">
+        <svg width="13" height="13" viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="1.5" aria-hidden="true"><rect x="2" y="2" width="5" height="5" rx="1"/><rect x="9" y="2" width="5" height="5" rx="1"/><rect x="2" y="9" width="5" height="5" rx="1"/><rect x="9" y="9" width="5" height="5" rx="1"/></svg>
+        HISx — Inventory Management Module
+      </div>
+      <h1>Hospital inventory that <em>accounts for itself</em></h1>
+      <p class="hero-sub">Batch and expiry tracking, barcode traceability, physical stock reconciliation, automated reorder triggers, and As-on-Date reporting — across every store, ward, and department.</p>
+      <div class="ctas">
+        <a href="/hisx/demo" class="bp">Request a demo</a>
+        <a href="#features" class="bg">See all capabilities</a>
+      </div>
+    </div>
+    <div class="hv" aria-label="Stock ledger preview">
+      <div class="hv-lbl">Stock movement register — Paracetamol 500mg</div>
+      <table class="stock-ledger">
+        <thead><tr><th>Movement</th><th>In</th><th>Out</th><th>Balance</th></tr></thead>
+        <tbody>
+          <tr><td>Opening stock</td><td>—</td><td>—</td><td>1,240</td></tr>
+          <tr><td>GRN #2025-041</td><td class="sl-pos">600</td><td>—</td><td>1,840</td></tr>
+          <tr><td>Ward transfer</td><td>—</td><td class="sl-neg">200</td><td>1,640</td></tr>
+          <tr><td>Dispensed (OPD)</td><td>—</td><td class="sl-neg">380</td><td>1,260</td></tr>
+          <tr><td>Purchase return</td><td>—</td><td class="sl-neg">50</td><td>1,210</td></tr>
+          <tr><td>Closing stock</td><td>—</td><td>—</td><td>1,210</td></tr>
+        </tbody>
+      </table>
+      <div style="margin-top:12px;padding:9px 12px;background:var(--accent-light);border-radius:var(--radius-sm);font-size:11px;color:var(--accent);font-weight:500">
+        As-on-Date view: any item · any date · any store
+      </div>
+    </div>
+  </div>
+</section>
+
+<div class="proof">
+  <div class="proof-in">
+    <span class="proof-lbl">Covers</span>
+    <div class="proof-stats">
+      <div><div class="psn">Batch &amp; expiry</div><div class="psl">Full lifecycle tracking</div></div>
+      <div class="pdiv" aria-hidden="true"></div>
+      <div><div class="psn">Barcode &amp; QR</div><div class="psl">End-to-end traceability</div></div>
+      <div class="pdiv" aria-hidden="true"></div>
+      <div><div class="psn">Physical audits</div><div class="psl">Cycle count &amp; reconciliation</div></div>
+    </div>
+    <div class="proof-plat"><svg width="14" height="14" viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="1.5" aria-hidden="true"><rect x="2" y="2" width="12" height="12" rx="2"/></svg>Built on <strong>&nbsp;ERPNext / Frappe</strong></div>
+  </div>
+</div>
+
+<section aria-labelledby="pain-h">
+  <div class="C">
+    <span class="ey">Why it matters</span>
+    <h2 class="sh" id="pain-h">Three inventory problems that quietly drain hospital budgets</h2>
+    <p class="ss">Manual inventory tracking creates invisible losses — in expired stock, unaccounted ward consumption, and stock figures that don't reflect reality until a physical count reveals the gap.</p>
+    <div class="pain-grid">
+      <div class="pc">
+        <div class="pi" aria-hidden="true"><svg viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="1.5"><circle cx="8" cy="8" r="6"/><path d="M8 5v3"/><circle cx="8" cy="11.5" r=".5" fill="currentColor"/></svg></div>
+        <h3 class="pt">Expired stock written off — batch tracking is manual</h3>
+        <p class="pd">Without batch-level tracking and near-expiry alerts, hospitals discover expired drugs only during physical counts. By then the write-off is unavoidable and the compliance exposure is already there.</p>
+      </div>
+      <div class="pc">
+        <div class="pi" aria-hidden="true"><svg viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M2 8h12M8 2v12"/></svg></div>
+        <h3 class="pt">Physical counts reveal gaps — but reconciliation takes weeks</h3>
+        <p class="pd">Without structured cycle counting and variance workflows, physical audits are one-day events followed by weeks of spreadsheet reconciliation. Write-offs are guesses, not validated figures.</p>
+      </div>
+      <div class="pc">
+        <div class="pi" aria-hidden="true"><svg viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M3 4h10M3 8h7M3 12h4"/></svg></div>
+        <h3 class="pt">No traceability — auditors ask, nobody can answer</h3>
+        <p class="pd">When an accreditation auditor or insurance investigator asks "show me every movement of Batch B-2024-031 from receipt to dispensing" — a system without barcode traceability has no credible answer.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<hr class="div">
+
+<section class="dd" id="features" aria-labelledby="batch-h">
+  <div class="C">
+    <div class="dd-in">
+      <div>
+        <span class="ey">Batch &amp; expiry management</span>
+        <h2 class="dh" id="batch-h">Every batch tracked from receipt to the last tablet dispensed</h2>
+        <p class="dd">HISx tracks inventory at the batch level through the entire lifecycle — from GRN receipt through ward transfers, dispensing, returns, and write-offs. No batch is ever anonymous.</p>
+        <ul class="buls" aria-label="Batch tracking features">
+          <li><span class="bchk" aria-hidden="true"><svg viewBox="0 0 10 10" fill="none" stroke="currentColor" stroke-width="2"><path d="M2 5l2.5 2.5L8 3"/></svg></span>Batch-wise stock movement: every receipt, transfer, dispensing, and return linked to a specific batch and expiry date</li>
+          <li><span class="bchk" aria-hidden="true"><svg viewBox="0 0 10 10" fill="none" stroke="currentColor" stroke-width="2"><path d="M2 5l2.5 2.5L8 3"/></svg></span>Near-expiry alerts at configurable thresholds (30 / 60 / 90 days) — triggered at store, ward, and dispensing counter level</li>
+          <li><span class="bchk" aria-hidden="true"><svg viewBox="0 0 10 10" fill="none" stroke="currentColor" stroke-width="2"><path d="M2 5l2.5 2.5L8 3"/></svg></span>Batch-wise financial reporting including GST input/output, purchase GST values, and return and transfer taxation impact</li>
+          <li><span class="bchk" aria-hidden="true"><svg viewBox="0 0 10 10" fill="none" stroke="currentColor" stroke-width="2"><path d="M2 5l2.5 2.5L8 3"/></svg></span>Identical items procured at different rates tracked separately per batch — no averaging that distorts true cost</li>
+        </ul>
+        <a href="/solutions/hospital-drug-expiry-management" class="dl">Drug expiry management guide <svg viewBox="0 0 14 14" fill="none" stroke="currentColor" stroke-width="1.5" aria-hidden="true"><path d="M2 7h10M7 2l5 5-5 5"/></svg></a>
+      </div>
+      <div class="dv" aria-label="As-on-Date stock ledger">
+        <div class="dvl">Retrospective stock ledger — As-on-Date view</div>
+        <table class="stock-ledger">
+          <thead><tr><th>Movement type</th><th>In</th><th>Out</th><th>Balance</th></tr></thead>
+          <tbody>
+            <tr><td>Opening (01 Jan)</td><td>—</td><td>—</td><td>1,240</td></tr>
+            <tr><td>GRN — Batch B-041</td><td class="sl-pos">600</td><td>—</td><td>1,840</td></tr>
+            <tr><td>Ward indent — ICU</td><td>—</td><td class="sl-neg">200</td><td>1,640</td></tr>
+            <tr><td>OPD dispensing</td><td>—</td><td class="sl-neg">380</td><td>1,260</td></tr>
+            <tr><td>Patient return</td><td class="sl-pos">12</td><td>—</td><td>1,272</td></tr>
+            <tr><td>Purchase return</td><td>—</td><td class="sl-neg">50</td><td>1,222</td></tr>
+            <tr><td><strong>Closing (31 Jan)</strong></td><td>—</td><td>—</td><td><strong>1,222</strong></td></tr>
+          </tbody>
+        </table>
+        <div style="margin-top:10px;font-size:11px;color:var(--ink-4);line-height:1.5">Reconstruct this view for any item, any date, any store — retroactively. Critical for NABH / JCI audit readiness.</div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<hr class="div">
+
+<section class="dd" aria-labelledby="bc-h">
+  <div class="C">
+    <div class="dd-in fl">
+      <div>
+        <span class="ey">Barcode &amp; traceability</span>
+        <h2 class="dh" id="bc-h">End-to-end item traceability — from supplier delivery to patient dispensing</h2>
+        <p class="dd">When an auditor, accreditor, or pharmacovigilance investigation asks about a specific batch or item, HISx provides a complete, timestamped chain of custody — scannable at every stage.</p>
+        <ul class="buls" aria-label="Barcode traceability features">
+          <li><span class="bchk" aria-hidden="true"><svg viewBox="0 0 10 10" fill="none" stroke="currentColor" stroke-width="2"><path d="M2 5l2.5 2.5L8 3"/></svg></span>Barcode / QR scanning at GRN, dispensing, internal transfers, and physical stock audits</li>
+          <li><span class="bchk" aria-hidden="true"><svg viewBox="0 0 10 10" fill="none" stroke="currentColor" stroke-width="2"><path d="M2 5l2.5 2.5L8 3"/></svg></span>End-to-end item traceability: supplier → central store → ward → patient — every handoff recorded</li>
+          <li><span class="bchk" aria-hidden="true"><svg viewBox="0 0 10 10" fill="none" stroke="currentColor" stroke-width="2"><path d="M2 5l2.5 2.5L8 3"/></svg></span>Comprehensive audit logs for all stock movements, adjustments, user activities, and approvals</li>
+          <li><span class="bchk" aria-hidden="true"><svg viewBox="0 0 10 10" fill="none" stroke="currentColor" stroke-width="2"><path d="M2 5l2.5 2.5L8 3"/></svg></span>Recall management: identify all patient dispensings from a recalled batch instantly</li>
+        </ul>
+        <a href="/solutions/barcode-traceability" class="dl">Barcode &amp; drug traceability guide <svg viewBox="0 0 14 14" fill="none" stroke="currentColor" stroke-width="1.5" aria-hidden="true"><path d="M2 7h10M7 2l5 5-5 5"/></svg></a>
+      </div>
+      <div class="dv" aria-label="Barcode scan workflow">
+        <div class="dvl">Traceability chain — Batch B-2024-031</div>
+        <div class="bc-steps">
+          <div class="bc-step"><div class="bc-dot" style="background:var(--accent)" aria-hidden="true"></div><span class="bc-text">Supplier delivery scanned at gate</span><span class="bc-tag bc-scan">Scanned</span></div>
+          <div class="bc-step"><div class="bc-dot" style="background:var(--accent)" aria-hidden="true"></div><span class="bc-text">GRN raised — batch &amp; expiry captured</span><span class="bc-tag bc-auto">Auto-linked</span></div>
+          <div class="bc-step"><div class="bc-dot" style="background:var(--teal)" aria-hidden="true"></div><span class="bc-text">Ward indent fulfilled — ICU store</span><span class="bc-tag bc-scan">Scanned</span></div>
+          <div class="bc-step"><div class="bc-dot" style="background:var(--teal)" aria-hidden="true"></div><span class="bc-text">Dispensed to patient — Pt #IP-4821</span><span class="bc-tag bc-auto">Billed</span></div>
+          <div class="bc-step"><div class="bc-dot" style="background:var(--amber)" aria-hidden="true"></div><span class="bc-text">Recall alert — 3 units traced, isolated</span><span class="bc-tag bc-flag">Flagged</span></div>
+        </div>
+        <div style="margin-top:12px;padding:9px 12px;background:var(--teal-light);border-radius:var(--radius-sm);font-size:11px;color:var(--teal);font-weight:500">Full chain of custody reconstructed in seconds — audit-ready at all times</div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<hr class="div">
+
+<section class="dd" aria-labelledby="reorder-h">
+  <div class="C">
+    <div class="dd-in">
+      <div>
+        <span class="ey">Reorder &amp; physical audit</span>
+        <h2 class="dh" id="reorder-h">Automated reorders and structured physical counts — inventory runs itself</h2>
+        <p class="dd">HISx removes two of the most labour-intensive tasks in hospital inventory management: deciding when to reorder, and reconciling physical counts against system stock.</p>
+        <ul class="buls" aria-label="Reorder and audit features">
+          <li><span class="bchk" aria-hidden="true"><svg viewBox="0 0 10 10" fill="none" stroke="currentColor" stroke-width="2"><path d="M2 5l2.5 2.5L8 3"/></svg></span>Automated reorder triggers at minimum / reorder / maximum stock levels — PR auto-generated when threshold is breached</li>
+          <li><span class="bchk" aria-hidden="true"><svg viewBox="0 0 10 10" fill="none" stroke="currentColor" stroke-width="2"><path d="M2 5l2.5 2.5L8 3"/></svg></span>Physical stock audit workflows with cycle counting — audit different store sections on a rolling schedule</li>
+          <li><span class="bchk" aria-hidden="true"><svg viewBox="0 0 10 10" fill="none" stroke="currentColor" stroke-width="2"><path d="M2 5l2.5 2.5L8 3"/></svg></span>Variance reporting: system quantity vs physical count, with item-wise and category-wise breakdowns</li>
+          <li><span class="bchk" aria-hidden="true"><svg viewBox="0 0 10 10" fill="none" stroke="currentColor" stroke-width="2"><path d="M2 5l2.5 2.5L8 3"/></svg></span>Approval-gated write-offs and shrinkage adjustments — no unilateral stock changes without authorisation trail</li>
+        </ul>
+        <a href="/solutions/hospital-inventory-audit-guide" class="dl">Hospital inventory audit guide <svg viewBox="0 0 14 14" fill="none" stroke="currentColor" stroke-width="1.5" aria-hidden="true"><path d="M2 7h10M7 2l5 5-5 5"/></svg></a>
+      </div>
+      <div class="dv" aria-label="Reorder level monitor">
+        <div class="dvl">Reorder monitor — current stock levels</div>
+        <div class="reorder-panel">
+          <div class="ro-item">
+            <div class="ro-header"><span class="ro-name">Paracetamol 500mg</span><span class="ro-status ro-ok">Above reorder</span></div>
+            <div class="ro-bar-bg"><div class="ro-bar-fill ro-bar-teal" style="width:78%"></div></div>
+            <div class="ro-meta"><span>Current: 1,222 units</span><span>Min: 500 · Max: 2,000</span></div>
+          </div>
+          <div class="ro-item">
+            <div class="ro-header"><span class="ro-name">IV Saline 500ml</span><span class="ro-status ro-warn">Near reorder level</span></div>
+            <div class="ro-bar-bg"><div class="ro-bar-fill ro-bar-amber" style="width:28%"></div></div>
+            <div class="ro-meta"><span>Current: 140 units</span><span>Reorder: 150 · Max: 500</span></div>
+          </div>
+          <div class="ro-item">
+            <div class="ro-header"><span class="ro-name">Surgical Gloves (M)</span><span class="ro-status ro-crit">PR auto-generated</span></div>
+            <div class="ro-bar-bg"><div class="ro-bar-fill ro-bar-red" style="width:8%"></div></div>
+            <div class="ro-meta"><span>Current: 40 units</span><span>Min: 100 · Max: 400</span></div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<hr class="div">
+
+<section id="features" aria-labelledby="feat-h">
+  <div class="C">
+    <span class="ey">All capabilities</span>
+    <h2 class="sh" id="feat-h">Complete inventory management — every category, every store</h2>
+    <p class="ss">HISx covers pharmaceutical, non-medical, and lab inventory in one platform — no separate systems for housekeeping consumables or surgical supplies.</p>
+    <div class="fg" role="list">
+      <div class="fc" role="listitem"><div class="fi bl" aria-hidden="true"><svg viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="1.5"><rect x="2" y="2" width="5" height="5" rx="1"/><rect x="9" y="2" width="5" height="5" rx="1"/><rect x="2" y="9" width="5" height="5" rx="1"/><path d="M9 11.5h5M11.5 9v5"/></svg></div><h3 class="ft">Non-medical inventory</h3><p class="fd">Housekeeping supplies, utility items, general consumables, and administrative materials managed alongside pharmaceutical stock — same reorder rules, same reporting.</p></div>
+      <div class="fc" role="listitem"><div class="fi tl" aria-hidden="true"><svg viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M8 2v12M2 8h12"/><circle cx="8" cy="8" r="3"/></svg></div><h3 class="ft">Ward consumption tracking</h3><p class="fd">Bulk ward consumption and patient-specific usage both tracked and billed correctly. Unconsumed ward stock returned to main store through a validated return workflow.</p></div>
+      <div class="fc" role="listitem"><div class="fi am" aria-hidden="true"><svg viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M2 12V4l6-2 6 2v8l-6 2-6-2z"/><path d="M8 2v12M2 7h12"/></svg></div><h3 class="ft">Inter-department transfers</h3><p class="fd">Stock transfer between stores, wards, and departments with approval workflows, dispatch tracking, and automated inventory update at both sending and receiving locations.</p></div>
+      <div class="fc" role="listitem"><div class="fi bl" aria-hidden="true"><svg viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="1.5"><rect x="2" y="3" width="12" height="10" rx="1.5"/><path d="M5 7h6M5 10h4"/></svg></div><h3 class="ft">Inventory reporting suite</h3><p class="fd">Stock movement register with opening, purchases, returns, transfers, dispensing, and closing stock. Batch-wise GST reports. As-on-Date reporting for any date in history.</p></div>
+      <div class="fc" role="listitem"><div class="fi tl" aria-hidden="true"><svg viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M13 4L6 11l-3-3"/></svg></div><h3 class="ft">Audit trail &amp; compliance logs</h3><p class="fd">Every stock movement, adjustment, approval, and user action is permanently logged with timestamp and user attribution — NABH, JCI, and drug regulatory audit-ready.</p></div>
+      <div class="fc" role="listitem"><div class="fi am" aria-hidden="true"><svg viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M8 2l1.8 3.6 4 .6-2.9 2.8.7 4L8 11.1l-3.6 1.9.7-4L2 6.2l4-.6L8 2z"/></svg></div><h3 class="ft">BI &amp; analytics integration</h3><p class="fd">Structured data availability for business intelligence dashboards and analytics platforms. Full API integration with ERP, finance, and external healthcare systems.</p></div>
+    </div>
+  </div>
+</section>
+
+<hr class="div">
+
+<section class="rs" aria-labelledby="roles-h">
+  <div class="C">
+    <span class="ey">Who uses this module</span>
+    <h2 class="sh" id="roles-h">Every inventory stakeholder, one platform</h2>
+    <p class="ss">From the store keeper doing a daily GRN to the CFO reviewing monthly shrinkage — HISx gives every role the right view with the right controls.</p>
+    <div class="rg">
+      <div class="rc"><div class="ri" aria-hidden="true"><svg viewBox="0 0 20 20" fill="none" stroke="currentColor" stroke-width="1.5"><rect x="3" y="4" width="14" height="12" rx="2"/><path d="M7 8h6M7 12h4"/></svg></div><h3 class="rt">Store keeper / pharmacist</h3><p class="rd">Processes GRNs with barcode scanning, manages batch-level stock, raises cycle count sheets, processes ward returns, and gets near-expiry alerts before drugs expire.</p></div>
+      <div class="rc"><div class="ri" aria-hidden="true"><svg viewBox="0 0 20 20" fill="none" stroke="currentColor" stroke-width="1.5"><circle cx="10" cy="6" r="3"/><path d="M4 18c0-3.3 2.7-6 6-6s6 2.7 6 6"/><path d="M15 10l2 2-2 2"/></svg></div><h3 class="rt">Store / inventory manager</h3><p class="rd">Monitors reorder levels across all items, approves write-offs and adjustments, reviews variance reports from cycle counts, and tracks consumption trends by department.</p></div>
+      <div class="rc"><div class="ri" aria-hidden="true"><svg viewBox="0 0 20 20" fill="none" stroke="currentColor" stroke-width="1.5"><rect x="2" y="4" width="16" height="12" rx="2"/><path d="M2 8h16M6 12h4M14 12h2"/></svg></div><h3 class="rt">CFO &amp; finance</h3><p class="rd">Batch-wise GST input/output reports, stock valuation as on any date, write-off and shrinkage approval, and inventory-to-finance reconciliation — all without leaving HISx.</p></div>
+    </div>
+  </div>
+</section>
+
+<section aria-labelledby="faq-h">
+  <div class="C">
+    <span class="ey">Common questions</span>
+    <h2 class="sh" id="faq-h">Frequently asked questions</h2>
+    <div class="faq-list" role="list">
+      <div class="faq-item" role="listitem">
+        <button class="fq" aria-expanded="false" onclick="tFaq(this)">How does HISx manage batch and expiry tracking for hospital inventory?<svg class="fchev" viewBox="0 0 20 20" fill="none" stroke="currentColor" stroke-width="1.5" aria-hidden="true"><path d="M5 7.5l5 5 5-5"/></svg></button>
+        <div class="fa fa-inv-1">HISx tracks every item at the batch level from the moment it enters inventory at GRN through every transfer, dispensing, and return until the batch is fully consumed or written off. Each batch carries its expiry date, purchase rate, and supplier reference. The system enforces FEFO at dispensing, generates near-expiry alerts at configurable thresholds, and produces batch-wise stock movement reports including GST input and output values — giving hospitals complete visibility and compliance coverage across their entire formulary.</div>
+      </div>
+      <div class="faq-item" role="listitem">
+        <button class="fq" aria-expanded="false" onclick="tFaq(this)">What is As-on-Date stock reporting in hospital inventory?<svg class="fchev" viewBox="0 0 20 20" fill="none" stroke="currentColor" stroke-width="1.5" aria-hidden="true"><path d="M5 7.5l5 5 5-5"/></svg></button>
+        <div class="fa fa-inv-2">As-on-Date reporting allows hospital inventory managers to reconstruct the exact stock position — quantity, batch, and value — for any item at any point in the past. This is critical for audits, insurance claims, accreditation reviews, and investigations into stock discrepancies. HISx maintains a full retrospective stock ledger covering opening stock, purchases, returns, transfers, dispensing, and closing stock for every item and every date.</div>
+      </div>
+      <div class="faq-item" role="listitem">
+        <button class="fq" aria-expanded="false" onclick="tFaq(this)">How does physical stock reconciliation work in HISx?<svg class="fchev" viewBox="0 0 20 20" fill="none" stroke="currentColor" stroke-width="1.5" aria-hidden="true"><path d="M5 7.5l5 5 5-5"/></svg></button>
+        <div class="fa">HISx supports structured physical stock audit workflows including cycle counting — where different sections of the store are audited on a rolling basis — and full periodic counts. Counted quantities are compared against system stock, variance reports are generated automatically, and write-offs or shrinkage adjustments go through a configurable approval process before being posted to inventory.</div>
+      </div>
+      <div class="faq-item" role="listitem">
+        <button class="fq" aria-expanded="false" onclick="tFaq(this)">Does HISx support barcode and QR code scanning for hospital inventory?<svg class="fchev" viewBox="0 0 20 20" fill="none" stroke="currentColor" stroke-width="1.5" aria-hidden="true"><path d="M5 7.5l5 5 5-5"/></svg></button>
+        <div class="fa">Yes. HISx integrates barcode and QR code scanning at every stage of the inventory cycle — GRN receipt, dispensing, internal transfers, and physical stock audits. Scanning speeds up operations, eliminates manual entry errors, and creates end-to-end item traceability from supplier delivery to patient dispensing.</div>
+      </div>
+      <div class="faq-item" role="listitem">
+        <button class="fq" aria-expanded="false" onclick="tFaq(this)">Can HISx manage non-medical inventory like housekeeping and consumables?<svg class="fchev" viewBox="0 0 20 20" fill="none" stroke="currentColor" stroke-width="1.5" aria-hidden="true"><path d="M5 7.5l5 5 5-5"/></svg></button>
+        <div class="fa">Yes. HISx handles non-medical inventory — general consumables, housekeeping supplies, utility items, and administrative materials — alongside pharmaceutical and medical inventory within the same platform. Each item category has configurable reorder levels, storage locations, and reporting parameters, and non-medical items appear in the same stock movement register as medical items for consolidated inventory reporting.</div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<hr class="div">
+<section class="cta-s" aria-labelledby="cta-h"><div class="cta-in"><h2 class="cta-h" id="cta-h">See HISx inventory management in your hospital</h2><p class="cta-d">Book a 30-minute demo and walk through batch tracking, physical audit workflows, and As-on-Date reporting with your item categories.</p><div class="cta-bs"><a href="/hisx/demo" class="bp">Book a demo</a><a href="/hisx/roi-calculator" class="bg">Calculate ROI</a></div></div></section>
+
+<nav class="rel-s" aria-label="Related pages"><div class="rel-in"><div style="display:grid;grid-template-columns:1fr 1fr;gap:32px"><div><div class="rel-lbl">Other HISx modules</div><div class="rel-ls"><a href="/hisx/pharmacy" class="rl">Pharmacy &amp; dispensing</a><a href="/hisx/procurement" class="rl">Procurement &amp; vendor</a><a href="/hisx/narcotics-compliance" class="rl">Narcotics &amp; compliance</a><a href="/hisx/billing" class="rl">Billing &amp; revenue</a><a href="/hisx" class="rl">All modules →</a></div></div><div><div class="rel-lbl">Related guides</div><div class="rel-ls"><a href="/solutions/hospital-drug-expiry-management" class="rl">Drug expiry management</a><a href="/solutions/barcode-traceability" class="rl">Barcode traceability</a><a href="/solutions/hospital-inventory-audit-guide" class="rl">Inventory audit guide</a><a href="/fefo-in-hospital-pharmacy" class="rl">What is FEFO?</a></div></div></div></div></nav>
+<div id="footer"></div>
+
+<script>function tFaq(b){var i=b.closest('.faq-item'),o=i.classList.contains('open');document.querySelectorAll('.faq-item').forEach(function(x){x.classList.remove('open');x.querySelector('.fq').setAttribute('aria-expanded','false')});if(!o){i.classList.add('open');b.setAttribute('aria-expanded','true')}}</script>
+<script>
+fetch("../header.html")
+    .then(res => res.text())
+    .then(data => {
+        document.getElementById("header").innerHTML = data;
+    });
+
+fetch("../footer.html")
+    .then(res => res.text())
+    .then(data => {
+        document.getElementById("footer").innerHTML = data;
+    });
+</script>
+<!-- ================= TEMPLATE JS ================= -->
+    <!--<< All JS Plugins >>-->
+    <script data-cfasync="false" src="../../cdn-cgi/scripts/5c5dd728/cloudflare-static/email-decode.min.js"></script>
+    <script src="/../assets/quantbit_website/js/jquery-3.7.1.min.js"></script>
+    <!--<< Viewport Js >>-->
+    <script src="/../assets/quantbit_website/js/viewport.jquery.js"></script>
+    <!--<< Bootstrap Js >>-->
+    <script src="/../assets/quantbit_website/js/bootstrap.bundle.min.js"></script>
+    <!--<< Nice Select Js >>-->
+    <script src="/../assets/quantbit_website/js/jquery.nice-select.min.js"></script>
+    <!--<< Waypoints Js >>-->
+    <script src="/../assets/quantbit_website/js/jquery.waypoints.js"></script>
+    <!--<< Counterup Js >>-->
+    <script src="/../assets/quantbit_website/js/jquery.counterup.min.js"></script>
+    <!--<< Slick Js >>-->
+    <script src="/../assets/quantbit_website/js/slick.min.js"></script>
+    <!--<< Slick Animation Js >>-->
+    <script src="/../assets/quantbit_website/js/slick-animation.min.js"></script>
+    <!--<< MeanMenu Js >>-->
+    <script src="/../assets/quantbit_website/js/jquery.meanmenu.min.js"></script>
+    <!--<< Magnific Popup Js >>-->
+    <script src="/../assets/quantbit_website/js/jquery.magnific-popup.min.js"></script>
+    <!--<< Wow Animation Js >>-->
+    <script src="/../assets/quantbit_website/js/wow.min.js"></script>
+    <!--<< Circle Progress Js >>-->
+    <script src="/../assets/quantbit_website/js/circle-progress.js"></script>
+    <!--<< Main.js >>-->
+    <script src="/../assets/quantbit_website/js/main.js"></script>
+    <script defer
+        src="../../../static.cloudflareinsights.com/beacon.min.js/v8c78df7c7c0f484497ecbca7046644da1771523124516"
+        integrity="sha512-8DS7rgIrAmghBFwoOTujcf6D9rXvH8xm8JQ1Ja01h9QX8EzXldiszufYa4IFfKdLUKTTrnSFXLDkUEOTrZQ8Qg=="
+        data-cf-beacon='{"version":"2024.11.0","token":"90f7972af14a48b4add7da2b74f5d675","r":1,"server_timing":{"name":{"cfCacheStatus":true,"cfEdge":true,"cfExtPri":true,"cfL4":true,"cfOrigin":true,"cfSpeedBrain":true},"location_startswith":null}}'
+        crossorigin="anonymous"></script>
+
+
+</body>
+</html>

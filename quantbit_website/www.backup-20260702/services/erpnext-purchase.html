@@ -1,0 +1,445 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<title>Purchase & Procurement | ERPNext Module | Quantbit Technologies</title>
+<meta name="description" content="Automate your entire procure-to-pay cycle — from material requests and RFQ to purchase orders, goods receipt, supplier invoice matching, and payment — with">
+<meta name="keywords" content="ERPNext purchase module India, ERPNext procurement automation Pune, ERPNext TDS vendor payment, ERPNext three way matching, ERPNext purchase order approval workflow, ERPNext supplier management, ERPNext GST ITC purchase, ERPNext procurement GCC Oman">
+<link rel="canonical" href="https://quantbit.io/services/erpnext-purchase/">
+<script type="application/ld+json">{
+  "@context":"https://schema.org",
+  "@graph":[
+    {"@type":"BreadcrumbList","itemListElement":[
+      {"@type":"ListItem","position":1,"name":"Home","item":"https://quantbit.io"},
+      {"@type":"ListItem","position":2,"name":"ERPNext Services","item":"https://quantbit.io/services/"},
+      {"@type":"ListItem","position":3,"name":"ERPNext Purchase & Procurement","item":"https://quantbit.io/services/erpnext-purchase/"}
+    ]},
+    {"@type":"FAQPage","mainEntity":[{"@type":"Question","name":"Can ERPNext enforce purchase approval hierarchies based on order value?","acceptedAnswer":{"@type":"Answer","text":"Yes. ERPNext supports multi-level purchase order approval workflows where different approvers are triggered based on the PO value. For example, orders below ₹1 lakh may be approved by the purchase manager, while orders above ₹10 lakh require CFO approval — all configured in the system and tracked in the audit trail."}},
+{"@type":"Question","name":"How does ERPNext handle TDS on vendor payments?","acceptedAnswer":{"@type":"Answer","text":"ERPNext automatically calculates and deducts TDS at the time of payment posting based on the TDS category configured on the supplier master. The correct section — 194C, 194J, 194H, etc. — is applied, and the TDS payable report shows all deductions for Form 26Q filing."}},
+{"@type":"Question","name":"Can we do three-way matching of PO, GRN, and supplier invoice in ERPNext?","acceptedAnswer":{"@type":"Answer","text":"Yes. ERPNext requires a Purchase Order reference when creating a GRN, and a GRN reference when booking the supplier invoice. Price and quantity variances between the three documents are flagged for review and exception approval before the invoice is accepted."}},
+{"@type":"Question","name":"Does ERPNext support blanket purchase orders for long-term supplier contracts?","acceptedAnswer":{"@type":"Answer","text":"Yes. ERPNext's Blanket Order feature lets you set an annual contract value with a supplier and raise periodic release orders against it. This is commonly used for consumables, annual maintenance contracts, and recurring service purchases."}},
+{"@type":"Question","name":"How long does procurement module implementation take with Quantbit?","acceptedAnswer":{"@type":"Answer","text":"Purchase module implementation including supplier master, approval matrix, TDS setup, and basic reports typically takes 4 to 6 weeks. If combined with Inventory and Accounts Payable modules, the integrated rollout takes 8 to 12 weeks."}},
+{"@type":"Question","name":"Can we manage purchase budgets and block orders when budget is exceeded?","acceptedAnswer":{"@type":"Answer","text":"Yes. ERPNext's Budget feature links to the Purchase module. You can set department-wise or cost-centre-wise purchase budgets, and the system will warn or block a purchase order if the cumulative spend for the period exceeds the approved budget."}}]}
+  ]
+}</script>
+<style>/* Quantbit ERPNext Module Pages — Shared Design System */
+:root {
+  --accent: #1a5fd4;
+  --accent-dark: #1349a8;
+  --teal: #0b7a5e;
+  --teal-light: #e6f4f0;
+  --amber: #b35e0a;
+  --amber-light: #fef3e2;
+  --dark: #0f2d47;
+  --mid: #1e4a6e;
+  --text: #1a2a38;
+  --muted: #4a6278;
+  --border: #d0dce8;
+  --bg: #f5f8fc;
+  --white: #ffffff;
+  --radius: 10px;
+  --shadow: 0 2px 16px rgba(15,45,71,0.10);
+  --shadow-lg: 0 6px 32px rgba(15,45,71,0.14);
+}
+*,*::before,*::after{box-sizing:border-box;margin:0;padding:0}
+html{scroll-behavior:smooth}
+body{font-family:'Segoe UI',system-ui,-apple-system,sans-serif;color:var(--text);background:var(--white);line-height:1.65;font-size:16px}
+.site-nav{background:var(--dark);padding:0 32px;display:flex;align-items:center;justify-content:space-between;height:60px;position:sticky;top:0;z-index:100}
+.nav-logo{color:#fff;font-weight:700;font-size:1.1rem;text-decoration:none;letter-spacing:.5px}
+.nav-links{display:flex;gap:24px;list-style:none}
+.nav-links a{color:rgba(255,255,255,.82);text-decoration:none;font-size:.9rem;font-weight:500;transition:color .2s}
+.nav-links a:hover{color:#fff}
+.nav-cta{background:var(--accent);color:#fff!important;padding:7px 18px;border-radius:6px;font-weight:600!important}
+.breadcrumb{background:var(--bg);border-bottom:1px solid var(--border);padding:10px 32px;font-size:.82rem;color:var(--muted)}
+.breadcrumb a{color:var(--accent);text-decoration:none}
+.breadcrumb a:hover{text-decoration:underline}
+.hero{background:linear-gradient(135deg,var(--dark) 0%,var(--mid) 60%,#1a5fd4 100%);color:#fff;padding:72px 32px 64px;position:relative;overflow:hidden}
+.hero::before{content:'';position:absolute;right:-80px;top:-80px;width:420px;height:420px;background:rgba(255,255,255,.04);border-radius:50%;pointer-events:none}
+.hero-inner{max-width:1100px;margin:0 auto;display:grid;grid-template-columns:1fr 380px;gap:56px;align-items:center}
+.hero-badge{display:inline-flex;align-items:center;gap:8px;background:rgba(255,255,255,.12);border:1px solid rgba(255,255,255,.22);border-radius:40px;padding:5px 14px;font-size:.78rem;font-weight:600;letter-spacing:.8px;text-transform:uppercase;margin-bottom:18px;color:rgba(255,255,255,.9)}
+.hero h1{font-size:clamp(1.9rem,3.5vw,2.7rem);font-weight:800;line-height:1.2;margin-bottom:16px}
+.hero h1 span{color:#7eb8ff}
+.hero-desc{font-size:1.05rem;color:rgba(255,255,255,.82);margin-bottom:28px;max-width:540px}
+.hero-tags{display:flex;flex-wrap:wrap;gap:8px;margin-bottom:32px}
+.hero-tag{background:rgba(255,255,255,.1);border:1px solid rgba(255,255,255,.2);border-radius:20px;padding:4px 12px;font-size:.78rem;color:rgba(255,255,255,.85)}
+.hero-btns{display:flex;gap:14px;flex-wrap:wrap}
+.btn-primary{background:var(--accent);color:#fff;padding:12px 26px;border-radius:8px;font-weight:700;text-decoration:none;font-size:.95rem;transition:background .2s,transform .15s;display:inline-block}
+.btn-primary:hover{background:var(--accent-dark);transform:translateY(-1px)}
+.btn-ghost{background:transparent;color:#fff;padding:11px 24px;border:2px solid rgba(255,255,255,.4);border-radius:8px;font-weight:600;text-decoration:none;font-size:.95rem;transition:.2s;display:inline-block}
+.btn-ghost:hover{border-color:#fff;background:rgba(255,255,255,.1)}
+.hero-card{background:rgba(255,255,255,.1);border:1px solid rgba(255,255,255,.18);border-radius:14px;padding:28px;backdrop-filter:blur(8px)}
+.hero-card h3{font-size:1rem;font-weight:700;margin-bottom:16px;color:rgba(255,255,255,.92)}
+.hero-stat{display:flex;align-items:center;gap:12px;margin-bottom:14px;padding-bottom:14px;border-bottom:1px solid rgba(255,255,255,.12)}
+.hero-stat:last-child{margin-bottom:0;padding-bottom:0;border-bottom:none}
+.stat-icon{width:36px;height:36px;background:rgba(255,255,255,.15);border-radius:8px;display:flex;align-items:center;justify-content:center;font-size:1.1rem;flex-shrink:0}
+.stat-val{font-size:1.2rem;font-weight:800;color:#fff}
+.stat-lbl{font-size:.75rem;color:rgba(255,255,255,.7);line-height:1.3}
+.section{padding:64px 32px}
+.section-alt{background:var(--bg)}
+.container{max-width:1100px;margin:0 auto}
+.section-label{font-size:.75rem;font-weight:700;letter-spacing:1.2px;text-transform:uppercase;color:var(--accent);margin-bottom:8px}
+.section-title{font-size:clamp(1.5rem,2.8vw,2.1rem);font-weight:800;color:var(--dark);margin-bottom:12px;line-height:1.25}
+.section-sub{font-size:1.02rem;color:var(--muted);max-width:640px;margin-bottom:44px;line-height:1.7}
+.feature-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(280px,1fr));gap:24px}
+.feature-card{background:var(--white);border:1px solid var(--border);border-radius:var(--radius);padding:26px;transition:box-shadow .2s,transform .2s}
+.feature-card:hover{box-shadow:var(--shadow);transform:translateY(-3px)}
+.feature-icon{width:44px;height:44px;border-radius:10px;background:linear-gradient(135deg,var(--accent),var(--mid));display:flex;align-items:center;justify-content:center;font-size:1.3rem;margin-bottom:14px}
+.feature-card h3{font-size:1rem;font-weight:700;color:var(--dark);margin-bottom:8px}
+.feature-card p{font-size:.88rem;color:var(--muted);line-height:1.6}
+.feature-card ul{margin-top:10px;padding-left:0;list-style:none}
+.feature-card ul li{font-size:.85rem;color:var(--muted);padding:3px 0 3px 16px;position:relative;line-height:1.5}
+.feature-card ul li::before{content:'✓';position:absolute;left:0;color:var(--teal);font-weight:700}
+.reports-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(240px,1fr));gap:20px}
+.report-card{background:var(--white);border:1px solid var(--border);border-left:4px solid var(--accent);border-radius:var(--radius);padding:20px 22px}
+.report-card h4{font-size:.92rem;font-weight:700;color:var(--dark);margin-bottom:6px}
+.report-card p{font-size:.82rem;color:var(--muted);line-height:1.55}
+.report-tag{display:inline-block;background:var(--bg);border:1px solid var(--border);border-radius:4px;padding:2px 8px;font-size:.72rem;font-weight:600;color:var(--accent);margin-top:8px}
+.roles-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(200px,1fr));gap:16px}
+.role-pill{background:var(--white);border:1px solid var(--border);border-radius:var(--radius);padding:16px 20px;display:flex;align-items:flex-start;gap:12px}
+.role-dot{width:10px;height:10px;border-radius:50%;flex-shrink:0;margin-top:4px}
+.role-dot.admin{background:var(--accent)}
+.role-dot.manager{background:var(--teal)}
+.role-dot.user{background:var(--amber)}
+.role-dot.viewer{background:#9b59b6}
+.role-name{font-size:.88rem;font-weight:700;color:var(--dark);margin-bottom:2px}
+.role-desc{font-size:.78rem;color:var(--muted)}
+.benefits-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(260px,1fr));gap:24px}
+.benefit-card{background:linear-gradient(135deg,var(--teal-light),var(--white));border:1px solid #b8dfd6;border-radius:var(--radius);padding:26px}
+.benefit-num{font-size:2rem;font-weight:900;color:var(--teal);opacity:.35;line-height:1;margin-bottom:6px}
+.benefit-card h3{font-size:.98rem;font-weight:700;color:var(--dark);margin-bottom:8px}
+.benefit-card p{font-size:.86rem;color:var(--muted);line-height:1.6}
+.bp-list{display:grid;grid-template-columns:repeat(auto-fit,minmax(300px,1fr));gap:20px}
+.bp-item{background:var(--white);border:1px solid var(--border);border-radius:var(--radius);padding:22px 24px;display:flex;gap:16px;align-items:flex-start}
+.bp-icon{width:38px;height:38px;background:var(--amber-light);border-radius:8px;display:flex;align-items:center;justify-content:center;font-size:1.1rem;flex-shrink:0}
+.bp-item h4{font-size:.92rem;font-weight:700;color:var(--dark);margin-bottom:5px}
+.bp-item p{font-size:.83rem;color:var(--muted);line-height:1.55}
+.geo-answer{background:linear-gradient(135deg,#e8f0fc,#f0f6ff);border:1px solid #c5d8f7;border-radius:14px;padding:32px 36px;margin-bottom:32px}
+.geo-answer h3{font-size:1.1rem;font-weight:700;color:var(--dark);margin-bottom:10px}
+.geo-answer p{font-size:.95rem;color:var(--text);line-height:1.75}
+.geo-grid{display:grid;grid-template-columns:1fr 1fr;gap:24px}
+.geo-block{background:var(--white);border:1px solid var(--border);border-radius:var(--radius);padding:24px}
+.geo-block h4{font-size:.9rem;font-weight:700;color:var(--accent);margin-bottom:10px;display:flex;align-items:center;gap:8px}
+.geo-block ul{list-style:none;padding:0}
+.geo-block ul li{font-size:.85rem;color:var(--muted);padding:4px 0 4px 16px;position:relative}
+.geo-block ul li::before{content:'→';position:absolute;left:0;color:var(--accent)}
+.faq-list{max-width:800px;margin:0 auto}
+.faq-item{border:1px solid var(--border);border-radius:var(--radius);margin-bottom:10px;overflow:hidden}
+.faq-q{width:100%;background:var(--white);border:none;padding:18px 22px;text-align:left;font-size:.95rem;font-weight:600;color:var(--dark);cursor:pointer;display:flex;justify-content:space-between;align-items:center;gap:12px;transition:background .15s}
+.faq-q:hover,.faq-q.open{background:var(--bg)}
+.faq-arrow{font-size:1rem;color:var(--accent);transition:transform .25s;flex-shrink:0}
+.faq-q.open .faq-arrow{transform:rotate(180deg)}
+.faq-a{display:none;padding:0 22px 18px;font-size:.9rem;color:var(--muted);line-height:1.7}
+.faq-a.open{display:block}
+.ai-block{background:linear-gradient(135deg,var(--dark),var(--mid));color:#fff;border-radius:14px;padding:36px 40px}
+.ai-block h3{font-size:1.15rem;font-weight:700;margin-bottom:14px;color:#7eb8ff}
+.ai-qa{margin-bottom:18px;padding-bottom:18px;border-bottom:1px solid rgba(255,255,255,.1)}
+.ai-qa:last-child{margin-bottom:0;padding-bottom:0;border-bottom:none}
+.ai-qa .q{font-size:.88rem;font-weight:600;color:rgba(255,255,255,.7);margin-bottom:4px}
+.ai-qa .a{font-size:.9rem;color:rgba(255,255,255,.88);line-height:1.65}
+.cta-section{background:linear-gradient(135deg,var(--dark) 0%,var(--mid) 100%);color:#fff;padding:72px 32px;text-align:center}
+.cta-section h2{font-size:clamp(1.6rem,3vw,2.3rem);font-weight:800;margin-bottom:14px}
+.cta-section p{font-size:1.05rem;color:rgba(255,255,255,.8);max-width:580px;margin:0 auto 32px}
+.cta-btns{display:flex;gap:16px;justify-content:center;flex-wrap:wrap}
+.btn-white{background:#fff;color:var(--dark);padding:13px 28px;border-radius:8px;font-weight:700;text-decoration:none;font-size:.97rem;transition:.2s;display:inline-block}
+.btn-white:hover{background:#e8f0fc}
+.cta-trust{margin-top:22px;font-size:.82rem;color:rgba(255,255,255,.55)}
+.site-footer{background:#0a1e2e;color:rgba(255,255,255,.6);padding:40px 32px 24px;text-align:center;font-size:.83rem}
+.site-footer a{color:rgba(255,255,255,.5);text-decoration:none}
+.table-wrap{overflow-x:auto;border-radius:var(--radius);border:1px solid var(--border)}
+table{width:100%;border-collapse:collapse}
+th{background:var(--dark);color:#fff;padding:12px 16px;text-align:left;font-size:.82rem;font-weight:600;letter-spacing:.4px}
+td{padding:11px 16px;font-size:.87rem;color:var(--text);border-bottom:1px solid var(--border)}
+tr:last-child td{border-bottom:none}
+tr:nth-child(even) td{background:var(--bg)}
+.seo-box{background:var(--bg);border:1px solid var(--border);border-radius:var(--radius);padding:24px 28px}
+.seo-kw{display:flex;flex-wrap:wrap;gap:8px;margin-top:12px}
+.seo-kw span{background:var(--white);border:1px solid var(--border);border-radius:4px;padding:4px 10px;font-size:.78rem;color:var(--accent);font-weight:600}
+@media(max-width:768px){
+  .hero-inner{grid-template-columns:1fr}
+  .hero-card{display:none}
+  .geo-grid{grid-template-columns:1fr}
+  .site-nav{padding:0 16px}
+  .nav-links{display:none}
+  .section{padding:48px 16px}
+  .hero{padding:48px 16px 44px}
+  .ai-block{padding:24px 20px}
+  .geo-answer{padding:22px 20px}
+}
+</style>
+<link rel="stylesheet" href="/assets/quantbit_website/css/_shared.css">
+
+  <!-- TEMPLATE CSS (IMPORTANT) -->
+  <link rel="stylesheet" href="/../assets/quantbit_website/css/bootstrap.min.css">
+  <link rel="stylesheet" href="/../assets/quantbit_website/css/font-awesome.css">
+  <link rel="stylesheet" href="/../assets/quantbit_website/css/animate.css">
+  <link rel="stylesheet" href="/../assets/quantbit_website/css/magnific-popup.css">
+  <link rel="stylesheet" href="/../assets/quantbit_website/css/meanmenu.css">
+  <link rel="stylesheet" href="/../assets/quantbit_website/css/slick.css">
+  <link rel="stylesheet" href="/../assets/quantbit_website/css/nice-select.css">
+  <link rel="stylesheet" href="/../assets/quantbit_website/css/main.css">
+  <link rel="stylesheet" href="style.css">
+  <!-- <link rel="stylesheet" href="/assets/quantbit_website/css/_shared.css"> -->
+
+
+  <!-- OPTIONAL CUSTOM -->
+  <link rel="stylesheet" href="/../assets/quantbit_website/css/hrms.css">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
+  <!-- Google Tag Manager -->
+  <script>(function (w, d, s, l, i) {
+      w[l] = w[l] || []; w[l].push({
+        'gtm.start':
+          new Date().getTime(), event: 'gtm.js'
+      }); var f = d.getElementsByTagName(s)[0],
+        j = d.createElement(s), dl = l != 'dataLayer' ? '&l=' + l : ''; j.async = true; j.src =
+          'https://www.googletagmanager.com/gtm.js?id=' + i + dl; f.parentNode.insertBefore(j, f);
+    })(window, document, 'script', 'dataLayer', 'GTM-P98Z6G8D');</script>
+  <!-- End Google Tag Manager -->
+</head>
+<body>
+<noscript><iframe src="https://www.googletagmanager.com/ns.html?id=GTM-P98Z6G8D" height="0" width="0"
+      style="display:none;visibility:hidden"></iframe></noscript>
+  <!-- End Google Tag Manager (noscript) -->
+  <!-- NAV -->
+  <div id="header"></div>
+
+<section class="hero">
+  <div class="hero-inner">
+    <div>
+      <div class="hero-badge">&#128311; ERPNext Module</div>
+      <h1>ERPNext <span>Purchase & Procurement</span><br>for Indian &amp; GCC Businesses</h1>
+      <p class="hero-desc">Automate your entire procure-to-pay cycle — from material requests and RFQ to purchase orders, goods receipt, supplier invoice matching, and payment — with full audit control and GST/VAT compliance in ERPNext.</p>
+      <div class="hero-tags"><span class="hero-tag">Purchase Requisition</span><span class="hero-tag">RFQ & Quotation</span><span class="hero-tag">Purchase Order</span><span class="hero-tag">3-Way Match</span><span class="hero-tag">Supplier Management</span><span class="hero-tag">Landed Cost</span><span class="hero-tag">TDS on Purchase</span><span class="hero-tag">Spend Analysis</span></div>
+      <div class="hero-btns">
+        <a href="/company/contact-us.html" class="btn-primary">Book Free Demo</a>
+        <a href="/services/" class="btn-ghost">All ERPNext Modules</a>
+      </div>
+    </div>
+    <div class="hero-card">
+      <h3>Module Snapshot</h3>
+      <div class="hero-stat"><div class="stat-icon">&#128203;</div><div><div class="stat-val">PR to PO</div><div class="stat-lbl">Automated material request to order</div></div></div>
+<div class="hero-stat"><div class="stat-icon">&#129300;</div><div><div class="stat-val">3-Way Match</div><div class="stat-lbl">PO, GRN, and invoice matching</div></div></div>
+<div class="hero-stat"><div class="stat-icon">&#128176;</div><div><div class="stat-val">AP Automation</div><div class="stat-lbl">Supplier invoice booking and payment</div></div></div>
+<div class="hero-stat"><div class="stat-icon">&#128202;</div><div><div class="stat-val">Spend Analytics</div><div class="stat-lbl">Real-time purchase spend visibility</div></div></div>
+
+    </div>
+  </div>
+</section>
+
+<section class="section">
+  <div class="container">
+    <div class="section-label">Overview</div>
+    <h2 class="section-title">What is ERPNext Purchase & Procurement?</h2>
+    <p style="font-size:.97rem;color:var(--muted);line-height:1.85;max-width:840px">ERPNext Purchase and Procurement module manages every step of the procure-to-pay cycle — from the moment a department raises a material request to the moment a supplier payment is authorised and posted to accounts. The module enforces structured procurement governance with mandatory purchase requisitions, competitive RFQ and supplier quotation comparison, purchase order approval workflows by value thresholds, goods receipt with three-way matching against PO and supplier invoice, and automated TDS deduction and GST input tax credit capture on every purchase. For manufacturing and distribution companies in India, this means compliance with procurement best practices and GST ITC rules simultaneously. For GCC businesses in Oman and UAE, supplier invoices are matched with VAT Input Tax recovery, and WPS-compliant payment processing integrates at the payroll level. The module integrates natively with ERPNext Inventory — every goods receipt automatically updates stock levels and valuation — and with Accounts Payable, where every supplier invoice creates the correct accounting entries without manual re-entry. Supplier master management tracks preferred suppliers, approved vendor lists, credit terms, and performance ratings based on delivery punctuality and quality rejection rates. Quantbit Technologies implements the complete procurement setup including supplier onboarding workflows, approval matrices, TDS categories, and custom purchase dashboards aligned to your organisation's spend categories and approval hierarchy.</p>
+  </div>
+</section>
+
+<section class="section section-alt">
+  <div class="container">
+    <div class="section-label">Features &amp; Functions</div>
+    <h2 class="section-title">Core Capabilities of the Purchase & Procurement Module</h2>
+    <p class="section-sub">Every feature is built into ERPNext — no extra licensing. Quantbit configures and extends these for your exact business processes.</p>
+    <div class="feature-grid"><div class="feature-card"><div class="feature-icon">&#128203;</div><h3>Material Request & Requisition</h3><p>Structured demand capture from every department before any procurement begins.</p><ul><li>Material Request from production, store, or any dept</li><li>Request type: purchase, manufacture, or transfer</li><li>Department and project-wise request tracking</li><li>Approver notification and workflow routing</li></ul></div>
+<div class="feature-card"><div class="feature-icon">&#128269;</div><h3>RFQ & Supplier Quotation</h3><p>Get competitive quotes and compare supplier prices systematically.</p><ul><li>RFQ sent to multiple suppliers simultaneously</li><li>Supplier Quotation comparison matrix</li><li>Last purchase price reference for benchmarking</li><li>Quotation validity and re-quote tracking</li></ul></div>
+<div class="feature-card"><div class="feature-icon">&#128203;</div><h3>Purchase Order Management</h3><p>Create compliant purchase orders with approval workflows and audit trail.</p><ul><li>PO with line-item pricing and tax breakdown</li><li>Multi-level approval by PO value threshold</li><li>Amendment history with change log</li><li>Blanket PO with periodic release orders</li></ul></div>
+<div class="feature-card"><div class="feature-icon">&#128230;</div><h3>Goods Receipt & GRN</h3><p>Receive goods against PO with quality check and automatic stock update.</p><ul><li>GRN linked to PO with quantity tolerance</li><li>Quality inspection before stock acceptance</li><li>Partial receipt and balance tracking</li><li>Landed cost entry for freight and customs</li></ul></div>
+<div class="feature-card"><div class="feature-icon">&#129300;</div><h3>Three-Way Matching</h3><p>Match supplier invoice against PO and GRN before payment approval.</p><ul><li>Invoice vs PO vs GRN quantity and price check</li><li>Variance alert and approval for exceptions</li><li>Duplicate invoice detection</li><li>Purchase return and debit note for discrepancies</li></ul></div>
+<div class="feature-card"><div class="feature-icon">&#128176;</div><h3>Supplier Invoice & Payment</h3><p>Book supplier invoices with automatic TDS, GST ITC, and payment scheduling.</p><ul><li>Supplier invoice with GST ITC capture</li><li>TDS auto-deduction by section at payment</li><li>Payment scheduling against due dates</li><li>Advance to supplier with GST adjustment</li></ul></div>
+<div class="feature-card"><div class="feature-icon">&#127942;</div><h3>Supplier Management</h3><p>Maintain approved vendor list with performance tracking and credit terms.</p><ul><li>Supplier master with credit limit and terms</li><li>Approved vendor list by item category</li><li>Delivery performance rating from GRN data</li><li>Supplier portal for order acknowledgement</li></ul></div>
+<div class="feature-card"><div class="feature-icon">&#128202;</div><h3>Purchase Analytics</h3><p>Real-time spend visibility by supplier, category, and department.</p><ul><li>Spend by supplier and item category</li><li>Purchase trend and YOY comparison</li><li>Supplier-wise outstanding and payment history</li><li>Price trend for key raw materials</li></ul></div>
+</div>
+  </div>
+</section>
+
+<section class="section">
+  <div class="container">
+    <div class="section-label">Reports &amp; Dashboards</div>
+    <h2 class="section-title">Built-in Reports &amp; Analytics</h2>
+    <p class="section-sub">Decision-ready reports available out-of-the-box, fully customisable by Quantbit's certified team.</p>
+    <div class="reports-grid"><div class="report-card"><h4>Purchase Order Analysis</h4><p>Open, closed, and pending POs by supplier, item, and date with value summary.</p><span class="report-tag">Purchase Manager</span></div>
+<div class="report-card"><h4>Supplier Quotation Comparison</h4><p>Side-by-side comparison of supplier quotes for the same material or service.</p><span class="report-tag">Purchase Team</span></div>
+<div class="report-card"><h4>GRN Pending Against PO</h4><p>Purchase orders with goods not yet received — for follow-up with suppliers.</p><span class="report-tag">Store / Purchase</span></div>
+<div class="report-card"><h4>Supplier Invoice Pending</h4><p>GRNs for which supplier invoice has not yet been received or booked.</p><span class="report-tag">Accounts Payable</span></div>
+<div class="report-card"><h4>Purchase Spend Analysis</h4><p>Total spend by supplier, category, department, and period for strategic sourcing.</p><span class="report-tag">Management / CFO</span></div>
+<div class="report-card"><h4>TDS Payable Report</h4><p>TDS deducted on supplier payments with section-wise breakdown for filing.</p><span class="report-tag">Accounts / Tax</span></div>
+<div class="report-card"><h4>Purchase Return Report</h4><p>Materials returned to suppliers with debit note and credit impact.</p><span class="report-tag">Purchase / Accounts</span></div>
+<div class="report-card"><h4>Landed Cost Allocation</h4><p>Freight, customs, and other charges allocated to each item received in a shipment.</p><span class="report-tag">Finance / Costing</span></div>
+</div>
+  </div>
+</section>
+
+<section class="section section-alt">
+  <div class="container">
+    <div class="section-label">User Access &amp; Roles</div>
+    <h2 class="section-title">Who Uses This Module?</h2>
+    <p class="section-sub">ERPNext's role-based permissions ensure each user sees only what they need. Quantbit aligns roles to your org chart on Day 1.</p>
+    <div class="roles-grid"><div class="role-pill"><div class="role-dot admin"></div><div><div class="role-name">Purchase Manager</div><div class="role-desc">Full module config, supplier master, approval setup, spend analytics access</div></div></div>
+<div class="role-pill"><div class="role-dot manager"></div><div><div class="role-name">HOD / Budget Owner</div><div class="role-desc">Approve requisitions from their department, view dept-wise spend vs budget</div></div></div>
+<div class="role-pill"><div class="role-dot user"></div><div><div class="role-name">Purchase Executive</div><div class="role-desc">Create RFQ, compare quotes, raise PO, track GRN, book supplier invoices</div></div></div>
+<div class="role-pill"><div class="role-dot viewer"></div><div><div class="role-name">Finance / Auditor</div><div class="role-desc">Read-only access to POs, GRNs, invoices, and TDS reports for review</div></div></div>
+<div class="role-pill"><div class="role-dot user"></div><div><div class="role-name">Storekeeper</div><div class="role-desc">Receive goods against GRN, update quality inspection, confirm receipt quantities</div></div></div>
+</div>
+  </div>
+</section>
+
+<section class="section">
+  <div class="container">
+    <div class="section-label">Business Benefits</div>
+    <h2 class="section-title">Why Implement ERPNext Purchase & Procurement?</h2>
+    <p class="section-sub">Quantbit's certified implementations deliver measurable outcomes, not just software installation.</p>
+    <div class="benefits-grid"><div class="benefit-card"><div class="benefit-num">01</div><h3>Eliminate Maverick Spending</h3><p>Mandatory purchase requisition and approval workflows ensure no purchase happens outside the system — giving finance visibility over every rupee committed before it is spent.</p></div>
+<div class="benefit-card"><div class="benefit-num">02</div><h3>Maximise GST Input Tax Credit</h3><p>Every purchase invoice captures eligible GST ITC with supplier GSTIN validation. Reconciliation with GSTR-2B data helps ensure maximum ITC recovery and minimises tax outflow.</p></div>
+<div class="benefit-card"><div class="benefit-num">03</div><h3>Prevent Duplicate and Fraud Payments</h3><p>Three-way matching of PO, GRN, and supplier invoice combined with duplicate invoice detection prevents overpayments and supplier fraud that commonly affect manual procurement processes.</p></div>
+<div class="benefit-card"><div class="benefit-num">04</div><h3>Competitive Pricing via RFQ</h3><p>Structured RFQ to multiple suppliers with a quotation comparison matrix enables data-driven supplier selection and prevents sole-sourcing at inflated prices.</p></div>
+<div class="benefit-card"><div class="benefit-num">05</div><h3>Real-time Spend Visibility</h3><p>Management sees live spend by category, supplier, department, and project — enabling immediate corrective action when spend exceeds budget or deviates from approved sources.</p></div>
+<div class="benefit-card"><div class="benefit-num">06</div><h3>Automated TDS Compliance</h3><p>TDS deduction on eligible supplier payments under the correct section is handled automatically at the time of payment posting — reducing manual calculation errors and late filing penalties.</p></div>
+</div>
+  </div>
+</section>
+
+<section class="section section-alt">
+  <div class="container">
+    <div class="section-label">Best Practices</div>
+    <h2 class="section-title">Best Practices for Purchase & Procurement in ERPNext</h2>
+    <p class="section-sub">Quantbit follows implementation standards that ensure effective adoption from Day 1.</p>
+    <div class="bp-list"><div class="bp-item"><div class="bp-icon">&#128203;</div><div><h4>Make Material Requests Mandatory</h4><p>Never allow direct purchase orders without an approved material request. This single governance rule eliminates most procurement fraud and budget overruns in organisations.</p></div></div>
+<div class="bp-item"><div class="bp-icon">&#127942;</div><div><h4>Maintain an Approved Vendor List</h4><p>Configure approved suppliers per item category in ERPNext. Purchases from non-approved vendors should require explicit exception approval — logged in the system for audit.</p></div></div>
+<div class="bp-item"><div class="bp-icon">&#129300;</div><div><h4>Enforce Three-Way Match Before Payment</h4><p>Configure ERPNext to block supplier invoice booking unless a matching GRN exists. This prevents payment for goods not received — one of the most common procurement control failures.</p></div></div>
+<div class="bp-item"><div class="bp-icon">&#128176;</div><div><h4>Schedule Payments by Due Date</h4><p>Use ERPNext's payment scheduling feature to pay suppliers on exact due dates — maximising early payment discounts where available and avoiding late payment penalties.</p></div></div>
+<div class="bp-item"><div class="bp-icon">&#128202;</div><div><h4>Review Spend Analytics Monthly</h4><p>Run the Purchase Spend Analysis report monthly with your top 20 suppliers. Concentration risk, price trends, and spend vs budget deviations surface here before they become problems.</p></div></div>
+<div class="bp-item"><div class="bp-icon">&#128269;</div><div><h4>Validate Supplier GSTIN</h4><p>Always validate supplier GSTIN in ERPNext before the first purchase. Purchases from suppliers with invalid or inactive GSTIN result in ITC reversal — a cash flow hit that is avoidable.</p></div></div>
+</div>
+  </div>
+</section>
+
+<section class="section">
+  <div class="container">
+    <div class="section-label">India &amp; GCC Context</div>
+    <h2 class="section-title">Compliance &amp; Regional Considerations</h2>
+    <p class="section-sub">ERPNext configured for India's statutory requirements and GCC regulatory frameworks — out of the box.</p>
+    <div class="geo-answer">
+      <h3>&#127470;&#127475; For Indian Businesses</h3>
+      <p>ERPNext Purchase is deeply integrated with India's GST and TDS compliance framework. Every purchase invoice captures supplier GSTIN, GST rate, and eligible ITC amount. GSTR-2B reconciliation helps match claimed ITC with supplier-filed returns. TDS deduction on payments under sections 194C (contractors), 194J (professionals), 194H (commission), and others is automated at the time of payment. Form 16A generation for TDS certificates is supported. Import purchase with customs duty and freight in landed cost is standard. E-way bill for inward supplies above ₹50K is triggered from the GRN.</p>
+    </div>
+    <div class="geo-grid" style="margin-top:20px">
+      <div class="geo-block">
+        <h4>&#127470;&#127475; India &mdash; Key Configurations</h4>
+        <ul><li>GST ITC capture on every purchase invoice</li><li>Supplier GSTIN validation before purchase</li><li>GSTR-2B reconciliation for ITC claim</li><li>TDS auto-deduction: 194C, 194J, 194H, others</li><li>Form 16A TDS certificate generation</li><li>Import landed cost: customs duty and freight</li><li>E-way bill for inward supply above ₹50K</li><li>Purchase return with debit note and GST reversal</li></ul>
+      </div>
+      <div class="geo-block">
+        <h4>&#127466;&#127462; GCC / Oman &mdash; Key Configurations</h4>
+        <ul><li>VAT input tax recovery configuration</li><li>Supplier invoice VAT matching for compliance</li><li>Import landed cost from GCC ports</li><li>Multi-currency PO: OMR, AED, SAR, USD</li><li>WPS payment scheduling for payroll integration</li><li>Muscat office for GCC supplier onboarding</li><li>Arabic print format for supplier documents</li><li>Approved vendor list for GCC regulatory compliance</li></ul>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section class="section section-alt">
+  <div class="container">
+    <div class="section-label">AI Search Strategy</div>
+    <h2 class="section-title">Answers for AI &amp; Voice Search</h2>
+    <p class="section-sub">Structured for AI assistants, featured snippets, and voice queries from procurement and operations teams.</p>
+    <div class="ai-block">
+      <h3>Common AI Search Queries &mdash; Answered</h3>
+      <div class="ai-qa"><div class="q">Q: What is the best procurement software for Indian manufacturing companies?</div><div class="a">ERPNext is widely used by Indian manufacturers for procurement as it includes material requests, RFQ, purchase order approval, three-way matching, TDS automation, GST ITC capture, and full integration with inventory and accounts — all without additional licensing cost.</div></div>
+<div class="ai-qa"><div class="q">Q: Does ERPNext automate TDS deduction on vendor payments?</div><div class="a">Yes. ERPNext automatically deducts TDS at the correct rate and section — 194C, 194J, 194H, etc. — when a payment is made to a vendor. The TDS payable report provides the data needed for Form 26Q quarterly filing.</div></div>
+<div class="ai-qa"><div class="q">Q: How does ERPNext prevent duplicate supplier invoice payments?</div><div class="a">ERPNext checks for duplicate invoice numbers when booking a supplier invoice. Combined with three-way matching that requires a GRN before invoice acceptance, and payment approval workflows, it provides strong controls against accidental or fraudulent duplicate payments.</div></div>
+
+    </div>
+  </div>
+</section>
+
+<section class="section">
+  <div class="container">
+    <div class="section-label">FAQ</div>
+    <h2 class="section-title">Frequently Asked Questions</h2>
+    <p class="section-sub">Everything you need to know about implementing ERPNext Purchase & Procurement with Quantbit Technologies.</p>
+    <div class="faq-list"><div class="faq-item"><button class="faq-q" onclick="tog(this)"><span>Can ERPNext enforce purchase approval hierarchies based on order value?</span><span class="faq-arrow">&#9660;</span></button><div class="faq-a">Yes. ERPNext supports multi-level purchase order approval workflows where different approvers are triggered based on the PO value. For example, orders below ₹1 lakh may be approved by the purchase manager, while orders above ₹10 lakh require CFO approval — all configured in the system and tracked in the audit trail.</div></div>
+<div class="faq-item"><button class="faq-q" onclick="tog(this)"><span>How does ERPNext handle TDS on vendor payments?</span><span class="faq-arrow">&#9660;</span></button><div class="faq-a">ERPNext automatically calculates and deducts TDS at the time of payment posting based on the TDS category configured on the supplier master. The correct section — 194C, 194J, 194H, etc. — is applied, and the TDS payable report shows all deductions for Form 26Q filing.</div></div>
+<div class="faq-item"><button class="faq-q" onclick="tog(this)"><span>Can we do three-way matching of PO, GRN, and supplier invoice in ERPNext?</span><span class="faq-arrow">&#9660;</span></button><div class="faq-a">Yes. ERPNext requires a Purchase Order reference when creating a GRN, and a GRN reference when booking the supplier invoice. Price and quantity variances between the three documents are flagged for review and exception approval before the invoice is accepted.</div></div>
+<div class="faq-item"><button class="faq-q" onclick="tog(this)"><span>Does ERPNext support blanket purchase orders for long-term supplier contracts?</span><span class="faq-arrow">&#9660;</span></button><div class="faq-a">Yes. ERPNext's Blanket Order feature lets you set an annual contract value with a supplier and raise periodic release orders against it. This is commonly used for consumables, annual maintenance contracts, and recurring service purchases.</div></div>
+<div class="faq-item"><button class="faq-q" onclick="tog(this)"><span>How long does procurement module implementation take with Quantbit?</span><span class="faq-arrow">&#9660;</span></button><div class="faq-a">Purchase module implementation including supplier master, approval matrix, TDS setup, and basic reports typically takes 4 to 6 weeks. If combined with Inventory and Accounts Payable modules, the integrated rollout takes 8 to 12 weeks.</div></div>
+<div class="faq-item"><button class="faq-q" onclick="tog(this)"><span>Can we manage purchase budgets and block orders when budget is exceeded?</span><span class="faq-arrow">&#9660;</span></button><div class="faq-a">Yes. ERPNext's Budget feature links to the Purchase module. You can set department-wise or cost-centre-wise purchase budgets, and the system will warn or block a purchase order if the cumulative spend for the period exceeds the approved budget.</div></div>
+</div>
+  </div>
+</section>
+
+<section class="section section-alt">
+  <div class="container">
+    <div class="seo-box">
+      <p class="section-label" style="margin-bottom:8px">SEO Keywords</p>
+      <h3 style="font-size:.92rem;font-weight:700;color:var(--dark);margin-bottom:8px">Search Terms This Page Targets</h3>
+      <div class="seo-kw"><span>ERPNext purchase module India</span><span>ERPNext procurement automation Pune</span><span>ERPNext TDS vendor payment</span><span>ERPNext three way matching</span><span>ERPNext purchase order approval workflow</span><span>ERPNext supplier management</span><span>ERPNext GST ITC purchase</span><span>ERPNext procurement GCC Oman</span><span>ERPNext blanket purchase order</span><span>ERPNext GSTR-2B reconciliation</span><span>ERPNext purchase analytics spend</span><span>open source procurement software India</span><span>ERPNext RFQ supplier quotation comparison</span><span>ERPNext procure to pay workflow</span></div>
+    </div>
+  </div>
+</section>
+
+<section class="cta-section">
+  <div class="container">
+    <h2>Ready to Implement ERPNext Purchase & Procurement?</h2>
+    <p>Quantbit Technologies implements ERPNext Procurement with your approval hierarchy, supplier onboarding, TDS categories, and GST ITC rules — ensuring every purchase is compliant, visible, and auditable from day one.</p>
+    <div class="cta-btns">
+      <a href="/company/contact-us.html" class="btn-white">Book Free Demo</a>
+      <a href="/company/contact-us.html" class="btn-ghost">Talk to a Consultant</a>
+    </div>
+    <div class="cta-trust">&#9989; Certified ERPNext Partner &nbsp;|&nbsp; &#9989; In-house Dev Team &nbsp;|&nbsp; &#9989; India &amp; GCC Experience &nbsp;|&nbsp; &#9989; Post-go-live Support</div>
+  </div>
+</section>
+
+  <div id="footer"></div>
+
+<script>
+function tog(btn){
+  btn.classList.toggle('open');
+  var a=btn.nextElementSibling;
+  a.classList.toggle('open');
+}
+</script>
+<script>
+    fetch("/header.html")
+      .then(res => res.text())
+      .then(data => {
+        document.getElementById("header").innerHTML = data;
+      });
+
+    fetch("/footer.html")
+      .then(res => res.text())
+      .then(data => {
+        document.getElementById("footer").innerHTML = data;
+      });
+  </script>
+  <!-- ================= TEMPLATE JS ================= -->
+  <!--<< All JS Plugins >>-->
+  <script data-cfasync="false" src="../../cdn-cgi/scripts/5c5dd728/cloudflare-static/email-decode.min.js"></script>
+  <script src="/../assets/quantbit_website/js/jquery-3.7.1.min.js"></script>
+  <!--<< Viewport Js >>-->
+  <script src="/../assets/quantbit_website/js/viewport.jquery.js"></script>
+  <!--<< Bootstrap Js >>-->
+  <script src="/../assets/quantbit_website/js/bootstrap.bundle.min.js"></script>
+  <!--<< Nice Select Js >>-->
+  <script src="/../assets/quantbit_website/js/jquery.nice-select.min.js"></script>
+  <!--<< Waypoints Js >>-->
+  <script src="/../assets/quantbit_website/js/jquery.waypoints.js"></script>
+  <!--<< Counterup Js >>-->
+  <script src="/../assets/quantbit_website/js/jquery.counterup.min.js"></script>
+  <!--<< Slick Js >>-->
+  <script src="/../assets/quantbit_website/js/slick.min.js"></script>
+  <!--<< Slick Animation Js >>-->
+  <script src="/../assets/quantbit_website/js/slick-animation.min.js"></script>
+  <!--<< MeanMenu Js >>-->
+  <script src="/../assets/quantbit_website/js/jquery.meanmenu.min.js"></script>
+  <!--<< Magnific Popup Js >>-->
+  <script src="/../assets/quantbit_website/js/jquery.magnific-popup.min.js"></script>
+  <!--<< Wow Animation Js >>-->
+  <script src="/../assets/quantbit_website/js/wow.min.js"></script>
+  <!--<< Circle Progress Js >>-->
+  <script src="/../assets/quantbit_website/js/circle-progress.js"></script>
+  <!--<< Main.js >>-->
+  <script src="/../assets/quantbit_website/js/main.js"></script>
+  <script defer
+    src="../../../static.cloudflareinsights.com/beacon.min.js/v8c78df7c7c0f484497ecbca7046644da1771523124516"
+    integrity="sha512-8DS7rgIrAmghBFwoOTujcf6D9rXvH8xm8JQ1Ja01h9QX8EzXldiszufYa4IFfKdLUKTTrnSFXLDkUEOTrZQ8Qg=="
+    data-cf-beacon='{"version":"2024.11.0","token":"90f7972af14a48b4add7da2b74f5d675","r":1,"server_timing":{"name":{"cfCacheStatus":true,"cfEdge":true,"cfExtPri":true,"cfL4":true,"cfOrigin":true,"cfSpeedBrain":true},"location_startswith":null}}'
+    crossorigin="anonymous"></script>
+
+</body></html>

@@ -1,0 +1,412 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<title>ERPNext Analytics & Reports | Dashboards, Custom Reports, KPI | Quantbit Technologies</title>
+<meta name="description" content="Build custom reports, dashboards, KPIs, and charts in ERPNext. From financial analytics to operations and HR reporting — certified Frappe partner for India and GCC businesses.">
+<meta name="keywords" content="ERPNext reports analytics India, ERPNext custom report builder, ERPNext dashboard KPI, ERPNext business intelligence, ERPNext script report, open source ERP reporting India, ERPNext analytics GCC Oman, ERPNext Frappe reporting partner Pune, ERPNext financial reports, ERPNext operations dashboard">
+<link rel="canonical" href="https://quantbit.io/services/erpnext-analytics-reports/">
+<script type="application/ld+json">{
+  "@context":"https://schema.org",
+  "@graph":[
+    {"@type":"BreadcrumbList","itemListElement":[
+      {"@type":"ListItem","position":1,"name":"Home","item":"https://quantbit.io"},
+      {"@type":"ListItem","position":2,"name":"ERPNext Services","item":"https://quantbit.io/services/"},
+      {"@type":"ListItem","position":3,"name":"ERPNext Analytics & Reports","item":"https://quantbit.io/services/erpnext-analytics-reports/"}
+    ]},
+    {"@type":"FAQPage","mainEntity":[
+      {"@type":"Question","name":"How many standard reports does ERPNext include?","acceptedAnswer":{"@type":"Answer","text":"ERPNext includes over 200 standard reports across all modules — financial statements, inventory aging, sales analytics, purchase analysis, payroll registers, HR reports, and more. All standard reports can be filtered, sorted, and exported to Excel or PDF. Quantbit configures additional custom reports and dashboards specific to your business requirements during implementation."}},
+      {"@type":"Question","name":"Can ERPNext create custom reports without coding?","acceptedAnswer":{"@type":"Answer","text":"Yes. ERPNext's Report Builder allows non-technical users to create custom tabular reports by selecting fields, filters, and sorting without writing any code. For more complex analytics — cross-module joins, calculated columns, or advanced aggregations — Quantbit's team creates Script Reports using Python and Query Reports using SQL."}},
+      {"@type":"Question","name":"Does ERPNext have a dashboard with real-time KPIs?","acceptedAnswer":{"@type":"Answer","text":"Yes. ERPNext Dashboards allow you to create role-specific dashboards with charts, KPI widgets, and report embeds that refresh in real time. Common dashboards include a Finance Dashboard (cash, AR, AP, P&L), a Sales Dashboard (pipeline, revenue, conversion), and an Operations Dashboard (production status, inventory levels, pending POs)."}},
+      {"@type":"Question","name":"Can ERPNext reports be scheduled and emailed automatically?","acceptedAnswer":{"@type":"Answer","text":"Yes. ERPNext's Auto Email Report feature allows you to schedule any report to be automatically generated and emailed to specified recipients on a daily, weekly, or monthly basis. This is commonly used for daily sales summaries, weekly inventory aging emails to procurement teams, and monthly P&L emails to management."}},
+      {"@type":"Question","name":"Can ERPNext data be connected to Power BI or Tableau?","acceptedAnswer":{"@type":"Answer","text":"Yes. ERPNext's REST API and database can be connected to external BI tools including Power BI, Tableau, Google Looker Studio, and Metabase. Quantbit configures API connections or direct database views for clients who require advanced visualisations beyond ERPNext's built-in dashboards."}}
+    ]}
+  ]
+}</script>
+<style>
+:root{--accent:#1a5fd4;--accent-dark:#1349a8;--teal:#0b7a5e;--teal-light:#e6f4f0;--amber:#b35e0a;--amber-light:#fef3e2;--dark:#0f2d47;--mid:#1e4a6e;--text:#1a2a38;--muted:#4a6278;--border:#d0dce8;--bg:#f5f8fc;--white:#ffffff;--radius:10px;--shadow:0 2px 16px rgba(15,45,71,.10)}
+*,*::before,*::after{box-sizing:border-box;margin:0;padding:0}html{scroll-behavior:smooth}
+body{font-family:'Segoe UI',system-ui,-apple-system,sans-serif;color:var(--text);background:var(--white);line-height:1.65;font-size:16px}
+.site-nav{background:var(--dark);padding:0 32px;display:flex;align-items:center;justify-content:space-between;height:60px;position:sticky;top:0;z-index:100}
+.nav-logo{color:#fff;font-weight:700;font-size:1.1rem;text-decoration:none;letter-spacing:.5px}
+.nav-links{display:flex;gap:24px;list-style:none}
+.nav-links a{color:rgba(255,255,255,.82);text-decoration:none;font-size:.9rem;font-weight:500;transition:color .2s}
+.nav-links a:hover{color:#fff}
+.nav-cta{background:var(--accent);color:#fff!important;padding:7px 18px;border-radius:6px;font-weight:600!important}
+.breadcrumb{background:var(--bg);border-bottom:1px solid var(--border);padding:10px 32px;font-size:.82rem;color:var(--muted)}
+.breadcrumb a{color:var(--accent);text-decoration:none}
+.hero{background:linear-gradient(135deg,var(--dark) 0%,var(--mid) 60%,#1a5fd4 100%);color:#fff;padding:72px 32px 64px;position:relative;overflow:hidden}
+.hero::before{content:'';position:absolute;right:-80px;top:-80px;width:420px;height:420px;background:rgba(255,255,255,.04);border-radius:50%;pointer-events:none}
+.hero-inner{max-width:1100px;margin:0 auto;display:grid;grid-template-columns:1fr 380px;gap:56px;align-items:center}
+.hero-badge{display:inline-flex;align-items:center;gap:8px;background:rgba(255,255,255,.12);border:1px solid rgba(255,255,255,.22);border-radius:40px;padding:5px 14px;font-size:.78rem;font-weight:600;letter-spacing:.8px;text-transform:uppercase;margin-bottom:18px;color:rgba(255,255,255,.9)}
+.hero h1{font-size:clamp(1.9rem,3.5vw,2.7rem);font-weight:800;line-height:1.2;margin-bottom:16px}
+.hero h1 span{color:#7eb8ff}
+.hero-desc{font-size:1.05rem;color:rgba(255,255,255,.82);margin-bottom:28px;max-width:540px}
+.hero-tags{display:flex;flex-wrap:wrap;gap:8px;margin-bottom:32px}
+.hero-tag{background:rgba(255,255,255,.1);border:1px solid rgba(255,255,255,.2);border-radius:20px;padding:4px 12px;font-size:.78rem;color:rgba(255,255,255,.85)}
+.hero-btns{display:flex;gap:14px;flex-wrap:wrap}
+.btn-primary{background:var(--accent);color:#fff;padding:12px 26px;border-radius:8px;font-weight:700;text-decoration:none;font-size:.95rem;transition:background .2s,transform .15s;display:inline-block}
+.btn-primary:hover{background:var(--accent-dark);transform:translateY(-1px)}
+.btn-ghost{background:transparent;color:#fff;padding:11px 24px;border:2px solid rgba(255,255,255,.4);border-radius:8px;font-weight:600;text-decoration:none;font-size:.95rem;transition:.2s;display:inline-block}
+.btn-ghost:hover{border-color:#fff;background:rgba(255,255,255,.1)}
+.hero-card{background:rgba(255,255,255,.1);border:1px solid rgba(255,255,255,.18);border-radius:14px;padding:28px;backdrop-filter:blur(8px)}
+.hero-card h3{font-size:1rem;font-weight:700;margin-bottom:16px;color:rgba(255,255,255,.92)}
+.hero-stat{display:flex;align-items:center;gap:12px;margin-bottom:14px;padding-bottom:14px;border-bottom:1px solid rgba(255,255,255,.12)}
+.hero-stat:last-child{margin-bottom:0;padding-bottom:0;border-bottom:none}
+.stat-icon{width:36px;height:36px;background:rgba(255,255,255,.15);border-radius:8px;display:flex;align-items:center;justify-content:center;font-size:1.1rem;flex-shrink:0}
+.stat-val{font-size:1.2rem;font-weight:800;color:#fff}
+.stat-lbl{font-size:.75rem;color:rgba(255,255,255,.7);line-height:1.3}
+.section{padding:64px 32px}.section-alt{background:var(--bg)}.container{max-width:1100px;margin:0 auto}
+.section-label{font-size:.75rem;font-weight:700;letter-spacing:1.2px;text-transform:uppercase;color:var(--accent);margin-bottom:8px}
+.section-title{font-size:clamp(1.5rem,2.8vw,2.1rem);font-weight:800;color:var(--dark);margin-bottom:12px;line-height:1.25}
+.section-sub{font-size:1.02rem;color:var(--muted);max-width:640px;margin-bottom:44px;line-height:1.7}
+.feature-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(280px,1fr));gap:24px}
+.feature-card{background:var(--white);border:1px solid var(--border);border-radius:var(--radius);padding:26px;transition:box-shadow .2s,transform .2s}
+.feature-card:hover{box-shadow:var(--shadow);transform:translateY(-3px)}
+.feature-icon{width:44px;height:44px;border-radius:10px;background:linear-gradient(135deg,var(--accent),var(--mid));display:flex;align-items:center;justify-content:center;font-size:1.3rem;margin-bottom:14px}
+.feature-card h3{font-size:1rem;font-weight:700;color:var(--dark);margin-bottom:8px}
+.feature-card p{font-size:.88rem;color:var(--muted);line-height:1.6}
+.feature-card ul{margin-top:10px;padding-left:0;list-style:none}
+.feature-card ul li{font-size:.85rem;color:var(--muted);padding:3px 0 3px 16px;position:relative;line-height:1.5}
+.feature-card ul li::before{content:'✓';position:absolute;left:0;color:var(--teal);font-weight:700}
+.reports-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(240px,1fr));gap:20px}
+.report-card{background:var(--white);border:1px solid var(--border);border-left:4px solid var(--accent);border-radius:var(--radius);padding:20px 22px}
+.report-card h4{font-size:.92rem;font-weight:700;color:var(--dark);margin-bottom:6px}
+.report-card p{font-size:.82rem;color:var(--muted);line-height:1.55}
+.report-tag{display:inline-block;background:var(--bg);border:1px solid var(--border);border-radius:4px;padding:2px 8px;font-size:.72rem;font-weight:600;color:var(--accent);margin-top:8px}
+.roles-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(200px,1fr));gap:16px}
+.role-pill{background:var(--white);border:1px solid var(--border);border-radius:var(--radius);padding:16px 20px;display:flex;align-items:flex-start;gap:12px}
+.role-dot{width:10px;height:10px;border-radius:50%;flex-shrink:0;margin-top:4px}
+.role-dot.admin{background:var(--accent)}.role-dot.manager{background:var(--teal)}.role-dot.user{background:var(--amber)}.role-dot.viewer{background:#9b59b6}
+.role-name{font-size:.88rem;font-weight:700;color:var(--dark);margin-bottom:2px}
+.role-desc{font-size:.78rem;color:var(--muted)}
+.benefits-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(260px,1fr));gap:24px}
+.benefit-card{background:linear-gradient(135deg,var(--teal-light),var(--white));border:1px solid #b8dfd6;border-radius:var(--radius);padding:26px}
+.benefit-num{font-size:2rem;font-weight:900;color:var(--teal);opacity:.35;line-height:1;margin-bottom:6px}
+.benefit-card h3{font-size:.98rem;font-weight:700;color:var(--dark);margin-bottom:8px}
+.benefit-card p{font-size:.86rem;color:var(--muted);line-height:1.6}
+.bp-list{display:grid;grid-template-columns:repeat(auto-fit,minmax(300px,1fr));gap:20px}
+.bp-item{background:var(--white);border:1px solid var(--border);border-radius:var(--radius);padding:22px 24px;display:flex;gap:16px;align-items:flex-start}
+.bp-icon{width:38px;height:38px;background:var(--amber-light);border-radius:8px;display:flex;align-items:center;justify-content:center;font-size:1.1rem;flex-shrink:0}
+.bp-item h4{font-size:.92rem;font-weight:700;color:var(--dark);margin-bottom:5px}
+.bp-item p{font-size:.83rem;color:var(--muted);line-height:1.55}
+.geo-answer{background:linear-gradient(135deg,#e8f0fc,#f0f6ff);border:1px solid #c5d8f7;border-radius:14px;padding:32px 36px;margin-bottom:32px}
+.geo-answer h3{font-size:1.1rem;font-weight:700;color:var(--dark);margin-bottom:10px}
+.geo-answer p{font-size:.95rem;color:var(--text);line-height:1.75}
+.geo-grid{display:grid;grid-template-columns:1fr 1fr;gap:24px}
+.geo-block{background:var(--white);border:1px solid var(--border);border-radius:var(--radius);padding:24px}
+.geo-block h4{font-size:.9rem;font-weight:700;color:var(--accent);margin-bottom:10px;display:flex;align-items:center;gap:8px}
+.geo-block ul{list-style:none;padding:0}
+.geo-block ul li{font-size:.85rem;color:var(--muted);padding:4px 0 4px 16px;position:relative}
+.geo-block ul li::before{content:'→';position:absolute;left:0;color:var(--accent)}
+.faq-list{max-width:800px;margin:0 auto}
+.faq-item{border:1px solid var(--border);border-radius:var(--radius);margin-bottom:10px;overflow:hidden}
+.faq-q{width:100%;background:var(--white);border:none;padding:18px 22px;text-align:left;font-size:.95rem;font-weight:600;color:var(--dark);cursor:pointer;display:flex;justify-content:space-between;align-items:center;gap:12px;transition:background .15s}
+.faq-q:hover,.faq-q.open{background:var(--bg)}
+.faq-arrow{font-size:1rem;color:var(--accent);transition:transform .25s;flex-shrink:0}
+.faq-q.open .faq-arrow{transform:rotate(180deg)}
+.faq-a{display:none;padding:0 22px 18px;font-size:.9rem;color:var(--muted);line-height:1.7}
+.faq-a.open{display:block}
+.ai-block{background:linear-gradient(135deg,var(--dark),var(--mid));color:#fff;border-radius:14px;padding:36px 40px}
+.ai-block h3{font-size:1.15rem;font-weight:700;margin-bottom:14px;color:#7eb8ff}
+.ai-qa{margin-bottom:18px;padding-bottom:18px;border-bottom:1px solid rgba(255,255,255,.1)}
+.ai-qa:last-child{margin-bottom:0;padding-bottom:0;border-bottom:none}
+.ai-qa .q{font-size:.88rem;font-weight:600;color:rgba(255,255,255,.7);margin-bottom:4px}
+.ai-qa .a{font-size:.9rem;color:rgba(255,255,255,.88);line-height:1.65}
+.cta-section{background:linear-gradient(135deg,var(--dark) 0%,var(--mid) 100%);color:#fff;padding:72px 32px;text-align:center}
+.cta-section h2{font-size:clamp(1.6rem,3vw,2.3rem);font-weight:800;margin-bottom:14px}
+.cta-section p{font-size:1.05rem;color:rgba(255,255,255,.8);max-width:580px;margin:0 auto 32px}
+.cta-btns{display:flex;gap:16px;justify-content:center;flex-wrap:wrap}
+.btn-white{background:#fff;color:var(--dark);padding:13px 28px;border-radius:8px;font-weight:700;text-decoration:none;font-size:.97rem;transition:.2s;display:inline-block}
+.btn-white:hover{background:#e8f0fc}
+.cta-trust{margin-top:22px;font-size:.82rem;color:rgba(255,255,255,.55)}
+.site-footer{background:#0a1e2e;color:rgba(255,255,255,.6);padding:40px 32px 24px;text-align:center;font-size:.83rem}
+.site-footer a{color:rgba(255,255,255,.5);text-decoration:none}
+.seo-box{background:var(--bg);border:1px solid var(--border);border-radius:var(--radius);padding:24px 28px}
+.seo-kw{display:flex;flex-wrap:wrap;gap:8px;margin-top:12px}
+.seo-kw span{background:var(--white);border:1px solid var(--border);border-radius:4px;padding:4px 10px;font-size:.78rem;color:var(--accent);font-weight:600}
+@media(max-width:768px){.hero-inner{grid-template-columns:1fr}.hero-card{display:none}.geo-grid{grid-template-columns:1fr}.site-nav{padding:0 16px}.nav-links{display:none}.section{padding:48px 16px}.hero{padding:48px 16px 44px}.ai-block{padding:24px 20px}.geo-answer{padding:22px 20px}}
+</style>
+<link rel="stylesheet" href="/assets/quantbit_website/css/_shared.css">
+<!-- TEMPLATE CSS (IMPORTANT) -->
+    <link rel="stylesheet" href="/../assets/quantbit_website/css/bootstrap.min.css">
+    <link rel="stylesheet" href="/../assets/quantbit_website/css/font-awesome.css">
+    <link rel="stylesheet" href="/../assets/quantbit_website/css/animate.css">
+    <link rel="stylesheet" href="/../assets/quantbit_website/css/magnific-popup.css">
+    <link rel="stylesheet" href="/../assets/quantbit_website/css/meanmenu.css">
+    <link rel="stylesheet" href="/../assets/quantbit_website/css/slick.css">
+    <link rel="stylesheet" href="/../assets/quantbit_website/css/nice-select.css">
+    <link rel="stylesheet" href="/../assets/quantbit_website/css/main.css">
+    <link rel="stylesheet" href="style.css">
+    <link rel="stylesheet" href="/assets/quantbit_website/css/_shared.css">
+
+
+    <!-- OPTIONAL CUSTOM -->
+    <link rel="stylesheet" href="/../assets/quantbit_website/css/hrms.css">
+      <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
+<!-- Google Tag Manager -->
+<script>(function(w,d,s,l,i){w[l]=w[l]||[];w[l].push({'gtm.start':
+new Date().getTime(),event:'gtm.js'});var f=d.getElementsByTagName(s)[0],
+j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
+'https://www.googletagmanager.com/gtm.js?id='+i+dl;f.parentNode.insertBefore(j,f);
+})(window,document,'script','dataLayer','GTM-P98Z6G8D');</script>
+<!-- End Google Tag Manager -->
+</head>
+<body>
+    <!-- Google Tag Manager (noscript) -->
+<noscript><iframe src="https://www.googletagmanager.com/ns.html?id=GTM-P98Z6G8D"
+height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
+<!-- End Google Tag Manager (noscript) -->
+<div id="header"></div>
+
+
+
+<section class="hero">
+  <div class="hero-inner">
+    <div>
+      <div class="hero-badge">&#128202; ERPNext Module</div>
+      <h1>ERPNext <span>Analytics &amp; Reports</span><br>Dashboards, KPIs &amp; Insights</h1>
+      <p class="hero-desc">Access 200+ standard reports, build custom reports without coding, create real-time KPI dashboards, and schedule automated email summaries — all from a single ERPNext instance covering every business function.</p>
+      <div class="hero-tags">
+        <span class="hero-tag">200+ Standard Reports</span><span class="hero-tag">Custom Report Builder</span><span class="hero-tag">KPI Dashboards</span><span class="hero-tag">Script Reports</span><span class="hero-tag">Auto Email Reports</span><span class="hero-tag">Charts &amp; Graphs</span><span class="hero-tag">Power BI Integration</span><span class="hero-tag">Role-based Access</span>
+      </div>
+      <div class="hero-btns">
+        <a href="/company/contact-us.html" class="btn-primary">Book Free Demo</a>
+        <a href="/services/" class="btn-ghost">All ERPNext Modules</a>
+      </div>
+    </div>
+    <div class="hero-card">
+      <h3>Module Snapshot</h3>
+      <div class="hero-stat"><div class="stat-icon">&#128202;</div><div><div class="stat-val">200+ Reports</div><div class="stat-lbl">Standard reports across all modules</div></div></div>
+      <div class="hero-stat"><div class="stat-icon">&#128293;</div><div><div class="stat-val">Live Dashboards</div><div class="stat-lbl">Real-time KPI and chart widgets</div></div></div>
+      <div class="hero-stat"><div class="stat-icon">&#128196;</div><div><div class="stat-val">No-Code Builder</div><div class="stat-lbl">Custom reports without SQL</div></div></div>
+      <div class="hero-stat"><div class="stat-icon">&#128140;</div><div><div class="stat-val">Scheduled Email</div><div class="stat-lbl">Auto-send reports to stakeholders</div></div></div>
+    </div>
+  </div>
+</section>
+
+<section class="section">
+  <div class="container">
+    <div class="section-label">Overview</div>
+    <h2 class="section-title">What is ERPNext Analytics &amp; Reports?</h2>
+    <p style="font-size:.97rem;color:var(--muted);line-height:1.85;max-width:840px">ERPNext is one of the most report-rich open-source ERP systems available, with over 200 standard reports covering every module — finance, sales, purchase, inventory, manufacturing, HR, and payroll. Unlike spreadsheet-based reporting where data must be manually compiled from multiple sources, ERPNext reports pull live data from the single transactional database — so every report reflects the current state of the business at the moment it is run.</p>
+    <p style="font-size:.97rem;color:var(--muted);line-height:1.85;max-width:840px;margin-top:16px">Reports in ERPNext come in four types. Standard Reports are pre-built tabular reports that can be filtered, sorted, and exported to Excel or PDF. Query Reports are SQL-powered reports that Quantbit's team builds for complex cross-module analytics — such as customer profitability combining sales, purchase, and project data. Script Reports use Python to generate formatted outputs like financial statements and payroll registers with calculated totals. The Report Builder is a no-code interface where business users create their own custom tabular reports by selecting fields, setting filters, and choosing sort order — without any developer involvement.</p>
+    <p style="font-size:.97rem;color:var(--muted);line-height:1.85;max-width:840px;margin-top:16px">ERPNext Dashboards allow you to create role-specific home pages with charts, number cards, and embedded report widgets. A Finance Director sees a dashboard with live cash balance, AR aging, AP due, and month-to-date P&L. A Production Manager sees work orders in progress, production vs plan, and WIP inventory value. A Sales Head sees monthly revenue, pipeline value, top 10 customers, and open quotation count — all refreshed without any manual data preparation.</p>
+    <p style="font-size:.97rem;color:var(--muted);line-height:1.85;max-width:840px;margin-top:16px">Auto Email Reports schedule any ERPNext report to be delivered by email to defined recipients at a set frequency — daily sales summary, weekly inventory aging, monthly GST liability, or quarterly HR headcount. Reports can also be exported to Power BI, Tableau, Google Looker Studio, or any BI tool via ERPNext's REST API or direct database connection. Quantbit Technologies designs and builds custom reporting packages as part of every ERPNext implementation — delivering the specific insights your management team needs from day one.</p>
+  </div>
+</section>
+
+<section class="section section-alt">
+  <div class="container">
+    <div class="section-label">Features &amp; Functions</div>
+    <h2 class="section-title">Core Capabilities of ERPNext Analytics &amp; Reports</h2>
+    <p class="section-sub">From no-code report building to Power BI integration — everything your team needs to run on data.</p>
+    <div class="feature-grid">
+      <div class="feature-card"><div class="feature-icon">&#128202;</div><h3>200+ Standard Reports</h3><p>Pre-built reports for every business function — ready to filter, sort, and export from day one.</p><ul><li>Financial statements — P&amp;L, Balance Sheet, Cash Flow</li><li>Sales analytics — by customer, item, region, rep</li><li>Inventory aging, valuation, reorder status</li><li>HR and payroll registers — attendance, salary, PF</li></ul></div>
+      <div class="feature-card"><div class="feature-icon">&#128196;</div><h3>Custom Report Builder</h3><p>Business users build their own reports by selecting fields and filters — no SQL or coding needed.</p><ul><li>Field picker across any ERPNext document type</li><li>Multi-level filter conditions with AND/OR logic</li><li>Sort, group by, and aggregate (sum, count, avg)</li><li>Save, share, and permission-control custom reports</li></ul></div>
+      <div class="feature-card"><div class="feature-icon">&#128203;</div><h3>Script &amp; Query Reports</h3><p>Advanced custom reports with complex logic, multi-table joins, and formatted outputs — built by Quantbit's team.</p><ul><li>Python Script Reports for formatted register output</li><li>SQL Query Reports for cross-module analytics</li><li>Calculated columns and conditional formatting</li><li>Export to Excel with merged cells and totals</li></ul></div>
+      <div class="feature-card"><div class="feature-icon">&#128293;</div><h3>Real-Time Dashboards</h3><p>Role-specific dashboards with live KPI cards, charts, and report embeds — visible the moment you log in.</p><ul><li>Number card widgets — today's revenue, cash balance</li><li>Chart types — bar, line, pie, donut, heatmap</li><li>Report embed as dashboard chart</li><li>Role-based dashboard assignment</li></ul></div>
+      <div class="feature-card"><div class="feature-icon">&#128140;</div><h3>Auto Email Reports</h3><p>Schedule any report to be automatically generated and emailed to stakeholders at set intervals.</p><ul><li>Daily, weekly, monthly email schedule</li><li>Multiple recipients with role-based filtering</li><li>Excel or PDF attachment option</li><li>Conditional send — only if data exists</li></ul></div>
+      <div class="feature-card"><div class="feature-icon">&#128279;</div><h3>BI Tool Integration</h3><p>Connect ERPNext data to Power BI, Tableau, Looker Studio, or Metabase for advanced visualisations.</p><ul><li>REST API for report data extraction</li><li>Read-only database user for direct BI connection</li><li>Pre-built data model for common analytics use cases</li><li>Real-time and scheduled data sync options</li></ul></div>
+    </div>
+  </div>
+</section>
+
+<section class="section">
+  <div class="container">
+    <div class="section-label">Key Reports by Function</div>
+    <h2 class="section-title">Most Used ERPNext Reports by Business Function</h2>
+    <p class="section-sub">A curated selection of the most impactful reports across departments — all standard in ERPNext.</p>
+    <div class="reports-grid">
+      <div class="report-card"><h4>Sales Analytics</h4><p>Revenue breakdown by customer, item, territory, and sales rep — with period comparison and growth rate.</p><span class="report-tag">Sales / Management</span></div>
+      <div class="report-card"><h4>Accounts Receivable Aging</h4><p>Outstanding customer invoices in 0-30, 31-60, 61-90, 90+ day buckets — the primary collection management report.</p><span class="report-tag">Finance / Collections</span></div>
+      <div class="report-card"><h4>Stock Balance Report</h4><p>Warehouse-wise stock on hand with value, reorder status, and movement velocity for inventory optimisation.</p><span class="report-tag">Purchase / Stores</span></div>
+      <div class="report-card"><h4>Purchase Order Analysis</h4><p>All POs by supplier, item category, status, and delivery date — tracks pending deliveries and spend vs budget.</p><span class="report-tag">Purchase / Finance</span></div>
+      <div class="report-card"><h4>Production Plan Status</h4><p>Work orders vs planned production — completion percentage, delayed orders, and WIP value by shop.</p><span class="report-tag">Production / Management</span></div>
+      <div class="report-card"><h4>Employee Leave Balance</h4><p>Remaining leave balance per employee by leave type — essential for payroll cut-off and team capacity planning.</p><span class="report-tag">HR / Manager</span></div>
+      <div class="report-card"><h4>GST Summary Report</h4><p>CGST, SGST, IGST liability and input credit for the period — source data for GSTR-3B return filing.</p><span class="report-tag">Finance / Tax</span></div>
+      <div class="report-card"><h4>Profit &amp; Loss — Month vs Prior Year</h4><p>Current month and YTD P&amp;L with same-period prior year comparison — the primary management account report.</p><span class="report-tag">CFO / Management</span></div>
+    </div>
+  </div>
+</section>
+
+<section class="section section-alt">
+  <div class="container">
+    <div class="section-label">User Access &amp; Roles</div>
+    <h2 class="section-title">Who Uses ERPNext Analytics &amp; Reports?</h2>
+    <div class="roles-grid">
+      <div class="role-pill"><div class="role-dot admin"></div><div><div class="role-name">System Administrator</div><div class="role-desc">Configure report permissions, create shared dashboards, set up auto email schedules, manage BI connections</div></div></div>
+      <div class="role-pill"><div class="role-dot manager"></div><div><div class="role-name">CFO / Finance Head</div><div class="role-desc">Financial statement dashboards, AR/AP aging, GST reports, budget variance, multi-company consolidated reports</div></div></div>
+      <div class="role-pill"><div class="role-dot manager"></div><div><div class="role-name">Sales Manager</div><div class="role-desc">Revenue analytics, customer performance, pipeline reports, rep-wise target vs achievement dashboard</div></div></div>
+      <div class="role-pill"><div class="role-dot manager"></div><div><div class="role-name">Operations Manager</div><div class="role-desc">Production status, inventory aging, purchase tracking, WIP dashboard, capacity utilisation reports</div></div></div>
+      <div class="role-pill"><div class="role-dot user"></div><div><div class="role-name">Department Head</div><div class="role-desc">Department-specific dashboards — cost centre P&L, team attendance, project profitability, budget vs actual</div></div></div>
+    </div>
+  </div>
+</section>
+
+<section class="section">
+  <div class="container">
+    <div class="section-label">Key Benefits</div>
+    <h2 class="section-title">Why Businesses Value ERPNext Reporting</h2>
+    <div class="benefits-grid">
+      <div class="benefit-card"><div class="benefit-num">01</div><h3>End the Excel Report Trap</h3><p>When data lives in ERP, reports are generated in seconds — not prepared manually over hours. Management gets consistent, accurate data without the version-control nightmares of spreadsheet-based reporting.</p></div>
+      <div class="benefit-card"><div class="benefit-num">02</div><h3>Every Stakeholder Gets Their View</h3><p>Role-specific dashboards mean the CFO, Sales Manager, Plant Head, and HR Director each have a tailored homepage showing their most critical KPIs — without seeing data that doesn't concern them.</p></div>
+      <div class="benefit-card"><div class="benefit-num">03</div><h3>Decisions Based on Live Data</h3><p>ERPNext reports are always current — they pull live transactional data. There is no data lag, no batching, and no waiting for someone to "run the month-end report." Management can make decisions at any point.</p></div>
+      <div class="benefit-card"><div class="benefit-num">04</div><h3>Drill Down to the Transaction</h3><p>Every number in an ERPNext report links to the underlying transactions. A manager who sees an unusual expense can click through to the exact purchase order, invoice, or journal entry without involving the accounts team.</p></div>
+      <div class="benefit-card"><div class="benefit-num">05</div><h3>Automated Report Distribution</h3><p>Weekly and monthly reports are emailed automatically to the right people — eliminating the recurring administrative task of manually preparing and distributing management information packs.</p></div>
+      <div class="benefit-card"><div class="benefit-num">06</div><h3>Connects to Advanced BI When Needed</h3><p>For clients who need more sophisticated visualisations, ERPNext data connects to Power BI and Tableau. Quantbit builds the data model and dashboard — giving clients the best of both worlds.</p></div>
+    </div>
+  </div>
+</section>
+
+<section class="section section-alt">
+  <div class="container">
+    <div class="section-label">Best Practices</div>
+    <h2 class="section-title">ERPNext Reporting Best Practices</h2>
+    <div class="bp-list">
+      <div class="bp-item"><div class="bp-icon">&#128202;</div><div><h4>Design Dashboards Before Go-Live</h4><p>Identify the 5 to 8 KPIs each management stakeholder needs on their homepage before go-live. Dashboards designed at implementation are used daily. Dashboards designed after go-live are often never opened.</p></div></div>
+      <div class="bp-item"><div class="bp-icon">&#128196;</div><div><h4>Schedule the Weekly Pack on Day 1</h4><p>Set up auto email reports for your weekly management information pack on the day of go-live. Automated delivery creates a habit — management receives and reviews data consistently rather than having to remember to log in and pull reports.</p></div></div>
+      <div class="bp-item"><div class="bp-icon">&#128279;</div><div><h4>Use Report Builder for Ad Hoc — Script for Recurring</h4><p>Train power users to use the Report Builder for ad hoc analysis. Reserve Script and Query Reports — which require developer involvement — for recurring, high-value reports that justify the build investment.</p></div></div>
+      <div class="bp-item"><div class="bp-icon">&#128293;</div><div><h4>Restrict Report Permissions by Role</h4><p>Configure report-level permissions so each role only sees reports relevant to their function. A sales executive should not have access to payroll reports, and a warehouse user should not see financial statements. Proper permissions increase data security and keep dashboards focused.</p></div></div>
+      <div class="bp-item"><div class="bp-icon">&#128203;</div><div><h4>Validate Standard Reports at UAT</h4><p>During User Acceptance Testing, walk through the 10 most critical reports with business owners and validate the numbers against known data. Fixing report configurations before go-live avoids post-launch confusion and loss of trust in the system.</p></div></div>
+      <div class="bp-item"><div class="bp-icon">&#128140;</div><div><h4>Connect to Power BI for Board Presentations</h4><p>If your board or investors expect polished visual dashboards, connect ERPNext to Power BI or Google Looker Studio. Quantbit builds the connector and data model — ERPNext remains the source of truth, BI tool handles the presentation layer.</p></div></div>
+    </div>
+  </div>
+</section>
+
+<section class="section">
+  <div class="container">
+    <div class="section-label">GEO-Specific Guidance</div>
+    <h2 class="section-title">ERPNext Analytics for India &amp; GCC</h2>
+    <div class="geo-answer">
+      <h3>ERPNext reporting and analytics for Indian and GCC business management</h3>
+      <p>ERPNext's reporting suite is particularly valuable for Indian businesses that need GST summary reports for tax filing, GSTR-1 and GSTR-3B data extraction, TDS and payroll registers, and Companies Act financial statement formats. In the GCC, multi-currency consolidated reports, VAT return data, WPS payroll registers, and IFRS-aligned financial statements are the high-value reports. Quantbit Technologies designs reporting packages for both markets — including statutory reports, management dashboards, and Power BI connections for clients with complex analytics requirements.</p>
+    </div>
+    <div class="geo-grid">
+      <div class="geo-block">
+        <h4>&#127470;&#127475; India — Key Analytics Use Cases</h4>
+        <ul>
+          <li>GSTR-1 and GSTR-3B GST return data export</li>
+          <li>TDS register and Form 24Q quarterly data</li>
+          <li>Schedule III Companies Act financial statements</li>
+          <li>PF and ESI contribution registers for statutory filing</li>
+          <li>Multi-state sales analytics with IGST/CGST breakup</li>
+          <li>Foundry and manufacturing production dashboards</li>
+        </ul>
+      </div>
+      <div class="geo-block">
+        <h4>&#127762; GCC — Key Analytics Use Cases</h4>
+        <ul>
+          <li>VAT return summary data for Oman, UAE, Saudi Arabia</li>
+          <li>IFRS financial statement format reporting</li>
+          <li>Multi-currency P&amp;L in OMR, AED, USD</li>
+          <li>WPS payroll register for bank submission</li>
+          <li>Multi-company consolidated reports for group entities</li>
+          <li>Project profitability dashboards for contractors</li>
+        </ul>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section class="section section-alt">
+  <div class="container">
+    <div class="section-label">AI Search Strategy</div>
+    <h2 class="section-title">Common AI &amp; Search Queries — Answered</h2>
+    <div class="ai-block">
+      <h3>How ERPNext Analytics answers common reporting questions</h3>
+      <div class="ai-qa"><div class="q">Q: How many reports does ERPNext have and can I create custom ones?</div><div class="a">ERPNext includes over 200 standard reports across all modules. Business users can create additional custom reports using the no-code Report Builder — selecting fields, filters, and sort order without any SQL knowledge. For complex cross-module analytics, Quantbit builds Script Reports and Query Reports using Python and SQL. All reports can be exported to Excel or PDF.</div></div>
+      <div class="ai-qa"><div class="q">Q: Can ERPNext connect to Power BI or Tableau for advanced dashboards?</div><div class="a">Yes. ERPNext data can be connected to Power BI, Tableau, Google Looker Studio, and Metabase via the REST API or a read-only database connection. Quantbit Technologies builds the data model and Power BI dashboard template for clients who need advanced visualisations for board presentations or investor reporting — with ERPNext as the live data source.</div></div>
+      <div class="ai-qa"><div class="q">Q: How do I automatically email a daily sales report to management from ERPNext?</div><div class="a">ERPNext's Auto Email Report feature allows you to configure any report to be emailed automatically at a set schedule — daily, weekly, or monthly. You specify the report, recipients, frequency, and file format (Excel or PDF). The report is generated from live data and delivered to the recipient's inbox automatically — no manual intervention required.</div></div>
+    </div>
+  </div>
+</section>
+
+<section class="section">
+  <div class="container">
+    <div class="section-label">FAQ</div>
+    <h2 class="section-title">Frequently Asked Questions</h2>
+    <div class="faq-list">
+      <div class="faq-item"><button class="faq-q" onclick="tog(this)"><span>How many standard reports does ERPNext include?</span><span class="faq-arrow">&#9660;</span></button><div class="faq-a">ERPNext includes over 200 standard reports across all modules — financial statements, inventory aging, sales analytics, purchase analysis, payroll registers, HR reports, and more. All standard reports can be filtered, sorted, and exported to Excel or PDF. Quantbit configures additional custom reports and dashboards specific to your business requirements during implementation.</div></div>
+      <div class="faq-item"><button class="faq-q" onclick="tog(this)"><span>Can ERPNext create custom reports without coding?</span><span class="faq-arrow">&#9660;</span></button><div class="faq-a">Yes. ERPNext's Report Builder allows non-technical users to create custom tabular reports by selecting fields, filters, and sorting without writing any code. For more complex analytics — cross-module joins, calculated columns, or advanced aggregations — Quantbit's team creates Script Reports using Python and Query Reports using SQL.</div></div>
+      <div class="faq-item"><button class="faq-q" onclick="tog(this)"><span>Does ERPNext have a dashboard with real-time KPIs?</span><span class="faq-arrow">&#9660;</span></button><div class="faq-a">Yes. ERPNext Dashboards allow you to create role-specific dashboards with charts, KPI widgets, and report embeds that refresh in real time. Common dashboards include a Finance Dashboard (cash, AR, AP, P&amp;L), a Sales Dashboard (pipeline, revenue, conversion), and an Operations Dashboard (production status, inventory levels, pending POs).</div></div>
+      <div class="faq-item"><button class="faq-q" onclick="tog(this)"><span>Can ERPNext reports be scheduled and emailed automatically?</span><span class="faq-arrow">&#9660;</span></button><div class="faq-a">Yes. ERPNext's Auto Email Report feature allows you to schedule any report to be automatically generated and emailed to specified recipients on a daily, weekly, or monthly basis. This is commonly used for daily sales summaries, weekly inventory aging emails to procurement teams, and monthly P&amp;L emails to management.</div></div>
+      <div class="faq-item"><button class="faq-q" onclick="tog(this)"><span>Can ERPNext data be connected to Power BI or Tableau?</span><span class="faq-arrow">&#9660;</span></button><div class="faq-a">Yes. ERPNext's REST API and database can be connected to external BI tools including Power BI, Tableau, Google Looker Studio, and Metabase. Quantbit configures API connections or direct database views for clients who require advanced visualisations beyond ERPNext's built-in dashboards.</div></div>
+      <div class="faq-item"><button class="faq-q" onclick="tog(this)"><span>Can report access be restricted by role or department?</span><span class="faq-arrow">&#9660;</span></button><div class="faq-a">Yes. ERPNext allows report-level permissions so each user role sees only the reports relevant to their function. A sales executive sees sales reports, a warehouse manager sees inventory reports, and a CFO sees financial reports. Sensitive reports like payroll registers and profit data can be restricted to specific roles. Quantbit configures all permissions during implementation.</div></div>
+    </div>
+  </div>
+</section>
+
+<section class="section section-alt">
+  <div class="container">
+    <div class="seo-box">
+      <p class="section-label" style="margin-bottom:8px">SEO Keywords</p>
+      <h3 style="font-size:.92rem;font-weight:700;color:var(--dark);margin-bottom:8px">Search Terms This Page Targets</h3>
+      <div class="seo-kw"><span>ERPNext reports analytics India</span><span>ERPNext custom report builder</span><span>ERPNext dashboard KPI</span><span>ERPNext business intelligence</span><span>ERPNext Power BI integration</span><span>open source ERP reporting India</span><span>ERPNext analytics GCC Oman</span><span>ERPNext financial reports</span><span>ERPNext auto email report</span><span>ERPNext Frappe reporting partner Pune</span></div>
+    </div>
+  </div>
+</section>
+
+<section class="cta-section">
+  <div class="container">
+    <h2>Ready to Implement ERPNext Analytics &amp; Reports?</h2>
+    <p>Quantbit Technologies designs your management dashboard package, custom reports, auto email schedules, and Power BI connections — delivering actionable business intelligence from day one of your ERPNext go-live.</p>
+    <div class="cta-btns">
+      <a href="/company/contact-us.html" class="btn-white">Book Free Demo</a>
+      <a href="/company/contact-us.html" class="btn-ghost">Talk to a Consultant</a>
+    </div>
+    <div class="cta-trust">&#9989; Certified ERPNext Partner &nbsp;|&nbsp; &#9989; Custom Dashboard Design &nbsp;|&nbsp; &#9989; Power BI Integration &nbsp;|&nbsp; &#9989; India &amp; GCC Experience</div>
+  </div>
+</section>
+<div id="footer"></div>
+
+<script>function tog(btn){btn.classList.toggle('open');var a=btn.nextElementSibling;a.classList.toggle('open');}</script>
+<script>
+fetch("/header.html")
+    .then(res => res.text())
+    .then(data => {
+        document.getElementById("header").innerHTML = data;
+    });
+
+fetch("/footer.html")
+    .then(res => res.text())
+    .then(data => {
+        document.getElementById("footer").innerHTML = data;
+    });
+</script>
+<!-- ================= TEMPLATE JS ================= -->
+    <!--<< All JS Plugins >>-->
+    <script data-cfasync="false" src="../../cdn-cgi/scripts/5c5dd728/cloudflare-static/email-decode.min.js"></script>
+    <script src="/../assets/quantbit_website/js/jquery-3.7.1.min.js"></script>
+    <!--<< Viewport Js >>-->
+    <script src="/../assets/quantbit_website/js/viewport.jquery.js"></script>
+    <!--<< Bootstrap Js >>-->
+    <script src="/../assets/quantbit_website/js/bootstrap.bundle.min.js"></script>
+    <!--<< Nice Select Js >>-->
+    <script src="/../assets/quantbit_website/js/jquery.nice-select.min.js"></script>
+    <!--<< Waypoints Js >>-->
+    <script src="/../assets/quantbit_website/js/jquery.waypoints.js"></script>
+    <!--<< Counterup Js >>-->
+    <script src="/../assets/quantbit_website/js/jquery.counterup.min.js"></script>
+    <!--<< Slick Js >>-->
+    <script src="/../assets/quantbit_website/js/slick.min.js"></script>
+    <!--<< Slick Animation Js >>-->
+    <script src="/../assets/quantbit_website/js/slick-animation.min.js"></script>
+    <!--<< MeanMenu Js >>-->
+    <script src="/../assets/quantbit_website/js/jquery.meanmenu.min.js"></script>
+    <!--<< Magnific Popup Js >>-->
+    <script src="/../assets/quantbit_website/js/jquery.magnific-popup.min.js"></script>
+    <!--<< Wow Animation Js >>-->
+    <script src="/../assets/quantbit_website/js/wow.min.js"></script>
+    <!--<< Circle Progress Js >>-->
+    <script src="/../assets/quantbit_website/js/circle-progress.js"></script>
+    <!--<< Main.js >>-->
+    <script src="/../assets/quantbit_website/js/main.js"></script>
+    <script defer
+        src="../../../static.cloudflareinsights.com/beacon.min.js/v8c78df7c7c0f484497ecbca7046644da1771523124516"
+        integrity="sha512-8DS7rgIrAmghBFwoOTujcf6D9rXvH8xm8JQ1Ja01h9QX8EzXldiszufYa4IFfKdLUKTTrnSFXLDkUEOTrZQ8Qg=="
+        data-cf-beacon='{"version":"2024.11.0","token":"90f7972af14a48b4add7da2b74f5d675","r":1,"server_timing":{"name":{"cfCacheStatus":true,"cfEdge":true,"cfExtPri":true,"cfL4":true,"cfOrigin":true,"cfSpeedBrain":true},"location_startswith":null}}'
+        crossorigin="anonymous"></script>
+
+</body></html>

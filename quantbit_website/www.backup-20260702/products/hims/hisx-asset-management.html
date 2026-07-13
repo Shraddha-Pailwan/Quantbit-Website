@@ -1,0 +1,1792 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Hospital Asset Management Software | AMC, Maintenance & Depreciation | HISx by Quantbit</title>
+  <meta name="description"
+    content="HISx asset management module — full asset lifecycle tracking, preventive and breakdown maintenance, AMC/CMC management, depreciation tracking, asset allocation, downtime reporting, and service history for hospitals. Built on ERPNext.">
+  <meta name="keywords"
+    content="hospital asset management software, medical equipment maintenance ERP, AMC CMC hospital software, hospital asset lifecycle management, biomedical equipment tracking India, ERPNext asset management hospital">
+  <link rel="canonical" href="https://quantbit.io/hisx/asset-management">
+  <meta property="og:title" content="Hospital Asset Management Software — HISx | Quantbit">
+  <meta property="og:type" content="website">
+  <script type="application/ld+json">
+{"@context":"https://schema.org","@type":"SoftwareApplication","name":"HISx — Asset Management Module","applicationCategory":"BusinessApplication","operatingSystem":"Web","description":"Hospital asset management with full lifecycle tracking from procurement through allocation, maintenance, depreciation, and disposal. Includes preventive and breakdown maintenance workflows, AMC/CMC tracking, service history, and asset downtime reporting. Built on ERPNext by Quantbit Technologies.","offers":{"@type":"Offer","priceCurrency":"INR"},"provider":{"@type":"Organization","name":"Quantbit Technologies Pvt. Ltd.","url":"https://quantbit.io"}}
+</script>
+  <script type="application/ld+json">
+{"@context":"https://schema.org","@type":"BreadcrumbList","itemListElement":[{"@type":"ListItem","position":1,"name":"Home","item":"https://quantbit.io"},{"@type":"ListItem","position":2,"name":"HISx","item":"https://quantbit.io/hisx"},{"@type":"ListItem","position":3,"name":"Asset Management","item":"https://quantbit.io/hisx/asset-management"}]}
+</script>
+  <script type="application/ld+json">
+{"@context":"https://schema.org","@type":"FAQPage","mainEntity":[
+{"@type":"Question","name":"How does HISx manage the full lifecycle of hospital assets?","acceptedAnswer":{"@type":"Answer","text":"HISx tracks hospital assets from the moment of procurement through allocation, commissioning, preventive maintenance, breakdown repairs, AMC/CMC contract management, depreciation, and final disposal. Each asset has a complete history record covering every maintenance event, service visit, downtime period, and depreciation posting — giving hospital engineering and finance teams a single source of truth for every asset in the hospital.","speakable":{"@type":"SpeakableSpecification","cssSelector":".fa-asset-1"}}},
+{"@type":"Question","name":"How does HISx handle AMC and CMC contract management for medical equipment?","acceptedAnswer":{"@type":"Answer","text":"HISx maintains AMC (Annual Maintenance Contract) and CMC (Comprehensive Maintenance Contract) records for each asset, including contract start and end dates, covered services, vendor details, and cost. The system generates alerts before AMC/CMC contracts expire, tracks service calls against the contract, and flags calls that fall outside contracted scope for separate billing. Service history is maintained per contract period for renewal negotiations.","speakable":{"@type":"SpeakableSpecification","cssSelector":".fa-asset-2"}}},
+{"@type":"Question","name":"Does HISx track asset depreciation automatically?","acceptedAnswer":{"@type":"Answer","text":"Yes. HISx calculates and posts asset depreciation automatically based on the configured depreciation method — straight-line, written-down value, or units of production — and the asset's useful life. Depreciation entries are posted to the general ledger on a scheduled basis, and the asset register maintains current book value at all times without manual calculation."}},
+{"@type":"Question","name":"How does preventive maintenance scheduling work in HISx?","acceptedAnswer":{"@type":"Answer","text":"HISx generates preventive maintenance schedules for assets based on manufacturer recommendations, regulatory requirements, or custom intervals defined by the biomedical team. Upcoming PM tasks are visible on the engineering dashboard with due dates and assigned technicians. Completed PM is recorded with service notes and parts used, and the next PM date is automatically calculated and scheduled."}},
+{"@type":"Question","name":"Can HISx track asset downtime and its impact on clinical operations?","acceptedAnswer":{"@type":"Answer","text":"Yes. HISx records asset downtime from the moment a breakdown call is raised to the moment the asset is returned to service. Downtime reports are available per asset, per department, and per asset category — enabling hospital management to identify chronically unreliable equipment, justify replacement decisions with data, and monitor vendor SLA compliance on breakdown response times."}}
+]}
+</script>
+  <style>
+    /* SHARED BASE — all HISx module pages */
+    *,
+    *::before,
+    *::after {
+      box-sizing: border-box;
+      margin: 0;
+      padding: 0;
+    }
+
+    :root {
+      --ink: #0f1117;
+      --ink-2: #3d3f4a;
+      --ink-3: #72747f;
+      --ink-4: #a0a2ab;
+      --surface: #ffffff;
+      --surface-2: #f5f6f8;
+      --surface-3: #eef0f4;
+      --accent: #1a5fd4;
+      --accent-light: #e8effc;
+      --accent-mid: #c2d4f7;
+      --teal: #0b7a5e;
+      --teal-light: #e0f4ef;
+      --amber: #b35e0a;
+      --amber-light: #fef3e2;
+      --red: #b91c1c;
+      --red-light: #fee2e2;
+      --border: #e2e4ea;
+      --border-strong: #c8cad2;
+      --radius-sm: 6px;
+      --radius-md: 10px;
+      --radius-lg: 16px;
+      --font-display: 'Georgia', 'Times New Roman', serif;
+      --font-body: -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif;
+      --font-mono: 'SF Mono', 'Fira Code', monospace;
+      --max: 1120px;
+      --gap: 96px;
+    }
+
+    html {
+      scroll-behavior: smooth;
+    }
+
+    body {
+      font-family: var(--font-body);
+      color: var(--ink);
+      background: var(--surface);
+      line-height: 1.6;
+      font-size: 16px;
+      -webkit-font-smoothing: antialiased;
+    }
+
+    .nav {
+      position: sticky;
+      top: 0;
+      z-index: 100;
+      background: rgba(255, 255, 255, 0.95);
+      backdrop-filter: blur(8px);
+      border-bottom: 1px solid var(--border);
+    }
+
+    .nav-inner {
+      max-width: var(--max);
+      margin: 0 auto;
+      padding: 0 24px;
+      height: 60px;
+      display: flex;
+      align-items: center;
+      gap: 32px;
+    }
+
+    .nav-logo {
+      font-size: 15px;
+      font-weight: 600;
+      color: var(--ink);
+      text-decoration: none;
+    }
+
+    .nav-logo span {
+      color: var(--accent);
+    }
+
+    .nav-bc {
+      display: flex;
+      align-items: center;
+      gap: 8px;
+      font-size: 13px;
+      color: var(--ink-3);
+      flex: 1;
+    }
+
+    .nav-bc a {
+      color: var(--ink-3);
+      text-decoration: none;
+    }
+
+    .nav-bc a:hover {
+      color: var(--accent);
+    }
+
+    .nav-bc .sep {
+      color: var(--border-strong);
+    }
+
+    .nav-bc .cur {
+      color: var(--ink-2);
+      font-weight: 500;
+    }
+
+    .nav-cta {
+      background: var(--accent);
+      color: #fff;
+      padding: 8px 18px;
+      border-radius: var(--radius-sm);
+      font-size: 13px;
+      font-weight: 500;
+      text-decoration: none;
+      white-space: nowrap;
+      transition: opacity .15s;
+    }
+
+    .nav-cta:hover {
+      opacity: .9;
+    }
+
+    .C {
+      max-width: var(--max);
+      margin: 0 auto;
+      padding: 0 24px;
+    }
+
+    section {
+      padding: var(--gap) 0;
+    }
+
+    section+section {
+      padding-top: 0;
+    }
+
+    hr.div {
+      border: none;
+      border-top: 1px solid var(--border);
+    }
+
+    .ey {
+      display: inline-block;
+      font-size: 11px;
+      font-weight: 600;
+      letter-spacing: .1em;
+      text-transform: uppercase;
+      color: var(--accent);
+      margin-bottom: 14px;
+    }
+
+    .sh {
+      font-family: var(--font-display);
+      font-size: clamp(26px, 3.5vw, 38px);
+      font-weight: 400;
+      line-height: 1.2;
+      letter-spacing: -.02em;
+      color: var(--ink);
+      margin-bottom: 16px;
+    }
+
+    .ss {
+      font-size: 17px;
+      color: var(--ink-2);
+      line-height: 1.65;
+      max-width: 560px;
+    }
+
+    .hero {
+      padding: 80px 0 72px;
+      border-bottom: 1px solid var(--border);
+    }
+
+    .hero-in {
+      max-width: var(--max);
+      margin: 0 auto;
+      padding: 0 24px;
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 64px;
+      align-items: center;
+    }
+
+    .htag {
+      display: inline-flex;
+      align-items: center;
+      gap: 7px;
+      font-size: 12px;
+      font-weight: 500;
+      color: var(--accent);
+      background: var(--accent-light);
+      border: 1px solid var(--accent-mid);
+      padding: 5px 12px;
+      border-radius: 100px;
+      margin-bottom: 22px;
+    }
+
+    .hero h1 {
+      font-family: var(--font-display);
+      font-size: clamp(30px, 4vw, 48px);
+      font-weight: 400;
+      line-height: 1.15;
+      letter-spacing: -.025em;
+      color: var(--ink);
+      margin-bottom: 20px;
+    }
+
+    .hero h1 em {
+      font-style: italic;
+      color: var(--accent);
+    }
+
+    .hero-sub {
+      font-size: 17px;
+      color: var(--ink-2);
+      line-height: 1.65;
+      margin-bottom: 32px;
+      max-width: 480px;
+    }
+
+    .ctas {
+      display: flex;
+      gap: 12px;
+      flex-wrap: wrap;
+    }
+
+    .bp {
+      background: var(--accent);
+      color: #fff;
+      padding: 12px 24px;
+      border-radius: var(--radius-sm);
+      font-size: 14px;
+      font-weight: 500;
+      text-decoration: none;
+      transition: opacity .15s;
+      display: inline-block;
+    }
+
+    .bp:hover {
+      opacity: .88;
+    }
+
+    .bg {
+      background: transparent;
+      color: var(--ink-2);
+      padding: 12px 24px;
+      border-radius: var(--radius-sm);
+      font-size: 14px;
+      font-weight: 500;
+      text-decoration: none;
+      border: 1px solid var(--border-strong);
+      transition: border-color .15s, color .15s;
+      display: inline-block;
+    }
+
+    .bg:hover {
+      border-color: var(--accent);
+      color: var(--accent);
+    }
+
+    .hv {
+      background: var(--surface-2);
+      border: 1px solid var(--border);
+      border-radius: var(--radius-lg);
+      padding: 28px;
+    }
+
+    .hv-lbl {
+      font-size: 11px;
+      font-weight: 600;
+      letter-spacing: .08em;
+      text-transform: uppercase;
+      color: var(--ink-4);
+      margin-bottom: 18px;
+    }
+
+    .proof {
+      background: var(--surface-2);
+      border-bottom: 1px solid var(--border);
+      padding: 28px 0;
+    }
+
+    .proof-in {
+      max-width: var(--max);
+      margin: 0 auto;
+      padding: 0 24px;
+      display: flex;
+      align-items: center;
+      gap: 48px;
+      flex-wrap: wrap;
+    }
+
+    .proof-lbl {
+      font-size: 12px;
+      color: var(--ink-4);
+      font-weight: 500;
+      text-transform: uppercase;
+      letter-spacing: .06em;
+    }
+
+    .proof-stats {
+      display: flex;
+      gap: 40px;
+      flex-wrap: wrap;
+    }
+
+    .psn {
+      font-size: 20px;
+      font-weight: 700;
+      color: var(--ink);
+      font-family: var(--font-display);
+      line-height: 1;
+    }
+
+    .psl {
+      font-size: 12px;
+      color: var(--ink-3);
+      margin-top: 3px;
+    }
+
+    .pdiv {
+      width: 1px;
+      height: 32px;
+      background: var(--border-strong);
+      flex-shrink: 0;
+    }
+
+    .proof-plat {
+      margin-left: auto;
+      display: flex;
+      align-items: center;
+      gap: 8px;
+      font-size: 12px;
+      color: var(--ink-3);
+    }
+
+    .proof-plat strong {
+      color: var(--ink-2);
+    }
+
+    .pain-grid {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 20px;
+      margin-top: 48px;
+    }
+
+    .pc {
+      border: 1px solid var(--border);
+      border-radius: var(--radius-md);
+      padding: 24px;
+    }
+
+    .pi {
+      width: 40px;
+      height: 40px;
+      border-radius: 10px;
+      background: var(--red-light);
+      color: var(--red);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      margin-bottom: 16px;
+    }
+
+    .pi svg {
+      width: 18px;
+      height: 18px;
+    }
+
+    .pt {
+      font-size: 15px;
+      font-weight: 600;
+      color: var(--ink);
+      margin-bottom: 8px;
+      line-height: 1.3;
+    }
+
+    .pd {
+      font-size: 14px;
+      color: var(--ink-3);
+      line-height: 1.6;
+    }
+
+    .dd {
+      padding: var(--gap) 0;
+    }
+
+    .dd-in {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 72px;
+      align-items: center;
+    }
+
+    .dd-in.fl {
+      direction: rtl;
+    }
+
+    .dd-in.fl>* {
+      direction: ltr;
+    }
+
+    .dh {
+      font-family: var(--font-display);
+      font-size: clamp(22px, 2.8vw, 32px);
+      font-weight: 400;
+      line-height: 1.25;
+      letter-spacing: -.02em;
+      color: var(--ink);
+      margin-bottom: 20px;
+    }
+
+    .dd {
+      font-size: 15px;
+      color: var(--ink-2);
+      line-height: 1.7;
+      margin-bottom: 24px;
+    }
+
+    .buls {
+      list-style: none;
+      display: flex;
+      flex-direction: column;
+      gap: 12px;
+    }
+
+    .buls li {
+      display: flex;
+      align-items: flex-start;
+      gap: 10px;
+      font-size: 14px;
+      color: var(--ink-2);
+      line-height: 1.55;
+    }
+
+    .bchk {
+      width: 18px;
+      height: 18px;
+      border-radius: 50%;
+      background: var(--teal-light);
+      color: var(--teal);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      flex-shrink: 0;
+      margin-top: 1px;
+    }
+
+    .bchk svg {
+      width: 10px;
+      height: 10px;
+    }
+
+    .dl {
+      display: inline-flex;
+      align-items: center;
+      gap: 6px;
+      font-size: 13px;
+      font-weight: 500;
+      color: var(--accent);
+      text-decoration: none;
+      margin-top: 24px;
+    }
+
+    .dl:hover {
+      text-decoration: underline;
+    }
+
+    .dv {
+      background: var(--surface-2);
+      border: 1px solid var(--border);
+      border-radius: var(--radius-lg);
+      padding: 24px;
+    }
+
+    .dvl {
+      font-size: 11px;
+      font-weight: 600;
+      letter-spacing: .08em;
+      text-transform: uppercase;
+      color: var(--ink-4);
+      margin-bottom: 16px;
+    }
+
+    .fg {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 1px;
+      background: var(--border);
+      border: 1px solid var(--border);
+      border-radius: var(--radius-lg);
+      overflow: hidden;
+      margin-top: 48px;
+    }
+
+    .fc {
+      background: var(--surface);
+      padding: 28px 24px;
+      transition: background .15s;
+    }
+
+    .fc:hover {
+      background: var(--surface-2);
+    }
+
+    .fi {
+      width: 40px;
+      height: 40px;
+      border-radius: 10px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      margin-bottom: 16px;
+    }
+
+    .fi svg {
+      width: 18px;
+      height: 18px;
+    }
+
+    .fi.bl {
+      background: var(--accent-light);
+      color: var(--accent);
+    }
+
+    .fi.tl {
+      background: var(--teal-light);
+      color: var(--teal);
+    }
+
+    .fi.am {
+      background: var(--amber-light);
+      color: var(--amber);
+    }
+
+    .ft {
+      font-size: 15px;
+      font-weight: 600;
+      color: var(--ink);
+      margin-bottom: 8px;
+      line-height: 1.3;
+    }
+
+    .fd {
+      font-size: 13px;
+      color: var(--ink-3);
+      line-height: 1.6;
+    }
+
+    .rs {
+      background: var(--surface-2);
+    }
+
+    .rg {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 20px;
+      margin-top: 48px;
+    }
+
+    .rc {
+      background: var(--surface);
+      border: 1px solid var(--border);
+      border-radius: var(--radius-md);
+      padding: 28px 24px;
+    }
+
+    .ri {
+      width: 44px;
+      height: 44px;
+      border-radius: 10px;
+      background: var(--accent-light);
+      color: var(--accent);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      margin-bottom: 18px;
+    }
+
+    .ri svg {
+      width: 20px;
+      height: 20px;
+    }
+
+    .rt {
+      font-size: 15px;
+      font-weight: 600;
+      color: var(--ink);
+      margin-bottom: 6px;
+    }
+
+    .rd {
+      font-size: 13px;
+      color: var(--ink-3);
+      line-height: 1.6;
+    }
+
+    .dark-co {
+      background: #0f2d47;
+      color: #fff;
+      padding: var(--gap) 0;
+    }
+
+    .dark-in {
+      max-width: var(--max);
+      margin: 0 auto;
+      padding: 0 24px;
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 64px;
+      align-items: center;
+    }
+
+    .dark-ey {
+      font-size: 11px;
+      font-weight: 600;
+      letter-spacing: .1em;
+      text-transform: uppercase;
+      color: #7db3e8;
+      margin-bottom: 14px;
+    }
+
+    .dark-h {
+      font-family: var(--font-display);
+      font-size: clamp(22px, 2.8vw, 32px);
+      font-weight: 400;
+      line-height: 1.25;
+      letter-spacing: -.02em;
+      color: #fff;
+      margin-bottom: 18px;
+    }
+
+    .dark-d {
+      font-size: 15px;
+      color: #b0c8e4;
+      line-height: 1.65;
+    }
+
+    .dark-buls {
+      display: flex;
+      flex-direction: column;
+      gap: 14px;
+      margin-top: 24px;
+    }
+
+    .dbul {
+      display: flex;
+      align-items: flex-start;
+      gap: 12px;
+      font-size: 14px;
+      color: #b0c8e4;
+      line-height: 1.5;
+    }
+
+    .ddot {
+      width: 6px;
+      height: 6px;
+      border-radius: 50%;
+      background: #7db3e8;
+      flex-shrink: 0;
+      margin-top: 7px;
+    }
+
+    .dbul strong {
+      color: #e8f2fd;
+    }
+
+    .dbadges {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 10px;
+      margin-top: 28px;
+    }
+
+    .dbadge {
+      display: inline-flex;
+      align-items: center;
+      gap: 6px;
+      font-size: 12px;
+      font-weight: 500;
+      color: #e8f2fd;
+      background: rgba(255, 255, 255, .08);
+      border: 1px solid rgba(255, 255, 255, .15);
+      padding: 6px 14px;
+      border-radius: 100px;
+    }
+
+    .faq-list {
+      margin-top: 48px;
+    }
+
+    .faq-item {
+      border-top: 1px solid var(--border);
+    }
+
+    .faq-item:last-child {
+      border-bottom: 1px solid var(--border);
+    }
+
+    .fq {
+      width: 100%;
+      background: none;
+      border: none;
+      padding: 22px 0;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 24px;
+      cursor: pointer;
+      text-align: left;
+      font-size: 16px;
+      font-weight: 500;
+      color: var(--ink);
+      line-height: 1.4;
+    }
+
+    .fq:hover {
+      color: var(--accent);
+    }
+
+    .fchev {
+      width: 20px;
+      height: 20px;
+      flex-shrink: 0;
+      color: var(--ink-4);
+      transition: transform .2s;
+    }
+
+    .faq-item.open .fchev {
+      transform: rotate(180deg);
+    }
+
+    .fa {
+      display: none;
+      padding: 0 0 22px;
+      font-size: 15px;
+      color: var(--ink-2);
+      line-height: 1.7;
+      max-width: 760px;
+    }
+
+    .faq-item.open .fa {
+      display: block;
+    }
+
+    .cta-s {
+      background: var(--surface-2);
+      border-top: 1px solid var(--border);
+      padding: var(--gap) 0;
+    }
+
+    .cta-in {
+      max-width: 680px;
+      margin: 0 auto;
+      padding: 0 24px;
+      text-align: center;
+    }
+
+    .cta-h {
+      font-family: var(--font-display);
+      font-size: clamp(24px, 3vw, 36px);
+      font-weight: 400;
+      line-height: 1.2;
+      letter-spacing: -.02em;
+      color: var(--ink);
+      margin-bottom: 16px;
+    }
+
+    .cta-d {
+      font-size: 16px;
+      color: var(--ink-3);
+      line-height: 1.6;
+      margin-bottom: 32px;
+    }
+
+    .cta-bs {
+      display: flex;
+      gap: 12px;
+      justify-content: center;
+      flex-wrap: wrap;
+    }
+
+    .cta-bs .bp,
+    .cta-bs .bg {
+      padding: 14px 28px;
+      font-size: 15px;
+    }
+
+    .rel-s {
+      padding: 48px 0;
+      border-top: 1px solid var(--border);
+    }
+
+    .rel-in {
+      max-width: var(--max);
+      margin: 0 auto;
+      padding: 0 24px;
+    }
+
+    .rel-lbl {
+      font-size: 12px;
+      font-weight: 600;
+      letter-spacing: .08em;
+      text-transform: uppercase;
+      color: var(--ink-4);
+      margin-bottom: 16px;
+    }
+
+    .rel-ls {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 10px;
+    }
+
+    .rl {
+      font-size: 13px;
+      font-weight: 500;
+      color: var(--ink-2);
+      text-decoration: none;
+      padding: 8px 16px;
+      border: 1px solid var(--border);
+      border-radius: var(--radius-sm);
+      transition: border-color .15s, color .15s;
+    }
+
+    .rl:hover {
+      border-color: var(--accent);
+      color: var(--accent);
+    }
+
+    footer {
+      background: var(--ink);
+      color: #a0a2ab;
+      padding: 28px 0;
+    }
+
+    .foot-in {
+      max-width: var(--max);
+      margin: 0 auto;
+      padding: 0 24px;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      flex-wrap: wrap;
+      gap: 12px;
+    }
+
+    .flogo {
+      font-size: 14px;
+      font-weight: 600;
+      color: #fff;
+    }
+
+    .flogo span {
+      color: #6b9de8;
+    }
+
+    .flinks {
+      display: flex;
+      gap: 24px;
+    }
+
+    .flinks a {
+      font-size: 13px;
+      color: #a0a2ab;
+      text-decoration: none;
+    }
+
+    .flinks a:hover {
+      color: #fff;
+    }
+
+    .fcopy {
+      font-size: 12px;
+      color: #5f6170;
+    }
+
+    @media(max-width:768px) {
+      :root {
+        --gap: 64px
+      }
+
+      .hero-in {
+        grid-template-columns: 1fr;
+        gap: 40px
+      }
+
+      .hv {
+        display: none
+      }
+
+      .pain-grid {
+        grid-template-columns: 1fr
+      }
+
+      .fg {
+        grid-template-columns: 1fr 1fr
+      }
+
+      .dd-in {
+        grid-template-columns: 1fr;
+        gap: 40px
+      }
+
+      .dd-in.fl {
+        direction: ltr
+      }
+
+      .rg {
+        grid-template-columns: 1fr
+      }
+
+      .dark-in {
+        grid-template-columns: 1fr;
+        gap: 40px
+      }
+
+      .proof-plat {
+        margin-left: 0
+      }
+
+      .nav-bc {
+        display: none
+      }
+    }
+
+    @media(max-width:540px) {
+      .fg {
+        grid-template-columns: 1fr
+      }
+    }
+
+    @media(prefers-reduced-motion:reduce) {
+      * {
+        transition: none !important
+      }
+    }
+
+    /* Asset-specific */
+    .asset-lifecycle {
+      display: flex;
+      align-items: center;
+      gap: 0;
+      flex-wrap: nowrap;
+      overflow-x: auto
+    }
+
+    .al-node {
+      background: var(--surface);
+      border: 1px solid var(--border);
+      border-radius: var(--radius-md);
+      padding: 12px 16px;
+      flex-shrink: 0;
+      min-width: 120px;
+      text-align: center;
+      transition: border-color .15s
+    }
+
+    .al-node:hover {
+      border-color: var(--accent-mid)
+    }
+
+    .al-icon {
+      width: 28px;
+      height: 28px;
+      border-radius: 6px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      margin: 0 auto 8px
+    }
+
+    .al-icon svg {
+      width: 14px;
+      height: 14px
+    }
+
+    .al-icon.bl {
+      background: var(--accent-light);
+      color: var(--accent)
+    }
+
+    .al-icon.tl {
+      background: var(--teal-light);
+      color: var(--teal)
+    }
+
+    .al-icon.am {
+      background: var(--amber-light);
+      color: var(--amber)
+    }
+
+    .al-icon.rl {
+      background: var(--red-light);
+      color: var(--red)
+    }
+
+    .al-label {
+      font-size: 11px;
+      font-weight: 600;
+      color: var(--ink);
+      line-height: 1.3
+    }
+
+    .al-sub {
+      font-size: 10px;
+      color: var(--ink-4);
+      margin-top: 2px
+    }
+
+    .al-arrow {
+      font-size: 16px;
+      color: var(--ink-4);
+      padding: 0 6px;
+      flex-shrink: 0
+    }
+
+    .asset-table {
+      width: 100%;
+      border-collapse: collapse
+    }
+
+    .asset-table th {
+      font-size: 10px;
+      font-weight: 600;
+      color: var(--ink-4);
+      text-transform: uppercase;
+      letter-spacing: .05em;
+      padding: 7px 10px;
+      text-align: left;
+      border-bottom: 1px solid var(--border);
+      background: var(--surface-3)
+    }
+
+    .asset-table td {
+      font-size: 12px;
+      padding: 9px 10px;
+      border-bottom: 1px solid var(--border);
+      color: var(--ink-2);
+      vertical-align: middle
+    }
+
+    .asset-table tr:last-child td {
+      border-bottom: none
+    }
+
+    .amc-ok {
+      color: var(--teal);
+      font-weight: 600;
+      font-size: 11px
+    }
+
+    .amc-warn {
+      color: var(--amber);
+      font-weight: 600;
+      font-size: 11px
+    }
+
+    .amc-exp {
+      color: var(--red);
+      font-weight: 600;
+      font-size: 11px
+    }
+
+    .maint-flow {
+      display: flex;
+      flex-direction: column;
+      gap: 8px
+    }
+
+    .mf-step {
+      display: flex;
+      align-items: center;
+      gap: 12px;
+      background: var(--surface);
+      border: 1px solid var(--border);
+      border-radius: var(--radius-sm);
+      padding: 10px 14px
+    }
+
+    .mf-dot {
+      width: 8px;
+      height: 8px;
+      border-radius: 50%;
+      flex-shrink: 0
+    }
+
+    .mf-text {
+      font-size: 13px;
+      color: var(--ink-2);
+      flex: 1
+    }
+
+    .mf-tag {
+      font-size: 10px;
+      font-weight: 600;
+      padding: 2px 7px;
+      border-radius: 100px;
+      white-space: nowrap
+    }
+
+    .mt-sched {
+      background: var(--accent-light);
+      color: var(--accent)
+    }
+
+    .mt-active {
+      background: var(--amber-light);
+      color: var(--amber)
+    }
+
+    .mt-done {
+      background: var(--teal-light);
+      color: var(--teal)
+    }
+
+    .depr-panel {
+      display: flex;
+      flex-direction: column;
+      gap: 10px
+    }
+
+    .depr-item {
+      background: var(--surface);
+      border: 1px solid var(--border);
+      border-radius: var(--radius-md);
+      padding: 14px 16px
+    }
+
+    .depr-header {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      margin-bottom: 6px
+    }
+
+    .depr-name {
+      font-size: 13px;
+      font-weight: 600;
+      color: var(--ink)
+    }
+
+    .depr-bv {
+      font-size: 13px;
+      font-weight: 700;
+      color: var(--accent)
+    }
+
+    .depr-meta {
+      font-size: 11px;
+      color: var(--ink-4)
+    }
+
+    .depr-bar-bg {
+      height: 5px;
+      background: var(--surface-3);
+      border-radius: 3px;
+      overflow: hidden;
+      margin-top: 8px
+    }
+
+    .depr-bar-fill {
+      height: 100%;
+      border-radius: 3px;
+      background: var(--accent)
+    }
+  </style>
+  <!-- TEMPLATE CSS (IMPORTANT) -->
+  <link rel="stylesheet" href="/../assets/quantbit_website/css/bootstrap.min.css">
+  <link rel="stylesheet" href="/../assets/quantbit_website/css/font-awesome.css">
+  <link rel="stylesheet" href="/../assets/quantbit_website/css/animate.css">
+  <link rel="stylesheet" href="/../assets/quantbit_website/css/magnific-popup.css">
+  <link rel="stylesheet" href="/../assets/quantbit_website/css/meanmenu.css">
+  <link rel="stylesheet" href="/../assets/quantbit_website/css/slick.css">
+  <link rel="stylesheet" href="/../assets/quantbit_website/css/nice-select.css">
+  <link rel="stylesheet" href="/../assets/quantbit_website/css/main.css">
+  <link rel="stylesheet" href="style.css">
+  <!-- <link rel="stylesheet" href="/assets/quantbit_website/css/_shared.css"> -->
+
+
+  <!-- OPTIONAL CUSTOM -->
+  <link rel="stylesheet" href="/../assets/quantbit_website/css/hrms.css">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
+  <!-- Google Tag Manager -->
+  <script>(function (w, d, s, l, i) {
+      w[l] = w[l] || []; w[l].push({
+        'gtm.start':
+          new Date().getTime(), event: 'gtm.js'
+      }); var f = d.getElementsByTagName(s)[0],
+        j = d.createElement(s), dl = l != 'dataLayer' ? '&l=' + l : ''; j.async = true; j.src =
+          'https://www.googletagmanager.com/gtm.js?id=' + i + dl; f.parentNode.insertBefore(j, f);
+    })(window, document, 'script', 'dataLayer', 'GTM-P98Z6G8D');</script>
+  <!-- End Google Tag Manager -->
+</head>
+
+<body>
+<!-- Google Tag Manager (noscript) -->
+<noscript><iframe src="https://www.googletagmanager.com/ns.html?id=GTM-P98Z6G8D"
+height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
+<!-- End Google Tag Manager (noscript) -->
+  <div id="header"></div>
+
+
+  <section class="hero">
+    <div class="hero-in">
+      <div>
+        <div class="htag"><svg width="13" height="13" viewBox="0 0 16 16" fill="none" stroke="currentColor"
+            stroke-width="1.5" aria-hidden="true">
+            <rect x="2" y="6" width="12" height="8" rx="1.5" />
+            <path d="M5 6V4a3 3 0 0 1 6 0v2" />
+          </svg>HISx — Asset Management Module</div>
+        <h1>Hospital assets managed from <em>purchase to disposal</em></h1>
+        <p class="hero-sub">Full asset lifecycle tracking, preventive and breakdown maintenance, AMC/CMC contract
+          management, depreciation, and downtime reporting — for every piece of equipment in your hospital.</p>
+        <div class="ctas"><a href="/hisx/demo" class="bp">Request a demo</a><a href="#lifecycle" class="bg">See the
+            lifecycle</a></div>
+      </div>
+      <div class="hv" aria-label="Asset register preview with AMC status">
+        <div class="hv-lbl">Asset register — Critical equipment</div>
+        <table class="asset-table">
+          <thead>
+            <tr>
+              <th>Asset</th>
+              <th>Location</th>
+              <th>AMC status</th>
+              <th>Book value</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr>
+              <td>MRI Scanner 1.5T</td>
+              <td>Radiology</td>
+              <td><span class="amc-ok">Active — 8 mo.</span></td>
+              <td>₹ 1.8 Cr</td>
+            </tr>
+            <tr>
+              <td>Ventilator #3</td>
+              <td>ICU</td>
+              <td><span class="amc-warn">Expiring — 21 days</span></td>
+              <td>₹ 4.2 L</td>
+            </tr>
+            <tr>
+              <td>ECG Machine #2</td>
+              <td>Cardiology</td>
+              <td><span class="amc-exp">Expired — renew</span></td>
+              <td>₹ 1.1 L</td>
+            </tr>
+            <tr>
+              <td>Auto-analyser (CBC)</td>
+              <td>Lab</td>
+              <td><span class="amc-ok">CMC — 11 mo.</span></td>
+              <td>₹ 8.6 L</td>
+            </tr>
+          </tbody>
+        </table>
+        <div
+          style="margin-top:10px;padding:9px 12px;background:var(--amber-light);border-radius:var(--radius-sm);font-size:11px;color:var(--amber);font-weight:500;display:flex;align-items:center;gap:7px">
+          <svg width="13" height="13" viewBox="0 0 14 14" fill="none" stroke="currentColor" stroke-width="1.5"
+            aria-hidden="true">
+            <circle cx="7" cy="7" r="5" />
+            <path d="M7 4v3" />
+            <circle cx="7" cy="10" r=".5" fill="currentColor" />
+          </svg>
+          2 assets with AMC expiry in 30 days — renewal alerts sent to biomedical team
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <div class="proof">
+    <div class="proof-in">
+      <span class="proof-lbl">Covers</span>
+      <div class="proof-stats">
+        <div>
+          <div class="psn">Full lifecycle</div>
+          <div class="psl">Procurement to disposal</div>
+        </div>
+        <div class="pdiv" aria-hidden="true"></div>
+        <div>
+          <div class="psn">AMC / CMC</div>
+          <div class="psl">Contract tracking &amp; alerts</div>
+        </div>
+        <div class="pdiv" aria-hidden="true"></div>
+        <div>
+          <div class="psn">Depreciation</div>
+          <div class="psl">Auto-calculated &amp; posted</div>
+        </div>
+      </div>
+      <div class="proof-plat"><svg width="14" height="14" viewBox="0 0 16 16" fill="none" stroke="currentColor"
+          stroke-width="1.5" aria-hidden="true">
+          <rect x="2" y="2" width="12" height="12" rx="2" />
+        </svg>Built on <strong>&nbsp;ERPNext / Frappe</strong></div>
+    </div>
+  </div>
+
+  <section id="lifecycle" aria-labelledby="lc-h">
+    <div class="C">
+      <span class="ey">Asset lifecycle</span>
+      <h2 class="sh" id="lc-h">Every stage of an asset's life — tracked, documented, and reconciled</h2>
+      <p class="ss">HISx covers the complete hospital asset lifecycle in one system — no separate spreadsheets for
+        maintenance, no manual depreciation calculations, no paper AMC files.</p>
+      <div class="asset-lifecycle" style="margin-top:32px;gap:0" role="list" aria-label="Asset lifecycle stages">
+        <div class="al-node" role="listitem">
+          <div class="al-icon bl" aria-hidden="true"><svg viewBox="0 0 16 16" fill="none" stroke="currentColor"
+              stroke-width="1.5">
+              <path d="M2 4h12l-1.5 7H3.5L2 4z" />
+            </svg></div>
+          <div class="al-label">Procurement</div>
+          <div class="al-sub">PO → GRN → capitalise</div>
+        </div>
+        <div class="al-arrow" aria-hidden="true">→</div>
+        <div class="al-node" role="listitem">
+          <div class="al-icon bl" aria-hidden="true"><svg viewBox="0 0 16 16" fill="none" stroke="currentColor"
+              stroke-width="1.5">
+              <path d="M2 8h12M8 2v12" />
+            </svg></div>
+          <div class="al-label">Allocation</div>
+          <div class="al-sub">Dept &amp; location assigned</div>
+        </div>
+        <div class="al-arrow" aria-hidden="true">→</div>
+        <div class="al-node" role="listitem">
+          <div class="al-icon tl" aria-hidden="true"><svg viewBox="0 0 16 16" fill="none" stroke="currentColor"
+              stroke-width="1.5">
+              <circle cx="8" cy="8" r="6" />
+              <path d="M8 5v3l2 2" />
+            </svg></div>
+          <div class="al-label">Maintenance</div>
+          <div class="al-sub">PM, breakdown, AMC/CMC</div>
+        </div>
+        <div class="al-arrow" aria-hidden="true">→</div>
+        <div class="al-node" role="listitem">
+          <div class="al-icon am" aria-hidden="true"><svg viewBox="0 0 16 16" fill="none" stroke="currentColor"
+              stroke-width="1.5">
+              <path d="M2 12V4l6-2 6 2v8l-6 2-6-2z" />
+            </svg></div>
+          <div class="al-label">Depreciation</div>
+          <div class="al-sub">Auto-calculated &amp; posted</div>
+        </div>
+        <div class="al-arrow" aria-hidden="true">→</div>
+        <div class="al-node" role="listitem">
+          <div class="al-icon rl" aria-hidden="true"><svg viewBox="0 0 16 16" fill="none" stroke="currentColor"
+              stroke-width="1.5">
+              <path d="M13 4L6 11l-3-3" />
+            </svg></div>
+          <div class="al-label">Disposal</div>
+          <div class="al-sub">Write-off or sale</div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <hr class="div">
+
+  <section class="dd" aria-labelledby="maint-h">
+    <div class="C">
+      <div class="dd-in">
+        <div>
+          <span class="ey">Maintenance management</span>
+          <h2 class="dh" id="maint-h">Preventive maintenance scheduled, breakdown calls tracked, service history
+            preserved</h2>
+          <p class="dd">HISx manages both planned preventive maintenance and unplanned breakdown maintenance in a single
+            workflow — with every service event recorded against the asset's permanent history.</p>
+          <ul class="buls" aria-label="Maintenance features">
+            <li><span class="bchk" aria-hidden="true"><svg viewBox="0 0 10 10" fill="none" stroke="currentColor"
+                  stroke-width="2">
+                  <path d="M2 5l2.5 2.5L8 3" />
+                </svg></span>Preventive maintenance schedules auto-generated per asset — manufacturer intervals or
+              custom biomedical team schedules</li>
+            <li><span class="bchk" aria-hidden="true"><svg viewBox="0 0 10 10" fill="none" stroke="currentColor"
+                  stroke-width="2">
+                  <path d="M2 5l2.5 2.5L8 3" />
+                </svg></span>Breakdown calls logged instantly — downtime clock starts at call creation, ends when asset
+              is returned to service</li>
+            <li><span class="bchk" aria-hidden="true"><svg viewBox="0 0 10 10" fill="none" stroke="currentColor"
+                  stroke-width="2">
+                  <path d="M2 5l2.5 2.5L8 3" />
+                </svg></span>Full service history per asset — every PM, breakdown, parts replaced, engineer who
+              attended, and time to resolution</li>
+            <li><span class="bchk" aria-hidden="true"><svg viewBox="0 0 10 10" fill="none" stroke="currentColor"
+                  stroke-width="2">
+                  <path d="M2 5l2.5 2.5L8 3" />
+                </svg></span>Asset downtime reports — identify chronically unreliable equipment and build the data case
+              for replacement</li>
+          </ul>
+        </div>
+        <div class="dv" aria-label="Maintenance workflow for a ventilator breakdown">
+          <div class="dvl">Breakdown workflow — Ventilator #3, ICU</div>
+          <div class="maint-flow">
+            <div class="mf-step">
+              <div class="mf-dot" style="background:var(--red)" aria-hidden="true"></div><span class="mf-text">Breakdown
+                reported — ICU nurse</span><span class="mf-tag mt-active">Downtime starts</span>
+            </div>
+            <div class="mf-step">
+              <div class="mf-dot" style="background:var(--amber)" aria-hidden="true"></div><span
+                class="mf-text">Biomedical engineer assigned</span><span class="mf-tag mt-sched">Within 30 min</span>
+            </div>
+            <div class="mf-step">
+              <div class="mf-dot" style="background:var(--amber)" aria-hidden="true"></div><span class="mf-text">Under
+                AMC — vendor notified</span><span class="mf-tag mt-sched">Auto-alert</span>
+            </div>
+            <div class="mf-step">
+              <div class="mf-dot" style="background:var(--teal)" aria-hidden="true"></div><span class="mf-text">Repaired
+                — parts &amp; notes logged</span><span class="mf-tag mt-done">Service recorded</span>
+            </div>
+            <div class="mf-step">
+              <div class="mf-dot" style="background:var(--teal)" aria-hidden="true"></div><span class="mf-text">Asset
+                returned to service</span><span class="mf-tag mt-done">Downtime: 4h 22m</span>
+            </div>
+          </div>
+          <div
+            style="margin-top:12px;padding:9px 12px;background:var(--surface-3);border-radius:var(--radius-sm);font-size:11px;color:var(--ink-4);line-height:1.5">
+            All breakdown events posted to asset history. Downtime aggregated in monthly asset performance report.</div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <hr class="div">
+
+  <section class="dd" aria-labelledby="amc-h">
+    <div class="C">
+      <div class="dd-in fl">
+        <div>
+          <span class="ey">AMC / CMC management</span>
+          <h2 class="dh" id="amc-h">Never let an AMC lapse — every contract tracked, every renewal alerted</h2>
+          <p class="dd">AMC and CMC contracts for medical equipment are high-value, time-sensitive, and easy to miss
+            when managed in spreadsheets. HISx tracks every contract, every service call against it, and alerts the
+            biomedical team well before expiry.</p>
+          <ul class="buls" aria-label="AMC CMC management features">
+            <li><span class="bchk" aria-hidden="true"><svg viewBox="0 0 10 10" fill="none" stroke="currentColor"
+                  stroke-width="2">
+                  <path d="M2 5l2.5 2.5L8 3" />
+                </svg></span>AMC and CMC contracts maintained per asset with vendor, covered services, start/end dates,
+              and contract value</li>
+            <li><span class="bchk" aria-hidden="true"><svg viewBox="0 0 10 10" fill="none" stroke="currentColor"
+                  stroke-width="2">
+                  <path d="M2 5l2.5 2.5L8 3" />
+                </svg></span>Configurable renewal alerts — 90, 60, and 30 days before contract expiry — sent to
+              biomedical head and purchase team</li>
+            <li><span class="bchk" aria-hidden="true"><svg viewBox="0 0 10 10" fill="none" stroke="currentColor"
+                  stroke-width="2">
+                  <path d="M2 5l2.5 2.5L8 3" />
+                </svg></span>Service calls tracked against contract scope — out-of-contract calls flagged for separate
+              vendor billing</li>
+            <li><span class="bchk" aria-hidden="true"><svg viewBox="0 0 10 10" fill="none" stroke="currentColor"
+                  stroke-width="2">
+                  <path d="M2 5l2.5 2.5L8 3" />
+                </svg></span>Contract history per asset — full record of past AMC/CMC periods for renewal cost
+              negotiation</li>
+          </ul>
+        </div>
+        <div class="dv" aria-label="AMC status dashboard for critical equipment">
+          <div class="dvl">AMC / CMC dashboard — critical equipment</div>
+          <table class="asset-table">
+            <thead>
+              <tr>
+                <th>Asset</th>
+                <th>Contract</th>
+                <th>Vendor</th>
+                <th>Expiry</th>
+              </tr>
+            </thead>
+            <tbody>
+              <tr>
+                <td>MRI Scanner 1.5T</td>
+                <td>CMC</td>
+                <td>Siemens</td>
+                <td><span class="amc-ok">Dec 2025</span></td>
+              </tr>
+              <tr>
+                <td>CT Scanner</td>
+                <td>AMC</td>
+                <td>GE Healthcare</td>
+                <td><span class="amc-ok">Oct 2025</span></td>
+              </tr>
+              <tr>
+                <td>Ventilator #3</td>
+                <td>AMC</td>
+                <td>Draeger India</td>
+                <td><span class="amc-warn">⚠ 21 days</span></td>
+              </tr>
+              <tr>
+                <td>ECG Machine #2</td>
+                <td>AMC</td>
+                <td>Philips India</td>
+                <td><span class="amc-exp">✕ Expired</span></td>
+              </tr>
+              <tr>
+                <td>Auto-analyser</td>
+                <td>CMC</td>
+                <td>Mindray</td>
+                <td><span class="amc-ok">Nov 2025</span></td>
+              </tr>
+            </tbody>
+          </table>
+          <div style="margin-top:10px;font-size:11px;color:var(--ink-4)">Renewal PRs auto-generated for expiring
+            contracts — routed through standard procurement approval matrix.</div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <hr class="div">
+
+  <section aria-labelledby="feat-h">
+    <div class="C">
+      <span class="ey">All capabilities</span>
+      <h2 class="sh" id="feat-h" id="features">Complete hospital asset management</h2>
+      <p class="ss">From the asset register to the disposal entry — every asset management workflow in one platform.</p>
+      <div class="fg" role="list">
+        <div class="fc" role="listitem">
+          <div class="fi bl" aria-hidden="true"><svg viewBox="0 0 16 16" fill="none" stroke="currentColor"
+              stroke-width="1.5">
+              <rect x="2" y="3" width="12" height="10" rx="1.5" />
+              <path d="M5 7h6M5 10h4" />
+            </svg></div>
+          <h3 class="ft">Comprehensive asset register</h3>
+          <p class="fd">Every asset — medical equipment, furniture, IT hardware, vehicles — in a single register with
+            serial number, model, department, location, purchase date, supplier, and capitalised value.</p>
+        </div>
+        <div class="fc" role="listitem">
+          <div class="fi tl" aria-hidden="true"><svg viewBox="0 0 16 16" fill="none" stroke="currentColor"
+              stroke-width="1.5">
+              <path d="M2 8h12M8 2v12" />
+            </svg></div>
+          <h3 class="ft">Asset allocation &amp; transfer</h3>
+          <p class="fd">Asset allocation to departments, wards, and staff tracked with transfer history. Every
+            reallocation documented with reason, authorised by, and date — no undocumented asset movements.</p>
+        </div>
+        <div class="fc" role="listitem">
+          <div class="fi am" aria-hidden="true"><svg viewBox="0 0 16 16" fill="none" stroke="currentColor"
+              stroke-width="1.5">
+              <path d="M2 12V4l6-2 6 2v8l-6 2-6-2z" />
+              <path d="M8 2v12M2 7h12" />
+            </svg></div>
+          <h3 class="ft">Depreciation tracking</h3>
+          <p class="fd">Straight-line, written-down value, or units-of-production depreciation calculated and posted
+            automatically. Asset book value maintained in real time. Finance gets depreciation schedules without manual
+            calculation.</p>
+        </div>
+        <div class="fc" role="listitem">
+          <div class="fi bl" aria-hidden="true"><svg viewBox="0 0 16 16" fill="none" stroke="currentColor"
+              stroke-width="1.5">
+              <circle cx="8" cy="8" r="6" />
+              <path d="M8 5v3l2 2" />
+            </svg></div>
+          <h3 class="ft">Asset downtime reporting</h3>
+          <p class="fd">Downtime per asset, per department, per month — with mean time to repair and vendor SLA
+            compliance. Evidence-based replacement decisions instead of gut feel.</p>
+        </div>
+        <div class="fc" role="listitem">
+          <div class="fi tl" aria-hidden="true"><svg viewBox="0 0 16 16" fill="none" stroke="currentColor"
+              stroke-width="1.5">
+              <path d="M13 4L6 11l-3-3" />
+            </svg></div>
+          <h3 class="ft">Disposal &amp; write-off</h3>
+          <p class="fd">Asset disposal workflows with approval routing, sale proceeds posting, and write-off entries.
+            Disposed assets removed from active register with full disposal documentation maintained in history.</p>
+        </div>
+        <div class="fc" role="listitem">
+          <div class="fi am" aria-hidden="true"><svg viewBox="0 0 16 16" fill="none" stroke="currentColor"
+              stroke-width="1.5">
+              <rect x="2" y="2" width="12" height="12" rx="2" />
+              <path d="M6 8l2 2 4-4" />
+            </svg></div>
+          <h3 class="ft">Alerts &amp; notifications</h3>
+          <p class="fd">Configurable alerts for PM due dates, AMC/CMC expiry, warranty expiry, and asset downtime
+            thresholds — delivered by push notification, SMS, or email to the right person at the right time.</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <hr class="div">
+
+  <section class="rs" aria-labelledby="roles-h">
+    <div class="C">
+      <span class="ey">Who uses this module</span>
+      <h2 class="sh" id="roles-h">Every asset stakeholder, one platform</h2>
+      <p class="ss">Biomedical engineers, department HODs, and CFOs each need different views of the same asset data —
+        HISx gives each role exactly what they need.</p>
+      <div class="rg">
+        <div class="rc">
+          <div class="ri" aria-hidden="true"><svg viewBox="0 0 20 20" fill="none" stroke="currentColor"
+              stroke-width="1.5">
+              <path
+                d="M10 2a4 4 0 0 1 4 4c0 2.2-1.8 4-4 4a4 4 0 0 1-4-4 4 4 0 0 1 4-4m0 10c4.4 0 8 1.8 8 4v2H2v-2c0-2.2 3.6-4 8-4" />
+            </svg></div>
+          <h3 class="rt">Biomedical engineer</h3>
+          <p class="rd">PM schedule on the dashboard, breakdown calls assigned with asset history pre-loaded, service
+            notes recorded per event, AMC vendor contact accessible from the asset record — everything needed to manage
+            the equipment floor.</p>
+        </div>
+        <div class="rc">
+          <div class="ri" aria-hidden="true"><svg viewBox="0 0 20 20" fill="none" stroke="currentColor"
+              stroke-width="1.5">
+              <circle cx="10" cy="6" r="3" />
+              <path d="M4 18c0-3.3 2.7-6 6-6s6 2.7 6 6" />
+            </svg></div>
+          <h3 class="rt">Department HOD</h3>
+          <p class="rd">Assets allocated to their department visible in a single list. Breakdown calls raised directly
+            from the HOD's view. Downtime reports available for department governance and operational planning.</p>
+        </div>
+        <div class="rc">
+          <div class="ri" aria-hidden="true"><svg viewBox="0 0 20 20" fill="none" stroke="currentColor"
+              stroke-width="1.5">
+              <rect x="2" y="4" width="16" height="12" rx="2" />
+              <path d="M2 8h16M6 12h4M14 12h2" />
+            </svg></div>
+          <h3 class="rt">CFO &amp; finance</h3>
+          <p class="rd">Asset register with current book values, depreciation schedule and postings, AMC/CMC budget vs
+            actual, and disposal proceeds — all reconciled with the general ledger without manual extraction.</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section aria-labelledby="faq-h">
+    <div class="C">
+      <span class="ey">Common questions</span>
+      <h2 class="sh" id="faq-h">Frequently asked questions</h2>
+      <div class="faq-list" role="list">
+        <div class="faq-item" role="listitem"><button class="fq" aria-expanded="false" onclick="tFaq(this)">How does
+            HISx manage the full lifecycle of hospital assets?<svg class="fchev" viewBox="0 0 20 20" fill="none"
+              stroke="currentColor" stroke-width="1.5" aria-hidden="true">
+              <path d="M5 7.5l5 5 5-5" />
+            </svg></button>
+          <div class="fa fa-asset-1">HISx tracks hospital assets from the moment of procurement through allocation,
+            commissioning, preventive maintenance, breakdown repairs, AMC/CMC contract management, depreciation, and
+            final disposal. Each asset has a complete history record covering every maintenance event, service visit,
+            downtime period, and depreciation posting — giving hospital engineering and finance teams a single source of
+            truth for every asset in the hospital.</div>
+        </div>
+        <div class="faq-item" role="listitem"><button class="fq" aria-expanded="false" onclick="tFaq(this)">How does
+            HISx handle AMC and CMC contract management for medical equipment?<svg class="fchev" viewBox="0 0 20 20"
+              fill="none" stroke="currentColor" stroke-width="1.5" aria-hidden="true">
+              <path d="M5 7.5l5 5 5-5" />
+            </svg></button>
+          <div class="fa fa-asset-2">HISx maintains AMC and CMC records for each asset, including contract start and end
+            dates, covered services, vendor details, and cost. The system generates alerts before AMC/CMC contracts
+            expire, tracks service calls against the contract, and flags calls that fall outside contracted scope for
+            separate billing. Service history is maintained per contract period for renewal negotiations.</div>
+        </div>
+        <div class="faq-item" role="listitem"><button class="fq" aria-expanded="false" onclick="tFaq(this)">Does HISx
+            track asset depreciation automatically?<svg class="fchev" viewBox="0 0 20 20" fill="none"
+              stroke="currentColor" stroke-width="1.5" aria-hidden="true">
+              <path d="M5 7.5l5 5 5-5" />
+            </svg></button>
+          <div class="fa">Yes. HISx calculates and posts asset depreciation automatically based on the configured
+            depreciation method — straight-line, written-down value, or units of production — and the asset's useful
+            life. Depreciation entries are posted to the general ledger on a scheduled basis, and the asset register
+            maintains current book value at all times without manual calculation.</div>
+        </div>
+        <div class="faq-item" role="listitem"><button class="fq" aria-expanded="false" onclick="tFaq(this)">How does
+            preventive maintenance scheduling work in HISx?<svg class="fchev" viewBox="0 0 20 20" fill="none"
+              stroke="currentColor" stroke-width="1.5" aria-hidden="true">
+              <path d="M5 7.5l5 5 5-5" />
+            </svg></button>
+          <div class="fa">HISx generates preventive maintenance schedules for assets based on manufacturer
+            recommendations, regulatory requirements, or custom intervals defined by the biomedical team. Upcoming PM
+            tasks are visible on the engineering dashboard with due dates and assigned technicians. Completed PM is
+            recorded with service notes and parts used, and the next PM date is automatically calculated and scheduled.
+          </div>
+        </div>
+        <div class="faq-item" role="listitem"><button class="fq" aria-expanded="false" onclick="tFaq(this)">Can HISx
+            track asset downtime and its impact on clinical operations?<svg class="fchev" viewBox="0 0 20 20"
+              fill="none" stroke="currentColor" stroke-width="1.5" aria-hidden="true">
+              <path d="M5 7.5l5 5 5-5" />
+            </svg></button>
+          <div class="fa">Yes. HISx records asset downtime from the moment a breakdown call is raised to the moment the
+            asset is returned to service. Downtime reports are available per asset, per department, and per asset
+            category — enabling hospital management to identify chronically unreliable equipment, justify replacement
+            decisions with data, and monitor vendor SLA compliance on breakdown response times.</div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <hr class="div">
+  <section class="cta-s" aria-labelledby="cta-h">
+    <div class="cta-in">
+      <h2 class="cta-h" id="cta-h">See HISx asset management in your hospital</h2>
+      <p class="cta-d">Book a 30-minute demo — walk through the asset register, AMC tracking, PM scheduling, and
+        depreciation workflows for your equipment categories.</p>
+      <div class="cta-bs"><a href="/hisx/demo" class="bp">Book a demo</a><a href="/hisx/roi-calculator"
+          class="bg">Calculate ROI</a></div>
+    </div>
+  </section>
+  <nav class="rel-s" aria-label="Related pages">
+    <div class="rel-in">
+      <div style="display:grid;grid-template-columns:1fr 1fr;gap:32px">
+        <div>
+          <div class="rel-lbl">Other HISx modules</div>
+          <div class="rel-ls"><a href="/hisx/inventory" class="rl">Inventory management</a><a href="/hisx/procurement"
+              class="rl">Procurement &amp; vendor</a><a href="/hisx/billing" class="rl">Billing &amp; revenue</a><a
+              href="/hisx/lab-inventory" class="rl">Lab inventory</a><a href="/hisx" class="rl">All modules →</a></div>
+        </div>
+        <div>
+          <div class="rel-lbl">Related pages</div>
+          <div class="rel-ls"><a href="/erpnext-for-hospitals" class="rl">ERPNext for hospitals</a><a href="/hisx/demo"
+              class="rl">Request a demo</a></div>
+        </div>
+      </div>
+    </div>
+  </nav>
+  <div id="footer"></div>
+
+  
+
+  <script>
+    fetch("../header.html")
+      .then(res => res.text())
+      .then(data => {
+        document.getElementById("header").innerHTML = data;
+      });
+
+    fetch("../footer.html")
+      .then(res => res.text())
+      .then(data => {
+        document.getElementById("footer").innerHTML = data;
+      });
+  </script>
+  <!-- ================= TEMPLATE JS ================= -->
+  <!--<< All JS Plugins >>-->
+  <script data-cfasync="false" src="../../cdn-cgi/scripts/5c5dd728/cloudflare-static/email-decode.min.js"></script>
+  <script src="/../assets/quantbit_website/js/jquery-3.7.1.min.js"></script>
+  <!--<< Viewport Js >>-->
+  <script src="/../assets/quantbit_website/js/viewport.jquery.js"></script>
+  <!--<< Bootstrap Js >>-->
+  <script src="/../assets/quantbit_website/js/bootstrap.bundle.min.js"></script>
+  <!--<< Nice Select Js >>-->
+  <script src="/../assets/quantbit_website/js/jquery.nice-select.min.js"></script>
+  <!--<< Waypoints Js >>-->
+  <script src="/../assets/quantbit_website/js/jquery.waypoints.js"></script>
+  <!--<< Counterup Js >>-->
+  <script src="/../assets/quantbit_website/js/jquery.counterup.min.js"></script>
+  <!--<< Slick Js >>-->
+  <script src="/../assets/quantbit_website/js/slick.min.js"></script>
+  <!--<< Slick Animation Js >>-->
+  <script src="/../assets/quantbit_website/js/slick-animation.min.js"></script>
+  <!--<< MeanMenu Js >>-->
+  <script src="/../assets/quantbit_website/js/jquery.meanmenu.min.js"></script>
+  <!--<< Magnific Popup Js >>-->
+  <script src="/../assets/quantbit_website/js/jquery.magnific-popup.min.js"></script>
+  <!--<< Wow Animation Js >>-->
+  <script src="/../assets/quantbit_website/js/wow.min.js"></script>
+  <!--<< Circle Progress Js >>-->
+  <script src="/../assets/quantbit_website/js/circle-progress.js"></script>
+  <!--<< Main.js >>-->
+  <script src="/../assets/quantbit_website/js/main.js"></script>
+  <script defer
+    src="../../../static.cloudflareinsights.com/beacon.min.js/v8c78df7c7c0f484497ecbca7046644da1771523124516"
+    integrity="sha512-8DS7rgIrAmghBFwoOTujcf6D9rXvH8xm8JQ1Ja01h9QX8EzXldiszufYa4IFfKdLUKTTrnSFXLDkUEOTrZQ8Qg=="
+    data-cf-beacon='{"version":"2024.11.0","token":"90f7972af14a48b4add7da2b74f5d675","r":1,"server_timing":{"name":{"cfCacheStatus":true,"cfEdge":true,"cfExtPri":true,"cfL4":true,"cfOrigin":true,"cfSpeedBrain":true},"location_startswith":null}}'
+    crossorigin="anonymous"></script>
+  <script>function tFaq(b) { var i = b.closest('.faq-item'), o = i.classList.contains('open'); document.querySelectorAll('.faq-item').forEach(function (x) { x.classList.remove('open'); x.querySelector('.fq').setAttribute('aria-expanded', 'false') }); if (!o) { i.classList.add('open'); b.setAttribute('aria-expanded', 'true') } }</script>
+</body>
+
+</html>

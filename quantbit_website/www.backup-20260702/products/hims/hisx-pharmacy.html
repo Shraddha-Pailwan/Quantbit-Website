@@ -1,0 +1,1679 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Hospital Pharmacy Dispensing Software | FEFO, CPOE & Expiry Control | HISx by Quantbit</title>
+<meta name="description" content="HISx pharmacy module — real-time stock visibility, FEFO-enforced dispensing, CPOE integration, generic-brand substitution, Schedule H/NDPS compliance, and patient-level billing for hospital pharmacies and pharmacy chains.">
+<meta name="keywords" content="hospital pharmacy software, FEFO dispensing system, pharmacy management ERPNext, CPOE integration pharmacy, drug expiry management hospital, schedule H pharmacy software, hospital dispensing ERP India">
+<meta property="og:title" content="Hospital Pharmacy Dispensing Software — HISx | Quantbit">
+<meta property="og:description" content="Real-time stock visibility, FEFO-enforced dispensing, CPOE integration, and Schedule H/NDPS compliance — built on ERPNext for hospital pharmacies.">
+<meta property="og:type" content="website">
+<meta name="robots" content="index, follow">
+<link rel="canonical" href="https://quantbit.io/hisx/pharmacy">
+
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "SoftwareApplication",
+  "name": "HISx — Pharmacy & Dispensing Module",
+  "applicationCategory": "BusinessApplication",
+  "operatingSystem": "Web",
+  "description": "Hospital pharmacy and dispensing management software with FEFO enforcement, CPOE integration, real-time stock visibility, generic-brand substitution, patient returns, and Schedule H/H1/NDPS compliance. Built on ERPNext by Quantbit Technologies.",
+  "offers": { "@type": "Offer", "priceCurrency": "INR" },
+  "provider": {
+    "@type": "Organization",
+    "name": "Quantbit Technologies Pvt. Ltd.",
+    "url": "https://quantbit.io"
+  }
+}
+</script>
+
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "BreadcrumbList",
+  "itemListElement": [
+    { "@type": "ListItem", "position": 1, "name": "Home", "item": "https://quantbit.io" },
+    { "@type": "ListItem", "position": 2, "name": "HISx", "item": "https://quantbit.io/hisx" },
+    { "@type": "ListItem", "position": 3, "name": "Pharmacy & Dispensing", "item": "https://quantbit.io/hisx/pharmacy" }
+  ]
+}
+</script>
+
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "FAQPage",
+  "mainEntity": [
+    {
+      "@type": "Question",
+      "name": "What is FEFO and how does HISx enforce it during dispensing?",
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": "FEFO stands for First-Expire, First-Out — a dispensing discipline that ensures medicines closest to their expiry date are dispensed before newer stock, minimising wastage and eliminating the risk of expired drugs reaching patients. HISx enforces FEFO automatically at the point of dispensing: the system always selects the earliest-expiry batch for each item, alerts pharmacists when near-expiry stock is being picked, and maintains a full batch-level audit trail for every transaction.",
+        "speakable": { "@type": "SpeakableSpecification", "cssSelector": ".faq-answer-1" }
+      }
+    },
+    {
+      "@type": "Question",
+      "name": "Can hospital doctors and nurses see real-time pharmacy stock?",
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": "Yes. HISx provides a unified real-time inventory view accessible to doctors, nurses, and pharmacists simultaneously. When a doctor prescribes via CPOE, the system immediately checks available stock, reserves the quantity, and alerts the pharmacy — eliminating the common problem of prescribing items that are already out of stock at the ward level."
+      }
+    },
+    {
+      "@type": "Question",
+      "name": "How does HISx integrate with CPOE systems?",
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": "HISx integrates directly with Computerised Physician Order Entry (CPOE) systems to create a closed loop between prescription and dispensing. When a physician places a medication order, HISx automatically checks stock availability, reserves the quantity, triggers the dispensing workflow at the pharmacy counter, and generates the corresponding patient billing entry — all without manual re-entry.",
+        "speakable": { "@type": "SpeakableSpecification", "cssSelector": ".faq-answer-3" }
+      }
+    },
+    {
+      "@type": "Question",
+      "name": "Does HISx support generic drug prescribing with brand substitution?",
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": "Yes. HISx supports generic name prescribing and provides both automated and manual brand substitution mapping during dispensing. Pharmacists can configure substitution rules per generic molecule, and the system suggests approved alternatives when the prescribed brand is unavailable — keeping dispensing moving without interrupting the clinical workflow."
+      }
+    },
+    {
+      "@type": "Question",
+      "name": "How are patient medicine returns and refunds handled?",
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": "HISx includes a dedicated patient returns workflow linked to the original dispensing record. Returns are validated before the item is restocked, refunds are processed with automatic billing reversal, and every return transaction is logged in a full audit trail. This prevents unvalidated stock from re-entering inventory and ensures billing accuracy."
+      }
+    },
+    {
+      "@type": "Question",
+      "name": "Does HISx handle Schedule H, H1, and NDPS narcotic dispensing?",
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": "Yes. HISx includes a dedicated narcotics and controlled substances module with strict access control, double-signature dispensing workflows for NDPS drugs, and automated Schedule H/H1 compliance reporting. The system maintains a digital narcotics register and generates audit-ready reports, reducing compliance risk significantly compared to manual register maintenance."
+      }
+    },
+    {
+      "@type": "Question",
+      "name": "Can HISx manage pharmacy operations across multiple hospital branches?",
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": "Yes. HISx is designed for multi-site deployments — including hospital chains, multi-branch pharmacy networks, and hospitals with multiple pharmacy counters across wards and departments. Stock visibility, dispensing controls, and compliance reporting operate across all branches from a single platform, with branch-level and consolidated reporting available."
+      }
+    }
+  ]
+}
+</script>
+
+<style>
+  *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+  :root {
+    --ink: #0f1117;
+    --ink-2: #3d3f4a;
+    --ink-3: #72747f;
+    --ink-4: #a0a2ab;
+    --surface: #ffffff;
+    --surface-2: #f5f6f8;
+    --surface-3: #eef0f4;
+    --accent: #1a5fd4;
+    --accent-light: #e8effc;
+    --accent-mid: #c2d4f7;
+    --teal: #0b7a5e;
+    --teal-light: #e0f4ef;
+    --amber: #b35e0a;
+    --amber-light: #fef3e2;
+    --border: #e2e4ea;
+    --border-strong: #c8cad2;
+    --radius-sm: 6px;
+    --radius-md: 10px;
+    --radius-lg: 16px;
+    --radius-xl: 24px;
+    --font-display: 'Georgia', 'Times New Roman', serif;
+    --font-body: -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif;
+    --font-mono: 'SF Mono', 'Fira Code', monospace;
+    --max: 1120px;
+    --section-gap: 96px;
+  }
+
+  html { scroll-behavior: smooth; }
+
+  body {
+    font-family: var(--font-body);
+    color: var(--ink);
+    background: var(--surface);
+    line-height: 1.6;
+    font-size: 16px;
+    -webkit-font-smoothing: antialiased;
+  }
+
+  /* ── NAV ─────────────────────────────────────────────────── */
+  .nav {
+    position: sticky;
+    top: 0;
+    z-index: 100;
+    background: rgba(255,255,255,0.95);
+    backdrop-filter: blur(8px);
+    border-bottom: 1px solid var(--border);
+  }
+  .nav-inner {
+    max-width: var(--max);
+    margin: 0 auto;
+    padding: 0 24px;
+    height: 60px;
+    display: flex;
+    align-items: center;
+    gap: 32px;
+  }
+  .nav-logo {
+    font-size: 15px;
+    font-weight: 600;
+    color: var(--ink);
+    text-decoration: none;
+    letter-spacing: -0.01em;
+  }
+  .nav-logo span { color: var(--accent); }
+  .nav-breadcrumb {
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    font-size: 13px;
+    color: var(--ink-3);
+    flex: 1;
+  }
+  .nav-breadcrumb a { color: var(--ink-3); text-decoration: none; }
+  .nav-breadcrumb a:hover { color: var(--accent); }
+  .nav-breadcrumb .sep { color: var(--border-strong); }
+  .nav-breadcrumb .current { color: var(--ink-2); font-weight: 500; }
+  .nav-cta {
+    background: var(--accent);
+    color: #fff;
+    padding: 8px 18px;
+    border-radius: var(--radius-sm);
+    font-size: 13px;
+    font-weight: 500;
+    text-decoration: none;
+    white-space: nowrap;
+    transition: opacity 0.15s;
+  }
+  .nav-cta:hover { opacity: 0.9; }
+
+  /* ── LAYOUT UTILITIES ────────────────────────────────────── */
+  .container {
+    max-width: var(--max);
+    margin: 0 auto;
+    padding: 0 24px;
+  }
+  section { padding: var(--section-gap) 0; }
+  section + section { padding-top: 0; }
+
+  .eyebrow {
+    display: inline-block;
+    font-size: 11px;
+    font-weight: 600;
+    letter-spacing: 0.1em;
+    text-transform: uppercase;
+    color: var(--accent);
+    margin-bottom: 14px;
+  }
+  .section-headline {
+    font-family: var(--font-display);
+    font-size: clamp(26px, 3.5vw, 38px);
+    font-weight: 400;
+    line-height: 1.2;
+    letter-spacing: -0.02em;
+    color: var(--ink);
+    margin-bottom: 16px;
+  }
+  .section-sub {
+    font-size: 17px;
+    color: var(--ink-2);
+    line-height: 1.65;
+    max-width: 560px;
+  }
+
+  /* ── HERO ─────────────────────────────────────────────────── */
+  .hero {
+    padding: 80px 0 72px;
+    border-bottom: 1px solid var(--border);
+    background: var(--surface);
+  }
+  .hero-inner {
+    max-width: var(--max);
+    margin: 0 auto;
+    padding: 0 24px;
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 64px;
+    align-items: center;
+  }
+  .hero-tag {
+    display: inline-flex;
+    align-items: center;
+    gap: 7px;
+    font-size: 12px;
+    font-weight: 500;
+    color: var(--accent);
+    background: var(--accent-light);
+    border: 1px solid var(--accent-mid);
+    padding: 5px 12px;
+    border-radius: 100px;
+    margin-bottom: 22px;
+  }
+  .hero-tag svg { width: 13px; height: 13px; }
+  .hero h1 {
+    font-family: var(--font-display);
+    font-size: clamp(30px, 4vw, 48px);
+    font-weight: 400;
+    line-height: 1.15;
+    letter-spacing: -0.025em;
+    color: var(--ink);
+    margin-bottom: 20px;
+  }
+  .hero h1 em { font-style: italic; color: var(--accent); }
+  .hero-sub {
+    font-size: 17px;
+    color: var(--ink-2);
+    line-height: 1.65;
+    margin-bottom: 32px;
+    max-width: 480px;
+  }
+  .hero-ctas { display: flex; gap: 12px; flex-wrap: wrap; }
+  .btn-primary {
+    background: var(--accent);
+    color: #fff;
+    padding: 12px 24px;
+    border-radius: var(--radius-sm);
+    font-size: 14px;
+    font-weight: 500;
+    text-decoration: none;
+    transition: opacity 0.15s;
+    display: inline-block;
+  }
+  .btn-primary:hover { opacity: 0.88; }
+  .btn-ghost {
+    background: transparent;
+    color: var(--ink-2);
+    padding: 12px 24px;
+    border-radius: var(--radius-sm);
+    font-size: 14px;
+    font-weight: 500;
+    text-decoration: none;
+    border: 1px solid var(--border-strong);
+    transition: border-color 0.15s, color 0.15s;
+    display: inline-block;
+  }
+  .btn-ghost:hover { border-color: var(--accent); color: var(--accent); }
+
+  /* Hero visual — dispensing flow diagram */
+  .hero-visual {
+    background: var(--surface-2);
+    border: 1px solid var(--border);
+    border-radius: var(--radius-lg);
+    padding: 28px;
+  }
+  .hero-visual-label {
+    font-size: 11px;
+    font-weight: 600;
+    letter-spacing: 0.08em;
+    text-transform: uppercase;
+    color: var(--ink-4);
+    margin-bottom: 20px;
+  }
+  .disp-flow {
+    display: flex;
+    flex-direction: column;
+    gap: 8px;
+  }
+  .disp-step {
+    display: flex;
+    align-items: center;
+    gap: 12px;
+    background: var(--surface);
+    border: 1px solid var(--border);
+    border-radius: var(--radius-md);
+    padding: 12px 16px;
+    transition: border-color 0.2s;
+  }
+  .disp-step:hover { border-color: var(--accent-mid); }
+  .disp-icon {
+    width: 34px;
+    height: 34px;
+    border-radius: 8px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-shrink: 0;
+  }
+  .disp-icon svg { width: 16px; height: 16px; }
+  .disp-icon.blue { background: var(--accent-light); color: var(--accent); }
+  .disp-icon.teal { background: var(--teal-light); color: var(--teal); }
+  .disp-icon.amber { background: var(--amber-light); color: var(--amber); }
+  .disp-step-text { flex: 1; }
+  .disp-step-title { font-size: 13px; font-weight: 600; color: var(--ink); }
+  .disp-step-sub { font-size: 11px; color: var(--ink-3); margin-top: 1px; }
+  .disp-arrow {
+    text-align: center;
+    color: var(--ink-4);
+    font-size: 12px;
+    line-height: 1;
+    padding: 0 16px;
+  }
+  .disp-step-badge {
+    font-size: 10px;
+    font-weight: 600;
+    padding: 3px 8px;
+    border-radius: 100px;
+    white-space: nowrap;
+  }
+  .badge-live { background: #dcfce7; color: #166534; }
+  .badge-fefo { background: var(--accent-light); color: var(--accent); }
+  .badge-auto { background: var(--teal-light); color: var(--teal); }
+
+  /* ── PROOF STRIP ──────────────────────────────────────────── */
+  .proof-strip {
+    background: var(--surface-2);
+    border-bottom: 1px solid var(--border);
+    padding: 28px 0;
+  }
+  .proof-inner {
+    max-width: var(--max);
+    margin: 0 auto;
+    padding: 0 24px;
+    display: flex;
+    align-items: center;
+    gap: 48px;
+    flex-wrap: wrap;
+  }
+  .proof-label {
+    font-size: 12px;
+    color: var(--ink-4);
+    font-weight: 500;
+    text-transform: uppercase;
+    letter-spacing: 0.06em;
+    white-space: nowrap;
+  }
+  .proof-stats {
+    display: flex;
+    gap: 40px;
+    flex-wrap: wrap;
+  }
+  .proof-stat-num {
+    font-size: 22px;
+    font-weight: 700;
+    color: var(--ink);
+    font-family: var(--font-display);
+    line-height: 1;
+  }
+  .proof-stat-label {
+    font-size: 12px;
+    color: var(--ink-3);
+    margin-top: 3px;
+  }
+  .proof-divider {
+    width: 1px;
+    height: 32px;
+    background: var(--border-strong);
+    flex-shrink: 0;
+  }
+  .proof-platform {
+    margin-left: auto;
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    font-size: 12px;
+    color: var(--ink-3);
+  }
+  .proof-platform strong { color: var(--ink-2); }
+
+  /* ── PAIN SECTION ─────────────────────────────────────────── */
+  .pain-grid {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 20px;
+    margin-top: 48px;
+  }
+  .pain-card {
+    border: 1px solid var(--border);
+    border-radius: var(--radius-md);
+    padding: 24px;
+    background: var(--surface);
+  }
+  .pain-icon {
+    width: 40px;
+    height: 40px;
+    border-radius: 10px;
+    background: #fee2e2;
+    color: #b91c1c;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    margin-bottom: 16px;
+  }
+  .pain-icon svg { width: 18px; height: 18px; }
+  .pain-title {
+    font-size: 15px;
+    font-weight: 600;
+    color: var(--ink);
+    margin-bottom: 8px;
+    line-height: 1.3;
+  }
+  .pain-desc {
+    font-size: 14px;
+    color: var(--ink-3);
+    line-height: 1.6;
+  }
+
+  /* ── FEATURE GRID ─────────────────────────────────────────── */
+  .feature-grid {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 1px;
+    background: var(--border);
+    border: 1px solid var(--border);
+    border-radius: var(--radius-lg);
+    overflow: hidden;
+    margin-top: 48px;
+  }
+  .feat-card {
+    background: var(--surface);
+    padding: 28px 24px;
+    transition: background 0.15s;
+  }
+  .feat-card:hover { background: var(--surface-2); }
+  .feat-icon {
+    width: 40px;
+    height: 40px;
+    border-radius: 10px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    margin-bottom: 16px;
+  }
+  .feat-icon svg { width: 18px; height: 18px; }
+  .feat-icon.blue { background: var(--accent-light); color: var(--accent); }
+  .feat-icon.teal { background: var(--teal-light); color: var(--teal); }
+  .feat-title {
+    font-size: 15px;
+    font-weight: 600;
+    color: var(--ink);
+    margin-bottom: 8px;
+    line-height: 1.3;
+  }
+  .feat-desc {
+    font-size: 13px;
+    color: var(--ink-3);
+    line-height: 1.6;
+  }
+
+  /* ── DEEP DIVE ────────────────────────────────────────────── */
+  .deep-dive-section { padding: var(--section-gap) 0; }
+  .deep-inner {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 72px;
+    align-items: center;
+  }
+  .deep-inner.flip { direction: rtl; }
+  .deep-inner.flip > * { direction: ltr; }
+  .deep-content {}
+  .deep-headline {
+    font-family: var(--font-display);
+    font-size: clamp(22px, 2.8vw, 32px);
+    font-weight: 400;
+    line-height: 1.25;
+    letter-spacing: -0.02em;
+    color: var(--ink);
+    margin-bottom: 20px;
+  }
+  .deep-desc {
+    font-size: 15px;
+    color: var(--ink-2);
+    line-height: 1.7;
+    margin-bottom: 24px;
+  }
+  .deep-bullets {
+    list-style: none;
+    display: flex;
+    flex-direction: column;
+    gap: 12px;
+  }
+  .deep-bullets li {
+    display: flex;
+    align-items: flex-start;
+    gap: 10px;
+    font-size: 14px;
+    color: var(--ink-2);
+    line-height: 1.55;
+  }
+  .bullet-check {
+    width: 18px;
+    height: 18px;
+    border-radius: 50%;
+    background: var(--teal-light);
+    color: var(--teal);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-shrink: 0;
+    margin-top: 1px;
+  }
+  .bullet-check svg { width: 10px; height: 10px; }
+  .deep-link {
+    display: inline-flex;
+    align-items: center;
+    gap: 6px;
+    font-size: 13px;
+    font-weight: 500;
+    color: var(--accent);
+    text-decoration: none;
+    margin-top: 24px;
+  }
+  .deep-link:hover { text-decoration: underline; }
+  .deep-link svg { width: 14px; height: 14px; }
+
+  /* Deep-dive visual panels */
+  .deep-visual {
+    background: var(--surface-2);
+    border: 1px solid var(--border);
+    border-radius: var(--radius-lg);
+    padding: 24px;
+  }
+  .dv-label {
+    font-size: 11px;
+    font-weight: 600;
+    letter-spacing: 0.08em;
+    text-transform: uppercase;
+    color: var(--ink-4);
+    margin-bottom: 16px;
+  }
+
+  /* FEFO batch visual */
+  .batch-table { width: 100%; border-collapse: collapse; }
+  .batch-table th {
+    font-size: 11px;
+    font-weight: 600;
+    color: var(--ink-4);
+    text-transform: uppercase;
+    letter-spacing: 0.05em;
+    padding: 6px 10px;
+    text-align: left;
+    border-bottom: 1px solid var(--border);
+  }
+  .batch-table td {
+    font-size: 13px;
+    padding: 10px 10px;
+    border-bottom: 1px solid var(--border);
+    color: var(--ink-2);
+    vertical-align: middle;
+  }
+  .batch-table tr:last-child td { border-bottom: none; }
+  .batch-row-active td { background: var(--accent-light); }
+  .batch-row-active .batch-batch { font-weight: 600; color: var(--accent); }
+  .expiry-warn { color: var(--amber); font-weight: 600; font-size: 12px; }
+  .expiry-ok { color: var(--teal); font-size: 12px; }
+  .pick-badge {
+    display: inline-flex;
+    align-items: center;
+    gap: 4px;
+    font-size: 10px;
+    font-weight: 600;
+    padding: 3px 8px;
+    border-radius: 100px;
+    background: var(--accent-light);
+    color: var(--accent);
+    white-space: nowrap;
+  }
+  .pick-badge svg { width: 9px; height: 9px; }
+
+  /* CPOE flow visual */
+  .cpoe-flow {
+    display: flex;
+    flex-direction: column;
+    gap: 8px;
+  }
+  .cpoe-step {
+    display: flex;
+    align-items: center;
+    gap: 12px;
+    background: var(--surface);
+    border: 1px solid var(--border);
+    border-radius: var(--radius-sm);
+    padding: 10px 14px;
+  }
+  .cpoe-dot {
+    width: 8px;
+    height: 8px;
+    border-radius: 50%;
+    flex-shrink: 0;
+  }
+  .cpoe-step-text { font-size: 13px; color: var(--ink-2); flex: 1; }
+  .cpoe-step-tag {
+    font-size: 10px;
+    font-weight: 600;
+    padding: 2px 7px;
+    border-radius: 100px;
+    white-space: nowrap;
+  }
+  .tag-auto-fill { background: var(--teal-light); color: var(--teal); }
+  .tag-instant { background: var(--accent-light); color: var(--accent); }
+  .tag-trigger { background: var(--amber-light); color: var(--amber); }
+
+  /* Returns flow visual */
+  .return-flow {
+    display: flex;
+    flex-direction: column;
+    gap: 0;
+  }
+  .return-step {
+    display: flex;
+    gap: 14px;
+    padding-bottom: 16px;
+    position: relative;
+  }
+  .return-step:last-child { padding-bottom: 0; }
+  .return-step-line {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    flex-shrink: 0;
+  }
+  .return-num {
+    width: 26px;
+    height: 26px;
+    border-radius: 50%;
+    background: var(--surface-3);
+    border: 1px solid var(--border-strong);
+    font-size: 11px;
+    font-weight: 700;
+    color: var(--ink-2);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-shrink: 0;
+  }
+  .return-connector {
+    width: 1px;
+    flex: 1;
+    background: var(--border);
+    margin: 4px 0;
+    min-height: 14px;
+  }
+  .return-step:last-child .return-connector { display: none; }
+  .return-body { padding-top: 3px; }
+  .return-title { font-size: 13px; font-weight: 600; color: var(--ink); }
+  .return-sub { font-size: 12px; color: var(--ink-3); margin-top: 2px; line-height: 1.4; }
+
+  /* ── ROLES ────────────────────────────────────────────────── */
+  .roles-section { background: var(--surface-2); }
+  .roles-grid {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 20px;
+    margin-top: 48px;
+  }
+  .role-card {
+    background: var(--surface);
+    border: 1px solid var(--border);
+    border-radius: var(--radius-md);
+    padding: 28px 24px;
+  }
+  .role-icon {
+    width: 44px;
+    height: 44px;
+    border-radius: 10px;
+    background: var(--accent-light);
+    color: var(--accent);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    margin-bottom: 18px;
+  }
+  .role-icon svg { width: 20px; height: 20px; }
+  .role-title { font-size: 15px; font-weight: 600; color: var(--ink); margin-bottom: 6px; }
+  .role-sub { font-size: 13px; color: var(--ink-3); line-height: 1.6; }
+
+  /* ── COMPLIANCE CALLOUT ───────────────────────────────────── */
+  .compliance-callout {
+    background: #0f2d47;
+    color: #fff;
+    padding: var(--section-gap) 0;
+  }
+  .compliance-inner {
+    max-width: var(--max);
+    margin: 0 auto;
+    padding: 0 24px;
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 64px;
+    align-items: center;
+  }
+  .compliance-eyebrow {
+    font-size: 11px;
+    font-weight: 600;
+    letter-spacing: 0.1em;
+    text-transform: uppercase;
+    color: #7db3e8;
+    margin-bottom: 14px;
+  }
+  .compliance-headline {
+    font-family: var(--font-display);
+    font-size: clamp(22px, 2.8vw, 32px);
+    font-weight: 400;
+    line-height: 1.25;
+    letter-spacing: -0.02em;
+    color: #fff;
+    margin-bottom: 18px;
+  }
+  .compliance-desc {
+    font-size: 15px;
+    color: #b0c8e4;
+    line-height: 1.65;
+  }
+  .compliance-bullets {
+    display: flex;
+    flex-direction: column;
+    gap: 14px;
+  }
+  .comp-bullet {
+    display: flex;
+    align-items: flex-start;
+    gap: 12px;
+    font-size: 14px;
+    color: #b0c8e4;
+    line-height: 1.5;
+  }
+  .comp-dot {
+    width: 6px;
+    height: 6px;
+    border-radius: 50%;
+    background: #7db3e8;
+    flex-shrink: 0;
+    margin-top: 7px;
+  }
+  .comp-bullet strong { color: #e8f2fd; }
+  .compliance-badges {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 10px;
+    margin-top: 28px;
+  }
+  .comp-badge {
+    display: inline-flex;
+    align-items: center;
+    gap: 6px;
+    font-size: 12px;
+    font-weight: 500;
+    color: #e8f2fd;
+    background: rgba(255,255,255,0.08);
+    border: 1px solid rgba(255,255,255,0.15);
+    padding: 6px 14px;
+    border-radius: 100px;
+  }
+  .comp-badge svg { width: 13px; height: 13px; color: #7db3e8; }
+
+  /* ── FAQ ─────────────────────────────────────────────────── */
+  .faq-list { margin-top: 48px; }
+  .faq-item {
+    border-top: 1px solid var(--border);
+  }
+  .faq-item:last-child { border-bottom: 1px solid var(--border); }
+  .faq-q {
+    width: 100%;
+    background: none;
+    border: none;
+    padding: 22px 0;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: 24px;
+    cursor: pointer;
+    text-align: left;
+    font-size: 16px;
+    font-weight: 500;
+    color: var(--ink);
+    line-height: 1.4;
+  }
+  .faq-q:hover { color: var(--accent); }
+  .faq-chevron {
+    width: 20px;
+    height: 20px;
+    flex-shrink: 0;
+    color: var(--ink-4);
+    transition: transform 0.2s;
+  }
+  .faq-item.open .faq-chevron { transform: rotate(180deg); }
+  .faq-a {
+    display: none;
+    padding: 0 0 22px;
+    font-size: 15px;
+    color: var(--ink-2);
+    line-height: 1.7;
+    max-width: 760px;
+  }
+  .faq-item.open .faq-a { display: block; }
+
+  /* ── CTA SECTION ─────────────────────────────────────────── */
+  .cta-section {
+    background: var(--surface-2);
+    border-top: 1px solid var(--border);
+    padding: var(--section-gap) 0;
+  }
+  .cta-inner {
+    max-width: 680px;
+    margin: 0 auto;
+    padding: 0 24px;
+    text-align: center;
+  }
+  .cta-headline {
+    font-family: var(--font-display);
+    font-size: clamp(24px, 3vw, 36px);
+    font-weight: 400;
+    line-height: 1.2;
+    letter-spacing: -0.02em;
+    color: var(--ink);
+    margin-bottom: 16px;
+  }
+  .cta-sub {
+    font-size: 16px;
+    color: var(--ink-3);
+    line-height: 1.6;
+    margin-bottom: 32px;
+  }
+  .cta-btns { display: flex; gap: 12px; justify-content: center; flex-wrap: wrap; }
+  .cta-btns .btn-primary { padding: 14px 28px; font-size: 15px; }
+  .cta-btns .btn-ghost { padding: 14px 28px; font-size: 15px; }
+
+  /* ── RELATED PAGES ───────────────────────────────────────── */
+  .related-section { padding: 48px 0; border-top: 1px solid var(--border); }
+  .related-inner {
+    max-width: var(--max);
+    margin: 0 auto;
+    padding: 0 24px;
+  }
+  .related-label {
+    font-size: 12px;
+    font-weight: 600;
+    letter-spacing: 0.08em;
+    text-transform: uppercase;
+    color: var(--ink-4);
+    margin-bottom: 16px;
+  }
+  .related-links {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 10px;
+  }
+  .related-link {
+    font-size: 13px;
+    font-weight: 500;
+    color: var(--ink-2);
+    text-decoration: none;
+    padding: 8px 16px;
+    border: 1px solid var(--border);
+    border-radius: var(--radius-sm);
+    transition: border-color 0.15s, color 0.15s;
+  }
+  .related-link:hover { border-color: var(--accent); color: var(--accent); }
+
+  /* ── FOOTER ───────────────────────────────────────────────── */
+  footer {
+    background: var(--ink);
+    color: #a0a2ab;
+    padding: 28px 0;
+  }
+  .footer-inner {
+    max-width: var(--max);
+    margin: 0 auto;
+    padding: 0 24px;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    flex-wrap: wrap;
+    gap: 12px;
+  }
+  .footer-logo { font-size: 14px; font-weight: 600; color: #fff; }
+  .footer-logo span { color: #6b9de8; }
+  .footer-links { display: flex; gap: 24px; }
+  .footer-links a { font-size: 13px; color: #a0a2ab; text-decoration: none; }
+  .footer-links a:hover { color: #fff; }
+  .footer-copy { font-size: 12px; color: #5f6170; }
+
+  /* ── DIVIDER LINE ─────────────────────────────────────────── */
+  .section-divider {
+    border: none;
+    border-top: 1px solid var(--border);
+    margin: 0;
+  }
+
+  /* ── RESPONSIVE ───────────────────────────────────────────── */
+  @media (max-width: 768px) {
+    :root { --section-gap: 64px; }
+    .hero-inner { grid-template-columns: 1fr; gap: 40px; }
+    .hero-visual { display: none; }
+    .pain-grid { grid-template-columns: 1fr; }
+    .feature-grid { grid-template-columns: 1fr 1fr; }
+    .deep-inner { grid-template-columns: 1fr; gap: 40px; }
+    .deep-inner.flip { direction: ltr; }
+    .roles-grid { grid-template-columns: 1fr; }
+    .compliance-inner { grid-template-columns: 1fr; gap: 40px; }
+    .proof-stats { gap: 24px; }
+    .proof-platform { margin-left: 0; }
+    .nav-breadcrumb { display: none; }
+  }
+  @media (max-width: 540px) {
+    .feature-grid { grid-template-columns: 1fr; }
+  }
+  @media (prefers-reduced-motion: reduce) {
+    * { transition: none !important; }
+  }
+</style>
+<!-- TEMPLATE CSS (IMPORTANT) -->
+    <link rel="stylesheet" href="/../assets/quantbit_website/css/bootstrap.min.css">
+    <link rel="stylesheet" href="/../assets/quantbit_website/css/font-awesome.css">
+    <link rel="stylesheet" href="/../assets/quantbit_website/css/animate.css">
+    <link rel="stylesheet" href="/../assets/quantbit_website/css/magnific-popup.css">
+    <link rel="stylesheet" href="/../assets/quantbit_website/css/meanmenu.css">
+    <link rel="stylesheet" href="/../assets/quantbit_website/css/slick.css">
+    <link rel="stylesheet" href="/../assets/quantbit_website/css/nice-select.css">
+    <link rel="stylesheet" href="/../assets/quantbit_website/css/main.css">
+    <link rel="stylesheet" href="style.css">
+    <!-- <link rel="stylesheet" href="/assets/quantbit_website/css/_shared.css"> -->
+
+
+    <!-- OPTIONAL CUSTOM -->
+    <link rel="stylesheet" href="/../assets/quantbit_website/css/hrms.css">
+      <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
+<!-- Google Tag Manager -->
+<script>(function(w,d,s,l,i){w[l]=w[l]||[];w[l].push({'gtm.start':
+new Date().getTime(),event:'gtm.js'});var f=d.getElementsByTagName(s)[0],
+j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
+'https://www.googletagmanager.com/gtm.js?id='+i+dl;f.parentNode.insertBefore(j,f);
+})(window,document,'script','dataLayer','GTM-P98Z6G8D');</script>
+<!-- End Google Tag Manager -->
+
+
+</head>
+<body>
+<!-- Google Tag Manager (noscript) -->
+<noscript><iframe src="https://www.googletagmanager.com/ns.html?id=GTM-P98Z6G8D"
+height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
+<!-- End Google Tag Manager (noscript) -->
+<!-- ── NAV ───────────────────────────────────────────────────── -->
+<div id="header"></div>
+
+
+<!-- ── HERO ──────────────────────────────────────────────────── -->
+<section class="hero">
+  <div class="hero-inner">
+    <div class="hero-content">
+      <div class="hero-tag">
+        <svg viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="1.5" aria-hidden="true"><path d="M8 1v14M1 8h14"/></svg>
+        HISx — Pharmacy &amp; Dispensing Module
+      </div>
+      <h1>Hospital pharmacy that <em>dispenses right</em>, every time</h1>
+      <p class="hero-sub">Real-time stock visibility, FEFO-enforced dispensing, CPOE integration, and patient-level billing — for hospital pharmacies, retail chains, and multi-branch operations.</p>
+      <div class="hero-ctas">
+        <a href="/hisx/demo" class="btn-primary">Request a demo</a>
+        <a href="#features" class="btn-ghost">See all capabilities</a>
+      </div>
+    </div>
+    <div class="hero-visual" aria-label="Dispensing workflow">
+      <div class="hero-visual-label">Live dispensing workflow</div>
+      <div class="disp-flow">
+        <div class="disp-step">
+          <div class="disp-icon blue">
+            <svg viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="1.5" aria-hidden="true"><rect x="2" y="2" width="12" height="12" rx="2"/><path d="M8 5v6M5 8h6"/></svg>
+          </div>
+          <div class="disp-step-text">
+            <div class="disp-step-title">Prescription placed via CPOE</div>
+            <div class="disp-step-sub">Doctor's order flows to pharmacy instantly</div>
+          </div>
+          <span class="disp-step-badge badge-live">Live</span>
+        </div>
+        <div class="disp-arrow" aria-hidden="true">↓</div>
+        <div class="disp-step">
+          <div class="disp-icon blue">
+            <svg viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="1.5" aria-hidden="true"><path d="M2 8a6 6 0 1 0 12 0A6 6 0 0 0 2 8zm6-3v3l2 2"/></svg>
+          </div>
+          <div class="disp-step-text">
+            <div class="disp-step-title">Stock checked &amp; reserved</div>
+            <div class="disp-step-sub">Quantity locked against earliest-expiry batch</div>
+          </div>
+          <span class="disp-step-badge badge-fefo">FEFO</span>
+        </div>
+        <div class="disp-arrow" aria-hidden="true">↓</div>
+        <div class="disp-step">
+          <div class="disp-icon teal">
+            <svg viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="1.5" aria-hidden="true"><path d="M3 8h10M9 4l4 4-4 4"/></svg>
+          </div>
+          <div class="disp-step-text">
+            <div class="disp-step-title">Dispensed &amp; billed</div>
+            <div class="disp-step-sub">Patient billing generated automatically</div>
+          </div>
+          <span class="disp-step-badge badge-auto">Auto</span>
+        </div>
+        <div class="disp-arrow" aria-hidden="true">↓</div>
+        <div class="disp-step">
+          <div class="disp-icon teal">
+            <svg viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="1.5" aria-hidden="true"><path d="M13 4L6 11l-3-3"/></svg>
+          </div>
+          <div class="disp-step-text">
+            <div class="disp-step-title">Inventory &amp; audit updated</div>
+            <div class="disp-step-sub">Batch ledger and compliance log posted</div>
+          </div>
+          <span class="disp-step-badge badge-auto">Real-time</span>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ── PROOF STRIP ────────────────────────────────────────────── -->
+<div class="proof-strip">
+  <div class="proof-inner">
+    <span class="proof-label">Built for</span>
+    <div class="proof-stats">
+      <div>
+        <div class="proof-stat-num">Multi-specialty hospitals</div>
+        <div class="proof-stat-label">Central + ward pharmacies</div>
+      </div>
+      <div class="proof-divider" aria-hidden="true"></div>
+      <div>
+        <div class="proof-stat-num">Pharmacy chains</div>
+        <div class="proof-stat-label">Multi-branch operations</div>
+      </div>
+      <div class="proof-divider" aria-hidden="true"></div>
+      <div>
+        <div class="proof-stat-num">Diagnostic labs</div>
+        <div class="proof-stat-label">Reagent &amp; consumable tracking</div>
+      </div>
+    </div>
+    <div class="proof-platform">
+      <svg width="14" height="14" viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="1.5" aria-hidden="true"><rect x="2" y="2" width="12" height="12" rx="2"/></svg>
+      Built on <strong>&nbsp;ERPNext / Frappe</strong>
+    </div>
+  </div>
+</div>
+
+<!-- ── PAIN POINTS ────────────────────────────────────────────── -->
+<section aria-labelledby="pain-heading">
+  <div class="container">
+    <span class="eyebrow">Why it matters</span>
+    <h2 class="section-headline" id="pain-heading">Three problems every hospital pharmacy faces</h2>
+    <p class="section-sub">Manual dispensing systems leave hospitals exposed to write-offs, patient safety risks, and billing inaccuracies every day.</p>
+    <div class="pain-grid">
+      <div class="pain-card">
+        <div class="pain-icon" aria-hidden="true">
+          <svg viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M8 2v4l2 2"/><circle cx="8" cy="8" r="6"/></svg>
+        </div>
+        <h3 class="pain-title">Expired drugs dispensed — wastage and safety risk</h3>
+        <p class="pain-desc">Without FEFO enforcement, pharmacists pick whichever batch is within reach. Hospitals write off lakhs in expired stock annually and face the risk of expired drugs reaching patients.</p>
+      </div>
+      <div class="pain-card">
+        <div class="pain-icon" aria-hidden="true">
+          <svg viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M2 8h12M2 4h12M2 12h8"/></svg>
+        </div>
+        <h3 class="pain-title">Pharmacists are blind — doctors prescribe what isn't there</h3>
+        <p class="pain-desc">Without real-time stock visibility shared across roles, doctors prescribe medicines already out of stock at the ward level. Nurses chase the pharmacy. Patients wait.</p>
+      </div>
+      <div class="pain-card">
+        <div class="pain-icon" aria-hidden="true">
+          <svg viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M3 13l4-4m0 0l4-4M7 9l-4 4M11 5l-2 2"/></svg>
+        </div>
+        <h3 class="pain-title">Returns are a guessing game — inventory discrepancies pile up</h3>
+        <p class="pain-desc">Medicine returns processed on paper without restocking validation let unverified stock re-enter inventory. Billing reversals happen days later — if at all.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<hr class="section-divider">
+
+<!-- ── FEATURE GRID ───────────────────────────────────────────── -->
+<section id="features" aria-labelledby="features-heading">
+  <div class="container">
+    <span class="eyebrow">Capabilities</span>
+    <h2 class="section-headline" id="features-heading">Everything in one dispensing platform</h2>
+    <p class="section-sub">Six core capabilities covering every dimension of hospital pharmacy management — from prescription to billing.</p>
+    <div class="feature-grid" role="list">
+      <div class="feat-card" role="listitem">
+        <div class="feat-icon blue" aria-hidden="true">
+          <svg viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M2 4a2 2 0 0 1 2-2h8a2 2 0 0 1 2 2v8a2 2 0 0 1-2 2H4a2 2 0 0 1-2-2V4z"/><path d="M8 6v4M6 8h4"/></svg>
+        </div>
+        <h3 class="feat-title">Inventory reservation on prescription</h3>
+        <p class="feat-desc">Stock is automatically reserved at the moment a prescription or order is placed — before the pharmacist even sees it. Eliminates double-dispensing and stockout surprises.</p>
+      </div>
+      <div class="feat-card" role="listitem">
+        <div class="feat-icon blue" aria-hidden="true">
+          <svg viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="1.5"><circle cx="8" cy="8" r="2"/><path d="M2 8a6 6 0 0 0 12 0"/></svg>
+        </div>
+        <h3 class="feat-title">Real-time stock for doctors, nurses &amp; pharmacists</h3>
+        <p class="feat-desc">A single live inventory view shared across all roles. Doctors prescribe with confidence. Nurses track ward consumption. Pharmacists dispense without re-checking manually.</p>
+      </div>
+      <div class="feat-card" role="listitem">
+        <div class="feat-icon teal" aria-hidden="true">
+          <svg viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M3 8h10M9 4l4 4-4 4M5 4L1 8l4 4"/></svg>
+        </div>
+        <h3 class="feat-title">Generic prescribing &amp; brand substitution</h3>
+        <p class="feat-desc">Supports generic name prescribing with automated and manual brand mapping at the point of dispensing. Substitution rules are configurable per molecule and formulary.</p>
+      </div>
+      <div class="feat-card" role="listitem">
+        <div class="feat-icon blue" aria-hidden="true">
+          <svg viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="1.5"><circle cx="8" cy="8" r="6"/><path d="M8 5v3l2 2"/></svg>
+        </div>
+        <h3 class="feat-title">FEFO enforcement &amp; near-expiry alerts</h3>
+        <p class="feat-desc">Strict FEFO is enforced at every dispensing counter. Near-expiry alerts trigger at a configurable threshold — giving the pharmacy team time to act before drugs expire unused.</p>
+      </div>
+      <div class="feat-card" role="listitem">
+        <div class="feat-icon teal" aria-hidden="true">
+          <svg viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M10 2H6L4 6v8h8V6l-2-4z"/><path d="M4 6h8"/></svg>
+        </div>
+        <h3 class="feat-title">Patient returns &amp; refund workflow</h3>
+        <p class="feat-desc">Medicine returns are validated against the original dispensing record before the item is restocked. Billing is reversed automatically. Full audit trail on every return.</p>
+      </div>
+      <div class="feat-card" role="listitem">
+        <div class="feat-icon blue" aria-hidden="true">
+          <svg viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M2 3h12M2 8h8M2 13h5"/><path d="M12 10v4m-2-2h4"/></svg>
+        </div>
+        <h3 class="feat-title">CPOE integration &amp; auto-billing</h3>
+        <p class="feat-desc">Connected directly to CPOE — physician orders trigger dispensing and patient billing automatically. No manual re-entry. No billing lag.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<hr class="section-divider">
+
+<!-- ── DEEP DIVE 1: FEFO ──────────────────────────────────────── -->
+<section class="deep-dive-section" aria-labelledby="fefo-heading">
+  <div class="container">
+    <div class="deep-inner">
+      <div class="deep-content">
+        <span class="eyebrow">FEFO &amp; expiry control</span>
+        <h2 class="deep-headline" id="fefo-heading">Zero expired drugs dispensed — FEFO enforced at every counter</h2>
+        <p class="deep-desc">FEFO (First-Expire, First-Out) is the dispensing discipline that ensures the earliest-expiry batch of any medicine is always used first. HISx enforces this automatically — the system selects the correct batch, not the pharmacist's memory.</p>
+        <ul class="deep-bullets" aria-label="FEFO feature details">
+          <li>
+            <span class="bullet-check" aria-hidden="true"><svg viewBox="0 0 10 10" fill="none" stroke="currentColor" stroke-width="2"><path d="M2 5l2.5 2.5L8 3"/></svg></span>
+            Strict FEFO batch selection — earliest expiry always picked first, no manual override without authorisation
+          </li>
+          <li>
+            <span class="bullet-check" aria-hidden="true"><svg viewBox="0 0 10 10" fill="none" stroke="currentColor" stroke-width="2"><path d="M2 5l2.5 2.5L8 3"/></svg></span>
+            Near-expiry alerts at dispensing — configurable threshold (e.g. 30, 60, 90 days) triggers pharmacist notification
+          </li>
+          <li>
+            <span class="bullet-check" aria-hidden="true"><svg viewBox="0 0 10 10" fill="none" stroke="currentColor" stroke-width="2"><path d="M2 5l2.5 2.5L8 3"/></svg></span>
+            Batch-level dispensing controls with full audit log — every item tracked to its specific batch and expiry date
+          </li>
+          <li>
+            <span class="bullet-check" aria-hidden="true"><svg viewBox="0 0 10 10" fill="none" stroke="currentColor" stroke-width="2"><path d="M2 5l2.5 2.5L8 3"/></svg></span>
+            Expiry reports by item, batch, department — daily, weekly, and on-demand
+          </li>
+        </ul>
+        <a href="/solutions/hospital-drug-expiry-management" class="deep-link">
+          Drug expiry management guide
+          <svg viewBox="0 0 14 14" fill="none" stroke="currentColor" stroke-width="1.5" aria-hidden="true"><path d="M2 7h10M7 2l5 5-5 5"/></svg>
+        </a>
+      </div>
+      <div class="deep-visual" aria-label="Batch selection showing FEFO enforcement">
+        <div class="dv-label">Batch selection — FEFO active</div>
+        <table class="batch-table">
+          <thead>
+            <tr>
+              <th>Batch</th>
+              <th>Qty</th>
+              <th>Expiry</th>
+              <th>Status</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr class="batch-row-active">
+              <td class="batch-batch">B-2024-008</td>
+              <td>240</td>
+              <td><span class="expiry-warn">⚠ 18 Feb 2025</span></td>
+              <td><span class="pick-badge"><svg viewBox="0 0 10 10" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true"><path d="M2 5l2.5 2.5L8 3"/></svg> Pick first</span></td>
+            </tr>
+            <tr>
+              <td>B-2024-012</td>
+              <td>480</td>
+              <td><span class="expiry-ok">12 Jun 2025</span></td>
+              <td style="font-size:12px;color:var(--ink-4)">Next</td>
+            </tr>
+            <tr>
+              <td>B-2025-003</td>
+              <td>600</td>
+              <td><span class="expiry-ok">30 Jan 2026</span></td>
+              <td style="font-size:12px;color:var(--ink-4)">Later</td>
+            </tr>
+          </tbody>
+        </table>
+        <div style="margin-top:14px;padding:10px 12px;background:var(--accent-light);border-radius:var(--radius-sm);font-size:12px;color:var(--accent);font-weight:500;display:flex;align-items:center;gap:8px;">
+          <svg width="14" height="14" viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="1.5" aria-hidden="true"><circle cx="8" cy="8" r="6"/><path d="M8 5v3"/><circle cx="8" cy="11.5" r="0.5" fill="currentColor"/></svg>
+          Near-expiry alert: B-2024-008 expires in 43 days
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<hr class="section-divider">
+
+<!-- ── DEEP DIVE 2: CPOE ──────────────────────────────────────── -->
+<section class="deep-dive-section" aria-labelledby="cpoe-heading">
+  <div class="container">
+    <div class="deep-inner flip">
+      <div class="deep-content">
+        <span class="eyebrow">CPOE &amp; real-time visibility</span>
+        <h2 class="deep-headline" id="cpoe-heading">Doctors prescribe, pharmacy knows instantly — connected in real time</h2>
+        <p class="deep-desc">When a physician places a medication order in CPOE, HISx creates an unbroken digital chain from prescription to dispensing to billing — without any manual handoff.</p>
+        <ul class="deep-bullets" aria-label="CPOE integration feature details">
+          <li>
+            <span class="bullet-check" aria-hidden="true"><svg viewBox="0 0 10 10" fill="none" stroke="currentColor" stroke-width="2"><path d="M2 5l2.5 2.5L8 3"/></svg></span>
+            Automated stock reservation at the moment a prescription is placed — before dispensing begins
+          </li>
+          <li>
+            <span class="bullet-check" aria-hidden="true"><svg viewBox="0 0 10 10" fill="none" stroke="currentColor" stroke-width="2"><path d="M2 5l2.5 2.5L8 3"/></svg></span>
+            Pharmacist, doctor, and nurse share the same live inventory — one source of truth
+          </li>
+          <li>
+            <span class="bullet-check" aria-hidden="true"><svg viewBox="0 0 10 10" fill="none" stroke="currentColor" stroke-width="2"><path d="M2 5l2.5 2.5L8 3"/></svg></span>
+            Generic prescribing with automated brand substitution mapping — formulary-driven
+          </li>
+          <li>
+            <span class="bullet-check" aria-hidden="true"><svg viewBox="0 0 10 10" fill="none" stroke="currentColor" stroke-width="2"><path d="M2 5l2.5 2.5L8 3"/></svg></span>
+            Dispensing automatically triggers patient billing — no re-entry, no billing lag
+          </li>
+        </ul>
+        <a href="/cpoe-integration-explained" class="deep-link">
+          How CPOE integration works
+          <svg viewBox="0 0 14 14" fill="none" stroke="currentColor" stroke-width="1.5" aria-hidden="true"><path d="M2 7h10M7 2l5 5-5 5"/></svg>
+        </a>
+      </div>
+      <div class="deep-visual" aria-label="CPOE to billing workflow steps">
+        <div class="dv-label">Prescription-to-billing workflow</div>
+        <div class="cpoe-flow">
+          <div class="cpoe-step">
+            <div class="cpoe-dot" style="background:#378ADD;" aria-hidden="true"></div>
+            <span class="cpoe-step-text">Physician places order via CPOE</span>
+            <span class="cpoe-step-tag tag-instant">Instant</span>
+          </div>
+          <div class="cpoe-step">
+            <div class="cpoe-dot" style="background:#378ADD;" aria-hidden="true"></div>
+            <span class="cpoe-step-text">Stock availability checked in real time</span>
+            <span class="cpoe-step-tag tag-instant">Real-time</span>
+          </div>
+          <div class="cpoe-step">
+            <div class="cpoe-dot" style="background:#1D9E75;" aria-hidden="true"></div>
+            <span class="cpoe-step-text">Earliest-expiry batch reserved (FEFO)</span>
+            <span class="cpoe-step-tag tag-auto-fill">Auto</span>
+          </div>
+          <div class="cpoe-step">
+            <div class="cpoe-dot" style="background:#1D9E75;" aria-hidden="true"></div>
+            <span class="cpoe-step-text">Dispensing queue updated at pharmacy counter</span>
+            <span class="cpoe-step-tag tag-instant">Live</span>
+          </div>
+          <div class="cpoe-step">
+            <div class="cpoe-dot" style="background:#BA7517;" aria-hidden="true"></div>
+            <span class="cpoe-step-text">Patient billing generated on dispensing</span>
+            <span class="cpoe-step-tag tag-trigger">Auto-bill</span>
+          </div>
+          <div class="cpoe-step">
+            <div class="cpoe-dot" style="background:#BA7517;" aria-hidden="true"></div>
+            <span class="cpoe-step-text">Batch ledger &amp; audit trail posted</span>
+            <span class="cpoe-step-tag tag-auto-fill">Logged</span>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<hr class="section-divider">
+
+<!-- ── DEEP DIVE 3: RETURNS ───────────────────────────────────── -->
+<section class="deep-dive-section" aria-labelledby="returns-heading">
+  <div class="container">
+    <div class="deep-inner">
+      <div class="deep-content">
+        <span class="eyebrow">Patient returns &amp; refunds</span>
+        <h2 class="deep-headline" id="returns-heading">Returns handled in seconds — billing reversed, inventory protected</h2>
+        <p class="deep-desc">Most pharmacy systems treat returns as an afterthought. HISx gives returns a structured, audited workflow tied to the original dispensing record — so inventory stays accurate and billing stays clean.</p>
+        <ul class="deep-bullets" aria-label="Patient returns feature details">
+          <li>
+            <span class="bullet-check" aria-hidden="true"><svg viewBox="0 0 10 10" fill="none" stroke="currentColor" stroke-width="2"><path d="M2 5l2.5 2.5L8 3"/></svg></span>
+            Every return linked to the original dispensing record — no orphan credits
+          </li>
+          <li>
+            <span class="bullet-check" aria-hidden="true"><svg viewBox="0 0 10 10" fill="none" stroke="currentColor" stroke-width="2"><path d="M2 5l2.5 2.5L8 3"/></svg></span>
+            Restocking validation before the item re-enters inventory — condition and expiry checked
+          </li>
+          <li>
+            <span class="bullet-check" aria-hidden="true"><svg viewBox="0 0 10 10" fill="none" stroke="currentColor" stroke-width="2"><path d="M2 5l2.5 2.5L8 3"/></svg></span>
+            Billing reversal processed automatically — no manual credit note entry
+          </li>
+          <li>
+            <span class="bullet-check" aria-hidden="true"><svg viewBox="0 0 10 10" fill="none" stroke="currentColor" stroke-width="2"><path d="M2 5l2.5 2.5L8 3"/></svg></span>
+            Full audit trail on every return transaction — user, time, reason, batch
+          </li>
+        </ul>
+      </div>
+      <div class="deep-visual" aria-label="Patient returns workflow steps">
+        <div class="dv-label">Returns workflow</div>
+        <div class="return-flow">
+          <div class="return-step">
+            <div class="return-step-line">
+              <div class="return-num" aria-hidden="true">1</div>
+              <div class="return-connector" aria-hidden="true"></div>
+            </div>
+            <div class="return-body">
+              <div class="return-title">Patient initiates return</div>
+              <div class="return-sub">Pharmacist opens original dispensing record — batch, qty, and date pre-filled</div>
+            </div>
+          </div>
+          <div class="return-step">
+            <div class="return-step-line">
+              <div class="return-num" aria-hidden="true">2</div>
+              <div class="return-connector" aria-hidden="true"></div>
+            </div>
+            <div class="return-body">
+              <div class="return-title">Restocking validation</div>
+              <div class="return-sub">System checks remaining expiry and condition — accepts or flags for disposal</div>
+            </div>
+          </div>
+          <div class="return-step">
+            <div class="return-step-line">
+              <div class="return-num" aria-hidden="true">3</div>
+              <div class="return-connector" aria-hidden="true"></div>
+            </div>
+            <div class="return-body">
+              <div class="return-title">Inventory updated</div>
+              <div class="return-sub">Validated items re-enter batch stock at correct FEFO position</div>
+            </div>
+          </div>
+          <div class="return-step">
+            <div class="return-step-line">
+              <div class="return-num" aria-hidden="true">4</div>
+              <div class="return-connector" aria-hidden="true"></div>
+            </div>
+            <div class="return-body">
+              <div class="return-title">Refund &amp; billing reversal</div>
+              <div class="return-sub">Credit note generated and patient account updated — automatically</div>
+            </div>
+          </div>
+          <div class="return-step">
+            <div class="return-step-line">
+              <div class="return-num" aria-hidden="true">5</div>
+            </div>
+            <div class="return-body">
+              <div class="return-title">Audit trail posted</div>
+              <div class="return-sub">User, timestamp, batch, reason, and outcome logged permanently</div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<hr class="section-divider">
+
+<!-- ── ROLES ──────────────────────────────────────────────────── -->
+<section class="roles-section" aria-labelledby="roles-heading">
+  <div class="container">
+    <span class="eyebrow">Who uses this module</span>
+    <h2 class="section-headline" id="roles-heading">Built for every role in the pharmacy workflow</h2>
+    <p class="section-sub">HISx gives each role exactly the view and controls they need — without giving anyone access they shouldn't have.</p>
+    <div class="roles-grid">
+      <div class="role-card">
+        <div class="role-icon" aria-hidden="true">
+          <svg viewBox="0 0 20 20" fill="none" stroke="currentColor" stroke-width="1.5"><circle cx="10" cy="6" r="3"/><path d="M4 18c0-3.3 2.7-6 6-6s6 2.7 6 6"/></svg>
+        </div>
+        <h3 class="role-title">Pharmacist</h3>
+        <p class="role-sub">Dispenses with FEFO auto-selection, sees near-expiry alerts in real time, processes patient returns with restocking validation, and manages batch-level stock — all from one screen.</p>
+      </div>
+      <div class="role-card">
+        <div class="role-icon" aria-hidden="true">
+          <svg viewBox="0 0 20 20" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M3 10h14M10 3v14"/><rect x="6" y="6" width="8" height="8" rx="2"/></svg>
+        </div>
+        <h3 class="role-title">Doctor &amp; nurse</h3>
+        <p class="role-sub">Real-time pharmacy stock is visible at the point of prescribing. CPOE orders land at the pharmacy counter instantly. Ward nurses track patient-specific consumption without calling down.</p>
+      </div>
+      <div class="role-card">
+        <div class="role-icon" aria-hidden="true">
+          <svg viewBox="0 0 20 20" fill="none" stroke="currentColor" stroke-width="1.5"><rect x="2" y="4" width="16" height="12" rx="2"/><path d="M2 8h16M6 12h4"/></svg>
+        </div>
+        <h3 class="role-title">Pharmacy manager</h3>
+        <p class="role-sub">Expiry reports by item and department, consumption trend analysis, stock reconciliation, and user-wise dispensing audit — full visibility over the entire pharmacy operation.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ── COMPLIANCE CALLOUT ─────────────────────────────────────── -->
+<section class="compliance-callout" aria-labelledby="compliance-heading">
+  <div class="compliance-inner">
+    <div>
+      <div class="compliance-eyebrow">Regulatory compliance</div>
+      <h2 class="compliance-headline" id="compliance-heading">Built-in compliance for Schedule H, H1, and NDPS narcotics</h2>
+      <p class="compliance-desc">Controlled substance management in HISx is not an add-on — it is woven into the dispensing workflow with access controls, dual authorisation, and automated register maintenance.</p>
+      <div class="compliance-badges">
+        <span class="comp-badge">
+          <svg viewBox="0 0 14 14" fill="none" stroke="currentColor" stroke-width="1.5" aria-hidden="true"><path d="M7 1l1.8 3.6L13 5.3l-3 2.9.7 4.1L7 10.4l-3.7 1.9.7-4.1-3-2.9 4.2-.7L7 1z"/></svg>
+          Schedule H &amp; H1
+        </span>
+        <span class="comp-badge">
+          <svg viewBox="0 0 14 14" fill="none" stroke="currentColor" stroke-width="1.5" aria-hidden="true"><rect x="2" y="2" width="10" height="10" rx="2"/><path d="M5 7h4M7 5v4"/></svg>
+          NDPS compliance
+        </span>
+        <span class="comp-badge">
+          <svg viewBox="0 0 14 14" fill="none" stroke="currentColor" stroke-width="1.5" aria-hidden="true"><path d="M2 7l3 3 7-6"/></svg>
+          Double-signature workflow
+        </span>
+        <span class="comp-badge">
+          <svg viewBox="0 0 14 14" fill="none" stroke="currentColor" stroke-width="1.5" aria-hidden="true"><rect x="2" y="2" width="10" height="10" rx="2"/><path d="M5 5h4M5 7h4M5 9h2"/></svg>
+          Auto narcotics register
+        </span>
+      </div>
+    </div>
+    <div class="compliance-bullets" aria-label="Compliance features">
+      <div class="comp-bullet">
+        <div class="comp-dot" aria-hidden="true"></div>
+        <span><strong>Double-signature dispensing</strong> — narcotics and NDPS drugs require two authorised users to approve before dispensing is completed</span>
+      </div>
+      <div class="comp-bullet">
+        <div class="comp-dot" aria-hidden="true"></div>
+        <span><strong>Role-based access control</strong> — only authorised personnel can view, approve, or dispense Schedule H/H1 and NDPS items</span>
+      </div>
+      <div class="comp-bullet">
+        <div class="comp-dot" aria-hidden="true"></div>
+        <span><strong>Automated compliance reports</strong> — narcotics register maintained digitally, Schedule H/H1 reports generated on demand — audit-ready at all times</span>
+      </div>
+      <div class="comp-bullet">
+        <div class="comp-dot" aria-hidden="true"></div>
+        <span><strong>Full transaction audit trail</strong> — every controlled substance dispensing is timestamped, user-attributed, and permanently logged</span>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ── FAQ ────────────────────────────────────────────────────── -->
+<section aria-labelledby="faq-heading">
+  <div class="container">
+    <span class="eyebrow">Common questions</span>
+    <h2 class="section-headline" id="faq-heading">Frequently asked questions</h2>
+    <div class="faq-list" role="list">
+
+      <div class="faq-item" role="listitem">
+        <button class="faq-q" aria-expanded="false" onclick="toggleFaq(this)">
+          What is FEFO and how does HISx enforce it during dispensing?
+          <svg class="faq-chevron" viewBox="0 0 20 20" fill="none" stroke="currentColor" stroke-width="1.5" aria-hidden="true"><path d="M5 7.5l5 5 5-5"/></svg>
+        </button>
+        <div class="faq-a faq-answer-1">FEFO stands for First-Expire, First-Out — a dispensing discipline that ensures medicines closest to their expiry date are dispensed before newer stock, minimising wastage and eliminating the risk of expired drugs reaching patients. HISx enforces FEFO automatically at the point of dispensing: the system always selects the earliest-expiry batch for each item, alerts pharmacists when near-expiry stock is being picked, and maintains a full batch-level audit trail for every transaction.</div>
+      </div>
+
+      <div class="faq-item" role="listitem">
+        <button class="faq-q" aria-expanded="false" onclick="toggleFaq(this)">
+          Can hospital doctors and nurses see real-time pharmacy stock?
+          <svg class="faq-chevron" viewBox="0 0 20 20" fill="none" stroke="currentColor" stroke-width="1.5" aria-hidden="true"><path d="M5 7.5l5 5 5-5"/></svg>
+        </button>
+        <div class="faq-a">Yes. HISx provides a unified real-time inventory view accessible to doctors, nurses, and pharmacists simultaneously. When a doctor prescribes via CPOE, the system immediately checks available stock, reserves the quantity, and alerts the pharmacy — eliminating the common problem of prescribing items that are already out of stock at the ward level.</div>
+      </div>
+
+      <div class="faq-item" role="listitem">
+        <button class="faq-q" aria-expanded="false" onclick="toggleFaq(this)">
+          How does HISx integrate with CPOE systems?
+          <svg class="faq-chevron" viewBox="0 0 20 20" fill="none" stroke="currentColor" stroke-width="1.5" aria-hidden="true"><path d="M5 7.5l5 5 5-5"/></svg>
+        </button>
+        <div class="faq-a faq-answer-3">HISx integrates directly with Computerised Physician Order Entry (CPOE) systems to create a closed loop between prescription and dispensing. When a physician places a medication order, HISx automatically checks stock availability, reserves the quantity, triggers the dispensing workflow at the pharmacy counter, and generates the corresponding patient billing entry — all without manual re-entry.</div>
+      </div>
+
+      <div class="faq-item" role="listitem">
+        <button class="faq-q" aria-expanded="false" onclick="toggleFaq(this)">
+          Does HISx support generic drug prescribing with brand substitution?
+          <svg class="faq-chevron" viewBox="0 0 20 20" fill="none" stroke="currentColor" stroke-width="1.5" aria-hidden="true"><path d="M5 7.5l5 5 5-5"/></svg>
+        </button>
+        <div class="faq-a">Yes. HISx supports generic name prescribing and provides both automated and manual brand substitution mapping during dispensing. Pharmacists can configure substitution rules per generic molecule, and the system suggests approved alternatives when the prescribed brand is unavailable — keeping dispensing moving without interrupting the clinical workflow.</div>
+      </div>
+
+      <div class="faq-item" role="listitem">
+        <button class="faq-q" aria-expanded="false" onclick="toggleFaq(this)">
+          How are patient medicine returns and refunds handled?
+          <svg class="faq-chevron" viewBox="0 0 20 20" fill="none" stroke="currentColor" stroke-width="1.5" aria-hidden="true"><path d="M5 7.5l5 5 5-5"/></svg>
+        </button>
+        <div class="faq-a">HISx includes a dedicated patient returns workflow linked to the original dispensing record. Returns are validated before the item is restocked, refunds are processed with automatic billing reversal, and every return transaction is logged in a full audit trail. This prevents unvalidated stock from re-entering inventory and ensures billing accuracy.</div>
+      </div>
+
+      <div class="faq-item" role="listitem">
+        <button class="faq-q" aria-expanded="false" onclick="toggleFaq(this)">
+          Does HISx handle Schedule H, H1, and NDPS narcotic dispensing?
+          <svg class="faq-chevron" viewBox="0 0 20 20" fill="none" stroke="currentColor" stroke-width="1.5" aria-hidden="true"><path d="M5 7.5l5 5 5-5"/></svg>
+        </button>
+        <div class="faq-a">Yes. HISx includes a dedicated narcotics and controlled substances module with strict access control, double-signature dispensing workflows for NDPS drugs, and automated Schedule H/H1 compliance reporting. The system maintains a digital narcotics register and generates audit-ready reports, reducing compliance risk significantly compared to manual register maintenance.</div>
+      </div>
+
+      <div class="faq-item" role="listitem">
+        <button class="faq-q" aria-expanded="false" onclick="toggleFaq(this)">
+          Can HISx manage pharmacy operations across multiple hospital branches?
+          <svg class="faq-chevron" viewBox="0 0 20 20" fill="none" stroke="currentColor" stroke-width="1.5" aria-hidden="true"><path d="M5 7.5l5 5 5-5"/></svg>
+        </button>
+        <div class="faq-a">Yes. HISx is designed for multi-site deployments — including hospital chains, multi-branch pharmacy networks, and hospitals with multiple pharmacy counters across wards and departments. Stock visibility, dispensing controls, and compliance reporting operate across all branches from a single platform, with branch-level and consolidated reporting available.</div>
+      </div>
+
+    </div>
+  </div>
+</section>
+
+<hr class="section-divider">
+
+<!-- ── FINAL CTA ───────────────────────────────────────────────── -->
+<section class="cta-section" aria-labelledby="cta-heading">
+  <div class="cta-inner">
+    <h2 class="cta-headline" id="cta-heading">See HISx pharmacy dispensing running in your hospital</h2>
+    <p class="cta-sub">Book a 30-minute demo with a Quantbit implementation specialist. We'll walk through your pharmacy workflow — no generic pitch, no pressure.</p>
+    <div class="cta-btns">
+      <a href="/hisx/demo" class="btn-primary">Book a demo</a>
+      <a href="/hisx/roi-calculator" class="btn-ghost">Calculate your ROI</a>
+    </div>
+  </div>
+</section>
+
+<!-- ── RELATED PAGES ───────────────────────────────────────────── -->
+<nav class="related-section" aria-label="Related pages">
+  <div class="related-inner">
+    <div style="display:grid;grid-template-columns:1fr 1fr;gap:32px;flex-wrap:wrap;">
+      <div>
+        <div class="related-label">Other HISx modules</div>
+        <div class="related-links">
+          <a href="/hisx/procurement" class="related-link">Procurement &amp; vendor management</a>
+          <a href="/hisx/inventory" class="related-link">Inventory management</a>
+          <a href="/hisx/billing" class="related-link">Billing &amp; revenue</a>
+          <a href="/hisx/narcotics-compliance" class="related-link">Narcotics &amp; compliance</a>
+          <a href="/hisx/lab-inventory" class="related-link">Lab inventory</a>
+          <a href="/hisx" class="related-link">All modules →</a>
+        </div>
+      </div>
+      <div>
+        <div class="related-label">Related guides &amp; solutions</div>
+        <div class="related-links">
+          <a href="/solutions/hospital-drug-expiry-management" class="related-link">Drug expiry management</a>
+          <a href="/fefo-in-hospital-pharmacy" class="related-link">What is FEFO?</a>
+          <a href="/cpoe-integration-explained" class="related-link">CPOE integration explained</a>
+          <a href="/solutions/barcode-traceability" class="related-link">Barcode &amp; drug traceability</a>
+          <a href="/solutions/hospital-billing-integration" class="related-link">Hospital billing integration</a>
+        </div>
+      </div>
+    </div>
+  </div>
+</nav>
+
+<!-- ── FOOTER ─────────────────────────────────────────────────── -->
+
+<div id="footer"></div>
+
+<script>
+  function toggleFaq(btn) {
+    var item = btn.closest('.faq-item');
+    var isOpen = item.classList.contains('open');
+    document.querySelectorAll('.faq-item').forEach(function(i) {
+      i.classList.remove('open');
+      i.querySelector('.faq-q').setAttribute('aria-expanded', 'false');
+    });
+    if (!isOpen) {
+      item.classList.add('open');
+      btn.setAttribute('aria-expanded', 'true');
+    }
+  }
+</script>
+<script>
+fetch("../header.html")
+    .then(res => res.text())
+    .then(data => {
+        document.getElementById("header").innerHTML = data;
+    });
+
+fetch("../footer.html")
+    .then(res => res.text())
+    .then(data => {
+        document.getElementById("footer").innerHTML = data;
+    });
+</script>
+<!-- ================= TEMPLATE JS ================= -->
+    <!--<< All JS Plugins >>-->
+    <script data-cfasync="false" src="../../cdn-cgi/scripts/5c5dd728/cloudflare-static/email-decode.min.js"></script>
+    <script src="/../assets/quantbit_website/js/jquery-3.7.1.min.js"></script>
+    <!--<< Viewport Js >>-->
+    <script src="/../assets/quantbit_website/js/viewport.jquery.js"></script>
+    <!--<< Bootstrap Js >>-->
+    <script src="/../assets/quantbit_website/js/bootstrap.bundle.min.js"></script>
+    <!--<< Nice Select Js >>-->
+    <script src="/../assets/quantbit_website/js/jquery.nice-select.min.js"></script>
+    <!--<< Waypoints Js >>-->
+    <script src="/../assets/quantbit_website/js/jquery.waypoints.js"></script>
+    <!--<< Counterup Js >>-->
+    <script src="/../assets/quantbit_website/js/jquery.counterup.min.js"></script>
+    <!--<< Slick Js >>-->
+    <script src="/../assets/quantbit_website/js/slick.min.js"></script>
+    <!--<< Slick Animation Js >>-->
+    <script src="/../assets/quantbit_website/js/slick-animation.min.js"></script>
+    <!--<< MeanMenu Js >>-->
+    <script src="/../assets/quantbit_website/js/jquery.meanmenu.min.js"></script>
+    <!--<< Magnific Popup Js >>-->
+    <script src="/../assets/quantbit_website/js/jquery.magnific-popup.min.js"></script>
+    <!--<< Wow Animation Js >>-->
+    <script src="/../assets/quantbit_website/js/wow.min.js"></script>
+    <!--<< Circle Progress Js >>-->
+    <script src="/../assets/quantbit_website/js/circle-progress.js"></script>
+    <!--<< Main.js >>-->
+    <script src="/../assets/quantbit_website/js/main.js"></script>
+    <script defer
+        src="../../../static.cloudflareinsights.com/beacon.min.js/v8c78df7c7c0f484497ecbca7046644da1771523124516"
+        integrity="sha512-8DS7rgIrAmghBFwoOTujcf6D9rXvH8xm8JQ1Ja01h9QX8EzXldiszufYa4IFfKdLUKTTrnSFXLDkUEOTrZQ8Qg=="
+        data-cf-beacon='{"version":"2024.11.0","token":"90f7972af14a48b4add7da2b74f5d675","r":1,"server_timing":{"name":{"cfCacheStatus":true,"cfEdge":true,"cfExtPri":true,"cfL4":true,"cfOrigin":true,"cfSpeedBrain":true},"location_startswith":null}}'
+        crossorigin="anonymous"></script>
+
+</body>
+</html>

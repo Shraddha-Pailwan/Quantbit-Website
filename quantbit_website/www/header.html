@@ -1,112 +1,24 @@
-<div class="fix-area">
-    <div class="offcanvas__info">
-        <div class="offcanvas__wrapper">
-            <div class="offcanvas__content">
-                <div class="offcanvas__top mb-5 d-flex justify-content-between align-items-center">
-                    <div class="offcanvas__logo">
-                        <a href="quantbit-home.html">
-                            <img src="/../assets/quantbit_website/img/logo-quantbit.png" alt="logo-img">
-                        </a>
-                    </div>
-                    <div class="offcanvas__close">
-                        <button>
-                            <i class="fas fa-times"></i>
-                        </button>
-                    </div>
-                </div>
-
-                <div class="mobile-menu fix mb-3"></div>
-
-                <div class="offcanvas__contact">
-                    <h4>Contact Info</h4>
-                    <ul>
-                        <li class="d-flex align-items-center">
-                            <div class="offcanvas__contact-icon">
-                                <i class="fal fa-map-marker-alt"></i>
-                            </div>
-                            <div class="offcanvas__contact-text">
-                                <a target="_blank" href="#">India</a>
-                            </div>
-                        </li>
-                        <li class="d-flex align-items-center">
-                            <div class="offcanvas__contact-icon mr-15">
-                                <i class="fal fa-envelope"></i>
-                            </div>
-                            <div class="offcanvas__contact-text">
-                                <a href="mailto:sales@erpdata.in">sales@erpdata.in</a>
-                            </div>
-                        </li>
-                        <li class="d-flex align-items-center">
-                            <div class="offcanvas__contact-icon mr-15">
-                                <i class="fal fa-clock"></i>
-                            </div>
-                            <div class="offcanvas__contact-text">
-                                <a target="_blank" href="#">Mod-friday, 09:30 AM -06:00 PM</a>
-                            </div>
-                        </li>
-                        <li class="d-flex align-items-center">
-                            <div class="offcanvas__contact-icon mr-15">
-                                <i class="far fa-phone"></i>
-                            </div>
-                            <div class="offcanvas__contact-text">
-                                <a href="tel:+919665598341">+91 9665598341</a>
-                            </div>
-                        </li>
-                    </ul>
-                    <div class="header-button mt-4">
-                        <a href="contact-us.html" class="theme-btn text-center">
-                            <span>Contact Us<i class="fas fa-chevron-right"></i></span>
-                        </a>
-                    </div>
-                    <div class="social-icon d-flex align-items-center">
-                        <a href="https://www.facebook.com/people/ERP-DATA/100083478395796"><i class="fab fa-facebook-f"></i></a>
-                        <a href="https://www.instagram.com/quantbit_erpdata"><i class="fab fa-instagram"></i></a>
-                        <a href="https://www.youtube.com/@QUANTBIT_TECHNOLOGIES"><i class="fab fa-youtube"></i></a>
-                        <a href="https://www.linkedin.com/company/quantbit-technologies"><i class="fab fa-linkedin-in"></i></a>
-                    </div>
-                </div>
-            </div>
-        </div>
-    </div>
-</div>
-<div class="offcanvas__overlay"></div>
-
-<!-- Header Top Start -->
-<div class="header-top-section fix">
-    <div class="container">
-        <div class="header-top-wrapper">
-            <ul class="contact-list">
-                <li>
-                    <i class="far fa-envelope"></i>
-                    <a href="mailto:sales@erpdata.in" class="link">sales@erpdata.in</a>
-                </li>
-                <li>
-                    <i class="fas fa-map-marker-alt"></i>
-                    India
-                </li>
-            </ul>
-            <div class="top-right">
-                <div class="social-icon d-flex align-items-center">
-                    <a href="https://www.linkedin.com/company/quantbit-technologies"><i class="fab fa-linkedin"></i></a>
-                    <a href="https://www.facebook.com/people/ERP-DATA/100083478395796"><i class="fab fa-facebook-f"></i></a>
-                    <a href="https://www.instagram.com/quantbit_erpdata"><i class="fab fa-instagram"></i></a>
-                    <a href="https://www.youtube.com/@QUANTBIT_TECHNOLOGIES"><i class="fab fa-youtube"></i></a>
-                    <a href="#"><i class="fab fa-twitter"></i></a>
-                </div>
-                <ul class="header-menu">
-                    <li><a href="contact-us.html">Help</a></li>
-                    <li><a href="contact-us.html">Support</a></li>
-                    <li><a href="faq.html">Faqs</a></li>
-                </ul>
-            </div>
-        </div>
-    </div>
-</div>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Noto+Sans:wght@400;500;600;700&display=swap" rel="stylesheet">
 
 <style>
-    /* =====================================================
+    /*=====================================================
        QUANTBIT HEADER — COMPACT OVERRIDE
-       ===================================================== */
+    ===================================================== */
+
+    /* ---------- Font override: Zoho-style font, not bold ---------- */
+    .header-section-1,
+    .header-section-1 *{
+        font-family: 'Noto Sans', Arial, sans-serif !important;
+    }
+    .header-section-1 .main-menu #mobile-menu > ul > li > a,
+    .header-section-1 .header-right .contact-info .content h6,
+    .header-section-1 .main-menu .submenu li a,
+    .header-section-1 .header-top-section .contact-list li,
+    .header-section-1 .header-top-section .header-menu li a{
+        font-weight: 400 !important;
+    }
 
     /* ---------- Top black info bar ---------- */
     .header-top-section {
@@ -153,7 +65,7 @@
         .header-1 .mega-menu-wrapper .header-main .header-left { gap: 20px !important; }
     }
 
-    /* =====================================================
+    /*=====================================================
        MOBILE / SMALL SCREENS (≤991px)
        ===================================================== */
     @media (max-width: 991px) {
@@ -266,7 +178,9 @@
     .header__hamburger .sidebar__toggle i {
         pointer-events: none;
     }
-    
+    .header__hamburger {
+    display: none !important;
+}
 </style>
 
 <header class="header-section-1">
@@ -286,9 +200,9 @@
                                     <ul>
                                         <!-- INDUSTRIES -->
                                         <li class="has-dropdown">
-                                            <a href="industries.html">Industries <i class="fas fa-angle-down"></i></a>
+                                            <a href="/industries.html">Industries <i class="fas fa-angle-down"></i></a>
                                             <ul class="submenu industries-menu">
-                                                <li><a href="/industries/manufacturing-erp.html"><span class="menu-icon"><i class="fas fa-industry"></i></span> Manufacturing</a></li>
+                                                <li><a href="/industries/manufacturing-erp-industry.html"><span class="menu-icon"><i class="fas fa-industry"></i></span> Manufacturing</a></li>
                                                 <li><a href="/industries/foundry-erp.html"><span class="menu-icon"><i class="fas fa-fire"></i></span> Foundry</a></li>
                                                 <li><a href="/industries/trading-erp.html"><span class="menu-icon"><i class="fas fa-store"></i></span> Trading</a></li>
                                                 <li><a href="/industries/retail-erp.html"><span class="menu-icon"><i class="fas fa-shopping-cart"></i></span> Retail</a></li>
@@ -305,12 +219,12 @@
                                             <a href="#">Solutions <i class="fas fa-angle-down"></i></a>
                                             <ul class="submenu product-mega-menu">
                                                 <li><a href="/solutions/cafmx.html"><span class="menu-icon"><i class="fas fa-building"></i></span> CAFMX</a></li>
-                                                <li><a href="/solutions/foundryx.html"><span class="menu-icon"><i class="fas fa-fire"></i></span> FoundryX</a></li>
+                                                <li><a href="/foundryx-solutions.html"><span class="menu-icon"><i class="fas fa-fire"></i></span> FoundryX</a></li>
                                                 <li><a href="/solutions/hrms-payroll-software.html"><span class="menu-icon"><i class="fas fa-users"></i></span> HRMS & Payroll</a></li>
-                                                <li><a href="/solutions/manufacturing-erp.html"><span class="menu-icon"><i class="fas fa-industry"></i></span> Manufacturing ERP</a></li>
-                                                <li><a href="/solutions/sugar-erp.html"><span class="menu-icon"><i class="fas fa-industry"></i></span> Sugar ERP</a></li>
-                                                <li><a href="/solutions/solutions__asset-tracking.html"><span class="menu-icon"><i class="fas fa-map-marker-alt"></i></span> Asset Tracking</a></li>
-                                                <li><a href="/solutions/helpdesk.html"><span class="menu-icon"><i class="fas fa-headset"></i></span> Helpdesk</a></li>
+                                                <li><a href="/solutions/manufacturing-erp-solutions.html"><span class="menu-icon"><i class="fas fa-industry"></i></span> Manufacturing ERP</a></li>
+                                                <li><a href="/products/sugar-erp.html"><span class="menu-icon"><i class="fas fa-industry"></i></span> Sugar ERP</a></li>
+                                                <li><a href="/solutions/asset-tracking-software.html"><span class="menu-icon"><i class="fas fa-map-marker-alt"></i></span> Asset Tracking</a></li>
+                                                <li><a href="/products/helpdesk.html"><span class="menu-icon"><i class="fas fa-headset"></i></span> Helpdesk</a></li>
                                             </ul>
                                         </li>
                                         <!-- PRODUCTS -->
@@ -336,21 +250,21 @@
                                         </li>
                                         <!-- SERVICES -->
                                         <li class="has-dropdown services-dropdown">
-                                            <a href="/services.html">Services <i class="fas fa-angle-down"></i></a>
+                                            <a href="/services/core-services.html">Services <i class="fas fa-angle-down"></i></a>
                                             <ul class="submenu services-mega-menu">
                                                 <li><a href="/services/saas-development.html"><span class="menu-icon"><i class="fas fa-cloud"></i></span> SaaS Development</a></li>
                                                 <li><a href="/services/frappe-development.html"><span class="menu-icon"><i class="fas fa-laptop-code"></i></span> Frappe Development</a></li>
-                                                <li><a href="/services/erpnext-implementation.html"><span class="menu-icon"><i class="fas fa-rocket"></i></span> ERPNext Implementation</a></li>
-                                                <li><a href="/services/erpnext-customisation.html"><span class="menu-icon"><i class="fas fa-sliders-h"></i></span> ERPNext Customisation</a></li>
-                                                <li><a href="/services/erpnext-migration.html"><span class="menu-icon"><i class="fas fa-database"></i></span> ERPNext Migration</a></li>
-                                                <li><a href="/services/erpnext-upgrade.html"><span class="menu-icon"><i class="fas fa-arrow-circle-up"></i></span> ERPNext Upgrade</a></li>
-                                                <li><a href="/services/erpnext-training.html"><span class="menu-icon"><i class="fas fa-chalkboard-teacher"></i></span> ERPNext Training</a></li>
-                                                <li><a href="/services/erpnext-support.html"><span class="menu-icon"><i class="fas fa-headset"></i></span> ERPNext Support</a></li>
+                                                <li><a href="/erpnext-implementation.html"><span class="menu-icon"><i class="fas fa-rocket"></i></span> ERPNext Implementation</a></li>
+                                                <li><a href="/erpnext-customisation.html"><span class="menu-icon"><i class="fas fa-sliders-h"></i></span> ERPNext Customisation</a></li>
+                                                <li><a href="/erpnext-migration.html"><span class="menu-icon"><i class="fas fa-database"></i></span> ERPNext Migration</a></li>
+                                                <li><a href="/erpnext-upgrade.html"><span class="menu-icon"><i class="fas fa-arrow-circle-up"></i></span> ERPNext Upgrade</a></li>
+                                                <li><a href="/erpnext-training.html"><span class="menu-icon"><i class="fas fa-chalkboard-teacher"></i></span> ERPNext Training</a></li>
+                                                <li><a href="/erpnext-support.html"><span class="menu-icon"><i class="fas fa-headset"></i></span> ERPNext Support</a></li>
                                                 <li><a href="/services/erpnext-managed-services.html"><span class="menu-icon"><i class="fas fa-cogs"></i></span> ERPNext Managed Services</a></li>
-                                                <li><a href="/services/erpnext-integration.html"><span class="menu-icon"><i class="fas fa-plug"></i></span> ERPNext Integration</a></li>
+                                                <li><a href="/erpnext-integration.html"><span class="menu-icon"><i class="fas fa-plug"></i></span> ERPNext Integration</a></li>
                                                 <li><a href="/services/erpnext-development-company-india.html"><span class="menu-icon"><i class="fas fa-code-branch"></i></span> ERPNext Development</a></li>
-                                                <li><a href="/services/erpnext-consulting.html"><span class="menu-icon"><i class="fas fa-user-tie"></i></span> ERPNext Consulting</a></li>
-                                                <li><a href="/services/crm.html"><span class="menu-icon"><i class="fas fa-user-tie"></i></span> CRM</a></li>
+                                                <li><a href="/erpnext-consulting.html"><span class="menu-icon"><i class="fas fa-user-tie"></i></span> ERPNext Consulting</a></li>
+                                                <li><a href="/products/crm.html"><span class="menu-icon"><i class="fas fa-user-tie"></i></span> CRM</a></li>
                                             </ul>
                                         </li>
                                         <!-- RESOURCES -->
@@ -365,7 +279,7 @@
                                             </ul>
                                         </li>
                                         <li class="has-dropdown">
-                                            <a href="/partner.html">Partner Us</a>
+                                            <a href="/company/partner.html">Partner Us</a>
                                         </li>
                                     </ul>
                                 </nav>

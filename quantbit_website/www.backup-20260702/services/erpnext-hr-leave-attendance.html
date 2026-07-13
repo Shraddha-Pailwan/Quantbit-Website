@@ -1,0 +1,424 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<title>HR, Attendance & Leave | ERPNext Module | Quantbit Technologies</title>
+<meta name="description" content="Manage your complete employee lifecycle — from onboarding and shift scheduling to leave tracking, expense claims, and real-time attendance — with ERPNext's">
+<meta name="keywords" content="ERPNext HR module India, ERPNext leave management, ERPNext attendance biometric integration, ERPNext shift management, ERPNext expense claims, ERPNext HR Oman GCC WPS, ERPNext PF ESI professional tax, ERPNext employee self-service">
+<link rel="canonical" href="https://quantbit.io/services/erpnext-hr-attendance/">
+<script type="application/ld+json">{
+  "@context":"https://schema.org",
+  "@graph":[
+    {"@type":"BreadcrumbList","itemListElement":[
+      {"@type":"ListItem","position":1,"name":"Home","item":"https://quantbit.io"},
+      {"@type":"ListItem","position":2,"name":"ERPNext Services","item":"https://quantbit.io/services/"},
+      {"@type":"ListItem","position":3,"name":"ERPNext HR, Attendance & Leave","item":"https://quantbit.io/services/erpnext-hr-attendance/"}
+    ]},
+    {"@type":"FAQPage","mainEntity":[{"@type":"Question","name":"Can ERPNext integrate with biometric attendance devices?","acceptedAnswer":{"@type":"Answer","text":"Yes. ERPNext integrates with most biometric attendance devices through file-based import (CSV/XML) or API-based real-time sync. Punch-in and punch-out times are imported, matched to shift schedules, and attendance records are created automatically — including late arrival and early departure marking."}},
+{"@type":"Question","name":"How does ERPNext handle rotational shift scheduling?","acceptedAnswer":{"@type":"Answer","text":"ERPNext's Shift Management lets you create shift types — morning, evening, night, general — with start and end times, grace periods, and overtime rules. Monthly shift assignments can be made by employee or department, and swap requests between employees can be approved through a workflow."}},
+{"@type":"Question","name":"Can employees apply for leave and check their balance on mobile?","acceptedAnswer":{"@type":"Answer","text":"Yes. ERPNext's Employee Self-Service portal is mobile-responsive. Employees can apply for leave, view their current balance, check attendance, submit expense claims, and download payslips from any browser — without requiring a separate HR app."}},
+{"@type":"Question","name":"How does ERPNext calculate gratuity for Indian employees?","acceptedAnswer":{"@type":"Answer","text":"ERPNext tracks the joining date on the employee master and calculates gratuity eligibility after the configured minimum years of service. The gratuity amount can be calculated based on last drawn salary and years of service as per the Payment of Gratuity Act, and is reported separately for HR and finance planning."}},
+{"@type":"Question","name":"Does ERPNext track visa expiry for GCC employees?","acceptedAnswer":{"@type":"Answer","text":"Yes. You can store visa issue and expiry dates, work permit details, and passport expiry on the employee master. ERPNext can generate automated email alerts 90 days and 30 days before expiry to the HR team and the employee's manager — preventing compliance issues with expatriate workforces."}},
+{"@type":"Question","name":"How long does HR module implementation take with Quantbit?","acceptedAnswer":{"@type":"Answer","text":"HR module implementation with employee master, leave policies, shift setup, and attendance integration typically takes 4 to 6 weeks. If integrated with Payroll, the combined implementation takes 6 to 10 weeks depending on the number of employees and statutory complexity."}}]}
+  ]
+}</script>
+<style>/* Quantbit ERPNext Module Pages — Shared Design System */
+:root {
+  --accent: #1a5fd4;
+  --accent-dark: #1349a8;
+  --teal: #0b7a5e;
+  --teal-light: #e6f4f0;
+  --amber: #b35e0a;
+  --amber-light: #fef3e2;
+  --dark: #0f2d47;
+  --mid: #1e4a6e;
+  --text: #1a2a38;
+  --muted: #4a6278;
+  --border: #d0dce8;
+  --bg: #f5f8fc;
+  --white: #ffffff;
+  --radius: 10px;
+  --shadow: 0 2px 16px rgba(15,45,71,0.10);
+  --shadow-lg: 0 6px 32px rgba(15,45,71,0.14);
+}
+*,*::before,*::after{box-sizing:border-box;margin:0;padding:0}
+html{scroll-behavior:smooth}
+body{font-family:'Segoe UI',system-ui,-apple-system,sans-serif;color:var(--text);background:var(--white);line-height:1.65;font-size:16px}
+.site-nav{background:var(--dark);padding:0 32px;display:flex;align-items:center;justify-content:space-between;height:60px;position:sticky;top:0;z-index:100}
+.nav-logo{color:#fff;font-weight:700;font-size:1.1rem;text-decoration:none;letter-spacing:.5px}
+.nav-links{display:flex;gap:24px;list-style:none}
+.nav-links a{color:rgba(255,255,255,.82);text-decoration:none;font-size:.9rem;font-weight:500;transition:color .2s}
+.nav-links a:hover{color:#fff}
+.nav-cta{background:var(--accent);color:#fff!important;padding:7px 18px;border-radius:6px;font-weight:600!important}
+.breadcrumb{background:var(--bg);border-bottom:1px solid var(--border);padding:10px 32px;font-size:.82rem;color:var(--muted)}
+.breadcrumb a{color:var(--accent);text-decoration:none}
+.breadcrumb a:hover{text-decoration:underline}
+.hero{background:linear-gradient(135deg,var(--dark) 0%,var(--mid) 60%,#1a5fd4 100%);color:#fff;padding:72px 32px 64px;position:relative;overflow:hidden}
+.hero::before{content:'';position:absolute;right:-80px;top:-80px;width:420px;height:420px;background:rgba(255,255,255,.04);border-radius:50%;pointer-events:none}
+.hero-inner{max-width:1100px;margin:0 auto;display:grid;grid-template-columns:1fr 380px;gap:56px;align-items:center}
+.hero-badge{display:inline-flex;align-items:center;gap:8px;background:rgba(255,255,255,.12);border:1px solid rgba(255,255,255,.22);border-radius:40px;padding:5px 14px;font-size:.78rem;font-weight:600;letter-spacing:.8px;text-transform:uppercase;margin-bottom:18px;color:rgba(255,255,255,.9)}
+.hero h1{font-size:clamp(1.9rem,3.5vw,2.7rem);font-weight:800;line-height:1.2;margin-bottom:16px}
+.hero h1 span{color:#7eb8ff}
+.hero-desc{font-size:1.05rem;color:rgba(255,255,255,.82);margin-bottom:28px;max-width:540px}
+.hero-tags{display:flex;flex-wrap:wrap;gap:8px;margin-bottom:32px}
+.hero-tag{background:rgba(255,255,255,.1);border:1px solid rgba(255,255,255,.2);border-radius:20px;padding:4px 12px;font-size:.78rem;color:rgba(255,255,255,.85)}
+.hero-btns{display:flex;gap:14px;flex-wrap:wrap}
+.btn-primary{background:var(--accent);color:#fff;padding:12px 26px;border-radius:8px;font-weight:700;text-decoration:none;font-size:.95rem;transition:background .2s,transform .15s;display:inline-block}
+.btn-primary:hover{background:var(--accent-dark);transform:translateY(-1px)}
+.btn-ghost{background:transparent;color:#fff;padding:11px 24px;border:2px solid rgba(255,255,255,.4);border-radius:8px;font-weight:600;text-decoration:none;font-size:.95rem;transition:.2s;display:inline-block}
+.btn-ghost:hover{border-color:#fff;background:rgba(255,255,255,.1)}
+.hero-card{background:rgba(255,255,255,.1);border:1px solid rgba(255,255,255,.18);border-radius:14px;padding:28px;backdrop-filter:blur(8px)}
+.hero-card h3{font-size:1rem;font-weight:700;margin-bottom:16px;color:rgba(255,255,255,.92)}
+.hero-stat{display:flex;align-items:center;gap:12px;margin-bottom:14px;padding-bottom:14px;border-bottom:1px solid rgba(255,255,255,.12)}
+.hero-stat:last-child{margin-bottom:0;padding-bottom:0;border-bottom:none}
+.stat-icon{width:36px;height:36px;background:rgba(255,255,255,.15);border-radius:8px;display:flex;align-items:center;justify-content:center;font-size:1.1rem;flex-shrink:0}
+.stat-val{font-size:1.2rem;font-weight:800;color:#fff}
+.stat-lbl{font-size:.75rem;color:rgba(255,255,255,.7);line-height:1.3}
+.section{padding:64px 32px}
+.section-alt{background:var(--bg)}
+.container{max-width:1100px;margin:0 auto}
+.section-label{font-size:.75rem;font-weight:700;letter-spacing:1.2px;text-transform:uppercase;color:var(--accent);margin-bottom:8px}
+.section-title{font-size:clamp(1.5rem,2.8vw,2.1rem);font-weight:800;color:var(--dark);margin-bottom:12px;line-height:1.25}
+.section-sub{font-size:1.02rem;color:var(--muted);max-width:640px;margin-bottom:44px;line-height:1.7}
+.feature-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(280px,1fr));gap:24px}
+.feature-card{background:var(--white);border:1px solid var(--border);border-radius:var(--radius);padding:26px;transition:box-shadow .2s,transform .2s}
+.feature-card:hover{box-shadow:var(--shadow);transform:translateY(-3px)}
+.feature-icon{width:44px;height:44px;border-radius:10px;background:linear-gradient(135deg,var(--accent),var(--mid));display:flex;align-items:center;justify-content:center;font-size:1.3rem;margin-bottom:14px}
+.feature-card h3{font-size:1rem;font-weight:700;color:var(--dark);margin-bottom:8px}
+.feature-card p{font-size:.88rem;color:var(--muted);line-height:1.6}
+.feature-card ul{margin-top:10px;padding-left:0;list-style:none}
+.feature-card ul li{font-size:.85rem;color:var(--muted);padding:3px 0 3px 16px;position:relative;line-height:1.5}
+.feature-card ul li::before{content:'✓';position:absolute;left:0;color:var(--teal);font-weight:700}
+.reports-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(240px,1fr));gap:20px}
+.report-card{background:var(--white);border:1px solid var(--border);border-left:4px solid var(--accent);border-radius:var(--radius);padding:20px 22px}
+.report-card h4{font-size:.92rem;font-weight:700;color:var(--dark);margin-bottom:6px}
+.report-card p{font-size:.82rem;color:var(--muted);line-height:1.55}
+.report-tag{display:inline-block;background:var(--bg);border:1px solid var(--border);border-radius:4px;padding:2px 8px;font-size:.72rem;font-weight:600;color:var(--accent);margin-top:8px}
+.roles-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(200px,1fr));gap:16px}
+.role-pill{background:var(--white);border:1px solid var(--border);border-radius:var(--radius);padding:16px 20px;display:flex;align-items:flex-start;gap:12px}
+.role-dot{width:10px;height:10px;border-radius:50%;flex-shrink:0;margin-top:4px}
+.role-dot.admin{background:var(--accent)}
+.role-dot.manager{background:var(--teal)}
+.role-dot.user{background:var(--amber)}
+.role-dot.viewer{background:#9b59b6}
+.role-name{font-size:.88rem;font-weight:700;color:var(--dark);margin-bottom:2px}
+.role-desc{font-size:.78rem;color:var(--muted)}
+.benefits-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(260px,1fr));gap:24px}
+.benefit-card{background:linear-gradient(135deg,var(--teal-light),var(--white));border:1px solid #b8dfd6;border-radius:var(--radius);padding:26px}
+.benefit-num{font-size:2rem;font-weight:900;color:var(--teal);opacity:.35;line-height:1;margin-bottom:6px}
+.benefit-card h3{font-size:.98rem;font-weight:700;color:var(--dark);margin-bottom:8px}
+.benefit-card p{font-size:.86rem;color:var(--muted);line-height:1.6}
+.bp-list{display:grid;grid-template-columns:repeat(auto-fit,minmax(300px,1fr));gap:20px}
+.bp-item{background:var(--white);border:1px solid var(--border);border-radius:var(--radius);padding:22px 24px;display:flex;gap:16px;align-items:flex-start}
+.bp-icon{width:38px;height:38px;background:var(--amber-light);border-radius:8px;display:flex;align-items:center;justify-content:center;font-size:1.1rem;flex-shrink:0}
+.bp-item h4{font-size:.92rem;font-weight:700;color:var(--dark);margin-bottom:5px}
+.bp-item p{font-size:.83rem;color:var(--muted);line-height:1.55}
+.geo-answer{background:linear-gradient(135deg,#e8f0fc,#f0f6ff);border:1px solid #c5d8f7;border-radius:14px;padding:32px 36px;margin-bottom:32px}
+.geo-answer h3{font-size:1.1rem;font-weight:700;color:var(--dark);margin-bottom:10px}
+.geo-answer p{font-size:.95rem;color:var(--text);line-height:1.75}
+.geo-grid{display:grid;grid-template-columns:1fr 1fr;gap:24px}
+.geo-block{background:var(--white);border:1px solid var(--border);border-radius:var(--radius);padding:24px}
+.geo-block h4{font-size:.9rem;font-weight:700;color:var(--accent);margin-bottom:10px;display:flex;align-items:center;gap:8px}
+.geo-block ul{list-style:none;padding:0}
+.geo-block ul li{font-size:.85rem;color:var(--muted);padding:4px 0 4px 16px;position:relative}
+.geo-block ul li::before{content:'→';position:absolute;left:0;color:var(--accent)}
+.faq-list{max-width:800px;margin:0 auto}
+.faq-item{border:1px solid var(--border);border-radius:var(--radius);margin-bottom:10px;overflow:hidden}
+.faq-q{width:100%;background:var(--white);border:none;padding:18px 22px;text-align:left;font-size:.95rem;font-weight:600;color:var(--dark);cursor:pointer;display:flex;justify-content:space-between;align-items:center;gap:12px;transition:background .15s}
+.faq-q:hover,.faq-q.open{background:var(--bg)}
+.faq-arrow{font-size:1rem;color:var(--accent);transition:transform .25s;flex-shrink:0}
+.faq-q.open .faq-arrow{transform:rotate(180deg)}
+.faq-a{display:none;padding:0 22px 18px;font-size:.9rem;color:var(--muted);line-height:1.7}
+.faq-a.open{display:block}
+.ai-block{background:linear-gradient(135deg,var(--dark),var(--mid));color:#fff;border-radius:14px;padding:36px 40px}
+.ai-block h3{font-size:1.15rem;font-weight:700;margin-bottom:14px;color:#7eb8ff}
+.ai-qa{margin-bottom:18px;padding-bottom:18px;border-bottom:1px solid rgba(255,255,255,.1)}
+.ai-qa:last-child{margin-bottom:0;padding-bottom:0;border-bottom:none}
+.ai-qa .q{font-size:.88rem;font-weight:600;color:rgba(255,255,255,.7);margin-bottom:4px}
+.ai-qa .a{font-size:.9rem;color:rgba(255,255,255,.88);line-height:1.65}
+.cta-section{background:linear-gradient(135deg,var(--dark) 0%,var(--mid) 100%);color:#fff;padding:72px 32px;text-align:center}
+.cta-section h2{font-size:clamp(1.6rem,3vw,2.3rem);font-weight:800;margin-bottom:14px}
+.cta-section p{font-size:1.05rem;color:rgba(255,255,255,.8);max-width:580px;margin:0 auto 32px}
+.cta-btns{display:flex;gap:16px;justify-content:center;flex-wrap:wrap}
+.btn-white{background:#fff;color:var(--dark);padding:13px 28px;border-radius:8px;font-weight:700;text-decoration:none;font-size:.97rem;transition:.2s;display:inline-block}
+.btn-white:hover{background:#e8f0fc}
+.cta-trust{margin-top:22px;font-size:.82rem;color:rgba(255,255,255,.55)}
+.site-footer{background:#0a1e2e;color:rgba(255,255,255,.6);padding:40px 32px 24px;text-align:center;font-size:.83rem}
+.site-footer a{color:rgba(255,255,255,.5);text-decoration:none}
+.table-wrap{overflow-x:auto;border-radius:var(--radius);border:1px solid var(--border)}
+table{width:100%;border-collapse:collapse}
+th{background:var(--dark);color:#fff;padding:12px 16px;text-align:left;font-size:.82rem;font-weight:600;letter-spacing:.4px}
+td{padding:11px 16px;font-size:.87rem;color:var(--text);border-bottom:1px solid var(--border)}
+tr:last-child td{border-bottom:none}
+tr:nth-child(even) td{background:var(--bg)}
+.seo-box{background:var(--bg);border:1px solid var(--border);border-radius:var(--radius);padding:24px 28px}
+.seo-kw{display:flex;flex-wrap:wrap;gap:8px;margin-top:12px}
+.seo-kw span{background:var(--white);border:1px solid var(--border);border-radius:4px;padding:4px 10px;font-size:.78rem;color:var(--accent);font-weight:600}
+@media(max-width:768px){
+  .hero-inner{grid-template-columns:1fr}
+  .hero-card{display:none}
+  .geo-grid{grid-template-columns:1fr}
+  .site-nav{padding:0 16px}
+  .nav-links{display:none}
+  .section{padding:48px 16px}
+  .hero{padding:48px 16px 44px}
+  .ai-block{padding:24px 20px}
+  .geo-answer{padding:22px 20px}
+}
+</style>
+<link rel="stylesheet" href="/assets/quantbit_website/css/_shared.css">
+<!-- TEMPLATE CSS (IMPORTANT) -->
+    <link rel="stylesheet" href="/../assets/quantbit_website/css/bootstrap.min.css">
+    <link rel="stylesheet" href="/../assets/quantbit_website/css/font-awesome.css">
+    <link rel="stylesheet" href="/../assets/quantbit_website/css/animate.css">
+    <link rel="stylesheet" href="/../assets/quantbit_website/css/magnific-popup.css">
+    <link rel="stylesheet" href="/../assets/quantbit_website/css/meanmenu.css">
+    <link rel="stylesheet" href="/../assets/quantbit_website/css/slick.css">
+    <link rel="stylesheet" href="/../assets/quantbit_website/css/nice-select.css">
+    <link rel="stylesheet" href="/../assets/quantbit_website/css/main.css">
+    <link rel="stylesheet" href="style.css">
+    <link rel="stylesheet" href="/assets/quantbit_website/css/_shared.css">
+
+
+    <!-- OPTIONAL CUSTOM -->
+    <link rel="stylesheet" href="/../assets/quantbit_website/css/hrms.css">
+      <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
+<!-- Google Tag Manager -->
+<script>(function(w,d,s,l,i){w[l]=w[l]||[];w[l].push({'gtm.start':
+new Date().getTime(),event:'gtm.js'});var f=d.getElementsByTagName(s)[0],
+j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
+'https://www.googletagmanager.com/gtm.js?id='+i+dl;f.parentNode.insertBefore(j,f);
+})(window,document,'script','dataLayer','GTM-P98Z6G8D');</script>
+<!-- End Google Tag Manager -->
+</head>
+<body>
+  <!-- Google Tag Manager (noscript) -->
+<noscript><iframe src="https://www.googletagmanager.com/ns.html?id=GTM-P98Z6G8D"
+height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
+<!-- End Google Tag Manager (noscript) -->
+<div id="header"></div>
+<section class="hero">
+  <div class="hero-inner">
+    <div>
+      <div class="hero-badge">&#128311; ERPNext Module</div>
+      <h1>ERPNext <span>HR, Attendance & Leave</span><br>for Indian &amp; GCC Businesses</h1>
+      <p class="hero-desc">Manage your complete employee lifecycle — from onboarding and shift scheduling to leave tracking, expense claims, and real-time attendance — with ERPNext's unified HR module built for Indian and GCC workforce compliance.</p>
+      <div class="hero-tags"><span class="hero-tag">Employee Master</span><span class="hero-tag">Leave Management</span><span class="hero-tag">Attendance Tracking</span><span class="hero-tag">Shift Management</span><span class="hero-tag">Expense Claims</span><span class="hero-tag">Biometric Integration</span><span class="hero-tag">Appraisal</span><span class="hero-tag">Letter Generation</span></div>
+      <div class="hero-btns">
+        <a href="/company/contact-us.html" class="btn-primary">Book Free Demo</a>
+        <a href="/services/" class="btn-ghost">All ERPNext Modules</a>
+      </div>
+    </div>
+    <div class="hero-card">
+      <h3>Module Snapshot</h3><div class="hero-stat"><div class="stat-icon">&#128101;</div><div><div class="stat-val">Employee</div><div class="stat-lbl">Complete digital employee file</div></div></div>
+<div class="hero-stat"><div class="stat-icon">&#128197;</div><div><div class="stat-val">Leave</div><div class="stat-lbl">Multi-policy leave management</div></div></div>
+<div class="hero-stat"><div class="stat-icon">&#128336;</div><div><div class="stat-val">Shift</div><div class="stat-lbl">Rotational shift scheduling</div></div></div>
+<div class="hero-stat"><div class="stat-icon">&#127970;</div><div><div class="stat-val">Attendance</div><div class="stat-lbl">Biometric and manual tracking</div></div></div>
+</div>
+  </div>
+</section>
+<section class="section">
+  <div class="container">
+    <div class="section-label">Overview</div>
+    <h2 class="section-title">What is ERPNext HR, Attendance & Leave?</h2>
+    <p style="font-size:.97rem;color:var(--muted);line-height:1.85;max-width:840px">ERPNext HR covers the full spectrum of human resource management from the moment an employee joins to the moment they leave — and everything in between. The Employee Master is a complete digital file capturing personal details, emergency contacts, educational and work history, documents, and custom fields specific to your organisation. Leave Management handles multiple leave types — casual leave, earned leave, sick leave, maternity, paternity, and optional holidays — with leave policies, allocation rules, encashment, and manager approval workflows. Attendance tracking integrates with biometric devices, manual entry, and mobile check-in with geo-fencing — giving HR teams accurate daily attendance data without spreadsheet consolidation. Shift Management supports rotational, fixed, and flexible shifts with assignment rules, swap requests, and overtime calculation. Expense Claims capture employee reimbursements with category-wise limits, manager approval, and direct integration with Accounts Payable for payment. Appraisal cycles allow structured performance reviews with goal setting, self-assessment, and manager ratings linked to HR records. For Indian businesses, ERPNext HR handles statutory requirements including PF, ESI, professional tax, and leave compliance under the Shops and Establishments Act. For GCC businesses in Oman and UAE, it supports visa expiry tracking, WPS integration for salary compliance, end-of-service benefit calculations, and Labour Law-aligned leave entitlements. Quantbit Technologies configures your complete HR setup — employee structure, leave policies, shift patterns, expense categories, and statutory deductions — during implementation.</p>
+  </div>
+</section>
+<section class="section section-alt">
+  <div class="container">
+    <div class="section-label">Features &amp; Functions</div>
+    <h2 class="section-title">Core Capabilities</h2>
+    <p class="section-sub">Every feature built into ERPNext — no extra licensing. Quantbit configures these for your exact processes.</p>
+    <div class="feature-grid"><div class="feature-card"><div class="feature-icon">&#128101;</div><h3>Employee Master</h3><p>Complete digital employee profile with all statutory and organisational data.</p><ul><li>Personal, contact, and emergency information</li><li>Department, designation, and reporting structure</li><li>Document upload: Aadhar, PAN, passport, visa</li><li>Custom fields for organisation-specific data</li></ul></div>
+<div class="feature-card"><div class="feature-icon">&#128197;</div><h3>Leave Management</h3><p>Comprehensive leave lifecycle from allocation to encashment.</p><ul><li>Multiple leave types with custom policies</li><li>Automatic allocation by tenure or policy</li><li>Manager approval workflow with notification</li><li>Leave encashment and carry-forward rules</li></ul></div>
+<div class="feature-card"><div class="feature-icon">&#127970;</div><h3>Attendance Tracking</h3><p>Accurate daily attendance from multiple sources.</p><ul><li>Biometric device integration via API or file</li><li>Mobile check-in with geo-fence validation</li><li>Manual attendance upload for field staff</li><li>Shift-wise late arrival and early departure tracking</li></ul></div>
+<div class="feature-card"><div class="feature-icon">&#128336;</div><h3>Shift Management</h3><p>Rotational and fixed shift scheduling with overtime.</p><ul><li>Shift type: morning, evening, night, flexible</li><li>Monthly shift assignment by department</li><li>Shift swap request and approval workflow</li><li>Overtime hours calculation by shift rules</li></ul></div>
+<div class="feature-card"><div class="feature-icon">&#128176;</div><h3>Expense Claims</h3><p>Employee reimbursement with policy limits and payment integration.</p><ul><li>Category-wise expense limits per grade</li><li>Receipt upload and digital claim submission</li><li>Manager and HR approval workflow</li><li>Integration with Accounts Payable for payment</li></ul></div>
+<div class="feature-card"><div class="feature-icon">&#127941;</div><h3>Performance Appraisal</h3><p>Structured performance review cycle with goals and ratings.</p><ul><li>Appraisal template by department or grade</li><li>Self-assessment and manager rating fields</li><li>360-degree feedback option</li><li>Appraisal history linked to promotion records</li></ul></div>
+<div class="feature-card"><div class="feature-icon">&#128203;</div><h3>HR Letters & Documents</h3><p>Generate employment letters and documents from templates.</p><ul><li>Offer letter and appointment letter</li><li>Experience and relieving letter</li><li>Salary and promotion letter templates</li><li>Custom letter generation from employee master</li></ul></div>
+<div class="feature-card"><div class="feature-icon">&#128202;</div><h3>HR Analytics</h3><p>Workforce insights for management and compliance reporting.</p><ul><li>Headcount by department, location, designation</li><li>Attrition rate and tenure analysis</li><li>Attendance regularisation and absenteeism trends</li><li>Leave balance and liability dashboard</li></ul></div>
+</div>
+  </div>
+</section>
+<section class="section">
+  <div class="container">
+    <div class="section-label">Reports &amp; Dashboards</div>
+    <h2 class="section-title">Built-in Reports &amp; Analytics</h2>
+    <p class="section-sub">Decision-ready reports available out-of-the-box, fully customisable by Quantbit's certified team.</p>
+    <div class="reports-grid"><div class="report-card"><h4>Employee Headcount Report</h4><p>Workforce count by department, designation, location, and join date for planning.</p><span class="report-tag">HR / Management</span></div>
+<div class="report-card"><h4>Attendance Summary</h4><p>Daily and monthly attendance — present, absent, late, half-day — by employee and department.</p><span class="report-tag">HR / Manager</span></div>
+<div class="report-card"><h4>Leave Balance Report</h4><p>Available leave balance for all employees across all leave types for any date.</p><span class="report-tag">HR / Manager</span></div>
+<div class="report-card"><h4>Leave Ledger</h4><p>Complete leave history — allocated, taken, encashed, and carried forward — per employee.</p><span class="report-tag">HR / Payroll</span></div>
+<div class="report-card"><h4>Expense Claim Tracker</h4><p>Pending, approved, and paid expense claims with category and amount breakdown.</p><span class="report-tag">Finance / HR</span></div>
+<div class="report-card"><h4>Attrition Analysis</h4><p>Employee exits by department, reason, tenure, and month for workforce planning.</p><span class="report-tag">HR Head / Management</span></div>
+<div class="report-card"><h4>Overtime Report</h4><p>Extra hours worked beyond shift duration by employee and department for payroll input.</p><span class="report-tag">Payroll / HR</span></div>
+<div class="report-card"><h4>Document Expiry Alert</h4><p>Employees with expiring passport, visa, contract, or medical certificates.</p><span class="report-tag">HR / Compliance</span></div>
+</div>
+  </div>
+</section>
+<section class="section section-alt">
+  <div class="container">
+    <div class="section-label">User Roles</div>
+    <h2 class="section-title">Who Uses This Module?</h2>
+    <p class="section-sub">Role-based permissions ensure each user sees only what they need. Quantbit aligns roles to your org chart on Day 1.</p>
+    <div class="roles-grid"><div class="role-pill"><div class="role-dot admin"></div><div><div class="role-name">HR Manager</div><div class="role-desc">Full configuration: leave policies, shift setup, appraisal templates, all reports</div></div></div>
+<div class="role-pill"><div class="role-dot manager"></div><div><div class="role-name">Department Manager</div><div class="role-desc">Approve leaves, view team attendance, raise appraisals for direct reports</div></div></div>
+<div class="role-pill"><div class="role-dot user"></div><div><div class="role-name">HR Executive</div><div class="role-desc">Manage employee masters, process expense claims, generate letters, track documents</div></div></div>
+<div class="role-pill"><div class="role-dot viewer"></div><div><div class="role-name">Employee (Self-Service)</div><div class="role-desc">Apply for leave, submit expenses, view payslip, check attendance via ESS portal</div></div></div>
+<div class="role-pill"><div class="role-dot viewer"></div><div><div class="role-name">Finance / Payroll</div><div class="role-desc">View attendance, leave data, and expense approvals for payroll processing</div></div></div>
+</div>
+  </div>
+</section>
+<section class="section">
+  <div class="container">
+    <div class="section-label">Business Benefits</div>
+    <h2 class="section-title">Why Implement ERPNext HR, Attendance & Leave?</h2>
+    <p class="section-sub">Quantbit's certified implementations deliver measurable outcomes — not just software installation.</p>
+    <div class="benefits-grid"><div class="benefit-card"><div class="benefit-num">01</div><h3>Single Employee Record Across All Modules</h3><p>The Employee Master in ERPNext HR is the single source of truth used by Payroll, Expense, Leave, and Attendance — no duplicate data entry across systems.</p></div>
+<div class="benefit-card"><div class="benefit-num">02</div><h3>Eliminate Leave Spreadsheets</h3><p>Digital leave applications, automatic balance deduction, manager approval via email or mobile, and real-time balance reports replace error-prone Excel leave trackers.</p></div>
+<div class="benefit-card"><div class="benefit-num">03</div><h3>Statutory Compliance Automation</h3><p>PF, ESI, professional tax, and LWF calculations are linked to the attendance and payroll modules — reducing manual computation and risk of errors in statutory deductions.</p></div>
+<div class="benefit-card"><div class="benefit-num">04</div><h3>Accurate Overtime and Shift Calculation</h3><p>Biometric integration and shift assignment rules ensure overtime is calculated accurately based on actual hours beyond contracted shift — directly feeding into payroll without manual adjustments.</p></div>
+<div class="benefit-card"><div class="benefit-num">05</div><h3>Employee Self-Service</h3><p>Employees can apply for leave, submit expense claims, download payslips, and view their attendance record from the ERPNext Employee Self-Service portal — reducing HR desk queries significantly.</p></div>
+<div class="benefit-card"><div class="benefit-num">06</div><h3>Visa and Document Expiry Alerts</h3><p>Automated alerts for expiring passports, visas, work permits, and contracts ensure compliance teams act before employees are legally non-compliant — critical for GCC businesses with large expatriate workforces.</p></div>
+</div>
+  </div>
+</section>
+<section class="section section-alt">
+  <div class="container">
+    <div class="section-label">Best Practices</div>
+    <h2 class="section-title">Best Practices for HR, Attendance & Leave in ERPNext</h2>
+    <p class="section-sub">Quantbit ensures effective adoption from Day 1 with field-tested implementation standards.</p>
+    <div class="bp-list"><div class="bp-item"><div class="bp-icon">&#128101;</div><div><h4>Complete Employee Master at Joining</h4><p>Capture all mandatory information including PAN, Aadhar, bank details, emergency contacts, and grade before the first payroll run. Incomplete masters cause payment and compliance failures.</p></div></div>
+<div class="bp-item"><div class="bp-icon">&#128197;</div><div><h4>Define Leave Policy Before Allocation</h4><p>Create leave types, policies, and carry-forward rules before the leave year begins. Retroactive policy changes cause leave balance discrepancies that are complex to correct.</p></div></div>
+<div class="bp-item"><div class="bp-icon">&#128336;</div><div><h4>Assign Shifts Monthly in Advance</h4><p>Publish shift rosters at least one month ahead. Last-minute changes cause attendance errors, payroll discrepancies, and employee dissatisfaction.</p></div></div>
+<div class="bp-item"><div class="bp-icon">&#127970;</div><div><h4>Reconcile Biometric Data Weekly</h4><p>Don't wait for month-end to reconcile biometric attendance. Weekly reconciliation catches device sync errors and manual corrections before they compound into payroll problems.</p></div></div>
+<div class="bp-item"><div class="bp-icon">&#128203;</div><div><h4>Expense Policy Communication</h4><p>Communicate expense category limits clearly to all staff. Configure ERPNext to enforce limits at submission — preventing the awkward post-approval reversal conversation.</p></div></div>
+<div class="bp-item"><div class="bp-icon">&#128202;</div><div><h4>Monthly HR Dashboard Review</h4><p>Review the HR Analytics dashboard monthly — headcount movement, attrition trends, leave liability, and absenteeism patterns often predict retention problems before they become critical.</p></div></div>
+</div>
+  </div>
+</section>
+<section class="section">
+  <div class="container">
+    <div class="section-label">India &amp; GCC Context</div>
+    <h2 class="section-title">Compliance &amp; Regional Considerations</h2>
+    <p class="section-sub">ERPNext configured for India's statutory requirements and GCC regulatory frameworks out of the box.</p>
+    <div class="geo-answer">
+      <h3>&#127470;&#127475; For Indian Businesses</h3>
+      <p>For Indian businesses, ERPNext HR covers all major statutory requirements. PF (Employees Provident Fund) contributions at 12% employer and employee are calculated from salary and sent to payroll. ESI deductions at 0.75% employee and 3.25% employer apply to eligible employees below the wage ceiling. Professional tax deduction varies by state — Maharashtra, Karnataka, West Bengal — and is configured per state. Leave compliance follows the Shops and Establishments Act with state-specific mandatory leave types and accumulation rules. Gratuity eligibility calculation after five years of service is tracked from the joining date. Maternity leave as per the Maternity Benefit Act (26 weeks) is configured as a separate leave type.</p>
+    </div>
+    <div class="geo-grid" style="margin-top:20px">
+      <div class="geo-block">
+        <h4>&#127470;&#127475; India &mdash; Key Configurations</h4>
+        <ul><li>PF 12% employer + 12% employee calculation</li><li>ESI deduction for eligible employees</li><li>State-wise professional tax configuration</li><li>Shops and Establishments Act leave types</li><li>Gratuity eligibility tracking from joining date</li><li>Maternity benefit: 26-week leave policy</li><li>LWF (Labour Welfare Fund) deduction</li><li>Form 16 input from salary and tax data</li></ul>
+      </div>
+      <div class="geo-block">
+        <h4>&#127466;&#127462; GCC / Oman &mdash; Key Configurations</h4>
+        <ul><li>Visa and work permit expiry alert: 90/30 days</li><li>EOSB calculation per Oman/UAE Labour Law</li><li>WPS salary file generation for Oman/UAE</li><li>30-day annual leave entitlement configuration</li><li>Air ticket allowance as leave or salary comp</li><li>Annual leave encashment workflow</li><li>Arabic employee documents and letters</li><li>Multi-nationality workforce management</li></ul>
+      </div>
+    </div>
+  </div>
+</section>
+<section class="section section-alt">
+  <div class="container">
+    <div class="section-label">AI Search Strategy</div>
+    <h2 class="section-title">Answers for AI &amp; Voice Search</h2>
+    <p class="section-sub">Structured for AI assistants, featured snippets, and voice queries.</p>
+    <div class="ai-block">
+      <h3>Common AI Search Queries &mdash; Answered</h3><div class="ai-qa"><div class="q">Q: What is the best HR software for Indian companies with PF and ESI compliance?</div><div class="a">ERPNext HR is widely used by Indian companies for PF, ESI, professional tax, and leave compliance. It integrates HR directly with payroll and attendance — eliminating the need to sync a standalone HR tool with your accounting system.</div></div>
+<div class="ai-qa"><div class="q">Q: Does ERPNext support biometric attendance integration?</div><div class="a">Yes. ERPNext integrates with biometric attendance devices through file upload or API. Attendance records are automatically matched to shift schedules, and late arrival and early departure are flagged automatically for payroll and HR reporting.</div></div>
+<div class="ai-qa"><div class="q">Q: How does ERPNext handle end-of-service benefits for GCC employees?</div><div class="a">ERPNext calculates end-of-service benefits per Oman, UAE, or KSA Labour Law based on tenure and last drawn salary. EOSB accrual can be tracked and reported for financial provisioning, and WPS salary files can be generated for regulatory compliance.</div></div>
+</div>
+  </div>
+</section>
+<section class="section">
+  <div class="container">
+    <div class="section-label">FAQ</div>
+    <h2 class="section-title">Frequently Asked Questions</h2>
+    <p class="section-sub">Everything you need to know about implementing ERPNext HR, Attendance & Leave with Quantbit Technologies.</p>
+    <div class="faq-list"><div class="faq-item"><button class="faq-q" onclick="tog(this)"><span>Can ERPNext integrate with biometric attendance devices?</span><span class="faq-arrow">&#9660;</span></button><div class="faq-a">Yes. ERPNext integrates with most biometric attendance devices through file-based import (CSV/XML) or API-based real-time sync. Punch-in and punch-out times are imported, matched to shift schedules, and attendance records are created automatically — including late arrival and early departure marking.</div></div>
+<div class="faq-item"><button class="faq-q" onclick="tog(this)"><span>How does ERPNext handle rotational shift scheduling?</span><span class="faq-arrow">&#9660;</span></button><div class="faq-a">ERPNext's Shift Management lets you create shift types — morning, evening, night, general — with start and end times, grace periods, and overtime rules. Monthly shift assignments can be made by employee or department, and swap requests between employees can be approved through a workflow.</div></div>
+<div class="faq-item"><button class="faq-q" onclick="tog(this)"><span>Can employees apply for leave and check their balance on mobile?</span><span class="faq-arrow">&#9660;</span></button><div class="faq-a">Yes. ERPNext's Employee Self-Service portal is mobile-responsive. Employees can apply for leave, view their current balance, check attendance, submit expense claims, and download payslips from any browser — without requiring a separate HR app.</div></div>
+<div class="faq-item"><button class="faq-q" onclick="tog(this)"><span>How does ERPNext calculate gratuity for Indian employees?</span><span class="faq-arrow">&#9660;</span></button><div class="faq-a">ERPNext tracks the joining date on the employee master and calculates gratuity eligibility after the configured minimum years of service. The gratuity amount can be calculated based on last drawn salary and years of service as per the Payment of Gratuity Act, and is reported separately for HR and finance planning.</div></div>
+<div class="faq-item"><button class="faq-q" onclick="tog(this)"><span>Does ERPNext track visa expiry for GCC employees?</span><span class="faq-arrow">&#9660;</span></button><div class="faq-a">Yes. You can store visa issue and expiry dates, work permit details, and passport expiry on the employee master. ERPNext can generate automated email alerts 90 days and 30 days before expiry to the HR team and the employee's manager — preventing compliance issues with expatriate workforces.</div></div>
+<div class="faq-item"><button class="faq-q" onclick="tog(this)"><span>How long does HR module implementation take with Quantbit?</span><span class="faq-arrow">&#9660;</span></button><div class="faq-a">HR module implementation with employee master, leave policies, shift setup, and attendance integration typically takes 4 to 6 weeks. If integrated with Payroll, the combined implementation takes 6 to 10 weeks depending on the number of employees and statutory complexity.</div></div>
+</div>
+  </div>
+</section>
+<section class="section section-alt">
+  <div class="container">
+    <div class="seo-box">
+      <p class="section-label" style="margin-bottom:8px">SEO Keywords</p>
+      <h3 style="font-size:.92rem;font-weight:700;color:var(--dark);margin-bottom:8px">Search Terms This Page Targets</h3>
+      <div class="seo-kw"><span>ERPNext HR module India</span><span>ERPNext leave management</span><span>ERPNext attendance biometric integration</span><span>ERPNext shift management</span><span>ERPNext expense claims</span><span>ERPNext HR Oman GCC WPS</span><span>ERPNext PF ESI professional tax</span><span>ERPNext employee self-service</span><span>ERPNext visa expiry tracking GCC</span><span>ERPNext HR Pune implementation</span><span>open source HR software India</span><span>ERPNext EOSB calculation Oman</span><span>ERPNext gratuity calculation India</span><span>ERPNext workforce management</span></div>
+    </div>
+  </div>
+</section>
+<section class="cta-section">
+  <div class="container">
+    <h2>Ready to Implement ERPNext HR, Attendance & Leave?</h2>
+    <p>Quantbit Technologies configures ERPNext HR with your leave policies, shift patterns, biometric integration, statutory deductions, and GCC compliance requirements — so your HR team runs on accurate, real-time data from Day 1.</p>
+    <div class="cta-btns">
+      <a href="/company/contact-us.html" class="btn-white">Book Free Demo</a>
+      <a href="/company/contact-us.html" class="btn-ghost">Talk to a Consultant</a>
+    </div>
+    <div class="cta-trust">&#9989; Certified ERPNext Partner &nbsp;|&nbsp; &#9989; In-house Dev Team &nbsp;|&nbsp; &#9989; India &amp; GCC Experience &nbsp;|&nbsp; &#9989; Post-go-live Support</div>
+  </div>
+</section>
+<div id="footer"></div>
+
+<script>
+function tog(btn){
+  btn.classList.toggle('open');
+  var a=btn.nextElementSibling;
+  a.classList.toggle('open');
+}
+</script>
+<script>
+fetch("/header.html")
+    .then(res => res.text())
+    .then(data => {
+        document.getElementById("header").innerHTML = data;
+    });
+
+fetch("/footer.html")
+    .then(res => res.text())
+    .then(data => {
+        document.getElementById("footer").innerHTML = data;
+    });
+</script>
+<!-- ================= TEMPLATE JS ================= -->
+    <!--<< All JS Plugins >>-->
+    <script data-cfasync="false" src="../../cdn-cgi/scripts/5c5dd728/cloudflare-static/email-decode.min.js"></script>
+    <script src="/../assets/quantbit_website/js/jquery-3.7.1.min.js"></script>
+    <!--<< Viewport Js >>-->
+    <script src="/../assets/quantbit_website/js/viewport.jquery.js"></script>
+    <!--<< Bootstrap Js >>-->
+    <script src="/../assets/quantbit_website/js/bootstrap.bundle.min.js"></script>
+    <!--<< Nice Select Js >>-->
+    <script src="/../assets/quantbit_website/js/jquery.nice-select.min.js"></script>
+    <!--<< Waypoints Js >>-->
+    <script src="/../assets/quantbit_website/js/jquery.waypoints.js"></script>
+    <!--<< Counterup Js >>-->
+    <script src="/../assets/quantbit_website/js/jquery.counterup.min.js"></script>
+    <!--<< Slick Js >>-->
+    <script src="/../assets/quantbit_website/js/slick.min.js"></script>
+    <!--<< Slick Animation Js >>-->
+    <script src="/../assets/quantbit_website/js/slick-animation.min.js"></script>
+    <!--<< MeanMenu Js >>-->
+    <script src="/../assets/quantbit_website/js/jquery.meanmenu.min.js"></script>
+    <!--<< Magnific Popup Js >>-->
+    <script src="/../assets/quantbit_website/js/jquery.magnific-popup.min.js"></script>
+    <!--<< Wow Animation Js >>-->
+    <script src="/../assets/quantbit_website/js/wow.min.js"></script>
+    <!--<< Circle Progress Js >>-->
+    <script src="/../assets/quantbit_website/js/circle-progress.js"></script>
+    <!--<< Main.js >>-->
+    <script src="/../assets/quantbit_website/js/main.js"></script>
+    <script defer
+        src="../../../static.cloudflareinsights.com/beacon.min.js/v8c78df7c7c0f484497ecbca7046644da1771523124516"
+        integrity="sha512-8DS7rgIrAmghBFwoOTujcf6D9rXvH8xm8JQ1Ja01h9QX8EzXldiszufYa4IFfKdLUKTTrnSFXLDkUEOTrZQ8Qg=="
+        data-cf-beacon='{"version":"2024.11.0","token":"90f7972af14a48b4add7da2b74f5d675","r":1,"server_timing":{"name":{"cfCacheStatus":true,"cfEdge":true,"cfExtPri":true,"cfL4":true,"cfOrigin":true,"cfSpeedBrain":true},"location_startswith":null}}'
+        crossorigin="anonymous"></script>
+
+</body></html>

@@ -1,0 +1,311 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>What is CPOE Integration in Hospital Pharmacy? — Prescription to Billing Explained</title>
+<meta name="description" content="CPOE (Computerised Physician Order Entry) integration connects doctor prescriptions directly to pharmacy dispensing and patient billing — eliminating manual re-entry, reducing missed charges, and creating a closed medication loop.">
+<meta name="keywords" content="what is CPOE integration, CPOE hospital pharmacy, computerised physician order entry India, CPOE pharmacy billing integration, CPOE system hospital, medication order entry hospital ERP">
+<link rel="canonical" href="https://quantbit.io/cpoe-integration-explained">
+<script type="application/ld+json">{"@context":"https://schema.org","@type":"Article","headline":"What is CPOE Integration in Hospital Pharmacy?","description":"CPOE (Computerised Physician Order Entry) integration connects doctor prescriptions directly to pharmacy dispensing and patient billing, eliminating manual re-entry and reducing missed charges.","author":{"@type":"Organization","name":"Quantbit Technologies Pvt. Ltd.","url":"https://quantbit.io"},"publisher":{"@type":"Organization","name":"Quantbit Technologies Pvt. Ltd.","url":"https://quantbit.io"}}</script>
+<script type="application/ld+json">{"@context":"https://schema.org","@type":"BreadcrumbList","itemListElement":[{"@type":"ListItem","position":1,"name":"Home","item":"https://quantbit.io"},{"@type":"ListItem","position":2,"name":"CPOE integration explained","item":"https://quantbit.io/cpoe-integration-explained"}]}</script>
+<script type="application/ld+json">{"@context":"https://schema.org","@type":"FAQPage","mainEntity":[
+{"@type":"Question","name":"What is CPOE and what does it do in a hospital?","acceptedAnswer":{"@type":"Answer","text":"CPOE stands for Computerised Physician Order Entry. It is a digital system that allows doctors and clinicians to enter medication orders, investigation requests, and procedure orders directly into a computer interface rather than writing them on paper or dictating them verbally. In a hospital, CPOE replaces handwritten prescription slips with structured digital orders that can be instantly transmitted to the pharmacy, laboratory, or relevant department. CPOE reduces transcription errors, eliminates illegible handwriting as a source of dispensing mistakes, and creates a timestamped record of every clinical order placed.","speakable":{"@type":"SpeakableSpecification","cssSelector":".speakable-cpoe-1"}}},
+{"@type":"Question","name":"What does CPOE integration mean in hospital pharmacy?","acceptedAnswer":{"@type":"Answer","text":"CPOE integration in hospital pharmacy means the digital prescription placed by the doctor in the CPOE system flows directly into the pharmacy management system without any manual re-entry. When a doctor places a medication order, the pharmacy system receives it instantly, checks stock availability, reserves the earliest-expiry batch (FEFO), adds the order to the dispensing queue, and — when the pharmacist completes the dispensing — automatically generates the patient's billing entry. The complete cycle from prescription to dispensing to billing happens without a pharmacist or billing clerk manually re-entering the same information.","speakable":{"@type":"SpeakableSpecification","cssSelector":".speakable-cpoe-2"}}},
+{"@type":"Question","name":"What are the benefits of CPOE integration with pharmacy?","acceptedAnswer":{"@type":"Answer","text":"The key benefits of CPOE integration with pharmacy are: elimination of manual transcription errors (a doctor's digital order cannot be misread the way handwriting can), real-time stock visibility for clinical staff (doctors see whether the prescribed item is in stock before finalising the order), automatic patient billing at point of dispensing (no missed charges from manual billing entries), stock reservation on prescription (prevents stockouts between prescription and dispensing), and a complete digital audit trail linking the clinical order to the dispensing event and patient billing record."}},
+{"@type":"Question","name":"How does CPOE integration reduce missed billing charges?","acceptedAnswer":{"@type":"Answer","text":"Without CPOE integration, billing happens as a separate step — a pharmacist dispenses the medicine, then separately enters the billing data, or hands a slip to a billing clerk who enters it later. Medicines dispensed during night shifts, emergency situations, or procedure rooms are frequently missed in this manual billing flow. CPOE integration eliminates the separate billing step: the billing entry is generated automatically at the moment the pharmacist completes the dispensing, regardless of the time of day or the shift configuration."}}
+]}
+</script>
+<style>
+/* SHARED BASE — all HISx module pages */
+*, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+:root {
+  --ink: #0f1117; --ink-2: #3d3f4a; --ink-3: #72747f; --ink-4: #a0a2ab;
+  --surface: #ffffff; --surface-2: #f5f6f8; --surface-3: #eef0f4;
+  --accent: #1a5fd4; --accent-light: #e8effc; --accent-mid: #c2d4f7;
+  --teal: #0b7a5e; --teal-light: #e0f4ef;
+  --amber: #b35e0a; --amber-light: #fef3e2;
+  --red: #b91c1c; --red-light: #fee2e2;
+  --border: #e2e4ea; --border-strong: #c8cad2;
+  --radius-sm: 6px; --radius-md: 10px; --radius-lg: 16px;
+  --font-display: 'Georgia','Times New Roman',serif;
+  --font-body: -apple-system,BlinkMacSystemFont,'Segoe UI',sans-serif;
+  --font-mono: 'SF Mono','Fira Code',monospace;
+  --max: 1120px; --gap: 96px;
+}
+html { scroll-behavior: smooth; }
+body { font-family: var(--font-body); color: var(--ink); background: var(--surface); line-height: 1.6; font-size: 16px; -webkit-font-smoothing: antialiased; }
+.nav { position: sticky; top: 0; z-index: 100; background: rgba(255,255,255,0.95); backdrop-filter: blur(8px); border-bottom: 1px solid var(--border); }
+.nav-inner { max-width: var(--max); margin: 0 auto; padding: 0 24px; height: 60px; display: flex; align-items: center; gap: 32px; }
+.nav-logo { font-size: 15px; font-weight: 600; color: var(--ink); text-decoration: none; }
+.nav-logo span { color: var(--accent); }
+.nav-bc { display: flex; align-items: center; gap: 8px; font-size: 13px; color: var(--ink-3); flex: 1; }
+.nav-bc a { color: var(--ink-3); text-decoration: none; }
+.nav-bc a:hover { color: var(--accent); }
+.nav-bc .sep { color: var(--border-strong); }
+.nav-bc .cur { color: var(--ink-2); font-weight: 500; }
+.nav-cta { background: var(--accent); color: #fff; padding: 8px 18px; border-radius: var(--radius-sm); font-size: 13px; font-weight: 500; text-decoration: none; white-space: nowrap; transition: opacity .15s; }
+.nav-cta:hover { opacity: .9; }
+.C { max-width: var(--max); margin: 0 auto; padding: 0 24px; }
+section { padding: var(--gap) 0; }
+section+section { padding-top: 0; }
+hr.div { border: none; border-top: 1px solid var(--border); }
+.ey { display: inline-block; font-size: 11px; font-weight: 600; letter-spacing: .1em; text-transform: uppercase; color: var(--accent); margin-bottom: 14px; }
+.sh { font-family: var(--font-display); font-size: clamp(26px,3.5vw,38px); font-weight: 400; line-height: 1.2; letter-spacing: -.02em; color: var(--ink); margin-bottom: 16px; }
+.ss { font-size: 17px; color: var(--ink-2); line-height: 1.65; max-width: 560px; }
+.hero { padding: 80px 0 72px; border-bottom: 1px solid var(--border); }
+.hero-in { max-width: var(--max); margin: 0 auto; padding: 0 24px; display: grid; grid-template-columns: 1fr 1fr; gap: 64px; align-items: center; }
+.htag { display: inline-flex; align-items: center; gap: 7px; font-size: 12px; font-weight: 500; color: var(--accent); background: var(--accent-light); border: 1px solid var(--accent-mid); padding: 5px 12px; border-radius: 100px; margin-bottom: 22px; }
+.hero h1 { font-family: var(--font-display); font-size: clamp(30px,4vw,48px); font-weight: 400; line-height: 1.15; letter-spacing: -.025em; color: var(--ink); margin-bottom: 20px; }
+.hero h1 em { font-style: italic; color: var(--accent); }
+.hero-sub { font-size: 17px; color: var(--ink-2); line-height: 1.65; margin-bottom: 32px; max-width: 480px; }
+.ctas { display: flex; gap: 12px; flex-wrap: wrap; }
+.bp { background: var(--accent); color: #fff; padding: 12px 24px; border-radius: var(--radius-sm); font-size: 14px; font-weight: 500; text-decoration: none; transition: opacity .15s; display: inline-block; }
+.bp:hover { opacity: .88; }
+.bg { background: transparent; color: var(--ink-2); padding: 12px 24px; border-radius: var(--radius-sm); font-size: 14px; font-weight: 500; text-decoration: none; border: 1px solid var(--border-strong); transition: border-color .15s,color .15s; display: inline-block; }
+.bg:hover { border-color: var(--accent); color: var(--accent); }
+.hv { background: var(--surface-2); border: 1px solid var(--border); border-radius: var(--radius-lg); padding: 28px; }
+.hv-lbl { font-size: 11px; font-weight: 600; letter-spacing: .08em; text-transform: uppercase; color: var(--ink-4); margin-bottom: 18px; }
+.proof { background: var(--surface-2); border-bottom: 1px solid var(--border); padding: 28px 0; }
+.proof-in { max-width: var(--max); margin: 0 auto; padding: 0 24px; display: flex; align-items: center; gap: 48px; flex-wrap: wrap; }
+.proof-lbl { font-size: 12px; color: var(--ink-4); font-weight: 500; text-transform: uppercase; letter-spacing: .06em; }
+.proof-stats { display: flex; gap: 40px; flex-wrap: wrap; }
+.psn { font-size: 20px; font-weight: 700; color: var(--ink); font-family: var(--font-display); line-height: 1; }
+.psl { font-size: 12px; color: var(--ink-3); margin-top: 3px; }
+.pdiv { width: 1px; height: 32px; background: var(--border-strong); flex-shrink: 0; }
+.proof-plat { margin-left: auto; display: flex; align-items: center; gap: 8px; font-size: 12px; color: var(--ink-3); }
+.proof-plat strong { color: var(--ink-2); }
+.pain-grid { display: grid; grid-template-columns: repeat(3,1fr); gap: 20px; margin-top: 48px; }
+.pc { border: 1px solid var(--border); border-radius: var(--radius-md); padding: 24px; }
+.pi { width: 40px; height: 40px; border-radius: 10px; background: var(--red-light); color: var(--red); display: flex; align-items: center; justify-content: center; margin-bottom: 16px; }
+.pi svg { width: 18px; height: 18px; }
+.pt { font-size: 15px; font-weight: 600; color: var(--ink); margin-bottom: 8px; line-height: 1.3; }
+.pd { font-size: 14px; color: var(--ink-3); line-height: 1.6; }
+.dd { padding: var(--gap) 0; }
+.dd-in { display: grid; grid-template-columns: 1fr 1fr; gap: 72px; align-items: center; }
+.dd-in.fl { direction: rtl; }
+.dd-in.fl>* { direction: ltr; }
+.dh { font-family: var(--font-display); font-size: clamp(22px,2.8vw,32px); font-weight: 400; line-height: 1.25; letter-spacing: -.02em; color: var(--ink); margin-bottom: 20px; }
+.dd { font-size: 15px; color: var(--ink-2); line-height: 1.7; margin-bottom: 24px; }
+.buls { list-style: none; display: flex; flex-direction: column; gap: 12px; }
+.buls li { display: flex; align-items: flex-start; gap: 10px; font-size: 14px; color: var(--ink-2); line-height: 1.55; }
+.bchk { width: 18px; height: 18px; border-radius: 50%; background: var(--teal-light); color: var(--teal); display: flex; align-items: center; justify-content: center; flex-shrink: 0; margin-top: 1px; }
+.bchk svg { width: 10px; height: 10px; }
+.dl { display: inline-flex; align-items: center; gap: 6px; font-size: 13px; font-weight: 500; color: var(--accent); text-decoration: none; margin-top: 24px; }
+.dl:hover { text-decoration: underline; }
+.dv { background: var(--surface-2); border: 1px solid var(--border); border-radius: var(--radius-lg); padding: 24px; }
+.dvl { font-size: 11px; font-weight: 600; letter-spacing: .08em; text-transform: uppercase; color: var(--ink-4); margin-bottom: 16px; }
+.fg { display: grid; grid-template-columns: repeat(3,1fr); gap: 1px; background: var(--border); border: 1px solid var(--border); border-radius: var(--radius-lg); overflow: hidden; margin-top: 48px; }
+.fc { background: var(--surface); padding: 28px 24px; transition: background .15s; }
+.fc:hover { background: var(--surface-2); }
+.fi { width: 40px; height: 40px; border-radius: 10px; display: flex; align-items: center; justify-content: center; margin-bottom: 16px; }
+.fi svg { width: 18px; height: 18px; }
+.fi.bl { background: var(--accent-light); color: var(--accent); }
+.fi.tl { background: var(--teal-light); color: var(--teal); }
+.fi.am { background: var(--amber-light); color: var(--amber); }
+.ft { font-size: 15px; font-weight: 600; color: var(--ink); margin-bottom: 8px; line-height: 1.3; }
+.fd { font-size: 13px; color: var(--ink-3); line-height: 1.6; }
+.rs { background: var(--surface-2); }
+.rg { display: grid; grid-template-columns: repeat(3,1fr); gap: 20px; margin-top: 48px; }
+.rc { background: var(--surface); border: 1px solid var(--border); border-radius: var(--radius-md); padding: 28px 24px; }
+.ri { width: 44px; height: 44px; border-radius: 10px; background: var(--accent-light); color: var(--accent); display: flex; align-items: center; justify-content: center; margin-bottom: 18px; }
+.ri svg { width: 20px; height: 20px; }
+.rt { font-size: 15px; font-weight: 600; color: var(--ink); margin-bottom: 6px; }
+.rd { font-size: 13px; color: var(--ink-3); line-height: 1.6; }
+.dark-co { background: #0f2d47; color: #fff; padding: var(--gap) 0; }
+.dark-in { max-width: var(--max); margin: 0 auto; padding: 0 24px; display: grid; grid-template-columns: 1fr 1fr; gap: 64px; align-items: center; }
+.dark-ey { font-size: 11px; font-weight: 600; letter-spacing: .1em; text-transform: uppercase; color: #7db3e8; margin-bottom: 14px; }
+.dark-h { font-family: var(--font-display); font-size: clamp(22px,2.8vw,32px); font-weight: 400; line-height: 1.25; letter-spacing: -.02em; color: #fff; margin-bottom: 18px; }
+.dark-d { font-size: 15px; color: #b0c8e4; line-height: 1.65; }
+.dark-buls { display: flex; flex-direction: column; gap: 14px; margin-top: 24px; }
+.dbul { display: flex; align-items: flex-start; gap: 12px; font-size: 14px; color: #b0c8e4; line-height: 1.5; }
+.ddot { width: 6px; height: 6px; border-radius: 50%; background: #7db3e8; flex-shrink: 0; margin-top: 7px; }
+.dbul strong { color: #e8f2fd; }
+.dbadges { display: flex; flex-wrap: wrap; gap: 10px; margin-top: 28px; }
+.dbadge { display: inline-flex; align-items: center; gap: 6px; font-size: 12px; font-weight: 500; color: #e8f2fd; background: rgba(255,255,255,.08); border: 1px solid rgba(255,255,255,.15); padding: 6px 14px; border-radius: 100px; }
+.faq-list { margin-top: 48px; }
+.faq-item { border-top: 1px solid var(--border); }
+.faq-item:last-child { border-bottom: 1px solid var(--border); }
+.fq { width: 100%; background: none; border: none; padding: 22px 0; display: flex; align-items: center; justify-content: space-between; gap: 24px; cursor: pointer; text-align: left; font-size: 16px; font-weight: 500; color: var(--ink); line-height: 1.4; }
+.fq:hover { color: var(--accent); }
+.fchev { width: 20px; height: 20px; flex-shrink: 0; color: var(--ink-4); transition: transform .2s; }
+.faq-item.open .fchev { transform: rotate(180deg); }
+.fa { display: none; padding: 0 0 22px; font-size: 15px; color: var(--ink-2); line-height: 1.7; max-width: 760px; }
+.faq-item.open .fa { display: block; }
+.cta-s { background: var(--surface-2); border-top: 1px solid var(--border); padding: var(--gap) 0; }
+.cta-in { max-width: 680px; margin: 0 auto; padding: 0 24px; text-align: center; }
+.cta-h { font-family: var(--font-display); font-size: clamp(24px,3vw,36px); font-weight: 400; line-height: 1.2; letter-spacing: -.02em; color: var(--ink); margin-bottom: 16px; }
+.cta-d { font-size: 16px; color: var(--ink-3); line-height: 1.6; margin-bottom: 32px; }
+.cta-bs { display: flex; gap: 12px; justify-content: center; flex-wrap: wrap; }
+.cta-bs .bp,.cta-bs .bg { padding: 14px 28px; font-size: 15px; }
+.rel-s { padding: 48px 0; border-top: 1px solid var(--border); }
+.rel-in { max-width: var(--max); margin: 0 auto; padding: 0 24px; }
+.rel-lbl { font-size: 12px; font-weight: 600; letter-spacing: .08em; text-transform: uppercase; color: var(--ink-4); margin-bottom: 16px; }
+.rel-ls { display: flex; flex-wrap: wrap; gap: 10px; }
+.rl { font-size: 13px; font-weight: 500; color: var(--ink-2); text-decoration: none; padding: 8px 16px; border: 1px solid var(--border); border-radius: var(--radius-sm); transition: border-color .15s,color .15s; }
+.rl:hover { border-color: var(--accent); color: var(--accent); }
+footer { background: var(--ink); color: #a0a2ab; padding: 28px 0; }
+.foot-in { max-width: var(--max); margin: 0 auto; padding: 0 24px; display: flex; align-items: center; justify-content: space-between; flex-wrap: wrap; gap: 12px; }
+.flogo { font-size: 14px; font-weight: 600; color: #fff; }
+.flogo span { color: #6b9de8; }
+.flinks { display: flex; gap: 24px; }
+.flinks a { font-size: 13px; color: #a0a2ab; text-decoration: none; }
+.flinks a:hover { color: #fff; }
+.fcopy { font-size: 12px; color: #5f6170; }
+@media(max-width:768px){
+  :root{--gap:64px}
+  .hero-in{grid-template-columns:1fr;gap:40px}
+  .hv{display:none}
+  .pain-grid{grid-template-columns:1fr}
+  .fg{grid-template-columns:1fr 1fr}
+  .dd-in{grid-template-columns:1fr;gap:40px}
+  .dd-in.fl{direction:ltr}
+  .rg{grid-template-columns:1fr}
+  .dark-in{grid-template-columns:1fr;gap:40px}
+  .proof-plat{margin-left:0}
+  .nav-bc{display:none}
+}
+@media(max-width:540px){.fg{grid-template-columns:1fr}}
+@media(prefers-reduced-motion:reduce){*{transition:none!important}}
+.geo-answer{background:var(--surface-2);border-left:3px solid var(--accent);border-radius:0 var(--radius-md) var(--radius-md) 0;padding:20px 24px;margin-bottom:48px}
+.geo-answer p{font-size:16px;color:var(--ink-2);line-height:1.75}
+.loop-steps{display:grid;grid-template-columns:1fr 1fr;gap:10px;margin-top:32px}
+.ls{background:var(--surface);border:1px solid var(--border);border-radius:var(--radius-md);padding:14px 16px;display:flex;gap:12px;align-items:flex-start}
+.ls-n{width:24px;height:24px;border-radius:50%;background:var(--accent-light);color:var(--accent);font-size:11px;font-weight:700;display:flex;align-items:center;justify-content:center;flex-shrink:0;margin-top:1px}
+.ls-body{}
+.ls-title{font-size:13px;font-weight:600;color:var(--ink)}
+.ls-desc{font-size:12px;color:var(--ink-3);margin-top:3px;line-height:1.5}
+</style>
+<!-- TEMPLATE CSS (IMPORTANT) -->
+    <link rel="stylesheet" href="/../assets/quantbit_website/css/bootstrap.min.css">
+    <link rel="stylesheet" href="/../assets/quantbit_website/css/font-awesome.css">
+    <link rel="stylesheet" href="/../assets/quantbit_website/css/animate.css">
+    <link rel="stylesheet" href="/../assets/quantbit_website/css/magnific-popup.css">
+    <link rel="stylesheet" href="/../assets/quantbit_website/css/meanmenu.css">
+    <link rel="stylesheet" href="/../assets/quantbit_website/css/slick.css">
+    <link rel="stylesheet" href="/../assets/quantbit_website/css/nice-select.css">
+    <link rel="stylesheet" href="/../assets/quantbit_website/css/main.css">
+    <link rel="stylesheet" href="style.css">
+    <!-- <link rel="stylesheet" href="/assets/quantbit_website/css/_shared.css"> -->
+
+
+    <!-- OPTIONAL CUSTOM -->
+    <link rel="stylesheet" href="/../assets/quantbit_website/css/hrms.css">
+      <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
+<!-- Google Tag Manager -->
+<script>(function(w,d,s,l,i){w[l]=w[l]||[];w[l].push({'gtm.start':
+new Date().getTime(),event:'gtm.js'});var f=d.getElementsByTagName(s)[0],
+j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
+'https://www.googletagmanager.com/gtm.js?id='+i+dl;f.parentNode.insertBefore(j,f);
+})(window,document,'script','dataLayer','GTM-P98Z6G8D');</script>
+<!-- End Google Tag Manager -->
+
+
+</head>
+<body>
+  <!-- Google Tag Manager (noscript) -->
+<noscript><iframe src="https://www.googletagmanager.com/ns.html?id=GTM-P98Z6G8D"
+height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
+<!-- End Google Tag Manager (noscript) -->
+<div id="header"></div>
+
+<section style="padding:56px 0 0">
+  <div class="C">
+    <span class="ey">Hospital pharmacy guide</span>
+    <h1 class="sh" style="font-size:clamp(26px,3.5vw,40px);max-width:760px">What is CPOE integration in hospital pharmacy?</h1>
+
+    <div class="geo-answer speakable-cpoe-1">
+      <p>CPOE stands for Computerised Physician Order Entry — a digital system that allows doctors to enter medication orders directly into a computer rather than on paper. CPOE integration in hospital pharmacy means the digital prescription flows instantly from the doctor to the pharmacy system — where it triggers stock checking, FEFO batch reservation, and dispensing queue update — and then to patient billing when dispensing is completed. No manual re-entry at any stage.</p>
+    </div>
+
+    <h2 class="sh speakable-cpoe-2" id="how-h">How CPOE integration works — the closed medication loop</h2>
+    <p class="ss" style="margin-bottom:0">A CPOE-integrated pharmacy closes the medication loop — from prescription to dispensing to billing, every step is connected and timestamped.</p>
+
+    <div class="loop-steps">
+      <div class="ls"><div class="ls-n">1</div><div class="ls-body"><div class="ls-title">Doctor places medication order via CPOE</div><div class="ls-desc">Structured digital order — medicine name, dose, frequency, duration, and prescriber identity — timestamped and transmitted instantly to pharmacy.</div></div></div>
+      <div class="ls"><div class="ls-n">2</div><div class="ls-body"><div class="ls-title">Pharmacy system receives order in real time</div><div class="ls-desc">No phone call, no paper slip. The order appears in the pharmacy's dispensing queue immediately. Doctor sees a confirmation that the order was received.</div></div></div>
+      <div class="ls"><div class="ls-n">3</div><div class="ls-body"><div class="ls-title">Stock checked and earliest-expiry batch reserved</div><div class="ls-desc">System checks availability and reserves the FEFO batch automatically. If the item is out of stock, the prescribing doctor is notified before the order is confirmed.</div></div></div>
+      <div class="ls"><div class="ls-n">4</div><div class="ls-body"><div class="ls-title">Pharmacist dispenses — no re-entry of item details</div><div class="ls-desc">The pharmacist picks and dispenses against the CPOE order. Barcode scan confirms the correct item and batch. No manual data entry of medicine name or quantity.</div></div></div>
+      <div class="ls"><div class="ls-n">5</div><div class="ls-body"><div class="ls-title">Patient billing generated automatically</div><div class="ls-desc">At the moment of dispensing, the patient billing entry is created — item, quantity, applicable GST, and patient discount category applied. No separate billing step.</div></div></div>
+      <div class="ls"><div class="ls-n">6</div><div class="ls-body"><div class="ls-title">Inventory and audit trail updated</div><div class="ls-desc">Batch ledger decremented, dispensing event logged with pharmacist ID and timestamp, narcotics register updated if applicable — all automatically.</div></div></div>
+    </div>
+  </div>
+</section>
+
+<hr class="div">
+
+<section aria-labelledby="benefit-h">
+  <div class="C">
+    <h2 class="sh" id="benefit-h">What CPOE integration solves — four specific problems</h2>
+    <p class="ss">The value of CPOE integration is most visible in the problems it eliminates, not just the features it adds.</p>
+    <div class="fg" role="list">
+      <div class="fc" role="listitem"><div class="fi tl"><svg viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M13 4L6 11l-3-3"/></svg></div><h3 class="ft">Transcription errors eliminated</h3><p class="fd">Handwritten prescriptions are a well-documented source of dispensing errors — misread drug names, illegible dosages, and ambiguous abbreviations. A digital CPOE order is structured and typed — there is no handwriting to misread.</p></div>
+      <div class="fc" role="listitem"><div class="fi tl"><svg viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="1.5"><circle cx="8" cy="8" r="6"/><path d="M8 5v3l2 2"/></svg></div><h3 class="ft">Real-time stock visibility for prescribing doctors</h3><p class="fd">Without CPOE integration, a doctor cannot see whether the medicine they're prescribing is in stock. They prescribe — the patient waits while pharmacy checks — and sometimes the item is unavailable. With CPOE integration, stock is visible at the point of prescribing.</p></div>
+      <div class="fc" role="listitem"><div class="fi bl"><svg viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="1.5"><rect x="2" y="3" width="12" height="10" rx="1.5"/><path d="M5 7h6M5 10h4"/></svg></div><h3 class="ft">Missed billing charges prevented</h3><p class="fd">Night shift dispensing, emergency medicines, and procedure room consumables are the most commonly missed billing items in hospitals without CPOE integration. When billing generates automatically at dispensing, the time of day is irrelevant — the charge is always captured.</p></div>
+      <div class="fc" role="listitem"><div class="fi am"><svg viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="1.5"><rect x="3" y="2" width="10" height="13" rx="1.5"/><path d="M6 6h4M6 9h4M6 12h2"/></svg></div><h3 class="ft">Complete prescription-to-billing audit trail</h3><p class="fd">Every step is logged — which doctor prescribed, which pharmacist dispensed, when, which batch, and what was billed. This trail is required for NABH accreditation, drug inspector visits, and medico-legal cases involving medication disputes.</p></div>
+    </div>
+  </div>
+</section>
+
+<section aria-labelledby="faq-h"><div class="C"><span class="ey">Common questions</span><h2 class="sh" id="faq-h">Frequently asked questions</h2><div class="faq-list" role="list">
+<div class="faq-item" role="listitem"><button class="fq" aria-expanded="false" onclick="tFaq(this)">What is CPOE and what does it do in a hospital?<svg class="fchev" viewBox="0 0 20 20" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M5 7.5l5 5 5-5"/></svg></button><div class="fa">CPOE stands for Computerised Physician Order Entry. It is a digital system that allows doctors to enter medication orders, investigation requests, and procedure orders directly into a computer interface rather than on paper. CPOE replaces handwritten prescription slips with structured digital orders that are instantly transmitted to the pharmacy, reducing transcription errors and creating a timestamped record of every clinical order.</div></div>
+<div class="faq-item" role="listitem"><button class="fq" aria-expanded="false" onclick="tFaq(this)">What does CPOE integration mean in hospital pharmacy?<svg class="fchev" viewBox="0 0 20 20" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M5 7.5l5 5 5-5"/></svg></button><div class="fa">CPOE integration in hospital pharmacy means the digital prescription placed by the doctor flows directly into the pharmacy management system without any manual re-entry. When a doctor places a medication order, the pharmacy receives it instantly, checks stock, reserves the FEFO batch, and — when dispensing is completed — automatically generates the patient's billing entry. The complete cycle from prescription to billing happens without re-entering the same information.</div></div>
+<div class="faq-item" role="listitem"><button class="fq" aria-expanded="false" onclick="tFaq(this)">What are the benefits of CPOE integration with pharmacy?<svg class="fchev" viewBox="0 0 20 20" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M5 7.5l5 5 5-5"/></svg></button><div class="fa">Key benefits: elimination of transcription errors, real-time stock visibility for prescribing doctors, automatic patient billing at point of dispensing (no missed charges), stock reservation on prescription (prevents stockouts between prescription and dispensing), and a complete digital audit trail linking the clinical order to the dispensing event and billing record.</div></div>
+<div class="faq-item" role="listitem"><button class="fq" aria-expanded="false" onclick="tFaq(this)">How does CPOE integration reduce missed billing charges?<svg class="fchev" viewBox="0 0 20 20" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M5 7.5l5 5 5-5"/></svg></button><div class="fa">Without CPOE integration, billing happens as a separate step after dispensing. Medicines dispensed during night shifts, emergency situations, or procedure rooms are frequently missed in this manual billing flow. CPOE integration eliminates the separate billing step: the billing entry is generated automatically at the moment the pharmacist completes the dispensing, regardless of the time of day.</div></div>
+</div></div></section>
+
+<hr class="div">
+<section style="padding:48px 0;background:var(--surface-2);border-top:1px solid var(--border)"><div class="C" style="max-width:640px;text-align:center"><h2 class="sh" style="font-size:24px">HISx connects CPOE to pharmacy to billing</h2><p style="font-size:15px;color:var(--ink-3);margin:12px 0 28px;line-height:1.65">HISx pharmacy module integrates with CPOE systems via REST API — prescription to dispensing to billing in one unbroken flow, no manual re-entry at any stage.</p><div class="ctas" style="justify-content:center"><a href="/hisx/pharmacy" class="bp">HISx pharmacy module</a><a href="/solutions/hospital-billing-integration" class="bg">CPOE billing solution</a></div></div></section>
+<nav class="rel-s"><div class="rel-in"><div style="display:grid;grid-template-columns:1fr 1fr;gap:28px"><div><div class="rel-lbl">Related guides</div><div class="rel-ls"><a href="/what-is-hospital-pharmacy-erp" class="rl">What is hospital pharmacy ERP?</a><a href="/fefo-in-hospital-pharmacy" class="rl">What is FEFO?</a><a href="/drug-expiry-management-hospitals" class="rl">Drug expiry management</a></div></div><div><div class="rel-lbl">HISx solutions</div><div class="rel-ls"><a href="/solutions/hospital-billing-integration" class="rl">CPOE billing integration</a><a href="/hisx/billing" class="rl">Billing module</a></div></div></div></div></nav>
+<div id="footer"></div>
+<script>function tFaq(b){var i=b.closest('.faq-item'),o=i.classList.contains('open');document.querySelectorAll('.faq-item').forEach(function(x){x.classList.remove('open');x.querySelector('.fq').setAttribute('aria-expanded','false')});if(!o){i.classList.add('open');b.setAttribute('aria-expanded','true')}}</script>
+<script>
+fetch("../header.html")
+    .then(res => res.text())
+    .then(data => {
+        document.getElementById("header").innerHTML = data;
+    });
+
+fetch("../footer.html")
+    .then(res => res.text())
+    .then(data => {
+        document.getElementById("footer").innerHTML = data;
+    });
+</script>
+<!-- ================= TEMPLATE JS ================= -->
+    <!--<< All JS Plugins >>-->
+    <script data-cfasync="false" src="../../cdn-cgi/scripts/5c5dd728/cloudflare-static/email-decode.min.js"></script>
+    <script src="/../assets/quantbit_website/js/jquery-3.7.1.min.js"></script>
+    <!--<< Viewport Js >>-->
+    <script src="/../assets/quantbit_website/js/viewport.jquery.js"></script>
+    <!--<< Bootstrap Js >>-->
+    <script src="/../assets/quantbit_website/js/bootstrap.bundle.min.js"></script>
+    <!--<< Nice Select Js >>-->
+    <script src="/../assets/quantbit_website/js/jquery.nice-select.min.js"></script>
+    <!--<< Waypoints Js >>-->
+    <script src="/../assets/quantbit_website/js/jquery.waypoints.js"></script>
+    <!--<< Counterup Js >>-->
+    <script src="/../assets/quantbit_website/js/jquery.counterup.min.js"></script>
+    <!--<< Slick Js >>-->
+    <script src="/../assets/quantbit_website/js/slick.min.js"></script>
+    <!--<< Slick Animation Js >>-->
+    <script src="/../assets/quantbit_website/js/slick-animation.min.js"></script>
+    <!--<< MeanMenu Js >>-->
+    <script src="/../assets/quantbit_website/js/jquery.meanmenu.min.js"></script>
+    <!--<< Magnific Popup Js >>-->
+    <script src="/../assets/quantbit_website/js/jquery.magnific-popup.min.js"></script>
+    <!--<< Wow Animation Js >>-->
+    <script src="/../assets/quantbit_website/js/wow.min.js"></script>
+    <!--<< Circle Progress Js >>-->
+    <script src="/../assets/quantbit_website/js/circle-progress.js"></script>
+    <!--<< Main.js >>-->
+    <script src="/../assets/quantbit_website/js/main.js"></script>
+    <script defer
+        src="../../../static.cloudflareinsights.com/beacon.min.js/v8c78df7c7c0f484497ecbca7046644da1771523124516"
+        integrity="sha512-8DS7rgIrAmghBFwoOTujcf6D9rXvH8xm8JQ1Ja01h9QX8EzXldiszufYa4IFfKdLUKTTrnSFXLDkUEOTrZQ8Qg=="
+        data-cf-beacon='{"version":"2024.11.0","token":"90f7972af14a48b4add7da2b74f5d675","r":1,"server_timing":{"name":{"cfCacheStatus":true,"cfEdge":true,"cfExtPri":true,"cfL4":true,"cfOrigin":true,"cfSpeedBrain":true},"location_startswith":null}}'
+        crossorigin="anonymous"></script>
+
+
+
+</body></html>

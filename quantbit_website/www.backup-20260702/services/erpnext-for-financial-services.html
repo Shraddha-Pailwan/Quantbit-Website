@@ -1,0 +1,539 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<title>ERPNext for Financial Services | Frappe Lending, NBFC, MFI, Loan Management | Quantbit</title>
+<meta name="description" content="ERPNext and Frappe Lending for NBFCs, MFIs, HFCs, and LAP companies — loan origination pipeline, KYC management, branch operations, RBI compliance, collection efficiency, and HRMS for financial services.">
+<meta name="keywords" content="ERPNext NBFC India, Frappe Lending loan management, ERPNext MFI microfinance, ERPNext financial services ERP, NBFC ERP RBI compliance, ERPNext HFC home finance, ERPNext loan origination CRM, open source NBFC ERP India, ERPNext LAP loan against property, ERPNext collection management NBFC, financial services ERP India">
+<link rel="canonical" href="https://quantbit.io/industries/erpnext-for-financial-services/">
+<script type="application/ld+json">{
+  "@context":"https://schema.org",
+  "@graph":[
+    {"@type":"BreadcrumbList","itemListElement":[
+      {"@type":"ListItem","position":1,"name":"Home","item":"https://quantbit.io"},
+      {"@type":"ListItem","position":2,"name":"Industries","item":"https://quantbit.io/industries/"},
+      {"@type":"ListItem","position":3,"name":"ERPNext for Financial Services","item":"https://quantbit.io/industries/erpnext-for-financial-services/"}
+    ]},
+    {"@type":"FAQPage","mainEntity":[
+      {"@type":"Question","name":"What is Frappe Lending and how does it work with ERPNext for NBFCs?","acceptedAnswer":{"@type":"Answer","text":"Frappe Lending is an open-source loan management application built on the Frappe framework — the same foundation as ERPNext. It manages the full loan lifecycle: loan application, KYC verification, credit assessment, loan approval, disbursement, EMI schedule generation, repayment collection, and NPA classification. Because it is built on Frappe, it integrates natively with ERPNext's accounting, HR, CRM, and purchase modules — giving NBFCs a unified operational platform without separate loan management software."}},
+      {"@type":"Question","name":"Can ERPNext CRM manage the loan origination pipeline for an NBFC or MFI?","acceptedAnswer":{"@type":"Answer","text":"Yes. ERPNext CRM is configured as a loan origination pipeline with stages from lead enquiry through field verification, KYC collection, credit bureau check, credit committee approval, and disbursement. Each lead is assigned to a field officer or branch manager with follow-up tasks. Pipeline dashboards show conversion at each stage — helping the credit head identify bottlenecks in the origination process that slow disbursement."}},
+      {"@type":"Question","name":"How does ERPNext handle branch operations cost tracking for a multi-branch NBFC?","acceptedAnswer":{"@type":"Answer","text":"ERPNext uses cost centres to track branch-wise operating expenses — rent, utilities, staff cost, travel, and petty cash — for each branch separately. A branch P&L report shows revenue (interest income allocated to branch) against operating cost per branch — giving the CEO visibility into which branches are operationally profitable and which require cost intervention or portfolio growth."}},
+      {"@type":"Question","name":"Does ERPNext support RBI NBFC regulatory reporting requirements?","acceptedAnswer":{"@type":"Answer","text":"ERPNext and Frappe Lending together provide the data foundation for key RBI NBFC regulatory returns — loan portfolio aging for NPA provisioning, capital adequacy data inputs, ALM (Asset-Liability Management) maturity reports, and the data required for CRILC reporting on large exposures. Quantbit configures custom reports formatted for RBI return requirements as part of the implementation."}},
+      {"@type":"Question","name":"How does ERPNext manage HRMS for financial services companies with large field forces?","acceptedAnswer":{"@type":"Answer","text":"ERPNext HRMS handles the specific requirements of financial services field staff — incentive-linked salary structures for collection agents and loan officers, travel reimbursement workflows, target-based incentive computation, and branch-wise payroll with PF/ESI compliance. Large NBFCs and MFIs with 100+ field staff benefit from automated incentive calculation that eliminates the manual computation and disputes that consume HR bandwidth every month."}},
+      {"@type":"Question","name":"Can ERPNext manage customer helpdesk and grievance for an NBFC or HFC?","acceptedAnswer":{"@type":"Answer","text":"Yes. ERPNext Helpdesk is configured for financial services customer support — loan statement requests, EMI adjustment queries, foreclosure requests, and RBI ombudsman-related complaint tracking. Ticket categories, SLA timelines, and escalation paths are configured per RBI guidelines for grievance redressal, ensuring that customer complaints are addressed within the regulatory timeline and that unresolved escalations are visible to the compliance team."}}
+    ]}
+  ]
+}</script>
+<style>
+:root{--accent:#1a5fd4;--accent-dark:#1349a8;--teal:#0b7a5e;--teal-light:#e6f4f0;--amber:#b35e0a;--amber-light:#fef3e2;--dark:#0f2d47;--mid:#1e4a6e;--text:#1a2a38;--muted:#4a6278;--border:#d0dce8;--bg:#f5f8fc;--white:#ffffff;--radius:10px;--shadow:0 2px 16px rgba(15,45,71,.10)}
+*,*::before,*::after{box-sizing:border-box;margin:0;padding:0}html{scroll-behavior:smooth}
+body{font-family:'Segoe UI',system-ui,-apple-system,sans-serif;color:var(--text);background:var(--white);line-height:1.65;font-size:16px}
+.site-nav{background:var(--dark);padding:0 32px;display:flex;align-items:center;justify-content:space-between;height:60px;position:sticky;top:0;z-index:100}
+.nav-logo{color:#fff;font-weight:700;font-size:1.1rem;text-decoration:none}
+.nav-links{display:flex;gap:24px;list-style:none}
+.nav-links a{color:rgba(255,255,255,.82);text-decoration:none;font-size:.9rem;font-weight:500}
+.nav-links a:hover{color:#fff}
+.nav-cta{background:var(--accent);color:#fff!important;padding:7px 18px;border-radius:6px;font-weight:600!important}
+.breadcrumb{background:var(--bg);border-bottom:1px solid var(--border);padding:10px 32px;font-size:.82rem;color:var(--muted)}
+.breadcrumb a{color:var(--accent);text-decoration:none}
+.hero{background:linear-gradient(135deg,var(--dark) 0%,var(--mid) 60%,#1a5fd4 100%);color:#fff;padding:72px 32px 64px;position:relative;overflow:hidden}
+.hero::before{content:'';position:absolute;right:-80px;top:-80px;width:420px;height:420px;background:rgba(255,255,255,.04);border-radius:50%;pointer-events:none}
+.hero-inner{max-width:1100px;margin:0 auto;display:grid;grid-template-columns:1fr 360px;gap:56px;align-items:center}
+.hero-badge{display:inline-flex;align-items:center;gap:8px;background:rgba(255,255,255,.12);border:1px solid rgba(255,255,255,.22);border-radius:40px;padding:5px 14px;font-size:.78rem;font-weight:600;letter-spacing:.8px;text-transform:uppercase;margin-bottom:18px}
+.hero h1{font-size:clamp(1.9rem,3.5vw,2.7rem);font-weight:800;line-height:1.2;margin-bottom:16px}
+.hero h1 span{color:#7eb8ff}
+.hero-desc{font-size:1.05rem;color:rgba(255,255,255,.82);margin-bottom:28px;max-width:540px}
+.hero-tags{display:flex;flex-wrap:wrap;gap:8px;margin-bottom:32px}
+.hero-tag{background:rgba(255,255,255,.1);border:1px solid rgba(255,255,255,.2);border-radius:20px;padding:4px 12px;font-size:.78rem;color:rgba(255,255,255,.85)}
+.hero-btns{display:flex;gap:14px;flex-wrap:wrap}
+.btn-primary{background:var(--accent);color:#fff;padding:12px 26px;border-radius:8px;font-weight:700;text-decoration:none;font-size:.95rem;transition:background .2s;display:inline-block}
+.btn-primary:hover{background:var(--accent-dark)}
+.btn-ghost{background:transparent;color:#fff;padding:11px 24px;border:2px solid rgba(255,255,255,.4);border-radius:8px;font-weight:600;text-decoration:none;font-size:.95rem;transition:.2s;display:inline-block}
+.btn-ghost:hover{border-color:#fff;background:rgba(255,255,255,.1)}
+.hero-card{background:rgba(255,255,255,.1);border:1px solid rgba(255,255,255,.18);border-radius:14px;padding:28px;backdrop-filter:blur(8px)}
+.hero-card h3{font-size:.95rem;font-weight:700;margin-bottom:16px;color:rgba(255,255,255,.92)}
+.hero-stat{display:flex;align-items:center;gap:12px;margin-bottom:14px;padding-bottom:14px;border-bottom:1px solid rgba(255,255,255,.12)}
+.hero-stat:last-child{margin-bottom:0;padding-bottom:0;border-bottom:none}
+.stat-icon{width:36px;height:36px;background:rgba(255,255,255,.15);border-radius:8px;display:flex;align-items:center;justify-content:center;font-size:1.1rem;flex-shrink:0}
+.stat-val{font-size:1.05rem;font-weight:800;color:#fff}
+.stat-lbl{font-size:.73rem;color:rgba(255,255,255,.7);line-height:1.3}
+.frappe-banner{background:linear-gradient(135deg,#1349a8,#0f2d47);color:#fff;border-radius:12px;padding:22px 28px;margin-bottom:44px;display:flex;align-items:flex-start;gap:20px;border:1px solid rgba(255,255,255,.15)}
+.frappe-banner .fb-icon{font-size:2rem;flex-shrink:0;margin-top:2px}
+.frappe-banner h3{font-size:1rem;font-weight:700;margin-bottom:5px;color:#7eb8ff}
+.frappe-banner p{font-size:.86rem;color:rgba(255,255,255,.82);line-height:1.6}
+.section{padding:64px 32px}.section-alt{background:var(--bg)}.container{max-width:1100px;margin:0 auto}
+.section-label{font-size:.75rem;font-weight:700;letter-spacing:1.2px;text-transform:uppercase;color:var(--accent);margin-bottom:8px}
+.section-title{font-size:clamp(1.5rem,2.8vw,2.1rem);font-weight:800;color:var(--dark);margin-bottom:12px;line-height:1.25}
+.section-sub{font-size:1.02rem;color:var(--muted);max-width:680px;margin-bottom:44px;line-height:1.7}
+.pain-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(260px,1fr));gap:20px}
+.pain-card{background:var(--white);border:1px solid var(--border);border-left:4px solid #e74c3c;border-radius:var(--radius);padding:22px 24px}
+.pain-card h3{font-size:.95rem;font-weight:700;color:var(--dark);margin-bottom:8px;display:flex;align-items:center;gap:8px}
+.pain-card p{font-size:.86rem;color:var(--muted);line-height:1.6}
+.pain-card .solve{font-size:.82rem;color:var(--teal);font-weight:600;margin-top:10px;padding-top:10px;border-top:1px solid var(--border)}
+.module-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(300px,1fr));gap:24px}
+.module-card{background:var(--white);border:1px solid var(--border);border-radius:var(--radius);padding:26px;transition:box-shadow .2s,transform .2s}
+.module-card:hover{box-shadow:var(--shadow);transform:translateY(-3px)}
+.module-icon{width:44px;height:44px;border-radius:10px;background:linear-gradient(135deg,var(--accent),var(--mid));display:flex;align-items:center;justify-content:center;font-size:1.3rem;margin-bottom:14px}
+.module-card h3{font-size:.98rem;font-weight:700;color:var(--dark);margin-bottom:6px}
+.module-link{font-size:.78rem;color:var(--accent);text-decoration:none;font-weight:600}
+.module-card p{font-size:.86rem;color:var(--muted);line-height:1.6;margin:8px 0}
+.module-card ul{padding-left:0;list-style:none}
+.module-card ul li{font-size:.84rem;color:var(--muted);padding:3px 0 3px 16px;position:relative;line-height:1.5}
+.module-card ul li::before{content:'✓';position:absolute;left:0;color:var(--teal);font-weight:700}
+.workflow-steps{display:grid;grid-template-columns:repeat(auto-fit,minmax(150px,1fr));gap:0;position:relative}
+.workflow-steps::before{content:'';position:absolute;top:28px;left:0;right:0;height:2px;background:var(--border);z-index:0}
+.w-step{background:var(--white);border:1px solid var(--border);border-radius:var(--radius);padding:20px 14px;text-align:center;position:relative;z-index:1}
+.w-num{width:36px;height:36px;background:var(--accent);color:#fff;border-radius:50%;display:flex;align-items:center;justify-content:center;font-size:.82rem;font-weight:700;margin:0 auto 10px}
+.w-step h4{font-size:.8rem;font-weight:700;color:var(--dark);margin-bottom:4px}
+.w-step p{font-size:.74rem;color:var(--muted);line-height:1.4}
+.compliance-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(240px,1fr));gap:18px}
+.comp-card{background:var(--white);border:1px solid var(--border);border-radius:var(--radius);padding:20px 22px;display:flex;gap:14px;align-items:flex-start}
+.comp-dot{width:10px;height:10px;background:var(--amber);border-radius:50%;flex-shrink:0;margin-top:5px}
+.comp-card h4{font-size:.88rem;font-weight:700;color:var(--dark);margin-bottom:4px}
+.comp-card p{font-size:.82rem;color:var(--muted);line-height:1.55}
+.reports-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(230px,1fr));gap:18px}
+.report-card{background:var(--white);border:1px solid var(--border);border-left:4px solid var(--accent);border-radius:var(--radius);padding:18px 20px}
+.report-card h4{font-size:.9rem;font-weight:700;color:var(--dark);margin-bottom:5px}
+.report-card p{font-size:.81rem;color:var(--muted);line-height:1.5}
+.report-tag{display:inline-block;background:var(--bg);border:1px solid var(--border);border-radius:4px;padding:2px 8px;font-size:.71rem;font-weight:600;color:var(--accent);margin-top:7px}
+.benefits-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(260px,1fr));gap:22px}
+.benefit-card{background:linear-gradient(135deg,var(--teal-light),var(--white));border:1px solid #b8dfd6;border-radius:var(--radius);padding:24px}
+.benefit-num{font-size:2rem;font-weight:900;color:var(--teal);opacity:.3;line-height:1;margin-bottom:6px}
+.benefit-card h3{font-size:.96rem;font-weight:700;color:var(--dark);margin-bottom:7px}
+.benefit-card p{font-size:.85rem;color:var(--muted);line-height:1.6}
+.bp-list{display:grid;grid-template-columns:repeat(auto-fit,minmax(300px,1fr));gap:18px}
+.bp-item{background:var(--white);border:1px solid var(--border);border-radius:var(--radius);padding:20px 22px;display:flex;gap:14px;align-items:flex-start}
+.bp-icon{width:36px;height:36px;background:var(--amber-light);border-radius:8px;display:flex;align-items:center;justify-content:center;font-size:1rem;flex-shrink:0}
+.bp-item h4{font-size:.9rem;font-weight:700;color:var(--dark);margin-bottom:4px}
+.bp-item p{font-size:.82rem;color:var(--muted);line-height:1.55}
+.geo-answer{background:linear-gradient(135deg,#e8f0fc,#f0f6ff);border:1px solid #c5d8f7;border-radius:14px;padding:30px 34px;margin-bottom:28px}
+.geo-answer h3{font-size:1.05rem;font-weight:700;color:var(--dark);margin-bottom:9px}
+.geo-answer p{font-size:.93rem;color:var(--text);line-height:1.75}
+.geo-grid{display:grid;grid-template-columns:1fr 1fr;gap:22px}
+.geo-block{background:var(--white);border:1px solid var(--border);border-radius:var(--radius);padding:22px}
+.geo-block h4{font-size:.88rem;font-weight:700;color:var(--accent);margin-bottom:9px}
+.geo-block ul{list-style:none;padding:0}
+.geo-block ul li{font-size:.84rem;color:var(--muted);padding:4px 0 4px 16px;position:relative}
+.geo-block ul li::before{content:'→';position:absolute;left:0;color:var(--accent)}
+.ai-block{background:linear-gradient(135deg,var(--dark),var(--mid));color:#fff;border-radius:14px;padding:34px 38px}
+.ai-block h3{font-size:1.1rem;font-weight:700;margin-bottom:14px;color:#7eb8ff}
+.ai-qa{margin-bottom:16px;padding-bottom:16px;border-bottom:1px solid rgba(255,255,255,.1)}
+.ai-qa:last-child{margin-bottom:0;padding-bottom:0;border-bottom:none}
+.ai-qa .q{font-size:.86rem;font-weight:600;color:rgba(255,255,255,.7);margin-bottom:4px}
+.ai-qa .a{font-size:.88rem;color:rgba(255,255,255,.88);line-height:1.65}
+.faq-list{max-width:800px;margin:0 auto}
+.faq-item{border:1px solid var(--border);border-radius:var(--radius);margin-bottom:10px;overflow:hidden}
+.faq-q{width:100%;background:var(--white);border:none;padding:17px 22px;text-align:left;font-size:.93rem;font-weight:600;color:var(--dark);cursor:pointer;display:flex;justify-content:space-between;align-items:center;gap:12px;transition:background .15s}
+.faq-q:hover,.faq-q.open{background:var(--bg)}
+.faq-arrow{font-size:1rem;color:var(--accent);transition:transform .25s;flex-shrink:0}
+.faq-q.open .faq-arrow{transform:rotate(180deg)}
+.faq-a{display:none;padding:0 22px 17px;font-size:.88rem;color:var(--muted);line-height:1.7}
+.faq-a.open{display:block}
+.seo-box{background:var(--bg);border:1px solid var(--border);border-radius:var(--radius);padding:22px 26px}
+.seo-kw{display:flex;flex-wrap:wrap;gap:8px;margin-top:10px}
+.seo-kw span{background:var(--white);border:1px solid var(--border);border-radius:4px;padding:4px 10px;font-size:.76rem;color:var(--accent);font-weight:600}
+.cta-section{background:linear-gradient(135deg,var(--dark) 0%,var(--mid) 100%);color:#fff;padding:72px 32px;text-align:center}
+.cta-section h2{font-size:clamp(1.6rem,3vw,2.3rem);font-weight:800;margin-bottom:14px}
+.cta-section p{font-size:1.05rem;color:rgba(255,255,255,.8);max-width:580px;margin:0 auto 32px}
+.cta-btns{display:flex;gap:16px;justify-content:center;flex-wrap:wrap}
+.btn-white{background:#fff;color:var(--dark);padding:13px 28px;border-radius:8px;font-weight:700;text-decoration:none;font-size:.97rem;display:inline-block}
+.btn-white:hover{background:#e8f0fc}
+.cta-trust{margin-top:22px;font-size:.82rem;color:rgba(255,255,255,.55)}
+.site-footer{background:#0a1e2e;color:rgba(255,255,255,.6);padding:40px 32px 24px;text-align:center;font-size:.83rem}
+.site-footer a{color:rgba(255,255,255,.5);text-decoration:none}
+@media(max-width:768px){.hero-inner{grid-template-columns:1fr}.hero-card{display:none}.geo-grid{grid-template-columns:1fr}.site-nav{padding:0 16px}.nav-links{display:none}.section{padding:48px 16px}.hero{padding:48px 16px 44px}.workflow-steps{grid-template-columns:1fr 1fr}.workflow-steps::before{display:none}.ai-block{padding:24px 20px}.geo-answer{padding:22px 20px}.frappe-banner{flex-direction:column}}
+</style>
+ <!-- TEMPLATE CSS (IMPORTANT) -->
+  <link rel="stylesheet" href="/../assets/quantbit_website/css/bootstrap.min.css">
+  <link rel="stylesheet" href="/../assets/quantbit_website/css/font-awesome.css">
+  <link rel="stylesheet" href="/../assets/quantbit_website/css/animate.css">
+  <link rel="stylesheet" href="/../assets/quantbit_website/css/magnific-popup.css">
+  <link rel="stylesheet" href="/../assets/quantbit_website/css/meanmenu.css">
+  <link rel="stylesheet" href="/../assets/quantbit_website/css/slick.css">
+  <link rel="stylesheet" href="/../assets/quantbit_website/css/nice-select.css">
+  <link rel="stylesheet" href="/../assets/quantbit_website/css/main.css">
+  <link rel="stylesheet" href="style.css">
+  <link rel="stylesheet" href="/assets/quantbit_website/css/_shared.css">
+
+
+  <!-- OPTIONAL CUSTOM -->
+  <link rel="stylesheet" href="/../assets/quantbit_website/css/hrms.css">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
+  <!-- Google Tag Manager -->
+  <script>(function (w, d, s, l, i) {
+      w[l] = w[l] || []; w[l].push({
+        'gtm.start':
+          new Date().getTime(), event: 'gtm.js'
+      }); var f = d.getElementsByTagName(s)[0],
+        j = d.createElement(s), dl = l != 'dataLayer' ? '&l=' + l : ''; j.async = true; j.src =
+          'https://www.googletagmanager.com/gtm.js?id=' + i + dl; f.parentNode.insertBefore(j, f);
+    })(window, document, 'script', 'dataLayer', 'GTM-P98Z6G8D');</script>
+  <!-- End Google Tag Manager -->
+</head>
+
+<body>
+ <!-- Google Tag Manager (noscript) -->
+  <noscript><iframe src="https://www.googletagmanager.com/ns.html?id=GTM-P98Z6G8D" height="0" width="0"
+      style="display:none;visibility:hidden"></iframe></noscript>
+  <!-- End Google Tag Manager (noscript) -->
+  <!-- NAV -->
+  <div id="header"></div>
+
+<section class="hero">
+  <div class="hero-inner">
+    <div>
+      <div class="hero-badge">&#128176; Industry Solution</div>
+      <h1>ERPNext for <span>Financial Services</span><br>NBFCs, MFIs &amp; Lending Companies</h1>
+      <p class="hero-desc">Combine Frappe Lending's loan lifecycle management with ERPNext's CRM, Helpdesk, Purchase, and HRMS — giving NBFCs, MFIs, and HFCs one unified platform for loan origination, customer support, branch operations, RBI compliance, and field staff payroll.</p>
+      <div class="hero-tags">
+        <span class="hero-tag">Frappe Lending</span><span class="hero-tag">Loan Origination CRM</span><span class="hero-tag">KYC Management</span><span class="hero-tag">Branch P&amp;L</span><span class="hero-tag">RBI Compliance</span><span class="hero-tag">NPA Tracking</span><span class="hero-tag">Collection Efficiency</span><span class="hero-tag">Field Staff HRMS</span>
+      </div>
+      <div class="hero-btns">
+        <a href="/contact/" class="btn-primary">Book Free Demo</a>
+        <a href="/contact/?q=nbfc-erp" class="btn-ghost">Talk to a Consultant</a>
+      </div>
+    </div>
+    <div class="hero-card">
+      <h3>Why NBFCs &amp; MFIs Choose This Stack</h3>
+      <div class="hero-stat"><div class="stat-icon">&#128196;</div><div><div class="stat-val">Frappe Lending</div><div class="stat-lbl">Full loan lifecycle — application to NPA</div></div></div>
+      <div class="hero-stat"><div class="stat-icon">&#128100;</div><div><div class="stat-val">Lead to Disbursal</div><div class="stat-lbl">CRM pipeline for loan origination</div></div></div>
+      <div class="hero-stat"><div class="stat-icon">&#128202;</div><div><div class="stat-val">Branch P&amp;L</div><div class="stat-lbl">Revenue vs cost per branch</div></div></div>
+      <div class="hero-stat"><div class="stat-icon">&#128104;&#8205;&#128188;</div><div><div class="stat-val">Field HRMS</div><div class="stat-lbl">Incentive payroll for 100+ field staff</div></div></div>
+    </div>
+  </div>
+</section>
+
+<section class="section">
+  <div class="container">
+    <div class="section-label">Platform Note</div>
+    <div class="frappe-banner">
+      <div class="fb-icon">&#128196;</div>
+      <div>
+        <h3>Powered by Frappe Lending + ERPNext — Open-Source Loan Management on the Frappe Framework</h3>
+        <p>Frappe Lending is an open-source loan management application from the Frappe ecosystem — the same framework as ERPNext. It handles the full loan lifecycle: origination, disbursement, EMI scheduling, repayment collection, and NPA classification. Integrated natively with ERPNext's accounting, CRM, Helpdesk, and HRMS, it gives NBFCs and MFIs a unified platform without the cost of proprietary LMS software. This is not a core banking system — it is built for NBFCs, MFIs, HFCs, and LAP companies managing retail and MSME lending portfolios.</p>
+      </div>
+    </div>
+
+    <div class="section-label">Industry Challenges</div>
+    <h2 class="section-title">Problems This Stack Solves for Financial Services Companies</h2>
+    <p class="section-sub">NBFCs and MFIs operate with high-volume loan portfolios, a distributed branch network, large field teams, and increasing RBI regulatory scrutiny. Disconnected systems are both an operational and a compliance risk.</p>
+    <div class="pain-grid">
+      <div class="pain-card">
+        <h3><span style="font-size:1.2rem">&#128196;</span> Loan Origination Bottlenecks</h3>
+        <p>Loan applications move through field officer → credit team → credit committee → disbursement via WhatsApp forwards and email chains. No visibility into pipeline, no SLA on credit decisions, and no analytics on conversion rates by product, branch, or officer.</p>
+        <div class="solve">&#10003; CRM pipeline: Every application tracked through stages — decision SLA, branch-wise conversion analytics</div>
+      </div>
+      <div class="pain-card">
+        <h3><span style="font-size:1.2rem">&#128683;</span> Collection Efficiency Blind Spots</h3>
+        <p>Collection teams manage overdue accounts through phone calls and personal visit registers. No centralised view of DPD (days past due) by branch or officer. NPAs are discovered at month-end provisioning — not when early intervention could still recover the account.</p>
+        <div class="solve">&#10003; Frappe Lending: DPD aging by branch and officer — early warning dashboard for 1–30 DPD accounts</div>
+      </div>
+      <div class="pain-card">
+        <h3><span style="font-size:1.2rem">&#128202;</span> Branch Cost Invisibility</h3>
+        <p>Head office has no real-time view of branch-wise operating expenses — rent, salaries, travel, and petty cash — against the interest income generated by that branch. Unprofitable branches remain open because no one measures them.</p>
+        <div class="solve">&#10003; ERPNext cost centres: Branch P&amp;L — interest income vs operating cost — updated daily</div>
+      </div>
+      <div class="pain-card">
+        <h3><span style="font-size:1.2rem">&#128100;</span> Field Staff Incentive Disputes</h3>
+        <p>Incentive computation for loan officers and collection agents — linked to disbursement targets, collection efficiency, and portfolio quality — is done manually on spreadsheets. Disputes arise every month from calculation errors, and HR spends 3–5 days resolving them.</p>
+        <div class="solve">&#10003; HRMS: Rule-based incentive calculation auto-computed from Frappe Lending disbursement and collection data</div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section class="section section-alt">
+  <div class="container">
+    <div class="section-label">Focus Modules</div>
+    <h2 class="section-title">The ERPNext + Frappe Lending Stack for Financial Services</h2>
+    <p class="section-sub">Five integrated modules — each covering a critical domain of NBFC and MFI operations — on one open-source Frappe foundation.</p>
+    <div class="module-grid">
+      <div class="module-card">
+        <div class="module-icon">&#128196;</div>
+        <h3>Frappe Lending — Loan Lifecycle</h3>
+        <p>Full loan management from application to closure — EMI scheduling, repayment tracking, NPA classification, and provisioning aligned to RBI guidelines.</p>
+        <ul>
+          <li>Loan application with KYC document linkage</li>
+          <li>EMI schedule generation — flat rate and reducing balance</li>
+          <li>Repayment collection posting and receipt</li>
+          <li>NPA classification — substandard, doubtful, loss</li>
+        </ul>
+      </div>
+      <div class="module-card">
+        <div class="module-icon">&#128100;</div>
+        <h3>CRM — Loan Origination Pipeline</h3>
+        <a href="/services/erpnext-sales-crm/" class="module-link">&#8594; View CRM Module</a>
+        <p>Lead-to-disbursement pipeline with field officer assignments, credit decision SLA tracking, and conversion analytics by product and branch.</p>
+        <ul>
+          <li>Lead enquiry → field verification → KYC → credit committee</li>
+          <li>Credit decision SLA — days to approval per stage</li>
+          <li>Branch-wise and officer-wise disbursement pipeline</li>
+          <li>Product-wise origination analytics — LAP, PL, BL, MFI</li>
+        </ul>
+      </div>
+      <div class="module-card">
+        <div class="module-icon">&#127381;</div>
+        <h3>Helpdesk — Customer Service &amp; Grievance</h3>
+        <a href="/services/erpnext-support-helpdesk/" class="module-link">&#8594; View Support Module</a>
+        <p>RBI-compliant grievance management with loan statement requests, EMI queries, foreclosure processing, and ombudsman complaint tracking.</p>
+        <ul>
+          <li>Loan-linked customer service tickets</li>
+          <li>RBI grievance timeline — 30-day resolution SLA</li>
+          <li>Escalation to Nodal Officer for unresolved complaints</li>
+          <li>RBI ombudsman referral tracking and closure</li>
+        </ul>
+      </div>
+      <div class="module-card">
+        <div class="module-icon">&#128230;</div>
+        <h3>Purchase — Branch Operations</h3>
+        <a href="/services/erpnext-purchase/" class="module-link">&#8594; View Purchase Module</a>
+        <p>Branch expense management — rent, utilities, office supplies, IT procurement — with cost centre allocation and head office approval workflow.</p>
+        <ul>
+          <li>Branch PO with cost centre and HOD approval</li>
+          <li>Petty cash management per branch</li>
+          <li>IT and infrastructure procurement with asset tagging</li>
+          <li>Annual rate contract for recurring branch expenses</li>
+        </ul>
+      </div>
+      <div class="module-card">
+        <div class="module-icon">&#128104;&#8205;&#128188;</div>
+        <h3>HRMS — Field Staff Payroll</h3>
+        <a href="/services/erpnext-payroll-compliance/" class="module-link">&#8594; View Payroll Module</a>
+        <p>Incentive-linked salary structures for loan officers and collection agents, travel reimbursement workflow, and branch-wise payroll with statutory compliance.</p>
+        <ul>
+          <li>Disbursement-linked loan officer incentive calculation</li>
+          <li>Collection efficiency-based agent incentive</li>
+          <li>Travel reimbursement with field visit verification</li>
+          <li>PF, ESI, PT, TDS — statutory compliance for field teams</li>
+        </ul>
+      </div>
+      <div class="module-card">
+        <div class="module-icon">&#128202;</div>
+        <h3>Accounting — Branch P&amp;L &amp; RBI Inputs</h3>
+        <a href="/services/erpnext-accounting-finance/" class="module-link">&#8594; View Accounting Module</a>
+        <p>Interest income allocation, branch cost centre P&amp;L, NPA provisioning entries, and the data foundation for RBI regulatory return preparation.</p>
+        <ul>
+          <li>Interest income allocation by branch and product</li>
+          <li>Branch P&amp;L — income vs operating cost</li>
+          <li>NPA provisioning journal entries per RBI guidelines</li>
+          <li>ALM maturity data and CRILC large exposure inputs</li>
+        </ul>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section class="section">
+  <div class="container">
+    <div class="section-label">Loan Operations Workflow</div>
+    <h2 class="section-title">NBFC Loan Lifecycle in Frappe Lending + ERPNext</h2>
+    <p class="section-sub">From customer enquiry to loan closure — with RBI-aligned NPA tracking and collection efficiency management.</p>
+    <div class="workflow-steps">
+      <div class="w-step"><div class="w-num">1</div><h4>Lead Enquiry</h4><p>CRM captures lead — field officer assigned, KYC checklist initiated</p></div>
+      <div class="w-step"><div class="w-num">2</div><h4>Credit Assessment</h4><p>Bureau check, income verification, property valuation — credit committee review</p></div>
+      <div class="w-step"><div class="w-num">3</div><h4>Disbursement</h4><p>Loan created in Frappe Lending — EMI schedule generated, sanction letter issued</p></div>
+      <div class="w-step"><div class="w-num">4</div><h4>EMI Collection</h4><p>Repayments posted — DPD tracked daily, collection agent alerted at day 1</p></div>
+      <div class="w-step"><div class="w-num">5</div><h4>NPA Management</h4><p>90+ DPD classified NPA — provisioning entry posted, SARFAESI initiated</p></div>
+      <div class="w-step"><div class="w-num">6</div><h4>Loan Closure</h4><p>NOC generated — closure entry in Frappe Lending, officer incentive computed</p></div>
+    </div>
+  </div>
+</section>
+
+<section class="section section-alt">
+  <div class="container">
+    <div class="section-label">Compliance &amp; Regulatory</div>
+    <h2 class="section-title">Regulatory Requirements This Stack Addresses</h2>
+    <div class="compliance-grid">
+      <div class="comp-card"><div class="comp-dot"></div><div><h4>RBI NBFC Guidelines — NPA &amp; Provisioning</h4><p>RBI's NBFC prudential norms require NPA classification at 90 DPD and provisioning at 10–100% depending on category. Frappe Lending classifies loans to substandard, doubtful, and loss categories automatically at the defined DPD thresholds — with provisioning entries posted to ERPNext accounting.</p></div></div>
+      <div class="comp-card"><div class="comp-dot"></div><div><h4>KYC / AML Compliance</h4><p>RBI requires NBFC customer KYC documentation to be collected and periodically updated. ERPNext CRM stores KYC documents — Aadhaar, PAN, address proof, income documents — against each loan application. KYC review date alerts ensure periodic re-KYC is completed before the regulatory deadline.</p></div></div>
+      <div class="comp-card"><div class="comp-dot"></div><div><h4>CRILC — Central Repository of Large Credits</h4><p>NBFCs above the threshold must report exposures above ₹5 crore to RBI's CRILC on a quarterly basis. ERPNext's loan data from Frappe Lending provides the large exposure list with borrower details, outstanding balance, and NPA status — formatted for CRILC submission.</p></div></div>
+      <div class="comp-card"><div class="comp-dot"></div><div><h4>Fair Practice Code — Grievance Redressal</h4><p>RBI's Fair Practice Code for NBFCs mandates a customer grievance redressal mechanism with a designated Nodal Officer and 30-day resolution commitment. ERPNext Helpdesk enforces the 30-day SLA, escalates unresolved complaints to the Nodal Officer, and tracks RBI ombudsman referrals to closure.</p></div></div>
+      <div class="comp-card"><div class="comp-dot"></div><div><h4>GST on Financial Services — 18%</h4><p>Processing fees, prepayment charges, and non-fund-based income from NBFCs attract 18% GST. ERPNext applies GST correctly on fee income while correctly exempting interest income — maintaining the critical distinction that determines the input credit reversal required under financial services GST rules.</p></div></div>
+      <div class="comp-card"><div class="comp-dot"></div><div><h4>SARFAESI &amp; Recovery Proceedings</h4><p>For secured lending, ERPNext tracks SARFAESI notices — demand notice date, possession notice date, auction notice date — per NPA account. Recovery proceeding status is available to the legal and collection teams without separate tracking systems.</p></div></div>
+    </div>
+  </div>
+</section>
+
+<section class="section">
+  <div class="container">
+    <div class="section-label">Reports &amp; KPIs</div>
+    <h2 class="section-title">Financial Services Management Reports</h2>
+    <div class="reports-grid">
+      <div class="report-card"><h4>Portfolio Aging &amp; DPD Dashboard</h4><p>Loan portfolio segmented by DPD bucket — current, 1–30, 31–60, 61–90, 90+ — by branch, officer, and product. The primary early warning tool for collection management.</p><span class="report-tag">Collections / Management</span></div>
+      <div class="report-card"><h4>Origination Funnel by Branch</h4><p>Lead enquiries, applications submitted, sanctions, and disbursements by branch and month — with stage-wise conversion rates for credit process optimisation.</p><span class="report-tag">Credit / Management</span></div>
+      <div class="report-card"><h4>Branch P&amp;L Report</h4><p>Interest income allocated to branch vs branch operating cost (rent, salaries, travel) — the profitability view that drives branch expansion and rationalisation decisions.</p><span class="report-tag">Finance / Management</span></div>
+      <div class="report-card"><h4>NPA &amp; Provisioning Report</h4><p>NPA balance by category — substandard, doubtful, loss — with required provision per RBI guidelines and current provision balance. Input for the quarterly board presentation.</p><span class="report-tag">Finance / Compliance</span></div>
+      <div class="report-card"><h4>Field Officer Incentive Statement</h4><p>Disbursement volume, collection efficiency, and portfolio quality per officer — auto-computed incentive for the month. Eliminates the manual calculation disputes that consume HR bandwidth.</p><span class="report-tag">HR / Operations</span></div>
+      <div class="report-card"><h4>Grievance Redressal Report</h4><p>All customer complaints — open, resolved, escalated, and RBI ombudsman referred — by category and resolution time. Required for the Fair Practice Code quarterly board report.</p><span class="report-tag">Compliance / Management</span></div>
+    </div>
+  </div>
+</section>
+
+<section class="section section-alt">
+  <div class="container">
+    <div class="section-label">Key Benefits</div>
+    <h2 class="section-title">Why NBFCs &amp; MFIs Choose This Stack</h2>
+    <div class="benefits-grid">
+      <div class="benefit-card"><div class="benefit-num">01</div><h3>One Platform from Lead to NPA</h3><p>The entire loan lifecycle — enquiry, KYC, disbursement, collection, and NPA management — runs on one Frappe foundation. No data transfer between origination system, LMS, and accounting software. No reconciliation between systems that don't agree on outstanding balances.</p></div>
+      <div class="benefit-card"><div class="benefit-num">02</div><h3>Early DPD Intervention That Recovers Loans</h3><p>Collection teams see 1–30 DPD accounts the day after the EMI is missed — not after 90 days when NPA classification is mandatory. Early intervention at DPD 1–15 has a 70–85% recovery rate. Intervention at DPD 90 has a 20–30% recovery rate. The difference is real-time visibility.</p></div>
+      <div class="benefit-card"><div class="benefit-num">03</div><h3>Branch Profitability That Drives Decisions</h3><p>When the CEO can see that Branch A generates ₹40 lakhs of interest income at ₹12 lakhs operating cost and Branch B generates ₹18 lakhs at ₹15 lakhs cost, the resource allocation decision is obvious. Branch P&amp;L in ERPNext makes this visible — and actionable — every month.</p></div>
+      <div class="benefit-card"><div class="benefit-num">04</div><h3>Incentive Disputes Eliminated</h3><p>Loan officer and collection agent incentives calculated from Frappe Lending's disbursement and repayment data — automatically, without manual computation. When officers can see the exact data their incentive is based on, disputes end. HR recovers 3–5 days per month previously spent on incentive reconciliation.</p></div>
+      <div class="benefit-card"><div class="benefit-num">05</div><h3>RBI Compliance Without a Separate Compliance System</h3><p>NPA classification, provisioning, CRILC data, grievance redressal tracking, and KYC status are all maintained within ERPNext and Frappe Lending. Regulatory return preparation becomes a reporting exercise — not a data extraction and reconciliation project that consumes the finance team for a week each quarter.</p></div>
+      <div class="benefit-card"><div class="benefit-num">06</div><h3>Open-Source at NBFC Scale Without Proprietary LMS Cost</h3><p>Proprietary LMS platforms charge per-loan or per-branch fees that scale uncomfortably as the portfolio grows. Frappe Lending on ERPNext provides loan management capability at open-source cost — with a certified implementation partner managing deployment, configuration, and ongoing support.</p></div>
+    </div>
+  </div>
+</section>
+
+<section class="section">
+  <div class="container">
+    <div class="section-label">Best Practices</div>
+    <h2 class="section-title">Best Practices for NBFCs &amp; MFIs Using This Stack</h2>
+    <div class="bp-list">
+      <div class="bp-item"><div class="bp-icon">&#128196;</div><div><h4>Run DPD Aging Report Daily, Not Monthly</h4><p>Configure the portfolio DPD aging report to run automatically every morning and email to the collection head and branch managers. Monthly DPD review means 30 days of collection inaction on day-1 overdue accounts — the window where recovery rate is highest.</p></div></div>
+      <div class="bp-item"><div class="bp-icon">&#128100;</div><div><h4>Define Credit Decision SLA Before Go-Live</h4><p>Configure credit committee SLA timelines in ERPNext CRM before launching the origination pipeline. Without SLA enforcement, credit decisions stretch from 5 days to 15 days without anyone being accountable — destroying field officer morale and borrower experience simultaneously.</p></div></div>
+      <div class="bp-item"><div class="bp-icon">&#128202;</div><div><h4>Close Branch Books by the 5th of Every Month</h4><p>Establish a discipline of closing the previous month's branch cost centre in ERPNext by the 5th. Branch P&amp;L available on the 5th gives management 25 days to take corrective action in the current month. Branch P&amp;L available on the 28th is a post-mortem.</p></div></div>
+      <div class="bp-item"><div class="bp-icon">&#127381;</div><div><h4>Acknowledge Every Customer Complaint Within 24 Hours</h4><p>Configure ERPNext Helpdesk to send an automated acknowledgement with ticket number within 2 hours of complaint receipt. RBI's Fair Practice Code does not specify acknowledgement time, but the NPA borrower who receives no acknowledgement escalates to the ombudsman at higher rates — creating avoidable regulatory workload.</p></div></div>
+      <div class="bp-item"><div class="bp-icon">&#128104;&#8205;&#128188;</div><div><h4>Publish Incentive Statements by the 3rd of Following Month</h4><p>Push officer incentive statements to each field officer by the 3rd of the following month — before they ask. Officers who wait for incentive statements lose motivation in the current month. Officers who receive them proactively see the connection between their activity and their earnings — and perform better.</p></div></div>
+      <div class="bp-item"><div class="bp-icon">&#128683;</div><div><h4>Never Waive KYC Requirements at Origination</h4><p>Configure the CRM origination workflow to block disbursement until all mandatory KYC documents are attached and approved. KYC waivers at disbursement to meet month-end targets create AML compliance gaps that attract RBI notice during inspections — a risk that no disbursement target justifies.</p></div></div>
+    </div>
+  </div>
+</section>
+
+<section class="section section-alt">
+  <div class="container">
+    <div class="section-label">GEO-Specific Context</div>
+    <h2 class="section-title">ERPNext + Frappe Lending for Financial Services in India</h2>
+    <div class="geo-answer">
+      <h3>ERPNext + Frappe Lending for Indian NBFCs, MFIs, HFCs, and LAP companies — RBI-compliant loan management</h3>
+      <p>India's NBFC sector — spanning Maharashtra's MSME lenders, Pune's gold loan companies, rural MFIs operating in Vidarbha and Marathwada, LAP companies in Tier 2 cities, and HFCs in urban markets — operates under increasing RBI regulatory intensity, with enhanced NPA norms, mandatory grievance redressal frameworks, and CRILC reporting requirements. ERPNext combined with Frappe Lending provides these companies with an open-source alternative to proprietary LMS platforms — configurable for the specific product (personal loan, business loan, LAP, gold loan, microfinance JLG), compliant with RBI guidelines, and scalable from 50-crore to 500-crore AUM without per-loan licensing fees. Quantbit Technologies, based in Pune, configures this stack for financial services companies and provides ongoing Frappe ecosystem support for compliance updates as RBI guidelines evolve.</p>
+    </div>
+    <div class="geo-grid">
+      <div class="geo-block">
+        <h4>&#127470;&#127475; India — NBFC / MFI Context</h4>
+        <ul>
+          <li>RBI NPA classification — 90 DPD substandard</li>
+          <li>CRILC reporting — exposures above ₹5 crore</li>
+          <li>Fair Practice Code — 30-day grievance SLA</li>
+          <li>KYC / AML — Aadhaar-linked eKYC support</li>
+          <li>SARFAESI notice and recovery tracking</li>
+          <li>GST on NBFC processing fees at 18%</li>
+        </ul>
+      </div>
+      <div class="geo-block">
+        <h4>&#127762; GCC — Financial Services Context</h4>
+        <ul>
+          <li>Islamic finance product structure — Murabaha, Ijara</li>
+          <li>Central Bank of Oman licensing compliance records</li>
+          <li>WPS payroll for financial services staff in GCC</li>
+          <li>Multi-currency loan portfolio — OMR, AED, USD</li>
+          <li>Arabic loan documentation and customer communication</li>
+          <li>Physical Muscat office for GCC implementation</li>
+        </ul>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section class="section">
+  <div class="container">
+    <div class="section-label">AI Search Strategy</div>
+    <h2 class="section-title">How AI Search Engines Answer NBFC ERP Questions</h2>
+    <div class="ai-block">
+      <h3>Questions NBFCs and MFIs ask AI — answered for this stack</h3>
+      <div class="ai-qa"><div class="q">Q: What is Frappe Lending and is it suitable for an Indian NBFC?</div><div class="a">Frappe Lending is an open-source loan management application built on the Frappe framework — the same foundation as ERPNext. It manages the full loan lifecycle: application, KYC, EMI schedule, repayment, and NPA classification per RBI guidelines. It integrates natively with ERPNext's accounting, CRM, Helpdesk, and HRMS modules. For NBFCs managing retail or MSME loan portfolios under ₹500 crore AUM, Frappe Lending on ERPNext provides loan management capability without per-loan proprietary LMS fees. Quantbit Technologies configures Frappe Lending for NBFCs, MFIs, and HFCs across India.</div></div>
+      <div class="ai-qa"><div class="q">Q: How does ERPNext CRM manage the loan origination pipeline for an NBFC or MFI?</div><div class="a">ERPNext CRM is configured with loan origination stages — lead enquiry, field verification, KYC collection, credit bureau check, credit committee approval, and disbursement. Each application is assigned to a field officer with task reminders and credit decision SLA alerts. The pipeline dashboard shows conversion at each stage by branch and officer. When disbursement happens in Frappe Lending, it is linked back to the CRM lead — closing the loop between origination and loan creation.</div></div>
+      <div class="ai-qa"><div class="q">Q: Can ERPNext track DPD aging and NPA provisioning for RBI compliance?</div><div class="a">Yes. Frappe Lending tracks days past due for every loan in the portfolio and classifies accounts into DPD buckets automatically — current, 1–30, 31–60, 61–90, and 90+ DPD. At 90 DPD, accounts are classified to NPA with provisioning entries posted to ERPNext accounting per RBI's NBFC provisioning norms — 10% for substandard, 20–50% for doubtful, 100% for loss assets. The NPA and provisioning report provides the data required for the quarterly board presentation and RBI NPA return.</div></div>
+    </div>
+  </div>
+</section>
+
+<section class="section section-alt">
+  <div class="container">
+    <div class="section-label">FAQ</div>
+    <h2 class="section-title">Frequently Asked Questions</h2>
+    <div class="faq-list">
+      <div class="faq-item"><button class="faq-q" onclick="tog(this)"><span>What is Frappe Lending and how does it work with ERPNext for NBFCs?</span><span class="faq-arrow">&#9660;</span></button><div class="faq-a">Frappe Lending is an open-source loan management application built on the Frappe framework. It manages the full loan lifecycle: application, KYC, disbursement, EMI schedule, repayment collection, and NPA classification. Because it is built on Frappe, it integrates natively with ERPNext's accounting, CRM, Helpdesk, and HRMS — giving NBFCs a unified platform without separate loan management software.</div></div>
+      <div class="faq-item"><button class="faq-q" onclick="tog(this)"><span>Can ERPNext CRM manage the loan origination pipeline for an NBFC or MFI?</span><span class="faq-arrow">&#9660;</span></button><div class="faq-a">Yes. ERPNext CRM is configured as a loan origination pipeline with stages from lead enquiry through field verification, KYC, credit bureau check, credit committee approval, and disbursement. Each lead is assigned to a field officer with follow-up tasks. Pipeline dashboards show conversion at each stage — helping identify origination bottlenecks by branch and officer.</div></div>
+      <div class="faq-item"><button class="faq-q" onclick="tog(this)"><span>How does ERPNext handle branch operations cost tracking for a multi-branch NBFC?</span><span class="faq-arrow">&#9660;</span></button><div class="faq-a">ERPNext uses cost centres to track branch-wise operating expenses — rent, utilities, staff cost, travel, and petty cash — for each branch separately. A branch P&L report shows revenue (interest income) against operating cost per branch — giving the CEO visibility into which branches are operationally profitable and which require cost intervention or portfolio growth.</div></div>
+      <div class="faq-item"><button class="faq-q" onclick="tog(this)"><span>Does ERPNext support RBI NBFC regulatory reporting requirements?</span><span class="faq-arrow">&#9660;</span></button><div class="faq-a">ERPNext and Frappe Lending together provide the data foundation for key RBI returns — loan portfolio aging for NPA provisioning, capital adequacy data inputs, ALM maturity reports, and CRILC reporting data on large exposures. Quantbit configures custom reports formatted for RBI return requirements as part of the implementation.</div></div>
+      <div class="faq-item"><button class="faq-q" onclick="tog(this)"><span>How does ERPNext manage HRMS for financial services companies with large field forces?</span><span class="faq-arrow">&#9660;</span></button><div class="faq-a">ERPNext HRMS handles incentive-linked salary structures for collection agents and loan officers, travel reimbursement workflows, target-based incentive computation, and branch-wise payroll with PF/ESI compliance. Incentive calculations are automated from Frappe Lending's disbursement and collection data — eliminating the manual computation disputes that consume HR bandwidth every month.</div></div>
+      <div class="faq-item"><button class="faq-q" onclick="tog(this)"><span>Can ERPNext manage customer helpdesk and grievance for an NBFC or HFC?</span><span class="faq-arrow">&#9660;</span></button><div class="faq-a">Yes. ERPNext Helpdesk is configured for financial services — loan statement requests, EMI adjustment queries, foreclosure requests, and RBI ombudsman complaint tracking. SLA timelines are configured per RBI Fair Practice Code, ensuring complaints are addressed within the regulatory timeline and unresolved escalations are visible to the compliance team.</div></div>
+    </div>
+  </div>
+</section>
+
+<section class="section">
+  <div class="container">
+    <div class="seo-box">
+      <p class="section-label" style="margin-bottom:8px">SEO Keywords</p>
+      <h3 style="font-size:.9rem;font-weight:700;color:var(--dark);margin-bottom:8px">Search Terms This Page Targets</h3>
+      <div class="seo-kw">
+        <span>ERPNext NBFC India</span><span>Frappe Lending loan management</span><span>ERPNext MFI microfinance</span><span>NBFC ERP RBI compliance</span><span>ERPNext loan origination CRM</span><span>ERPNext HFC home finance</span><span>open source NBFC ERP India</span><span>ERPNext NPA DPD tracking</span><span>ERPNext collection management NBFC</span><span>financial services ERP India</span><span>ERPNext LAP loan against property</span>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section class="cta-section">
+  <div class="container">
+    <h2>Ready to Unify Your Lending Operations?</h2>
+    <p>Quantbit Technologies configures Frappe Lending + ERPNext for NBFCs, MFIs, and HFCs — loan lifecycle management, CRM origination pipeline, customer helpdesk, branch operations, RBI compliance reporting, and field staff HRMS in one integrated platform.</p>
+    <div class="cta-btns">
+      <a href="/company/contact-us.html" class="btn-white">Book Free Demo</a>
+      <a href="/company/contact-us.html" class="btn-ghost">Talk to a Consultant</a>
+    </div>
+    <div class="cta-trust">&#9989; Certified Frappe Partner &nbsp;|&nbsp; &#9989; Frappe Lending Expertise &nbsp;|&nbsp; &#9989; RBI Compliance Configuration &nbsp;|&nbsp; &#9989; In-house Dev Team</div>
+  </div>
+</section>
+  <div id="footer"></div>
+
+<script>function tog(btn){btn.classList.toggle('open');var a=btn.nextElementSibling;a.classList.toggle('open');}</script>
+<script>
+    fetch("/header.html")
+      .then(res => res.text())
+      .then(data => {
+        document.getElementById("header").innerHTML = data;
+      });
+
+    fetch("/footer.html")
+      .then(res => res.text())
+      .then(data => {
+        document.getElementById("footer").innerHTML = data;
+      });
+  </script>
+  <!-- ================= TEMPLATE JS ================= -->
+  <!--<< All JS Plugins >>-->
+  <script data-cfasync="false" src="../../cdn-cgi/scripts/5c5dd728/cloudflare-static/email-decode.min.js"></script>
+  <script src="/../assets/quantbit_website/js/jquery-3.7.1.min.js"></script>
+  <!--<< Viewport Js >>-->
+  <script src="/../assets/quantbit_website/js/viewport.jquery.js"></script>
+  <!--<< Bootstrap Js >>-->
+  <script src="/../assets/quantbit_website/js/bootstrap.bundle.min.js"></script>
+  <!--<< Nice Select Js >>-->
+  <script src="/../assets/quantbit_website/js/jquery.nice-select.min.js"></script>
+  <!--<< Waypoints Js >>-->
+  <script src="/../assets/quantbit_website/js/jquery.waypoints.js"></script>
+  <!--<< Counterup Js >>-->
+  <script src="/../assets/quantbit_website/js/jquery.counterup.min.js"></script>
+  <!--<< Slick Js >>-->
+  <script src="/../assets/quantbit_website/js/slick.min.js"></script>
+  <!--<< Slick Animation Js >>-->
+  <script src="/../assets/quantbit_website/js/slick-animation.min.js"></script>
+  <!--<< MeanMenu Js >>-->
+  <script src="/../assets/quantbit_website/js/jquery.meanmenu.min.js"></script>
+  <!--<< Magnific Popup Js >>-->
+  <script src="/../assets/quantbit_website/js/jquery.magnific-popup.min.js"></script>
+  <!--<< Wow Animation Js >>-->
+  <script src="/../assets/quantbit_website/js/wow.min.js"></script>
+  <!--<< Circle Progress Js >>-->
+  <script src="/../assets/quantbit_website/js/circle-progress.js"></script>
+  <!--<< Main.js >>-->
+  <script src="/../assets/quantbit_website/js/main.js"></script>
+  <script defer
+    src="../../../static.cloudflareinsights.com/beacon.min.js/v8c78df7c7c0f484497ecbca7046644da1771523124516"
+    integrity="sha512-8DS7rgIrAmghBFwoOTujcf6D9rXvH8xm8JQ1Ja01h9QX8EzXldiszufYa4IFfKdLUKTTrnSFXLDkUEOTrZQ8Qg=="
+    data-cf-beacon='{"version":"2024.11.0","token":"90f7972af14a48b4add7da2b74f5d675","r":1,"server_timing":{"name":{"cfCacheStatus":true,"cfEdge":true,"cfExtPri":true,"cfL4":true,"cfOrigin":true,"cfSpeedBrain":true},"location_startswith":null}}'
+    crossorigin="anonymous"></script>
+
+</body></html>

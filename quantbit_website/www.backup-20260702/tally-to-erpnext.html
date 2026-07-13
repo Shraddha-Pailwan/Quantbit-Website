@@ -1,0 +1,636 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Tally to ERPNext Migration | Switch from Tally Prime to ERPNext India | Quantbit</title>
+<meta name="description" content="Migrate from Tally Prime or Tally ERP 9 to ERPNext. Data migration, GST mapping, ledger transfer, inventory, payroll. Quantbit handles Tally to ERPNext migration across India and GCC.">
+<meta name="keywords" content="Tally to ERPNext migration, migrate from Tally to ERPNext, switch Tally Prime ERPNext, Tally ERP 9 to ERPNext, Tally data migration ERPNext, Tally alternative India">
+<link rel="canonical" href="https://quantbit.io/tally-to-erpnext">
+<meta property="og:title" content="Tally to ERPNext Migration: Complete Guide 2025">
+<meta property="og:description" content="Move from Tally Prime or Tally ERP 9 to ERPNext. See what gets migrated, how long it takes, and what you gain.">
+<meta property="og:type" content="article">
+
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "BreadcrumbList",
+  "itemListElement": [
+    {"@type": "ListItem", "position": 1, "name": "Home", "item": "https://quantbit.io"},
+    {"@type": "ListItem", "position": 2, "name": "Migration", "item": "https://quantbit.io/migrate"},
+    {"@type": "ListItem", "position": 3, "name": "Tally to ERPNext", "item": "https://quantbit.io/tally-to-erpnext"}
+  ]
+}
+</script>
+
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "FAQPage",
+  "mainEntity": [
+    {
+      "@type": "Question",
+      "name": "Can I migrate my Tally data to ERPNext?",
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": "Yes. Tally exports data in XML format (via ODBC or TDL export). Quantbit's migration process maps Tally ledgers to ERPNext Chart of Accounts, transfers party masters (customers, suppliers), item masters, opening balances, and outstanding receivables/payables as of the go-live date. GST registration, HSN codes, and tax templates are remapped to ERPNext's GST configuration. Historical transactions are typically brought as opening balances rather than transaction-by-transaction to keep the database clean."
+      }
+    },
+    {
+      "@type": "Question",
+      "name": "What is the difference between Tally Prime and ERPNext?",
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": "Tally Prime is a desktop-first accounting and GST compliance tool — excellent for bookkeeping, GST filing, and basic inventory. ERPNext is a full cloud ERP with manufacturing, HR, CRM, project management, helpdesk, payroll, purchase approvals, quality control, multi-warehouse, and a REST API for integrations. Companies typically switch from Tally when they outgrow bookkeeping-only software and need operations management, approval workflows, and real-time visibility across departments."
+      }
+    },
+    {
+      "@type": "Question",
+      "name": "How long does Tally to ERPNext migration take?",
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": "A typical Tally-to-ERPNext migration for an SME (20–100 users) takes 6–16 weeks total including implementation. The data migration component itself (ledger mapping, master transfer, opening balances) takes 2–4 weeks. The overall project timeline depends on business complexity, number of warehouses, payroll structure, and custom reporting requirements."
+      }
+    },
+    {
+      "@type": "Question",
+      "name": "Will my GST data from Tally transfer to ERPNext?",
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": "Yes. ERPNext has full native GST support: GSTR-1, GSTR-3B, e-Invoice (IRN/QR), e-Way Bill, and TDS/TCS. Your existing GSTIN registration, HSN/SAC codes from Tally items, and tax group mappings (CGST/SGST/IGST/UTGST) are configured in ERPNext during migration. Historical GST returns remain in Tally; going forward, ERPNext handles all GST compliance."
+      }
+    },
+    {
+      "@type": "Question",
+      "name": "What does Tally not do that ERPNext does?",
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": "Tally is strong at: accounting, GST, TDS, basic stock management, and bank reconciliation. ERPNext adds: manufacturing (BOM, work orders, MRP), multi-warehouse with bin-level tracking, full HR and payroll with leave management, CRM and sales pipeline, purchase approval workflows, quality control, project and task management, customer portal, helpdesk, REST API integrations, and mobile app for field operations. For a manufacturing or trading company with more than 5–10 employees, ERPNext's operational modules deliver ROI that Tally cannot."
+      }
+    },
+    {
+      "@type": "Question",
+      "name": "Is ERPNext better than Tally for a trading company?",
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": "For a trading company with ₹10Cr+ revenue, ERPNext significantly outperforms Tally. ERPNext adds: multi-warehouse stock management, reorder point alerts, purchase order approval workflows, sales quotation to invoice workflow, customer credit limits, batch and serial tracking, landed cost calculation, and real-time profitability by item or customer. Tally handles the accounting; ERPNext handles the entire business operation."
+      }
+    }
+  ]
+}
+</script>
+
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "SpeakableSpecification",
+  "cssSelector": [".ai-answer-block", ".hero-verdict", ".migration-steps"]
+}
+</script>
+
+<style>
+  :root {
+    --ink: #0f1117;
+    --ink-mid: #3a3d4a;
+    --ink-soft: #6b6f80;
+    --paper: #f7f8fc;
+    --white: #ffffff;
+    --border: #e2e4ec;
+    --accent: #1a56db;
+    --accent-dark: #1241b0;
+    --accent-light: #eff4ff;
+    --tally: #e05c1a;
+    --tally-light: #fff0e8;
+    --erpnext: #0f9d58;
+    --erpnext-light: #e8f7ef;
+    --warn: #d97706;
+    --warn-light: #fef3c7;
+    --green: #059669;
+    --green-light: #ecfdf5;
+    --font-head: 'Georgia', 'Times New Roman', serif;
+    --font-body: -apple-system, 'Segoe UI', sans-serif;
+    --r: 8px;
+    --shadow: 0 2px 12px rgba(15,17,23,0.08);
+    --shadow-lg: 0 8px 32px rgba(15,17,23,0.12);
+  }
+  *{box-sizing:border-box}
+  html { scroll-behavior: smooth; }
+  body { font-family: var(--font-body); background: var(--paper); color: var(--ink); font-size: 16px; line-height: 1.65; }
+
+  /* HERO — orange-to-green gradient showing the transition */
+  .hero {
+    background: linear-gradient(135deg, #2a0f00 0%, #7a2800 30%, #0a3320 70%, #083d25 100%);
+    color: #fff; padding: 80px 24px 60px; text-align: center;
+  }
+  .hero-eyebrow { display: inline-block; background: rgba(255,255,255,0.1); border: 1px solid rgba(255,255,255,0.2); color: #ffd0b0; font-size: 12px; font-weight: 700; letter-spacing: 1.5px; text-transform: uppercase; padding: 5px 14px; border-radius: 20px; margin-bottom: 24px; }
+  .hero h1 { font-family: var(--font-head); font-size: clamp(1.9rem, 4.5vw, 3rem); font-weight: 700; line-height: 1.2; margin-bottom: 20px; max-width: 780px; margin-left: auto; margin-right: auto; }
+  .tally-word { color: #ff8c52; }
+  .erpnext-word { color: #5eeaa0; }
+  .hero-verdict { font-size: 1.1rem; color: #c8d8c0; max-width: 660px; margin: 0 auto 36px; line-height: 1.7; }
+  .hero-stats { display: flex; justify-content: center; gap: 48px; flex-wrap: wrap; margin-top: 40px; padding-top: 40px; border-top: 1px solid rgba(255,255,255,0.1); }
+  .stat { text-align: center; }
+  .stat-num { font-family: var(--font-head); font-size: 2.4rem; font-weight: 700; color: #fff; display: block; line-height: 1; }
+  .stat-label { font-size: 12px; color: #a8c8b0; margin-top: 4px; }
+  .hero-ctas { display: flex; gap: 12px; justify-content: center; flex-wrap: wrap; }
+  .btn-primary { background: var(--erpnext); color: #fff; padding: 13px 28px; border-radius: var(--r); font-weight: 700; text-decoration: none; font-size: 15px; }
+  .btn-outline { background: transparent; color: #fff; border: 1.5px solid rgba(255,255,255,0.4); padding: 13px 28px; border-radius: var(--r); font-weight: 600; text-decoration: none; font-size: 15px; }
+
+  .container { max-width: 1100px; margin: 0 auto; padding: 0 24px; }
+  section { padding: 64px 0; }
+  section + section { border-top: 1px solid var(--border); }
+  h2 { font-family: var(--font-head); font-size: clamp(1.5rem, 3vw, 2rem); font-weight: 700; color: var(--ink); margin-bottom: 12px; line-height: 1.3; }
+  .section-sub { color: var(--ink-soft); font-size: 1rem; margin-bottom: 40px; max-width: 620px; }
+  h3 { font-size: 1.05rem; font-weight: 700; color: var(--ink); margin-bottom: 8px; }
+
+  /* MIGRATION STEPS */
+  .migration-steps { display: grid; gap: 0; }
+  .step {
+    display: grid;
+    grid-template-columns: 56px 1fr;
+    gap: 0 20px;
+    padding: 28px 0;
+    border-bottom: 1px solid var(--border);
+    align-items: start;
+  }
+  .step:last-child { border-bottom: none; }
+  .step-num {
+    width: 44px; height: 44px;
+    background: var(--erpnext-light);
+    border: 2px solid var(--erpnext);
+    border-radius: 50%;
+    display: flex; align-items: center; justify-content: center;
+    font-weight: 800; font-size: 17px; color: var(--erpnext);
+    flex-shrink: 0;
+  }
+  .step-content {}
+  .step-title { font-weight: 700; font-size: 15px; color: var(--ink); margin-bottom: 6px; }
+  .step-detail { font-size: 14px; color: var(--ink-mid); line-height: 1.6; }
+  .step-tag { display: inline-block; background: var(--accent-light); color: var(--accent); font-size: 11px; font-weight: 700; padding: 2px 8px; border-radius: 4px; margin-top: 8px; }
+
+  /* WHAT MIGRATES */
+  .migrate-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 24px; }
+  .migrate-card { background: var(--white); border: 1px solid var(--border); border-radius: var(--r); padding: 24px; }
+  .migrate-card.yes { border-top: 3px solid var(--erpnext); }
+  .migrate-card.opening { border-top: 3px solid var(--warn); }
+  .migrate-card-title { font-weight: 700; font-size: 14px; text-transform: uppercase; letter-spacing: 0.5px; margin-bottom: 16px; }
+  .migrate-card.yes .migrate-card-title { color: var(--erpnext); }
+  .migrate-card.opening .migrate-card-title { color: var(--warn); }
+  .migrate-list { list-style: none; }
+  .migrate-list li { padding: 6px 0; font-size: 14px; color: var(--ink-mid); display: flex; align-items: flex-start; gap: 8px; border-bottom: 1px solid var(--border); }
+  .migrate-list li:last-child { border-bottom: none; }
+  .migrate-list li::before { flex-shrink: 0; margin-top: 1px; }
+  .migrate-card.yes .migrate-list li::before { content: "✓"; color: var(--erpnext); font-weight: 700; }
+  .migrate-card.opening .migrate-list li::before { content: "→"; color: var(--warn); font-weight: 700; }
+
+  /* GAIN TABLE */
+  .gain-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 20px; }
+  .gain-card { background: var(--white); border: 1px solid var(--border); border-radius: var(--r); padding: 22px; border-top: 3px solid var(--erpnext); }
+  .gain-icon { font-size: 28px; margin-bottom: 10px; }
+  .gain-title { font-weight: 700; font-size: 14px; color: var(--ink); margin-bottom: 6px; }
+  .gain-desc { font-size: 13px; color: var(--ink-mid); line-height: 1.5; }
+
+  /* AI ANSWER */
+  .ai-answer-block { background: linear-gradient(135deg, #f0f4ff 0%, #e8f0fe 100%); border: 1px solid #c7d7fd; border-radius: var(--r); padding: 28px 32px; margin: 32px 0; }
+  .ai-q { font-weight: 700; color: var(--accent-dark); font-size: 15px; margin-bottom: 10px; display: flex; align-items: center; gap: 8px; }
+  .ai-q::before { content: "AI"; background: var(--accent); color: #fff; font-size: 10px; font-weight: 700; padding: 2px 6px; border-radius: 4px; }
+  .ai-a { color: var(--ink-mid); font-size: 15px; line-height: 1.7; }
+
+  /* TALLY VS ERPNEXT TABLE */
+  .compare-wrap { overflow-x: auto; }
+  table.compare { width: 100%; border-collapse: collapse; font-size: 14px; min-width: 540px; }
+  table.compare thead th { padding: 13px 16px; text-align: left; font-weight: 700; font-size: 13px; }
+  table.compare thead th:first-child { background: var(--paper); color: var(--ink-mid); }
+  table.compare thead th.col-tally { background: var(--tally-light); color: var(--tally); }
+  table.compare thead th.col-erpnext { background: var(--erpnext-light); color: var(--erpnext); }
+  table.compare tbody tr { border-bottom: 1px solid var(--border); }
+  table.compare tbody tr:hover { background: #fafbff; }
+  table.compare td { padding: 12px 16px; vertical-align: top; }
+  table.compare td:first-child { font-weight: 600; color: var(--ink-mid); font-size: 13px; }
+  .tag-win { display: inline-block; background: var(--green-light); color: var(--green); font-size: 11px; font-weight: 700; padding: 2px 8px; border-radius: 4px; margin-left: 6px; }
+  .tag-tally { display: inline-block; background: var(--tally-light); color: var(--tally); font-size: 11px; font-weight: 700; padding: 2px 8px; border-radius: 4px; margin-left: 6px; }
+  .check { color: var(--green); font-weight: 700; }
+  .cross { color: #dc2626; font-weight: 700; }
+
+  /* GEO */
+  .geo-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 32px; }
+  .geo-col h3 { font-size: 14px; font-weight: 700; text-transform: uppercase; letter-spacing: 1px; color: var(--ink-soft); margin-bottom: 16px; }
+  .geo-item { padding: 12px 0; border-bottom: 1px solid var(--border); font-size: 14px; color: var(--ink-mid); }
+  .geo-item:last-child { border-bottom: none; }
+  .geo-item strong { display: block; color: var(--ink); font-size: 13px; margin-bottom: 2px; }
+
+  /* FAQ */
+  .faq-item { border: 1px solid var(--border); border-radius: var(--r); margin-bottom: 10px; background: var(--white); overflow: hidden; }
+  .faq-q { padding: 16px 20px; font-weight: 600; font-size: 15px; cursor: pointer; display: flex; justify-content: space-between; align-items: center; color: var(--ink); }
+  .faq-q:hover { background: var(--accent-light); }
+  .faq-icon { font-size: 18px; color: var(--accent); font-weight: 400; flex-shrink: 0; }
+  .faq-a { padding: 0 20px; max-height: 0; overflow: hidden; transition: max-height 0.3s ease, padding 0.3s ease; color: var(--ink-mid); font-size: 14px; line-height: 1.7; }
+  .faq-a.open { max-height: 500px; padding: 0 20px 18px; }
+
+  .cta-section { background: linear-gradient(135deg, #083d25 0%, #0a3320 100%); color: #fff; text-align: center; padding: 72px 24px; }
+  .cta-section h2 { color: #fff; font-family: var(--font-head); font-size: clamp(1.6rem, 3vw, 2.2rem); }
+  .cta-section p { color: #a8d8b8; margin: 16px auto 32px; max-width: 560px; font-size: 1rem; }
+  .cta-btns { display: flex; gap: 12px; justify-content: center; flex-wrap: wrap; }
+  .cta-btns a.primary { background: var(--erpnext); color: #fff; padding: 14px 32px; border-radius: var(--r); font-weight: 700; text-decoration: none; }
+  .cta-btns a.sec { border: 1.5px solid rgba(255,255,255,0.4); color: #fff; padding: 14px 32px; border-radius: var(--r); font-weight: 600; text-decoration: none; }
+
+  .keyword-cloud { display: flex; flex-wrap: wrap; gap: 8px; }
+  .kw-tag { background: var(--white); border: 1px solid var(--border); border-radius: 4px; padding: 4px 12px; font-size: 12px; color: var(--ink-soft); }
+
+  footer { background: var(--ink); color: #8892a4; text-align: center; padding: 28px 24px; font-size: 13px; }
+  footer a { color: #93b4ff; text-decoration: none; }
+
+  @media (max-width: 700px) {
+    .migrate-grid, .geo-grid { grid-template-columns: 1fr; }
+    .gain-grid { grid-template-columns: 1fr 1fr; }
+    .hero-stats { gap: 28px; }
+    .stat-num { font-size: 1.8rem; }
+  }
+  @media (max-width: 480px) {
+    .gain-grid { grid-template-columns: 1fr; }
+  }
+</style>
+  <!-- TEMPLATE CSS (IMPORTANT) -->
+  <link rel="stylesheet" href="/../assets/quantbit_website/css/bootstrap.min.css">
+  <link rel="stylesheet" href="/../assets/quantbit_website/css/font-awesome.css">
+  <link rel="stylesheet" href="/../assets/quantbit_website/css/animate.css">
+  <link rel="stylesheet" href="/../assets/quantbit_website/css/magnific-popup.css">
+  <link rel="stylesheet" href="/../assets/quantbit_website/css/meanmenu.css">
+  <link rel="stylesheet" href="/../assets/quantbit_website/css/slick.css">
+  <link rel="stylesheet" href="/../assets/quantbit_website/css/nice-select.css">
+  <link rel="stylesheet" href="/../assets/quantbit_website/css/main.css">
+  <link rel="stylesheet" href="/assets/quantbit_website/css/_shared.css">
+  <link rel="stylesheet" href="/../assets/quantbit_website/css/hrms.css">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
+</head>
+<body>
+
+<div id="header"></div>
+
+<!-- HERO -->
+<section class="hero">
+  <div class="container">
+    <span class="hero-eyebrow">ERP Migration Guide 2025</span>
+    <h1>Migrate from <span class="tally-word">Tally</span> to <span class="erpnext-word">ERPNext</span>:<br>The Complete Playbook</h1>
+    <p class="hero-verdict">Tally built your financial foundation. ERPNext takes everything forward — manufacturing, HR, CRM, approvals, multi-warehouse, API integrations — with all your Tally data intact and your GST uninterrupted.</p>
+    <div class="hero-ctas">
+      <a href="#migration-steps" class="btn-primary">See the Migration Process</a>
+      <a href="/company/contact-us.html" class="btn-outline">Get a Free Assessment</a>
+    </div>
+    <div class="hero-stats">
+      <div class="stat"><span class="stat-num">6–16 wks</span><span class="stat-label">Total Migration Timeline</span></div>
+      <div class="stat"><span class="stat-num">Zero</span><span class="stat-label">GST Filing Disruption</span></div>
+      <div class="stat"><span class="stat-num">100%</span><span class="stat-label">Master Data Transferred</span></div>
+      <div class="stat"><span class="stat-num">₹0</span><span class="stat-label">Data Lost</span></div>
+    </div>
+  </div>
+</section>
+
+<!-- WHY MIGRATE -->
+<section style="background: var(--white);">
+  <div class="container">
+    <h2>Why Companies Move from Tally to ERPNext</h2>
+    <p class="section-sub">Tally is excellent software — for what it was built to do. Most companies hit its ceiling between ₹10Cr and ₹50Cr revenue.</p>
+    <div class="ai-answer-block">
+      <div class="ai-q">What does ERPNext do that Tally cannot?</div>
+      <div class="ai-a">Tally excels at accounting, GST, TDS, and basic stock management. ERPNext adds the full operational layer: manufacturing with BOM, work orders, and MRP; multi-warehouse with bin-level tracking; full HR and payroll with leave, attendance, and statutory compliance; CRM with sales pipeline and quotations; purchase approval workflows with multi-level authorisation; quality control and inspection checklists; project and task management; customer portal; helpdesk with SLA tracking; mobile app for field operations; and a REST API for integrating with third-party tools. For a company with more than 10 employees and any operational complexity, ERPNext replaces 5–8 separate tools that Tally users typically cobble together with spreadsheets.</div>
+    </div>
+    <div class="gain-grid" style="margin-top: 32px;">
+      <div class="gain-card"><div class="gain-icon">🏭</div><div class="gain-title">Manufacturing</div><div class="gain-desc">BOM, work orders, job cards, MRP, subcontracting, shop floor dashboards. Tally has none of this.</div></div>
+      <div class="gain-card"><div class="gain-icon">👥</div><div class="gain-title">Full HR & Payroll</div><div class="gain-desc">Attendance, leave, salary processing, PF/ESI/PT, payslips, Form 16 — all in one system.</div></div>
+      <div class="gain-card"><div class="gain-icon">📦</div><div class="gain-title">Multi-Warehouse</div><div class="gain-desc">Multiple locations, bin-level tracking, inter-warehouse transfers, reorder alerts.</div></div>
+      <div class="gain-card"><div class="gain-icon">🤝</div><div class="gain-title">CRM & Sales</div><div class="gain-desc">Lead pipeline, quotations, sales orders, customer portal, email integration.</div></div>
+      <div class="gain-card"><div class="gain-icon">✅</div><div class="gain-title">Approval Workflows</div><div class="gain-desc">Purchase order approvals, expense claims, leave requests — with email notifications.</div></div>
+      <div class="gain-card"><div class="gain-icon">📱</div><div class="gain-title">Mobile App</div><div class="gain-desc">Field sales, delivery, shop floor, attendance — all on Android and iOS.</div></div>
+      <div class="gain-card"><div class="gain-icon">🔌</div><div class="gain-title">API & Integrations</div><div class="gain-desc">REST API connects ERPNext to Razorpay, Shiprocket, WooCommerce, WhatsApp, and more.</div></div>
+      <div class="gain-card"><div class="gain-icon">🌍</div><div class="gain-title">Multi-Company</div><div class="gain-desc">Manage multiple group companies with inter-company transactions and consolidated reporting.</div></div>
+      <div class="gain-card"><div class="gain-icon">☁️</div><div class="gain-title">Cloud & Remote</div><div class="gain-desc">Access from anywhere — no VPN, no Tally server, no per-seat desktop licences.</div></div>
+    </div>
+  </div>
+</section>
+
+<!-- TALLY VS ERPNEXT -->
+<section>
+  <div class="container">
+    <h2>Tally Prime vs ERPNext: Feature Comparison</h2>
+    <p class="section-sub">A direct comparison to see what you gain by migrating.</p>
+    <div class="compare-wrap">
+      <table class="compare">
+        <thead>
+          <tr>
+            <th>Feature</th>
+            <th class="col-tally">Tally Prime</th>
+            <th class="col-erpnext">ERPNext</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr>
+            <td>Accounting & Ledger</td>
+            <td><span class="check">✓</span> Best-in-class for Indian accounting <span class="tag-tally">Tally Strength</span></td>
+            <td><span class="check">✓</span> Full double-entry, multi-currency, bank reconciliation</td>
+          </tr>
+          <tr>
+            <td>GST (GSTR-1, 3B, e-Invoice)</td>
+            <td><span class="check">✓</span> Native, excellent <span class="tag-tally">Tally Strength</span></td>
+            <td><span class="check">✓</span> Native, full e-Invoice + e-Way Bill</td>
+          </tr>
+          <tr>
+            <td>TDS / TCS</td>
+            <td><span class="check">✓</span> Native</td>
+            <td><span class="check">✓</span> Native</td>
+          </tr>
+          <tr>
+            <td>Manufacturing (BOM, Work Orders)</td>
+            <td><span class="cross">✗</span> Not available</td>
+            <td><span class="check">✓</span> Full module — BOM, work orders, job cards, MRP <span class="tag-win">ERPNext Wins</span></td>
+          </tr>
+          <tr>
+            <td>HR & Payroll (PF, ESI, PT)</td>
+            <td><span class="cross">✗</span> Not available (separate Tally Payroll)</td>
+            <td><span class="check">✓</span> Native — statutory salary, leave, attendance <span class="tag-win">ERPNext Wins</span></td>
+          </tr>
+          <tr>
+            <td>Multi-Warehouse Inventory</td>
+            <td>Basic — limited to godown-level</td>
+            <td><span class="check">✓</span> Bin-level, inter-warehouse, reorder, barcode <span class="tag-win">ERPNext Wins</span></td>
+          </tr>
+          <tr>
+            <td>CRM & Sales Pipeline</td>
+            <td><span class="cross">✗</span> Not available</td>
+            <td><span class="check">✓</span> Lead, opportunity, quotation, sales order <span class="tag-win">ERPNext Wins</span></td>
+          </tr>
+          <tr>
+            <td>Purchase Approval Workflows</td>
+            <td><span class="cross">✗</span> Not available</td>
+            <td><span class="check">✓</span> Multi-level approval with email alerts <span class="tag-win">ERPNext Wins</span></td>
+          </tr>
+          <tr>
+            <td>Quality Control</td>
+            <td><span class="cross">✗</span> Not available</td>
+            <td><span class="check">✓</span> Inspection templates, QC checklists, non-conformance <span class="tag-win">ERPNext Wins</span></td>
+          </tr>
+          <tr>
+            <td>Project & Task Management</td>
+            <td><span class="cross">✗</span> Not available</td>
+            <td><span class="check">✓</span> Projects, tasks, timesheets, Gantt chart <span class="tag-win">ERPNext Wins</span></td>
+          </tr>
+          <tr>
+            <td>Multi-Company / Group</td>
+            <td>Limited — separate Tally data files</td>
+            <td><span class="check">✓</span> Native multi-company, inter-company transactions <span class="tag-win">ERPNext Wins</span></td>
+          </tr>
+          <tr>
+            <td>REST API / Integrations</td>
+            <td>ODBC only — limited integration</td>
+            <td><span class="check">✓</span> Full REST API, webhooks, Razorpay, Shiprocket, WhatsApp <span class="tag-win">ERPNext Wins</span></td>
+          </tr>
+          <tr>
+            <td>Mobile App</td>
+            <td>Tally app — limited read-only</td>
+            <td><span class="check">✓</span> Full transactional mobile browser or PWA apps <span class="tag-win">ERPNext Wins</span></td>
+          </tr>
+          <tr>
+            <td>Cloud Access</td>
+            <td>Requires Tally server + VPN or Tally on Cloud (additional cost)</td>
+            <td><span class="check">✓</span> Native cloud — access from anywhere <span class="tag-win">ERPNext Wins</span></td>
+          </tr>
+          <tr>
+            <td>Customisation</td>
+            <td>TDL language — limited, specialist required</td>
+            <td><span class="check">✓</span> Frappe framework — custom fields, forms, workflows from UI <span class="tag-win">ERPNext Wins</span></td>
+          </tr>
+        </tbody>
+      </table>
+    </div>
+  </div>
+</section>
+
+<!-- WHAT MIGRATES -->
+<section style="background: var(--white);">
+  <div class="container">
+    <h2>What Gets Migrated from Tally</h2>
+    <p class="section-sub">Quantbit's migration process is structured to get your data into ERPNext cleanly, without losing a single ledger or outstanding payment.</p>
+    <div class="migrate-grid">
+      <div class="migrate-card yes">
+        <div class="migrate-card-title">✓ Migrated Fully</div>
+        <ul class="migrate-list">
+          <li>Chart of Accounts (ledger → ERPNext account mapping)</li>
+          <li>Customer master (name, GSTIN, address, credit limit)</li>
+          <li>Supplier master (name, GSTIN, payment terms)</li>
+          <li>Item / stock master (HSN code, UOM, stock group)</li>
+          <li>Closing stock as opening stock entry</li>
+          <li>Outstanding receivables (customer-wise)</li>
+          <li>Outstanding payables (supplier-wise)</li>
+          <li>Bank account opening balances</li>
+          <li>Tax configuration (CGST, SGST, IGST, CESS, TDS)</li>
+          <li>Employee master (for HR module)</li>
+        </ul>
+      </div>
+      <div class="migrate-card opening">
+        <div class="migrate-card-title">→ As Opening Balance</div>
+        <ul class="migrate-list">
+          <li>Historical P&L (as Journal Entry summary per period)</li>
+          <li>Accumulated depreciation for fixed assets</li>
+          <li>Serial/batch opening stock (with cost)</li>
+          <li>Historical purchase orders (if in progress)</li>
+          <li>Advance payments (customer/supplier)</li>
+          <li>Payroll arrears and pending dues</li>
+          <li>TDS payable as of go-live date</li>
+          <li>GST input credit balance (ITC ledger)</li>
+        </ul>
+      </div>
+    </div>
+    <p style="margin-top: 20px; font-size: 13px; color: var(--ink-soft);">* Historical transactions (invoices, vouchers, payments) prior to go-live typically remain in Tally for reference. ERPNext starts fresh from go-live date with opening balances. This is standard practice for any ERP migration and keeps your new system clean and fast.</p>
+  </div>
+</section>
+
+<!-- MIGRATION STEPS -->
+<section id="migration-steps">
+  <div class="container">
+    <h2>The Tally to ERPNext Migration Process</h2>
+    <p class="section-sub">Quantbit's structured 6-phase migration ensures zero disruption to GST filing and operations.</p>
+    <div class="migration-steps">
+      <div class="step">
+        <div class="step-num">1</div>
+        <div class="step-content">
+          <div class="step-title">Discovery & Data Audit</div>
+          <div class="step-detail">We extract your Tally data via XML/ODBC, audit ledger structure, identify customisations (TDL scripts), and map your chart of accounts to ERPNext's default CoA. We flag any data quality issues before migration begins — not after.</div>
+          <span class="step-tag">1–2 weeks</span>
+        </div>
+      </div>
+      <div class="step">
+        <div class="step-num">2</div>
+        <div class="step-content">
+          <div class="step-title">ERPNext Configuration</div>
+          <div class="step-detail">Set up company, fiscal year, chart of accounts, GST configuration (GSTIN, tax templates, HSN/SAC mapping), warehouses, cost centres, and user roles. India payroll statutory components (PF, ESI, PT) configured for your state.</div>
+          <span class="step-tag">1–2 weeks</span>
+        </div>
+      </div>
+      <div class="step">
+        <div class="step-num">3</div>
+        <div class="step-content">
+          <div class="step-title">Master Data Migration</div>
+          <div class="step-detail">Customer, supplier, item, employee, and bank account masters imported from Tally XML. GSTIN validated, HSN codes mapped, payment terms configured. Item-warehouse mapping set up for opening stock.</div>
+          <span class="step-tag">1–2 weeks</span>
+        </div>
+      </div>
+      <div class="step">
+        <div class="step-num">4</div>
+        <div class="step-content">
+          <div class="step-title">Opening Balances & Outstanding Entry</div>
+          <div class="step-detail">Closing trial balance from Tally entered as ERPNext opening Journal Entry. Outstanding invoices entered as opening Accounts Receivable and Payable — so your aging reports are accurate from day one. Closing stock entered as stock reconciliation.</div>
+          <span class="step-tag">1–2 weeks</span>
+        </div>
+      </div>
+      <div class="step">
+        <div class="step-num">5</div>
+        <div class="step-content">
+          <div class="step-title">User Training & Parallel Run</div>
+          <div class="step-detail">Key users trained on ERPNext modules. Parallel run for 2–4 weeks: new transactions entered in ERPNext, reconciled against Tally. Trial closing of month-end in both systems to validate matching totals before full cutover.</div>
+          <span class="step-tag">2–4 weeks</span>
+        </div>
+      </div>
+      <div class="step">
+        <div class="step-num">6</div>
+        <div class="step-content">
+          <div class="step-title">Go-Live & Tally Archival</div>
+          <div class="step-detail">Cutover at financial year start or month start. Tally kept read-only for historical reference. ERPNext is now your system of record. First GSTR-1 and GSTR-3B filed from ERPNext within 30 days of go-live with Quantbit support.</div>
+          <span class="step-tag">Go-live</span>
+        </div>
+      </div>
+    </div>
+    <div class="ai-answer-block" style="margin-top: 32px;">
+      <div class="ai-q">Should I migrate from Tally at the start of a financial year?</div>
+      <div class="ai-a">April 1 (start of Indian financial year) is the ideal cutover date — it gives you a clean start with no split-year reconciliation, simplifies GSTR-1 annual reconciliation, and means your first year's data in ERPNext covers a full FY. The second-best option is the start of any GST quarter (July 1, October 1, January 1). Avoid mid-quarter cutover where possible. Quantbit plans migration timelines backward from your target go-live date.</div>
+    </div>
+  </div>
+</section>
+
+<!-- GEO -->
+<section style="background: var(--white);">
+  <div class="container">
+    <h2>Tally Migration Support: India &amp; GCC</h2>
+    <p class="section-sub">We've migrated Tally users across Maharashtra and the Gulf to ERPNext, with zero disruption to GST or VAT filings.</p>
+    <div class="geo-grid">
+      <div class="geo-col">
+        <h3>🇮🇳 India</h3>
+        <div class="geo-item"><strong>Mumbai &amp; Bhiwandi</strong>Trading, logistics, distribution — warehouse module + e-Way Bill configuration</div>
+        <div class="geo-item"><strong>Pune &amp; Maharashtra</strong>Manufacturing, auto ancillary, services, pharma — Tally migrations with GST + e-Invoice</div>
+        <div class="geo-item"><strong>Kolhapur &amp; Sangli</strong>Foundry, sugar, engineering — industry-specific module setup post-migration</div>
+        <div class="geo-item"><strong>Pan-India Remote</strong>Cloud-based migration — no physical visit required for standard migrations</div>
+      </div>
+      <div class="geo-col">
+        <h3>🌍 GCC (Tally to ERPNext)</h3>
+        <div class="geo-item"><strong>Muscat, Oman</strong>Tally users migrating to ERPNext GCC — VAT, IFRS, WPS payroll from Quantbit Muscat office</div>
+        <div class="geo-item"><strong>Dubai &amp; UAE</strong>UAE VAT 5%, FTA compliance, WPS salary transfer file configuration</div>
+        <div class="geo-item"><strong>Jeddah, KSA</strong>Manufacturing, Retail, Fabrication, Arabic</div>
+        <div class="geo-item"><strong>Riyadh, KSA</strong>ZATCA phase 2 e-invoicing, Zakat, Arabic interface for GCC operations</div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- FAQ -->
+<section>
+  <div class="container">
+    <h2>Tally to ERPNext Migration FAQ</h2>
+    <p class="section-sub">Questions we hear from every Tally user considering the switch.</p>
+    <div id="faq">
+      <div class="faq-item">
+        <div class="faq-q" onclick="toggleFaq(this)">Can I migrate my Tally data to ERPNext? <span class="faq-icon">+</span></div>
+        <div class="faq-a">Yes. Tally exports data in XML format (via ODBC or TDL export). Quantbit's migration process maps Tally ledgers to ERPNext Chart of Accounts, transfers party masters (customers, suppliers), item masters, opening balances, and outstanding receivables/payables. GST registration, HSN codes, and tax templates are remapped to ERPNext's GST configuration.</div>
+      </div>
+      <div class="faq-item">
+        <div class="faq-q" onclick="toggleFaq(this)">What is the difference between Tally Prime and ERPNext? <span class="faq-icon">+</span></div>
+        <div class="faq-a">Tally Prime is a desktop-first accounting and GST compliance tool — excellent for bookkeeping, GST filing, and basic inventory. ERPNext is a full cloud ERP with manufacturing, HR, CRM, project management, helpdesk, payroll, purchase approvals, quality control, multi-warehouse, and a REST API for integrations. Companies typically switch from Tally when they outgrow bookkeeping-only software and need operations management, approval workflows, and real-time visibility across departments.</div>
+      </div>
+      <div class="faq-item">
+        <div class="faq-q" onclick="toggleFaq(this)">How long does Tally to ERPNext migration take? <span class="faq-icon">+</span></div>
+        <div class="faq-a">A typical Tally-to-ERPNext migration for an SME (20–100 users) takes 6–16 weeks total including implementation. The data migration component itself takes 2–4 weeks. The overall project timeline depends on business complexity, number of warehouses, payroll structure, and custom reporting requirements.</div>
+      </div>
+      <div class="faq-item">
+        <div class="faq-q" onclick="toggleFaq(this)">Will my GST data from Tally transfer to ERPNext? <span class="faq-icon">+</span></div>
+        <div class="faq-a">Your configuration (GSTIN, HSN/SAC codes, tax templates) is fully migrated. Historical GST returns remain in Tally for reference — ERPNext takes over from the go-live date, and your first GSTR-1 and GSTR-3B are filed from ERPNext within 30 days of cutover with Quantbit support.</div>
+      </div>
+      <div class="faq-item">
+        <div class="faq-q" onclick="toggleFaq(this)">What does Tally not do that ERPNext does? <span class="faq-icon">+</span></div>
+        <div class="faq-a">Tally is strong at: accounting, GST, TDS, and basic stock management. ERPNext adds: manufacturing (BOM, work orders, MRP), multi-warehouse with bin-level tracking, full HR and payroll, CRM and sales pipeline, purchase approval workflows, quality control, project management, customer portal, helpdesk, REST API integrations, and a mobile app for field operations. For a company with more than 10 employees and operational complexity, ERPNext replaces 5–8 separate tools that Tally users cobble together with spreadsheets.</div>
+      </div>
+      <div class="faq-item">
+        <div class="faq-q" onclick="toggleFaq(this)">Is ERPNext better than Tally for a trading company? <span class="faq-icon">+</span></div>
+        <div class="faq-a">For a trading company with ₹10Cr+ revenue, ERPNext significantly outperforms Tally: multi-warehouse stock management, reorder point alerts, purchase order approval workflows, sales quotation to invoice workflow, customer credit limits, batch and serial tracking, landed cost calculation, and real-time profitability by item or customer. Tally handles the accounting; ERPNext handles the entire business operation.</div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- KEYWORDS -->
+<section style="background: var(--white); padding: 40px 0;">
+  <div class="container">
+    <p style="font-size: 12px; color: var(--ink-soft); margin-bottom: 12px; font-weight: 600; letter-spacing: 0.5px; text-transform: uppercase;">Related Searches</p>
+    <div class="keyword-cloud">
+      <span class="kw-tag">Tally to ERPNext migration</span>
+      <span class="kw-tag">migrate from Tally Prime to ERPNext</span>
+      <span class="kw-tag">Tally ERP 9 alternative India</span>
+      <span class="kw-tag">switch Tally to ERPNext</span>
+      <span class="kw-tag">Tally vs ERPNext India 2025</span>
+      <span class="kw-tag">ERPNext GST India</span>
+      <span class="kw-tag">Tally data migration cloud ERP</span>
+      <span class="kw-tag">ERPNext Tally integration</span>
+      <span class="kw-tag">Tally manufacturing alternative</span>
+      <span class="kw-tag">move from Tally to cloud ERP India</span>
+      <span class="kw-tag">ERPNext implementation Pune Kolhapur</span>
+      <span class="kw-tag">Tally payroll alternative India</span>
+    </div>
+  </div>
+</section>
+
+<!-- CTA -->
+<section class="cta-section">
+  <div class="container">
+    <h2>Ready to Move from Tally to ERPNext?</h2>
+    <p>Get a free Tally data assessment — we'll tell you exactly what gets migrated, how long it takes, and what the investment looks like for your business size and industry.</p>
+    <div class="cta-btns">
+      <a href="/company/contact-us.html" class="primary">Get Free Migration Assessment</a>
+      <a href="erpnext-vs-odoo.html" class="sec">Also Compare: ERPNext vs Odoo →</a>
+    </div>
+  </div>
+</section>
+
+<div id="footer"></div>
+
+<script>
+function toggleFaq(el) {
+  const a = el.nextElementSibling;
+  const icon = el.querySelector('.faq-icon');
+  const isOpen = a.classList.contains('open');
+  document.querySelectorAll('.faq-a').forEach(x => x.classList.remove('open'));
+  document.querySelectorAll('.faq-icon').forEach(x => x.textContent = '+');
+  if (!isOpen) { a.classList.add('open'); icon.textContent = '−'; }
+}
+</script>
+
+  <script>
+    fetch("/header.html")
+      .then(res => res.text())
+      .then(data => { document.getElementById("header").innerHTML = data; });
+    fetch("/footer.html")
+      .then(res => res.text())
+      .then(data => { document.getElementById("footer").innerHTML = data; });
+  </script>
+  <!-- ================= TEMPLATE JS ================= -->
+  <script data-cfasync="false" src="../../cdn-cgi/scripts/5c5dd728/cloudflare-static/email-decode.min.js"></script>
+  <script src="/../assets/quantbit_website/js/jquery-3.7.1.min.js"></script>
+  <script src="/../assets/quantbit_website/js/viewport.jquery.js"></script>
+  <script src="/../assets/quantbit_website/js/bootstrap.bundle.min.js"></script>
+  <script src="/../assets/quantbit_website/js/jquery.nice-select.min.js"></script>
+  <script src="/../assets/quantbit_website/js/jquery.waypoints.js"></script>
+  <script src="/../assets/quantbit_website/js/jquery.counterup.min.js"></script>
+  <script src="/../assets/quantbit_website/js/slick.min.js"></script>
+  <script src="/../assets/quantbit_website/js/slick-animation.min.js"></script>
+  <script src="/../assets/quantbit_website/js/jquery.meanmenu.min.js"></script>
+  <script src="/../assets/quantbit_website/js/jquery.magnific-popup.min.js"></script>
+  <script src="/../assets/quantbit_website/js/wow.min.js"></script>
+  <script src="/../assets/quantbit_website/js/circle-progress.js"></script>
+  <script src="/../assets/quantbit_website/js/main.js"></script>
+</body>
+</html>

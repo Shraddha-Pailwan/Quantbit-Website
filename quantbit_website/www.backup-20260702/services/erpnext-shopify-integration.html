@@ -1,0 +1,596 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>ERPNext E-Commerce Integration | Shopify, WooCommerce, Amazon, Flipkart — Quantbit</title>
+<meta name="description" content="Sync ERPNext with Shopify, WooCommerce, Amazon & Flipkart. Automate order management, inventory sync, GST invoicing and multi-channel fulfilment. India-ready commerce connector.">
+<meta name="keywords" content="ERPNext Shopify integration, ERPNext WooCommerce connector, ERPNext Amazon integration India, ERPNext Flipkart integration, ERPNext ecommerce sync, ERPNext multi-channel commerce, ERPNext inventory sync Shopify, ERPNext D2C integration, ERPNext marketplace integration India, ERPNext order management ecommerce, ERPNext GST ecommerce invoice, Shopify ERPNext India, WooCommerce ERPNext sync, ERPNext online store integration">
+<link rel="canonical" href="https://quantbit.io/services/integrations/commerce/">
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@graph": [
+    {"@type":"Organization","@id":"https://quantbit.io/#org","name":"Quantbit Technologies","url":"https://quantbit.io"},
+    {
+      "@type":"Service",
+      "@id":"https://quantbit.io/services/integrations/commerce/#service",
+      "name":"ERPNext E-Commerce Integration",
+      "provider":{"@id":"https://quantbit.io/#org"},
+      "serviceType":"E-Commerce Integration",
+      "areaServed":["India","Oman","UAE","Kenya"],
+      "description":"Pre-built ERPNext connectors for Shopify, WooCommerce, Amazon, and Flipkart — syncing orders, inventory, customers, and GST invoices automatically."
+    },
+    {
+      "@type":"FAQPage",
+      "mainEntity":[
+        {
+          "@type":"Question",
+          "name":"How does ERPNext Shopify integration work for inventory and order sync in India?",
+          "acceptedAnswer":{
+            "@type":"Answer",
+            "text":"Quantbit's Shopify ERPNext connector syncs in both directions. When a customer places an order on Shopify, a Sales Order is created in ERPNext automatically with the customer details, shipping address, line items, and GST tax classification. When the order is invoiced and dispatched in ERPNext, the fulfillment status and tracking number update in Shopify. Inventory levels sync from ERPNext to Shopify in real time so customers never order out-of-stock products."
+          }
+        },
+        {
+          "@type":"Question",
+          "name":"Can ERPNext manage orders from Amazon and Flipkart alongside Shopify in one system?",
+          "acceptedAnswer":{
+            "@type":"Answer",
+            "text":"Yes. Quantbit's Commerce Connector for ERPNext pulls orders from Amazon Seller Central, Flipkart Seller Hub, and Shopify into a single ERPNext order queue. Each order is tagged with its source channel, and reporting lets you compare performance, margins, and returns by channel. GST invoices are generated from ERPNext for all channels, and inventory is deducted from a shared warehouse pool — so you never oversell across channels."
+          }
+        }
+      ]
+    },
+    {
+      "@type":"BreadcrumbList",
+      "itemListElement":[
+        {"@type":"ListItem","position":1,"name":"Home","item":"https://quantbit.io/"},
+        {"@type":"ListItem","position":2,"name":"Services","item":"https://quantbit.io/services/"},
+        {"@type":"ListItem","position":3,"name":"Integrations","item":"https://quantbit.io/services/integrations/"},
+        {"@type":"ListItem","position":4,"name":"Commerce Integration","item":"https://quantbit.io/services/integrations/commerce/"}
+      ]
+    },
+    {"@type":"SpeakableSpecification","cssSelector":[".geo-answer-q1",".geo-answer-q2"]}
+  ]
+}
+</script>
+<style>
+*{box-sizing:border-box;margin:0;padding:0}
+:root{
+  --accent:#b35e0a;--accent-dark:#8a4a08;--accent-light:#fdf0e6;
+  --blue:#1a5fd4;--blue-light:#e8f0fc;--blue-dark:#0f3d8c;
+  --teal:#0b7a5e;--teal-light:#e6f4f0;
+  --navy:#0f2d47;--navy-mid:#1a3f5c;
+  --gray-100:#f8f9fb;--gray-200:#eef0f4;--gray-300:#d4d8e2;
+  --gray-600:#5a6272;--text:#1e2535;--text-light:#4a5568;
+  --radius:10px;--radius-lg:16px;
+  --shadow:0 2px 12px rgba(15,45,71,0.08);--shadow-md:0 6px 24px rgba(15,45,71,0.12);
+}
+body{font-family:'Segoe UI',system-ui,-apple-system,sans-serif;color:var(--text);line-height:1.65;font-size:16px}
+a{color:var(--blue);text-decoration:none}a:hover{text-decoration:underline}
+.container{max-width:1160px;margin:0 auto;padding:0 24px}
+#header{display:block;margin:0;padding:0}
+.breadcrumb{background:var(--gray-100);padding:12px 0;font-size:0.82rem;color:var(--gray-600)}
+.breadcrumb a{color:var(--gray-600)}.breadcrumb span{margin:0 6px}
+.geo-section{padding:40px 0 0;background:var(--gray-100)}
+.geo-label{font-size:0.75rem;font-weight:700;text-transform:uppercase;letter-spacing:0.8px;color:var(--gray-600);margin-bottom:14px}
+.geo-block{background:var(--accent-light);border-left:4px solid var(--accent);border-radius:0 var(--radius) var(--radius) 0;padding:20px 24px;margin-bottom:10px}
+.geo-block strong{display:block;color:var(--accent-dark);font-size:0.88rem;margin-bottom:6px}
+.geo-block p{font-size:0.92rem;color:var(--text-light);line-height:1.7}
+.hero{background:linear-gradient(135deg,#1a0a2e 0%,#2d1a4a 50%,#1a2d4a 100%);color:#fff;padding:72px 0 56px}
+.hero-grid{display:grid;grid-template-columns:1fr 1fr;gap:60px;align-items:center}
+.hero-eyebrow{display:inline-flex;align-items:center;gap:6px;background:rgba(255,255,255,0.1);border:1px solid rgba(255,255,255,0.15);padding:5px 14px;border-radius:100px;font-size:0.78rem;letter-spacing:0.5px;text-transform:uppercase;margin-bottom:20px}
+.hero h1{font-size:clamp(1.8rem,3.5vw,2.6rem);font-weight:800;line-height:1.15;letter-spacing:-0.3px;margin-bottom:18px}
+.hero h1 .hl{color:#c084fc}
+.hero-sub{font-size:1rem;color:rgba(255,255,255,0.78);line-height:1.75;margin-bottom:28px}
+.hero-btns{display:flex;gap:12px;flex-wrap:wrap}
+.btn-primary{background:var(--blue);color:#fff;padding:13px 26px;border-radius:8px;font-weight:600;font-size:0.95rem;border:2px solid var(--blue);transition:all 0.2s;display:inline-flex;align-items:center;gap:6px}
+.btn-primary:hover{background:var(--blue-dark);text-decoration:none;transform:translateY(-1px)}
+.btn-ghost{background:transparent;color:rgba(255,255,255,0.9);padding:13px 24px;border-radius:8px;font-weight:600;font-size:0.95rem;border:2px solid rgba(255,255,255,0.3)}
+.btn-ghost:hover{border-color:#fff;text-decoration:none}
+.channel-dashboard{background:rgba(255,255,255,0.05);border:1px solid rgba(255,255,255,0.1);border-radius:var(--radius-lg);padding:20px}
+.dash-title{font-size:0.72rem;text-transform:uppercase;letter-spacing:0.5px;color:rgba(255,255,255,0.45);margin-bottom:14px}
+.channel-row{display:flex;align-items:center;justify-content:space-between;padding:10px 14px;border-radius:8px;margin-bottom:8px;background:rgba(255,255,255,0.06)}
+.ch-left{display:flex;align-items:center;gap:10px}
+.ch-icon{font-size:1.3rem;width:30px;text-align:center}
+.ch-name{font-size:0.85rem;font-weight:600;color:rgba(255,255,255,0.9)}
+.ch-orders{font-size:0.72rem;color:rgba(255,255,255,0.45)}
+.ch-status{font-size:0.7rem;font-weight:700;padding:3px 8px;border-radius:100px}
+.st-live{background:rgba(74,222,128,0.15);color:#4ade80}
+.st-sync{background:rgba(251,191,36,0.15);color:#fbbf24}
+.dash-footer{margin-top:12px;padding-top:12px;border-top:1px solid rgba(255,255,255,0.08);display:flex;justify-content:space-between;font-size:0.72rem;color:rgba(255,255,255,0.4)}
+section{padding:72px 0}
+.section-eyebrow{font-size:0.75rem;font-weight:700;text-transform:uppercase;letter-spacing:1px;color:var(--blue);margin-bottom:8px}
+.section-title{font-size:clamp(1.5rem,2.8vw,2rem);font-weight:800;color:var(--navy);line-height:1.2;letter-spacing:-0.3px;margin-bottom:14px}
+.section-sub{font-size:1rem;color:var(--text-light);max-width:640px;line-height:1.75}
+.text-center{text-align:center}.text-center .section-sub{margin:0 auto}
+.channels-grid{display:grid;grid-template-columns:repeat(2,1fr);gap:20px;margin-top:44px}
+.ch-card{border:1px solid var(--gray-200);border-radius:var(--radius-lg);padding:26px;background:#fff;transition:all 0.25s}
+.ch-card:hover{border-color:var(--blue);box-shadow:var(--shadow-md)}
+.ch-card-icon{font-size:2rem;margin-bottom:12px}
+.ch-card h3{font-size:1rem;font-weight:700;color:var(--navy);margin-bottom:8px}
+.ch-card p{font-size:0.875rem;color:var(--text-light);line-height:1.65;margin-bottom:14px}
+.feature-list{list-style:none}
+.feature-list li{font-size:0.82rem;color:var(--text-light);padding:4px 0;display:flex;gap:6px;align-items:flex-start}
+.feature-list li::before{content:'✓';color:var(--teal);font-weight:700;flex-shrink:0}
+.usecases-section{background:var(--gray-100)}
+.uc-grid{display:grid;grid-template-columns:1fr 1fr;gap:24px;margin-top:44px}
+.uc-card{background:#fff;border-radius:var(--radius-lg);padding:28px 30px;box-shadow:var(--shadow)}
+.uc-badge{display:inline-block;font-size:0.7rem;font-weight:700;text-transform:uppercase;letter-spacing:0.5px;padding:3px 10px;border-radius:100px;margin-bottom:14px}
+.uc-badge.purple{background:#f3e8ff;color:#6d28d9}
+.uc-badge.blue{background:var(--blue-light);color:var(--blue-dark)}
+.uc-badge.amber{background:var(--accent-light);color:var(--accent-dark)}
+.uc-badge.teal{background:var(--teal-light);color:var(--teal)}
+.uc-card h3{font-size:1.02rem;font-weight:700;color:var(--navy);margin-bottom:12px;line-height:1.3}
+.uc-card p{font-size:0.88rem;color:var(--text-light);line-height:1.78}
+.uc-outcome{margin-top:16px;padding-top:14px;border-top:1px solid var(--gray-200);font-size:0.82rem;color:var(--teal);font-weight:600}
+.sync-section{background:#fff}
+.sync-table{width:100%;border-collapse:collapse;margin-top:40px}
+.sync-table th{background:var(--navy);color:#fff;padding:12px 16px;text-align:left;font-size:0.82rem;font-weight:600}
+.sync-table td{padding:12px 16px;border-bottom:1px solid var(--gray-200);font-size:0.85rem;color:var(--text-light)}
+.sync-table tr:last-child td{border-bottom:none}
+.sync-table tr:nth-child(even) td{background:var(--gray-100)}
+.sync-badge{font-size:0.7rem;font-weight:700;padding:2px 8px;border-radius:100px}
+.sb-rt{background:#dcfce7;color:#15803d}
+.sb-sch{background:#fef3c7;color:#92400e}
+.sb-oneway{background:var(--blue-light);color:var(--blue-dark)}
+.sb-twoway{background:#f3e8ff;color:#6d28d9}
+.hiw-section{background:var(--gray-100)}
+.hiw-steps{display:grid;grid-template-columns:repeat(4,1fr);gap:20px;margin-top:44px}
+.hiw-step{background:#fff;border-radius:var(--radius-lg);padding:24px 20px;text-align:center}
+.step-num{width:44px;height:44px;border-radius:50%;background:var(--blue);color:#fff;font-weight:800;font-size:0.9rem;display:flex;align-items:center;justify-content:center;margin:0 auto 16px}
+.hiw-step h4{font-size:0.92rem;font-weight:700;color:var(--navy);margin-bottom:8px}
+.hiw-step p{font-size:0.82rem;color:var(--text-light);line-height:1.6}
+.specs-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:20px;margin-top:40px}
+.spec-card{background:var(--gray-100);border-radius:var(--radius);padding:20px 22px}
+.spec-card h4{font-size:0.82rem;font-weight:700;text-transform:uppercase;letter-spacing:0.5px;color:var(--blue);margin-bottom:10px}
+.spec-card ul{list-style:none}
+.spec-card li{font-size:0.84rem;color:var(--text-light);padding:4px 0;border-bottom:1px solid var(--gray-200)}
+.spec-card li:last-child{border-bottom:none}
+.faq-section{background:var(--gray-100)}
+.faq-list{max-width:820px;margin:40px auto 0}
+.faq-item{border-radius:var(--radius);background:#fff;margin-bottom:10px;overflow:hidden}
+.faq-q{padding:18px 22px;font-weight:600;color:var(--navy);cursor:pointer;display:flex;justify-content:space-between;align-items:center;font-size:0.92rem}
+.faq-q::after{content:'＋';font-size:1.1rem;color:var(--blue);flex-shrink:0}
+.faq-a{padding:0 22px 18px;color:var(--text-light);font-size:0.875rem;line-height:1.75;display:none}
+.faq-item.open .faq-a{display:block}
+.faq-item.open .faq-q::after{content:'−'}
+.related-section{background:#fff}
+.related-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:20px;margin-top:32px}
+.related-card{background:var(--gray-100);border-radius:var(--radius);padding:20px 22px}
+.related-card h4{font-size:0.95rem;font-weight:700;color:var(--navy);margin-bottom:6px}
+.related-card p{font-size:0.82rem;color:var(--text-light);margin-bottom:12px;line-height:1.55}
+.cta-section{background:linear-gradient(135deg,var(--navy),var(--navy-mid));color:#fff;text-align:center;padding:80px 0}
+.cta-section h2{font-size:clamp(1.5rem,2.8vw,2rem);font-weight:800;margin-bottom:14px}
+.cta-section p{color:rgba(255,255,255,0.72);max-width:520px;margin:0 auto 32px;font-size:1rem}
+footer{background:var(--navy);color:rgba(255,255,255,0.55);text-align:center;padding:20px;font-size:0.8rem}
+@media(max-width:900px){.hero-grid{grid-template-columns:1fr}.channels-grid{grid-template-columns:1fr}.hiw-steps{grid-template-columns:1fr 1fr}.specs-grid{grid-template-columns:1fr 1fr}}
+@media(max-width:600px){.uc-grid,.specs-grid,.related-grid,.hiw-steps{grid-template-columns:1fr}}
+</style>
+<link rel="stylesheet" href="/assets/quantbit_website/css/_shared.css">
+<!-- TEMPLATE CSS (IMPORTANT) -->
+    <link rel="stylesheet" href="/../assets/quantbit_website/css/bootstrap.min.css">
+    <link rel="stylesheet" href="/../assets/quantbit_website/css/font-awesome.css">
+    <link rel="stylesheet" href="/../assets/quantbit_website/css/animate.css">
+    <link rel="stylesheet" href="/../assets/quantbit_website/css/magnific-popup.css">
+    <link rel="stylesheet" href="/../assets/quantbit_website/css/meanmenu.css">
+    <link rel="stylesheet" href="/../assets/quantbit_website/css/slick.css">
+    <link rel="stylesheet" href="/../assets/quantbit_website/css/nice-select.css">
+    <link rel="stylesheet" href="/../assets/quantbit_website/css/main.css">
+    <link rel="stylesheet" href="style.css">
+    <link rel="stylesheet" href="/assets/quantbit_website/css/_shared.css">
+
+
+    <!-- OPTIONAL CUSTOM -->
+    <link rel="stylesheet" href="/../assets/quantbit_website/css/hrms.css">
+      <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
+<!-- Google Tag Manager -->
+<script>(function(w,d,s,l,i){w[l]=w[l]||[];w[l].push({'gtm.start':
+new Date().getTime(),event:'gtm.js'});var f=d.getElementsByTagName(s)[0],
+j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
+'https://www.googletagmanager.com/gtm.js?id='+i+dl;f.parentNode.insertBefore(j,f);
+})(window,document,'script','dataLayer','GTM-P98Z6G8D');</script>
+<!-- End Google Tag Manager -->
+</head>
+<body>
+    <!-- Google Tag Manager (noscript) -->
+<noscript><iframe src="https://www.googletagmanager.com/ns.html?id=GTM-P98Z6G8D"
+height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
+<!-- End Google Tag Manager (noscript) -->
+<div id="header"></div><div class="breadcrumb"><div class="container"><a href="/">Home</a><span>›</span><a href="/services/">Services</a><span>›</span><a href="/services/integrations/">Integrations</a><span>›</span>Commerce Integration</div></div>
+
+<div class="geo-section">
+  <div class="container">
+    <div class="geo-label">Direct Answers · ERPNext Commerce Integration</div>
+    <div class="geo-block geo-answer-q1">
+      <strong>Q: How does ERPNext Shopify integration work for order and inventory sync in India?</strong>
+      <p>When a customer places an order on Shopify, Quantbit's connector creates a Sales Order in ERPNext automatically — with the customer's shipping address, line items mapped to ERPNext items, and GST tax classification applied based on the product HSN code and delivery state. When the order is invoiced and dispatched in ERPNext, the fulfillment status and courier tracking number push back to Shopify so the customer sees live shipping updates. Stock levels sync from ERPNext to Shopify in near-real-time so the store never shows products that are out of stock in the warehouse.</p>
+    </div>
+    <div class="geo-block geo-answer-q2">
+      <strong>Q: Can ERPNext pull orders from Amazon and Flipkart alongside a Shopify store in one unified system?</strong>
+      <p>Yes. Quantbit's Commerce Connector for ERPNext aggregates orders from Amazon Seller Central, Flipkart Seller Hub, and Shopify into a single ERPNext order management queue. Each order is tagged with its source channel so you can track performance and margins per marketplace. GST invoices and e-invoices are generated from ERPNext for every channel. Inventory is deducted from a shared warehouse pool so you never oversell across channels — a common pain point for sellers active on multiple platforms simultaneously.</p>
+    </div>
+  </div>
+</div>
+
+<section class="hero">
+  <div class="container">
+    <div class="hero-grid">
+      <div>
+        <div class="hero-eyebrow">🛒 Commerce Connector Pack</div>
+        <h1>ERPNext That Keeps Up With <span class="hl">Every Order, Every Channel</span></h1>
+        <p class="hero-sub">Connect Shopify, WooCommerce, Amazon, and Flipkart to ERPNext — and let orders flow in, inventory sync out, and GST invoices generate automatically across every channel you sell on.</p>
+        <div class="hero-btns">
+          <a href="/company/contact-us.html" class="btn-primary">Set Up Commerce Integration →</a>
+          <a href="#use-cases" class="btn-ghost">Read Real Stories</a>
+        </div>
+      </div>
+      <div class="channel-dashboard">
+        <div class="dash-title">Multi-Channel Order Feed · Live</div>
+        <div class="channel-row"><div class="ch-left"><span class="ch-icon">🛍️</span><div><div class="ch-name">Shopify Store</div><div class="ch-orders">47 orders today · ₹1,84,200</div></div></div><span class="ch-status st-live">Live Sync</span></div>
+        <div class="channel-row"><div class="ch-left"><span class="ch-icon">📦</span><div><div class="ch-name">Amazon.in</div><div class="ch-orders">23 orders today · ₹89,400</div></div></div><span class="ch-status st-live">Live Sync</span></div>
+        <div class="channel-row"><div class="ch-left"><span class="ch-icon">🏪</span><div><div class="ch-name">Flipkart</div><div class="ch-orders">18 orders today · ₹52,100</div></div></div><span class="ch-status st-live">Live Sync</span></div>
+        <div class="channel-row"><div class="ch-left"><span class="ch-icon">🌐</span><div><div class="ch-name">WooCommerce</div><div class="ch-orders">12 orders today · ₹38,700</div></div></div><span class="ch-status st-sync">Syncing…</span></div>
+        <div class="dash-footer"><span>All orders → ERPNext automatically</span><span>Inventory synced ✓</span></div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section style="background:#fff">
+  <div class="container">
+    <div class="section-eyebrow">Channel Connectors</div>
+    <h2 class="section-title">Every Platform Indian Sellers Actually Use</h2>
+    <p class="section-sub">Each connector is built for how that platform actually works — not a generic API wrapper. Shopify's webhook model, Amazon's SP-API, Flipkart's seller feed — all handled correctly.</p>
+    <div class="channels-grid">
+      <div class="ch-card">
+        <div class="ch-card-icon">🛍️</div>
+        <h3>Shopify ↔ ERPNext</h3>
+        <p>The most complete bidirectional sync available for Shopify and ERPNext. Orders, customers, products, inventory, and fulfillment — everything flows in both directions without manual intervention.</p>
+        <ul class="feature-list">
+          <li>Real-time order webhook to ERPNext Sales Order</li>
+          <li>Customer auto-creation and deduplication</li>
+          <li>Product and variant mapping to ERPNext Items</li>
+          <li>Inventory levels pushed from ERPNext to Shopify on every stock movement</li>
+          <li>Fulfillment status and tracking number pushed back to Shopify on shipment</li>
+          <li>Refund and return sync with ERPNext credit notes</li>
+          <li>GST invoice generation mapped to delivery state</li>
+          <li>Discount codes and gift cards handled as journal entries</li>
+          <li>Multi-location inventory support for multiple warehouses</li>
+        </ul>
+      </div>
+      <div class="ch-card">
+        <div class="ch-card-icon">🌐</div>
+        <h3>WooCommerce ↔ ERPNext</h3>
+        <p>WooCommerce's REST API gives us deep access to order data. Our connector handles the nuances Indian WooCommerce sellers face — COD orders, partial payments, and GST plugin compatibility.</p>
+        <ul class="feature-list">
+          <li>Order import with line items and customer data</li>
+          <li>COD order handling — payment entry created on delivery</li>
+          <li>Inventory sync via WooCommerce REST API</li>
+          <li>WooCommerce GST plugin data passed to ERPNext tax lines</li>
+          <li>Product category mapping to ERPNext item groups</li>
+          <li>Order status updates pushed back to WooCommerce</li>
+          <li>Abandoned cart data pulled to ERPNext CRM leads</li>
+          <li>Subscription orders (WooCommerce Subscriptions) supported</li>
+        </ul>
+      </div>
+      <div class="ch-card">
+        <div class="ch-card-icon">📦</div>
+        <h3>Amazon.in ↔ ERPNext</h3>
+        <p>Amazon's Selling Partner API is complex and rate-limited. Our connector handles the authentication, throttling, and data normalisation — so your Amazon orders appear in ERPNext reliably.</p>
+        <ul class="feature-list">
+          <li>Order import via Amazon SP-API (Selling Partner API)</li>
+          <li>FBA and FBM order handling with separate warehouse logic</li>
+          <li>Amazon fee deductions posted as ERPNext journal entries</li>
+          <li>Return and refund data imported automatically</li>
+          <li>ASIN to ERPNext Item mapping</li>
+          <li>Amazon settlement report reconciliation</li>
+          <li>TCS (Tax Collected at Source) entries for Amazon marketplace</li>
+          <li>Multi-marketplace support (Amazon.in, Amazon.ae)</li>
+        </ul>
+      </div>
+      <div class="ch-card">
+        <div class="ch-card-icon">🏪</div>
+        <h3>Flipkart ↔ ERPNext</h3>
+        <p>Flipkart remains India's largest marketplace for many product categories. Our connector keeps your Flipkart Seller Hub in sync with ERPNext — including the Flipkart-specific return and penalty structures.</p>
+        <ul class="feature-list">
+          <li>Order import from Flipkart Seller Hub API</li>
+          <li>Flipkart Fulfillment (F-Assured) and self-ship order handling</li>
+          <li>Return and exchange order processing in ERPNext</li>
+          <li>Flipkart payment settlement reconciliation</li>
+          <li>Seller protection penalty tracking in ERPNext</li>
+          <li>HSN and GST rate mapping per product category</li>
+          <li>Listing data sync for inventory available to sell</li>
+          <li>Flipkart Ads spend imported as marketing cost entries</li>
+        </ul>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section class="sync-section">
+  <div class="container">
+    <div class="section-eyebrow">Sync Capabilities</div>
+    <h2 class="section-title">What Syncs, Which Direction, and How Often</h2>
+    <p class="section-sub">Not everything needs to sync in real time. Here is exactly how each data type flows between your e-commerce channels and ERPNext.</p>
+    <table class="sync-table">
+      <thead><tr><th>Data Type</th><th>Direction</th><th>Frequency</th><th>Notes</th></tr></thead>
+      <tbody>
+        <tr><td>New Orders</td><td>Channel → ERPNext</td><td><span class="sync-badge sb-rt">Real-time</span></td><td>Webhook-driven; Sales Order created within seconds of placement</td></tr>
+        <tr><td>Order Status Updates</td><td>ERPNext → Channel</td><td><span class="sync-badge sb-rt">Real-time</span></td><td>Fulfillment + tracking number pushed on ERPNext shipment</td></tr>
+        <tr><td>Inventory Levels</td><td>ERPNext → Channel</td><td><span class="sync-badge sb-sch">Every 15 min</span></td><td>Stock ledger changes trigger sync; configurable frequency</td></tr>
+        <tr><td>Product / Item Catalog</td><td>ERPNext ↔ Channel</td><td><span class="sync-badge sb-sch">Scheduled</span></td><td>New items pushed to channels; price updates bidirectional</td></tr>
+        <tr><td>Customer Data</td><td>Channel → ERPNext</td><td><span class="sync-badge sb-rt">Real-time</span></td><td>Deduplication by email/phone; existing customers matched</td></tr>
+        <tr><td>Returns & Refunds</td><td>Channel → ERPNext</td><td><span class="sync-badge sb-sch">Every 2 hrs</span></td><td>Return orders create ERPNext return receipts and credit notes</td></tr>
+        <tr><td>Payment Settlements</td><td>Channel → ERPNext</td><td><span class="sync-badge sb-sch">Daily</span></td><td>Settlement reports reconciled; platform fees posted as expenses</td></tr>
+        <tr><td>Pricing Updates</td><td>ERPNext → Channel</td><td><span class="sync-badge sb-oneway">One-way</span></td><td>ERPNext is the pricing master; channel prices updated on change</td></tr>
+      </tbody>
+    </table>
+  </div>
+</section>
+
+<section class="usecases-section" id="use-cases">
+  <div class="container">
+    <div class="section-eyebrow">Real Stories</div>
+    <h2 class="section-title">The Situations That Make Commerce Integration Essential</h2>
+    <p class="section-sub">These are the problems sellers bring to us — usually after one too many stockout incidents, one delayed GST return, or one month-end where reconciliation took a week.</p>
+    <div class="uc-grid">
+      <div class="uc-card">
+        <span class="uc-badge purple">D2C Brand · Mumbai</span>
+        <h3>The Beauty Brand Selling on Three Channels With One Person Entering Orders</h3>
+        <p>A skincare brand based in Mumbai was selling on Shopify, Amazon, and Nykaa simultaneously. One operations executive was responsible for checking each platform every two hours, downloading the pending orders, and manually creating them in ERPNext. If she was in a meeting or took a half day, orders piled up. Customers who expected same-day dispatch started seeing delays. Reviews mentioning "slow shipping" started appearing. When she was sick for two days, the backlog took a week to clear. After the Commerce Connector went live, all three channels feed orders directly into ERPNext the moment they are placed. No platform checking, no CSV downloads, no manual entry. She now spends her time reviewing the daily dispatch report — a five-minute task — and handling exceptions like address issues or out-of-stock situations. Order processing lag went from two to eight hours to under twenty minutes, even on peak days.</p>
+        <div class="uc-outcome">✦ Order processing lag cut from 2–8 hours to under 20 minutes; no manual entry across 3 channels</div>
+      </div>
+      <div class="uc-card">
+        <span class="uc-badge blue">Electronics Seller · Pune</span>
+        <h3>The Electronics Seller Who Kept Overselling on Amazon While Stock Sat in ERPNext</h3>
+        <p>An electronics accessories seller in Pune was listing products on Amazon, Flipkart, and their own website. Each channel had its own inventory count — set manually at the beginning of the month and updated when someone remembered to. The problem surfaced painfully one Diwali sale season: Amazon showed 80 units of a Bluetooth speaker in stock, Flipkart showed 60, and the website showed 50. Actual warehouse stock: 90 units. They took 130 orders across three channels in three hours. Cancellations, penalties from Flipkart, and a customer service nightmare followed. After ERPNext became the inventory master and the Commerce Connector started pushing real-time stock to all channels, overselling disappeared entirely. Every sale on any channel immediately reduces the available stock shown everywhere else. The next peak sale season went smoothly — no cancellations due to stock discrepancy.</p>
+        <div class="uc-outcome">✦ Overselling incidents reduced to zero; single inventory pool across 3 channels</div>
+      </div>
+      <div class="uc-card">
+        <span class="uc-badge amber">Home Decor · Bengaluru</span>
+        <h3>The GST Return That Took Four Days to Prepare Every Month</h3>
+        <p>A home decor brand selling on Shopify and Amazon was struggling every month when GST filing time came around. Their accountant had to pull sales data from both platforms, figure out the delivery state for each order (interstate or intrastate, which determines IGST versus CGST plus SGST), manually classify each line item's HSN code, and then compile everything into a format their CA could use. Four days of work, every month, for one accountant — just for the data collection step. After the Commerce Connector integrated both channels with ERPNext, every order that comes in has its GST components calculated automatically based on the customer's state and the item's HSN code. GSTR-1 data is ready in ERPNext on the first of every month. The accountant now reviews it in two hours and sends it to the CA. Four days became two hours.</p>
+        <div class="uc-outcome">✦ Monthly GST data preparation cut from 4 days to 2 hours; auto HSN and state-wise tax classification</div>
+      </div>
+      <div class="uc-card">
+        <span class="uc-badge teal">Fashion · Delhi</span>
+        <h3>The Returns Nightmare That Was Eating the Finance Team's Week</h3>
+        <p>A fashion brand selling on Flipkart had a returns rate of around 18 to 22 percent — normal for apparel, but a nightmare to process manually. Each return that came back from Flipkart had to be inspected, graded (sellable or damaged), entered as a return receipt in ERPNext, matched against the original order, and a credit note created for GST reversal. Flipkart's settlement statement also deducted return-related logistics charges and penalties that had to be tracked separately. One person was spending almost two full days per week on return processing alone. After the Commerce Connector automated the return data import from Flipkart and mapped it to ERPNext return receipts with auto-generated credit notes, the same person spends two hours per week on returns — reviewing the quality grading and approving the entries the system pre-created. The Flipkart settlement reconciliation now takes forty minutes instead of a day.</p>
+        <div class="uc-outcome">✦ Return processing time cut from 2 days/week to 2 hours; settlement reconciliation automated</div>
+      </div>
+      <div class="uc-card">
+        <span class="uc-badge purple">Health Supplements · Hyderabad</span>
+        <h3>Price Changes That Took Three Days to Reach All Channels</h3>
+        <p>A health supplements company in Hyderabad was selling on their own WooCommerce site, Amazon, and a few B2B portals. When they revised prices — which happened quarterly as raw material costs changed — someone had to log into each platform separately and update listings manually. Last time, the price change on the WooCommerce site went live immediately, but Amazon took two days to update because the person responsible was travelling, and the B2B portal was accidentally left at the old price for three days after that. During those three days, the company was selling below their intended margin on Amazon. After ERPNext became the pricing master and the Commerce Connector pushed price updates to all channels automatically, a single price list change in ERPNext propagates to all connected channels within the hour. One change, everywhere, immediately.</p>
+        <div class="uc-outcome">✦ Price sync from hours or days to under 1 hour across all channels; margin leakage eliminated</div>
+      </div>
+      <div class="uc-card">
+        <span class="uc-badge blue">Kitchenware · Chennai</span>
+        <h3>Building the Channel Performance Report That Management Kept Asking For</h3>
+        <p>The founder of a kitchenware brand in Chennai kept asking the same question every month in review meetings: "Which channel is actually profitable after platform fees, returns, and logistics?" Nobody could answer quickly because the data lived in three different dashboards, none of which showed net margins after all deductions. The finance team would spend three days pulling data from Shopify analytics, Amazon Seller Central reports, and Flipkart performance dashboards, then reconciling it with ERPNext to get cost of goods, and building a spreadsheet that was usually out of date by the time it was presented. After the Commerce Connector brought all channel revenue, returns, fees, and settlement data into ERPNext, the founder gets a channel profitability report directly from ERPNext — revenue minus platform fees minus returns minus cost of goods. It refreshes daily. The management meeting question is now answered before anyone asks it.</p>
+        <div class="uc-outcome">✦ Channel profitability reporting cut from 3-day spreadsheet to live ERPNext dashboard</div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section class="hiw-section">
+  <div class="container">
+    <div class="text-center">
+      <div class="section-eyebrow">How It Works</div>
+      <h2 class="section-title">From Channel Order to ERPNext Invoice in Four Steps</h2>
+      <p class="section-sub" style="margin:0 auto">The journey every order takes — from the moment a customer checks out on your store to the point the inventory is updated and the invoice is ready.</p>
+    </div>
+    <div class="hiw-steps">
+      <div class="hiw-step">
+        <div class="step-num">1</div>
+        <h4>Order Placed on Channel</h4>
+        <p>Customer places order on Shopify, Amazon, Flipkart, or WooCommerce. The platform fires a webhook or the connector polls the API for new orders.</p>
+      </div>
+      <div class="hiw-step">
+        <div class="step-num">2</div>
+        <h4>Sales Order Created in ERPNext</h4>
+        <p>The connector maps the channel order to an ERPNext Sales Order — customer, items, quantities, shipping address, GST classification, and channel tag.</p>
+      </div>
+      <div class="hiw-step">
+        <div class="step-num">3</div>
+        <h4>Fulfillment and Invoice</h4>
+        <p>Your warehouse team picks and packs. On dispatch in ERPNext, a GST invoice is generated and the tracking number is pushed back to the channel automatically.</p>
+      </div>
+      <div class="hiw-step">
+        <div class="step-num">4</div>
+        <h4>Inventory and Settlement Sync</h4>
+        <p>Stock levels update across all channels instantly. Channel settlement reports import nightly — fees, returns, and payouts all reconciled in ERPNext.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section style="background:#fff;padding:72px 0">
+  <div class="container">
+    <div class="section-eyebrow">Technical Specs</div>
+    <h2 class="section-title">Built for Indian E-Commerce Realities</h2>
+    <p class="section-sub">GST compliance, COD handling, and marketplace-specific settlement structures — the connector is built around how Indian e-commerce actually works.</p>
+    <div class="specs-grid">
+      <div class="spec-card">
+        <h4>Supported Platforms</h4>
+        <ul>
+          <li>Shopify (all plans including Plus)</li>
+          <li>WooCommerce (REST API v3)</li>
+          <li>Amazon.in (SP-API)</li>
+          <li>Amazon.ae (GCC market)</li>
+          <li>Flipkart Seller Hub API</li>
+          <li>Custom storefronts via webhook</li>
+        </ul>
+      </div>
+      <div class="spec-card">
+        <h4>GST Compliance</h4>
+        <ul>
+          <li>Interstate vs intrastate detection</li>
+          <li>IGST / CGST / SGST auto-split</li>
+          <li>HSN code mapping per item</li>
+          <li>e-Invoice (IRN) for B2B orders above ₹5 Cr</li>
+          <li>TCS deduction for marketplace orders</li>
+          <li>GSTR-1 ready data in ERPNext</li>
+        </ul>
+      </div>
+      <div class="spec-card">
+        <h4>Inventory Management</h4>
+        <ul>
+          <li>Single ERPNext warehouse as inventory master</li>
+          <li>Multi-warehouse allocation per channel</li>
+          <li>Real-time stock deduction on order</li>
+          <li>Buffer stock settings per channel</li>
+          <li>FBA inventory tracked separately</li>
+          <li>Low-stock alerts per channel threshold</li>
+        </ul>
+      </div>
+      <div class="spec-card">
+        <h4>Payment & Settlement</h4>
+        <ul>
+          <li>Daily settlement report import</li>
+          <li>Platform fee booking as expense</li>
+          <li>COD collection tracking</li>
+          <li>Prepaid order payment entry</li>
+          <li>Return deductions auto-posted</li>
+          <li>Multi-bank settlement routing</li>
+        </ul>
+      </div>
+      <div class="spec-card">
+        <h4>ERPNext Compatibility</h4>
+        <ul>
+          <li>ERPNext v13, v14, v15</li>
+          <li>Multi-company channel routing</li>
+          <li>Custom price list per channel</li>
+          <li>Channel-wise cost centre tracking</li>
+          <li>Custom fields preserved on sync</li>
+        </ul>
+      </div>
+      <div class="spec-card">
+        <h4>Error Handling</h4>
+        <ul>
+          <li>Duplicate order detection</li>
+          <li>Unmapped SKU alert to operations team</li>
+          <li>Failed sync retry with backoff</li>
+          <li>Sync log visible in ERPNext</li>
+          <li>Daily sync health report email</li>
+        </ul>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section class="faq-section">
+  <div class="container">
+    <div class="text-center">
+      <div class="section-eyebrow">FAQs</div>
+      <h2 class="section-title">What Sellers Ask Before Going Live</h2>
+    </div>
+    <div class="faq-list">
+      <div class="faq-item open">
+        <div class="faq-q" onclick="this.parentElement.classList.toggle('open')">What happens if the same customer orders on both Shopify and Amazon?</div>
+        <div class="faq-a">The connector deduplicates customers by email address and phone number. If the same customer has ordered on both channels, they will be linked to the same ERPNext customer record — giving you a unified view of their total lifetime value, payment history, and order count across all channels. If the email or phone does not match, a new customer record is created and can be manually merged later.</div>
+      </div>
+      <div class="faq-item">
+        <div class="faq-q" onclick="this.parentElement.classList.toggle('open')">How does the connector handle Cash on Delivery orders from Shopify and WooCommerce?</div>
+        <div class="faq-a">For COD orders, the connector creates the Sales Order and Delivery Note in ERPNext normally — but the payment entry is not created until the order is marked as delivered and payment collected. Once the delivery partner confirms cash collection (either through their API or your manual confirmation), the connector creates the payment entry and marks the invoice as paid. This prevents your receivables from showing COD orders as collected before the cash has actually come in.</div>
+      </div>
+      <div class="faq-item">
+        <div class="faq-q" onclick="this.parentElement.classList.toggle('open')">We sell some products on Amazon that we do not sell on our own website. Can the item mapping handle this?</div>
+        <div class="faq-a">Yes. The connector has a flexible item mapping table where you can map each platform's SKU or ASIN to the corresponding ERPNext item. Items that exist only on Amazon are mapped only in the Amazon connector config. Items sold across all channels are mapped in each channel's config. If an unmapped SKU comes in on an order, the connector flags it as an alert rather than creating a broken order — so your team can add the mapping before reprocessing.</div>
+      </div>
+      <div class="faq-item">
+        <div class="faq-q" onclick="this.parentElement.classList.toggle('open')">Does the Commerce Connector handle Shopify Plus multi-store setups?</div>
+        <div class="faq-a">Yes. For brands running multiple Shopify stores — for example, a domestic India store and an international store for GCC customers — the connector can be configured to pull from both stores into ERPNext, routing them to different company entities or different cost centres. Orders from the India store get INR pricing and GST; orders from the GCC store get AED or OMR pricing and the appropriate tax treatment.</div>
+      </div>
+      <div class="faq-item">
+        <div class="faq-q" onclick="this.parentElement.classList.toggle('open')">How does Amazon FBA inventory interact with ERPNext stock?</div>
+        <div class="faq-a">FBA inventory is stock that Amazon holds in their fulfilment centres — it is not in your warehouse, but it is your stock. Our connector tracks FBA inventory separately in ERPNext as a virtual warehouse so you have visibility into what is at Amazon versus what is in your own facility. When an FBA order is placed, the deduction happens from the FBA virtual warehouse in ERPNext, not your physical warehouse — keeping your stock reports accurate across both locations.</div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section class="related-section">
+  <div class="container">
+    <div class="section-eyebrow">Related Integrations</div>
+    <h2 class="section-title">Often Combined With Commerce Integration</h2>
+    <div class="related-grid">
+      <div class="related-card">
+        <h4>🚚 Logistics Connectors</h4>
+        <p>Commerce integration brings orders in; logistics integration pushes them to Shiprocket, Delhivery, or DHL and tracks delivery status back.</p>
+        <a href="/services/integrations/logistics/">View Logistics Pack →</a>
+      </div>
+      <div class="related-card">
+        <h4>💳 Payment Gateway Connectors</h4>
+        <p>Prepaid orders from Shopify and WooCommerce reconcile automatically when paired with the Razorpay or Stripe payment connector.</p>
+        <a href="/services/integrations/payments/">View Payment Pack →</a>
+      </div>
+      <div class="related-card">
+        <h4>📊 Analytics Connectors</h4>
+        <p>Channel performance, return rates, and margin by SKU — all visible in Power BI or Metabase once ERPNext holds the unified data.</p>
+        <a href="/services/integrations/analytics/">View Analytics Pack →</a>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section class="cta-section">
+  <div class="container">
+    <h2>Sell on Every Channel. Manage in One Place.</h2>
+    <p>Tell us which platforms you sell on and how many orders you process monthly. We will show you exactly how the Commerce Connector will work for your catalogue and GST setup.</p>
+    <a href="/company/contact-us.html" class="btn-primary" style="font-size:1rem;padding:14px 32px">Book a Free Commerce Integration Call →</a>
+  </div>
+</section>
+<div id="footer"></div>
+<script>document.querySelectorAll('.faq-q').forEach(q=>{q.addEventListener('click',()=>{const item=q.parentElement;document.querySelectorAll('.faq-item').forEach(i=>{if(i!==item)i.classList.remove('open')});item.classList.toggle('open')})});</script>
+<script>
+fetch("/header.html")
+    .then(res => res.text())
+    .then(data => {
+        document.getElementById("header").innerHTML = data;
+    });
+
+fetch("/footer.html")
+    .then(res => res.text())
+    .then(data => {
+        document.getElementById("footer").innerHTML = data;
+    });
+</script>
+<!-- ================= TEMPLATE JS ================= -->
+    <!--<< All JS Plugins >>-->
+    <script data-cfasync="false" src="../../cdn-cgi/scripts/5c5dd728/cloudflare-static/email-decode.min.js"></script>
+    <script src="/../assets/quantbit_website/js/jquery-3.7.1.min.js"></script>
+    <!--<< Viewport Js >>-->
+    <script src="/../assets/quantbit_website/js/viewport.jquery.js"></script>
+    <!--<< Bootstrap Js >>-->
+    <script src="/../assets/quantbit_website/js/bootstrap.bundle.min.js"></script>
+    <!--<< Nice Select Js >>-->
+    <script src="/../assets/quantbit_website/js/jquery.nice-select.min.js"></script>
+    <!--<< Waypoints Js >>-->
+    <script src="/../assets/quantbit_website/js/jquery.waypoints.js"></script>
+    <!--<< Counterup Js >>-->
+    <script src="/../assets/quantbit_website/js/jquery.counterup.min.js"></script>
+    <!--<< Slick Js >>-->
+    <script src="/../assets/quantbit_website/js/slick.min.js"></script>
+    <!--<< Slick Animation Js >>-->
+    <script src="/../assets/quantbit_website/js/slick-animation.min.js"></script>
+    <!--<< MeanMenu Js >>-->
+    <script src="/../assets/quantbit_website/js/jquery.meanmenu.min.js"></script>
+    <!--<< Magnific Popup Js >>-->
+    <script src="/../assets/quantbit_website/js/jquery.magnific-popup.min.js"></script>
+    <!--<< Wow Animation Js >>-->
+    <script src="/../assets/quantbit_website/js/wow.min.js"></script>
+    <!--<< Circle Progress Js >>-->
+    <script src="/../assets/quantbit_website/js/circle-progress.js"></script>
+    <!--<< Main.js >>-->
+    <script src="/../assets/quantbit_website/js/main.js"></script>
+    <script defer
+        src="../../../static.cloudflareinsights.com/beacon.min.js/v8c78df7c7c0f484497ecbca7046644da1771523124516"
+        integrity="sha512-8DS7rgIrAmghBFwoOTujcf6D9rXvH8xm8JQ1Ja01h9QX8EzXldiszufYa4IFfKdLUKTTrnSFXLDkUEOTrZQ8Qg=="
+        data-cf-beacon='{"version":"2024.11.0","token":"90f7972af14a48b4add7da2b74f5d675","r":1,"server_timing":{"name":{"cfCacheStatus":true,"cfEdge":true,"cfExtPri":true,"cfL4":true,"cfOrigin":true,"cfSpeedBrain":true},"location_startswith":null}}'
+        crossorigin="anonymous"></script>
+</body>
+</html>

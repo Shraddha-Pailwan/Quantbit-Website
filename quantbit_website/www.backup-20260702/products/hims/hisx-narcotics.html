@@ -1,0 +1,487 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Narcotics & Schedule H Compliance Software | NDPS Drug Management | HISx by Quantbit</title>
+<meta name="description" content="HISx narcotics module — double-signature dispensing, Schedule H/H1/NDPS compliance, automated narcotics register, strict access controls, and audit-ready compliance reports for hospitals. Built on ERPNext.">
+<meta name="keywords" content="narcotics management software hospital, schedule H compliance ERP, NDPS drug management, hospital controlled substance software, schedule H1 dispensing India, ERPNext narcotics compliance">
+<link rel="canonical" href="https://quantbit.io/hisx/narcotics-compliance">
+<meta property="og:title" content="Narcotics & Schedule H Compliance Software — HISx | Quantbit">
+<meta property="og:type" content="website">
+<script type="application/ld+json">
+{"@context":"https://schema.org","@type":"SoftwareApplication","name":"HISx — Narcotics & Compliance Module","applicationCategory":"BusinessApplication","operatingSystem":"Web","description":"Hospital narcotics and controlled substance management with double-signature dispensing workflows, Schedule H/H1/NDPS compliance, automated narcotics register maintenance, strict role-based access control, and audit-ready compliance reporting. Built on ERPNext by Quantbit Technologies.","offers":{"@type":"Offer","priceCurrency":"INR"},"provider":{"@type":"Organization","name":"Quantbit Technologies Pvt. Ltd.","url":"https://quantbit.io"}}
+</script>
+<script type="application/ld+json">
+{"@context":"https://schema.org","@type":"BreadcrumbList","itemListElement":[{"@type":"ListItem","position":1,"name":"Home","item":"https://quantbit.io"},{"@type":"ListItem","position":2,"name":"HISx","item":"https://quantbit.io/hisx"},{"@type":"ListItem","position":3,"name":"Narcotics & Compliance","item":"https://quantbit.io/hisx/narcotics-compliance"}]}
+</script>
+<script type="application/ld+json">
+{"@context":"https://schema.org","@type":"FAQPage","mainEntity":[
+{"@type":"Question","name":"What are Schedule H, H1, and NDPS drugs and how does HISx manage them?","acceptedAnswer":{"@type":"Answer","text":"Schedule H and H1 drugs are prescription-only medicines regulated under India's Drugs and Cosmetics Act — Schedule H1 carries additional restrictions for antibiotics and habit-forming substances. NDPS (Narcotic Drugs and Psychotropic Substances) drugs are controlled under the NDPS Act 1985 and require strict quantity controls, double-signature dispensing, and mandatory register maintenance. HISx manages all three categories with separate access controls, dispensing workflows, and automated compliance reports — ensuring hospitals meet regulatory requirements without manual register upkeep.","speakable":{"@type":"SpeakableSpecification","cssSelector":".fa-narc-1"}}},
+{"@type":"Question","name":"How does double-signature dispensing work for NDPS drugs in HISx?","acceptedAnswer":{"@type":"Answer","text":"In HISx, any dispensing transaction involving an NDPS-classified drug requires two authorised users to independently verify and approve the dispensing before it is completed. The first user initiates the dispensing against a valid prescription; the second authorised user — typically a senior pharmacist or duty officer — reviews and counter-signs digitally within the system. Neither signature can be bypassed, and both are permanently recorded with timestamp, user ID, and patient reference in the narcotics audit log.","speakable":{"@type":"SpeakableSpecification","cssSelector":".fa-narc-2"}}},
+{"@type":"Question","name":"Does HISx maintain the narcotics register automatically?","acceptedAnswer":{"@type":"Answer","text":"Yes. HISx maintains a digital narcotics register that updates automatically with every receipt, dispensing, return, and adjustment involving controlled substances. The register records the date, quantity received or dispensed, patient details, prescribing physician, and balance remaining — in the format required by drug regulators. Compliance reports for Schedule H, H1, and NDPS drugs can be generated on demand for any date range without manual compilation."}},
+{"@type":"Question","name":"Who can access narcotics and controlled substance inventory in HISx?","acceptedAnswer":{"@type":"Answer","text":"Access to narcotics and controlled substance inventory in HISx is role-based and strictly controlled. Only users with explicit narcotics access permissions can view, dispense, or adjust controlled substance stock. Every access event is logged. The system prevents any non-authorised user from selecting a Schedule H1 or NDPS item during dispensing, regardless of their general pharmacy access level."}},
+{"@type":"Question","name":"Can HISx generate Schedule H and NDPS compliance reports for drug inspectors?","acceptedAnswer":{"@type":"Answer","text":"Yes. HISx generates audit-ready Schedule H, H1, and NDPS compliance reports on demand — covering receipts, dispensings, returns, and closing balances for any date range. Reports are formatted to meet regulatory requirements and can be exported for drug inspector visits, licensing renewals, and internal audits without any manual compilation or data extraction from the system."}}
+]}
+</script>
+<style>
+/* SHARED BASE — all HISx module pages */
+*, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+:root {
+  --ink: #0f1117; --ink-2: #3d3f4a; --ink-3: #72747f; --ink-4: #a0a2ab;
+  --surface: #ffffff; --surface-2: #f5f6f8; --surface-3: #eef0f4;
+  --accent: #1a5fd4; --accent-light: #e8effc; --accent-mid: #c2d4f7;
+  --teal: #0b7a5e; --teal-light: #e0f4ef;
+  --amber: #b35e0a; --amber-light: #fef3e2;
+  --red: #b91c1c; --red-light: #fee2e2;
+  --border: #e2e4ea; --border-strong: #c8cad2;
+  --radius-sm: 6px; --radius-md: 10px; --radius-lg: 16px;
+  --font-display: 'Georgia','Times New Roman',serif;
+  --font-body: -apple-system,BlinkMacSystemFont,'Segoe UI',sans-serif;
+  --font-mono: 'SF Mono','Fira Code',monospace;
+  --max: 1120px; --gap: 96px;
+}
+html { scroll-behavior: smooth; }
+body { font-family: var(--font-body); color: var(--ink); background: var(--surface); line-height: 1.6; font-size: 16px; -webkit-font-smoothing: antialiased; }
+.nav { position: sticky; top: 0; z-index: 100; background: rgba(255,255,255,0.95); backdrop-filter: blur(8px); border-bottom: 1px solid var(--border); }
+.nav-inner { max-width: var(--max); margin: 0 auto; padding: 0 24px; height: 60px; display: flex; align-items: center; gap: 32px; }
+.nav-logo { font-size: 15px; font-weight: 600; color: var(--ink); text-decoration: none; }
+.nav-logo span { color: var(--accent); }
+.nav-bc { display: flex; align-items: center; gap: 8px; font-size: 13px; color: var(--ink-3); flex: 1; }
+.nav-bc a { color: var(--ink-3); text-decoration: none; }
+.nav-bc a:hover { color: var(--accent); }
+.nav-bc .sep { color: var(--border-strong); }
+.nav-bc .cur { color: var(--ink-2); font-weight: 500; }
+.nav-cta { background: var(--accent); color: #fff; padding: 8px 18px; border-radius: var(--radius-sm); font-size: 13px; font-weight: 500; text-decoration: none; white-space: nowrap; transition: opacity .15s; }
+.nav-cta:hover { opacity: .9; }
+.C { max-width: var(--max); margin: 0 auto; padding: 0 24px; }
+section { padding: var(--gap) 0; }
+section+section { padding-top: 0; }
+hr.div { border: none; border-top: 1px solid var(--border); }
+.ey { display: inline-block; font-size: 11px; font-weight: 600; letter-spacing: .1em; text-transform: uppercase; color: var(--accent); margin-bottom: 14px; }
+.sh { font-family: var(--font-display); font-size: clamp(26px,3.5vw,38px); font-weight: 400; line-height: 1.2; letter-spacing: -.02em; color: var(--ink); margin-bottom: 16px; }
+.ss { font-size: 17px; color: var(--ink-2); line-height: 1.65; max-width: 560px; }
+.hero { padding: 80px 0 72px; border-bottom: 1px solid var(--border); }
+.hero-in { max-width: var(--max); margin: 0 auto; padding: 0 24px; display: grid; grid-template-columns: 1fr 1fr; gap: 64px; align-items: center; }
+.htag { display: inline-flex; align-items: center; gap: 7px; font-size: 12px; font-weight: 500; color: var(--accent); background: var(--accent-light); border: 1px solid var(--accent-mid); padding: 5px 12px; border-radius: 100px; margin-bottom: 22px; }
+.hero h1 { font-family: var(--font-display); font-size: clamp(30px,4vw,48px); font-weight: 400; line-height: 1.15; letter-spacing: -.025em; color: var(--ink); margin-bottom: 20px; }
+.hero h1 em { font-style: italic; color: var(--accent); }
+.hero-sub { font-size: 17px; color: var(--ink-2); line-height: 1.65; margin-bottom: 32px; max-width: 480px; }
+.ctas { display: flex; gap: 12px; flex-wrap: wrap; }
+.bp { background: var(--accent); color: #fff; padding: 12px 24px; border-radius: var(--radius-sm); font-size: 14px; font-weight: 500; text-decoration: none; transition: opacity .15s; display: inline-block; }
+.bp:hover { opacity: .88; }
+.bg { background: transparent; color: var(--ink-2); padding: 12px 24px; border-radius: var(--radius-sm); font-size: 14px; font-weight: 500; text-decoration: none; border: 1px solid var(--border-strong); transition: border-color .15s,color .15s; display: inline-block; }
+.bg:hover { border-color: var(--accent); color: var(--accent); }
+.hv { background: var(--surface-2); border: 1px solid var(--border); border-radius: var(--radius-lg); padding: 28px; }
+.hv-lbl { font-size: 11px; font-weight: 600; letter-spacing: .08em; text-transform: uppercase; color: var(--ink-4); margin-bottom: 18px; }
+.proof { background: var(--surface-2); border-bottom: 1px solid var(--border); padding: 28px 0; }
+.proof-in { max-width: var(--max); margin: 0 auto; padding: 0 24px; display: flex; align-items: center; gap: 48px; flex-wrap: wrap; }
+.proof-lbl { font-size: 12px; color: var(--ink-4); font-weight: 500; text-transform: uppercase; letter-spacing: .06em; }
+.proof-stats { display: flex; gap: 40px; flex-wrap: wrap; }
+.psn { font-size: 20px; font-weight: 700; color: var(--ink); font-family: var(--font-display); line-height: 1; }
+.psl { font-size: 12px; color: var(--ink-3); margin-top: 3px; }
+.pdiv { width: 1px; height: 32px; background: var(--border-strong); flex-shrink: 0; }
+.proof-plat { margin-left: auto; display: flex; align-items: center; gap: 8px; font-size: 12px; color: var(--ink-3); }
+.proof-plat strong { color: var(--ink-2); }
+.pain-grid { display: grid; grid-template-columns: repeat(3,1fr); gap: 20px; margin-top: 48px; }
+.pc { border: 1px solid var(--border); border-radius: var(--radius-md); padding: 24px; }
+.pi { width: 40px; height: 40px; border-radius: 10px; background: var(--red-light); color: var(--red); display: flex; align-items: center; justify-content: center; margin-bottom: 16px; }
+.pi svg { width: 18px; height: 18px; }
+.pt { font-size: 15px; font-weight: 600; color: var(--ink); margin-bottom: 8px; line-height: 1.3; }
+.pd { font-size: 14px; color: var(--ink-3); line-height: 1.6; }
+.dd { padding: var(--gap) 0; }
+.dd-in { display: grid; grid-template-columns: 1fr 1fr; gap: 72px; align-items: center; }
+.dd-in.fl { direction: rtl; }
+.dd-in.fl>* { direction: ltr; }
+.dh { font-family: var(--font-display); font-size: clamp(22px,2.8vw,32px); font-weight: 400; line-height: 1.25; letter-spacing: -.02em; color: var(--ink); margin-bottom: 20px; }
+.dd { font-size: 15px; color: var(--ink-2); line-height: 1.7; margin-bottom: 24px; }
+.buls { list-style: none; display: flex; flex-direction: column; gap: 12px; }
+.buls li { display: flex; align-items: flex-start; gap: 10px; font-size: 14px; color: var(--ink-2); line-height: 1.55; }
+.bchk { width: 18px; height: 18px; border-radius: 50%; background: var(--teal-light); color: var(--teal); display: flex; align-items: center; justify-content: center; flex-shrink: 0; margin-top: 1px; }
+.bchk svg { width: 10px; height: 10px; }
+.dl { display: inline-flex; align-items: center; gap: 6px; font-size: 13px; font-weight: 500; color: var(--accent); text-decoration: none; margin-top: 24px; }
+.dl:hover { text-decoration: underline; }
+.dv { background: var(--surface-2); border: 1px solid var(--border); border-radius: var(--radius-lg); padding: 24px; }
+.dvl { font-size: 11px; font-weight: 600; letter-spacing: .08em; text-transform: uppercase; color: var(--ink-4); margin-bottom: 16px; }
+.fg { display: grid; grid-template-columns: repeat(3,1fr); gap: 1px; background: var(--border); border: 1px solid var(--border); border-radius: var(--radius-lg); overflow: hidden; margin-top: 48px; }
+.fc { background: var(--surface); padding: 28px 24px; transition: background .15s; }
+.fc:hover { background: var(--surface-2); }
+.fi { width: 40px; height: 40px; border-radius: 10px; display: flex; align-items: center; justify-content: center; margin-bottom: 16px; }
+.fi svg { width: 18px; height: 18px; }
+.fi.bl { background: var(--accent-light); color: var(--accent); }
+.fi.tl { background: var(--teal-light); color: var(--teal); }
+.fi.am { background: var(--amber-light); color: var(--amber); }
+.ft { font-size: 15px; font-weight: 600; color: var(--ink); margin-bottom: 8px; line-height: 1.3; }
+.fd { font-size: 13px; color: var(--ink-3); line-height: 1.6; }
+.rs { background: var(--surface-2); }
+.rg { display: grid; grid-template-columns: repeat(3,1fr); gap: 20px; margin-top: 48px; }
+.rc { background: var(--surface); border: 1px solid var(--border); border-radius: var(--radius-md); padding: 28px 24px; }
+.ri { width: 44px; height: 44px; border-radius: 10px; background: var(--accent-light); color: var(--accent); display: flex; align-items: center; justify-content: center; margin-bottom: 18px; }
+.ri svg { width: 20px; height: 20px; }
+.rt { font-size: 15px; font-weight: 600; color: var(--ink); margin-bottom: 6px; }
+.rd { font-size: 13px; color: var(--ink-3); line-height: 1.6; }
+.dark-co { background: #0f2d47; color: #fff; padding: var(--gap) 0; }
+.dark-in { max-width: var(--max); margin: 0 auto; padding: 0 24px; display: grid; grid-template-columns: 1fr 1fr; gap: 64px; align-items: center; }
+.dark-ey { font-size: 11px; font-weight: 600; letter-spacing: .1em; text-transform: uppercase; color: #7db3e8; margin-bottom: 14px; }
+.dark-h { font-family: var(--font-display); font-size: clamp(22px,2.8vw,32px); font-weight: 400; line-height: 1.25; letter-spacing: -.02em; color: #fff; margin-bottom: 18px; }
+.dark-d { font-size: 15px; color: #b0c8e4; line-height: 1.65; }
+.dark-buls { display: flex; flex-direction: column; gap: 14px; margin-top: 24px; }
+.dbul { display: flex; align-items: flex-start; gap: 12px; font-size: 14px; color: #b0c8e4; line-height: 1.5; }
+.ddot { width: 6px; height: 6px; border-radius: 50%; background: #7db3e8; flex-shrink: 0; margin-top: 7px; }
+.dbul strong { color: #e8f2fd; }
+.dbadges { display: flex; flex-wrap: wrap; gap: 10px; margin-top: 28px; }
+.dbadge { display: inline-flex; align-items: center; gap: 6px; font-size: 12px; font-weight: 500; color: #e8f2fd; background: rgba(255,255,255,.08); border: 1px solid rgba(255,255,255,.15); padding: 6px 14px; border-radius: 100px; }
+.faq-list { margin-top: 48px; }
+.faq-item { border-top: 1px solid var(--border); }
+.faq-item:last-child { border-bottom: 1px solid var(--border); }
+.fq { width: 100%; background: none; border: none; padding: 22px 0; display: flex; align-items: center; justify-content: space-between; gap: 24px; cursor: pointer; text-align: left; font-size: 16px; font-weight: 500; color: var(--ink); line-height: 1.4; }
+.fq:hover { color: var(--accent); }
+.fchev { width: 20px; height: 20px; flex-shrink: 0; color: var(--ink-4); transition: transform .2s; }
+.faq-item.open .fchev { transform: rotate(180deg); }
+.fa { display: none; padding: 0 0 22px; font-size: 15px; color: var(--ink-2); line-height: 1.7; max-width: 760px; }
+.faq-item.open .fa { display: block; }
+.cta-s { background: var(--surface-2); border-top: 1px solid var(--border); padding: var(--gap) 0; }
+.cta-in { max-width: 680px; margin: 0 auto; padding: 0 24px; text-align: center; }
+.cta-h { font-family: var(--font-display); font-size: clamp(24px,3vw,36px); font-weight: 400; line-height: 1.2; letter-spacing: -.02em; color: var(--ink); margin-bottom: 16px; }
+.cta-d { font-size: 16px; color: var(--ink-3); line-height: 1.6; margin-bottom: 32px; }
+.cta-bs { display: flex; gap: 12px; justify-content: center; flex-wrap: wrap; }
+.cta-bs .bp,.cta-bs .bg { padding: 14px 28px; font-size: 15px; }
+.rel-s { padding: 48px 0; border-top: 1px solid var(--border); }
+.rel-in { max-width: var(--max); margin: 0 auto; padding: 0 24px; }
+.rel-lbl { font-size: 12px; font-weight: 600; letter-spacing: .08em; text-transform: uppercase; color: var(--ink-4); margin-bottom: 16px; }
+.rel-ls { display: flex; flex-wrap: wrap; gap: 10px; }
+.rl { font-size: 13px; font-weight: 500; color: var(--ink-2); text-decoration: none; padding: 8px 16px; border: 1px solid var(--border); border-radius: var(--radius-sm); transition: border-color .15s,color .15s; }
+.rl:hover { border-color: var(--accent); color: var(--accent); }
+footer { background: var(--ink); color: #a0a2ab; padding: 28px 0; }
+.foot-in { max-width: var(--max); margin: 0 auto; padding: 0 24px; display: flex; align-items: center; justify-content: space-between; flex-wrap: wrap; gap: 12px; }
+.flogo { font-size: 14px; font-weight: 600; color: #fff; }
+.flogo span { color: #6b9de8; }
+.flinks { display: flex; gap: 24px; }
+.flinks a { font-size: 13px; color: #a0a2ab; text-decoration: none; }
+.flinks a:hover { color: #fff; }
+.fcopy { font-size: 12px; color: #5f6170; }
+@media(max-width:768px){
+  :root{--gap:64px}
+  .hero-in{grid-template-columns:1fr;gap:40px}
+  .hv{display:none}
+  .pain-grid{grid-template-columns:1fr}
+  .fg{grid-template-columns:1fr 1fr}
+  .dd-in{grid-template-columns:1fr;gap:40px}
+  .dd-in.fl{direction:ltr}
+  .rg{grid-template-columns:1fr}
+  .dark-in{grid-template-columns:1fr;gap:40px}
+  .proof-plat{margin-left:0}
+  .nav-bc{display:none}
+}
+@media(max-width:540px){.fg{grid-template-columns:1fr}}
+@media(prefers-reduced-motion:reduce){*{transition:none!important}}
+/* Narcotics-specific */
+.compliance-hero{background:#0f2d47;padding:80px 0 72px}
+.compliance-hero .hero-in{max-width:var(--max);margin:0 auto;padding:0 24px;display:grid;grid-template-columns:1fr 1fr;gap:64px;align-items:center}
+.compliance-hero .htag{background:rgba(125,179,232,.15);border-color:rgba(125,179,232,.3);color:#a8d0f2}
+.compliance-hero h1{font-family:var(--font-display);font-size:clamp(30px,4vw,48px);font-weight:400;line-height:1.15;letter-spacing:-.025em;color:#fff;margin-bottom:20px}
+.compliance-hero h1 em{font-style:italic;color:#7db3e8}
+.compliance-hero .hero-sub{font-size:17px;color:#b0c8e4;line-height:1.65;margin-bottom:32px;max-width:480px}
+.compliance-hero .bp{background:#1a5fd4}
+.compliance-hero .bg{border-color:rgba(255,255,255,.25);color:#b0c8e4}
+.compliance-hero .bg:hover{border-color:#7db3e8;color:#fff}
+.narc-visual{background:rgba(255,255,255,.05);border:1px solid rgba(255,255,255,.12);border-radius:var(--radius-lg);padding:24px}
+.narc-visual .hv-lbl{color:rgba(255,255,255,.4)}
+.proof-dark{background:#0c2338;border-bottom:1px solid rgba(255,255,255,.08);padding:28px 0}
+.proof-dark .proof-in .proof-lbl{color:rgba(255,255,255,.35)}
+.proof-dark .proof-in .psn{color:#fff}
+.proof-dark .proof-in .psl{color:#7db3e8}
+.proof-dark .proof-in .pdiv{background:rgba(255,255,255,.12)}
+.proof-dark .proof-in .proof-plat{color:#7db3e8}
+.proof-dark .proof-in .proof-plat strong{color:#b0c8e4}
+.sig-flow{display:flex;flex-direction:column;gap:0}
+.sig-step{display:flex;align-items:flex-start;gap:14px;padding-bottom:0}
+.sig-line{display:flex;flex-direction:column;align-items:center;flex-shrink:0}
+.sig-num{width:28px;height:28px;border-radius:50%;background:rgba(255,255,255,.1);border:1px solid rgba(255,255,255,.2);font-size:11px;font-weight:700;color:#e8f2fd;display:flex;align-items:center;justify-content:center}
+.sig-conn{width:1px;height:20px;background:rgba(255,255,255,.15);margin:3px 0}
+.sig-body{padding-top:4px;padding-bottom:20px;flex:1}
+.sig-step:last-child .sig-body{padding-bottom:0}
+.sig-title{font-size:13px;font-weight:600;color:#e8f2fd}
+.sig-sub{font-size:11px;color:#7db3e8;margin-top:2px;line-height:1.4}
+.sig-tag{display:inline-block;font-size:10px;font-weight:600;padding:2px 8px;border-radius:100px;margin-top:5px}
+.sig-required{background:rgba(226,75,74,.2);color:#F09595}
+.sig-done{background:rgba(29,158,117,.2);color:#5DCAA5}
+.reg-table{width:100%;border-collapse:collapse}
+.reg-table th{font-size:10px;font-weight:600;color:var(--ink-4);text-transform:uppercase;letter-spacing:.05em;padding:7px 10px;text-align:left;border-bottom:1px solid var(--border);background:var(--surface-3)}
+.reg-table td{font-size:12px;padding:9px 10px;border-bottom:1px solid var(--border);color:var(--ink-2)}
+.reg-table tr:last-child td{border-bottom:none}
+.reg-sch{display:inline-block;font-size:10px;font-weight:700;padding:2px 7px;border-radius:4px}
+.sch-h{background:var(--amber-light);color:var(--amber)}
+.sch-h1{background:var(--red-light);color:var(--red)}
+.sch-ndps{background:#1a1a2e;color:#818cf8}
+.access-grid{display:grid;grid-template-columns:1fr 1fr;gap:10px;margin-top:0}
+.ac-item{background:rgba(255,255,255,.06);border:1px solid rgba(255,255,255,.1);border-radius:var(--radius-md);padding:14px}
+.ac-label{font-size:11px;font-weight:600;color:#7db3e8;margin-bottom:6px;text-transform:uppercase;letter-spacing:.06em}
+.ac-val{font-size:13px;color:#e8f2fd;line-height:1.4}
+</style>
+
+<!-- TEMPLATE CSS (IMPORTANT) -->
+    <link rel="stylesheet" href="/../assets/quantbit_website/css/bootstrap.min.css">
+    <link rel="stylesheet" href="/../assets/quantbit_website/css/font-awesome.css">
+    <link rel="stylesheet" href="/../assets/quantbit_website/css/animate.css">
+    <link rel="stylesheet" href="/../assets/quantbit_website/css/magnific-popup.css">
+    <link rel="stylesheet" href="/../assets/quantbit_website/css/meanmenu.css">
+    <link rel="stylesheet" href="/../assets/quantbit_website/css/slick.css">
+    <link rel="stylesheet" href="/../assets/quantbit_website/css/nice-select.css">
+    <link rel="stylesheet" href="/../assets/quantbit_website/css/main.css">
+    <link rel="stylesheet" href="style.css">
+    <!-- <link rel="stylesheet" href="/assets/quantbit_website/css/_shared.css"> -->
+
+
+    <!-- OPTIONAL CUSTOM -->
+    <link rel="stylesheet" href="/../assets/quantbit_website/css/hrms.css">
+      <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
+<!-- Google Tag Manager -->
+<script>(function(w,d,s,l,i){w[l]=w[l]||[];w[l].push({'gtm.start':
+new Date().getTime(),event:'gtm.js'});var f=d.getElementsByTagName(s)[0],
+j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
+'https://www.googletagmanager.com/gtm.js?id='+i+dl;f.parentNode.insertBefore(j,f);
+})(window,document,'script','dataLayer','GTM-P98Z6G8D');</script>
+<!-- End Google Tag Manager -->
+
+</head>
+<body>
+  <!-- Google Tag Manager (noscript) -->
+<noscript><iframe src="https://www.googletagmanager.com/ns.html?id=GTM-P98Z6G8D"
+height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
+<!-- End Google Tag Manager (noscript) -->
+<div id="header"></div>
+
+
+<section class="compliance-hero">
+  <div class="compliance-hero hero-in" style="max-width:var(--max);margin:0 auto;padding:0 24px;display:grid;grid-template-columns:1fr 1fr;gap:64px;align-items:center">
+    <div>
+      <div class="htag" style="background:rgba(125,179,232,.15);border-color:rgba(125,179,232,.3);color:#a8d0f2">
+        <svg width="13" height="13" viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="1.5" aria-hidden="true"><path d="M8 2l1.8 3.6 4 .6-2.9 2.8.7 4L8 11.1l-3.6 1.9.7-4L2 6.2l4-.6L8 2z"/></svg>
+        HISx — Narcotics &amp; Compliance Module
+      </div>
+      <h1 style="font-family:var(--font-display);font-size:clamp(30px,4vw,48px);font-weight:400;line-height:1.15;letter-spacing:-.025em;color:#fff;margin-bottom:20px">Controlled substances managed with <em>zero compliance gaps</em></h1>
+      <p style="font-size:17px;color:#b0c8e4;line-height:1.65;margin-bottom:32px;max-width:480px">Double-signature dispensing, automated narcotics register, Schedule H/H1/NDPS compliance reports, and role-based access control — built into every dispensing transaction.</p>
+      <div class="ctas">
+        <a href="/hisx/demo" class="bp" style="background:#1a5fd4">Request a demo</a>
+        <a href="#compliance-detail" class="bg" style="border-color:rgba(255,255,255,.25);color:#b0c8e4">See the workflow</a>
+      </div>
+    </div>
+    <div class="narc-visual" aria-label="Narcotics dispensing with double signature">
+      <div class="hv-lbl" style="color:rgba(255,255,255,.4)">NDPS dispensing — double-signature workflow</div>
+      <div class="sig-flow">
+        <div class="sig-step">
+          <div class="sig-line"><div class="sig-num" aria-hidden="true">1</div><div class="sig-conn" aria-hidden="true"></div></div>
+          <div class="sig-body"><div class="sig-title">Prescription verified</div><div class="sig-sub">NDPS item, patient, physician — all validated</div><span class="sig-tag sig-done">Verified</span></div>
+        </div>
+        <div class="sig-step">
+          <div class="sig-line"><div class="sig-num" aria-hidden="true">2</div><div class="sig-conn" aria-hidden="true"></div></div>
+          <div class="sig-body"><div class="sig-title">Pharmacist #1 initiates dispensing</div><div class="sig-sub">Qty, batch, patient reference logged</div><span class="sig-tag sig-required">Awaiting counter-sign</span></div>
+        </div>
+        <div class="sig-step">
+          <div class="sig-line"><div class="sig-num" aria-hidden="true">3</div><div class="sig-conn" aria-hidden="true"></div></div>
+          <div class="sig-body"><div class="sig-title">Pharmacist #2 counter-signs</div><div class="sig-sub">Senior pharmacist or duty officer — mandatory</div><span class="sig-tag sig-done">Counter-signed</span></div>
+        </div>
+        <div class="sig-step">
+          <div class="sig-line"><div class="sig-num" aria-hidden="true">4</div><div class="sig-conn" aria-hidden="true"></div></div>
+          <div class="sig-body"><div class="sig-title">Narcotics register updated</div><div class="sig-sub">Date, qty, patient, balance — auto-posted</div><span class="sig-tag sig-done">Auto-logged</span></div>
+        </div>
+        <div class="sig-step">
+          <div class="sig-line"><div class="sig-num" aria-hidden="true">5</div></div>
+          <div class="sig-body"><div class="sig-title">Dispensing completed</div><div class="sig-sub">Inventory updated, billing triggered, audit trail locked</div><span class="sig-tag sig-done">Complete</span></div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<div class="proof-dark">
+  <div class="proof-in" style="max-width:var(--max);margin:0 auto;padding:0 24px;display:flex;align-items:center;gap:48px;flex-wrap:wrap">
+    <span class="proof-lbl" style="color:rgba(255,255,255,.35)">Covers</span>
+    <div class="proof-stats">
+      <div><div class="psn" style="color:#fff">Schedule H &amp; H1</div><div class="psl" style="color:#7db3e8">Prescription drug controls</div></div>
+      <div class="pdiv" style="background:rgba(255,255,255,.12)" aria-hidden="true"></div>
+      <div><div class="psn" style="color:#fff">NDPS Act 1985</div><div class="psl" style="color:#7db3e8">Narcotic &amp; psychotropic drugs</div></div>
+      <div class="pdiv" style="background:rgba(255,255,255,.12)" aria-hidden="true"></div>
+      <div><div class="psn" style="color:#fff">Automated register</div><div class="psl" style="color:#7db3e8">No manual upkeep required</div></div>
+    </div>
+    <div class="proof-plat" style="margin-left:auto;color:#7db3e8"><svg width="14" height="14" viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="1.5" aria-hidden="true"><rect x="2" y="2" width="12" height="12" rx="2"/></svg>Built on <strong style="color:#b0c8e4">&nbsp;ERPNext / Frappe</strong></div>
+  </div>
+</div>
+
+<section aria-labelledby="pain-h">
+  <div class="C">
+    <span class="ey">The compliance risk</span>
+    <h2 class="sh" id="pain-h">Three ways manual narcotics management creates regulatory exposure</h2>
+    <p class="ss">Schedule H, H1, and NDPS regulations are non-negotiable. Manual registers and paper-based double-signature processes leave hospitals exposed to drug inspector findings, licence risk, and patient safety gaps.</p>
+    <div class="pain-grid">
+      <div class="pc"><div class="pi" aria-hidden="true"><svg viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="1.5"><rect x="3" y="2" width="10" height="13" rx="1.5"/><path d="M6 6h4M6 9h4M6 12h2"/></svg></div><h3 class="pt">Manual narcotics register — errors and omissions</h3><p class="pd">Handwritten narcotics registers are prone to arithmetic errors, missing entries, and retrospective alterations. A single inconsistency during a drug inspector visit can trigger licence suspension proceedings.</p></div>
+      <div class="pc"><div class="pi" aria-hidden="true"><svg viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="1.5"><circle cx="8" cy="6" r="3"/><path d="M3 14c0-2.8 2.2-5 5-5s5 2.2 5 5"/><path d="M13 4l-2 2M11 4l2 2"/></svg></div><h3 class="pt">Double-signature bypassed under time pressure</h3><p class="pd">In busy emergency or ICU scenarios, double-signature requirements are skipped or backdated. Without system enforcement, there is no reliable way to prove compliance during an audit.</p></div>
+      <div class="pc"><div class="pi" aria-hidden="true"><svg viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M2 4h12M2 8h8M2 12h5"/><circle cx="12" cy="12" r="3"/><path d="M12 11v1M12 13v.5"/></svg></div><h3 class="pt">Access not restricted — anyone can dispense Schedule H1</h3><p class="pd">Without system-level access controls, any pharmacist on shift can dispense Schedule H1 or NDPS drugs regardless of their authorisation level — creating both regulatory and diversion risk.</p></div>
+    </div>
+  </div>
+</section>
+
+<hr class="div">
+
+<div class="dark-co" id="compliance-detail" aria-labelledby="sig-h">
+  <div class="dark-in">
+    <div>
+      <div class="dark-ey">Double-signature dispensing</div>
+      <h2 class="dark-h" id="sig-h">No NDPS drug leaves the pharmacy without two authorised signatures — enforced by the system, not by memory</h2>
+      <p class="dark-d">The double-signature requirement for narcotic and NDPS drugs cannot be bypassed in HISx. The system blocks dispensing completion until the second authorised user has counter-signed — regardless of how busy the ward is.</p>
+      <div class="dark-buls">
+        <div class="dbul"><div class="ddot" aria-hidden="true"></div><span><strong>Two-step system lock</strong> — Pharmacist 1 initiates, Pharmacist 2 counter-signs; dispensing is physically blocked until both are complete</span></div>
+        <div class="dbul"><div class="ddot" aria-hidden="true"></div><span><strong>Permanent audit log</strong> — both signatures recorded with user ID, timestamp, patient reference, quantity, and batch number; cannot be altered post-signing</span></div>
+        <div class="dbul"><div class="ddot" aria-hidden="true"></div><span><strong>Role-based authorisation</strong> — only users with explicit NDPS dispensing rights appear as valid second signatory; cannot be self-signed</span></div>
+        <div class="dbul"><div class="ddot" aria-hidden="true"></div><span><strong>Prescription linkage</strong> — every NDPS dispensing linked to a valid prescription with physician details, preventing dispensing without documented clinical justification</span></div>
+      </div>
+      <div class="dbadges" style="margin-top:28px">
+        <span class="dbadge">Schedule H controls</span>
+        <span class="dbadge">Schedule H1 — enhanced</span>
+        <span class="dbadge">NDPS Act 1985</span>
+        <span class="dbadge">Auto narcotics register</span>
+      </div>
+    </div>
+    <div>
+      <div style="background:rgba(255,255,255,.05);border:1px solid rgba(255,255,255,.12);border-radius:var(--radius-lg);padding:24px">
+        <div style="font-size:11px;font-weight:600;letter-spacing:.08em;text-transform:uppercase;color:rgba(255,255,255,.35);margin-bottom:16px">Access control matrix — narcotics</div>
+        <div class="access-grid">
+          <div class="ac-item"><div class="ac-label">Can view NDPS stock</div><div class="ac-val">Authorised pharmacists only</div></div>
+          <div class="ac-item"><div class="ac-label">Initiate dispensing</div><div class="ac-val">Pharmacist + valid Rx required</div></div>
+          <div class="ac-item"><div class="ac-label">Counter-sign</div><div class="ac-val">Senior pharmacist / duty officer</div></div>
+          <div class="ac-item"><div class="ac-label">Adjust stock</div><div class="ac-val">Store manager + CFO approval</div></div>
+          <div class="ac-item"><div class="ac-label">View audit log</div><div class="ac-val">Manager &amp; compliance roles</div></div>
+          <div class="ac-item"><div class="ac-label">Generate reports</div><div class="ac-val">Compliance officer / manager</div></div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<section class="dd" aria-labelledby="reg-h">
+  <div class="C">
+    <div class="dd-in">
+      <div>
+        <span class="ey">Narcotics register &amp; reporting</span>
+        <h2 class="dh" id="reg-h">Automated narcotics register — audit-ready on demand, no manual entries</h2>
+        <p class="dd">HISx maintains the narcotics register digitally and automatically. Every receipt, dispensing, return, and adjustment posts to the register in real time — in the format required by drug regulators.</p>
+        <ul class="buls" aria-label="Register and reporting features">
+          <li><span class="bchk" aria-hidden="true"><svg viewBox="0 0 10 10" fill="none" stroke="currentColor" stroke-width="2"><path d="M2 5l2.5 2.5L8 3"/></svg></span>Schedule H, H1, and NDPS registers maintained separately and automatically — no manual register entries required</li>
+          <li><span class="bchk" aria-hidden="true"><svg viewBox="0 0 10 10" fill="none" stroke="currentColor" stroke-width="2"><path d="M2 5l2.5 2.5L8 3"/></svg></span>On-demand compliance reports for any date range — drug inspector visits, licence renewals, internal audits</li>
+          <li><span class="bchk" aria-hidden="true"><svg viewBox="0 0 10 10" fill="none" stroke="currentColor" stroke-width="2"><path d="M2 5l2.5 2.5L8 3"/></svg></span>Opening balance, receipts, dispensings, returns, adjustments, and closing balance — all reconciled automatically</li>
+          <li><span class="bchk" aria-hidden="true"><svg viewBox="0 0 10 10" fill="none" stroke="currentColor" stroke-width="2"><path d="M2 5l2.5 2.5L8 3"/></svg></span>Tamper-proof audit trail — no entry can be altered after posting; corrections require a documented adjustment with authorisation</li>
+        </ul>
+        <a href="/solutions/narcotics-schedule-h" class="dl">Schedule H, H1 &amp; NDPS compliance guide <svg viewBox="0 0 14 14" fill="none" stroke="currentColor" stroke-width="1.5" aria-hidden="true"><path d="M2 7h10M7 2l5 5-5 5"/></svg></a>
+      </div>
+      <div class="dv" aria-label="Narcotics register sample">
+        <div class="dvl">Narcotics register — Morphine Sulphate 10mg (NDPS)</div>
+        <table class="reg-table">
+          <thead><tr><th>Date</th><th>Type</th><th>Schedule</th><th>Qty</th><th>Balance</th></tr></thead>
+          <tbody>
+            <tr><td>01 Feb</td><td>Opening</td><td>—</td><td>—</td><td>48</td></tr>
+            <tr><td>03 Feb</td><td>GRN receipt</td><td><span class="reg-sch sch-ndps">NDPS</span></td><td>+50</td><td>98</td></tr>
+            <tr><td>05 Feb</td><td>Dispensed — ICU</td><td><span class="reg-sch sch-ndps">NDPS</span></td><td>-4</td><td>94</td></tr>
+            <tr><td>09 Feb</td><td>Dispensed — OT</td><td><span class="reg-sch sch-ndps">NDPS</span></td><td>-6</td><td>88</td></tr>
+            <tr><td>14 Feb</td><td>Dispensed — Palliative</td><td><span class="reg-sch sch-ndps">NDPS</span></td><td>-2</td><td>86</td></tr>
+            <tr><td><strong>28 Feb</strong></td><td><strong>Closing balance</strong></td><td>—</td><td>—</td><td><strong>86</strong></td></tr>
+          </tbody>
+        </table>
+        <div style="margin-top:10px;font-size:11px;color:var(--ink-4);line-height:1.5">Auto-generated. Every entry linked to GRN / dispensing record with double-signature log. Export-ready for drug inspector.</div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<hr class="div">
+
+<section aria-labelledby="sch-h">
+  <div class="C">
+    <span class="ey">Regulatory framework</span>
+    <h2 class="sh" id="sch-h">Schedule H, H1, and NDPS — what each requires, and how HISx handles it</h2>
+    <p class="ss">Three distinct regulatory categories, three distinct control levels — all managed within a single dispensing workflow.</p>
+    <div class="fg" role="list" style="margin-top:48px">
+      <div class="fc" role="listitem"><div class="fi am" aria-hidden="true"><svg viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M8 2l1.8 3.6 4 .6-2.9 2.8.7 4L8 11.1l-3.6 1.9.7-4L2 6.2l4-.6L8 2z"/></svg></div><h3 class="ft">Schedule H drugs</h3><p class="fd">Prescription-only medicines under the Drugs &amp; Cosmetics Act. HISx enforces prescription linkage at dispensing, prevents OTC dispensing of Schedule H items, and maintains transaction logs for regulatory inspection.</p></div>
+      <div class="fc" role="listitem"><div class="fi" style="background:var(--red-light);color:var(--red)" aria-hidden="true"><svg viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M8 2l1.8 3.6 4 .6-2.9 2.8.7 4L8 11.1l-3.6 1.9.7-4L2 6.2l4-.6L8 2z"/></svg></div><h3 class="ft">Schedule H1 — enhanced controls</h3><p class="fd">Antibiotics and habit-forming substances with tightened requirements. HISx applies additional access restrictions, maintains a separate H1 dispensing log, and enforces quantity limits per prescription cycle.</p></div>
+      <div class="fc" role="listitem"><div class="fi" style="background:#1a1a2e;color:#818cf8" aria-hidden="true"><svg viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M8 1v14M1 8h14"/></svg></div><h3 class="ft">NDPS drugs — maximum control</h3><p class="fd">Narcotic drugs and psychotropic substances under the NDPS Act 1985. HISx enforces double-signature dispensing, maintains the statutory NDPS register automatically, and generates all required compliance reports.</p></div>
+      <div class="fc" role="listitem"><div class="fi bl" aria-hidden="true"><svg viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="1.5"><rect x="2" y="3" width="12" height="10" rx="1.5"/><path d="M5 7h6M5 10h4"/></svg></div><h3 class="ft">Automated compliance reports</h3><p class="fd">Schedule H, H1, and NDPS compliance reports generated on demand for any date range — formatted for drug inspector visits, licensing renewals, and internal quarterly audits.</p></div>
+      <div class="fc" role="listitem"><div class="fi tl" aria-hidden="true"><svg viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="1.5"><circle cx="8" cy="6" r="3"/><path d="M3 14c0-2.8 2.2-5 5-5s5 2.2 5 5"/></svg></div><h3 class="ft">Role-based access control</h3><p class="fd">Strict access controls ensure only authorised users can view, dispense, or adjust controlled substance stock. Non-authorised users cannot select Schedule H1 or NDPS items regardless of general pharmacy access.</p></div>
+      <div class="fc" role="listitem"><div class="fi bl" aria-hidden="true"><svg viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M13 4L6 11l-3-3"/></svg></div><h3 class="ft">Tamper-proof audit trail</h3><p class="fd">Every narcotics transaction — receipt, dispensing, return, adjustment — is permanently logged with user, timestamp, patient reference, and batch. No entry can be altered post-posting without a documented correction record.</p></div>
+    </div>
+  </div>
+</section>
+
+<hr class="div">
+
+<section aria-labelledby="faq-h">
+  <div class="C">
+    <span class="ey">Common questions</span>
+    <h2 class="sh" id="faq-h">Frequently asked questions</h2>
+    <div class="faq-list" role="list">
+      <div class="faq-item" role="listitem"><button class="fq" aria-expanded="false" onclick="tFaq(this)">What are Schedule H, H1, and NDPS drugs and how does HISx manage them?<svg class="fchev" viewBox="0 0 20 20" fill="none" stroke="currentColor" stroke-width="1.5" aria-hidden="true"><path d="M5 7.5l5 5 5-5"/></svg></button><div class="fa fa-narc-1">Schedule H and H1 drugs are prescription-only medicines regulated under India's Drugs and Cosmetics Act — Schedule H1 carries additional restrictions for antibiotics and habit-forming substances. NDPS drugs are controlled under the NDPS Act 1985 and require strict quantity controls, double-signature dispensing, and mandatory register maintenance. HISx manages all three categories with separate access controls, dispensing workflows, and automated compliance reports — ensuring hospitals meet regulatory requirements without manual register upkeep.</div></div>
+      <div class="faq-item" role="listitem"><button class="fq" aria-expanded="false" onclick="tFaq(this)">How does double-signature dispensing work for NDPS drugs in HISx?<svg class="fchev" viewBox="0 0 20 20" fill="none" stroke="currentColor" stroke-width="1.5" aria-hidden="true"><path d="M5 7.5l5 5 5-5"/></svg></button><div class="fa fa-narc-2">In HISx, any dispensing transaction involving an NDPS-classified drug requires two authorised users to independently verify and approve the dispensing before it is completed. The first user initiates the dispensing against a valid prescription; the second authorised user — typically a senior pharmacist or duty officer — reviews and counter-signs digitally within the system. Neither signature can be bypassed, and both are permanently recorded with timestamp, user ID, and patient reference in the narcotics audit log.</div></div>
+      <div class="faq-item" role="listitem"><button class="fq" aria-expanded="false" onclick="tFaq(this)">Does HISx maintain the narcotics register automatically?<svg class="fchev" viewBox="0 0 20 20" fill="none" stroke="currentColor" stroke-width="1.5" aria-hidden="true"><path d="M5 7.5l5 5 5-5"/></svg></button><div class="fa">Yes. HISx maintains a digital narcotics register that updates automatically with every receipt, dispensing, return, and adjustment involving controlled substances. The register records the date, quantity received or dispensed, patient details, prescribing physician, and balance remaining — in the format required by drug regulators. Compliance reports can be generated on demand for any date range without manual compilation.</div></div>
+      <div class="faq-item" role="listitem"><button class="fq" aria-expanded="false" onclick="tFaq(this)">Who can access narcotics and controlled substance inventory in HISx?<svg class="fchev" viewBox="0 0 20 20" fill="none" stroke="currentColor" stroke-width="1.5" aria-hidden="true"><path d="M5 7.5l5 5 5-5"/></svg></button><div class="fa">Access to narcotics and controlled substance inventory in HISx is role-based and strictly controlled. Only users with explicit narcotics access permissions can view, dispense, or adjust controlled substance stock. Every access event is logged. The system prevents any non-authorised user from selecting a Schedule H1 or NDPS item during dispensing, regardless of their general pharmacy access level.</div></div>
+      <div class="faq-item" role="listitem"><button class="fq" aria-expanded="false" onclick="tFaq(this)">Can HISx generate Schedule H and NDPS compliance reports for drug inspectors?<svg class="fchev" viewBox="0 0 20 20" fill="none" stroke="currentColor" stroke-width="1.5" aria-hidden="true"><path d="M5 7.5l5 5 5-5"/></svg></button><div class="fa">Yes. HISx generates audit-ready Schedule H, H1, and NDPS compliance reports on demand — covering receipts, dispensings, returns, and closing balances for any date range. Reports are formatted to meet regulatory requirements and can be exported for drug inspector visits, licensing renewals, and internal audits without any manual compilation.</div></div>
+    </div>
+  </div>
+</section>
+
+<hr class="div">
+<section class="cta-s" aria-labelledby="cta-h"><div class="cta-in"><h2 class="cta-h" id="cta-h">See HISx narcotics compliance in your hospital</h2><p class="cta-d">Book a 30-minute demo and walk through the double-signature workflow, narcotics register, and Schedule H/H1/NDPS report generation.</p><div class="cta-bs"><a href="/hisx/demo" class="bp">Book a demo</a><a href="/solutions/narcotics-schedule-h" class="bg">Read compliance guide</a></div></div></section>
+<nav class="rel-s" aria-label="Related pages"><div class="rel-in"><div style="display:grid;grid-template-columns:1fr 1fr;gap:32px"><div><div class="rel-lbl">Other HISx modules</div><div class="rel-ls"><a href="/hisx/pharmacy" class="rl">Pharmacy &amp; dispensing</a><a href="/hisx/inventory" class="rl">Inventory management</a><a href="/hisx/procurement" class="rl">Procurement &amp; vendor</a><a href="/hisx/billing" class="rl">Billing &amp; revenue</a><a href="/hisx" class="rl">All modules →</a></div></div><div><div class="rel-lbl">Related guides</div><div class="rel-ls"><a href="/solutions/narcotics-schedule-h" class="rl">Schedule H, H1 &amp; NDPS guide</a><a href="/schedule-h-h1-ndps-compliance" class="rl">Compliance explained</a><a href="/hisx/pharmacy" class="rl">Pharmacy &amp; dispensing</a></div></div></div></div></nav>
+
+<div id="footer"></div>
+
+<script>function tFaq(b){var i=b.closest('.faq-item'),o=i.classList.contains('open');document.querySelectorAll('.faq-item').forEach(function(x){x.classList.remove('open');x.querySelector('.fq').setAttribute('aria-expanded','false')});if(!o){i.classList.add('open');b.setAttribute('aria-expanded','true')}}</script>
+<script>
+fetch("../header.html")
+    .then(res => res.text())
+    .then(data => {
+        document.getElementById("header").innerHTML = data;
+    });
+
+fetch("../footer.html")
+    .then(res => res.text())
+    .then(data => {
+        document.getElementById("footer").innerHTML = data;
+    });
+</script>
+<!-- ================= TEMPLATE JS ================= -->
+    <!--<< All JS Plugins >>-->
+    <script data-cfasync="false" src="../../cdn-cgi/scripts/5c5dd728/cloudflare-static/email-decode.min.js"></script>
+    <script src="/../assets/quantbit_website/js/jquery-3.7.1.min.js"></script>
+    <!--<< Viewport Js >>-->
+    <script src="/../assets/quantbit_website/js/viewport.jquery.js"></script>
+    <!--<< Bootstrap Js >>-->
+    <script src="/../assets/quantbit_website/js/bootstrap.bundle.min.js"></script>
+    <!--<< Nice Select Js >>-->
+    <script src="/../assets/quantbit_website/js/jquery.nice-select.min.js"></script>
+    <!--<< Waypoints Js >>-->
+    <script src="/../assets/quantbit_website/js/jquery.waypoints.js"></script>
+    <!--<< Counterup Js >>-->
+    <script src="/../assets/quantbit_website/js/jquery.counterup.min.js"></script>
+    <!--<< Slick Js >>-->
+    <script src="/../assets/quantbit_website/js/slick.min.js"></script>
+    <!--<< Slick Animation Js >>-->
+    <script src="/../assets/quantbit_website/js/slick-animation.min.js"></script>
+    <!--<< MeanMenu Js >>-->
+    <script src="/../assets/quantbit_website/js/jquery.meanmenu.min.js"></script>
+    <!--<< Magnific Popup Js >>-->
+    <script src="/../assets/quantbit_website/js/jquery.magnific-popup.min.js"></script>
+    <!--<< Wow Animation Js >>-->
+    <script src="/../assets/quantbit_website/js/wow.min.js"></script>
+    <!--<< Circle Progress Js >>-->
+    <script src="/../assets/quantbit_website/js/circle-progress.js"></script>
+    <!--<< Main.js >>-->
+    <script src="/../assets/quantbit_website/js/main.js"></script>
+    <script defer
+        src="../../../static.cloudflareinsights.com/beacon.min.js/v8c78df7c7c0f484497ecbca7046644da1771523124516"
+        integrity="sha512-8DS7rgIrAmghBFwoOTujcf6D9rXvH8xm8JQ1Ja01h9QX8EzXldiszufYa4IFfKdLUKTTrnSFXLDkUEOTrZQ8Qg=="
+        data-cf-beacon='{"version":"2024.11.0","token":"90f7972af14a48b4add7da2b74f5d675","r":1,"server_timing":{"name":{"cfCacheStatus":true,"cfEdge":true,"cfExtPri":true,"cfL4":true,"cfOrigin":true,"cfSpeedBrain":true},"location_startswith":null}}'
+        crossorigin="anonymous"></script>
+
+
+
+</body>
+</html>

@@ -1,0 +1,415 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<title>ERPNext Project & Task Management | Gantt, Timesheets, Billing | Quantbit Technologies</title>
+<meta name="description" content="Manage projects, tasks, Gantt charts, resource allocation, timesheets, and project billing with ERPNext. Certified implementation partner for India and GCC businesses.">
+<meta name="keywords" content="ERPNext project management India, ERPNext task management Pune, ERPNext Gantt chart, ERPNext timesheet billing, ERPNext project costing, open source project management ERP, ERPNext project module GCC Oman, ERPNext Frappe project management partner">
+<link rel="canonical" href="https://quantbit.io/services/erpnext-project-task-management/">
+<script type="application/ld+json">{
+  "@context":"https://schema.org",
+  "@graph":[
+    {"@type":"BreadcrumbList","itemListElement":[
+      {"@type":"ListItem","position":1,"name":"Home","item":"https://quantbit.io"},
+      {"@type":"ListItem","position":2,"name":"ERPNext Services","item":"https://quantbit.io/services/"},
+      {"@type":"ListItem","position":3,"name":"ERPNext Project & Task Management","item":"https://quantbit.io/services/erpnext-project-task-management/"}
+    ]},
+    {"@type":"FAQPage","mainEntity":[
+      {"@type":"Question","name":"Does ERPNext have a Gantt chart for project scheduling?","acceptedAnswer":{"@type":"Answer","text":"Yes. ERPNext includes a built-in Gantt chart view for projects and tasks. You can set task dependencies, drag to reschedule, and see the critical path. The Gantt view updates in real time as team members log progress on tasks."}},
+      {"@type":"Question","name":"Can ERPNext bill clients based on project timesheets?","acceptedAnswer":{"@type":"Answer","text":"Yes. ERPNext links timesheets to projects and generates sales invoices directly from approved timesheet entries. You can configure hourly billing rates per employee or role, making ERPNext ideal for professional services, consulting, and IT firms that bill by the hour."}},
+      {"@type":"Question","name":"How does ERPNext handle project cost tracking?","acceptedAnswer":{"@type":"Answer","text":"ERPNext accumulates all costs against a project — employee timesheets, purchase orders, expense claims, and material requests. The Project Profitability report compares budgeted cost against actual spend in real time, enabling project managers to control overruns before they escalate."}},
+      {"@type":"Question","name":"Can we manage multiple projects simultaneously in ERPNext?","acceptedAnswer":{"@type":"Answer","text":"Yes. ERPNext supports unlimited concurrent projects with separate budgets, team assignments, task lists, and timelines. Portfolio views show all active projects with their status, completion percentage, and budget utilisation at a glance."}},
+      {"@type":"Question","name":"Does ERPNext project management integrate with HR and payroll?","acceptedAnswer":{"@type":"Answer","text":"Yes. Employee timesheets submitted in the Project module flow into payroll calculation and attendance records. Project managers can see resource availability based on leave plans, and HR can allocate salary cost to specific projects for accurate profitability reporting."}}
+    ]}
+  ]
+}</script>
+<style>
+:root{--accent:#1a5fd4;--accent-dark:#1349a8;--teal:#0b7a5e;--teal-light:#e6f4f0;--amber:#b35e0a;--amber-light:#fef3e2;--dark:#0f2d47;--mid:#1e4a6e;--text:#1a2a38;--muted:#4a6278;--border:#d0dce8;--bg:#f5f8fc;--white:#ffffff;--radius:10px;--shadow:0 2px 16px rgba(15,45,71,.10);--shadow-lg:0 6px 32px rgba(15,45,71,.14)}
+*,*::before,*::after{box-sizing:border-box;margin:0;padding:0}html{scroll-behavior:smooth}
+body{font-family:'Segoe UI',system-ui,-apple-system,sans-serif;color:var(--text);background:var(--white);line-height:1.65;font-size:16px}
+.site-nav{background:var(--dark);padding:0 32px;display:flex;align-items:center;justify-content:space-between;height:60px;position:sticky;top:0;z-index:100}
+.nav-logo{color:#fff;font-weight:700;font-size:1.1rem;text-decoration:none;letter-spacing:.5px}
+.nav-links{display:flex;gap:24px;list-style:none}
+.nav-links a{color:rgba(255,255,255,.82);text-decoration:none;font-size:.9rem;font-weight:500;transition:color .2s}
+.nav-links a:hover{color:#fff}
+.nav-cta{background:var(--accent);color:#fff!important;padding:7px 18px;border-radius:6px;font-weight:600!important}
+.breadcrumb{background:var(--bg);border-bottom:1px solid var(--border);padding:10px 32px;font-size:.82rem;color:var(--muted)}
+.breadcrumb a{color:var(--accent);text-decoration:none}
+.hero{background:linear-gradient(135deg,var(--dark) 0%,var(--mid) 60%,#1a5fd4 100%);color:#fff;padding:72px 32px 64px;position:relative;overflow:hidden}
+.hero::before{content:'';position:absolute;right:-80px;top:-80px;width:420px;height:420px;background:rgba(255,255,255,.04);border-radius:50%;pointer-events:none}
+.hero-inner{max-width:1100px;margin:0 auto;display:grid;grid-template-columns:1fr 380px;gap:56px;align-items:center}
+.hero-badge{display:inline-flex;align-items:center;gap:8px;background:rgba(255,255,255,.12);border:1px solid rgba(255,255,255,.22);border-radius:40px;padding:5px 14px;font-size:.78rem;font-weight:600;letter-spacing:.8px;text-transform:uppercase;margin-bottom:18px;color:rgba(255,255,255,.9)}
+.hero h1{font-size:clamp(1.9rem,3.5vw,2.7rem);font-weight:800;line-height:1.2;margin-bottom:16px}
+.hero h1 span{color:#7eb8ff}
+.hero-desc{font-size:1.05rem;color:rgba(255,255,255,.82);margin-bottom:28px;max-width:540px}
+.hero-tags{display:flex;flex-wrap:wrap;gap:8px;margin-bottom:32px}
+.hero-tag{background:rgba(255,255,255,.1);border:1px solid rgba(255,255,255,.2);border-radius:20px;padding:4px 12px;font-size:.78rem;color:rgba(255,255,255,.85)}
+.hero-btns{display:flex;gap:14px;flex-wrap:wrap}
+.btn-primary{background:var(--accent);color:#fff;padding:12px 26px;border-radius:8px;font-weight:700;text-decoration:none;font-size:.95rem;transition:background .2s,transform .15s;display:inline-block}
+.btn-primary:hover{background:var(--accent-dark);transform:translateY(-1px)}
+.btn-ghost{background:transparent;color:#fff;padding:11px 24px;border:2px solid rgba(255,255,255,.4);border-radius:8px;font-weight:600;text-decoration:none;font-size:.95rem;transition:.2s;display:inline-block}
+.btn-ghost:hover{border-color:#fff;background:rgba(255,255,255,.1)}
+.hero-card{background:rgba(255,255,255,.1);border:1px solid rgba(255,255,255,.18);border-radius:14px;padding:28px;backdrop-filter:blur(8px)}
+.hero-card h3{font-size:1rem;font-weight:700;margin-bottom:16px;color:rgba(255,255,255,.92)}
+.hero-stat{display:flex;align-items:center;gap:12px;margin-bottom:14px;padding-bottom:14px;border-bottom:1px solid rgba(255,255,255,.12)}
+.hero-stat:last-child{margin-bottom:0;padding-bottom:0;border-bottom:none}
+.stat-icon{width:36px;height:36px;background:rgba(255,255,255,.15);border-radius:8px;display:flex;align-items:center;justify-content:center;font-size:1.1rem;flex-shrink:0}
+.stat-val{font-size:1.2rem;font-weight:800;color:#fff}
+.stat-lbl{font-size:.75rem;color:rgba(255,255,255,.7);line-height:1.3}
+.section{padding:64px 32px}.section-alt{background:var(--bg)}.container{max-width:1100px;margin:0 auto}
+.section-label{font-size:.75rem;font-weight:700;letter-spacing:1.2px;text-transform:uppercase;color:var(--accent);margin-bottom:8px}
+.section-title{font-size:clamp(1.5rem,2.8vw,2.1rem);font-weight:800;color:var(--dark);margin-bottom:12px;line-height:1.25}
+.section-sub{font-size:1.02rem;color:var(--muted);max-width:640px;margin-bottom:44px;line-height:1.7}
+.feature-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(280px,1fr));gap:24px}
+.feature-card{background:var(--white);border:1px solid var(--border);border-radius:var(--radius);padding:26px;transition:box-shadow .2s,transform .2s}
+.feature-card:hover{box-shadow:var(--shadow);transform:translateY(-3px)}
+.feature-icon{width:44px;height:44px;border-radius:10px;background:linear-gradient(135deg,var(--accent),var(--mid));display:flex;align-items:center;justify-content:center;font-size:1.3rem;margin-bottom:14px}
+.feature-card h3{font-size:1rem;font-weight:700;color:var(--dark);margin-bottom:8px}
+.feature-card p{font-size:.88rem;color:var(--muted);line-height:1.6}
+.feature-card ul{margin-top:10px;padding-left:0;list-style:none}
+.feature-card ul li{font-size:.85rem;color:var(--muted);padding:3px 0 3px 16px;position:relative;line-height:1.5}
+.feature-card ul li::before{content:'✓';position:absolute;left:0;color:var(--teal);font-weight:700}
+.reports-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(240px,1fr));gap:20px}
+.report-card{background:var(--white);border:1px solid var(--border);border-left:4px solid var(--accent);border-radius:var(--radius);padding:20px 22px}
+.report-card h4{font-size:.92rem;font-weight:700;color:var(--dark);margin-bottom:6px}
+.report-card p{font-size:.82rem;color:var(--muted);line-height:1.55}
+.report-tag{display:inline-block;background:var(--bg);border:1px solid var(--border);border-radius:4px;padding:2px 8px;font-size:.72rem;font-weight:600;color:var(--accent);margin-top:8px}
+.roles-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(200px,1fr));gap:16px}
+.role-pill{background:var(--white);border:1px solid var(--border);border-radius:var(--radius);padding:16px 20px;display:flex;align-items:flex-start;gap:12px}
+.role-dot{width:10px;height:10px;border-radius:50%;flex-shrink:0;margin-top:4px}
+.role-dot.admin{background:var(--accent)}.role-dot.manager{background:var(--teal)}.role-dot.user{background:var(--amber)}.role-dot.viewer{background:#9b59b6}
+.role-name{font-size:.88rem;font-weight:700;color:var(--dark);margin-bottom:2px}
+.role-desc{font-size:.78rem;color:var(--muted)}
+.benefits-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(260px,1fr));gap:24px}
+.benefit-card{background:linear-gradient(135deg,var(--teal-light),var(--white));border:1px solid #b8dfd6;border-radius:var(--radius);padding:26px}
+.benefit-num{font-size:2rem;font-weight:900;color:var(--teal);opacity:.35;line-height:1;margin-bottom:6px}
+.benefit-card h3{font-size:.98rem;font-weight:700;color:var(--dark);margin-bottom:8px}
+.benefit-card p{font-size:.86rem;color:var(--muted);line-height:1.6}
+.bp-list{display:grid;grid-template-columns:repeat(auto-fit,minmax(300px,1fr));gap:20px}
+.bp-item{background:var(--white);border:1px solid var(--border);border-radius:var(--radius);padding:22px 24px;display:flex;gap:16px;align-items:flex-start}
+.bp-icon{width:38px;height:38px;background:var(--amber-light);border-radius:8px;display:flex;align-items:center;justify-content:center;font-size:1.1rem;flex-shrink:0}
+.bp-item h4{font-size:.92rem;font-weight:700;color:var(--dark);margin-bottom:5px}
+.bp-item p{font-size:.83rem;color:var(--muted);line-height:1.55}
+.geo-answer{background:linear-gradient(135deg,#e8f0fc,#f0f6ff);border:1px solid #c5d8f7;border-radius:14px;padding:32px 36px;margin-bottom:32px}
+.geo-answer h3{font-size:1.1rem;font-weight:700;color:var(--dark);margin-bottom:10px}
+.geo-answer p{font-size:.95rem;color:var(--text);line-height:1.75}
+.geo-grid{display:grid;grid-template-columns:1fr 1fr;gap:24px}
+.geo-block{background:var(--white);border:1px solid var(--border);border-radius:var(--radius);padding:24px}
+.geo-block h4{font-size:.9rem;font-weight:700;color:var(--accent);margin-bottom:10px;display:flex;align-items:center;gap:8px}
+.geo-block ul{list-style:none;padding:0}
+.geo-block ul li{font-size:.85rem;color:var(--muted);padding:4px 0 4px 16px;position:relative}
+.geo-block ul li::before{content:'→';position:absolute;left:0;color:var(--accent)}
+.faq-list{max-width:800px;margin:0 auto}
+.faq-item{border:1px solid var(--border);border-radius:var(--radius);margin-bottom:10px;overflow:hidden}
+.faq-q{width:100%;background:var(--white);border:none;padding:18px 22px;text-align:left;font-size:.95rem;font-weight:600;color:var(--dark);cursor:pointer;display:flex;justify-content:space-between;align-items:center;gap:12px;transition:background .15s}
+.faq-q:hover,.faq-q.open{background:var(--bg)}
+.faq-arrow{font-size:1rem;color:var(--accent);transition:transform .25s;flex-shrink:0}
+.faq-q.open .faq-arrow{transform:rotate(180deg)}
+.faq-a{display:none;padding:0 22px 18px;font-size:.9rem;color:var(--muted);line-height:1.7}
+.faq-a.open{display:block}
+.ai-block{background:linear-gradient(135deg,var(--dark),var(--mid));color:#fff;border-radius:14px;padding:36px 40px}
+.ai-block h3{font-size:1.15rem;font-weight:700;margin-bottom:14px;color:#7eb8ff}
+.ai-qa{margin-bottom:18px;padding-bottom:18px;border-bottom:1px solid rgba(255,255,255,.1)}
+.ai-qa:last-child{margin-bottom:0;padding-bottom:0;border-bottom:none}
+.ai-qa .q{font-size:.88rem;font-weight:600;color:rgba(255,255,255,.7);margin-bottom:4px}
+.ai-qa .a{font-size:.9rem;color:rgba(255,255,255,.88);line-height:1.65}
+.cta-section{background:linear-gradient(135deg,var(--dark) 0%,var(--mid) 100%);color:#fff;padding:72px 32px;text-align:center}
+.cta-section h2{font-size:clamp(1.6rem,3vw,2.3rem);font-weight:800;margin-bottom:14px}
+.cta-section p{font-size:1.05rem;color:rgba(255,255,255,.8);max-width:580px;margin:0 auto 32px}
+.cta-btns{display:flex;gap:16px;justify-content:center;flex-wrap:wrap}
+.btn-white{background:#fff;color:var(--dark);padding:13px 28px;border-radius:8px;font-weight:700;text-decoration:none;font-size:.97rem;transition:.2s;display:inline-block}
+.btn-white:hover{background:#e8f0fc}
+.cta-trust{margin-top:22px;font-size:.82rem;color:rgba(255,255,255,.55)}
+.site-footer{background:#0a1e2e;color:rgba(255,255,255,.6);padding:40px 32px 24px;text-align:center;font-size:.83rem}
+.site-footer a{color:rgba(255,255,255,.5);text-decoration:none}
+.seo-box{background:var(--bg);border:1px solid var(--border);border-radius:var(--radius);padding:24px 28px}
+.seo-kw{display:flex;flex-wrap:wrap;gap:8px;margin-top:12px}
+.seo-kw span{background:var(--white);border:1px solid var(--border);border-radius:4px;padding:4px 10px;font-size:.78rem;color:var(--accent);font-weight:600}
+@media(max-width:768px){.hero-inner{grid-template-columns:1fr}.hero-card{display:none}.geo-grid{grid-template-columns:1fr}.site-nav{padding:0 16px}.nav-links{display:none}.section{padding:48px 16px}.hero{padding:48px 16px 44px}.ai-block{padding:24px 20px}.geo-answer{padding:22px 20px}}
+</style>
+<link rel="stylesheet" href="/assets/quantbit_website/css/_shared.css">
+
+  <!-- TEMPLATE CSS (IMPORTANT) -->
+  <link rel="stylesheet" href="/../assets/quantbit_website/css/bootstrap.min.css">
+  <link rel="stylesheet" href="/../assets/quantbit_website/css/font-awesome.css">
+  <link rel="stylesheet" href="/../assets/quantbit_website/css/animate.css">
+  <link rel="stylesheet" href="/../assets/quantbit_website/css/magnific-popup.css">
+  <link rel="stylesheet" href="/../assets/quantbit_website/css/meanmenu.css">
+  <link rel="stylesheet" href="/../assets/quantbit_website/css/slick.css">
+  <link rel="stylesheet" href="/../assets/quantbit_website/css/nice-select.css">
+  <link rel="stylesheet" href="/../assets/quantbit_website/css/main.css">
+  <link rel="stylesheet" href="style.css">
+  <!-- <link rel="stylesheet" href="/assets/quantbit_website/css/_shared.css"> -->
+
+
+  <!-- OPTIONAL CUSTOM -->
+  <link rel="stylesheet" href="/../assets/quantbit_website/css/hrms.css">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
+  <!-- Google Tag Manager -->
+  <script>(function (w, d, s, l, i) {
+      w[l] = w[l] || []; w[l].push({
+        'gtm.start':
+          new Date().getTime(), event: 'gtm.js'
+      }); var f = d.getElementsByTagName(s)[0],
+        j = d.createElement(s), dl = l != 'dataLayer' ? '&l=' + l : ''; j.async = true; j.src =
+          'https://www.googletagmanager.com/gtm.js?id=' + i + dl; f.parentNode.insertBefore(j, f);
+    })(window, document, 'script', 'dataLayer', 'GTM-P98Z6G8D');</script>
+  <!-- End Google Tag Manager -->
+</head>
+<body>
+<noscript><iframe src="https://www.googletagmanager.com/ns.html?id=GTM-P98Z6G8D" height="0" width="0"
+      style="display:none;visibility:hidden"></iframe></noscript>
+  <!-- End Google Tag Manager (noscript) -->
+  <!-- NAV -->
+  <div id="header"></div>
+
+<section class="hero">
+  <div class="hero-inner">
+    <div>
+      <div class="hero-badge">&#128203; ERPNext Module</div>
+      <h1>ERPNext <span>Project &amp; Task</span><br>Management for Teams</h1>
+      <p class="hero-desc">Plan, execute, and track projects with Gantt charts, task assignments, timesheet billing, resource allocation, and real-time project profitability — fully integrated with accounting and HR.</p>
+      <div class="hero-tags">
+        <span class="hero-tag">Gantt Charts</span><span class="hero-tag">Task Management</span><span class="hero-tag">Timesheets</span><span class="hero-tag">Project Billing</span><span class="hero-tag">Resource Planning</span><span class="hero-tag">Budget Tracking</span><span class="hero-tag">Milestones</span><span class="hero-tag">Project Costing</span>
+      </div>
+      <div class="hero-btns">
+        <a href="/company/contact-us.html" class="btn-primary">Book Free Demo</a>
+        <a href="/services/" class="btn-ghost">All ERPNext Modules</a>
+      </div>
+    </div>
+    <div class="hero-card">
+      <h3>Module Snapshot</h3>
+      <div class="hero-stat"><div class="stat-icon">&#128200;</div><div><div class="stat-val">Gantt View</div><div class="stat-lbl">Drag-and-drop task scheduling</div></div></div>
+      <div class="hero-stat"><div class="stat-icon">&#9201;</div><div><div class="stat-val">Timesheets</div><div class="stat-lbl">Employee hours → project billing</div></div></div>
+      <div class="hero-stat"><div class="stat-icon">&#128202;</div><div><div class="stat-val">Live Budget</div><div class="stat-lbl">Real-time cost vs budget tracking</div></div></div>
+      <div class="hero-stat"><div class="stat-icon">&#128101;</div><div><div class="stat-val">Multi-project</div><div class="stat-lbl">Portfolio view across all projects</div></div></div>
+    </div>
+  </div>
+</section>
+
+<section class="section">
+  <div class="container">
+    <div class="section-label">Overview</div>
+    <h2 class="section-title">What is ERPNext Project &amp; Task Management?</h2>
+    <p style="font-size:.97rem;color:var(--muted);line-height:1.85;max-width:840px">ERPNext Project and Task Management is a comprehensive project execution platform built directly into the ERP — so there is no need for separate tools like Asana, Jira, or Trello that operate in isolation from your financial and HR systems. It is designed for businesses that need to plan work, assign tasks to team members, track time, control costs, and bill clients — all from a single, unified system.</p>
+    <p style="font-size:.97rem;color:var(--muted);line-height:1.85;max-width:840px;margin-top:16px">Projects in ERPNext can be linked to customers, sales orders, and cost centres — making it ideal for construction companies, IT service firms, engineering consultancies, facility management companies, and any business where revenue and cost are tracked at the project level. Each project has a defined budget, expected start and end date, and a task list that can be organised into phases or milestones. Task assignments notify team members via email, and the Gantt chart view shows dependencies, critical path, and schedule slippage at a glance.</p>
+    <p style="font-size:.97rem;color:var(--muted);line-height:1.85;max-width:840px;margin-top:16px">Timesheets connect employee effort directly to projects. Employees log hours against specific tasks daily, and managers approve timesheets before they are posted to payroll and project cost accounts. For billable projects, approved timesheets automatically generate sales invoices at the configured hourly rate — eliminating manual billing calculations for professional services firms.</p>
+    <p style="font-size:.97rem;color:var(--muted);line-height:1.85;max-width:840px;margin-top:16px">The Project Profitability dashboard tracks budget versus actual spend in real time — aggregating employee timesheet costs, purchase orders raised against the project, material requests fulfilled, and expense claims submitted. Project managers see exactly where the project stands financially without waiting for month-end closing. Quantbit Technologies configures project templates, billing rules, approval workflows, and dashboard KPIs to match your delivery methodology — whether agile, milestone-based, or time-and-material.</p>
+  </div>
+</section>
+
+<section class="section section-alt">
+  <div class="container">
+    <div class="section-label">Features &amp; Functions</div>
+    <h2 class="section-title">Core Capabilities of the Project &amp; Task Module</h2>
+    <p class="section-sub">End-to-end project management from planning to billing — no external tools required.</p>
+    <div class="feature-grid">
+      <div class="feature-card"><div class="feature-icon">&#128203;</div><h3>Project Planning &amp; Templates</h3><p>Create structured project plans with phases, milestones, and task dependencies — reusable as templates.</p><ul><li>Project templates for recurring delivery types</li><li>Task dependency mapping (FS, SS, FF, SF)</li><li>Milestone-based project phases with owners</li><li>Expected vs actual start/end date tracking</li></ul></div>
+      <div class="feature-card"><div class="feature-icon">&#128200;</div><h3>Gantt Chart Scheduling</h3><p>Visualise the full project timeline with drag-and-drop task rescheduling and critical path analysis.</p><ul><li>Interactive Gantt with task dependency arrows</li><li>Drag to reschedule — updates all linked tasks</li><li>Critical path highlighting for delivery risk</li><li>Colour-coded by status — open, in-progress, complete</li></ul></div>
+      <div class="feature-card"><div class="feature-icon">&#9201;</div><h3>Timesheets &amp; Time Tracking</h3><p>Employees log hours against tasks daily — approved timesheets feed payroll and project billing.</p><ul><li>Daily timesheet with task and project mapping</li><li>Manager approval workflow before billing</li><li>Billable vs non-billable hour classification</li><li>Employee utilisation report by project and period</li></ul></div>
+      <div class="feature-card"><div class="feature-icon">&#128176;</div><h3>Project Billing &amp; Invoicing</h3><p>Generate sales invoices directly from approved timesheets for time-and-material projects.</p><ul><li>Hourly rate configuration per employee or role</li><li>One-click invoice from approved timesheets</li><li>Milestone billing for fixed-price contracts</li><li>Retention and advance billing support</li></ul></div>
+      <div class="feature-card"><div class="feature-icon">&#128202;</div><h3>Budget &amp; Cost Control</h3><p>Real-time project budget versus actual spend across all cost categories — labour, materials, and overheads.</p><ul><li>Budget allocation per project phase or category</li><li>Actual cost from timesheets, POs, and expense claims</li><li>Budget overrun alert before cost is committed</li><li>Project profitability report by customer and type</li></ul></div>
+      <div class="feature-card"><div class="feature-icon">&#128101;</div><h3>Resource Allocation</h3><p>Assign team members to projects based on their availability and planned leave schedule.</p><ul><li>Employee allocation view across all projects</li><li>Leave-integrated resource availability check</li><li>Over-allocation warning before task assignment</li><li>Skill-based resource matching for specialised tasks</li></ul></div>
+      <div class="feature-card"><div class="feature-icon">&#128230;</div><h3>Material &amp; Purchase Integration</h3><p>Raise material requests and purchase orders against a project — all costs automatically reflected in project P&amp;L.</p><ul><li>Material request linked to project and task</li><li>Purchase order with project cost centre mapping</li><li>Project-wise stock consumption tracking</li><li>Vendor advance and retention management by project</li></ul></div>
+      <div class="feature-card"><div class="feature-icon">&#128203;</div><h3>Task Kanban &amp; Collaboration</h3><p>Team members see their assigned tasks in a Kanban board and update status with comments and attachments.</p><ul><li>Kanban view with drag-to-change-status</li><li>Task comments, @mentions, and file attachments</li><li>Email notifications on assignment and status change</li><li>Task checklist for sub-task management</li></ul></div>
+    </div>
+  </div>
+</section>
+
+<section class="section">
+  <div class="container">
+    <div class="section-label">Reports &amp; Dashboards</div>
+    <h2 class="section-title">Project Reports &amp; Analytics</h2>
+    <p class="section-sub">From task completion rates to project profitability — real-time visibility for every stakeholder.</p>
+    <div class="reports-grid">
+      <div class="report-card"><h4>Project Summary Dashboard</h4><p>All active projects with status, completion percentage, budget utilisation, and upcoming milestone dates.</p><span class="report-tag">Management / PMO</span></div>
+      <div class="report-card"><h4>Project Profitability Report</h4><p>Revenue billed vs actual cost (labour + materials + overheads) per project with margin percentage.</p><span class="report-tag">Finance / Project Manager</span></div>
+      <div class="report-card"><h4>Employee Utilisation Report</h4><p>Billable vs non-billable hours per employee across projects for a selected period — identifies over- and under-allocated resources.</p><span class="report-tag">HR / Management</span></div>
+      <div class="report-card"><h4>Task Status Report</h4><p>Open, in-progress, and completed tasks by assignee, project, and due date — identifies bottlenecks.</p><span class="report-tag">Project Manager / Team</span></div>
+      <div class="report-card"><h4>Timesheet Detail Report</h4><p>All time logged by employee, project, task, and date with billable amount calculation for invoicing review.</p><span class="report-tag">Finance / Project Manager</span></div>
+      <div class="report-card"><h4>Budget Variance Report</h4><p>Planned vs actual spend by project phase and cost category — flags overruns before they escalate.</p><span class="report-tag">Finance / PMO</span></div>
+    </div>
+  </div>
+</section>
+
+<section class="section section-alt">
+  <div class="container">
+    <div class="section-label">User Access &amp; Roles</div>
+    <h2 class="section-title">Who Uses the Project Module?</h2>
+    <p class="section-sub">Role-based access ensures project data is visible to the right people at the right level.</p>
+    <div class="roles-grid">
+      <div class="role-pill"><div class="role-dot admin"></div><div><div class="role-name">Project Manager</div><div class="role-desc">Create projects, assign tasks, approve timesheets, manage budgets, generate project invoices</div></div></div>
+      <div class="role-pill"><div class="role-dot manager"></div><div><div class="role-name">PMO / Director</div><div class="role-desc">Portfolio view — all projects, budget health, resource utilisation, and delivery risk dashboard</div></div></div>
+      <div class="role-pill"><div class="role-dot user"></div><div><div class="role-name">Team Member / Developer</div><div class="role-desc">View assigned tasks, update task status, submit daily timesheets, add comments and attachments</div></div></div>
+      <div class="role-pill"><div class="role-dot manager"></div><div><div class="role-name">Finance / Billing</div><div class="role-desc">Review approved timesheets, generate client invoices, track project receivables and retention</div></div></div>
+      <div class="role-pill"><div class="role-dot viewer"></div><div><div class="role-name">Client (Guest Portal)</div><div class="role-desc">View project status, milestones, and uploaded deliverables via client-facing portal access</div></div></div>
+    </div>
+  </div>
+</section>
+
+<section class="section">
+  <div class="container">
+    <div class="section-label">Key Benefits</div>
+    <h2 class="section-title">Why Businesses Use ERPNext for Project Management</h2>
+    <div class="benefits-grid">
+      <div class="benefit-card"><div class="benefit-num">01</div><h3>No More Billing Leakage</h3><p>Every billable hour logged in a timesheet becomes an invoice line item automatically. No hours go unbilled and no manual calculations are needed — professional services firms report 15-20% improvement in billing accuracy.</p></div>
+      <div class="benefit-card"><div class="benefit-num">02</div><h3>Real-Time Project Profitability</h3><p>Project managers know if a project is profitable before it closes — not at month-end. Live budget vs actual tracking enables course correction before cost overruns become irreversible.</p></div>
+      <div class="benefit-card"><div class="benefit-num">03</div><h3>Eliminate Disconnected Tools</h3><p>One system replaces Excel project plans, WhatsApp task updates, and manual time logs. All project activity — tasks, timesheets, costs, and invoices — is in a single, searchable audit trail.</p></div>
+      <div class="benefit-card"><div class="benefit-num">04</div><h3>On-Time Delivery</h3><p>Gantt charts with dependency tracking and milestone alerts ensure project managers see schedule slippage before deadlines are missed — enabling proactive client communication.</p></div>
+      <div class="benefit-card"><div class="benefit-num">05</div><h3>Accurate Resource Planning</h3><p>Allocate employees across projects based on real availability — integrated with leave management — preventing over-commitment and burnout while maximising billable utilisation.</p></div>
+      <div class="benefit-card"><div class="benefit-num">06</div><h3>Integrated with Finance</h3><p>Purchase orders, expense claims, and payroll costs are automatically allocated to projects — giving finance a complete picture of project cost without manual reconciliation.</p></div>
+    </div>
+  </div>
+</section>
+
+<section class="section section-alt">
+  <div class="container">
+    <div class="section-label">Best Practices</div>
+    <h2 class="section-title">ERPNext Project Management Best Practices</h2>
+    <div class="bp-list">
+      <div class="bp-item"><div class="bp-icon">&#128203;</div><div><h4>Create Project Templates for Repeating Delivery Types</h4><p>Build standard project templates with predefined phases, tasks, and durations. This reduces setup time for new projects and ensures consistent delivery methodology across your team.</p></div></div>
+      <div class="bp-item"><div class="bp-icon">&#9201;</div><div><h4>Enforce Daily Timesheet Submission</h4><p>Configure mandatory daily timesheet submission with manager approval before payroll cut-off. Timesheets logged weekly lose accuracy — daily logging captures true project cost in real time.</p></div></div>
+      <div class="bp-item"><div class="bp-icon">&#128202;</div><div><h4>Set Budget Alerts at 80% Utilisation</h4><p>Configure project budget alerts at 80% spend so project managers are notified before the project goes over budget — not after. This gives time to renegotiate scope or accelerate billing.</p></div></div>
+      <div class="bp-item"><div class="bp-icon">&#128101;</div><div><h4>Link Resource Allocation to Leave Calendar</h4><p>Always check leave plans before assigning team members to critical path tasks. ERPNext shows approved leave in the resource calendar — preventing schedule surprises from absent key team members.</p></div></div>
+      <div class="bp-item"><div class="bp-icon">&#128176;</div><div><h4>Issue Milestone Invoices Promptly</h4><p>Configure automatic billing reminders when a milestone is marked complete. Delayed invoicing — common in service firms — creates cash flow gaps that the project billing feature is designed to prevent.</p></div></div>
+      <div class="bp-item"><div class="bp-icon">&#128200;</div><div><h4>Review Gantt Weekly in Project Meetings</h4><p>Make the ERPNext Gantt view the single source of truth in weekly project reviews — replacing PowerPoint updates and verbal status reports with real data visible to the entire team.</p></div></div>
+    </div>
+  </div>
+</section>
+
+<section class="section">
+  <div class="container">
+    <div class="section-label">GEO-Specific Guidance</div>
+    <h2 class="section-title">ERPNext Project Management for India &amp; GCC</h2>
+    <div class="geo-answer">
+      <h3>ERPNext project management software for Indian IT, construction, and consulting firms and GCC contractors</h3>
+      <p>ERPNext Project and Task Management is widely adopted by Indian IT services, engineering consultancies, construction companies, and facility management firms that need project-level cost and billing visibility. In the GCC, it is particularly relevant for construction contractors in Oman and UAE managing multi-year projects with milestone billing, retention, and VAT-compliant invoicing. Quantbit Technologies, a certified Frappe and ERPNext partner with offices in Pune and Muscat, configures project billing workflows, WPS-compliant timesheet payroll allocation, and VAT project invoicing for GCC clients.</p>
+    </div>
+    <div class="geo-grid">
+      <div class="geo-block">
+        <h4>&#127470;&#127475; India — Project Context</h4>
+        <ul>
+          <li>GST-compliant milestone billing for construction and IT</li>
+          <li>TDS on subcontractor payments linked to project POs</li>
+          <li>MSME payment tracking within project payables</li>
+          <li>IT firm hourly billing in INR and USD for export clients</li>
+          <li>EPC and AMC project management with retention tracking</li>
+          <li>Integration with ConstruX for real estate and infra projects</li>
+        </ul>
+      </div>
+      <div class="geo-block">
+        <h4>&#127762; GCC — Project Context</h4>
+        <ul>
+          <li>VAT-compliant milestone invoicing for Oman and UAE contractors</li>
+          <li>Retention billing and release tracking per contract terms</li>
+          <li>WPS-compliant labour cost allocation per project</li>
+          <li>Multi-currency projects — OMR, AED, USD billing</li>
+          <li>Subcontractor management with MOH labour compliance</li>
+          <li>Physical Muscat office for on-ground project implementation</li>
+        </ul>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section class="section section-alt">
+  <div class="container">
+    <div class="section-label">AI Search Strategy</div>
+    <h2 class="section-title">Common AI &amp; Search Queries — Answered</h2>
+    <div class="ai-block">
+      <h3>How ERPNext answers common project management questions</h3>
+      <div class="ai-qa"><div class="q">Q: What is the best ERP with built-in project management for Indian service companies?</div><div class="a">ERPNext includes a full project management module with Gantt charts, timesheet billing, resource allocation, and project profitability tracking — natively integrated with accounting, HR, and purchase. For Indian IT, consulting, and engineering firms, it eliminates the need for separate tools like Jira or Asana that don't connect to financial systems.</div></div>
+      <div class="ai-qa"><div class="q">Q: How do I bill clients based on employee timesheets in ERPNext?</div><div class="a">In ERPNext, employees log hours against project tasks daily. Once the manager approves the timesheet, finance can generate a sales invoice directly from the approved entries — with configurable hourly rates per employee or role. The invoice is automatically linked to the project for profitability tracking.</div></div>
+      <div class="ai-qa"><div class="q">Q: Can ERPNext manage construction projects with milestone billing and retention in GCC?</div><div class="a">Yes. ERPNext supports milestone-based billing where invoices are generated when project milestones are marked complete. Retention amounts are tracked separately and released when contractually due. VAT is applied per GCC rules. Quantbit Technologies configures these workflows for construction clients in Oman and UAE.</div></div>
+    </div>
+  </div>
+</section>
+
+<section class="section">
+  <div class="container">
+    <div class="section-label">FAQ</div>
+    <h2 class="section-title">Frequently Asked Questions</h2>
+    <div class="faq-list">
+      <div class="faq-item"><button class="faq-q" onclick="tog(this)"><span>Does ERPNext have a Gantt chart for project scheduling?</span><span class="faq-arrow">&#9660;</span></button><div class="faq-a">Yes. ERPNext includes a built-in Gantt chart view for projects and tasks. You can set task dependencies, drag to reschedule, and see the critical path. The Gantt view updates in real time as team members log progress on tasks.</div></div>
+      <div class="faq-item"><button class="faq-q" onclick="tog(this)"><span>Can ERPNext bill clients based on project timesheets?</span><span class="faq-arrow">&#9660;</span></button><div class="faq-a">Yes. ERPNext links timesheets to projects and generates sales invoices directly from approved timesheet entries. You can configure hourly billing rates per employee or role, making ERPNext ideal for professional services, consulting, and IT firms that bill by the hour.</div></div>
+      <div class="faq-item"><button class="faq-q" onclick="tog(this)"><span>How does ERPNext handle project cost tracking?</span><span class="faq-arrow">&#9660;</span></button><div class="faq-a">ERPNext accumulates all costs against a project — employee timesheets, purchase orders, expense claims, and material requests. The Project Profitability report compares budgeted cost against actual spend in real time, enabling project managers to control overruns before they escalate.</div></div>
+      <div class="faq-item"><button class="faq-q" onclick="tog(this)"><span>Can we manage multiple projects simultaneously in ERPNext?</span><span class="faq-arrow">&#9660;</span></button><div class="faq-a">Yes. ERPNext supports unlimited concurrent projects with separate budgets, team assignments, task lists, and timelines. Portfolio views show all active projects with their status, completion percentage, and budget utilisation at a glance.</div></div>
+      <div class="faq-item"><button class="faq-q" onclick="tog(this)"><span>Does ERPNext project management integrate with HR and payroll?</span><span class="faq-arrow">&#9660;</span></button><div class="faq-a">Yes. Employee timesheets submitted in the Project module flow into payroll calculation and attendance records. Project managers can see resource availability based on leave plans, and HR can allocate salary cost to specific projects for accurate profitability reporting.</div></div>
+      <div class="faq-item"><button class="faq-q" onclick="tog(this)"><span>What types of businesses benefit most from ERPNext project management?</span><span class="faq-arrow">&#9660;</span></button><div class="faq-a">IT services, engineering consultancies, construction companies, EPC contractors, facility management firms, and any business that bills clients by milestone or time — these are the primary users. ERPNext's integration between project costs and accounting makes it far more powerful than standalone project tools for these businesses.</div></div>
+    </div>
+  </div>
+</section>
+
+<section class="section section-alt">
+  <div class="container">
+    <div class="seo-box">
+      <p class="section-label" style="margin-bottom:8px">SEO Keywords</p>
+      <h3 style="font-size:.92rem;font-weight:700;color:var(--dark);margin-bottom:8px">Search Terms This Page Targets</h3>
+      <div class="seo-kw"><span>ERPNext project management India</span><span>ERPNext task management Pune</span><span>ERPNext Gantt chart</span><span>ERPNext timesheet billing</span><span>ERPNext project costing</span><span>open source project management ERP</span><span>ERPNext project module GCC Oman</span><span>ERPNext milestone billing construction</span><span>ERPNext project profitability report</span><span>ERPNext resource allocation India</span><span>ERPNext Frappe project partner Pune</span></div>
+    </div>
+  </div>
+</section>
+
+<section class="cta-section">
+  <div class="container">
+    <h2>Ready to Implement ERPNext Project &amp; Task Management?</h2>
+    <p>Quantbit Technologies is a certified ERPNext partner that configures project billing, Gantt scheduling, timesheet workflows, and profitability dashboards for IT, construction, and engineering firms in India and GCC.</p>
+    <div class="cta-btns">
+      <a href="/company/contact-us.html" class="btn-white">Book Free Demo</a>
+      <a href="/company/contact-us.html" class="btn-ghost">Talk to a Consultant</a>
+    </div>
+    <div class="cta-trust">&#9989; Certified ERPNext Partner &nbsp;|&nbsp; &#9989; In-house Dev Team &nbsp;|&nbsp; &#9989; India &amp; GCC Experience &nbsp;|&nbsp; &#9989; Post-go-live Support</div>
+  </div>
+</section>
+  <div id="footer"></div>
+
+<script>function tog(btn){btn.classList.toggle('open');var a=btn.nextElementSibling;a.classList.toggle('open');}</script>
+<script>
+    fetch("/header.html")
+      .then(res => res.text())
+      .then(data => {
+        document.getElementById("header").innerHTML = data;
+      });
+
+    fetch("/footer.html")
+      .then(res => res.text())
+      .then(data => {
+        document.getElementById("footer").innerHTML = data;
+      });
+  </script>
+  <!-- ================= TEMPLATE JS ================= -->
+  <!--<< All JS Plugins >>-->
+  <script data-cfasync="false" src="../../cdn-cgi/scripts/5c5dd728/cloudflare-static/email-decode.min.js"></script>
+  <script src="/../assets/quantbit_website/js/jquery-3.7.1.min.js"></script>
+  <!--<< Viewport Js >>-->
+  <script src="/../assets/quantbit_website/js/viewport.jquery.js"></script>
+  <!--<< Bootstrap Js >>-->
+  <script src="/../assets/quantbit_website/js/bootstrap.bundle.min.js"></script>
+  <!--<< Nice Select Js >>-->
+  <script src="/../assets/quantbit_website/js/jquery.nice-select.min.js"></script>
+  <!--<< Waypoints Js >>-->
+  <script src="/../assets/quantbit_website/js/jquery.waypoints.js"></script>
+  <!--<< Counterup Js >>-->
+  <script src="/../assets/quantbit_website/js/jquery.counterup.min.js"></script>
+  <!--<< Slick Js >>-->
+  <script src="/../assets/quantbit_website/js/slick.min.js"></script>
+  <!--<< Slick Animation Js >>-->
+  <script src="/../assets/quantbit_website/js/slick-animation.min.js"></script>
+  <!--<< MeanMenu Js >>-->
+  <script src="/../assets/quantbit_website/js/jquery.meanmenu.min.js"></script>
+  <!--<< Magnific Popup Js >>-->
+  <script src="/../assets/quantbit_website/js/jquery.magnific-popup.min.js"></script>
+  <!--<< Wow Animation Js >>-->
+  <script src="/../assets/quantbit_website/js/wow.min.js"></script>
+  <!--<< Circle Progress Js >>-->
+  <script src="/../assets/quantbit_website/js/circle-progress.js"></script>
+  <!--<< Main.js >>-->
+  <script src="/../assets/quantbit_website/js/main.js"></script>
+  <script defer
+    src="../../../static.cloudflareinsights.com/beacon.min.js/v8c78df7c7c0f484497ecbca7046644da1771523124516"
+    integrity="sha512-8DS7rgIrAmghBFwoOTujcf6D9rXvH8xm8JQ1Ja01h9QX8EzXldiszufYa4IFfKdLUKTTrnSFXLDkUEOTrZQ8Qg=="
+    data-cf-beacon='{"version":"2024.11.0","token":"90f7972af14a48b4add7da2b74f5d675","r":1,"server_timing":{"name":{"cfCacheStatus":true,"cfEdge":true,"cfExtPri":true,"cfL4":true,"cfOrigin":true,"cfSpeedBrain":true},"location_startswith":null}}'
+    crossorigin="anonymous"></script>
+
+</body></html>

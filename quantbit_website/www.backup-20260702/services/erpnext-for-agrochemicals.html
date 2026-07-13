@@ -1,0 +1,511 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<title>ERPNext for Agrochemicals | CIB&RC Compliance, Batch Tracking, Dealer Network | Quantbit</title>
+<meta name="description" content="ERPNext for agrochemical companies — CIB&RC licensed product tracking, batch and expiry management, dealer credit management, hazardous material compliance, and GST at 18% on pesticides.">
+<meta name="keywords" content="ERPNext agrochemicals India, ERPNext CIB RC pesticide compliance, ERPNext agrochemical batch tracking, dealer credit management ERP India, ERPNext Insecticides Act compliance, agrochemical ERP India, ERPNext pesticide GST 18%, ERPNext hazardous material tracking, open source agrochemical ERP India, ERPNext dealer network management pesticide, ERPNext agrochemical export DGFT">
+<link rel="canonical" href="https://quantbit.io/industries/erpnext-for-agrochemicals/">
+<script type="application/ld+json">{"@context":"https://schema.org","@graph":[{"@type":"BreadcrumbList","itemListElement":[{"@type":"ListItem","position":1,"name":"Home","item":"https://quantbit.io"},{"@type":"ListItem","position":2,"name":"Industries","item":"https://quantbit.io/industries/"},{"@type":"ListItem","position":3,"name":"ERPNext for Agrochemicals","item":"https://quantbit.io/industries/erpnext-for-agrochemicals/"}]},{"@type":"FAQPage","mainEntity":[{"@type":"Question","name":"How does ERPNext track CIB&RC licensed products for agrochemical companies?","acceptedAnswer":{"@type":"Answer","text":"ERPNext stores the CIB&RC (Central Insecticides Board and Registration Committee) registration number, licence validity date, and registration conditions for each agrochemical product in the item master. Items with expired CIB&RC registrations are flagged at the purchase and sales order stage — preventing procurement or sale of unlicensed products. Licence renewal alerts notify the regulatory affairs team before expiry, giving time for timely renewal submissions."}},{"@type":"Question","name":"Can ERPNext manage batch traceability and expiry for agrochemical products?","acceptedAnswer":{"@type":"Answer","text":"Yes. Every batch of agrochemical product in ERPNext carries the manufacturing date, expiry date, and batch number from production or supplier GRN. FEFO (First Expired First Out) ensures that older batches are dispatched before newer ones. Expiry alerts at 90 and 180 days notify the warehouse and sales teams of near-expiry stock — enabling clearance through dealer channels before the expiry date creates write-offs or Insecticides Act violations."}},{"@type":"Question","name":"How does ERPNext manage the dealer credit network for agrochemical companies?","acceptedAnswer":{"@type":"Answer","text":"ERPNext manages dealer-wise credit limits, payment terms, and outstanding balance tracking. Each dealer has a configured credit limit and payment term (30, 45, or 60 days). The dealer outstanding aging report shows credit usage and overdue amounts — preventing new dispatches to over-limit or overdue dealers without approval. Seasonal credit extension workflows allow temporary credit limit increases during peak crop season with credit committee approval."}},{"@type":"Question","name":"Does ERPNext handle hazardous material classification for agrochemicals?","acceptedAnswer":{"@type":"Answer","text":"ERPNext supports custom fields for hazardous material classification — WHO toxicity class (Ia, Ib, II, III, U), UN hazard code, and storage and transport requirements per product. Hazardous classification drives special handling instructions at warehouse issue, packing requirements for transport, and the MSDS (Material Safety Data Sheet) attachment at each GRN and dispatch — supporting compliance with the Insecticides Act and transport regulations."}},{"@type":"Question","name":"How does ERPNext manage GST on agrochemical products?","acceptedAnswer":{"@type":"Answer","text":"Most pesticides, insecticides, fungicides, and herbicides attract GST at 18% under HSN Chapter 38. ERPNext maps each agrochemical product to its correct HSN code and applies the 18% rate automatically on every invoice — without manual rate selection. For export sales, ERPNext generates LUT-linked zero-rated invoices for agrochemical exporters with DGFT documentation support."}},{"@type":"Question","name":"Can ERPNext manage seasonal demand planning for agrochemical companies?","acceptedAnswer":{"@type":"Answer","text":"ERPNext's demand planning tools use historical seasonal sales data — Kharif season (June–September) and Rabi season (November–March) — to generate procurement forecasts per product. Season-wise sales trend reports show which molecules and products peak in which crop season — enabling the procurement team to build inventory 60–90 days ahead of seasonal demand rather than scrambling during the peak supply window when raw material availability is tight and prices are high."}}]}]}</script>
+<style>
+:root{--accent:#1a5fd4;--accent-dark:#1349a8;--teal:#0b7a5e;--teal-light:#e6f4f0;--amber:#b35e0a;--amber-light:#fef3e2;--dark:#0f2d47;--mid:#1e4a6e;--text:#1a2a38;--muted:#4a6278;--border:#d0dce8;--bg:#f5f8fc;--white:#ffffff;--radius:10px;--shadow:0 2px 16px rgba(15,45,71,.10)}
+*,*::before,*::after{box-sizing:border-box;margin:0;padding:0}html{scroll-behavior:smooth}
+body{font-family:'Segoe UI',system-ui,-apple-system,sans-serif;color:var(--text);background:var(--white);line-height:1.65;font-size:16px}
+.site-nav{background:var(--dark);padding:0 32px;display:flex;align-items:center;justify-content:space-between;height:60px;position:sticky;top:0;z-index:100}
+.nav-logo{color:#fff;font-weight:700;font-size:1.1rem;text-decoration:none}
+.nav-links{display:flex;gap:24px;list-style:none}
+.nav-links a{color:rgba(255,255,255,.82);text-decoration:none;font-size:.9rem;font-weight:500}
+.nav-links a:hover{color:#fff}
+.nav-cta{background:var(--accent);color:#fff!important;padding:7px 18px;border-radius:6px;font-weight:600!important}
+.breadcrumb{background:var(--bg);border-bottom:1px solid var(--border);padding:10px 32px;font-size:.82rem;color:var(--muted)}
+.breadcrumb a{color:var(--accent);text-decoration:none}
+.hero{background:linear-gradient(135deg,var(--dark) 0%,var(--mid) 60%,#1a5fd4 100%);color:#fff;padding:72px 32px 64px;position:relative;overflow:hidden}
+.hero::before{content:'';position:absolute;right:-80px;top:-80px;width:420px;height:420px;background:rgba(255,255,255,.04);border-radius:50%}
+.hero-inner{max-width:1100px;margin:0 auto;display:grid;grid-template-columns:1fr 360px;gap:56px;align-items:center}
+.hero-badge{display:inline-flex;align-items:center;gap:8px;background:rgba(255,255,255,.12);border:1px solid rgba(255,255,255,.22);border-radius:40px;padding:5px 14px;font-size:.78rem;font-weight:600;letter-spacing:.8px;text-transform:uppercase;margin-bottom:18px}
+.hero h1{font-size:clamp(1.9rem,3.5vw,2.7rem);font-weight:800;line-height:1.2;margin-bottom:16px}
+.hero h1 span{color:#7eb8ff}
+.hero-desc{font-size:1.05rem;color:rgba(255,255,255,.82);margin-bottom:28px;max-width:540px}
+.hero-tags{display:flex;flex-wrap:wrap;gap:8px;margin-bottom:32px}
+.hero-tag{background:rgba(255,255,255,.1);border:1px solid rgba(255,255,255,.2);border-radius:20px;padding:4px 12px;font-size:.78rem;color:rgba(255,255,255,.85)}
+.hero-btns{display:flex;gap:14px;flex-wrap:wrap}
+.btn-primary{background:var(--accent);color:#fff;padding:12px 26px;border-radius:8px;font-weight:700;text-decoration:none;font-size:.95rem;display:inline-block}
+.btn-primary:hover{background:var(--accent-dark)}
+.btn-ghost{background:transparent;color:#fff;padding:11px 24px;border:2px solid rgba(255,255,255,.4);border-radius:8px;font-weight:600;text-decoration:none;font-size:.95rem;display:inline-block}
+.btn-ghost:hover{border-color:#fff;background:rgba(255,255,255,.1)}
+.hero-card{background:rgba(255,255,255,.1);border:1px solid rgba(255,255,255,.18);border-radius:14px;padding:28px;backdrop-filter:blur(8px)}
+.hero-card h3{font-size:.95rem;font-weight:700;margin-bottom:16px;color:rgba(255,255,255,.92)}
+.hero-stat{display:flex;align-items:center;gap:12px;margin-bottom:14px;padding-bottom:14px;border-bottom:1px solid rgba(255,255,255,.12)}
+.hero-stat:last-child{margin-bottom:0;padding-bottom:0;border-bottom:none}
+.stat-icon{width:36px;height:36px;background:rgba(255,255,255,.15);border-radius:8px;display:flex;align-items:center;justify-content:center;font-size:1.1rem;flex-shrink:0}
+.stat-val{font-size:1.05rem;font-weight:800;color:#fff}
+.stat-lbl{font-size:.73rem;color:rgba(255,255,255,.7);line-height:1.3}
+.section{padding:64px 32px}.section-alt{background:var(--bg)}.container{max-width:1100px;margin:0 auto}
+.section-label{font-size:.75rem;font-weight:700;letter-spacing:1.2px;text-transform:uppercase;color:var(--accent);margin-bottom:8px}
+.section-title{font-size:clamp(1.5rem,2.8vw,2.1rem);font-weight:800;color:var(--dark);margin-bottom:12px;line-height:1.25}
+.section-sub{font-size:1.02rem;color:var(--muted);max-width:680px;margin-bottom:44px;line-height:1.7}
+.pain-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(260px,1fr));gap:20px}
+.pain-card{background:var(--white);border:1px solid var(--border);border-left:4px solid #e74c3c;border-radius:var(--radius);padding:22px 24px}
+.pain-card h3{font-size:.95rem;font-weight:700;color:var(--dark);margin-bottom:8px}
+.pain-card p{font-size:.86rem;color:var(--muted);line-height:1.6}
+.pain-card .solve{font-size:.82rem;color:var(--teal);font-weight:600;margin-top:10px;padding-top:10px;border-top:1px solid var(--border)}
+.module-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(300px,1fr));gap:24px}
+.module-card{background:var(--white);border:1px solid var(--border);border-radius:var(--radius);padding:26px;transition:box-shadow .2s,transform .2s}
+.module-card:hover{box-shadow:var(--shadow);transform:translateY(-3px)}
+.module-icon{width:44px;height:44px;border-radius:10px;background:linear-gradient(135deg,var(--accent),var(--mid));display:flex;align-items:center;justify-content:center;font-size:1.3rem;margin-bottom:14px}
+.module-card h3{font-size:.98rem;font-weight:700;color:var(--dark);margin-bottom:6px}
+.module-link{font-size:.78rem;color:var(--accent);text-decoration:none;font-weight:600}
+.module-card p{font-size:.86rem;color:var(--muted);line-height:1.6;margin:8px 0}
+.module-card ul{padding-left:0;list-style:none}
+.module-card ul li{font-size:.84rem;color:var(--muted);padding:3px 0 3px 16px;position:relative;line-height:1.5}
+.module-card ul li::before{content:'✓';position:absolute;left:0;color:var(--teal);font-weight:700}
+.workflow-steps{display:grid;grid-template-columns:repeat(auto-fit,minmax(150px,1fr));gap:0;position:relative}
+.workflow-steps::before{content:'';position:absolute;top:28px;left:0;right:0;height:2px;background:var(--border);z-index:0}
+.w-step{background:var(--white);border:1px solid var(--border);border-radius:var(--radius);padding:20px 14px;text-align:center;position:relative;z-index:1}
+.w-num{width:36px;height:36px;background:var(--accent);color:#fff;border-radius:50%;display:flex;align-items:center;justify-content:center;font-size:.82rem;font-weight:700;margin:0 auto 10px}
+.w-step h4{font-size:.8rem;font-weight:700;color:var(--dark);margin-bottom:4px}
+.w-step p{font-size:.74rem;color:var(--muted);line-height:1.4}
+.compliance-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(240px,1fr));gap:18px}
+.comp-card{background:var(--white);border:1px solid var(--border);border-radius:var(--radius);padding:20px 22px;display:flex;gap:14px;align-items:flex-start}
+.comp-dot{width:10px;height:10px;background:var(--amber);border-radius:50%;flex-shrink:0;margin-top:5px}
+.comp-card h4{font-size:.88rem;font-weight:700;color:var(--dark);margin-bottom:4px}
+.comp-card p{font-size:.82rem;color:var(--muted);line-height:1.55}
+.reports-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(230px,1fr));gap:18px}
+.report-card{background:var(--white);border:1px solid var(--border);border-left:4px solid var(--accent);border-radius:var(--radius);padding:18px 20px}
+.report-card h4{font-size:.9rem;font-weight:700;color:var(--dark);margin-bottom:5px}
+.report-card p{font-size:.81rem;color:var(--muted);line-height:1.5}
+.report-tag{display:inline-block;background:var(--bg);border:1px solid var(--border);border-radius:4px;padding:2px 8px;font-size:.71rem;font-weight:600;color:var(--accent);margin-top:7px}
+.benefits-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(260px,1fr));gap:22px}
+.benefit-card{background:linear-gradient(135deg,var(--teal-light),var(--white));border:1px solid #b8dfd6;border-radius:var(--radius);padding:24px}
+.benefit-num{font-size:2rem;font-weight:900;color:var(--teal);opacity:.3;line-height:1;margin-bottom:6px}
+.benefit-card h3{font-size:.96rem;font-weight:700;color:var(--dark);margin-bottom:7px}
+.benefit-card p{font-size:.85rem;color:var(--muted);line-height:1.6}
+.bp-list{display:grid;grid-template-columns:repeat(auto-fit,minmax(300px,1fr));gap:18px}
+.bp-item{background:var(--white);border:1px solid var(--border);border-radius:var(--radius);padding:20px 22px;display:flex;gap:14px;align-items:flex-start}
+.bp-icon{width:36px;height:36px;background:var(--amber-light);border-radius:8px;display:flex;align-items:center;justify-content:center;font-size:1rem;flex-shrink:0}
+.bp-item h4{font-size:.9rem;font-weight:700;color:var(--dark);margin-bottom:4px}
+.bp-item p{font-size:.82rem;color:var(--muted);line-height:1.55}
+.geo-answer{background:linear-gradient(135deg,#e8f0fc,#f0f6ff);border:1px solid #c5d8f7;border-radius:14px;padding:30px 34px;margin-bottom:28px}
+.geo-answer h3{font-size:1.05rem;font-weight:700;color:var(--dark);margin-bottom:9px}
+.geo-answer p{font-size:.93rem;color:var(--text);line-height:1.75}
+.geo-grid{display:grid;grid-template-columns:1fr 1fr;gap:22px}
+.geo-block{background:var(--white);border:1px solid var(--border);border-radius:var(--radius);padding:22px}
+.geo-block h4{font-size:.88rem;font-weight:700;color:var(--accent);margin-bottom:9px}
+.geo-block ul{list-style:none;padding:0}
+.geo-block ul li{font-size:.84rem;color:var(--muted);padding:4px 0 4px 16px;position:relative}
+.geo-block ul li::before{content:'→';position:absolute;left:0;color:var(--accent)}
+.ai-block{background:linear-gradient(135deg,var(--dark),var(--mid));color:#fff;border-radius:14px;padding:34px 38px}
+.ai-block h3{font-size:1.1rem;font-weight:700;margin-bottom:14px;color:#7eb8ff}
+.ai-qa{margin-bottom:16px;padding-bottom:16px;border-bottom:1px solid rgba(255,255,255,.1)}
+.ai-qa:last-child{margin-bottom:0;padding-bottom:0;border-bottom:none}
+.ai-qa .q{font-size:.86rem;font-weight:600;color:rgba(255,255,255,.7);margin-bottom:4px}
+.ai-qa .a{font-size:.88rem;color:rgba(255,255,255,.88);line-height:1.65}
+.faq-list{max-width:800px;margin:0 auto}
+.faq-item{border:1px solid var(--border);border-radius:var(--radius);margin-bottom:10px;overflow:hidden}
+.faq-q{width:100%;background:var(--white);border:none;padding:17px 22px;text-align:left;font-size:.93rem;font-weight:600;color:var(--dark);cursor:pointer;display:flex;justify-content:space-between;align-items:center;gap:12px;transition:background .15s}
+.faq-q:hover,.faq-q.open{background:var(--bg)}
+.faq-arrow{font-size:1rem;color:var(--accent);transition:transform .25s;flex-shrink:0}
+.faq-q.open .faq-arrow{transform:rotate(180deg)}
+.faq-a{display:none;padding:0 22px 17px;font-size:.88rem;color:var(--muted);line-height:1.7}
+.faq-a.open{display:block}
+.seo-box{background:var(--bg);border:1px solid var(--border);border-radius:var(--radius);padding:22px 26px}
+.seo-kw{display:flex;flex-wrap:wrap;gap:8px;margin-top:10px}
+.seo-kw span{background:var(--white);border:1px solid var(--border);border-radius:4px;padding:4px 10px;font-size:.76rem;color:var(--accent);font-weight:600}
+.cta-section{background:linear-gradient(135deg,var(--dark) 0%,var(--mid) 100%);color:#fff;padding:72px 32px;text-align:center}
+.cta-section h2{font-size:clamp(1.6rem,3vw,2.3rem);font-weight:800;margin-bottom:14px}
+.cta-section p{font-size:1.05rem;color:rgba(255,255,255,.8);max-width:580px;margin:0 auto 32px}
+.cta-btns{display:flex;gap:16px;justify-content:center;flex-wrap:wrap}
+.btn-white{background:#fff;color:var(--dark);padding:13px 28px;border-radius:8px;font-weight:700;text-decoration:none;font-size:.97rem;display:inline-block}
+.btn-white:hover{background:#e8f0fc}
+.cta-trust{margin-top:22px;font-size:.82rem;color:rgba(255,255,255,.55)}
+.site-footer{background:#0a1e2e;color:rgba(255,255,255,.6);padding:40px 32px 24px;text-align:center;font-size:.83rem}
+.site-footer a{color:rgba(255,255,255,.5);text-decoration:none}
+@media(max-width:768px){.hero-inner{grid-template-columns:1fr}.hero-card{display:none}.geo-grid{grid-template-columns:1fr}.site-nav{padding:0 16px}.nav-links{display:none}.section{padding:48px 16px}.hero{padding:48px 16px 44px}.workflow-steps{grid-template-columns:1fr 1fr}.workflow-steps::before{display:none}.ai-block{padding:24px 20px}.geo-answer{padding:22px 20px}}
+</style>
+  <!-- TEMPLATE CSS (IMPORTANT) -->
+  <link rel="stylesheet" href="/../assets/quantbit_website/css/bootstrap.min.css">
+  <link rel="stylesheet" href="/../assets/quantbit_website/css/font-awesome.css">
+  <link rel="stylesheet" href="/../assets/quantbit_website/css/animate.css">
+  <link rel="stylesheet" href="/../assets/quantbit_website/css/magnific-popup.css">
+  <link rel="stylesheet" href="/../assets/quantbit_website/css/meanmenu.css">
+  <link rel="stylesheet" href="/../assets/quantbit_website/css/slick.css">
+  <link rel="stylesheet" href="/../assets/quantbit_website/css/nice-select.css">
+  <link rel="stylesheet" href="/../assets/quantbit_website/css/main.css">
+  <link rel="stylesheet" href="style.css">
+  <link rel="stylesheet" href="/assets/quantbit_website/css/_shared.css">
+
+
+  <!-- OPTIONAL CUSTOM -->
+  <link rel="stylesheet" href="/../assets/quantbit_website/css/hrms.css">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
+  <!-- Google Tag Manager -->
+  <script>(function (w, d, s, l, i) {
+      w[l] = w[l] || []; w[l].push({
+        'gtm.start':
+          new Date().getTime(), event: 'gtm.js'
+      }); var f = d.getElementsByTagName(s)[0],
+        j = d.createElement(s), dl = l != 'dataLayer' ? '&l=' + l : ''; j.async = true; j.src =
+          'https://www.googletagmanager.com/gtm.js?id=' + i + dl; f.parentNode.insertBefore(j, f);
+    })(window, document, 'script', 'dataLayer', 'GTM-P98Z6G8D');</script>
+  <!-- End Google Tag Manager -->
+</head>
+<body>
+  <!-- Google Tag Manager (noscript) -->
+  <noscript><iframe src="https://www.googletagmanager.com/ns.html?id=GTM-P98Z6G8D" height="0" width="0"
+      style="display:none;visibility:hidden"></iframe></noscript>
+  <!-- End Google Tag Manager (noscript) -->
+  <!-- NAV -->
+  <div id="header"></div>
+
+<section class="hero">
+  <div class="hero-inner">
+    <div>
+      <div class="hero-badge">&#127807; Industry Solution</div>
+      <h1>ERPNext for <span>Agrochemicals</span><br>Pesticides, Herbicides &amp; Fungicides</h1>
+      <p class="hero-desc">Track CIB&amp;RC licensed products, manage batch and expiry with FEFO, control seasonal dealer credit, maintain hazardous material handling records, and stay Insecticides Act compliant — all in one ERP system built for India's agrochemical industry.</p>
+      <div class="hero-tags">
+        <span class="hero-tag">CIB&amp;RC Licensed Products</span><span class="hero-tag">Batch &amp; Expiry FEFO</span><span class="hero-tag">Dealer Credit Control</span><span class="hero-tag">Insecticides Act</span><span class="hero-tag">Hazmat Classification</span><span class="hero-tag">Seasonal Demand Planning</span><span class="hero-tag">GST 18% Pesticides</span><span class="hero-tag">DGFT Export</span>
+      </div>
+      <div class="hero-btns">
+        <a href="/contact/" class="btn-primary">Book Free Demo</a>
+        <a href="/services/" class="btn-ghost">Explore ERPNext Modules</a>
+      </div>
+    </div>
+    <div class="hero-card">
+      <h3>Why Agrochemical Companies Choose ERPNext</h3>
+      <div class="hero-stat"><div class="stat-icon">&#128203;</div><div><div class="stat-val">CIB&amp;RC Tracking</div><div class="stat-lbl">Licence validity per product</div></div></div>
+      <div class="hero-stat"><div class="stat-icon">&#128197;</div><div><div class="stat-val">FEFO Expiry</div><div class="stat-lbl">Nearest expiry dispatched first</div></div></div>
+      <div class="hero-stat"><div class="stat-icon">&#128176;</div><div><div class="stat-val">Dealer Credit</div><div class="stat-lbl">Limit, aging, seasonal extension</div></div></div>
+      <div class="hero-stat"><div class="stat-icon">&#9888;</div><div><div class="stat-val">Hazmat Compliance</div><div class="stat-lbl">WHO class, UN code, MSDS tracking</div></div></div>
+    </div>
+  </div>
+</section>
+
+<section class="section">
+  <div class="container">
+    <div class="section-label">Industry Challenges</div>
+    <h2 class="section-title">Problems ERPNext Solves for Agrochemical Companies</h2>
+    <p class="section-sub">The agrochemical industry operates under regulatory intensity — CIB&amp;RC licensing, Insecticides Act compliance, and hazardous material handling — while managing seasonal demand spikes, price-sensitive dealer networks, and product expiry risk. Standard ERP misses all of this.</p>
+    <div class="pain-grid">
+      <div class="pain-card">
+        <h3>&#128683; Expired Product Sold Inadvertently</h3>
+        <p>Pesticide batches expire in the warehouse or in dealer stock. Without FEFO enforcement, newer batches are picked before older ones. Selling expired agrochemicals is an Insecticides Act violation — attracting licence cancellation risk and criminal liability for the company and its officers.</p>
+        <div class="solve">&#10003; ERPNext: FEFO enforced at warehouse — nearest expiry batch auto-selected, expiry alert 90/180 days ahead</div>
+      </div>
+      <div class="pain-card">
+        <h3>&#128203; CIB&amp;RC Licence Lapses Unnoticed</h3>
+        <p>CIB&amp;RC product registrations have validity periods. Expired registrations mean the product cannot legally be manufactured, imported, or sold. Registration lapses go unnoticed until an inspector raises it — by which time stock of the unlicensed product is already in dealer hands.</p>
+        <div class="solve">&#10003; ERPNext: CIB&amp;RC validity date per item master — 90-day renewal alert, purchase/sale blocked on expired items</div>
+      </div>
+      <div class="pain-card">
+        <h3>&#128176; Dealer Credit Overexposure</h3>
+        <p>Agrochemical companies extend seasonal credit to dealers — and then extend it again informally. By the end of the season, dealer outstanding balances are 2–3x the approved credit limit, collections slip, and the company discovers its working capital position is dangerously stretched.</p>
+        <div class="solve">&#10003; ERPNext: Hard credit limit — dispatch blocked when limit exceeded, seasonal extension requires credit committee approval</div>
+      </div>
+      <div class="pain-card">
+        <h3>&#9888; Hazmat Documentation Gaps</h3>
+        <p>Hazardous agrochemicals require WHO toxicity class labelling, transport documentation, and MSDS at every handoff point. Incomplete documentation creates liability in case of accident — and is the primary reason agrochemical licences are suspended during inspection.</p>
+        <div class="solve">&#10003; ERPNext: Hazmat class, UN code, and MSDS linked per product — mandatory at every GRN and dispatch entry</div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section class="section section-alt">
+  <div class="container">
+    <div class="section-label">Focus Modules</div>
+    <h2 class="section-title">ERPNext Modules That Matter Most for Agrochemicals</h2>
+    <p class="section-sub">Configured for pesticide manufacturers, agrochemical distributors, and generic molecule companies across India's major agricultural states.</p>
+    <div class="module-grid">
+      <div class="module-card">
+        <div class="module-icon">&#128230;</div>
+        <h3>Inventory — Batch, Expiry &amp; Hazmat</h3>
+        <a href="/services/erpnext-inventory-stock/" class="module-link">&#8594; View Inventory Module</a>
+        <p>FEFO batch management for agrochemical products with hazardous material classification and mandatory MSDS documentation at every movement.</p>
+        <ul>
+          <li>Batch-wise stock with manufacturing and expiry date</li>
+          <li>FEFO dispatch — oldest batch picked first</li>
+          <li>WHO toxicity class and UN hazard code per item</li>
+          <li>MSDS attachment mandatory at GRN and dispatch</li>
+        </ul>
+      </div>
+      <div class="module-card">
+        <div class="module-icon">&#128203;</div>
+        <h3>Quality — CIB&amp;RC &amp; Formulation QC</h3>
+        <a href="/services/erpnext-quality/" class="module-link">&#8594; View Quality Module</a>
+        <p>CIB&amp;RC licence validity per product, formulation quality testing at production, and batch release before dispatch — Insecticides Act compliant.</p>
+        <ul>
+          <li>CIB&amp;RC registration number and expiry per item</li>
+          <li>90-day licence renewal alert per product</li>
+          <li>Formulation QC — active ingredient %, pH, emulsifiability</li>
+          <li>Batch release workflow before dispatch clearance</li>
+        </ul>
+      </div>
+      <div class="module-card">
+        <div class="module-icon">&#128100;</div>
+        <h3>CRM — Dealer Network Management</h3>
+        <a href="/services/erpnext-sales-crm/" class="module-link">&#8594; View CRM Module</a>
+        <p>Dealer credit limit management, seasonal credit extension workflow, territory-wise sales tracking, and competitor price monitoring per crop segment.</p>
+        <ul>
+          <li>Dealer-wise credit limit and payment term configuration</li>
+          <li>Credit limit override requires credit committee approval</li>
+          <li>Territory and zone-wise dealer performance analytics</li>
+          <li>Seasonal credit extension with credit committee approval</li>
+        </ul>
+      </div>
+      <div class="module-card">
+        <div class="module-icon">&#128230;</div>
+        <h3>Purchase — Technical Grade Procurement</h3>
+        <a href="/services/erpnext-purchase/" class="module-link">&#8594; View Purchase Module</a>
+        <p>Technical grade raw material procurement with COA verification, import duty tracking for imported actives, and seasonal inventory build planning.</p>
+        <ul>
+          <li>Technical grade COA at GRN — active ingredient assay</li>
+          <li>Import duty landed cost for imported technical actives</li>
+          <li>Seasonal procurement plan — Kharif and Rabi build</li>
+          <li>Vendor quality scorecard per technical material</li>
+        </ul>
+      </div>
+      <div class="module-card">
+        <div class="module-icon">&#128200;</div>
+        <h3>Accounting — GST 18% &amp; Dealer Outstanding</h3>
+        <a href="/services/erpnext-accounting-finance/" class="module-link">&#8594; View Accounting Module</a>
+        <p>GST at 18% on pesticides with HSN Chapter 38 mapping, dealer outstanding aging, and export invoice management under DGFT and LUT.</p>
+        <ul>
+          <li>GST 18% auto-applied per HSN code on every invoice</li>
+          <li>Dealer outstanding aging — 30/60/90/120 days</li>
+          <li>Export invoice — LUT-linked zero-rated for agrochemical export</li>
+          <li>DGFT export documentation support</li>
+        </ul>
+      </div>
+      <div class="module-card">
+        <div class="module-icon">&#128202;</div>
+        <h3>Analytics — Season &amp; Product Performance</h3>
+        <a href="/services/erpnext-analytics-reports/" class="module-link">&#8594; View Analytics Module</a>
+        <p>Product-wise revenue and margin, season-wise sales trends, dealer credit efficiency, and expiry-at-risk inventory value — the complete agrochemical business dashboard.</p>
+        <ul>
+          <li>Product-wise gross margin by season</li>
+          <li>Expiry-at-risk stock value by product and location</li>
+          <li>Dealer collection efficiency — billed vs collected</li>
+          <li>Crop-season demand trend — Kharif vs Rabi by molecule</li>
+        </ul>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section class="section">
+  <div class="container">
+    <div class="section-label">Operations Workflow</div>
+    <h2 class="section-title">Agrochemical Operations Cycle in ERPNext</h2>
+    <p class="section-sub">From technical raw material procurement to dealer dispatch and collection — the complete agrochemical business cycle.</p>
+    <div class="workflow-steps">
+      <div class="w-step"><div class="w-num">1</div><h4>Technical GRN</h4><p>Raw material received with COA — active ingredient assay verified</p></div>
+      <div class="w-step"><div class="w-num">2</div><h4>Production &amp; QC</h4><p>Formulation produced — batch QC done, CIB&amp;RC licence verified before release</p></div>
+      <div class="w-step"><div class="w-num">3</div><h4>Dealer Order</h4><p>Dealer PO received — credit check before order confirmation</p></div>
+      <div class="w-step"><div class="w-num">4</div><h4>FEFO Dispatch</h4><p>Nearest expiry batch auto-selected — MSDS attached to delivery note</p></div>
+      <div class="w-step"><div class="w-num">5</div><h4>Collection</h4><p>Dealer payment collected — aging report triggers follow-up at 30 DPD</p></div>
+      <div class="w-step"><div class="w-num">6</div><h4>Season P&amp;L</h4><p>Product-wise margin — procurement, production, and collection efficiency</p></div>
+    </div>
+  </div>
+</section>
+
+<section class="section section-alt">
+  <div class="container">
+    <div class="section-label">Compliance &amp; Regulatory</div>
+    <h2 class="section-title">Compliance Requirements ERPNext Addresses for Agrochemicals</h2>
+    <div class="compliance-grid">
+      <div class="comp-card"><div class="comp-dot"></div><div><h4>CIB&amp;RC — Insecticides Registration</h4><p>Every pesticide sold in India must be registered with CIB&amp;RC under the Insecticides Act 1968. ERPNext stores registration number, validity date, and conditions per product — blocking sale of unregistered or expired-registration products and alerting the regulatory team 90 days before renewal deadline.</p></div></div>
+      <div class="comp-card"><div class="comp-dot"></div><div><h4>Insecticides Act 1968 — Labelling &amp; Records</h4><p>The Insecticides Act mandates specific label content, record-keeping for pesticide sales, and batch traceability from manufacture to sale. ERPNext's batch-level stock ledger and dispatch records serve as the sale register required for Insecticides Inspector compliance visits.</p></div></div>
+      <div class="comp-card"><div class="comp-dot"></div><div><h4>Poison Act — Storage &amp; Handling</h4><p>Schedule poisons in agrochemicals require licensed storage and documented handling procedures. ERPNext's hazardous classification per item triggers storage condition requirements at warehouse receipt and special handling instructions on dispatch documentation — maintaining the Poison Act compliance trail.</p></div></div>
+      <div class="comp-card"><div class="comp-dot"></div><div><h4>GST on Pesticides — 18%</h4><p>Pesticides, insecticides, fungicides, and herbicides attract GST at 18% under HSN 3808. ERPNext maps each agrochemical product to its correct HSN code and applies 18% automatically on every domestic invoice — preventing the misclassification that creates GSTR mismatch notices for agrochemical companies with large dealer invoice volumes.</p></div></div>
+      <div class="comp-card"><div class="comp-dot"></div><div><h4>DGFT — Agrochemical Export</h4><p>Agrochemical exporters require RCMC from the Chemical and Allied Products Export Promotion Council (CAPEXIL), shipping bill, and export quality certificates. ERPNext generates packing lists, commercial invoices, and certificate of origin in the formats required for agrochemical export under DGFT regulations.</p></div></div>
+      <div class="comp-card"><div class="comp-dot"></div><div><h4>Hazardous Waste Rules — Disposal</h4><p>Agrochemical manufacturers generate hazardous waste — contaminated packaging, off-spec batches, and expired stock. ERPNext tracks hazardous waste quantities generated and disposal certificates from authorised TSDF facilities — maintaining the records required for SPCB consent renewal and annual environmental returns.</p></div></div>
+    </div>
+  </div>
+</section>
+
+<section class="section">
+  <div class="container">
+    <div class="section-label">Reports &amp; KPIs</div>
+    <h2 class="section-title">Agrochemical Management Reports in ERPNext</h2>
+    <div class="reports-grid">
+      <div class="report-card"><h4>CIB&amp;RC Licence Validity Report</h4><p>All registered products with registration number, valid upto date, and days to expiry — sorted by nearest expiry. The primary regulatory affairs management report for timely renewal tracking.</p><span class="report-tag">Regulatory / Management</span></div>
+      <div class="report-card"><h4>Expiry-at-Risk Inventory</h4><p>Batches expiring within 90 and 180 days — with current stock quantity, value, and location. Enables proactive clearance through dealer channels before expiry date creates write-offs.</p><span class="report-tag">Warehouse / Finance</span></div>
+      <div class="report-card"><h4>Dealer Outstanding Aging</h4><p>Dealer-wise outstanding by 0–30, 31–60, 61–90, 90+ days — against credit limit and seasonal extension approved. Drives collections team weekly action planning.</p><span class="report-tag">Finance / Sales</span></div>
+      <div class="report-card"><h4>Product-wise Gross Margin</h4><p>Revenue, COGS, and gross margin per product per season — identifies which molecules are profitable and which are being sold at thin margins that don't justify the regulatory cost of maintaining the registration.</p><span class="report-tag">Finance / Management</span></div>
+      <div class="report-card"><h4>Season Sales Trend</h4><p>Product-wise sales by month — Kharif peak (June–September) vs Rabi peak (November–March) — for seasonal inventory planning and distributor target setting.</p><span class="report-tag">Sales / Planning</span></div>
+      <div class="report-card"><h4>Insecticides Sale Register</h4><p>Batch-level dispatch register — product, batch number, quantity, dealer, date — formatted for Insecticides Inspector compliance submission and CIB&amp;RC audit.</p><span class="report-tag">Compliance / Regulatory</span></div>
+    </div>
+  </div>
+</section>
+
+<section class="section section-alt">
+  <div class="container">
+    <div class="section-label">Key Benefits</div>
+    <h2 class="section-title">Why Agrochemical Companies Choose ERPNext</h2>
+    <div class="benefits-grid">
+      <div class="benefit-card"><div class="benefit-num">01</div><h3>Insecticides Act Compliance Always Current</h3><p>CIB&amp;RC licence validity tracking with 90-day renewal alerts, batch-level sale register auto-generated from dispatch entries, and hazmat documentation attached at every movement — the Insecticides Inspector's requirements met without any additional compliance staff effort.</p></div>
+      <div class="benefit-card"><div class="benefit-num">02</div><h3>Zero Expired Pesticide Dispatched</h3><p>FEFO enforcement at warehouse level ensures the batch with the nearest expiry date goes to dealers first — always, without exception. 90 and 180-day expiry alerts give the sales team enough runway to clear near-expiry stock through promotional pricing before it becomes a write-off and a regulatory risk.</p></div>
+      <div class="benefit-card"><div class="benefit-num">03</div><h3>Dealer Credit That Doesn't Spiral</h3><p>Credit limits enforced at order confirmation — not after dispatch. Seasonal extensions require credit committee approval with documented justification. Collections teams receive the daily outstanding aging report they need to follow up before 60 DPD, when recovery rate drops sharply.</p></div>
+      <div class="benefit-card"><div class="benefit-num">04</div><h3>Seasonal Inventory Builds That Hit the Market</h3><p>Historical Kharif and Rabi sales trend data in ERPNext drives procurement planning 90 days ahead of peak season. Agrochemical companies that build inventory based on data rather than instinct consistently have stock available at peak demand — when competitors who under-planned are out of stock and farmers are buying alternatives.</p></div>
+      <div class="benefit-card"><div class="benefit-num">05</div><h3>GST Compliance Across High Invoice Volumes</h3><p>HSN-mapped 18% GST on every pesticide invoice, generated automatically without manual rate selection — for agrochemical companies processing 500 to 5,000 dealer invoices per month, this eliminates the systematic misclassification that creates GSTR-1 mismatches at scale.</p></div>
+      <div class="benefit-card"><div class="benefit-num">06</div><h3>One System from Production to Collection</h3><p>Technical raw material procurement, formulation production and QC, CIB&amp;RC compliance, dealer dispatch, GST invoicing, and collections — all from one ERPNext instance. The managing director has a live view of compliance status, inventory, dealer credit, and margin without waiting for weekly reports assembled from disconnected systems.</p></div>
+    </div>
+  </div>
+</section>
+
+<section class="section">
+  <div class="container">
+    <div class="section-label">Best Practices</div>
+    <h2 class="section-title">ERPNext Best Practices for Agrochemical Companies</h2>
+    <div class="bp-list">
+      <div class="bp-item"><div class="bp-icon">&#128203;</div><div><h4>Load CIB&amp;RC Data During Item Master Setup</h4><p>Enter the CIB&amp;RC registration number and expiry date for every product during initial item master setup — before the first transaction. Products without CIB&amp;RC data in ERPNext cannot trigger renewal alerts and cannot be compliance-checked at dispatch. Post-go-live data entry always misses items and creates compliance gaps.</p></div></div>
+      <div class="bp-item"><div class="bp-icon">&#128197;</div><div><h4>Set FEFO at Warehouse Configuration — Not Policy</h4><p>Configure FEFO at the warehouse level in ERPNext — not as a staff policy enforced manually. Policy-based FEFO is overridden under seasonal dispatch pressure when warehouse staff pick the most accessible pallet. System-level FEFO cannot be bypassed without an approval that creates an audit trail.</p></div></div>
+      <div class="bp-item"><div class="bp-icon">&#128176;</div><div><h4>Enforce Credit Limits at Order Confirmation, Not Dispatch</h4><p>Configure ERPNext to block sales order confirmation — not delivery note — when a dealer exceeds their credit limit. Blocking at delivery note is too late — the sales team has already committed to the dealer. Blocking at order confirmation gives the collections team time to collect before the next seasonal order cycle.</p></div></div>
+      <div class="bp-item"><div class="bp-icon">&#9888;</div><div><h4>Attach MSDS at Item Creation for All Hazardous Products</h4><p>Upload the MSDS (Material Safety Data Sheet) as an attachment to the item master for every hazardous agrochemical product during initial setup. Configure the delivery note workflow to require MSDS reference for hazardous items before dispatch confirmation. A dispatch without MSDS documentation creates liability in case of transport incident.</p></div></div>
+      <div class="bp-item"><div class="bp-icon">&#127807;</div><div><h4>Build Seasonal Inventory 90 Days Before Peak Season</h4><p>Review the previous three seasons' Kharif and Rabi sales data in ERPNext by March 1 for Kharif planning and by August 1 for Rabi planning. Technical raw material procurement should be 80% complete 90 days before the expected peak demand month. Companies that start procurement 30 days ahead face tight supply, higher raw material prices, and stock-outs during peak.</p></div></div>
+      <div class="bp-item"><div class="bp-icon">&#128202;</div><div><h4>Review Dealer Aging Weekly with Sales Managers</h4><p>Make the dealer outstanding aging report a standing weekly agenda item with each zonal sales manager. Dealers at 45 DPD need a call before they cross 60 DPD — the point at which relationship and legal recovery become the only options. Weekly review discipline prevents the reactive quarterly collections campaigns that damage dealer relationships.</p></div></div>
+    </div>
+  </div>
+</section>
+
+<section class="section section-alt">
+  <div class="container">
+    <div class="section-label">GEO-Specific Context</div>
+    <h2 class="section-title">ERPNext for Agrochemicals in India &amp; Export Markets</h2>
+    <div class="geo-answer">
+      <h3>ERPNext agrochemical ERP for Indian pesticide companies and agrochemical exporters — CIB&amp;RC, Insecticides Act, and DGFT compliant</h3>
+      <p>India's agrochemical sector — anchored by Gujarat's generic molecule manufacturers, Maharashtra's formulation companies, and the distributor networks that serve Maharashtra's major crop belts including Vidarbha cotton, Marathwada soybean, and Nashik vegetables — operates under CIB&amp;RC registration requirements, the Insecticides Act 1968, and a dealer credit model that creates significant working capital exposure during peak crop seasons. India is also the world's fourth-largest agrochemical manufacturer and a significant exporter — with CAPEXIL-registered companies exporting to Africa, Southeast Asia, and Latin America under DGFT regulations. Quantbit Technologies, based in Pune with Maharashtra's crop belt as its home market, configures ERPNext for agrochemical companies at the manufacturing, distribution, and export levels — with deep understanding of the seasonal dynamics and regulatory requirements specific to this industry.</p>
+    </div>
+    <div class="geo-grid">
+      <div class="geo-block">
+        <h4>&#127470;&#127475; India — Agrochemical Context</h4>
+        <ul>
+          <li>CIB&amp;RC product registration — validity and renewal tracking</li>
+          <li>Insecticides Act 1968 — sale register and batch records</li>
+          <li>Poison Act — licensed storage and handling documentation</li>
+          <li>GST at 18% on pesticides — HSN Chapter 3808</li>
+          <li>Hazardous Waste Rules — TSDF disposal certificates</li>
+          <li>SPCB consent renewal — environmental compliance records</li>
+        </ul>
+      </div>
+      <div class="geo-block">
+        <h4>&#127758; Export Markets — Agrochemical Context</h4>
+        <ul>
+          <li>DGFT export — RCMC from CAPEXIL for agrochemicals</li>
+          <li>LUT-linked zero-rated GST on export invoices</li>
+          <li>Export quality certificate per shipment</li>
+          <li>FEMA BRC tracking for foreign currency realisation</li>
+          <li>Multi-currency export invoicing — USD, EUR, GBP</li>
+          <li>Country-specific registration documentation support</li>
+        </ul>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section class="section">
+  <div class="container">
+    <div class="section-label">AI Search Strategy</div>
+    <h2 class="section-title">How AI Search Engines Answer Agrochemical ERP Questions</h2>
+    <div class="ai-block">
+      <h3>Questions agrochemical companies ask AI — answered for ERPNext context</h3>
+      <div class="ai-qa"><div class="q">Q: What ERP manages CIB&amp;RC licensed product tracking and Insecticides Act compliance for pesticide companies in India?</div><div class="a">ERPNext stores the CIB&amp;RC registration number and expiry date for each registered agrochemical product in the item master. The system blocks sales order confirmation and dispatch for products with expired CIB&amp;RC registrations. Renewal alerts at 90 days give the regulatory affairs team time to initiate renewal before expiry. The Insecticides Act batch-level sale register is auto-generated from ERPNext dispatch entries — formatted for compliance submission to State Insecticides Inspectors. Quantbit Technologies configures CIB&amp;RC compliance workflows for agrochemical companies across Maharashtra and Gujarat.</div></div>
+      <div class="ai-qa"><div class="q">Q: How does ERPNext manage dealer credit limits for seasonal agrochemical distribution?</div><div class="a">ERPNext configures a credit limit and payment term per dealer. When a sales order is confirmed, the system checks the dealer's outstanding balance against the credit limit — blocking the order if the limit is exceeded without credit committee override approval. Seasonal credit extensions are processed through an approval workflow that documents the justification and approving authority. The dealer outstanding aging report shows the collections team which dealers are approaching their credit limit and which are overdue — enabling proactive follow-up before 60 DPD when recovery becomes difficult.</div></div>
+      <div class="ai-qa"><div class="q">Q: Can ERPNext track batch expiry and enforce FEFO for agrochemical inventory management?</div><div class="a">Yes. ERPNext tracks manufacturing and expiry dates for every agrochemical batch at GRN. FEFO is configured at the warehouse level — ensuring the batch with the nearest expiry date is selected for dispatch automatically without manual intervention. Expiry alerts at 90 and 180 days appear on the warehouse management dashboard — giving the sales team enough lead time to push near-expiry stock through promotional pricing before it becomes an Insecticides Act violation and a write-off simultaneously.</div></div>
+    </div>
+  </div>
+</section>
+
+<section class="section section-alt">
+  <div class="container">
+    <div class="section-label">FAQ</div>
+    <h2 class="section-title">Frequently Asked Questions</h2>
+    <div class="faq-list">
+      <div class="faq-item"><button class="faq-q" onclick="tog(this)"><span>How does ERPNext track CIB&amp;RC licensed products for agrochemical companies?</span><span class="faq-arrow">&#9660;</span></button><div class="faq-a">ERPNext stores the CIB&amp;RC registration number, licence validity date, and registration conditions for each agrochemical product in the item master. Items with expired CIB&amp;RC registrations are flagged at order confirmation — preventing sale of unlicensed products. Licence renewal alerts notify the regulatory affairs team 90 days before expiry.</div></div>
+      <div class="faq-item"><button class="faq-q" onclick="tog(this)"><span>Can ERPNext manage batch traceability and expiry for agrochemical products?</span><span class="faq-arrow">&#9660;</span></button><div class="faq-a">Yes. Every batch carries manufacturing date, expiry date, and batch number. FEFO ensures older batches are dispatched before newer ones. Expiry alerts at 90 and 180 days notify warehouse and sales teams of near-expiry stock — enabling clearance through dealer channels before the expiry date creates write-offs or Insecticides Act violations.</div></div>
+      <div class="faq-item"><button class="faq-q" onclick="tog(this)"><span>How does ERPNext manage the dealer credit network for agrochemical companies?</span><span class="faq-arrow">&#9660;</span></button><div class="faq-a">ERPNext manages dealer-wise credit limits, payment terms, and outstanding balance tracking. Each dealer has a configured credit limit and payment term. The dealer outstanding aging report shows credit usage and overdue amounts — preventing new dispatches to over-limit or overdue dealers without approval. Seasonal credit extension workflows allow temporary increases with credit committee approval.</div></div>
+      <div class="faq-item"><button class="faq-q" onclick="tog(this)"><span>Does ERPNext handle hazardous material classification for agrochemicals?</span><span class="faq-arrow">&#9660;</span></button><div class="faq-a">ERPNext supports custom fields for WHO toxicity class (Ia, Ib, II, III, U), UN hazard code, and storage requirements per product. Hazardous classification drives special handling instructions at warehouse issue, packing requirements for transport, and MSDS attachment at each GRN and dispatch — supporting compliance with the Insecticides Act and transport regulations.</div></div>
+      <div class="faq-item"><button class="faq-q" onclick="tog(this)"><span>How does ERPNext manage GST on agrochemical products?</span><span class="faq-arrow">&#9660;</span></button><div class="faq-a">Most pesticides, insecticides, fungicides, and herbicides attract GST at 18% under HSN Chapter 38. ERPNext maps each agrochemical product to its correct HSN code and applies the 18% rate automatically on every invoice. For export sales, ERPNext generates LUT-linked zero-rated invoices with DGFT documentation support.</div></div>
+      <div class="faq-item"><button class="faq-q" onclick="tog(this)"><span>Can ERPNext manage seasonal demand planning for agrochemical companies?</span><span class="faq-arrow">&#9660;</span></button><div class="faq-a">ERPNext's demand planning tools use historical seasonal sales data — Kharif (June–September) and Rabi (November–March) — to generate procurement forecasts per product. Season-wise sales trend reports show which molecules and products peak in which crop season — enabling the procurement team to build inventory 60–90 days ahead of seasonal demand peak.</div></div>
+    </div>
+  </div>
+</section>
+
+<section class="section">
+  <div class="container">
+    <div class="seo-box">
+      <p class="section-label" style="margin-bottom:8px">SEO Keywords</p>
+      <h3 style="font-size:.9rem;font-weight:700;color:var(--dark);margin-bottom:8px">Search Terms This Page Targets</h3>
+      <div class="seo-kw">
+        <span>ERPNext agrochemicals India</span><span>ERPNext CIB RC pesticide compliance</span><span>ERPNext agrochemical batch tracking</span><span>dealer credit ERP agrochemical India</span><span>ERPNext Insecticides Act compliance</span><span>pesticide ERP India</span><span>ERPNext hazardous material tracking</span><span>agrochemical ERP GST 18%</span><span>open source agrochemical ERP India</span><span>ERPNext agrochemical export DGFT</span><span>ERPNext seasonal demand planning agri</span>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section class="cta-section">
+  <div class="container">
+    <h2>Ready to Bring Compliance &amp; Control to Your Agrochemical Business?</h2>
+    <p>Quantbit Technologies implements ERPNext for agrochemical manufacturers and distributors — configuring CIB&amp;RC compliance, FEFO batch management, dealer credit control, hazmat documentation, and seasonal demand planning from go-live day one.</p>
+    <div class="cta-btns">
+      <a href="/company/contact-us.html" class="btn-white">Book Free Demo</a>
+      <a href="/company/contact-us.html" class="btn-ghost">Talk to a Consultant</a>
+    </div>
+    <div class="cta-trust">&#9989; Certified ERPNext Partner &nbsp;|&nbsp; &#9989; CIB&amp;RC &amp; Insecticides Act Expertise &nbsp;|&nbsp; &#9989; Maharashtra Agricultural Expertise &nbsp;|&nbsp; &#9989; In-house Dev Team</div>
+  </div>
+</section>
+  <div id="footer"></div>
+
+<script>function tog(btn){btn.classList.toggle('open');var a=btn.nextElementSibling;a.classList.toggle('open');}</script>
+<script>
+    fetch("/header.html")
+      .then(res => res.text())
+      .then(data => {
+        document.getElementById("header").innerHTML = data;
+      });
+
+    fetch("/footer.html")
+      .then(res => res.text())
+      .then(data => {
+        document.getElementById("footer").innerHTML = data;
+      });
+  </script>
+  <!-- ================= TEMPLATE JS ================= -->
+  <!--<< All JS Plugins >>-->
+  <script data-cfasync="false" src="../../cdn-cgi/scripts/5c5dd728/cloudflare-static/email-decode.min.js"></script>
+  <script src="/../assets/quantbit_website/js/jquery-3.7.1.min.js"></script>
+  <!--<< Viewport Js >>-->
+  <script src="/../assets/quantbit_website/js/viewport.jquery.js"></script>
+  <!--<< Bootstrap Js >>-->
+  <script src="/../assets/quantbit_website/js/bootstrap.bundle.min.js"></script>
+  <!--<< Nice Select Js >>-->
+  <script src="/../assets/quantbit_website/js/jquery.nice-select.min.js"></script>
+  <!--<< Waypoints Js >>-->
+  <script src="/../assets/quantbit_website/js/jquery.waypoints.js"></script>
+  <!--<< Counterup Js >>-->
+  <script src="/../assets/quantbit_website/js/jquery.counterup.min.js"></script>
+  <!--<< Slick Js >>-->
+  <script src="/../assets/quantbit_website/js/slick.min.js"></script>
+  <!--<< Slick Animation Js >>-->
+  <script src="/../assets/quantbit_website/js/slick-animation.min.js"></script>
+  <!--<< MeanMenu Js >>-->
+  <script src="/../assets/quantbit_website/js/jquery.meanmenu.min.js"></script>
+  <!--<< Magnific Popup Js >>-->
+  <script src="/../assets/quantbit_website/js/jquery.magnific-popup.min.js"></script>
+  <!--<< Wow Animation Js >>-->
+  <script src="/../assets/quantbit_website/js/wow.min.js"></script>
+  <!--<< Circle Progress Js >>-->
+  <script src="/../assets/quantbit_website/js/circle-progress.js"></script>
+  <!--<< Main.js >>-->
+  <script src="/../assets/quantbit_website/js/main.js"></script>
+  <script defer
+    src="../../../static.cloudflareinsights.com/beacon.min.js/v8c78df7c7c0f484497ecbca7046644da1771523124516"
+    integrity="sha512-8DS7rgIrAmghBFwoOTujcf6D9rXvH8xm8JQ1Ja01h9QX8EzXldiszufYa4IFfKdLUKTTrnSFXLDkUEOTrZQ8Qg=="
+    data-cf-beacon='{"version":"2024.11.0","token":"90f7972af14a48b4add7da2b74f5d675","r":1,"server_timing":{"name":{"cfCacheStatus":true,"cfEdge":true,"cfExtPri":true,"cfL4":true,"cfOrigin":true,"cfSpeedBrain":true},"location_startswith":null}}'
+    crossorigin="anonymous"></script>
+
+
+
+</body></html>

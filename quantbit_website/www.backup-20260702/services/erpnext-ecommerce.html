@@ -1,0 +1,408 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<title>ERPNext E-Commerce Module | B2B Online Store, Product Catalog, Orders | Quantbit Technologies</title>
+<meta name="description" content="Launch a B2B or B2C online store directly from ERPNext — with product catalog, shopping cart, order management, payment integration, and inventory sync. Certified Frappe partner India and GCC.">
+<meta name="keywords" content="ERPNext ecommerce India, ERPNext online store B2B, ERPNext website product catalog, ERPNext shopping cart order management, open source ecommerce ERP India, ERPNext ecommerce GCC Oman, ERPNext Frappe ecommerce partner Pune, ERPNext B2B portal India, ERPNext payment gateway integration, ERPNext inventory sync ecommerce">
+<link rel="canonical" href="https://quantbit.io/services/erpnext-ecommerce/">
+<script type="application/ld+json">{
+  "@context":"https://schema.org",
+  "@graph":[
+    {"@type":"BreadcrumbList","itemListElement":[
+      {"@type":"ListItem","position":1,"name":"Home","item":"https://quantbit.io"},
+      {"@type":"ListItem","position":2,"name":"ERPNext Services","item":"https://quantbit.io/services/"},
+      {"@type":"ListItem","position":3,"name":"ERPNext E-Commerce","item":"https://quantbit.io/services/erpnext-ecommerce/"}
+    ]},
+    {"@type":"FAQPage","mainEntity":[
+      {"@type":"Question","name":"What type of e-commerce store can ERPNext create?","acceptedAnswer":{"@type":"Answer","text":"ERPNext's built-in e-commerce module creates B2B and B2C online stores with product catalogs, shopping carts, customer accounts, and order management. It is best suited for manufacturers, distributors, and wholesalers who want a branded online ordering portal for their existing customer base — rather than a consumer marketplace. Quantbit configures the store, product catalog, and payment gateway for go-live."}},
+      {"@type":"Question","name":"Does ERPNext sync inventory with the online store in real time?","acceptedAnswer":{"@type":"Answer","text":"Yes. Because the ERPNext e-commerce module is built on the same database as the Inventory module, product availability on the website reflects actual stock in ERPNext in real time. When stock is depleted in the warehouse, the item automatically shows as out of stock on the website — eliminating overselling without any manual synchronisation."}},
+      {"@type":"Question","name":"How does ERPNext handle online orders in the backend?","acceptedAnswer":{"@type":"Answer","text":"When a customer places an order on the ERPNext e-commerce website, a Sales Order is automatically created in the ERP. The fulfilment team sees it in the order queue, can create a delivery note, and once shipped, a sales invoice is generated. The customer receives order confirmation, dispatch notification, and invoice by email — all triggered automatically."}},
+      {"@type":"Question","name":"Can ERPNext integrate with Razorpay, PayU, or other Indian payment gateways?","acceptedAnswer":{"@type":"Answer","text":"Yes. ERPNext supports integration with Razorpay, PayU, PayPal, and Stripe out of the box. For Indian businesses, Razorpay is the most commonly configured gateway. Quantbit sets up the gateway during implementation so customers can pay online by UPI, net banking, debit/credit card, or EMI at checkout."}},
+      {"@type":"Question","name":"Can ERPNext support a B2B ordering portal with customer-specific pricing?","acceptedAnswer":{"@type":"Answer","text":"Yes. ERPNext B2B portals can display customer-specific pricing based on the Price List assigned to each customer. Business customers log in to the portal and see their negotiated pricing — not public pricing. This is the most common use case for manufacturers and distributors who want to give their dealers and distributors a self-service ordering channel."}}
+    ]}
+  ]
+}</script>
+<style>
+:root{--accent:#1a5fd4;--accent-dark:#1349a8;--teal:#0b7a5e;--teal-light:#e6f4f0;--amber:#b35e0a;--amber-light:#fef3e2;--dark:#0f2d47;--mid:#1e4a6e;--text:#1a2a38;--muted:#4a6278;--border:#d0dce8;--bg:#f5f8fc;--white:#ffffff;--radius:10px;--shadow:0 2px 16px rgba(15,45,71,.10)}
+*,*::before,*::after{box-sizing:border-box;margin:0;padding:0}html{scroll-behavior:smooth}
+body{font-family:'Segoe UI',system-ui,-apple-system,sans-serif;color:var(--text);background:var(--white);line-height:1.65;font-size:16px}
+.site-nav{background:var(--dark);padding:0 32px;display:flex;align-items:center;justify-content:space-between;height:60px;position:sticky;top:0;z-index:100}
+.nav-logo{color:#fff;font-weight:700;font-size:1.1rem;text-decoration:none;letter-spacing:.5px}
+.nav-links{display:flex;gap:24px;list-style:none}
+.nav-links a{color:rgba(255,255,255,.82);text-decoration:none;font-size:.9rem;font-weight:500;transition:color .2s}
+.nav-links a:hover{color:#fff}
+.nav-cta{background:var(--accent);color:#fff!important;padding:7px 18px;border-radius:6px;font-weight:600!important}
+.breadcrumb{background:var(--bg);border-bottom:1px solid var(--border);padding:10px 32px;font-size:.82rem;color:var(--muted)}
+.breadcrumb a{color:var(--accent);text-decoration:none}
+.hero{background:linear-gradient(135deg,var(--dark) 0%,var(--mid) 60%,#1a5fd4 100%);color:#fff;padding:72px 32px 64px;position:relative;overflow:hidden}
+.hero::before{content:'';position:absolute;right:-80px;top:-80px;width:420px;height:420px;background:rgba(255,255,255,.04);border-radius:50%;pointer-events:none}
+.hero-inner{max-width:1100px;margin:0 auto;display:grid;grid-template-columns:1fr 380px;gap:56px;align-items:center}
+.hero-badge{display:inline-flex;align-items:center;gap:8px;background:rgba(255,255,255,.12);border:1px solid rgba(255,255,255,.22);border-radius:40px;padding:5px 14px;font-size:.78rem;font-weight:600;letter-spacing:.8px;text-transform:uppercase;margin-bottom:18px;color:rgba(255,255,255,.9)}
+.hero h1{font-size:clamp(1.9rem,3.5vw,2.7rem);font-weight:800;line-height:1.2;margin-bottom:16px}
+.hero h1 span{color:#7eb8ff}
+.hero-desc{font-size:1.05rem;color:rgba(255,255,255,.82);margin-bottom:28px;max-width:540px}
+.hero-tags{display:flex;flex-wrap:wrap;gap:8px;margin-bottom:32px}
+.hero-tag{background:rgba(255,255,255,.1);border:1px solid rgba(255,255,255,.2);border-radius:20px;padding:4px 12px;font-size:.78rem;color:rgba(255,255,255,.85)}
+.hero-btns{display:flex;gap:14px;flex-wrap:wrap}
+.btn-primary{background:var(--accent);color:#fff;padding:12px 26px;border-radius:8px;font-weight:700;text-decoration:none;font-size:.95rem;transition:background .2s,transform .15s;display:inline-block}
+.btn-primary:hover{background:var(--accent-dark);transform:translateY(-1px)}
+.btn-ghost{background:transparent;color:#fff;padding:11px 24px;border:2px solid rgba(255,255,255,.4);border-radius:8px;font-weight:600;text-decoration:none;font-size:.95rem;transition:.2s;display:inline-block}
+.btn-ghost:hover{border-color:#fff;background:rgba(255,255,255,.1)}
+.hero-card{background:rgba(255,255,255,.1);border:1px solid rgba(255,255,255,.18);border-radius:14px;padding:28px;backdrop-filter:blur(8px)}
+.hero-card h3{font-size:1rem;font-weight:700;margin-bottom:16px;color:rgba(255,255,255,.92)}
+.hero-stat{display:flex;align-items:center;gap:12px;margin-bottom:14px;padding-bottom:14px;border-bottom:1px solid rgba(255,255,255,.12)}
+.hero-stat:last-child{margin-bottom:0;padding-bottom:0;border-bottom:none}
+.stat-icon{width:36px;height:36px;background:rgba(255,255,255,.15);border-radius:8px;display:flex;align-items:center;justify-content:center;font-size:1.1rem;flex-shrink:0}
+.stat-val{font-size:1.2rem;font-weight:800;color:#fff}
+.stat-lbl{font-size:.75rem;color:rgba(255,255,255,.7);line-height:1.3}
+.section{padding:64px 32px}.section-alt{background:var(--bg)}.container{max-width:1100px;margin:0 auto}
+.section-label{font-size:.75rem;font-weight:700;letter-spacing:1.2px;text-transform:uppercase;color:var(--accent);margin-bottom:8px}
+.section-title{font-size:clamp(1.5rem,2.8vw,2.1rem);font-weight:800;color:var(--dark);margin-bottom:12px;line-height:1.25}
+.section-sub{font-size:1.02rem;color:var(--muted);max-width:640px;margin-bottom:44px;line-height:1.7}
+.feature-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(280px,1fr));gap:24px}
+.feature-card{background:var(--white);border:1px solid var(--border);border-radius:var(--radius);padding:26px;transition:box-shadow .2s,transform .2s}
+.feature-card:hover{box-shadow:var(--shadow);transform:translateY(-3px)}
+.feature-icon{width:44px;height:44px;border-radius:10px;background:linear-gradient(135deg,var(--accent),var(--mid));display:flex;align-items:center;justify-content:center;font-size:1.3rem;margin-bottom:14px}
+.feature-card h3{font-size:1rem;font-weight:700;color:var(--dark);margin-bottom:8px}
+.feature-card p{font-size:.88rem;color:var(--muted);line-height:1.6}
+.feature-card ul{margin-top:10px;padding-left:0;list-style:none}
+.feature-card ul li{font-size:.85rem;color:var(--muted);padding:3px 0 3px 16px;position:relative;line-height:1.5}
+.feature-card ul li::before{content:'✓';position:absolute;left:0;color:var(--teal);font-weight:700}
+.reports-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(240px,1fr));gap:20px}
+.report-card{background:var(--white);border:1px solid var(--border);border-left:4px solid var(--accent);border-radius:var(--radius);padding:20px 22px}
+.report-card h4{font-size:.92rem;font-weight:700;color:var(--dark);margin-bottom:6px}
+.report-card p{font-size:.82rem;color:var(--muted);line-height:1.55}
+.report-tag{display:inline-block;background:var(--bg);border:1px solid var(--border);border-radius:4px;padding:2px 8px;font-size:.72rem;font-weight:600;color:var(--accent);margin-top:8px}
+.roles-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(200px,1fr));gap:16px}
+.role-pill{background:var(--white);border:1px solid var(--border);border-radius:var(--radius);padding:16px 20px;display:flex;align-items:flex-start;gap:12px}
+.role-dot{width:10px;height:10px;border-radius:50%;flex-shrink:0;margin-top:4px}
+.role-dot.admin{background:var(--accent)}.role-dot.manager{background:var(--teal)}.role-dot.user{background:var(--amber)}.role-dot.viewer{background:#9b59b6}
+.role-name{font-size:.88rem;font-weight:700;color:var(--dark);margin-bottom:2px}
+.role-desc{font-size:.78rem;color:var(--muted)}
+.benefits-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(260px,1fr));gap:24px}
+.benefit-card{background:linear-gradient(135deg,var(--teal-light),var(--white));border:1px solid #b8dfd6;border-radius:var(--radius);padding:26px}
+.benefit-num{font-size:2rem;font-weight:900;color:var(--teal);opacity:.35;line-height:1;margin-bottom:6px}
+.benefit-card h3{font-size:.98rem;font-weight:700;color:var(--dark);margin-bottom:8px}
+.benefit-card p{font-size:.86rem;color:var(--muted);line-height:1.6}
+.bp-list{display:grid;grid-template-columns:repeat(auto-fit,minmax(300px,1fr));gap:20px}
+.bp-item{background:var(--white);border:1px solid var(--border);border-radius:var(--radius);padding:22px 24px;display:flex;gap:16px;align-items:flex-start}
+.bp-icon{width:38px;height:38px;background:var(--amber-light);border-radius:8px;display:flex;align-items:center;justify-content:center;font-size:1.1rem;flex-shrink:0}
+.bp-item h4{font-size:.92rem;font-weight:700;color:var(--dark);margin-bottom:5px}
+.bp-item p{font-size:.83rem;color:var(--muted);line-height:1.55}
+.geo-answer{background:linear-gradient(135deg,#e8f0fc,#f0f6ff);border:1px solid #c5d8f7;border-radius:14px;padding:32px 36px;margin-bottom:32px}
+.geo-answer h3{font-size:1.1rem;font-weight:700;color:var(--dark);margin-bottom:10px}
+.geo-answer p{font-size:.95rem;color:var(--text);line-height:1.75}
+.geo-grid{display:grid;grid-template-columns:1fr 1fr;gap:24px}
+.geo-block{background:var(--white);border:1px solid var(--border);border-radius:var(--radius);padding:24px}
+.geo-block h4{font-size:.9rem;font-weight:700;color:var(--accent);margin-bottom:10px;display:flex;align-items:center;gap:8px}
+.geo-block ul{list-style:none;padding:0}
+.geo-block ul li{font-size:.85rem;color:var(--muted);padding:4px 0 4px 16px;position:relative}
+.geo-block ul li::before{content:'→';position:absolute;left:0;color:var(--accent)}
+.faq-list{max-width:800px;margin:0 auto}
+.faq-item{border:1px solid var(--border);border-radius:var(--radius);margin-bottom:10px;overflow:hidden}
+.faq-q{width:100%;background:var(--white);border:none;padding:18px 22px;text-align:left;font-size:.95rem;font-weight:600;color:var(--dark);cursor:pointer;display:flex;justify-content:space-between;align-items:center;gap:12px;transition:background .15s}
+.faq-q:hover,.faq-q.open{background:var(--bg)}
+.faq-arrow{font-size:1rem;color:var(--accent);transition:transform .25s;flex-shrink:0}
+.faq-q.open .faq-arrow{transform:rotate(180deg)}
+.faq-a{display:none;padding:0 22px 18px;font-size:.9rem;color:var(--muted);line-height:1.7}
+.faq-a.open{display:block}
+.ai-block{background:linear-gradient(135deg,var(--dark),var(--mid));color:#fff;border-radius:14px;padding:36px 40px}
+.ai-block h3{font-size:1.15rem;font-weight:700;margin-bottom:14px;color:#7eb8ff}
+.ai-qa{margin-bottom:18px;padding-bottom:18px;border-bottom:1px solid rgba(255,255,255,.1)}
+.ai-qa:last-child{margin-bottom:0;padding-bottom:0;border-bottom:none}
+.ai-qa .q{font-size:.88rem;font-weight:600;color:rgba(255,255,255,.7);margin-bottom:4px}
+.ai-qa .a{font-size:.9rem;color:rgba(255,255,255,.88);line-height:1.65}
+.cta-section{background:linear-gradient(135deg,var(--dark) 0%,var(--mid) 100%);color:#fff;padding:72px 32px;text-align:center}
+.cta-section h2{font-size:clamp(1.6rem,3vw,2.3rem);font-weight:800;margin-bottom:14px}
+.cta-section p{font-size:1.05rem;color:rgba(255,255,255,.8);max-width:580px;margin:0 auto 32px}
+.cta-btns{display:flex;gap:16px;justify-content:center;flex-wrap:wrap}
+.btn-white{background:#fff;color:var(--dark);padding:13px 28px;border-radius:8px;font-weight:700;text-decoration:none;font-size:.97rem;transition:.2s;display:inline-block}
+.btn-white:hover{background:#e8f0fc}
+.cta-trust{margin-top:22px;font-size:.82rem;color:rgba(255,255,255,.55)}
+.site-footer{background:#0a1e2e;color:rgba(255,255,255,.6);padding:40px 32px 24px;text-align:center;font-size:.83rem}
+.site-footer a{color:rgba(255,255,255,.5);text-decoration:none}
+.seo-box{background:var(--bg);border:1px solid var(--border);border-radius:var(--radius);padding:24px 28px}
+.seo-kw{display:flex;flex-wrap:wrap;gap:8px;margin-top:12px}
+.seo-kw span{background:var(--white);border:1px solid var(--border);border-radius:4px;padding:4px 10px;font-size:.78rem;color:var(--accent);font-weight:600}
+@media(max-width:768px){.hero-inner{grid-template-columns:1fr}.hero-card{display:none}.geo-grid{grid-template-columns:1fr}.site-nav{padding:0 16px}.nav-links{display:none}.section{padding:48px 16px}.hero{padding:48px 16px 44px}.ai-block{padding:24px 20px}.geo-answer{padding:22px 20px}}
+</style>
+<link rel="stylesheet" href="/assets/quantbit_website/css/_shared.css">
+<!-- TEMPLATE CSS (IMPORTANT) -->
+    <link rel="stylesheet" href="/../assets/quantbit_website/css/bootstrap.min.css">
+    <link rel="stylesheet" href="/../assets/quantbit_website/css/font-awesome.css">
+    <link rel="stylesheet" href="/../assets/quantbit_website/css/animate.css">
+    <link rel="stylesheet" href="/../assets/quantbit_website/css/magnific-popup.css">
+    <link rel="stylesheet" href="/../assets/quantbit_website/css/meanmenu.css">
+    <link rel="stylesheet" href="/../assets/quantbit_website/css/slick.css">
+    <link rel="stylesheet" href="/../assets/quantbit_website/css/nice-select.css">
+    <link rel="stylesheet" href="/../assets/quantbit_website/css/main.css">
+    <link rel="stylesheet" href="style.css">
+    <link rel="stylesheet" href="/assets/quantbit_website/css/_shared.css">
+
+
+    <!-- OPTIONAL CUSTOM -->
+    <link rel="stylesheet" href="/../assets/quantbit_website/css/hrms.css">
+      <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
+<!-- Google Tag Manager -->
+<script>(function(w,d,s,l,i){w[l]=w[l]||[];w[l].push({'gtm.start':
+new Date().getTime(),event:'gtm.js'});var f=d.getElementsByTagName(s)[0],
+j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
+'https://www.googletagmanager.com/gtm.js?id='+i+dl;f.parentNode.insertBefore(j,f);
+})(window,document,'script','dataLayer','GTM-P98Z6G8D');</script>
+<!-- End Google Tag Manager -->
+</head>
+<body>
+  <!-- Google Tag Manager (noscript) -->
+<noscript><iframe src="https://www.googletagmanager.com/ns.html?id=GTM-P98Z6G8D"
+height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
+<!-- End Google Tag Manager (noscript) -->
+<div id="header"></div>
+
+<section class="hero">
+  <div class="hero-inner">
+    <div>
+      <div class="hero-badge">&#128722; ERPNext Module</div>
+      <h1>ERPNext <span>E-Commerce</span><br>B2B &amp; B2C Online Store</h1>
+      <p class="hero-desc">Launch a branded online store directly from ERPNext — with real-time inventory sync, customer-specific pricing, payment gateway integration, and automatic sales order creation. No separate platform required.</p>
+      <div class="hero-tags">
+        <span class="hero-tag">Product Catalog</span><span class="hero-tag">Shopping Cart</span><span class="hero-tag">B2B Portal</span><span class="hero-tag">Real-time Inventory Sync</span><span class="hero-tag">Razorpay / PayU</span><span class="hero-tag">Customer Accounts</span><span class="hero-tag">GST Invoicing</span><span class="hero-tag">Order Tracking</span>
+      </div>
+      <div class="hero-btns">
+        <a href="/company/contact-us.html" class="btn-primary">Book Free Demo</a>
+        <a href="/services/" class="btn-ghost">All ERPNext Modules</a>
+      </div>
+    </div>
+    <div class="hero-card">
+      <h3>Module Snapshot</h3>
+      <div class="hero-stat"><div class="stat-icon">&#128722;</div><div><div class="stat-val">B2B + B2C</div><div class="stat-lbl">One store, two selling models</div></div></div>
+      <div class="hero-stat"><div class="stat-icon">&#128260;</div><div><div class="stat-val">Live Stock Sync</div><div class="stat-lbl">Real-time inventory on web</div></div></div>
+      <div class="hero-stat"><div class="stat-icon">&#128179;</div><div><div class="stat-val">Payment Ready</div><div class="stat-lbl">Razorpay, PayU, Stripe, PayPal</div></div></div>
+      <div class="hero-stat"><div class="stat-icon">&#128203;</div><div><div class="stat-val">Auto Orders</div><div class="stat-lbl">Sales order created on purchase</div></div></div>
+    </div>
+  </div>
+</section>
+
+<section class="section">
+  <div class="container">
+    <div class="section-label">Overview</div>
+    <h2 class="section-title">What is ERPNext E-Commerce?</h2>
+    <p style="font-size:.97rem;color:var(--muted);line-height:1.85;max-width:840px">ERPNext E-Commerce is a built-in online store module that enables manufacturers, distributors, and traders to launch a branded product catalog and ordering portal directly from their ERP — without needing a separate Shopify, WooCommerce, or Magento instance and the synchronisation headaches that come with them. Because the store runs on the same database as Inventory, Sales, Accounts, and GST modules, every online order automatically becomes a Sales Order in the ERP, and product availability on the website reflects actual warehouse stock in real time.</p>
+    <p style="font-size:.97rem;color:var(--muted);line-height:1.85;max-width:840px;margin-top:16px">ERPNext e-commerce is primarily designed for B2B ordering portals — where manufacturers want their dealers, distributors, or institutional buyers to place orders online with their negotiated pricing, without needing to call or email a salesperson. Each B2B customer logs in with their account, sees their specific price list, and places orders that flow directly into the ERP's fulfilment workflow. For B2C, ERPNext supports public product catalogs with public pricing, shopping cart, and checkout — suitable for smaller brands that want a basic online store without the complexity and cost of a dedicated e-commerce platform.</p>
+    <p style="font-size:.97rem;color:var(--muted);line-height:1.85;max-width:840px;margin-top:16px">The product catalog is managed entirely within ERPNext's Item master — product images, descriptions, specifications, categories, and SEO metadata are all configured in the item record. Multi-variant items (size, colour, model) are supported. Payment gateway integration with Razorpay, PayU, PayPal, and Stripe allows customers to pay online at checkout — with payment confirmation triggering the Sales Order in the ERP automatically.</p>
+    <p style="font-size:.97rem;color:var(--muted);line-height:1.85;max-width:840px;margin-top:16px">GST-compliant invoices are generated automatically when orders are fulfilled, and customers receive order confirmation, dispatch notification, and invoice by email — all triggered from the ERP workflow without manual intervention. For GCC businesses, VAT is applied at checkout, and the invoice is generated in the applicable currency. Quantbit Technologies configures the store design, product catalog, payment gateway, and GST/VAT rules — and integrates the e-commerce store with the client's existing website or domain.</p>
+  </div>
+</section>
+
+<section class="section section-alt">
+  <div class="container">
+    <div class="section-label">Features &amp; Functions</div>
+    <h2 class="section-title">Core Capabilities of the E-Commerce Module</h2>
+    <p class="section-sub">A complete online ordering system — built into ERPNext with no external platform required.</p>
+    <div class="feature-grid">
+      <div class="feature-card"><div class="feature-icon">&#128722;</div><h3>Product Catalog &amp; Item Management</h3><p>Publish your entire product range with images, descriptions, pricing, and variants — managed in ERPNext item master.</p><ul><li>Product images, descriptions, and specifications</li><li>Item variants — size, colour, model, grade</li><li>Category tree for catalog navigation</li><li>SEO metadata — title, description, URL per item</li></ul></div>
+      <div class="feature-card"><div class="feature-icon">&#128100;</div><h3>Customer Accounts &amp; B2B Portal</h3><p>Business customers log in to see their specific pricing, place orders, and track delivery history.</p><ul><li>Customer-specific price list on login</li><li>Order history and invoice download</li><li>Saved delivery address and credit limit view</li><li>B2B dealer and distributor self-ordering portal</li></ul></div>
+      <div class="feature-card"><div class="feature-icon">&#128260;</div><h3>Real-Time Inventory Sync</h3><p>Website stock availability mirrors ERPNext warehouse stock in real time — no overselling, no manual updates.</p><ul><li>Live stock on hand per warehouse on product page</li><li>Out-of-stock auto-display when stock depletes</li><li>Backorder and pre-order configuration</li><li>Multi-warehouse stock visibility setting</li></ul></div>
+      <div class="feature-card"><div class="feature-icon">&#128179;</div><h3>Payment Gateway Integration</h3><p>Accept online payments at checkout via Razorpay, PayU, Stripe, or PayPal — with automatic order confirmation.</p><ul><li>Razorpay — UPI, net banking, card, EMI (India)</li><li>PayU, Stripe, PayPal for India and international</li><li>Payment confirmation auto-creates Sales Order</li><li>Partial payment and advance order support</li></ul></div>
+      <div class="feature-card"><div class="feature-icon">&#128203;</div><h3>Order Management &amp; Fulfilment</h3><p>Online orders auto-create Sales Orders in ERPNext — fulfilled through the standard delivery and invoice workflow.</p><ul><li>Auto Sales Order creation on checkout</li><li>Order status tracking for customer — placed, packed, shipped</li><li>GST/VAT invoice auto-generation on dispatch</li><li>Customer order notification emails</li></ul></div>
+      <div class="feature-card"><div class="feature-icon">&#128269;</div><h3>Search, Filter &amp; Promotions</h3><p>Customers find products quickly with search, category filters, and configured promotional pricing.</p><ul><li>Full-text product search with category filter</li><li>Featured products and banner promotions</li><li>Promotional pricing and bulk discount rules</li><li>Coupon code support for promotional campaigns</li></ul></div>
+    </div>
+  </div>
+</section>
+
+<section class="section">
+  <div class="container">
+    <div class="section-label">Reports &amp; Analytics</div>
+    <h2 class="section-title">E-Commerce Reports &amp; Dashboards</h2>
+    <p class="section-sub">Track online store performance — orders, revenue, conversion, and top products.</p>
+    <div class="reports-grid">
+      <div class="report-card"><h4>Online Order Summary</h4><p>All orders placed through the e-commerce portal by date, customer, and item — with payment status and fulfilment status.</p><span class="report-tag">Sales / Fulfilment</span></div>
+      <div class="report-card"><h4>E-Commerce Revenue Report</h4><p>Online store revenue by period, customer segment, item category, and payment method — vs offline channel.</p><span class="report-tag">Sales / Management</span></div>
+      <div class="report-card"><h4>Top Selling Items Online</h4><p>Most ordered products on the e-commerce portal by quantity and revenue — drives catalog and promotion decisions.</p><span class="report-tag">Sales / Marketing</span></div>
+      <div class="report-card"><h4>Cart Abandonment (Custom)</h4><p>Customers who added to cart but did not complete checkout — configured by Quantbit as a custom script report for re-engagement outreach.</p><span class="report-tag">Marketing / Sales</span></div>
+      <div class="report-card"><h4>Customer Repeat Purchase Rate</h4><p>B2B customers who re-ordered in a period vs one-time buyers — the key metric for portal adoption and dealer loyalty.</p><span class="report-tag">Sales / Account Management</span></div>
+      <div class="report-card"><h4>Online vs Offline Sales Mix</h4><p>Percentage of total revenue coming through the e-commerce portal vs direct sales team — tracks portal adoption over time.</p><span class="report-tag">Management / Sales</span></div>
+    </div>
+  </div>
+</section>
+
+<section class="section section-alt">
+  <div class="container">
+    <div class="section-label">User Access &amp; Roles</div>
+    <h2 class="section-title">Who Uses the E-Commerce Module?</h2>
+    <div class="roles-grid">
+      <div class="role-pill"><div class="role-dot admin"></div><div><div class="role-name">E-Commerce Manager</div><div class="role-desc">Configure store, manage product catalog, set pricing and promotions, review orders and fulfilment</div></div></div>
+      <div class="role-pill"><div class="role-dot user"></div><div><div class="role-name">Sales Executive</div><div class="role-desc">Monitor B2B portal orders, follow up on pending payments, assist customers with portal ordering</div></div></div>
+      <div class="role-pill"><div class="role-dot user"></div><div><div class="role-name">Warehouse / Fulfilment</div><div class="role-desc">Process online orders in the pick-pack-ship workflow — delivery note and dispatch from ERPNext</div></div></div>
+      <div class="role-pill"><div class="role-dot manager"></div><div><div class="role-name">Marketing Team</div><div class="role-desc">Manage featured products, promotional banners, coupon codes, and SEO metadata on product pages</div></div></div>
+      <div class="role-pill"><div class="role-dot viewer"></div><div><div class="role-name">B2B Customer (Portal)</div><div class="role-desc">Browse catalog at negotiated pricing, place orders, track delivery status, download invoices</div></div></div>
+    </div>
+  </div>
+</section>
+
+<section class="section">
+  <div class="container">
+    <div class="section-label">Key Benefits</div>
+    <h2 class="section-title">Why Businesses Use ERPNext for E-Commerce</h2>
+    <div class="benefits-grid">
+      <div class="benefit-card"><div class="benefit-num">01</div><h3>Eliminate Separate Platform Costs</h3><p>No Shopify subscription, no WooCommerce plugins, no middleware for ERP sync — ERPNext e-commerce is included in your ERP investment. Eliminate the recurring cost and integration complexity of a separate e-commerce platform.</p></div>
+      <div class="benefit-card"><div class="benefit-num">02</div><h3>Zero Overselling Risk</h3><p>Because website stock is ERPNext's actual warehouse stock — not a separate synced database — there is no lag and no overselling. When the last unit ships, the website shows out-of-stock in real time.</p></div>
+      <div class="benefit-card"><div class="benefit-num">03</div><h3>Self-Service for B2B Dealers</h3><p>Dealers and distributors who can order online at 11 PM — with their negotiated pricing, without calling a salesperson — order more frequently and in higher volumes. B2B portals typically increase order frequency by 30–50% in the first year.</p></div>
+      <div class="benefit-card"><div class="benefit-num">04</div><h3>GST-Compliant from Order to Invoice</h3><p>Every online order flows through ERPNext's GST-configured Sales and Accounting modules. GST is calculated at checkout, and the tax invoice is generated and emailed automatically when goods are dispatched — fully compliant without any manual intervention.</p></div>
+      <div class="benefit-card"><div class="benefit-num">05</div><h3>Reduce Sales Team Admin Load</h3><p>When dealers order online, sales executives are freed from order-taking calls and manual order entry — focusing instead on relationship building, new customer acquisition, and large deal negotiation. The portal handles routine reordering automatically.</p></div>
+      <div class="benefit-card"><div class="benefit-num">06</div><h3>All Data in One System</h3><p>Online sales, offline sales, inventory, GST, and accounts are all in one ERPNext instance. Finance sees one P&L, one AR aging, one GST liability — not a multi-system reconciliation exercise every month.</p></div>
+    </div>
+  </div>
+</section>
+
+<section class="section section-alt">
+  <div class="container">
+    <div class="section-label">Best Practices</div>
+    <h2 class="section-title">ERPNext E-Commerce Best Practices</h2>
+    <div class="bp-list">
+      <div class="bp-item"><div class="bp-icon">&#128722;</div><div><h4>Clean Product Data Before Launch</h4><p>Audit product images, descriptions, and HSN codes before publishing the store. Missing images and incomplete descriptions are the primary reason B2B customers abandon portals and revert to ordering by phone.</p></div></div>
+      <div class="bp-item"><div class="bp-icon">&#128100;</div><div><h4>Create Customer Price Lists Before B2B Onboarding</h4><p>Configure customer-specific price lists in ERPNext before inviting B2B customers to the portal. Customers who log in and see incorrect pricing lose trust immediately — and the damage to portal adoption is difficult to recover from.</p></div></div>
+      <div class="bp-item"><div class="bp-icon">&#128260;</div><div><h4>Set Safety Stock to Prevent Online Overselling</h4><p>Configure a safety stock quantity for items sold online. ERPNext can be set to show out-of-stock when physical stock drops below the safety level — preventing the last few units (needed for walk-in or key account orders) from being taken by online orders.</p></div></div>
+      <div class="bp-item"><div class="bp-icon">&#128179;</div><div><h4>Test Payment Gateway in Staging Before Go-Live</h4><p>Test the complete checkout flow — including payment failure scenarios — in a staging environment before the store goes live. Payment issues at launch destroy customer trust and suppress portal adoption for months.</p></div></div>
+      <div class="bp-item"><div class="bp-icon">&#128203;</div><div><h4>Configure Order Notification Emails</h4><p>Set up automated order confirmation, dispatch, and invoice emails from day one. B2B customers who receive proactive communication at each order stage require fewer status-check calls — reducing customer service load significantly.</p></div></div>
+      <div class="bp-item"><div class="bp-icon">&#128269;</div><div><h4>Optimise Product Pages for SEO</h4><p>Fill in SEO title, meta description, and URL slug for every published product. ERPNext generates product pages with structured data markup — but keyword-rich meta content is needed for search engine visibility, especially for B2C stores.</p></div></div>
+    </div>
+  </div>
+</section>
+
+<section class="section">
+  <div class="container">
+    <div class="section-label">GEO-Specific Guidance</div>
+    <h2 class="section-title">ERPNext E-Commerce for India &amp; GCC</h2>
+    <div class="geo-answer">
+      <h3>ERPNext online store and B2B portal for Indian manufacturers and GCC distributors</h3>
+      <p>ERPNext e-commerce is widely used by Indian manufacturers, FMCG distributors, and industrial product companies as a B2B dealer ordering portal — integrated with GST, Razorpay, and the sales fulfilment workflow. In the GCC, manufacturers and trading companies in Oman and UAE use it to give their institutional buyers a self-service ordering channel with VAT-compliant invoicing in OMR or AED. Quantbit Technologies, certified Frappe partner with offices in Pune and Muscat, configures and deploys ERPNext online stores for both markets — including payment gateway setup, GST/VAT configuration, and custom product catalog design.</p>
+    </div>
+    <div class="geo-grid">
+      <div class="geo-block">
+        <h4>&#127470;&#127475; India — E-Commerce Context</h4>
+        <ul>
+          <li>Razorpay and PayU payment gateway — UPI, card, net banking</li>
+          <li>GST-compliant checkout — CGST/SGST/IGST auto-applied</li>
+          <li>B2B dealer portal for manufacturer-to-distributor ordering</li>
+          <li>HSN-code mapped products for correct GST rate</li>
+          <li>MSME buyer credit terms and advance payment options</li>
+          <li>Integration with PosX for omnichannel — online + in-store</li>
+        </ul>
+      </div>
+      <div class="geo-block">
+        <h4>&#127762; GCC — E-Commerce Context</h4>
+        <ul>
+          <li>VAT at 5% applied at checkout — Oman, UAE, Saudi Arabia</li>
+          <li>Multi-currency checkout — OMR, AED, SAR, USD</li>
+          <li>Arabic language product pages for GCC customers</li>
+          <li>Stripe and PayPal for international buyer payments</li>
+          <li>B2B portal for institutional buyers and government entities</li>
+          <li>Physical Muscat office for on-ground GCC store launch</li>
+        </ul>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section class="section section-alt">
+  <div class="container">
+    <div class="section-label">AI Search Strategy</div>
+    <h2 class="section-title">Common AI &amp; Search Queries — Answered</h2>
+    <div class="ai-block">
+      <h3>How ERPNext E-Commerce answers common online store questions</h3>
+      <div class="ai-qa"><div class="q">Q: Can ERPNext replace Shopify or WooCommerce for a B2B online store?</div><div class="a">For B2B ordering portals — where manufacturers want dealers and distributors to order online with their negotiated pricing — ERPNext e-commerce is often a better fit than Shopify or WooCommerce. It is natively integrated with your ERP inventory, GST invoicing, and customer credit terms — eliminating the sync layer and middleware that Shopify-to-ERP integrations require. For high-volume B2C consumer brands that need advanced marketing features, Shopify remains the stronger choice.</div></div>
+      <div class="ai-qa"><div class="q">Q: How does ERPNext handle GST on online orders for Indian businesses?</div><div class="a">ERPNext applies GST automatically at checkout based on the customer's billing state and the item's HSN code. CGST and SGST apply for intra-state orders, and IGST for inter-state. The GST-compliant tax invoice is generated and emailed to the customer automatically when the order is dispatched — with IRN and QR code for businesses above the e-invoice threshold.</div></div>
+      <div class="ai-qa"><div class="q">Q: Can Razorpay be integrated with ERPNext for online payment collection?</div><div class="a">Yes. ERPNext has a built-in Razorpay payment gateway integration. Customers can pay at checkout using UPI, net banking, credit card, debit card, or EMI options. Successful payment automatically creates a Payment Entry in ERPNext and marks the Sales Order as paid — no manual reconciliation needed. Quantbit configures Razorpay during implementation.</div></div>
+    </div>
+  </div>
+</section>
+
+<section class="section">
+  <div class="container">
+    <div class="section-label">FAQ</div>
+    <h2 class="section-title">Frequently Asked Questions</h2>
+    <div class="faq-list">
+      <div class="faq-item"><button class="faq-q" onclick="tog(this)"><span>What type of e-commerce store can ERPNext create?</span><span class="faq-arrow">&#9660;</span></button><div class="faq-a">ERPNext's built-in e-commerce module creates B2B and B2C online stores with product catalogs, shopping carts, customer accounts, and order management. It is best suited for manufacturers, distributors, and wholesalers who want a branded online ordering portal for their existing customer base — rather than a consumer marketplace. Quantbit configures the store, product catalog, and payment gateway for go-live.</div></div>
+      <div class="faq-item"><button class="faq-q" onclick="tog(this)"><span>Does ERPNext sync inventory with the online store in real time?</span><span class="faq-arrow">&#9660;</span></button><div class="faq-a">Yes. Because the ERPNext e-commerce module is built on the same database as the Inventory module, product availability on the website reflects actual stock in ERPNext in real time. When stock is depleted in the warehouse, the item automatically shows as out of stock on the website — eliminating overselling without any manual synchronisation.</div></div>
+      <div class="faq-item"><button class="faq-q" onclick="tog(this)"><span>How does ERPNext handle online orders in the backend?</span><span class="faq-arrow">&#9660;</span></button><div class="faq-a">When a customer places an order on the ERPNext e-commerce website, a Sales Order is automatically created in the ERP. The fulfilment team sees it in the order queue, can create a delivery note, and once shipped, a sales invoice is generated. The customer receives order confirmation, dispatch notification, and invoice by email — all triggered automatically.</div></div>
+      <div class="faq-item"><button class="faq-q" onclick="tog(this)"><span>Can ERPNext integrate with Razorpay, PayU, or other Indian payment gateways?</span><span class="faq-arrow">&#9660;</span></button><div class="faq-a">Yes. ERPNext supports integration with Razorpay, PayU, PayPal, and Stripe out of the box. For Indian businesses, Razorpay is the most commonly configured gateway. Quantbit sets up the gateway during implementation so customers can pay online by UPI, net banking, debit/credit card, or EMI at checkout.</div></div>
+      <div class="faq-item"><button class="faq-q" onclick="tog(this)"><span>Can ERPNext support a B2B ordering portal with customer-specific pricing?</span><span class="faq-arrow">&#9660;</span></button><div class="faq-a">Yes. ERPNext B2B portals can display customer-specific pricing based on the Price List assigned to each customer. Business customers log in to the portal and see their negotiated pricing — not public pricing. This is the most common use case for manufacturers and distributors who want to give their dealers and distributors a self-service ordering channel.</div></div>
+      <div class="faq-item"><button class="faq-q" onclick="tog(this)"><span>Can ERPNext e-commerce integrate with my existing website?</span><span class="faq-arrow">&#9660;</span></button><div class="faq-a">ERPNext generates its own website and store pages on your ERPNext URL. It can be configured as a subdomain of your primary website (e.g., shop.yourcompany.com) or integrated via custom domain pointing. For businesses with an existing custom website, Quantbit can configure the ERPNext store as a standalone B2B portal linked from the main site.</div></div>
+    </div>
+  </div>
+</section>
+
+<section class="section section-alt">
+  <div class="container">
+    <div class="seo-box">
+      <p class="section-label" style="margin-bottom:8px">SEO Keywords</p>
+      <h3 style="font-size:.92rem;font-weight:700;color:var(--dark);margin-bottom:8px">Search Terms This Page Targets</h3>
+      <div class="seo-kw"><span>ERPNext ecommerce India</span><span>ERPNext B2B online store</span><span>ERPNext Razorpay payment gateway</span><span>ERPNext product catalog website</span><span>ERPNext shopping cart order management</span><span>open source ecommerce ERP India</span><span>ERPNext ecommerce GCC Oman</span><span>ERPNext dealer portal India</span><span>ERPNext inventory sync online store</span><span>ERPNext Frappe ecommerce partner Pune</span></div>
+    </div>
+  </div>
+</section>
+
+<section class="cta-section">
+  <div class="container">
+    <h2>Ready to Launch Your ERPNext Online Store?</h2>
+    <p>Quantbit Technologies configures your B2B dealer portal or B2C online store — product catalog, Razorpay payment gateway, GST checkout, and order fulfilment workflow — fully integrated with your ERPNext instance.</p>
+    <div class="cta-btns">
+      <a href="/company/contact-us.html" class="btn-white">Book Free Demo</a>
+      <a href="/company/contact-us.html" class="btn-ghost">Talk to a Consultant</a>
+    </div>
+    <div class="cta-trust">&#9989; Certified ERPNext Partner &nbsp;|&nbsp; &#9989; Razorpay &amp; PayU Ready &nbsp;|&nbsp; &#9989; GST &amp; VAT Compliant &nbsp;|&nbsp; &#9989; Pune &amp; Muscat Offices</div>
+  </div>
+</section>
+<div id="footer"></div>
+
+<script>function tog(btn){btn.classList.toggle('open');var a=btn.nextElementSibling;a.classList.toggle('open');}</script>
+<script>
+fetch("/header.html")
+    .then(res => res.text())
+    .then(data => {
+        document.getElementById("header").innerHTML = data;
+    });
+
+fetch("/footer.html")
+    .then(res => res.text())
+    .then(data => {
+        document.getElementById("footer").innerHTML = data;
+    });
+</script>
+<!-- ================= TEMPLATE JS ================= -->
+    <!--<< All JS Plugins >>-->
+    <script data-cfasync="false" src="../../cdn-cgi/scripts/5c5dd728/cloudflare-static/email-decode.min.js"></script>
+    <script src="/../assets/quantbit_website/js/jquery-3.7.1.min.js"></script>
+    <!--<< Viewport Js >>-->
+    <script src="/../assets/quantbit_website/js/viewport.jquery.js"></script>
+    <!--<< Bootstrap Js >>-->
+    <script src="/../assets/quantbit_website/js/bootstrap.bundle.min.js"></script>
+    <!--<< Nice Select Js >>-->
+    <script src="/../assets/quantbit_website/js/jquery.nice-select.min.js"></script>
+    <!--<< Waypoints Js >>-->
+    <script src="/../assets/quantbit_website/js/jquery.waypoints.js"></script>
+    <!--<< Counterup Js >>-->
+    <script src="/../assets/quantbit_website/js/jquery.counterup.min.js"></script>
+    <!--<< Slick Js >>-->
+    <script src="/../assets/quantbit_website/js/slick.min.js"></script>
+    <!--<< Slick Animation Js >>-->
+    <script src="/../assets/quantbit_website/js/slick-animation.min.js"></script>
+    <!--<< MeanMenu Js >>-->
+    <script src="/../assets/quantbit_website/js/jquery.meanmenu.min.js"></script>
+    <!--<< Magnific Popup Js >>-->
+    <script src="/../assets/quantbit_website/js/jquery.magnific-popup.min.js"></script>
+    <!--<< Wow Animation Js >>-->
+    <script src="/../assets/quantbit_website/js/wow.min.js"></script>
+    <!--<< Circle Progress Js >>-->
+    <script src="/../assets/quantbit_website/js/circle-progress.js"></script>
+    <!--<< Main.js >>-->
+    <script src="/../assets/quantbit_website/js/main.js"></script>
+    <script defer
+        src="../../../static.cloudflareinsights.com/beacon.min.js/v8c78df7c7c0f484497ecbca7046644da1771523124516"
+        integrity="sha512-8DS7rgIrAmghBFwoOTujcf6D9rXvH8xm8JQ1Ja01h9QX8EzXldiszufYa4IFfKdLUKTTrnSFXLDkUEOTrZQ8Qg=="
+        data-cf-beacon='{"version":"2024.11.0","token":"90f7972af14a48b4add7da2b74f5d675","r":1,"server_timing":{"name":{"cfCacheStatus":true,"cfEdge":true,"cfExtPri":true,"cfL4":true,"cfOrigin":true,"cfSpeedBrain":true},"location_startswith":null}}'
+        crossorigin="anonymous"></script>
+
+</body></html>

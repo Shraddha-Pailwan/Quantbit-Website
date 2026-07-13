@@ -1,0 +1,439 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>ERPNext Services in India | Implementation, Customisation & Industry Solutions | Quantbit</title>
+<meta name="description" content="Explore Quantbit's complete range of ERPNext & Frappe services — implementation, customisation, migration, SaaS development, and industry-specific ERPNext solutions delivered by a certified ERPNext partner across India.">
+<meta name="keywords" content="ERPNext implementation India, ERPNext customisation, Frappe development, ERPNext migration, ERPNext support, ERPNext consulting, ERPNext managed services, ERPNext training, ERPNext integration partner India">
+<link rel="canonical" href="https://quantbit.io/services/">
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@graph": [
+    {
+      "@type": "Organization",
+      "@id": "https://quantbit.io/#org",
+      "name": "Quantbit Technologies",
+      "url": "https://quantbit.io",
+      "logo": "https://quantbit.io/assets/logo.png",
+      "address": {"@type": "PostalAddress", "addressLocality": "Pune", "addressRegion": "Maharashtra", "addressCountry": "IN"},
+      "sameAs": ["https://www.linkedin.com/company/quantbit-technologies"]
+    },
+    {
+      "@type": "Service",
+      "@id": "https://quantbit.io/services/#service",
+      "name": "ERPNext Services",
+      "provider": {"@id": "https://quantbit.io/#org"},
+      "serviceType": "ERP Services",
+      "areaServed": ["India", "Oman", "UAE", "Kenya"],
+      "description": "Complete ERPNext and Frappe services including implementation, customisation, migration, SaaS development, training, support, and integration."
+    },
+    {
+      "@type": "BreadcrumbList",
+      "itemListElement": [
+        {"@type": "ListItem", "position": 1, "name": "Home", "item": "https://quantbit.io/"},
+        {"@type": "ListItem", "position": 2, "name": "Services", "item": "https://quantbit.io/services/"}
+      ]
+    }
+  ]
+}
+</script>
+<style>
+*{box-sizing:border-box;margin:0;padding:0}
+:root{
+  --accent:#1a5fd4;--accent-dark:#0f3d8c;--accent-light:#e8f0fc;
+  --teal:#0b7a5e;--teal-light:#e6f4f0;--amber:#b35e0a;--amber-light:#fdf0e6;
+  --navy:#0f2d47;--navy-mid:#1a3f5c;
+  --gray-100:#f8f9fb;--gray-200:#eef0f4;--gray-300:#d4d8e2;
+  --gray-600:#5a6272;--gray-800:#2c3345;--white:#ffffff;
+  --text:#1e2535;--text-light:#4a5568;
+  --radius:10px;--radius-lg:16px;
+  --shadow:0 2px 12px rgba(15,45,71,0.08);--shadow-md:0 6px 24px rgba(15,45,71,0.12);
+}
+body{font-family:'Segoe UI',system-ui,-apple-system,sans-serif;color:var(--text);line-height:1.65;font-size:16px}
+a{color:var(--accent);text-decoration:none}
+a:hover{text-decoration:underline}
+.container{max-width:1160px;margin:0 auto;padding:0 24px}
+
+#header{display:block;margin:0;padding:0;line-height:normal}
+
+/* SECTION BASE */
+section{padding:72px 0}
+.section-eyebrow{font-size:0.78rem;font-weight:700;text-transform:uppercase;letter-spacing:1px;color:var(--accent);margin-bottom:10px}
+.section-title{font-size:clamp(1.6rem,3vw,2.2rem);font-weight:800;color:var(--navy);line-height:1.2;letter-spacing:-0.3px;margin-bottom:16px}
+.section-sub{font-size:1.05rem;color:var(--text-light);max-width:640px;line-height:1.7;margin-bottom:48px}
+.text-center{text-align:center}
+.text-center .section-sub{margin-left:auto;margin-right:auto}
+
+/* HERO */
+.hero{background:linear-gradient(135deg,var(--navy) 0%,var(--navy-mid) 60%,#1a4a7a 100%);color:#fff;padding:80px 0 64px;text-align:center;position:relative;overflow:hidden;margin-top:0}
+.hero::before{content:'';position:absolute;inset:0;background:url("data:image/svg+xml,%3Csvg width='60' height='60' viewBox='0 0 60 60' xmlns='http://www.w3.org/2000/svg'%3E%3Cg fill='none' fill-rule='evenodd'%3E%3Cg fill='%23ffffff' fill-opacity='0.03'%3E%3Cpath d='M36 34v-4h-2v4h-4v2h4v4h2v-4h4v-2h-4zm0-30V0h-2v4h-4v2h4v4h2V6h4V4h-4zM6 34v-4H4v4H0v2h4v4h2v-4h4v-2H6zM6 4V0H4v4H0v2h4v4h2V6h4V4H6z'/%3E%3C/g%3E%3C/g%3E%3C/svg%3E")}
+.hero-eyebrow{display:inline-flex;align-items:center;gap:8px;background:rgba(255,255,255,0.1);border:1px solid rgba(255,255,255,0.15);padding:6px 16px;border-radius:100px;font-size:0.82rem;letter-spacing:0.5px;text-transform:uppercase;margin-bottom:24px;color:rgba(255,255,255,0.9)}
+.hero h1{font-size:clamp(2rem,4.5vw,3.2rem);font-weight:800;line-height:1.15;letter-spacing:-0.5px;margin-bottom:20px;max-width:820px;margin-left:auto;margin-right:auto}
+.hero h1 .highlight{color:#5b9bff}
+.hero-sub{font-size:1.15rem;color:rgba(255,255,255,0.78);max-width:660px;margin:0 auto 36px;line-height:1.7}
+.hero-btns{display:flex;gap:14px;justify-content:center;flex-wrap:wrap}
+.btn-primary{background:var(--accent);color:#fff;padding:14px 28px;border-radius:8px;font-weight:600;font-size:1rem;border:2px solid var(--accent);transition:all 0.2s;display:inline-flex;align-items:center;gap:8px}
+.btn-primary:hover{background:var(--accent-dark);border-color:var(--accent-dark);text-decoration:none;transform:translateY(-1px)}
+.btn-outline{background:transparent;color:#fff;padding:14px 28px;border-radius:8px;font-weight:600;font-size:1rem;border:2px solid rgba(255,255,255,0.35);transition:all 0.2s}
+.btn-outline:hover{border-color:#fff;background:rgba(255,255,255,0.08);text-decoration:none}
+.hero-stats{display:flex;gap:40px;justify-content:center;margin-top:52px;padding-top:40px;border-top:1px solid rgba(255,255,255,0.12);flex-wrap:wrap}
+.stat{text-align:center}
+.stat-num{font-size:2rem;font-weight:800;color:#5b9bff;display:block}
+.stat-label{font-size:0.82rem;color:rgba(255,255,255,0.65);text-transform:uppercase;letter-spacing:0.5px}
+
+/* SERVICES GRID */
+.services-section{background:#fff}
+.services-grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(300px,1fr));gap:24px}
+.service-card{background:#fff;border:1px solid var(--gray-200);border-radius:var(--radius-lg);padding:28px;transition:all 0.25s;position:relative;overflow:hidden;display:flex;flex-direction:column}
+.service-card::before{content:'';position:absolute;top:0;left:0;right:0;height:3px;background:var(--accent);transform:scaleX(0);transition:transform 0.3s;transform-origin:left}
+.service-card:hover{border-color:var(--accent);box-shadow:var(--shadow-md);transform:translateY(-2px)}
+.service-card:hover::before{transform:scaleX(1)}
+.card-icon{width:48px;height:48px;border-radius:10px;display:flex;align-items:center;justify-content:center;margin-bottom:16px;font-size:1.4rem;flex-shrink:0}
+.card-icon.blue{background:var(--accent-light);color:var(--accent-dark)}
+.card-icon.teal{background:var(--teal-light);color:var(--teal)}
+.card-icon.amber{background:var(--amber-light);color:var(--amber)}
+.card-icon.purple{background:#f3e8ff;color:#6b21a8}
+.card-icon.red{background:#fde8e8;color:#b91c1c}
+.card-icon.green{background:#e8f5e9;color:#166534}
+.service-card h3{font-size:1.05rem;font-weight:700;color:var(--navy);margin-bottom:8px}
+.service-card p{font-size:0.9rem;color:var(--text-light);line-height:1.65;margin-bottom:20px;flex:1}
+.card-link{font-size:0.875rem;font-weight:600;color:var(--accent);display:inline-flex;align-items:center;gap:4px;margin-top:auto}
+.card-link:hover{text-decoration:none;gap:8px}
+
+/* WHY QUANTBIT */
+.why-section{background:var(--gray-100)}
+.why-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:24px;margin-top:48px}
+.why-card{background:#fff;border-radius:var(--radius-lg);padding:28px;text-align:center;box-shadow:var(--shadow)}
+.why-icon{font-size:2rem;margin-bottom:14px;display:block}
+.why-card h3{font-size:1rem;font-weight:700;color:var(--navy);margin-bottom:8px}
+.why-card p{font-size:0.875rem;color:var(--text-light);line-height:1.65}
+
+/* PROCESS */
+.process-section{background:#fff}
+.steps{display:grid;grid-template-columns:repeat(3,1fr);gap:32px;margin-top:48px}
+.step{text-align:center;padding:32px 24px}
+.step-num{width:52px;height:52px;border-radius:50%;background:var(--accent);color:#fff;font-size:1.1rem;font-weight:800;display:flex;align-items:center;justify-content:center;margin:0 auto 20px}
+.step h3{font-size:1rem;font-weight:700;color:var(--navy);margin-bottom:10px}
+.step p{font-size:0.9rem;color:var(--text-light);line-height:1.65}
+
+/* FAQ */
+.faq-section{background:var(--gray-100)}
+.faq-list{max-width:800px;margin:0 auto;margin-top:40px}
+.faq-item{background:#fff;border-radius:var(--radius);margin-bottom:12px;overflow:hidden}
+.faq-q{padding:20px 24px;font-weight:600;color:var(--navy);cursor:pointer;display:flex;justify-content:space-between;align-items:center;font-size:0.95rem}
+.faq-q::after{content:'＋';font-size:1.2rem;color:var(--accent);flex-shrink:0}
+.faq-a{padding:0 24px 20px;color:var(--text-light);font-size:0.9rem;line-height:1.7;display:none}
+.faq-item.open .faq-a{display:block}
+.faq-item.open .faq-q::after{content:'−'}
+
+/* CTA */
+.cta-section{background:linear-gradient(135deg,var(--navy),var(--navy-mid));color:#fff;text-align:center;padding:80px 0}
+.cta-section h2{font-size:clamp(1.6rem,3vw,2.2rem);font-weight:800;margin-bottom:16px}
+.cta-section p{color:rgba(255,255,255,0.75);max-width:520px;margin:0 auto 36px;font-size:1.05rem}
+
+footer{background:var(--navy);color:rgba(255,255,255,0.6);text-align:center;padding:24px;font-size:0.82rem}
+
+@media(max-width:900px){
+  .why-grid{grid-template-columns:1fr 1fr}
+  .steps{grid-template-columns:1fr}
+}
+@media(max-width:768px){
+  .hero-stats{gap:24px}
+  .services-grid{grid-template-columns:1fr}
+  .why-grid{grid-template-columns:1fr}
+}
+</style>
+<link rel="stylesheet" href="/assets/quantbit_website/css/_shared.css">
+<link rel="stylesheet" href="/../assets/quantbit_website/css/bootstrap.min.css">
+<link rel="stylesheet" href="/../assets/quantbit_website/css/font-awesome.css">
+<link rel="stylesheet" href="/../assets/quantbit_website/css/animate.css">
+<link rel="stylesheet" href="/../assets/quantbit_website/css/magnific-popup.css">
+<link rel="stylesheet" href="/../assets/quantbit_website/css/meanmenu.css">
+<link rel="stylesheet" href="/../assets/quantbit_website/css/slick.css">
+<link rel="stylesheet" href="/../assets/quantbit_website/css/nice-select.css">
+<link rel="stylesheet" href="/../assets/quantbit_website/css/main.css">
+<link rel="stylesheet" href="style.css">
+<link rel="stylesheet" href="/assets/quantbit_website/css/_shared.css">
+<link rel="stylesheet" href="/../assets/quantbit_website/css/hrms.css">
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
+<script>(function(w,d,s,l,i){w[l]=w[l]||[];w[l].push({'gtm.start':
+new Date().getTime(),event:'gtm.js'});var f=d.getElementsByTagName(s)[0],
+j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
+'https://www.googletagmanager.com/gtm.js?id='+i+dl;f.parentNode.insertBefore(j,f);
+})(window,document,'script','dataLayer','GTM-P98Z6G8D');</script>
+</head>
+<body>
+<noscript><iframe src="https://www.googletagmanager.com/ns.html?id=GTM-P98Z6G8D"
+height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
+
+<div id="header"></div>
+
+<!-- HERO -->
+<section class="hero">
+  <div class="container">
+    <div class="hero-eyebrow">⚙️ ERPNext & Frappe Services</div>
+    <h1>ERPNext Services in India — <span class="highlight">Implementation, Customisation</span> & Industry Solutions</h1>
+    <p class="hero-sub">Explore our complete range of ERPNext & Frappe services — implementation, customisation, migration, SaaS development, and industry-specific ERPNext solutions delivered by a certified ERPNext partner across India.</p>
+    <div class="hero-btns">
+      <a href="/company/contact-us.html" class="btn-primary">Book Free Demo →</a>
+      <a href="#core-services" class="btn-outline">Browse All Services</a>
+    </div>
+    <div class="hero-stats">
+      <div class="stat"><span class="stat-num">12+</span><span class="stat-label">Service Areas</span></div>
+      <div class="stat"><span class="stat-num">200+</span><span class="stat-label">Implementations</span></div>
+      <div class="stat"><span class="stat-num">4</span><span class="stat-label">Markets: India, GCC, Kenya</span></div>
+      <div class="stat"><span class="stat-num">v13–v15</span><span class="stat-label">ERPNext Versions</span></div>
+    </div>
+  </div>
+</section>
+
+<!-- CORE SERVICES -->
+<section class="services-section" id="core-services">
+  <div class="container">
+    <div class="section-eyebrow">Core ERPNext & Frappe Services</div>
+    <h2 class="section-title">Everything Your ERPNext Journey Needs — In One Place</h2>
+    <p class="section-sub">From first deployment to long-term managed services, every service your team needs to get the most out of ERPNext is delivered by the same certified partner team.</p>
+
+    <div class="services-grid">
+
+      <div class="service-card">
+        <div class="card-icon blue">🚀</div>
+        <h3>ERPNext Implementation</h3>
+        <p>End-to-end ERPNext deployment — configuration, data migration, training, and go-live support delivered by a certified partner team. We have implemented ERPNext across manufacturing, healthcare, retail, and construction in India and the GCC.</p>
+        <a href="erpnext-implementation.html" class="card-link">View Details →</a>
+      </div>
+
+      <div class="service-card">
+        <div class="card-icon teal">🔧</div>
+        <h3>ERPNext Customisation</h3>
+        <p>Custom doctypes, workflows, print formats, and reports tailored to your exact business processes on ERPNext. No workarounds, no generic solutions — every customisation is built to match how your team actually works.</p>
+        <a href="erpnext-customisation.html" class="card-link">View Details →</a>
+      </div>
+
+      <div class="service-card">
+        <div class="card-icon purple">💻</div>
+        <h3>Frappe Development</h3>
+        <p>Custom app development on the Frappe Framework — from internal tools to full-fledged products built on a proven platform. Ideal for businesses that need functionality ERPNext does not offer out of the box.</p>
+        <a href="services/frappe-development.html" class="card-link">View Details →</a>
+      </div>
+
+      <div class="service-card">
+        <div class="card-icon amber">🔄</div>
+        <h3>ERPNext Migration</h3>
+        <p>Migrate from Tally, SAP Business One, or legacy systems to ERPNext with zero data loss and minimal downtime. Our migration methodology has been tested across dozens of businesses with complex historical data.</p>
+        <a href="erpnext-migration.html" class="card-link">View Details →</a>
+      </div>
+
+      <div class="service-card">
+        <div class="card-icon blue">☁️</div>
+        <h3>SaaS Development</h3>
+        <p>Build and scale multi-tenant SaaS products on the Frappe Framework, from MVP to production-ready platform. We help ISVs and product teams launch faster using a battle-tested open-source foundation.</p>
+        <a href="saas-development.html" class="card-link">View Details →</a>
+      </div>
+
+      <div class="service-card">
+        <div class="card-icon teal">⬆️</div>
+        <h3>ERPNext Upgrade</h3>
+        <p>Seamlessly upgrade your ERPNext instance to the latest version with full testing, data integrity checks, and post-upgrade support. We handle the complexity of custom apps and third-party connectors through version transitions.</p>
+        <a href="erpnext-upgrade.html" class="card-link">View Details →</a>
+      </div>
+
+      <div class="service-card">
+        <div class="card-icon amber">🎓</div>
+        <h3>ERPNext Training</h3>
+        <p>Role-based training programs for end-users and administrators to maximise ERPNext adoption and productivity across your organisation. Available on-site, remote, or as recorded sessions your team can revisit.</p>
+        <a href="erpnext-training.html" class="card-link">View Details →</a>
+      </div>
+
+      <div class="service-card">
+        <div class="card-icon blue">🎧</div>
+        <h3>ERPNext Support</h3>
+        <p>Dedicated helpdesk and technical support plans to keep your ERPNext system running smoothly with fast response times. SLA-backed support across India Standard Time and Gulf Standard Time.</p>
+        <a href="erpnext-support.html" class="card-link">View Details →</a>
+      </div>
+
+      <div class="service-card">
+        <div class="card-icon purple">⚙️</div>
+        <h3>ERPNext Managed Services</h3>
+        <p>Fully managed ERPNext hosting, monitoring, backups, and administration so your team can focus on the business, not the infrastructure. Includes proactive health checks and performance tuning.</p>
+        <a href="serpnext-managed-services.html" class="card-link">View Details →</a>
+      </div>
+
+      <div class="service-card">
+        <div class="card-icon teal">🔌</div>
+        <h3>ERPNext Integration</h3>
+        <p>Connect ERPNext with third-party platforms — payment gateways, eCommerce, CRMs, and more — via REST APIs and custom connectors. Pre-built packs for Razorpay, WhatsApp, Shopify, Power BI, and 50+ tools.</p>
+        <a href="erpnext-integration.html" class="card-link">View Details →</a>
+      </div>
+
+      <div class="service-card">
+        <div class="card-icon amber">🖥️</div>
+        <h3>ERPNext Development</h3>
+        <p>Bespoke ERPNext module development and feature extensions to meet industry-specific requirements beyond standard functionality. Built using ERPNext's official hooks and app architecture — upgrade-safe by design.</p>
+        <a href="erpnext-development.html" class="card-link">View Details →</a>
+      </div>
+
+      <div class="service-card">
+        <div class="card-icon blue">👔</div>
+        <h3>ERPNext Consulting</h3>
+        <p>Strategic ERP consulting to help you plan, optimise, and scale your ERPNext ecosystem aligned with your long-term business goals. Ideal for businesses evaluating ERPNext or rethinking an existing deployment.</p>
+        <a href="erpnext-consulting.html" class="card-link">View Details →</a>
+      </div>
+
+    </div>
+  </div>
+</section>
+
+<!-- WHY QUANTBIT -->
+<section class="why-section">
+  <div class="container">
+    <div class="text-center">
+      <div class="section-eyebrow">Why Quantbit</div>
+      <h2 class="section-title">A Certified ERPNext Partner That Has Done This Before</h2>
+      <p class="section-sub">We are not a general IT company that also does ERPNext. ERPNext and Frappe is all we do — and we have been doing it long enough to know what goes wrong and how to prevent it.</p>
+    </div>
+    <div class="why-grid">
+      <div class="why-card">
+        <span class="why-icon">🏭</span>
+        <h3>Industry-Specific Experience</h3>
+        <p>We have implemented ERPNext in foundries, hospitals, real estate developers, D2C brands, and facility management companies. The configuration, data model, and workflows look different in every vertical — we already know how.</p>
+      </div>
+      <div class="why-card">
+        <span class="why-icon">🌍</span>
+        <h3>India & GCC Compliance Built In</h3>
+        <p>GST e-invoicing, TDS/TCS, Oman VAT, UAE VAT, multi-currency — compliance requirements across our markets are handled from day one, not retrofitted later.</p>
+      </div>
+      <div class="why-card">
+        <span class="why-icon">🔗</span>
+        <h3>Pre-Built Integration Packs</h3>
+        <p>50+ pre-built connectors for payments, WhatsApp, logistics, analytics, AI, and industrial IoT mean your ERPNext instance is not an island. Integration is part of the implementation, not an afterthought.</p>
+      </div>
+      <div class="why-card">
+        <span class="why-icon">📈</span>
+        <h3>Upgrade-Safe Everything</h3>
+        <p>Every customisation and connector we build uses ERPNext's official app architecture and hooks — not monkey patches. Your investment survives version upgrades without a rebuild.</p>
+      </div>
+      <div class="why-card">
+        <span class="why-icon">🤝</span>
+        <h3>One Team, End to End</h3>
+        <p>The consultant who scopes your project, the developer who builds it, and the support engineer who answers your calls are all on the same team. No handoffs, no finger-pointing.</p>
+      </div>
+      <div class="why-card">
+        <span class="why-icon">⏱️</span>
+        <h3>Fast, Predictable Delivery</h3>
+        <p>Our implementation methodology, pre-built templates, and connector packs cut delivery timelines significantly compared to bespoke builds. Most standard implementations go live within 6 to 10 weeks.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- HOW WE WORK -->
+<section class="process-section">
+  <div class="container">
+    <div class="text-center">
+      <div class="section-eyebrow">Our Process</div>
+      <h2 class="section-title">How Every Engagement Works</h2>
+      <p class="section-sub">Whether you are implementing ERPNext for the first time or extending an existing system, every project follows the same structured approach — so you always know where things stand.</p>
+    </div>
+    <div class="steps">
+      <div class="step">
+        <div class="step-num">1</div>
+        <h3>Discovery & Scoping</h3>
+        <p>We spend time understanding your business before writing a single line of configuration. We map your processes, identify gaps between standard ERPNext and your requirements, and produce a clear scope document — so there are no surprises at go-live.</p>
+      </div>
+      <div class="step">
+        <div class="step-num">2</div>
+        <h3>Build, Configure & Test</h3>
+        <p>Our team configures ERPNext to your chart of accounts, workflows, print formats, and integrations — and runs it against your real data until it behaves exactly as agreed. We do not go live until you have signed off on every critical flow.</p>
+      </div>
+      <div class="step">
+        <div class="step-num">3</div>
+        <h3>Go Live & Stay Supported</h3>
+        <p>Go-live is not the end of the engagement. We are there for the first few weeks to catch edge cases, train your team on what changed, and make adjustments as real usage reveals what testing missed. Long-term support and managed services keep the system healthy.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- FAQ -->
+<section class="faq-section">
+  <div class="container">
+    <div class="text-center">
+      <div class="section-eyebrow">FAQs</div>
+      <h2 class="section-title">Questions We Hear Before Every Project</h2>
+    </div>
+    <div class="faq-list">
+      <div class="faq-item open">
+        <div class="faq-q" onclick="this.parentElement.classList.toggle('open')">How long does a typical ERPNext implementation take?</div>
+        <div class="faq-a">A standard single-company ERPNext implementation — covering finance, inventory, purchasing, and sales — typically takes 6 to 10 weeks from kick-off to go-live. Manufacturing modules with production planning, quality control, and shop floor integration typically take 10 to 16 weeks. The timeline depends primarily on the complexity of your existing processes and how quickly your team can participate in configuration reviews and user acceptance testing.</div>
+      </div>
+      <div class="faq-item">
+        <div class="faq-q" onclick="this.parentElement.classList.toggle('open')">Can you migrate our data from Tally or SAP Business One?</div>
+        <div class="faq-a">Yes. We have run migrations from Tally Prime, Tally ERP 9, SAP Business One, Microsoft Dynamics, and several industry-specific legacy systems. The migration covers opening balances, customer and vendor masters, item masters, and historical transactions up to a cut-off date agreed during the scoping phase. All migrated data is validated against your source system before go-live.</div>
+      </div>
+      <div class="faq-item">
+        <div class="faq-q" onclick="this.parentElement.classList.toggle('open')">Will customisations break when ERPNext upgrades?</div>
+        <div class="faq-a">Not if they are built the right way. Quantbit builds every customisation as a separate Frappe custom app using ERPNext's official hooks, override patterns, and custom doctype architecture. This means customisations live outside the core ERPNext codebase and survive version upgrades cleanly. When a major ERPNext release does change an underlying API that affects a custom app, we test and update the app as part of the upgrade engagement.</div>
+      </div>
+      <div class="faq-item">
+        <div class="faq-q" onclick="this.parentElement.classList.toggle('open')">Do you support businesses outside India?</div>
+        <div class="faq-a">Yes. Quantbit has a physical office in Muscat and has delivered ERPNext implementations for businesses in Oman, UAE, and Kenya. Our implementation teams are experienced with Oman VAT, UAE VAT, and multi-currency setups. Support is available across both Indian Standard Time and Gulf Standard Time. For Kenya, we have experience with KRA-compliant invoice formats and multi-currency trading setups.</div>
+      </div>
+      <div class="faq-item">
+        <div class="faq-q" onclick="this.parentElement.classList.toggle('open')">What does ERPNext managed services include?</div>
+        <div class="faq-a">Our managed services plan covers server monitoring and uptime management, daily automated backups with tested restore procedures, ERPNext version patching and security updates, performance tuning as data volumes grow, and a dedicated support channel for your team's day-to-day questions. It is designed for businesses that want ERPNext to run reliably without having to hire an in-house ERPNext administrator.</div>
+      </div>
+      <div class="faq-item">
+        <div class="faq-q" onclick="this.parentElement.classList.toggle('open')">Can we start with one module and expand later?</div>
+        <div class="faq-a">Absolutely — and this is often the right approach for businesses that want to move quickly without overwhelming their team. Many of our clients start with Finance and Inventory, then add HR and Payroll in phase two, and integrate payment gateways or production planning in phase three. ERPNext's modular architecture makes phased rollouts natural, and our scoping process always maps out the full long-term picture so that phase-one decisions do not create obstacles for later phases.</div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- CTA -->
+<section class="cta-section">
+  <div class="container">
+    <h2>Ready to See What ERPNext Can Do for Your Business?</h2>
+    <p>Tell us about your current system, your team size, and what is not working. We will show you exactly what an ERPNext implementation would look like for you — and what it would cost.</p>
+    <a href="/company/contact-us.html" class="btn-primary" style="font-size:1.05rem;padding:16px 36px">Book a Free Demo →</a>
+  </div>
+</section>
+
+<div id="footer"></div>
+
+<script>
+document.querySelectorAll('.faq-q').forEach(q=>{
+  q.addEventListener('click',()=>{
+    const item=q.parentElement;
+    document.querySelectorAll('.faq-item').forEach(i=>{if(i!==item)i.classList.remove('open')});
+    item.classList.toggle('open');
+  });
+});
+</script>
+<script>
+fetch("/header.html")
+    .then(res => res.text())
+    .then(data => { document.getElementById("header").innerHTML = data; });
+fetch("/footer.html")
+    .then(res => res.text())
+    .then(data => { document.getElementById("footer").innerHTML = data; });
+</script>
+<script data-cfasync="false" src="../../cdn-cgi/scripts/5c5dd728/cloudflare-static/email-decode.min.js"></script>
+<script src="/../assets/quantbit_website/js/jquery-3.7.1.min.js"></script>
+<script src="/../assets/quantbit_website/js/viewport.jquery.js"></script>
+<script src="/../assets/quantbit_website/js/bootstrap.bundle.min.js"></script>
+<script src="/../assets/quantbit_website/js/jquery.nice-select.min.js"></script>
+<script src="/../assets/quantbit_website/js/jquery.waypoints.js"></script>
+<script src="/../assets/quantbit_website/js/jquery.counterup.min.js"></script>
+<script src="/../assets/quantbit_website/js/slick.min.js"></script>
+<script src="/../assets/quantbit_website/js/slick-animation.min.js"></script>
+<script src="/../assets/quantbit_website/js/jquery.meanmenu.min.js"></script>
+<script src="/../assets/quantbit_website/js/jquery.magnific-popup.min.js"></script>
+<script src="/../assets/quantbit_website/js/wow.min.js"></script>
+<script src="/../assets/quantbit_website/js/circle-progress.js"></script>
+<script src="/../assets/quantbit_website/js/main.js"></script>
+</body>
+</html>

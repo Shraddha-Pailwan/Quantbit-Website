@@ -1,0 +1,26 @@
+User-agent: *
+
+# Block admin & system pages
+Disallow: /admin/
+Disallow: /login/
+Disallow: /logout/
+Disallow: /register/
+Disallow: /private/
+Disallow: /dashboard/
+
+# Block thank-you / confirmation pages (no SEO value)
+Disallow: /thank-you.html
+Disallow: /thankyou.html
+Disallow: /success.html
+
+# Block draft / test / staging environments
+Disallow: /draft/
+Disallow: /test/
+Disallow: /dev/
+Disallow: /staging/
+
+# Block CDN utility paths
+Disallow: /cdn-cgi/
+
+# Sitemap location
+Sitemap: https://quantbit.io/sitemap.xml

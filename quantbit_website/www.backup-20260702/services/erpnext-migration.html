@@ -1,0 +1,216 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8"><meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Migration to ERPNext | Tally, SAP, Odoo to ERPNext | Quantbit Technologies</title>
+<meta name="description" content="Migrate from Tally, SAP Business One, Odoo, Microsoft Dynamics, or any legacy system to ERPNext with zero data loss. Quantbit Technologies is a certified ERPNext migration partner with proven methodology and 15+ industry implementations.">
+<meta name="keywords" content="migrate to ERPNext, Tally to ERPNext migration, SAP to ERPNext, Odoo to ERPNext migration, ERPNext data migration, ERPNext migration services, legacy ERP to ERPNext, ERPNext migration partner">
+<link rel="canonical" href="https://quantbit.io/services/erpnext-migration">
+<meta property="og:title" content="Migration to ERPNext | Quantbit Technologies">
+<meta property="og:description" content="Certified ERPNext migration from Tally, SAP, Odoo, and legacy systems. Zero data loss. Business continuity guaranteed.">
+<meta property="og:url" content="https://quantbit.io/services/erpnext-migration">
+<meta name="twitter:card" content="summary_large_image">
+<script type="application/ld+json">
+{"@context":"https://schema.org","@graph":[{"@type":"Organization","@id":"https://quantbit.io/#org","name":"Quantbit Technologies Pvt. Ltd.","url":"https://quantbit.io"},{"@type":"Service","@id":"https://quantbit.io/services/erpnext-migration#service","name":"ERP Migration to ERPNext","serviceType":"ERP Data Migration","description":"Complete data migration from Tally, SAP Business One, Odoo, Microsoft Dynamics, and legacy systems to ERPNext. Includes data mapping, cleaning, validation, parallel-run testing, and zero-downtime cutover.","provider":{"@id":"https://quantbit.io/#org"},"areaServed":{"@type":"Country","name":"Worldwide"}},{"@type":"FAQPage","mainEntity":[{"@type":"Question","name":"Can we migrate from Tally to ERPNext without losing data?","acceptedAnswer":{"@type":"Answer","text":"Yes. Quantbit has migrated dozens of businesses from Tally to ERPNext with zero data loss. Our Tally migration methodology covers masters (accounts, items, parties, warehouses), opening balances, outstanding receivables and payables, and historical transaction data where required. We use a combination of Tally's XML export and custom import scripts validated against your original data before any cutover."}},{"@type":"Question","name":"How long does migration from Tally to ERPNext take?","acceptedAnswer":{"@type":"Answer","text":"A Tally to ERPNext migration for a company with standard modules typically takes 4–8 weeks, running in parallel with the ERPNext implementation. The migration itself (data extraction, mapping, import, validation) takes 1–2 weeks. The remaining time is configuration, UAT, and parallel run to ensure the new system matches historical data exactly before cutover."}},{"@type":"Question","name":"What data can be migrated from our old ERP to ERPNext?","acceptedAnswer":{"@type":"Answer","text":"Quantbit migrates: Chart of Accounts, Customer and Supplier masters, Item masters with prices and UoMs, Warehouse and bin structure, Opening stock balances, Opening accounting balances, Outstanding receivables and payables, Bank account details, Employee masters and payroll data, and historical transactions (sales, purchases, stock movements) where clients require them for reporting continuity."}},{"@type":"Question","name":"Can you migrate from SAP Business One to ERPNext?","acceptedAnswer":{"@type":"Answer","text":"Yes. Quantbit has migrated businesses from SAP B1 to ERPNext, covering master data, opening balances, and historical transactions. SAP B1 data is exported via SAP's Data Transfer Workbench or directly from HANA/SQL tables, mapped to ERPNext's data model, cleaned, and imported with validation. The primary motivation is usually eliminating SAP licence fees while retaining the functionality businesses actually use."}},{"@type":"Question","name":"Will my historical data be available in ERPNext after migration?","acceptedAnswer":{"@type":"Answer","text":"Yes. Quantbit migrates historical transaction data — invoices, purchase orders, stock entries, journal entries — into ERPNext so your reports and audit trail remain intact. For very large historical datasets, we also offer a read-only archive instance of your old system alongside the live ERPNext installation, so legacy data remains accessible without cluttering the active database."}},{"@type":"Question","name":"What is a parallel run and why is it important?","acceptedAnswer":{"@type":"Answer","text":"A parallel run means operating both your old system and ERPNext simultaneously for a defined period (typically 2–4 weeks) before cutover. During this period, your team enters transactions in both systems and Quantbit reconciles the outputs. This validates that ERPNext is producing the same financial results as your legacy system — eliminating cutover risk and building user confidence before the old system is switched off."}}]}]}
+</script>
+<link rel="stylesheet" href="/assets/quantbit_website/css/_shared.css">
+<style>
+.migration-sources { display: grid; grid-template-columns: repeat(3,1fr); gap: 14px; margin-top: 32px; }
+.source-card {
+  background: var(--white); border: 1px solid var(--border);
+  border-radius: var(--radius-lg); padding: 22px 20px;
+  display: flex; align-items: flex-start; gap: 14px;
+}
+.source-icon { font-size: 1.8rem; flex-shrink: 0; }
+.source-card h4 { font-size: .9rem; font-weight: 600; color: var(--navy); margin-bottom: 4px; }
+.source-card p { font-size: .8rem; color: var(--slate-l); line-height: 1.5; }
+@media(max-width:768px){ .migration-sources{grid-template-columns:1fr 1fr} }
+@media(max-width:500px){ .migration-sources{grid-template-columns:1fr} }
+</style>
+<!-- TEMPLATE CSS (IMPORTANT) -->
+    <link rel="stylesheet" href="/../assets/quantbit_website/css/bootstrap.min.css">
+    <link rel="stylesheet" href="/../assets/quantbit_website/css/font-awesome.css">
+    <link rel="stylesheet" href="/../assets/quantbit_website/css/animate.css">
+    <link rel="stylesheet" href="/../assets/quantbit_website/css/magnific-popup.css">
+    <link rel="stylesheet" href="/../assets/quantbit_website/css/meanmenu.css">
+    <link rel="stylesheet" href="/../assets/quantbit_website/css/slick.css">
+    <link rel="stylesheet" href="/../assets/quantbit_website/css/nice-select.css">
+    <link rel="stylesheet" href="/../assets/quantbit_website/css/main.css">
+    <link rel="stylesheet" href="style.css">
+    <!-- <link rel="stylesheet" href="/assets/quantbit_website/css/_shared.css"> -->
+
+
+    <!-- OPTIONAL CUSTOM -->
+    <link rel="stylesheet" href="/../assets/quantbit_website/css/hrms.css">
+      <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
+<!-- Google Tag Manager -->
+<script>(function(w,d,s,l,i){w[l]=w[l]||[];w[l].push({'gtm.start':
+new Date().getTime(),event:'gtm.js'});var f=d.getElementsByTagName(s)[0],
+j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
+'https://www.googletagmanager.com/gtm.js?id='+i+dl;f.parentNode.insertBefore(j,f);
+})(window,document,'script','dataLayer','GTM-P98Z6G8D');</script>
+<!-- End Google Tag Manager -->
+</head>
+<body>
+<!-- Google Tag Manager (noscript) -->
+<noscript><iframe src="https://www.googletagmanager.com/ns.html?id=GTM-P98Z6G8D"
+height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
+<!-- End Google Tag Manager (noscript) -->
+  <div id="header"></div>
+<div class="service-nav-strip"><div class="service-nav-inner"><a href="erpnext-implementation.html" class="sn-link">ERPNext Implementation</a><a href="frappe-development.html" class="sn-link">Frappe Development</a><a href="erpnext-customisation.html" class="sn-link">ERPNext Customisation</a><a href="erpnext-migration.html" class="sn-link active">Migration</a><a href="saas-development.html" class="sn-link">SaaS Development</a></div></div>
+
+<section class="hero">
+  <div class="container">
+    <div class="hero-grid">
+      <div>
+        <div class="hero-eyebrow">Certified ERPNext Migration Partner</div>
+        <h1>Move to ERPNext with <span class="accent">Zero Data Loss</span></h1>
+        <p class="hero-desc">Tally, SAP, Odoo, or a legacy system — Quantbit's migration methodology has moved businesses from every ERP to ERPNext without disruption, data gaps, or cutover drama.</p>
+        <div class="hero-actions">
+          <a href="/company/contact-us.html" class="btn-primary">Assess my migration ↗</a>
+          <a href="erpnext-implementation.html" class="btn-ghost">View implementation service</a>
+        </div>
+      </div>
+      <div class="code-card">
+        <div class="code-card-bar"><div class="cc-dot r"></div><div class="cc-dot y"></div><div class="cc-dot g"></div><span class="cc-file">migration_log.txt</span></div>
+        <pre><span class="cc-comment">// Migration status — Quantbit</span>
+<span class="cc-key">source</span>: <span class="cc-str">"Tally Prime"</span>
+<span class="cc-key">target</span>: <span class="cc-str">"ERPNext v15"</span>
+
+<span class="cc-key">accounts_migrated</span>:  <span class="cc-num">847</span>
+<span class="cc-key">items_migrated</span>:     <span class="cc-num">4291</span>
+<span class="cc-key">parties_migrated</span>:   <span class="cc-num">1203</span>
+<span class="cc-key">balance_variance</span>:   <span class="cc-num">₹0.00</span>
+<span class="cc-key">status</span>: <span class="cc-str">"VALIDATED ✓"</span></pre>
+      </div>
+    </div>
+  </div>
+</section>
+
+<div class="trust-strip"><div class="trust-inner"><div class="trust-item"><span class="trust-icon">✦</span> Zero Data Loss Methodology</div><div class="trust-divider"></div><div class="trust-item"><span class="trust-icon">🔄</span> Parallel Run Option Available</div><div class="trust-divider"></div><div class="trust-item"><span class="trust-icon">📊</span> Full Historical Data Migrated</div><div class="trust-divider"></div><div class="trust-item"><span class="trust-icon">🏭</span> 15+ Industries Migrated</div><div class="trust-divider"></div><div class="trust-item"><span class="trust-icon">✦</span> Certified Frappe Partner</div></div></div>
+
+<section class="section">
+  <div class="container">
+    <span class="label">Migration sources</span>
+    <h2>We Migrate From Any ERP to ERPNext</h2>
+    <p style="max-width:600px;margin-top:12px">Our migration team has developed proven, repeatable playbooks for each of these source systems — so your migration is not an experiment.</p>
+    <div class="migration-sources">
+      <div class="source-card"><div class="source-icon">📒</div><div><h4>Tally Prime / ERP9</h4><p>Full master data, opening balances, outstanding entries, and historical vouchers. The most common migration Quantbit handles.</p></div></div>
+      <div class="source-card"><div class="source-icon">🔷</div><div><h4>SAP Business One</h4><p>Masters, balances, and transactions exported via DTW or direct SQL, mapped to ERPNext's data model and validated to the rupee.</p></div></div>
+      <div class="source-card"><div class="source-icon">🟣</div><div><h4>Odoo</h4><p>Full PostgreSQL data export, partner and product migration, accounting entries reconciled and imported with history intact.</p></div></div>
+      <div class="source-card"><div class="source-icon">🔶</div><div><h4>Microsoft Dynamics NAV / BC</h4><p>Master data, financial history, and open transactions migrated from Dynamics via XML export and custom mapping scripts.</p></div></div>
+      <div class="source-card"><div class="source-icon">📊</div><div><h4>Excel / Spreadsheets</h4><p>Businesses managing operations in Excel — we structure, clean, and migrate all data into a properly configured ERPNext instance.</p></div></div>
+      <div class="source-card"><div class="source-icon">🗃️</div><div><h4>Legacy / Custom Systems</h4><p>Bespoke legacy software, industry-specific systems, and any structured database — we extract, map, and migrate regardless of source format.</p></div></div>
+    </div>
+  </div>
+</section>
+
+<section class="section-sm" style="background:var(--bg2)">
+  <div class="container">
+    <span class="label">What we migrate</span>
+    <h2>Every Data Entity Accounted For</h2>
+    <p style="max-width:600px;margin-top:12px">A migration is only complete when every piece of data your team depends on is in ERPNext and reconciled.</p>
+    <div class="offer-grid">
+      <div class="offer-card"><div class="offer-icon">📋</div><h3>Chart of Accounts</h3><p>Full account tree migrated and mapped to ERPNext's account type structure. Opening balances reconciled to the last paisa.</p></div>
+      <div class="offer-card"><div class="offer-icon">👥</div><h3>Customer &amp; Supplier Masters</h3><p>All party data including credit limits, payment terms, GST numbers, addresses, and contact details — migrated and linked.</p></div>
+      <div class="offer-card"><div class="offer-icon">📦</div><h3>Item &amp; Product Masters</h3><p>Items with UoMs, price lists, tax templates, warehouse bins, and opening stock — validated against physical stock where possible.</p></div>
+      <div class="offer-card"><div class="offer-icon">💰</div><h3>Opening Balances</h3><p>All debit and credit balances as of the cutover date, verified to match your old system's trial balance exactly.</p></div>
+      <div class="offer-card"><div class="offer-icon">📄</div><h3>Outstanding Transactions</h3><p>Open sales invoices, purchase bills, advance payments, and outstanding orders — carried forward so collections and payments continue without interruption.</p></div>
+      <div class="offer-card"><div class="offer-icon">📈</div><h3>Historical Data</h3><p>Previous-year transactions for reporting continuity and audit trail — migrated into ERPNext as historical records.</p></div>
+    </div>
+  </div>
+</section>
+
+<section class="section-sm" style="background:var(--white)">
+  <div class="container">
+    <div class="stats-row">
+      <div class="stat-item"><div class="stat-num">₹0</div><div class="stat-label">Balance variance on successful migrations</div></div>
+      <div class="stat-item"><div class="stat-num">4–8</div><div class="stat-label">Weeks average migration duration</div></div>
+      <div class="stat-item"><div class="stat-num">15<span>+</span></div><div class="stat-label">Source systems migrated from</div></div>
+      <div class="stat-item"><div class="stat-num">100<span>%</span></div><div class="stat-label">Business continuity maintained</div></div>
+    </div>
+  </div>
+</section>
+
+<section class="section" style="background:var(--bg2)">
+  <div class="container">
+    <span class="label">Migration process</span>
+    <h2>Our 4-Stage Zero-Risk Migration Process</h2>
+    <p style="max-width:600px;margin-top:12px">Every migration Quantbit handles follows this sequence — designed to eliminate risk at every stage before cutover.</p>
+    <div class="process-grid">
+      <div class="process-step"><div class="step-num">STAGE 01</div><h3>Extract &amp; Map</h3><p>Export all data from your source system. Map every field to ERPNext's data model. Document every transformation rule.</p></div>
+      <div class="process-step"><div class="step-num">STAGE 02</div><h3>Clean &amp; Validate</h3><p>Identify and fix duplicate masters, invalid references, missing mandatory fields, and encoding issues before import.</p></div>
+      <div class="process-step"><div class="step-num">STAGE 03</div><h3>Import &amp; Reconcile</h3><p>Import to a test ERPNext instance. Reconcile opening balances against source system's trial balance. Zero-variance sign-off.</p></div>
+      <div class="process-step"><div class="step-num">STAGE 04</div><h3>Cutover &amp; Parallel</h3><p>Go-live import, parallel run period if needed, final balance verification, and source system handover.</p></div>
+    </div>
+  </div>
+</section>
+
+<div class="cert-band"><div class="cert-inner"><div class="cert-label">Credentials</div><div class="cert-badges"><div class="cert-badge"><span class="cb-icon">✦</span> Certified Frappe Partner</div><div class="cert-badge"><span class="cb-icon">✦</span> ERPNext Migration Certified</div><div class="cert-badge"><span class="cb-icon">✦</span> GST-Compliant Migration Methodology</div><div class="cert-badge"><span class="cb-icon">✦</span> 15+ Industries Migrated</div></div></div></div>
+
+<section class="faq-section">
+  <div class="container">
+    <span class="label">Common questions</span>
+    <h2>ERPNext Migration — Answered</h2>
+    <div class="faq-terminal">
+      <div class="faq-item open"><button class="faq-question" onclick="toggleFaq(this)"><span class="faq-prompt">❯</span><span class="faq-q-text">Can we migrate from Tally to ERPNext without losing data?</span><span class="faq-chevron">›</span></button><div class="faq-answer">Yes. Quantbit has migrated dozens of businesses from Tally to ERPNext with zero data loss. Our methodology covers masters, opening balances, outstanding receivables and payables, and historical transactions. We use Tally's XML export with custom import scripts validated against your original data before any cutover.</div></div>
+      <div class="faq-item"><button class="faq-question" onclick="toggleFaq(this)"><span class="faq-prompt">❯</span><span class="faq-q-text">How long does migration from Tally to ERPNext take?</span><span class="faq-chevron">›</span></button><div class="faq-answer">A Tally to ERPNext migration for a standard company typically takes 4–8 weeks, running in parallel with the ERPNext implementation. The migration itself takes 1–2 weeks. The remaining time covers configuration, UAT, and parallel run to ensure the new system matches historical data exactly before cutover.</div></div>
+      <div class="faq-item"><button class="faq-question" onclick="toggleFaq(this)"><span class="faq-prompt">❯</span><span class="faq-q-text">Can you migrate from SAP Business One to ERPNext?</span><span class="faq-chevron">›</span></button><div class="faq-answer">Yes. Quantbit has migrated businesses from SAP B1 to ERPNext, covering master data, opening balances, and historical transactions. SAP B1 data is exported via Data Transfer Workbench or directly from HANA/SQL tables, mapped to ERPNext's data model, cleaned, and imported with full validation. The primary driver is usually eliminating SAP licence fees while retaining functionality.</div></div>
+      <div class="faq-item"><button class="faq-question" onclick="toggleFaq(this)"><span class="faq-prompt">❯</span><span class="faq-q-text">What is a parallel run and why does it matter?</span><span class="faq-chevron">›</span></button><div class="faq-answer">A parallel run means operating both your old system and ERPNext simultaneously for 2–4 weeks before cutover. Your team enters transactions in both systems and we reconcile the outputs. This validates that ERPNext produces the same financial results as your legacy system — eliminating cutover risk and building user confidence before the old system is switched off.</div></div>
+      <div class="faq-item"><button class="faq-question" onclick="toggleFaq(this)"><span class="faq-prompt">❯</span><span class="faq-q-text">Will historical data be available after migration?</span><span class="faq-chevron">›</span></button><div class="faq-answer">Yes. Quantbit migrates historical transactions — invoices, purchase orders, stock entries, journal entries — so your reports and audit trail remain intact. For very large datasets, we also offer a read-only archive instance of your old system alongside live ERPNext, so legacy data remains accessible without cluttering the active database.</div></div>
+    </div>
+  </div>
+</section>
+
+<section class="cta-band"><div class="container"><h2>Ready to leave your old ERP behind?</h2><p>Book a free migration assessment. We will audit your current system and give you a clear timeline, scope, and cost estimate.</p><a href="/company/contact-us.html" class="btn-dark">Get a migration assessment ↗</a></div></section>
+<div id="footer"></div><script>function toggleFaq(btn){const item=btn.closest('.faq-item');const isOpen=item.classList.contains('open');document.querySelectorAll('.faq-item').forEach(i=>i.classList.remove('open'));if(!isOpen)item.classList.add('open');}</script>
+<script>
+fetch("/header.html")
+    .then(res => res.text())
+    .then(data => {
+        document.getElementById("header").innerHTML = data;
+    });
+
+fetch("/footer.html")
+    .then(res => res.text())
+    .then(data => {
+        document.getElementById("footer").innerHTML = data;
+    });
+</script>
+<!-- ================= TEMPLATE JS ================= -->
+    <!--<< All JS Plugins >>-->
+    <script data-cfasync="false" src="../../cdn-cgi/scripts/5c5dd728/cloudflare-static/email-decode.min.js"></script>
+    <script src="/../assets/quantbit_website/js/jquery-3.7.1.min.js"></script>
+    <!--<< Viewport Js >>-->
+    <script src="/../assets/quantbit_website/js/viewport.jquery.js"></script>
+    <!--<< Bootstrap Js >>-->
+    <script src="/../assets/quantbit_website/js/bootstrap.bundle.min.js"></script>
+    <!--<< Nice Select Js >>-->
+    <script src="/../assets/quantbit_website/js/jquery.nice-select.min.js"></script>
+    <!--<< Waypoints Js >>-->
+    <script src="/../assets/quantbit_website/js/jquery.waypoints.js"></script>
+    <!--<< Counterup Js >>-->
+    <script src="/../assets/quantbit_website/js/jquery.counterup.min.js"></script>
+    <!--<< Slick Js >>-->
+    <script src="/../assets/quantbit_website/js/slick.min.js"></script>
+    <!--<< Slick Animation Js >>-->
+    <script src="/../assets/quantbit_website/js/slick-animation.min.js"></script>
+    <!--<< MeanMenu Js >>-->
+    <script src="/../assets/quantbit_website/js/jquery.meanmenu.min.js"></script>
+    <!--<< Magnific Popup Js >>-->
+    <script src="/../assets/quantbit_website/js/jquery.magnific-popup.min.js"></script>
+    <!--<< Wow Animation Js >>-->
+    <script src="/../assets/quantbit_website/js/wow.min.js"></script>
+    <!--<< Circle Progress Js >>-->
+    <script src="/../assets/quantbit_website/js/circle-progress.js"></script>
+    <!--<< Main.js >>-->
+    <script src="/../assets/quantbit_website/js/main.js"></script>
+    <script defer
+        src="../../../static.cloudflareinsights.com/beacon.min.js/v8c78df7c7c0f484497ecbca7046644da1771523124516"
+        integrity="sha512-8DS7rgIrAmghBFwoOTujcf6D9rXvH8xm8JQ1Ja01h9QX8EzXldiszufYa4IFfKdLUKTTrnSFXLDkUEOTrZQ8Qg=="
+        data-cf-beacon='{"version":"2024.11.0","token":"90f7972af14a48b4add7da2b74f5d675","r":1,"server_timing":{"name":{"cfCacheStatus":true,"cfEdge":true,"cfExtPri":true,"cfL4":true,"cfOrigin":true,"cfSpeedBrain":true},"location_startswith":null}}'
+        crossorigin="anonymous"></script>
+
+
+</body>
+</html>

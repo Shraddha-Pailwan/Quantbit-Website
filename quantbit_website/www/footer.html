@@ -1,72 +1,82 @@
 <!-- ============================================================
-     QUANTBIT FOOTER — responsive, self-contained
-     Drop this markup + <style> block wherever your footer belongs.
-     Font Awesome is loaded from CDN for the icons already in use.
+     QUANTBIT FOOTER — dark navy palette (original colors),
+     typography / spacing / font matched to zoho.com footer
      ============================================================ -->
 <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Noto+Sans:wght@400;500;600;700&display=swap" rel="stylesheet">
 
 <style>
   :root{
     --footer-bg: #0a1435;
-    --footer-bg-2: #0d1840;
-    --accent: #2f6bff;
-    --text-main: #ffffff;
-    --text-muted: #9aa3c0;
+    --bottom-bg: #0d1840;
+    --text-heading: #ffffff;
+    --text-link: #9aa3c0;
+    --text-link-hover: #ffffff;
+    --accent: #4d8bff;
     --divider: rgba(255,255,255,0.08);
   }
 
+  *{
+    box-sizing: border-box;
+  }
+
+  .footer-section,
+  .footer-section *{
+    font-family: 'Noto Sans', Arial, sans-serif;
+  }
+
+  .footer-section h5,
+  .footer-section p,
+  .footer-section ul,
+  .footer-section h3{
+    margin: 0;
+  }
+
   .footer-section{
-    background: var(--footer-bg);
-    color: var(--text-muted);
-    padding: 64px 0 0;
-    font-family: inherit;
+    background: var(--footer-bg) !important;
+    width: 100%;
+    padding-top: 24px !important;
+    padding-bottom: 0 !important;
+    overflow-x: hidden;
   }
 
   .footer-section .container{
-    max-width: 1280px;
+    width: 100%;
+    max-width: 1320px;
     margin: 0 auto;
     padding: 0 24px;
   }
 
-  /* ---------- MAIN GRID ----------
-     One responsive grid replaces the old row/col-xl mess.
-     Desktop: 5 tracks. Tablet: 3. Mobile: 1 (stacked, collapsible). */
+  /* ---------- MAIN GRID — all headings sit on one row ---------- */
   .footer-widgets-wrapper{
-    padding-bottom: 40px;
+    padding: 12px 0 10px;
   }
 
   .footer-grid{
     display: grid;
-    grid-template-columns: 1.4fr 0.9fr 0.9fr 1fr;
-    gap: 40px;
+    grid-template-columns: repeat(6, max-content);
+    justify-content: center;
+    column-gap: 55px;
+    row-gap: 16px;
     align-items: start;
+    width: 100%;
   }
 
-  .footer-products-group{
-    display: grid;
-    grid-template-columns: 1fr 1fr;
-    gap: 24px;
+  /* Headings styled like zoho.com — regular weight, not bold */
+  .widget-head h5{
+    color: var(--text-heading);
+    font-size: 15px;
+    font-weight: 500;
+    letter-spacing: normal;
+    line-height: 1.3;
+    white-space: nowrap;
   }
 
-  .widget-head h5,
-  .widget-head-static{
-    color: var(--text-main);
-    font-size: 18px;
-    font-weight: 700;
-    margin: 0 0 20px;
-    letter-spacing: .2px;
+  .widget-head{
+    margin: 0 0 10px;
   }
-
-  /* Second "Products" heading exists only to keep the two columns
-     visually aligned — hide it from sighted layout flow but keep
-     screen-reader context. */
-  .widget-head.second-head{
-    visibility: hidden;
-    height: 0;
-    margin: 0 0 20px;
-    overflow: hidden;
-  }
-  .widget-head.second-head h5{ margin:0; }
 
   .list-items{
     list-style: none;
@@ -75,185 +85,202 @@
   }
 
   .list-items li{
-    margin-bottom: 12px;
+    margin-bottom: 7px;
   }
 
   .list-items li a{
-    color: var(--text-muted);
+    color: var(--text-link);
     text-decoration: none;
-    font-size: 14.5px;
-    line-height: 1.4;
-    transition: color .15s ease, padding-left .15s ease;
-    display: inline-block;
+    font-size: 13px;
+    font-weight: 400;
+    line-height: 1.3;
+    transition: color .15s ease;
   }
 
   .list-items li a:hover{
-    color: var(--text-main);
-    padding-left: 3px;
+    color: var(--text-link-hover);
   }
 
-  /* ---------- CONTACT COLUMN ---------- */
-  .contact-line{
-    display: flex;
-    align-items: center;
-    gap: 10px;
+  /* ---------- CONTACT SALES COLUMN ---------- */
+  .contact-block .block{
     margin: 0 0 14px;
-    color: var(--text-main);
-    font-size: 14.5px;
   }
 
-  .contact-line a{
-    color: var(--text-main);
+  .contact-label{
+    color: var(--text-heading);
+    font-weight: 600;
+    font-size: 13px;
+    margin: 0 0 4px;
+  }
+
+  .contact-block a{
+    color: var(--text-link);
     text-decoration: none;
+    font-size: 13px;
+    font-weight: 400;
   }
-  .contact-line a:hover{ color: var(--accent); }
-
-  .contact-line i{
-    color: var(--accent);
-    width: 16px;
-    text-align: center;
-  }
-
-  .hours-label{
-    display: flex;
-    align-items: center;
-    gap: 10px;
-    color: var(--text-main);
-    font-size: 14.5px;
-    margin-bottom: 6px;
-  }
-  .hours-label i{ color: var(--accent); width:16px; text-align:center; }
+  .contact-block a:hover{ color: var(--text-link-hover); }
 
   .hours-value{
-    color: var(--text-muted);
-    font-size: 14px;
-    line-height: 1.6;
-    margin: 0 0 20px 26px;
+    color: var(--text-link);
+    font-size: 13px;
+    line-height: 1.4;
   }
 
-  .support-text p{
-    margin: 0 0 6px;
-    font-size: 13.5px;
-    color: var(--text-muted);
-    text-transform: uppercase;
-    letter-spacing: .5px;
+  .whatsapp-number{
+    font-size: 15px;
+    font-weight: 700;
   }
-
-  .support-text h3{
-    margin: 0;
-    font-size: 20px;
-  }
-
-  .support-text h3 a{
-    color: var(--text-main);
+  .whatsapp-number a{
+    color: var(--text-link);
     text-decoration: none;
+    font-size: 15px;
+    font-weight: 700;
   }
-  .support-text h3 a:hover{ color: var(--accent); }
+  .whatsapp-number a:hover{ color: var(--text-link-hover); }
+
+  .support-link{
+    display: flex;
+    align-items: center;
+    gap: 5px;
+    color: var(--accent);
+    text-decoration: none;
+    font-size: 13px;
+    font-weight: 600;
+  }
+  .support-link i{ font-size: 10px; transition: transform .15s ease; }
+  .support-link:hover i{ transform: translateX(3px); }
+
+  /* ---------- SOCIAL ROW (centered) ---------- */
+  .footer-social{
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 18px;
+    padding: 16px 0 14px;
+    border-top: 1px solid var(--divider);
+    margin-top: 8px;
+  }
+
+  .footer-social a{
+    font-size: 24px;
+    text-decoration: none;
+    transition: transform .15s ease, opacity .15s ease;
+  }
+  .footer-social a:hover{ transform: translateY(-2px); opacity: .85; }
+
+  .footer-social .fa-facebook{ color:#1877f2; }
+  .footer-social .fa-youtube{ color:#ff0000; }
+  .footer-social .fa-linkedin{ color:#0a66c2; }
+
+  /* Instagram brand gradient */
+  .footer-social .fa-instagram{
+    background: radial-gradient(circle at 30% 107%, #fdf497 0%, #fdf497 5%, #fd5949 45%, #d6249f 60%, #285AEB 90%);
+    -webkit-background-clip: text;
+    background-clip: text;
+    -webkit-text-fill-color: transparent;
+  }
+
+  /* ---------- LEGAL / POLICY LINKS ROW (centered) ---------- */
+  .footer-legal-links{
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    gap: 5px 16px;
+    list-style: none;
+    margin: 0;
+    padding: 0 0 16px;
+  }
+
+  .footer-legal-links li a{
+    color: var(--text-link);
+    text-decoration: none;
+    font-size: 12px;
+  }
+  .footer-legal-links li a:hover{ color: var(--text-link-hover); }
+
+  .footer-legal-links li:not(:last-child)::after{
+    content: "|";
+    margin-left: 16px;
+    color: var(--divider);
+  }
 
   /* ---------- FOOTER BOTTOM BAR ---------- */
   .footer-bottom{
-    border-top: 1px solid var(--divider);
-    background: var(--footer-bg-2);
-    padding: 20px 0;
+    background: var(--bottom-bg);
+    padding: 12px 0;
+    width: 100%;
   }
 
   .footer-wrapper{
     display: flex;
     align-items: center;
-    justify-content: space-between;
-    flex-wrap: wrap;
-    gap: 12px;
+    justify-content: center;
+    text-align: center;
   }
 
   .footer-wrapper p{
     margin: 0;
-    font-size: 13.5px;
-    color: var(--text-muted);
+    font-size: 12px;
+    color: rgba(255,255,255,0.65);
   }
 
   .footer-wrapper p a{
-    color: var(--text-main);
+    color: #fff;
     text-decoration: none;
   }
   .footer-wrapper p a:hover{ color: var(--accent); }
-
-  .footer-menu{
-    list-style: none;
-    display: flex;
-    gap: 24px;
-    margin: 0;
-    padding: 0;
-    flex-wrap: wrap;
-  }
-
-  .footer-menu a{
-    color: var(--text-muted);
-    text-decoration: none;
-    font-size: 13.5px;
-  }
-  .footer-menu a:hover{ color: var(--text-main); }
 
   /* ---------- WHATSAPP FLOATING BUTTON ---------- */
   .whatsapp-float{
     position: fixed;
     right: 24px;
     bottom: 24px;
-    width: 56px;
-    height: 56px;
+    width: 52px;
+    height: 52px;
     background: #25d366;
     border-radius: 50%;
     display: flex;
     align-items: center;
     justify-content: center;
     color: #fff;
-    font-size: 26px;
+    font-size: 24px;
     box-shadow: 0 6px 18px rgba(0,0,0,.25);
     z-index: 999;
     transition: transform .15s ease;
+    font-family: initial;
   }
   .whatsapp-float:hover{ transform: scale(1.08); }
 
   /* ================= RESPONSIVE ================= */
-
-  /* Tablet */
   @media (max-width: 991px){
     .footer-grid{
-      grid-template-columns: 1fr 1fr;
-      row-gap: 40px;
+      grid-template-columns: 1fr 1fr 1fr;
+      justify-content: start;
+      column-gap: 24px;
+      row-gap: 22px;
     }
-    .footer-col--products{ grid-column: 1 / -1; }
-    .footer-products-group{ max-width: 520px; }
   }
 
-  /* Large phone / small tablet */
   @media (max-width: 640px){
-    .footer-section{ padding-top: 48px; }
+    .footer-widgets-wrapper{ padding: 10px 0 8px; }
     .footer-grid{
-      grid-template-columns: 1fr;
-      row-gap: 36px;
-    }
-    .footer-products-group{
       grid-template-columns: 1fr 1fr;
-      max-width: none;
-    }
-    .footer-wrapper{
-      flex-direction: column;
-      align-items: flex-start;
+      row-gap: 20px;
     }
     .whatsapp-float{
       right: 16px;
       bottom: 16px;
-      width: 50px;
-      height: 50px;
-      font-size: 22px;
+      width: 48px;
+      height: 48px;
+      font-size: 21px;
     }
   }
 
-  /* Small phone */
-  @media (max-width: 400px){
-    .footer-products-group{
+  @media (max-width: 420px){
+    .footer-grid{
       grid-template-columns: 1fr;
-      gap: 28px;
+      row-gap: 18px;
     }
   }
 </style>
@@ -263,114 +290,112 @@
         <div class="footer-widgets-wrapper">
             <div class="footer-grid">
 
-                <!-- PRODUCTS (two sub-columns, kept together as one grid track) -->
-                <div class="footer-col footer-col--products">
-                    <div class="single-footer-widget product-footer">
-                        <div class="footer-products-group">
-                            <!-- Column 1 -->
-                            <div>
-                                <div class="widget-head">
-                                    <h5>Products</h5>
-                                </div>
-                                <ul class="list-items">
-                                    <li><a href="/products/foundryx.html">FOUNDRYX</a></li>
-                                    <li><a href="/products/machinex.html">MACHINEX</a></li>
-                                    <li><a href="/products/tradex.html">TRADEX</a></li>
-                                    <li><a href="/products/wmspro.html">WMSPro</a></li>
-                                    <li><a href="/products/agri-university.html">Agri University</a></li>
-                                    <li><a href="/products/cane.html">Cane</a></li>
-                                    <li><a href="/products/krishiastra.html">KrishiAstra</a></li>
-                                </ul>
-                            </div>
-                            <!-- Column 2 -->
-                            <div>
-                                <div class="widget-head second-head" aria-hidden="true">
-                                    <h5>Products</h5>
-                                </div>
-                                <ul class="list-items">
-                                    <li><a href="/products/buildx.html">BUILDX</a></li>
-                                    <li><a href="/products/fmx.html">CAFMX</a></li>
-                                    <li><a href="/products/hims.html">HISX</a></li>
-                                    <li><a href="/products/hrms.html">HRX</a></li>
-                                    <li><a href="/products/posx.html">POSX</a></li>
-                                    <li><a href="/products/propx.html">PROPX</a></li>
-                                    <li><a href="/products/rentx.html">RENTX</a></li>
-                                    <li><a href="/products/restox.html">RESTOX</a></li>
-                                </ul>
-                            </div>
-                        </div>
-                    </div>
+                <!-- PRODUCTS 1 -->
+                <div class="footer-col">
+                    <div class="widget-head"><h5>Products</h5></div>
+                    <ul class="list-items">
+                        <li><a href="/products/sugar-erp.html">SUGARX</a></li>
+                        <li><a href="/products/foundryx.html">FOUNDRYX</a></li>
+                        <li><a href="/products/machinex.html">MACHINEX</a></li>
+                        <li><a href="/products/tradex.html">TRADEX</a></li>
+                        <li><a href="/products/wmspro.html">WMSPro</a></li>
+                        <li><a href="/products/agri-university.html">Agri University</a></li>
+                        <li><a href="/products/sugar-agri.html">Cane</a></li>
+                        <li><a href="/products/krishi-astra.html">KrishiAstra</a></li>
+                    </ul>
                 </div>
 
-                <!-- INDUSTRIES -->
+                <!-- PRODUCTS 2 -->
                 <div class="footer-col">
-                    <div class="single-footer-widget">
-                        <div class="widget-head">
-                            <h5>Industries</h5>
-                        </div>
-                        <ul class="list-items">
-                            <li><a href="/industries/agriculture-erp.html">Agriculture</a></li>
-                            <li><a href="/industries/construction-erp.html">Construction</a></li>
-                            <li><a href="/industries/foundry-erp.html">Foundry</a></li>
-                            <li><a href="/industries/facility-erp.html">Facility</a></li>
-                            <li><a href="/industries/healthcare-erp.html">Healthcare</a></li>
-                            <li><a href="/industries/logistics-erp.html">Logistics</a></li>
-                            <li><a href="/industries/manufacturing-erp.html">Manufacturing</a></li>
-                            <li><a href="/industries/restaurant-erp.html">Restaurant</a></li>
-                            <li><a href="/industries/retail-erp.html">Retail</a></li>
-                            <li><a href="/industries/trading-erp.html">Trading</a></li>
-                        </ul>
-                    </div>
+                    <div class="widget-head"><h5>Products</h5></div>
+                    <ul class="list-items">
+                        <li><a href="/products/buildx.html">BUILDX</a></li>
+                        <li><a href="/products/fmx.html">CAFMX</a></li>
+                        <li><a href="/products/hims.html">HISX</a></li>
+                        <li><a href="/products/hrms.html">HRX</a></li>
+                        <li><a href="/products/posx.html">POSX</a></li>
+                        <li><a href="/products/propx.html">PROPX</a></li>
+                        <li><a href="/products/rentx.html">RENTX</a></li>
+                        <li><a href="/products/restox.html">RESTOX</a></li>
+                    </ul>
+                </div>
+
+                <!-- INDUSTRIES 1 -->
+                <div class="footer-col">
+                    <div class="widget-head"><h5>Industries</h5></div>
+                    <ul class="list-items">
+                        <li><a href="/industries/agriculture-erp.html">Agriculture</a></li>
+                        <li><a href="/industries/construction-erp.html">Construction</a></li>
+                        <li><a href="/industries/foundry-erp.html">Foundry</a></li>
+                        <li><a href="/industries/facility-erp.html">Facility</a></li>
+                        <li><a href="/industries/healthcare-erp.html">Healthcare</a></li>
+                    </ul>
+                </div>
+
+                <!-- INDUSTRIES 2 -->
+                <div class="footer-col">
+                    <div class="widget-head"><h5>Industries</h5></div>
+                    <ul class="list-items">
+                        <li><a href="/industries/logistics-erp.html">Logistics</a></li>
+                        <li><a href="/industries/manufacturing-erp-industry.html">Manufacturing</a></li>
+                        <li><a href="/industries/restaurant-erp.html">Restaurant</a></li>
+                        <li><a href="/industries/retail-erp.html">Retail</a></li>
+                        <li><a href="/industries/trading-erp.html">Trading</a></li>
+                    </ul>
                 </div>
 
                 <!-- COMPANY -->
                 <div class="footer-col">
-                    <div class="single-footer-widget">
-                        <div class="widget-head">
-                            <h5>Company</h5>
-                        </div>
-                        <ul class="list-items">
-                            <li><a href="/company/about.html">About Us</a></li>
-                            <li><a href="/blog">Blog</a></li>
-                            <li><a href="/resources/careers.html">Careers</a></li>
-                            <li><a href="/resources/case-studies.html">Case Studies</a></li>
-                            <li><a href="/company/contact-us.html">Contact Us</a></li>
-                            <li><a href="/resources/market.html">Market</a></li>
-                            <li><a href="/company/partner.html">Our Partners</a></li>
-                            <li><a href="services.html">Services</a></li>
-                        </ul>
-                    </div>
+                    <div class="widget-head"><h5>Company</h5></div>
+                    <ul class="list-items">
+                        <li><a href="/company/about-us.html">About Us</a></li>
+                        <li><a href="/blog">Blog</a></li>
+                        <li><a href="/company/careers.html">Careers</a></li>
+                        <li><a href="/resources/case-studies.html">Case Studies</a></li>
+                        <li><a href="/company/contact-us.html">Contact Us</a></li>
+                        <li><a href="/resources/market.html">Market</a></li>
+                        <li><a href="/company/partner.html">Our Partners</a></li>
+                        <li><a href="/services/core-services.html">Services</a></li>
+                    </ul>
                 </div>
 
-                <!-- CONTACT -->
-                <div class="footer-col">
-                    <div class="single-footer-widget">
-                        <div class="widget-head">
-                            <h5>Contact Us</h5>
-                        </div>
+                <!-- CONTACT SALES -->
+                <div class="footer-col contact-block">
+                    <div class="widget-head"><h5>Contact Us</h5></div>
 
-                        <p class="contact-line">
-                            <a href="mailto:contact@quantbit.io">
-                                <i class="far fa-envelope"></i> sales@quantbit.io
-                            </a>
-                        </p>
+                    <div class="block">
+                      <p class="contact-label">Sales</p>
+                        <p class="whatsapp-number"><a href="tel:+919665598341">+91 9665598341</a></p>
+                        <a href="mailto:sales@quantbit.io">sales@quantbit.io</a>
+                    </div>
 
-                        <div class="hours-label">
-                            <i class="far fa-business-time"></i> Hours
-                        </div>
-                        <p class="hours-value">
-                            9.30am – 6.00pm <br>
-                            Monday To Saturday
-                        </p>
+                    
 
-                        <div class="support-text">
-                            <p>Whatsapp Us</p>
-                            <h3><a href="tel:+919665598341">+91 9665598341</a></h3>
-                        </div>
+                    
+
+                    <div class="block">
+                        <p class="contact-label">Support</p>
+                        <a href="mailto:support@quantbit.io">support@quantbit.io</a>
                     </div>
                 </div>
 
             </div>
+
+            <!-- SOCIAL ICONS -->
+            <div class="footer-social">
+                <a href="https://www.facebook.com/people/ERP-DATA/100083478395796" aria-label="Facebook"><i class="fab fa-facebook"></i></a>
+                <a href="https://www.instagram.com/quantbit_erpdata" aria-label="Instagram"><i class="fab fa-instagram"></i></a>
+                <a href="https://www.youtube.com/@QUANTBIT_TECHNOLOGIES" aria-label="YouTube"><i class="fab fa-youtube"></i></a>
+                <a href="https://www.linkedin.com/company/quantbit-technologies" aria-label="LinkedIn"><i class="fab fa-linkedin"></i></a>
+            </div>
+
+            <!-- LEGAL / POLICY LINKS -->
+            <ul class="footer-legal-links">
+                <li><a href="/company/about-us.html">Company</a></li>
+                <li><a href="tel:+919421915433">Support</a></li>
+                <li><a href="/company/contact-us.html">Privacy Policy</a></li>
+                <li><a href="/company/contact-us.html">Contact Us</a></li>
+            </ul>
         </div>
     </div>
 
@@ -379,21 +404,15 @@
         <div class="container">
             <div class="footer-wrapper">
                 <p>
-                    Copyright © 2024 <a href="quantbit-home.html">Quantbit Technologies</a>.
+                    Copyright © 2024 <a href="/quantbit-home.html">Quantbit Technologies</a>. All Rights Reserved.
                 </p>
-                <ul class="footer-menu">
-                    <li><a href="about.html">Company</a></li>
-                    <li><a href="contact-us.html">Support</a></li>
-                    <li><a href="contact-us.html">Privacy</a></li>
-                    <li><a href="faq.html">Faqs</a></li>
-                </ul>
             </div>
         </div>
     </div>
 </footer>
 
 <!-- WhatsApp Floating Button -->
-<a href="https://wa.me/919665598341?text=Hi%20Quantbit,%20I%20would%20like%20to%20discuss%20ERPNext%20implementation%20for%20my%20business."
+<a href="https://wa.me/919665598341?text=Hi%20Quantbit,%20I%20would%20like%20to%20discuss%20Digital%20transformation%20for%20my%20business."
     class="whatsapp-float" target="_blank" rel="noopener noreferrer" aria-label="WhatsApp">
     <i class="fab fa-whatsapp"></i>
 </a>

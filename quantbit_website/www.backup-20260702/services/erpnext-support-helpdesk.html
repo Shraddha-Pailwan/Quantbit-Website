@@ -1,0 +1,415 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<title>ERPNext Support & Helpdesk Module | Ticket Management, SLA, Customer Portal | Quantbit Technologies</title>
+<meta name="description" content="Manage customer support tickets, SLA tracking, issue escalation, and customer portal with ERPNext Helpdesk. Certified Frappe implementation partner for India and GCC businesses.">
+<meta name="keywords" content="ERPNext support module India, ERPNext helpdesk ticket management, ERPNext SLA tracking, ERPNext customer portal, open source helpdesk ERP India, ERPNext issue management, ERPNext support GCC Oman, ERPNext Frappe helpdesk partner Pune, ERPNext after-sales service management">
+<link rel="canonical" href="https://quantbit.io/services/erpnext-support-helpdesk/">
+<script type="application/ld+json">{
+  "@context":"https://schema.org",
+  "@graph":[
+    {"@type":"BreadcrumbList","itemListElement":[
+      {"@type":"ListItem","position":1,"name":"Home","item":"https://quantbit.io"},
+      {"@type":"ListItem","position":2,"name":"ERPNext Services","item":"https://quantbit.io/services/"},
+      {"@type":"ListItem","position":3,"name":"ERPNext Support & Helpdesk","item":"https://quantbit.io/services/erpnext-support-helpdesk/"}
+    ]},
+    {"@type":"FAQPage","mainEntity":[
+      {"@type":"Question","name":"How does ERPNext track support SLAs?","acceptedAnswer":{"@type":"Answer","text":"ERPNext allows you to configure SLA policies with response and resolution time targets by issue priority (Low, Medium, High, Urgent). When a ticket is created, the system calculates the due time based on the assigned SLA and highlights overdue tickets in red on the support dashboard. Escalation rules notify supervisors automatically when SLAs are at risk."}},
+      {"@type":"Question","name":"Can customers raise and track their own support tickets?","acceptedAnswer":{"@type":"Answer","text":"Yes. ERPNext includes a customer portal where clients can raise new tickets, track the status of existing issues, add comments, and view the resolution history — without needing to call or email. Portal access is controlled and customers see only their own tickets."}},
+      {"@type":"Question","name":"How does ERPNext link support tickets to sales orders and warranties?","acceptedAnswer":{"@type":"Answer","text":"ERPNext tickets can be linked to specific customers, sales orders, serial numbers, and installed equipment. When a support agent opens a ticket, they immediately see the customer's purchase history, warranty status, and previous ticket history — enabling faster and more informed resolution."}},
+      {"@type":"Question","name":"Can ERPNext manage after-sales AMC contracts?","acceptedAnswer":{"@type":"Answer","text":"Yes. ERPNext allows you to create Maintenance Contracts (AMC) linked to customers and specific equipment or serial numbers. Support tickets raised by contract customers are automatically linked to their AMC, enabling teams to validate contract coverage before resolving the issue — and triggering renewal reminders before expiry."}},
+      {"@type":"Question","name":"Does ERPNext helpdesk integrate with email for ticket creation?","acceptedAnswer":{"@type":"Answer","text":"Yes. ERPNext can be configured to create support tickets automatically from inbound emails sent to your support email address. Email replies are appended to the ticket thread, and resolution emails are sent to the customer from the system — creating a complete communication log on the ticket."}}
+    ]}
+  ]
+}</script>
+<style>
+:root{--accent:#1a5fd4;--accent-dark:#1349a8;--teal:#0b7a5e;--teal-light:#e6f4f0;--amber:#b35e0a;--amber-light:#fef3e2;--dark:#0f2d47;--mid:#1e4a6e;--text:#1a2a38;--muted:#4a6278;--border:#d0dce8;--bg:#f5f8fc;--white:#ffffff;--radius:10px;--shadow:0 2px 16px rgba(15,45,71,.10)}
+*,*::before,*::after{box-sizing:border-box;margin:0;padding:0}html{scroll-behavior:smooth}
+body{font-family:'Segoe UI',system-ui,-apple-system,sans-serif;color:var(--text);background:var(--white);line-height:1.65;font-size:16px}
+.site-nav{background:var(--dark);padding:0 32px;display:flex;align-items:center;justify-content:space-between;height:60px;position:sticky;top:0;z-index:100}
+.nav-logo{color:#fff;font-weight:700;font-size:1.1rem;text-decoration:none;letter-spacing:.5px}
+.nav-links{display:flex;gap:24px;list-style:none}
+.nav-links a{color:rgba(255,255,255,.82);text-decoration:none;font-size:.9rem;font-weight:500;transition:color .2s}
+.nav-links a:hover{color:#fff}
+.nav-cta{background:var(--accent);color:#fff!important;padding:7px 18px;border-radius:6px;font-weight:600!important}
+.breadcrumb{background:var(--bg);border-bottom:1px solid var(--border);padding:10px 32px;font-size:.82rem;color:var(--muted)}
+.breadcrumb a{color:var(--accent);text-decoration:none}
+.hero{background:linear-gradient(135deg,var(--dark) 0%,var(--mid) 60%,#1a5fd4 100%);color:#fff;padding:72px 32px 64px;position:relative;overflow:hidden}
+.hero::before{content:'';position:absolute;right:-80px;top:-80px;width:420px;height:420px;background:rgba(255,255,255,.04);border-radius:50%;pointer-events:none}
+.hero-inner{max-width:1100px;margin:0 auto;display:grid;grid-template-columns:1fr 380px;gap:56px;align-items:center}
+.hero-badge{display:inline-flex;align-items:center;gap:8px;background:rgba(255,255,255,.12);border:1px solid rgba(255,255,255,.22);border-radius:40px;padding:5px 14px;font-size:.78rem;font-weight:600;letter-spacing:.8px;text-transform:uppercase;margin-bottom:18px;color:rgba(255,255,255,.9)}
+.hero h1{font-size:clamp(1.9rem,3.5vw,2.7rem);font-weight:800;line-height:1.2;margin-bottom:16px}
+.hero h1 span{color:#7eb8ff}
+.hero-desc{font-size:1.05rem;color:rgba(255,255,255,.82);margin-bottom:28px;max-width:540px}
+.hero-tags{display:flex;flex-wrap:wrap;gap:8px;margin-bottom:32px}
+.hero-tag{background:rgba(255,255,255,.1);border:1px solid rgba(255,255,255,.2);border-radius:20px;padding:4px 12px;font-size:.78rem;color:rgba(255,255,255,.85)}
+.hero-btns{display:flex;gap:14px;flex-wrap:wrap}
+.btn-primary{background:var(--accent);color:#fff;padding:12px 26px;border-radius:8px;font-weight:700;text-decoration:none;font-size:.95rem;transition:background .2s,transform .15s;display:inline-block}
+.btn-primary:hover{background:var(--accent-dark);transform:translateY(-1px)}
+.btn-ghost{background:transparent;color:#fff;padding:11px 24px;border:2px solid rgba(255,255,255,.4);border-radius:8px;font-weight:600;text-decoration:none;font-size:.95rem;transition:.2s;display:inline-block}
+.btn-ghost:hover{border-color:#fff;background:rgba(255,255,255,.1)}
+.hero-card{background:rgba(255,255,255,.1);border:1px solid rgba(255,255,255,.18);border-radius:14px;padding:28px;backdrop-filter:blur(8px)}
+.hero-card h3{font-size:1rem;font-weight:700;margin-bottom:16px;color:rgba(255,255,255,.92)}
+.hero-stat{display:flex;align-items:center;gap:12px;margin-bottom:14px;padding-bottom:14px;border-bottom:1px solid rgba(255,255,255,.12)}
+.hero-stat:last-child{margin-bottom:0;padding-bottom:0;border-bottom:none}
+.stat-icon{width:36px;height:36px;background:rgba(255,255,255,.15);border-radius:8px;display:flex;align-items:center;justify-content:center;font-size:1.1rem;flex-shrink:0}
+.stat-val{font-size:1.2rem;font-weight:800;color:#fff}
+.stat-lbl{font-size:.75rem;color:rgba(255,255,255,.7);line-height:1.3}
+.section{padding:64px 32px}.section-alt{background:var(--bg)}.container{max-width:1100px;margin:0 auto}
+.section-label{font-size:.75rem;font-weight:700;letter-spacing:1.2px;text-transform:uppercase;color:var(--accent);margin-bottom:8px}
+.section-title{font-size:clamp(1.5rem,2.8vw,2.1rem);font-weight:800;color:var(--dark);margin-bottom:12px;line-height:1.25}
+.section-sub{font-size:1.02rem;color:var(--muted);max-width:640px;margin-bottom:44px;line-height:1.7}
+.feature-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(280px,1fr));gap:24px}
+.feature-card{background:var(--white);border:1px solid var(--border);border-radius:var(--radius);padding:26px;transition:box-shadow .2s,transform .2s}
+.feature-card:hover{box-shadow:var(--shadow);transform:translateY(-3px)}
+.feature-icon{width:44px;height:44px;border-radius:10px;background:linear-gradient(135deg,var(--accent),var(--mid));display:flex;align-items:center;justify-content:center;font-size:1.3rem;margin-bottom:14px}
+.feature-card h3{font-size:1rem;font-weight:700;color:var(--dark);margin-bottom:8px}
+.feature-card p{font-size:.88rem;color:var(--muted);line-height:1.6}
+.feature-card ul{margin-top:10px;padding-left:0;list-style:none}
+.feature-card ul li{font-size:.85rem;color:var(--muted);padding:3px 0 3px 16px;position:relative;line-height:1.5}
+.feature-card ul li::before{content:'✓';position:absolute;left:0;color:var(--teal);font-weight:700}
+.reports-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(240px,1fr));gap:20px}
+.report-card{background:var(--white);border:1px solid var(--border);border-left:4px solid var(--accent);border-radius:var(--radius);padding:20px 22px}
+.report-card h4{font-size:.92rem;font-weight:700;color:var(--dark);margin-bottom:6px}
+.report-card p{font-size:.82rem;color:var(--muted);line-height:1.55}
+.report-tag{display:inline-block;background:var(--bg);border:1px solid var(--border);border-radius:4px;padding:2px 8px;font-size:.72rem;font-weight:600;color:var(--accent);margin-top:8px}
+.roles-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(200px,1fr));gap:16px}
+.role-pill{background:var(--white);border:1px solid var(--border);border-radius:var(--radius);padding:16px 20px;display:flex;align-items:flex-start;gap:12px}
+.role-dot{width:10px;height:10px;border-radius:50%;flex-shrink:0;margin-top:4px}
+.role-dot.admin{background:var(--accent)}.role-dot.manager{background:var(--teal)}.role-dot.user{background:var(--amber)}.role-dot.viewer{background:#9b59b6}
+.role-name{font-size:.88rem;font-weight:700;color:var(--dark);margin-bottom:2px}
+.role-desc{font-size:.78rem;color:var(--muted)}
+.benefits-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(260px,1fr));gap:24px}
+.benefit-card{background:linear-gradient(135deg,var(--teal-light),var(--white));border:1px solid #b8dfd6;border-radius:var(--radius);padding:26px}
+.benefit-num{font-size:2rem;font-weight:900;color:var(--teal);opacity:.35;line-height:1;margin-bottom:6px}
+.benefit-card h3{font-size:.98rem;font-weight:700;color:var(--dark);margin-bottom:8px}
+.benefit-card p{font-size:.86rem;color:var(--muted);line-height:1.6}
+.bp-list{display:grid;grid-template-columns:repeat(auto-fit,minmax(300px,1fr));gap:20px}
+.bp-item{background:var(--white);border:1px solid var(--border);border-radius:var(--radius);padding:22px 24px;display:flex;gap:16px;align-items:flex-start}
+.bp-icon{width:38px;height:38px;background:var(--amber-light);border-radius:8px;display:flex;align-items:center;justify-content:center;font-size:1.1rem;flex-shrink:0}
+.bp-item h4{font-size:.92rem;font-weight:700;color:var(--dark);margin-bottom:5px}
+.bp-item p{font-size:.83rem;color:var(--muted);line-height:1.55}
+.geo-answer{background:linear-gradient(135deg,#e8f0fc,#f0f6ff);border:1px solid #c5d8f7;border-radius:14px;padding:32px 36px;margin-bottom:32px}
+.geo-answer h3{font-size:1.1rem;font-weight:700;color:var(--dark);margin-bottom:10px}
+.geo-answer p{font-size:.95rem;color:var(--text);line-height:1.75}
+.geo-grid{display:grid;grid-template-columns:1fr 1fr;gap:24px}
+.geo-block{background:var(--white);border:1px solid var(--border);border-radius:var(--radius);padding:24px}
+.geo-block h4{font-size:.9rem;font-weight:700;color:var(--accent);margin-bottom:10px;display:flex;align-items:center;gap:8px}
+.geo-block ul{list-style:none;padding:0}
+.geo-block ul li{font-size:.85rem;color:var(--muted);padding:4px 0 4px 16px;position:relative}
+.geo-block ul li::before{content:'→';position:absolute;left:0;color:var(--accent)}
+.faq-list{max-width:800px;margin:0 auto}
+.faq-item{border:1px solid var(--border);border-radius:var(--radius);margin-bottom:10px;overflow:hidden}
+.faq-q{width:100%;background:var(--white);border:none;padding:18px 22px;text-align:left;font-size:.95rem;font-weight:600;color:var(--dark);cursor:pointer;display:flex;justify-content:space-between;align-items:center;gap:12px;transition:background .15s}
+.faq-q:hover,.faq-q.open{background:var(--bg)}
+.faq-arrow{font-size:1rem;color:var(--accent);transition:transform .25s;flex-shrink:0}
+.faq-q.open .faq-arrow{transform:rotate(180deg)}
+.faq-a{display:none;padding:0 22px 18px;font-size:.9rem;color:var(--muted);line-height:1.7}
+.faq-a.open{display:block}
+.ai-block{background:linear-gradient(135deg,var(--dark),var(--mid));color:#fff;border-radius:14px;padding:36px 40px}
+.ai-block h3{font-size:1.15rem;font-weight:700;margin-bottom:14px;color:#7eb8ff}
+.ai-qa{margin-bottom:18px;padding-bottom:18px;border-bottom:1px solid rgba(255,255,255,.1)}
+.ai-qa:last-child{margin-bottom:0;padding-bottom:0;border-bottom:none}
+.ai-qa .q{font-size:.88rem;font-weight:600;color:rgba(255,255,255,.7);margin-bottom:4px}
+.ai-qa .a{font-size:.9rem;color:rgba(255,255,255,.88);line-height:1.65}
+.cta-section{background:linear-gradient(135deg,var(--dark) 0%,var(--mid) 100%);color:#fff;padding:72px 32px;text-align:center}
+.cta-section h2{font-size:clamp(1.6rem,3vw,2.3rem);font-weight:800;margin-bottom:14px}
+.cta-section p{font-size:1.05rem;color:rgba(255,255,255,.8);max-width:580px;margin:0 auto 32px}
+.cta-btns{display:flex;gap:16px;justify-content:center;flex-wrap:wrap}
+.btn-white{background:#fff;color:var(--dark);padding:13px 28px;border-radius:8px;font-weight:700;text-decoration:none;font-size:.97rem;transition:.2s;display:inline-block}
+.btn-white:hover{background:#e8f0fc}
+.cta-trust{margin-top:22px;font-size:.82rem;color:rgba(255,255,255,.55)}
+.site-footer{background:#0a1e2e;color:rgba(255,255,255,.6);padding:40px 32px 24px;text-align:center;font-size:.83rem}
+.site-footer a{color:rgba(255,255,255,.5);text-decoration:none}
+.seo-box{background:var(--bg);border:1px solid var(--border);border-radius:var(--radius);padding:24px 28px}
+.seo-kw{display:flex;flex-wrap:wrap;gap:8px;margin-top:12px}
+.seo-kw span{background:var(--white);border:1px solid var(--border);border-radius:4px;padding:4px 10px;font-size:.78rem;color:var(--accent);font-weight:600}
+@media(max-width:768px){.hero-inner{grid-template-columns:1fr}.hero-card{display:none}.geo-grid{grid-template-columns:1fr}.site-nav{padding:0 16px}.nav-links{display:none}.section{padding:48px 16px}.hero{padding:48px 16px 44px}.ai-block{padding:24px 20px}.geo-answer{padding:22px 20px}}
+</style>
+</style>
+<link rel="stylesheet" href="/assets/quantbit_website/css/_shared.css">
+
+  <!-- TEMPLATE CSS (IMPORTANT) -->
+  <link rel="stylesheet" href="/../assets/quantbit_website/css/bootstrap.min.css">
+  <link rel="stylesheet" href="/../assets/quantbit_website/css/font-awesome.css">
+  <link rel="stylesheet" href="/../assets/quantbit_website/css/animate.css">
+  <link rel="stylesheet" href="/../assets/quantbit_website/css/magnific-popup.css">
+  <link rel="stylesheet" href="/../assets/quantbit_website/css/meanmenu.css">
+  <link rel="stylesheet" href="/../assets/quantbit_website/css/slick.css">
+  <link rel="stylesheet" href="/../assets/quantbit_website/css/nice-select.css">
+  <link rel="stylesheet" href="/../assets/quantbit_website/css/main.css">
+  <link rel="stylesheet" href="style.css">
+  <!-- <link rel="stylesheet" href="/assets/quantbit_website/css/_shared.css"> -->
+
+
+  <!-- OPTIONAL CUSTOM -->
+  <link rel="stylesheet" href="/../assets/quantbit_website/css/hrms.css">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
+  <!-- Google Tag Manager -->
+  <script>(function (w, d, s, l, i) {
+      w[l] = w[l] || []; w[l].push({
+        'gtm.start':
+          new Date().getTime(), event: 'gtm.js'
+      }); var f = d.getElementsByTagName(s)[0],
+        j = d.createElement(s), dl = l != 'dataLayer' ? '&l=' + l : ''; j.async = true; j.src =
+          'https://www.googletagmanager.com/gtm.js?id=' + i + dl; f.parentNode.insertBefore(j, f);
+    })(window, document, 'script', 'dataLayer', 'GTM-P98Z6G8D');</script>
+  <!-- End Google Tag Manager -->
+</head>
+<body>
+<!-- Google Tag Manager (noscript) -->
+  <noscript><iframe src="https://www.googletagmanager.com/ns.html?id=GTM-P98Z6G8D" height="0" width="0"
+      style="display:none;visibility:hidden"></iframe></noscript>
+  <!-- End Google Tag Manager (noscript) -->
+  <!-- NAV -->
+  <div id="header"></div>
+
+<section class="hero">
+  <div class="hero-inner">
+    <div>
+      <div class="hero-badge">&#127381; ERPNext Module</div>
+      <h1>ERPNext <span>Support &amp; Helpdesk</span><br>Ticket Management &amp; SLA</h1>
+      <p class="hero-desc">Manage customer support tickets, track SLA compliance, escalate critical issues, and give customers a self-service portal — all integrated with your CRM, sales, and accounting in ERPNext.</p>
+      <div class="hero-tags">
+        <span class="hero-tag">Ticket Management</span><span class="hero-tag">SLA Tracking</span><span class="hero-tag">Escalation Rules</span><span class="hero-tag">Customer Portal</span><span class="hero-tag">AMC Contracts</span><span class="hero-tag">Email Integration</span><span class="hero-tag">Issue Categorisation</span><span class="hero-tag">Resolution Analytics</span>
+      </div>
+      <div class="hero-btns">
+        <a href="/company/contact-us.html" class="btn-primary">Book Free Demo</a>
+        <a href="/services/" class="btn-ghost">All ERPNext Modules</a>
+      </div>
+    </div>
+    <div class="hero-card">
+      <h3>Module Snapshot</h3>
+      <div class="hero-stat"><div class="stat-icon">&#127381;</div><div><div class="stat-val">Ticket Tracking</div><div class="stat-lbl">Full lifecycle from open to close</div></div></div>
+      <div class="hero-stat"><div class="stat-icon">&#9200;</div><div><div class="stat-val">SLA Alerts</div><div class="stat-lbl">Auto-escalate before breach</div></div></div>
+      <div class="hero-stat"><div class="stat-icon">&#128100;</div><div><div class="stat-val">Customer Portal</div><div class="stat-lbl">Self-service ticket tracking</div></div></div>
+      <div class="hero-stat"><div class="stat-icon">&#128202;</div><div><div class="stat-val">CSAT Reports</div><div class="stat-lbl">Resolution time and satisfaction</div></div></div>
+    </div>
+  </div>
+</section>
+
+<section class="section">
+  <div class="container">
+    <div class="section-label">Overview</div>
+    <h2 class="section-title">What is ERPNext Support &amp; Helpdesk?</h2>
+    <p style="font-size:.97rem;color:var(--muted);line-height:1.85;max-width:840px">ERPNext Support and Helpdesk is a customer issue management system built into the core ERP — not a bolt-on tool. It connects support operations directly with customer records, purchase history, warranty status, serial numbers, and accounting — enabling support agents to resolve issues faster with full context, and finance to track support cost against customer revenue.</p>
+    <p style="font-size:.97rem;color:var(--muted);line-height:1.85;max-width:840px;margin-top:16px">When a customer contacts support — by email, phone, WhatsApp, or through the customer portal — a ticket is created in ERPNext with the customer name, issue description, priority, and category. The ticket is routed to the appropriate support team or agent based on configurable assignment rules. SLA timers start immediately, and the dashboard shows each ticket's response and resolution countdown in real time.</p>
+    <p style="font-size:.97rem;color:var(--muted);line-height:1.85;max-width:840px;margin-top:16px">SLA policies define response and resolution targets by priority level — Urgent tickets may require a 1-hour response and 4-hour resolution, while Low priority tickets may have 24-hour and 72-hour targets. When a ticket approaches its SLA deadline, ERPNext sends escalation alerts to supervisors automatically — preventing SLA breaches and the customer dissatisfaction they cause.</p>
+    <p style="font-size:.97rem;color:var(--muted);line-height:1.85;max-width:840px;margin-top:16px">For companies with Annual Maintenance Contracts (AMC), ERPNext links each ticket to the customer's active maintenance agreement — validating coverage, tracking the number of support incidents consumed, and generating renewal reminders before contract expiry. This is especially important for equipment suppliers, IT companies, and facility management firms whose AMC revenue depends on contract renewal rates.</p>
+    <p style="font-size:.97rem;color:var(--muted);line-height:1.85;max-width:840px;margin-top:16px">Quantbit Technologies configures ticket categories, SLA policies, escalation trees, email routing, and customer portal access for your specific support operation — including integration with WhatsApp Business API for markets where customers prefer messaging to email.</p>
+  </div>
+</section>
+
+<section class="section section-alt">
+  <div class="container">
+    <div class="section-label">Features &amp; Functions</div>
+    <h2 class="section-title">Core Capabilities of the Support &amp; Helpdesk Module</h2>
+    <p class="section-sub">Every tool your support team needs — from ticket creation to resolution and satisfaction tracking.</p>
+    <div class="feature-grid">
+      <div class="feature-card"><div class="feature-icon">&#127381;</div><h3>Ticket Management</h3><p>Create, assign, track, and close customer support tickets from a centralised helpdesk dashboard.</p><ul><li>Ticket creation via email, portal, phone, or manual entry</li><li>Ticket categorisation by type, product, and department</li><li>Priority assignment — Urgent, High, Medium, Low</li><li>Full communication thread on ticket record</li></ul></div>
+      <div class="feature-card"><div class="feature-icon">&#9200;</div><h3>SLA Management</h3><p>Define and enforce response and resolution time targets by priority — with automated alerts before breach.</p><ul><li>SLA policy by priority and customer type</li><li>Response and resolution countdown on dashboard</li><li>Escalation notification before SLA breach</li><li>SLA compliance report by team and agent</li></ul></div>
+      <div class="feature-card"><div class="feature-icon">&#128100;</div><h3>Customer Self-Service Portal</h3><p>Give customers visibility into their ticket status without calling your support team.</p><ul><li>Portal ticket creation with file attachments</li><li>Real-time ticket status and thread view</li><li>Ticket history and resolution summary</li><li>CSAT rating submission on ticket close</li></ul></div>
+      <div class="feature-card"><div class="feature-icon">&#128196;</div><h3>AMC &amp; Maintenance Contracts</h3><p>Track annual maintenance contracts per customer and validate coverage before resolving tickets.</p><ul><li>AMC linked to customer and serial numbers</li><li>Coverage validation on ticket creation</li><li>Incident count tracking against contract limit</li><li>Renewal reminder 30 and 60 days before expiry</li></ul></div>
+      <div class="feature-card"><div class="feature-icon">&#128260;</div><h3>Email &amp; Communication Integration</h3><p>Inbound emails become tickets automatically — and all replies are logged on the ticket thread.</p><ul><li>Auto-ticket creation from support email inbox</li><li>Email reply tracking within ticket record</li><li>Outbound resolution email with customer signature</li><li>Notification templates for ticket updates</li></ul></div>
+      <div class="feature-card"><div class="feature-icon">&#128202;</div><h3>Support Analytics &amp; CSAT</h3><p>Track resolution time, agent performance, SLA compliance, and customer satisfaction across your team.</p><ul><li>First response time by agent and team</li><li>Resolution time by category and priority</li><li>SLA breach rate and escalation frequency</li><li>CSAT score collection and trend reporting</li></ul></div>
+    </div>
+  </div>
+</section>
+
+<section class="section">
+  <div class="container">
+    <div class="section-label">Reports &amp; Dashboards</div>
+    <h2 class="section-title">Support Reports &amp; Analytics</h2>
+    <p class="section-sub">Data-driven visibility into support performance — for team leads, managers, and clients.</p>
+    <div class="reports-grid">
+      <div class="report-card"><h4>Support Ticket Summary</h4><p>All open, in-progress, and closed tickets by status, priority, category, and assigned agent for a period.</p><span class="report-tag">Support Manager</span></div>
+      <div class="report-card"><h4>SLA Compliance Report</h4><p>Tickets resolved within vs outside SLA targets by agent, team, and priority — identifies systemic SLA risks.</p><span class="report-tag">Management / QA</span></div>
+      <div class="report-card"><h4>First Response Time</h4><p>Average and maximum first response time by agent and priority — the primary SLA performance indicator.</p><span class="report-tag">Support Manager</span></div>
+      <div class="report-card"><h4>Issue Category Analysis</h4><p>Most frequent issue types and products generating tickets — input for product improvement and knowledge base.</p><span class="report-tag">Product / QA</span></div>
+      <div class="report-card"><h4>AMC Contract Utilisation</h4><p>Incidents consumed vs contract limit per customer — identifies at-risk or over-used contracts before billing disputes.</p><span class="report-tag">Finance / Account Management</span></div>
+      <div class="report-card"><h4>CSAT Score Dashboard</h4><p>Customer satisfaction ratings by agent, category, and period — the key metric for support quality measurement.</p><span class="report-tag">Management / Support Head</span></div>
+    </div>
+  </div>
+</section>
+
+<section class="section section-alt">
+  <div class="container">
+    <div class="section-label">User Access &amp; Roles</div>
+    <h2 class="section-title">Who Uses the Support Module?</h2>
+    <div class="roles-grid">
+      <div class="role-pill"><div class="role-dot admin"></div><div><div class="role-name">Support Manager</div><div class="role-desc">Configure SLA, manage escalation rules, review team performance reports, handle escalated tickets</div></div></div>
+      <div class="role-pill"><div class="role-dot user"></div><div><div class="role-name">Support Agent</div><div class="role-desc">Open tickets, respond to customers, update status, log resolution notes, request product team input</div></div></div>
+      <div class="role-pill"><div class="role-dot manager"></div><div><div class="role-name">Account Manager</div><div class="role-desc">View AMC contract status, ticket history for assigned customers, renewal pipeline and escalation flags</div></div></div>
+      <div class="role-pill"><div class="role-dot viewer"></div><div><div class="role-name">Customer (Portal)</div><div class="role-desc">Raise tickets, view status, add comments, download resolutions — via self-service portal</div></div></div>
+      <div class="role-pill"><div class="role-dot viewer"></div><div><div class="role-name">Finance / Billing</div><div class="role-desc">View AMC revenue, contract expiry pipeline, and billable support incidents for invoicing outside contract</div></div></div>
+    </div>
+  </div>
+</section>
+
+<section class="section">
+  <div class="container">
+    <div class="section-label">Key Benefits</div>
+    <h2 class="section-title">Why Businesses Use ERPNext for Customer Support</h2>
+    <div class="benefits-grid">
+      <div class="benefit-card"><div class="benefit-num">01</div><h3>Never Miss an SLA Again</h3><p>Automated SLA tracking with escalation alerts before breach ensures supervisors are notified before a customer deadline is missed — protecting your service reputation and contract terms.</p></div>
+      <div class="benefit-card"><div class="benefit-num">02</div><h3>Reduce Support Call Volume</h3><p>The customer self-service portal lets clients raise and track tickets without calling — freeing your team for complex issues while maintaining full communication transparency.</p></div>
+      <div class="benefit-card"><div class="benefit-num">03</div><h3>Protect AMC Revenue</h3><p>Active AMC tracking with renewal reminders 30 and 60 days before expiry prevents revenue leakage from lapsed contracts — one of the most common causes of unplanned revenue decline for equipment and IT service companies.</p></div>
+      <div class="benefit-card"><div class="benefit-num">04</div><h3>Full Customer Context at Every Ticket</h3><p>Support agents see the customer's purchase history, warranty status, serial numbers, and previous tickets when opening a new issue — reducing resolution time and preventing repeat contacts for the same problem.</p></div>
+      <div class="benefit-card"><div class="benefit-num">05</div><h3>Data-Driven Quality Improvement</h3><p>CSAT scores and issue category analytics identify the products, agents, and processes generating the most complaints — enabling targeted improvement instead of reactive firefighting.</p></div>
+      <div class="benefit-card"><div class="benefit-num">06</div><h3>Integrated with Sales and Finance</h3><p>Support tickets linked to customer accounts, sales orders, and contracts give sales and finance a complete view of customer health — enabling proactive account management and upsell opportunities at renewal.</p></div>
+    </div>
+  </div>
+</section>
+
+<section class="section section-alt">
+  <div class="container">
+    <div class="section-label">Best Practices</div>
+    <h2 class="section-title">ERPNext Support Module Best Practices</h2>
+    <div class="bp-list">
+      <div class="bp-item"><div class="bp-icon">&#9200;</div><div><h4>Define SLAs Before Go-Live</h4><p>Set SLA policies by priority and customer tier before the first ticket is created. Retroactively applying SLAs to open tickets creates confusion. Align SLA targets with your contractual commitments to customers.</p></div></div>
+      <div class="bp-item"><div class="bp-icon">&#128196;</div><div><h4>Create a Ticket Category Library</h4><p>Define a standardised set of ticket categories and sub-categories at implementation. Inconsistent categorisation makes issue analysis meaningless — good category data drives product improvement and staffing decisions.</p></div></div>
+      <div class="bp-item"><div class="bp-icon">&#128100;</div><div><h4>Activate Customer Portal for All AMC Clients</h4><p>Give all annual maintenance contract customers portal access at contract signing. Customers who can track their own tickets call less, report higher satisfaction, and renew at higher rates.</p></div></div>
+      <div class="bp-item"><div class="bp-icon">&#128260;</div><div><h4>Route Support Emails to ERPNext Inbox</h4><p>Configure your support@company.com mailbox to create ERPNext tickets automatically. Manual ticket creation from email is the most common reason tickets are missed or delayed — eliminate the manual step.</p></div></div>
+      <div class="bp-item"><div class="bp-icon">&#128202;</div><div><h4>Review CSAT Weekly in Team Meetings</h4><p>Make CSAT score and SLA compliance your two primary weekly KPIs. Teams that review these metrics weekly consistently outperform those that review them monthly — the feedback loop drives behaviour change.</p></div></div>
+      <div class="bp-item"><div class="bp-icon">&#128176;</div><div><h4>Set AMC Renewal Alerts at 60 Days</h4><p>Configure AMC renewal reminders at 60 days — not 30. Sales teams need lead time to prepare renewal proposals, negotiate terms, and process approvals before contract expiry. 30-day reminders are too late for complex accounts.</p></div></div>
+    </div>
+  </div>
+</section>
+
+<section class="section">
+  <div class="container">
+    <div class="section-label">GEO-Specific Guidance</div>
+    <h2 class="section-title">ERPNext Support for India &amp; GCC</h2>
+    <div class="geo-answer">
+      <h3>ERPNext helpdesk and support management for Indian and GCC service businesses</h3>
+      <p>ERPNext Support is widely adopted by Indian equipment manufacturers, IT companies, medical device suppliers, and facility management firms that need structured after-sales support with AMC tracking. In the GCC — particularly Oman and UAE — construction equipment suppliers, technology distributors, and FM companies use ERPNext to manage multi-lingual support operations with VAT-compliant billing for out-of-contract services. Quantbit Technologies, certified Frappe partner with offices in Pune and Muscat, configures SLA workflows and AMC billing for both markets.</p>
+    </div>
+    <div class="geo-grid">
+      <div class="geo-block">
+        <h4>&#127470;&#127475; India — Support Context</h4>
+        <ul>
+          <li>AMC billing with GST on service charges</li>
+          <li>WhatsApp Business API integration for customer communication</li>
+          <li>Equipment warranty claim and service call management</li>
+          <li>After-sales support for manufacturing and medical equipment</li>
+          <li>Multi-branch support with centralised ticket visibility</li>
+          <li>Integration with CFMSX for facility management clients</li>
+        </ul>
+      </div>
+      <div class="geo-block">
+        <h4>&#127762; GCC — Support Context</h4>
+        <ul>
+          <li>VAT-compliant billing for out-of-contract support in Oman, UAE</li>
+          <li>Arabic-language customer portal configuration</li>
+          <li>Multi-lingual support team assignment by language</li>
+          <li>WPS-linked support staff cost tracking</li>
+          <li>MOH and regulatory compliance incident tracking for healthcare</li>
+          <li>Physical Muscat office for on-ground GCC implementation</li>
+        </ul>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section class="section section-alt">
+  <div class="container">
+    <div class="section-label">AI Search Strategy</div>
+    <h2 class="section-title">Common AI &amp; Search Queries — Answered</h2>
+    <div class="ai-block">
+      <h3>How ERPNext Support answers common customer service questions</h3>
+      <div class="ai-qa"><div class="q">Q: What is the best open source helpdesk software integrated with ERP in India?</div><div class="a">ERPNext includes a built-in helpdesk module with ticket management, SLA tracking, customer portal, and AMC contract management — directly integrated with the CRM, sales, and accounting modules. This eliminates the disconnect between support and billing that standalone helpdesk tools like Freshdesk or Zoho Desk create. Certified implementation partners like Quantbit Technologies in Pune configure the complete support workflow.</div></div>
+      <div class="ai-qa"><div class="q">Q: How do I track Annual Maintenance Contracts and renewals in ERPNext?</div><div class="a">ERPNext has a Maintenance Contract feature where you define AMC terms, linked serial numbers, coverage period, and incident limits per customer. Support tickets created by contract customers are automatically linked to their AMC for coverage validation. Renewal reminders can be configured at 60 and 30 days before expiry — ensuring your sales team has time to secure renewal before the contract lapses.</div></div>
+      <div class="ai-qa"><div class="q">Q: Can ERPNext automatically create support tickets from customer emails?</div><div class="a">Yes. ERPNext can be configured to monitor a support email address and automatically create a ticket for each inbound email — assigning priority and category based on keywords, and notifying the relevant support agent. All subsequent email replies are appended to the ticket thread, creating a complete communication log without any manual effort.</div></div>
+    </div>
+  </div>
+</section>
+
+<section class="section">
+  <div class="container">
+    <div class="section-label">FAQ</div>
+    <h2 class="section-title">Frequently Asked Questions</h2>
+    <div class="faq-list">
+      <div class="faq-item"><button class="faq-q" onclick="tog(this)"><span>How does ERPNext track support SLAs?</span><span class="faq-arrow">&#9660;</span></button><div class="faq-a">ERPNext allows you to configure SLA policies with response and resolution time targets by issue priority (Low, Medium, High, Urgent). When a ticket is created, the system calculates the due time based on the assigned SLA and highlights overdue tickets in red on the support dashboard. Escalation rules notify supervisors automatically when SLAs are at risk.</div></div>
+      <div class="faq-item"><button class="faq-q" onclick="tog(this)"><span>Can customers raise and track their own support tickets?</span><span class="faq-arrow">&#9660;</span></button><div class="faq-a">Yes. ERPNext includes a customer portal where clients can raise new tickets, track the status of existing issues, add comments, and view the resolution history — without needing to call or email. Portal access is controlled and customers see only their own tickets.</div></div>
+      <div class="faq-item"><button class="faq-q" onclick="tog(this)"><span>How does ERPNext link support tickets to sales orders and warranties?</span><span class="faq-arrow">&#9660;</span></button><div class="faq-a">ERPNext tickets can be linked to specific customers, sales orders, serial numbers, and installed equipment. When a support agent opens a ticket, they immediately see the customer's purchase history, warranty status, and previous ticket history — enabling faster and more informed resolution.</div></div>
+      <div class="faq-item"><button class="faq-q" onclick="tog(this)"><span>Can ERPNext manage after-sales AMC contracts?</span><span class="faq-arrow">&#9660;</span></button><div class="faq-a">Yes. ERPNext allows you to create Maintenance Contracts (AMC) linked to customers and specific equipment or serial numbers. Support tickets raised by contract customers are automatically linked to their AMC, enabling teams to validate contract coverage before resolving the issue — and triggering renewal reminders before expiry.</div></div>
+      <div class="faq-item"><button class="faq-q" onclick="tog(this)"><span>Does ERPNext helpdesk integrate with email for ticket creation?</span><span class="faq-arrow">&#9660;</span></button><div class="faq-a">Yes. ERPNext can be configured to create support tickets automatically from inbound emails sent to your support email address. Email replies are appended to the ticket thread, and resolution emails are sent to the customer from the system — creating a complete communication log on the ticket.</div></div>
+      <div class="faq-item"><button class="faq-q" onclick="tog(this)"><span>What is the difference between ERPNext Support and standalone helpdesk tools?</span><span class="faq-arrow">&#9660;</span></button><div class="faq-a">Standalone helpdesk tools like Freshdesk or Zendesk operate in isolation from your ERP — support agents cannot see customer purchase history, warranty status, or contract details without switching systems. ERPNext Support is integrated: agents see the full customer record, AMC coverage, and transaction history on every ticket — resulting in faster resolution and fewer escalations.</div></div>
+    </div>
+  </div>
+</section>
+
+<section class="section section-alt">
+  <div class="container">
+    <div class="seo-box">
+      <p class="section-label" style="margin-bottom:8px">SEO Keywords</p>
+      <h3 style="font-size:.92rem;font-weight:700;color:var(--dark);margin-bottom:8px">Search Terms This Page Targets</h3>
+      <div class="seo-kw"><span>ERPNext support module India</span><span>ERPNext helpdesk ticket management</span><span>ERPNext SLA tracking</span><span>ERPNext customer portal</span><span>ERPNext AMC contract management</span><span>open source helpdesk ERP India</span><span>ERPNext support GCC Oman</span><span>ERPNext after-sales service management</span><span>ERPNext Frappe helpdesk Pune</span><span>ERPNext issue escalation</span></div>
+    </div>
+  </div>
+</section>
+
+<section class="cta-section">
+  <div class="container">
+    <h2>Ready to Implement ERPNext Support &amp; Helpdesk?</h2>
+    <p>Quantbit Technologies configures SLA policies, AMC contract tracking, email-to-ticket workflows, and customer portals for manufacturers, IT firms, and service businesses in India and GCC.</p>
+    <div class="cta-btns">
+      <a href="/company/contact-us.html" class="btn-white">Book Free Demo</a>
+      <a href="/company/contact-us.html" class="btn-ghost">Talk to a Consultant</a>
+    </div>
+    <div class="cta-trust">&#9989; Certified ERPNext Partner &nbsp;|&nbsp; &#9989; In-house Dev Team &nbsp;|&nbsp; &#9989; India &amp; GCC Experience &nbsp;|&nbsp; &#9989; Post-go-live Support</div>
+  </div>
+</section>
+  <div id="footer"></div>
+
+<script>function tog(btn){btn.classList.toggle('open');var a=btn.nextElementSibling;a.classList.toggle('open');}</script>
+<script>
+    fetch("/header.html")
+      .then(res => res.text())
+      .then(data => {
+        document.getElementById("header").innerHTML = data;
+      });
+
+    fetch("/footer.html")
+      .then(res => res.text())
+      .then(data => {
+        document.getElementById("footer").innerHTML = data;
+      });
+  </script>
+  <!-- ================= TEMPLATE JS ================= -->
+  <!--<< All JS Plugins >>-->
+  <script data-cfasync="false" src="../../cdn-cgi/scripts/5c5dd728/cloudflare-static/email-decode.min.js"></script>
+  <script src="/../assets/quantbit_website/js/jquery-3.7.1.min.js"></script>
+  <!--<< Viewport Js >>-->
+  <script src="/../assets/quantbit_website/js/viewport.jquery.js"></script>
+  <!--<< Bootstrap Js >>-->
+  <script src="/../assets/quantbit_website/js/bootstrap.bundle.min.js"></script>
+  <!--<< Nice Select Js >>-->
+  <script src="/../assets/quantbit_website/js/jquery.nice-select.min.js"></script>
+  <!--<< Waypoints Js >>-->
+  <script src="/../assets/quantbit_website/js/jquery.waypoints.js"></script>
+  <!--<< Counterup Js >>-->
+  <script src="/../assets/quantbit_website/js/jquery.counterup.min.js"></script>
+  <!--<< Slick Js >>-->
+  <script src="/../assets/quantbit_website/js/slick.min.js"></script>
+  <!--<< Slick Animation Js >>-->
+  <script src="/../assets/quantbit_website/js/slick-animation.min.js"></script>
+  <!--<< MeanMenu Js >>-->
+  <script src="/../assets/quantbit_website/js/jquery.meanmenu.min.js"></script>
+  <!--<< Magnific Popup Js >>-->
+  <script src="/../assets/quantbit_website/js/jquery.magnific-popup.min.js"></script>
+  <!--<< Wow Animation Js >>-->
+  <script src="/../assets/quantbit_website/js/wow.min.js"></script>
+  <!--<< Circle Progress Js >>-->
+  <script src="/../assets/quantbit_website/js/circle-progress.js"></script>
+  <!--<< Main.js >>-->
+  <script src="/../assets/quantbit_website/js/main.js"></script>
+  <script defer
+    src="../../../static.cloudflareinsights.com/beacon.min.js/v8c78df7c7c0f484497ecbca7046644da1771523124516"
+    integrity="sha512-8DS7rgIrAmghBFwoOTujcf6D9rXvH8xm8JQ1Ja01h9QX8EzXldiszufYa4IFfKdLUKTTrnSFXLDkUEOTrZQ8Qg=="
+    data-cf-beacon='{"version":"2024.11.0","token":"90f7972af14a48b4add7da2b74f5d675","r":1,"server_timing":{"name":{"cfCacheStatus":true,"cfEdge":true,"cfExtPri":true,"cfL4":true,"cfOrigin":true,"cfSpeedBrain":true},"location_startswith":null}}'
+    crossorigin="anonymous"></script>
+
+</body></html>
